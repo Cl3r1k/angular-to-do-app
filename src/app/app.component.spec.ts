@@ -1,32 +1,33 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, inject, async } from '@angular/core/testing';
 
+import { Component } from '@angular/core';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [
+                AppComponent,
+                MockTodoAppComponent
+            ],
+            providers: [ AppComponent ]
+        }).compileComponents();
+    }));
 
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
+    describe('App: Todo', () => {
+        it('Должно создать приложение (MockTodoAppComponent used)', inject([AppComponent], (app: AppComponent) => {
+            // Arrange
 
-  it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
-  }));
+            // Act
 
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
-  }));
+            // Assert
+            expect(app).toBeTruthy();
+        }));
+    });
 });
+
+@Component({
+    selector: 'app-todo',
+    template: ``
+})
+class MockTodoAppComponent { }
