@@ -1,5 +1,8 @@
 // C:\Windows\System32\cmd.exe /k "C:\Program Files\nodejs\nodevars.bat" // To start from VSC terminal node env
 
+// To push changes on githubpages
+// angular-cli-ghpages --repo=https://github.com/Cl3r1k/angular-to-do-app.git --name=Cl3r1k --email=cl3r1k2@gmail.com --no-silent
+
 import { Component } from '@angular/core';
 import { TodoAppComponent } from './todo-app/todo-app.component';
 
