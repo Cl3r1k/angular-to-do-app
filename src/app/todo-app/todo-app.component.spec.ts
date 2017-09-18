@@ -1,8 +1,9 @@
-import { FormsModule } from '@angular/forms';
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { TodoAppComponent } from './todo-app.component';
 import { TodoService } from './../todo.service';
+import { ToDo } from './../to-do';
 
 describe('Compontent: TodoAppComponent', () => {
     let component: TodoAppComponent;
@@ -23,13 +24,37 @@ describe('Compontent: TodoAppComponent', () => {
         fixture.detectChanges();
     });
 
-    it('Должно создать экземпляр объекта', inject([TodoService], (service: TodoService) => {
+    it('Should create the app', async(() => {
         // Arrange
-        const todoAppComponent = new TodoAppComponent(service);
+        const fixtureApp = TestBed.createComponent(TodoAppComponent);
+        const app = fixtureApp.debugElement.componentInstance;
 
         // Act
 
         // Assert
-        expect(todoAppComponent).toBeTruthy();
+        expect(app).toBeTruthy();
+    }));
+
+    it('Should have a newTodo as instance of Todo', async(() => {
+        // Arrange
+        const fixtureApp = TestBed.createComponent(TodoAppComponent);
+        const app = fixtureApp.debugElement.componentInstance;
+
+        // Act
+
+        // Assert
+        expect(app.newTodo instanceof ToDo).toBeTruthy();
+    }));
+
+    it('Should display "Todo" in h1 tag', async(() => {
+        // Arrange
+        const fixtureApp = TestBed.createComponent(TodoAppComponent);
+        fixtureApp.detectChanges();
+        const compiled = fixtureApp.debugElement.nativeElement;
+
+        // Act
+
+        // Assert
+        expect(compiled.querySelector('h1').textContent).toContain('Todo');
     }));
 });

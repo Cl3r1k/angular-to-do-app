@@ -4,8 +4,7 @@ import { ToDo } from './to-do';
 
 
 describe('ToDo', () => {
-    it('Должно создать экземпляр класса', () => {
-
+    it('Should create an instance', () => {
         // Arrange
 
         // Act
@@ -14,8 +13,7 @@ describe('ToDo', () => {
         expect(new ToDo()).toBeTruthy();
     });
 
-    it('Должно принять значения в конструктор', () => {
-
+    it('Should accept values in the constructor', () => {
         // Arrange
         let todo: ToDo;
 

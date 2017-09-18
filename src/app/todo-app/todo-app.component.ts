@@ -9,23 +9,22 @@ import { ToDo } from './../to-do';
 })
 export class TodoAppComponent implements OnInit {
 
-    name = 'Tom';
     newTodo: ToDo = new ToDo();
 
-    // Попросим систему зависимостей Angular вставить нашу зависимость
-    // с именем TodoService и назначить ее свойству 'todoService'
+    // Ask Angular DI system to inject the dependency
+    // associated with the dependency injection token 'TodoDataService'
+    // and assign it to a property called _todoDataService
     constructor(private _todoService: TodoService) { }
 
     ngOnInit() {
     }
 
-    // Наш сервис теперь доступен как this._todoService
+    // Service is now available as this._todoDataService
     toggleTodoComplete(todo: ToDo) {
         this._todoService.toggleTodoComplete(todo);
     }
 
     addTodo() {
-        // alert('addTodo called! newTodo.title: ' + this.newTodo.title);
         this._todoService.addTodo(this.newTodo);
         this.newTodo = new ToDo();
     }

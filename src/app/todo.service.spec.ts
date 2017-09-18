@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, async, inject } from '@angular/core/testing';
 
 import { ToDo } from './to-do';
 import { TodoService } from './todo.service';
@@ -10,12 +10,12 @@ describe('TodoService', () => {
         });
     });
 
-    it('should be created', inject([TodoService], (service: TodoService) => {
+    it('Should be created', inject([TodoService], (service: TodoService) => {
         expect(service).toBeTruthy();
     }));
 
     describe('#getAllTodos', () => {
-        it('дожно возвращать пустой массив по умолчанию', inject([TodoService], (service: TodoService) => {
+        it('Should return an empty array by default', inject([TodoService], (service: TodoService) => {
             // Arrange
 
             // Act
@@ -24,7 +24,7 @@ describe('TodoService', () => {
             expect(service.getAllTodos()).toEqual([]);
         }));
 
-        it('должно возврщать все todos', inject([TodoService], (service: TodoService) => {
+        it('Should return all todos', inject([TodoService], (service: TodoService) => {
             // Arrange
             const todo1 = new ToDo({ title: 'Hello 1', complete: false });
             const todo2 = new ToDo({ title: 'Hello 2', complete: true });
@@ -39,7 +39,7 @@ describe('TodoService', () => {
     });
 
     describe('#save(todo)', () => {
-        it('должно автоматически назначать увелченный ID', inject([TodoService], (service: TodoService) => {
+        it('Should automatically assign an incrementing id', inject([TodoService], (service: TodoService) => {
             // Arrange
             const todo1 = new ToDo({ title: 'Hello 1', complete: false });
             const todo2 = new ToDo({ title: 'Hello 2', complete: true });
@@ -55,7 +55,7 @@ describe('TodoService', () => {
     });
 
     describe('#deleteTodoById(id)', () => {
-        it('должно удалять todo по соответствующему ID', inject([TodoService], (service: TodoService) => {
+        it('Should remove todo with the corresponding ID', inject([TodoService], (service: TodoService) => {
             // Arrange
             const todo1 = new ToDo({ title: 'Hello 1', complete: false });
             const todo2 = new ToDo({ title: 'Hello 2', complete: true });
@@ -72,7 +72,7 @@ describe('TodoService', () => {
             expect(service.getAllTodos()).toEqual([]);
         }));
 
-        it('не должно ничего удалять, если todo с соответствующим ID не найдено', inject([TodoService], (service: TodoService) => {
+        it('Should not remove anything if todo with corresponding id is not found', inject([TodoService], (service: TodoService) => {
             // Arrange
             const todo1 = new ToDo({ title: 'Hello 1', complete: false });
             const todo2 = new ToDo({ title: 'Hello 2', complete: true });
@@ -89,7 +89,7 @@ describe('TodoService', () => {
     });
 
     describe('#updateTodoById(id)', () => {
-        it('должно возвращать todo с соответствующим ID и обновленными данными', inject([TodoService], (service: TodoService) => {
+        it('Should return todo with the corresponding id and updated data', inject([TodoService], (service: TodoService) => {
             // Arrange
             const todo1 = new ToDo({ title: 'Hello 1', complete: false });
 
@@ -101,7 +101,7 @@ describe('TodoService', () => {
             expect(updatedTodo.title).toEqual('new title');
         }));
 
-        it('должно вернуть null, если todo не найден', inject([TodoService], (service: TodoService) => {
+        it('Should return null, if todo is not found', inject([TodoService], (service: TodoService) => {
             // Arrange
             const todo = new ToDo({ title: 'Hello 1', complete: false });
 
@@ -115,7 +115,7 @@ describe('TodoService', () => {
     });
 
     describe('#toggleTodoComplete(id)', () => {
-        it('должно вернуть обновленный todo с противополжным статусом', inject([TodoService], (service: TodoService) => {
+        it('Should return updated todo with inverse complete status', inject([TodoService], (service: TodoService) => {
             // Arrange
             const todo = new ToDo({ title: 'Hello 1', complete: false });
 
