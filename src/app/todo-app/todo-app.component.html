@@ -1,7 +1,7 @@
 <section class='todoapp'>
     <header class='header'>
-        <h1>Список Дел <small>(v_0.0.1)</small></h1>
-        <input type="text" class='new-todo' placeholder='Что должно быть сделано?' autofocus='' (keyup.enter)='addTodo()' [(ngModel)]='newTodo.title'>
+        <h1>Todo list<small>(v_0.0.2)</small></h1>
+        <input type="text" class='new-todo' placeholder='What needs to be done?' autofocus='' (keyup.enter)='addTodo()' [(ngModel)]='newTodo.title'>
     </header>
 
     <section class="main" *ngIf='todos.length > 0'>
@@ -17,6 +17,6 @@
     </section>
 
     <footer class="footer" *ngIf='todos.length > 0'>
-        <span class='todo-count'>Задач осталось: <strong>{{todos.length}}</strong></span>
+        <span class='todo-count'><strong>{{todos.length}}</strong> {{todos.length === 1 ? 'item' : 'items'}} left</span>
     </footer>
 </section>
