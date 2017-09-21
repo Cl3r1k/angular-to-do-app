@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TodoService } from './../todo.service';
 import { ToDo } from './../to-do';
 
@@ -7,29 +7,24 @@ import { ToDo } from './../to-do';
     templateUrl: './todo-app.component.html',
     styleUrls: ['./todo-app.component.css']
 })
-export class TodoAppComponent implements OnInit {
-
-    newTodo: ToDo = new ToDo();
+export class TodoAppComponent {
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
     // and assign it to a property called _todoDataService
     constructor(private _todoService: TodoService) { }
 
-    ngOnInit() {
-    }
-
     // Service is now available as this._todoDataService
-    toggleTodoComplete(todo: ToDo) {
+    onToggleTodoComplete(todo: ToDo) {
         this._todoService.toggleTodoComplete(todo);
     }
 
-    addTodo() {
-        this._todoService.addTodo(this.newTodo);
-        this.newTodo = new ToDo();
+    // Method to handle event emitted by TodoListHeaderComponent
+    onAddTodo(todo: ToDo) {
+        this._todoService.addTodo(todo);
     }
 
-    removeTodo(todo: ToDo) {
+    onRemoveTodo(todo: ToDo) {
         this._todoService.deleteTodoById(todo.id);
     }
 
