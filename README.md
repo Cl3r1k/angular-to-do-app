@@ -4,7 +4,7 @@ CRUD приложение с помощью Angular CLI
 
 Demo: https://Cl3r1k.github.io/angular-to-do-app/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
 
 ## Development server
 
