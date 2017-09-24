@@ -1,3 +1,7 @@
+import { TodoListItemComponent } from './../todo-list-item/todo-list-item.component';
+import { TodoListFooterComponent } from '../todo-list-footer/todo-list-footer.component';
+import { TodoListComponent } from '../todo-list/todo-list.component';
+import { TodoListHeaderComponent } from './../todo-list-header/todo-list-header.component';
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
@@ -8,12 +12,21 @@ import { ToDo } from './../to-do';
 describe('Compontent: TodoAppComponent', () => {
     let component: TodoAppComponent;
     let fixture: ComponentFixture<TodoAppComponent>;
+    let expectedTodo: ToDo;
+    let expectedTodo2: ToDo;
+    let expectedTodos: ToDo[];
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [ FormsModule ],
-            declarations: [TodoAppComponent],
-            providers: [ TodoService ]
+            imports: [FormsModule],
+            declarations: [
+                TodoAppComponent,
+                TodoListHeaderComponent,
+                TodoListComponent,
+                TodoListFooterComponent,
+                TodoListItemComponent
+            ],
+            providers: [TodoService]
         })
             .compileComponents();
     }));
@@ -21,40 +34,43 @@ describe('Compontent: TodoAppComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodoAppComponent);
         component = fixture.componentInstance;
+
+        expectedTodo = new ToDo({ id: 1, title: 'Todo 1', complete: false });
+        expectedTodo2 = new ToDo({ id: 2, title: 'Todo 2', complete: true });
+        expectedTodos = [expectedTodo, expectedTodo2];
+
         fixture.detectChanges();
     });
 
-    it('Should create the app', async(() => {
+    it('Should create the app (TodoListHeaderComponent, TodoListComponent, TodoListFooterComponent, TodoListItemComponent)', async(() => {
         // Arrange
-        const fixtureApp = TestBed.createComponent(TodoAppComponent);
-        const app = fixtureApp.debugElement.componentInstance;
 
         // Act
 
         // Assert
-        expect(app).toBeTruthy();
+        expect(component).toBeTruthy();
     }));
 
-    it('Should have a newTodo as instance of Todo', async(() => {
-        // Arrange
-        const fixtureApp = TestBed.createComponent(TodoAppComponent);
-        const app = fixtureApp.debugElement.componentInstance;
+    describe('#todos', () => {
+        it('Should return expectedTodo as an single element in array', async(() => {
+            // Arrange
 
-        // Act
+            // Act
+            component.onAddTodo(expectedTodo);
 
-        // Assert
-        expect(app.newTodo instanceof ToDo).toBeTruthy();
-    }));
+            // Assert
+            expect(component.todos).toEqual([ expectedTodo ]);
+        }));
 
-    it('Should display "Todo" in h1 tag', async(() => {
-        // Arrange
-        const fixtureApp = TestBed.createComponent(TodoAppComponent);
-        fixtureApp.detectChanges();
-        const compiled = fixtureApp.debugElement.nativeElement;
+        it('Should return expectedTodo and expextedTodo2 as elements in array', async(() => {
+            // Arrange
 
-        // Act
+            // Act
+            component.onAddTodo(expectedTodo);
+            component.onAddTodo(expectedTodo2);
 
-        // Assert
-        expect(compiled.querySelector('h1').textContent).toContain('Todo');
-    }));
+            // Assert
+            expect(component.todos).toEqual([ expectedTodo, expectedTodo2 ]);
+        }));
+    });
 });
