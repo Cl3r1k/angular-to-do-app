@@ -15,7 +15,7 @@ describe('AppComponent', () => {
     }));
 
     describe('App: Todo', () => {
-        it('Должно создать приложение (MockTodoAppComponent used)', inject([AppComponent], (app: AppComponent) => {
+        it('should create the app (MockTodoAppComponent used)', inject([AppComponent], (app: AppComponent) => {
             // Arrange
 
             // Act
