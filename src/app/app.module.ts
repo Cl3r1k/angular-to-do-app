@@ -12,6 +12,8 @@ import { TodoListFooterComponent } from './todo-list-footer/todo-list-footer.com
 
 // Services
 import { TodoService } from './todo.service';
+import { ApiService } from './api.service';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
     declarations: [
@@ -23,10 +25,11 @@ import { TodoService } from './todo.service';
         TodoListFooterComponent
     ],
     imports: [
+        HttpModule,
         BrowserModule,
         FormsModule
     ],
-    providers: [TodoService],
+    providers: [TodoService, ApiService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

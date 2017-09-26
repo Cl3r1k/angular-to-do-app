@@ -6,12 +6,16 @@
 
 Todos:
     New:
-        ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung
-        ☐ Update unit tests for part-2
+        ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung        
         ☐ Write unit tests for events (emit) (look here - https://angular.io/guide/testing)
             ☐ Write tests for TodoListItemComponent
             ☐ Write tests for TodoListFooterComponent
             ☐ Write tests for TodoListComponent
             ☐ Write tests for TodoListHeaderComponent
+        ☐ Update e2e tests
+        ☐ Rewrite HTTP request to HTTPCommon
+        ☐ Combine two storing method (HTTP and InMemory)
+        ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
     
     Done:
+        ✔ Update unit tests for part-2
