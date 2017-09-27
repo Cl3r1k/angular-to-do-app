@@ -11,11 +11,16 @@ Todos:
             ☐ Write tests for TodoListItemComponent
             ☐ Write tests for TodoListFooterComponent
             ☐ Write tests for TodoListComponent
-            ☐ Write tests for TodoListHeaderComponent
-        ☐ Update e2e tests
+            ☐ Write tests for TodoListHeaderComponent        
         ☐ Rewrite HTTP request to HTTPCommon
         ☐ Combine two storing method (HTTP and InMemory)
+        ☐ Find out how to start json server on gh-pages (look here https://github.com/kimmobrunfeldt/concurrently)
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
     
     Done:
         ✔ Update unit tests for part-2
+        ✔ Update e2e tests for part-3
+        ✔ Update unit tests for part-3
+
+    Canceled:
+        

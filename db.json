@@ -1,19 +1,14 @@
 {
   "todos": [
     {
-      "title": "Finish CRUD Ng app",
-      "complete": false,
-      "id": 1
-    },
-    {
-      "id": 2,
       "title": "Clean inbox",
-      "complete": false
+      "complete": true,
+      "id": 2
     },
     {
-      "id": 1,
       "title": "Finish CRUD Ng app",
-      "complete": false
+      "complete": true,
+      "id": 1
     },
     {
       "title": "Add some unit tests",
@@ -21,9 +16,14 @@
       "id": 3
     },
     {
-      "title": "sadf",
+      "title": "Finish",
       "complete": false,
-      "id": 4
+      "id": 7
+    },
+    {
+      "title": "Write some tests",
+      "complete": false,
+      "id": 8
     }
   ]
 }
