@@ -25,7 +25,7 @@ export class TodoAppComponent implements OnInit {
     // Method to handle event emitted by TodoListHeaderComponent
     onAddTodo(todo: ToDo) {
         this._todoService.addTodo(todo).subscribe((newTodo) => {
-            this.todos.concat(newTodo);
+            this.todos = this.todos.concat(newTodo);
         });
     }
 

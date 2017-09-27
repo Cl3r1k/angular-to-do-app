@@ -6,8 +6,12 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 import { FormsModule } from '@angular/forms';
 
 import { TodoAppComponent } from './todo-app.component';
-import { TodoService } from './../todo.service';
 import { ToDo } from './../to-do';
+
+// Services
+import { TodoService } from './../todo.service';
+import { ApiMockService } from '../api-mock.service';
+import { ApiService } from './../api.service';
 
 describe('Compontent: TodoAppComponent', () => {
     let component: TodoAppComponent;
@@ -26,7 +30,12 @@ describe('Compontent: TodoAppComponent', () => {
                 TodoListFooterComponent,
                 TodoListItemComponent
             ],
-            providers: [TodoService]
+            providers: [TodoService,
+                {
+                    provide: ApiService,
+                    useClass: ApiMockService
+                }
+            ]
         })
             .compileComponents();
     }));
@@ -42,7 +51,8 @@ describe('Compontent: TodoAppComponent', () => {
         fixture.detectChanges();
     });
 
-    it('Should create the app (TodoListHeaderComponent, TodoListComponent, TodoListFooterComponent, TodoListItemComponent)', async(() => {
+    // tslint:disable-next-line:max-line-length
+    it('Should create the app Components(TodoListHeader, TodoList, TodoListFooter, TodoListItem) Services(ApiMockService, ApiService)', async(() => {
         // Arrange
 
         // Act
@@ -50,27 +60,4 @@ describe('Compontent: TodoAppComponent', () => {
         // Assert
         expect(component).toBeTruthy();
     }));
-
-    describe('#todos', () => {
-        it('Should return expectedTodo as an single element in array', async(() => {
-            // Arrange
-
-            // Act
-            component.onAddTodo(expectedTodo);
-
-            // Assert
-            expect(component.todos).toEqual([ expectedTodo ]);
-        }));
-
-        it('Should return expectedTodo and expextedTodo2 as elements in array', async(() => {
-            // Arrange
-
-            // Act
-            component.onAddTodo(expectedTodo);
-            component.onAddTodo(expectedTodo2);
-
-            // Assert
-            expect(component.todos).toEqual([ expectedTodo, expectedTodo2 ]);
-        }));
-    });
 });
