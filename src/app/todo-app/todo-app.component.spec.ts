@@ -16,9 +16,6 @@ import { ApiService } from './../api.service';
 describe('Compontent: TodoAppComponent', () => {
     let component: TodoAppComponent;
     let fixture: ComponentFixture<TodoAppComponent>;
-    let expectedTodo: ToDo;
-    let expectedTodo2: ToDo;
-    let expectedTodos: ToDo[];
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -43,10 +40,6 @@ describe('Compontent: TodoAppComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodoAppComponent);
         component = fixture.componentInstance;
-
-        expectedTodo = new ToDo({ id: 1, title: 'Todo 1', complete: false });
-        expectedTodo2 = new ToDo({ id: 2, title: 'Todo 2', complete: true });
-        expectedTodos = [expectedTodo, expectedTodo2];
 
         fixture.detectChanges();
     });

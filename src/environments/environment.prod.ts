@@ -2,5 +2,5 @@ export const environment = {
     production: true,
 
     // URL of development API
-    apiUrl: 'http://localhost:3000'
+    apiUrl: 'https://github.com/Cl3r1k/angular-to-do-app/db.json'
 };

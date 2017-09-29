@@ -6,6 +6,8 @@
 
 Todos:
     New:
+        Current:
+            --
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung        
         ☐ Write unit tests for events (emit) (look here - https://angular.io/guide/testing)
             ☐ Write tests for TodoListItemComponent
@@ -13,8 +15,6 @@ Todos:
             ☐ Write tests for TodoListComponent
             ☐ Write tests for TodoListHeaderComponent        
         ☐ Rewrite HTTP request to HTTPCommon
-        ☐ Combine two storing method (HTTP and InMemory)
-        ☐ Find out how to start json server on gh-pages (look here https://github.com/kimmobrunfeldt/concurrently)
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
     
     Done:
@@ -23,4 +23,5 @@ Todos:
         ✔ Update unit tests for part-3
 
     Canceled:
-        
+        ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore
+        ✘ Find out how to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource
