@@ -8,14 +8,14 @@ describe('AppComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
-                MockTodoAppComponent
+                MockTodosComponent
             ],
             providers: [ AppComponent ]
         }).compileComponents();
     }));
 
     describe('App: Todo', () => {
-        it('should create the app (MockTodoAppComponent used)', inject([AppComponent], (app: AppComponent) => {
+        it('should create the app (MockTodosComponent used)', inject([AppComponent], (app: AppComponent) => {
             // Arrange
 
             // Act
@@ -30,4 +30,4 @@ describe('AppComponent', () => {
     selector: 'app-todo',
     template: ``
 })
-class MockTodoAppComponent { }
+class MockTodosComponent { }

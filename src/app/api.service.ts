@@ -60,6 +60,9 @@ export class ApiService {
     }
 
     private handleError(error: Response | any) {
+        if (error._body.type === 'error') {
+            console.log('Request failed... Is json-server running?');
+        }
         console.error('ApiService::handleError', error);
         return Observable.throw(error);
     }
