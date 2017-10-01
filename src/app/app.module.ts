@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 // Components
 import { AppComponent } from './app.component';
-import { TodoAppComponent } from './todo-app/todo-app.component';
 import { TodoListHeaderComponent } from './todo-list-header/todo-list-header.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
@@ -15,16 +14,21 @@ import { TodoService } from './todo.service';
 import { ApiService } from './api.service';
 import { HttpModule } from '@angular/http';
 
+// Routings
+import { AppRoutingModule } from './app-routing.module';
+import { TodosComponent } from './todos/todos.component';
+
 @NgModule({
     declarations: [
         AppComponent,
-        TodoAppComponent,
         TodoListHeaderComponent,
         TodoListComponent,
         TodoListItemComponent,
-        TodoListFooterComponent
+        TodoListFooterComponent,
+        TodosComponent
     ],
     imports: [
+        AppRoutingModule,
         HttpModule,
         BrowserModule,
         FormsModule

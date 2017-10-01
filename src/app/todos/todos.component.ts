@@ -3,11 +3,11 @@ import { TodoService } from './../todo.service';
 import { ToDo } from './../to-do';
 
 @Component({
-    selector: 'app-todo',
-    templateUrl: './todo-app.component.html',
-    styleUrls: ['./todo-app.component.css']
+    selector: 'app-todos',
+    templateUrl: './todos.component.html',
+    styleUrls: ['./todos.component.css']
 })
-export class TodoAppComponent implements OnInit {
+export class TodosComponent implements OnInit {
 
     todos: ToDo[] = [];
 
@@ -38,7 +38,7 @@ export class TodoAppComponent implements OnInit {
 
     // Method to handle event emitted by TodoListComponent
     onRemoveTodo(todo: ToDo) {
-        this._todoService.deleteTodoById(todo.id).subscribe(() => {
+        this._todoService.deleteTodoById(todo.id).subscribe((_) => {
             this.todos = this.todos.filter((val) => val.id !== todo.id);
         });
     }
