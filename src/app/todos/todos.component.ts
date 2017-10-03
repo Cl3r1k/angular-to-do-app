@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from './../todo.service';
 import { ToDo } from './../to-do';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-todos',
@@ -14,13 +15,17 @@ export class TodosComponent implements OnInit {
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
     // and assign it to a property called _todoDataService
-    constructor(private _todoService: TodoService) { }
+    constructor(private _todoService: TodoService, private _route: ActivatedRoute) { }
 
     public ngOnInit() {
-        this._todoService.getAllTodos().subscribe((todos) => {
-            this.todos = todos;
-        });
-    }
+        this._route.data
+          .map((data) => data['todos'])
+          .subscribe(
+            (todos) => {
+              this.todos = todos;
+            }
+          );
+      }
 
     // Method to handle event emitted by TodoListHeaderComponent
     onAddTodo(todo: ToDo) {

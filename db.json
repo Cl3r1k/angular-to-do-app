@@ -24,6 +24,11 @@
       "title": "Do all todos",
       "complete": false,
       "id": 8
+    },
+    {
+      "title": "Pass upwork verification",
+      "complete": false,
+      "id": 9
     }
   ]
 }
