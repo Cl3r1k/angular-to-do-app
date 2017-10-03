@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 import { TodosComponent } from './todos.component';
 
@@ -13,6 +14,9 @@ import { TodoListHeaderComponent } from './../todo-list-header/todo-list-header.
 import { TodoService } from './../todo.service';
 import { ApiMockService } from '../api-mock.service';
 import { ApiService } from './../api.service';
+
+// Routers
+import { ActivatedRoute } from '@angular/router';
 
 describe('TodosComponent', () => {
     let component: TodosComponent;
@@ -32,6 +36,14 @@ describe('TodosComponent', () => {
                 {
                     provide: ApiService,
                     useClass: ApiMockService
+                },
+                {
+                    provide: ActivatedRoute,
+                    useValue: {
+                        data: Observable.of({
+                            todos: []
+                        })
+                    }
                 }
             ]
         })

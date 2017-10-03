@@ -1,11 +1,12 @@
 import { TestBed, inject, async } from '@angular/core/testing';
 
-import { Component } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
+            schemas: [ NO_ERRORS_SCHEMA ],
             declarations: [
                 AppComponent,
                 MockTodosComponent

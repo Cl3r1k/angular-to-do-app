@@ -17,6 +17,7 @@ import { HttpModule } from '@angular/http';
 // Routings
 import { AppRoutingModule } from './app-routing.module';
 import { TodosComponent } from './todos/todos.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { TodosComponent } from './todos/todos.component';
         TodoListComponent,
         TodoListItemComponent,
         TodoListFooterComponent,
-        TodosComponent
+        TodosComponent,
+        PageNotFoundComponent
     ],
     imports: [
         AppRoutingModule,
