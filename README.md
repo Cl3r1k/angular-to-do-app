@@ -6,6 +6,10 @@ Demo: https://Cl3r1k.github.io/angular-to-do-app/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
 
+## Development server and json-server running concurrently
+
+Run `npm run app` for a dev server and json-server. Navigate to `http://localhost:4200/`. At the `http://localhost:3000/` json-server is hosted. The app will automatically reload if you change any of the source files.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

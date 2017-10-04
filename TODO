@@ -8,7 +8,6 @@ Todos:
     New:
         Current:
             --        
-        ☐ Run npm run json-server and ng serve in the same terminal (look here https://github.com/kimmobrunfeldt/concurrently)
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung        
         ☐ Write unit tests for events (emit) (look here - https://angular.io/guide/testing)
             ☐ Write tests for TodoListItemComponent
@@ -26,6 +25,7 @@ Todos:
         ✔ Update e2e tests for part-3
         ✔ Update unit tests for part-3
         ✔ Update unit tests for part-4
+        ✔ Run npm run json-server and ng serve in the same terminal (look here https://github.com/kimmobrunfeldt/concurrently)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore

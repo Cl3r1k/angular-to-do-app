@@ -9,7 +9,8 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "json-server": "json-server --watch db.json"
+        "json-server": "json-server --watch db.json",
+        "app": "concurrently \"npm run json-server\" \"npm run start\""
     },
     "private": true,
     "dependencies": {
@@ -35,6 +36,7 @@
         "@types/jasminewd2": "~2.0.2",
         "@types/node": "~6.0.60",
         "codelyzer": "~3.1.1",
+        "concurrently": "^3.5.0",
         "jasmine-core": "~2.6.2",
         "jasmine-spec-reporter": "~4.1.0",
         "karma": "~1.7.0",
