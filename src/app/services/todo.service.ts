@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ToDo } from './to-do';
+import { ToDo } from './../to-do';
 
 import { ApiService } from './api.service';
 import { Observable } from 'rxjs/Observable';

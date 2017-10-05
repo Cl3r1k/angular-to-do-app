@@ -10,9 +10,10 @@ import { TodoListItemComponent } from './todo-list-item/todo-list-item.component
 import { TodoListFooterComponent } from './todo-list-footer/todo-list-footer.component';
 
 // Services
-import { TodoService } from './todo.service';
-import { ApiService } from './api.service';
-import { HttpModule } from '@angular/http';
+import { TodoService } from './services/todo.service';
+import { ApiService } from './services/api.service';
+import { HttpClientModule } from '@angular/common/http';
+// import { HttpModule } from '@angular/http';
 
 // Routings
 import { AppRoutingModule } from './app-routing.module';
@@ -31,7 +32,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ],
     imports: [
         AppRoutingModule,
-        HttpModule,
+        // HttpModule,
+        HttpClientModule,
         BrowserModule,
         FormsModule
     ],
