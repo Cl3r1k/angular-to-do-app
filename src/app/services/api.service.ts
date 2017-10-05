@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { environment } from './../environments/environment';
+import { environment } from './../../environments/environment';
 
-import { Http, Response } from '@angular/http';
+// import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+
 import { Observable } from 'rxjs/Observable';
-import { ToDo } from './to-do';
+import { ToDo } from './../to-do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -13,48 +15,45 @@ const API_URL = environment.apiUrl;
 @Injectable()
 export class ApiService {
 
-    constructor(private _http: Http) { }
+    constructor(private _httpClient: HttpClient) { }
 
     // API: GET /todos
     public getAllTodos(): Observable<ToDo[]> {
-        return this._http.get(API_URL + '/todos')
-            .map(response => {
-                const todos = response.json();
-                return todos.map((todo) => new ToDo(todo));
-            })
+        return this._httpClient.get(API_URL + '/todos')
+            .map(response => response)
             .catch(this.handleError);
     }
 
     // API: POST /todos
     public createTodo(todo: ToDo): Observable<ToDo> {
-        return this._http.post(API_URL + '/todos', todo)
+        return this._httpClient.post(API_URL + '/todos', todo)
             .map(response => {
-                return new ToDo(response.json());
+                return new ToDo(response);
             })
             .catch(this.handleError);
     }
 
     // API: GET /todos:id
     public getTodoById(todoId: number): Observable<ToDo> {
-        return this._http.get(API_URL + '/todos/' + todoId)
+        return this._httpClient.get(API_URL + '/todos/' + todoId)
             .map(response => {
-                return new ToDo(response.json());
+                return new ToDo(response);
             })
             .catch(this.handleError);
     }
 
     // API: PUT /todos
     public updateTodo(todo: ToDo): Observable<ToDo> {
-        return this._http.put(API_URL + '/todos/' + todo.id, todo)
+        return this._httpClient.put(API_URL + '/todos/' + todo.id, todo)
             .map(response => {
-                return new ToDo(response.json());
+                return new ToDo(response);
             })
             .catch(this.handleError);
     }
 
     // API: DELETE /todos:id
     public deleteTodoById(todoId: number): Observable<null> {
-        return this._http.delete(API_URL + '/todos/' + todoId)
+        return this._httpClient.delete(API_URL + '/todos/' + todoId)
             .map(response => null)
             .catch(this.handleError);
     }

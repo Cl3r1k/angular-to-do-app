@@ -2,7 +2,7 @@ import { TestBed, async, inject } from '@angular/core/testing';
 import { ApiService } from './api.service';
 import { ApiMockService } from './api-mock.service';
 
-import { ToDo } from './to-do';
+import { ToDo } from './../to-do';
 import { TodoService } from './todo.service';
 
 describe('TodoService', () => {

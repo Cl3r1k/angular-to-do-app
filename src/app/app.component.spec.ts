@@ -3,6 +3,7 @@ import { TestBed, inject, async } from '@angular/core/testing';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
 
+// TODO: Replace NO_ERRORS_SCHEMA with improved test
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({

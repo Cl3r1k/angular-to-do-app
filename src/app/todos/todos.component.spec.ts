@@ -11,9 +11,9 @@ import { TodoListComponent } from '../todo-list/todo-list.component';
 import { TodoListHeaderComponent } from './../todo-list-header/todo-list-header.component';
 
 // Services
-import { TodoService } from './../todo.service';
-import { ApiMockService } from '../api-mock.service';
-import { ApiService } from './../api.service';
+import { TodoService } from './../services/todo.service';
+import { ApiMockService } from './../services/api-mock.service';
+import { ApiService } from './../services/api.service';
 
 // Routers
 import { ActivatedRoute } from '@angular/router';
