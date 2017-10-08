@@ -1,8 +1,6 @@
 import { environment } from '../../environments/environment';
 import { ToDo } from './../to-do';
-// import { MockBackend } from '@angular/http/testing';
-// import { BaseRequestOptions, Http } from '@angular/http';
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { async, getTestBed, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { ApiService } from './api.service';
@@ -27,7 +25,7 @@ describe('ApiService', () => {
     });
 
     describe(`#getAllTodos`, () => {
-        it(`should return an Observable<ToDo[]>`, () => {
+        it(`should return an Observable<ToDo[]>`, async(() => {    // Declare as async test since the HttpClient works with Observables
             // Arrange
             const dummyTodos = [
                 new ToDo({ id: 1, title: 'todo 1', complete: false}),
@@ -44,6 +42,6 @@ describe('ApiService', () => {
             const req = httpMock.expectOne(API_URL + '/todos');
             expect(req.request.method).toBe('GET');
             req.flush(dummyTodos);
-        });
+        }));
     });
 });
