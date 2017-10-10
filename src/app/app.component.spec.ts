@@ -1,35 +1,82 @@
-import { TestBed, inject, async } from '@angular/core/testing';
-
-import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { TestBed, inject, async, getTestBed } from '@angular/core/testing';
+import { AppRoutingModule } from './app-routing.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common';
+import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import { TodosComponent } from './todos/todos.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-// TODO: Replace NO_ERRORS_SCHEMA with improved test
+import { Component } from '@angular/core';
+
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            schemas: [ NO_ERRORS_SCHEMA ],
-            declarations: [
-                AppComponent,
-                MockTodosComponent
+            imports: [
+                RouterTestingModule.withRoutes([
+                    {
+                        path: 'todos',
+                        component: TodosComponent
+                    },
+                    {
+                        path: '**',
+                        component: PageNotFoundComponent
+                    }
+                ]),
+                AppModule
             ],
-            providers: [ AppComponent ]
+            providers: [ { provide: APP_BASE_HREF, useValue: '/' }]
         }).compileComponents();
     }));
 
     describe('App: Todo', () => {
-        it('should create the app (MockTodosComponent used)', inject([AppComponent], (app: AppComponent) => {
+        it('should be able to navigate to `/` (async)', async(() => {
             // Arrange
+            const injector = getTestBed();
+            const router = injector.get(Router);
+            const fixture = TestBed.createComponent(AppComponent);
+            fixture.detectChanges();
 
             // Act
 
             // Assert
-            expect(app).toBeTruthy();
+            router.navigate(['/'])
+                .then(() => {
+                    expect(location.pathname.endsWith('/todos')).toBe(true);
+                });
+        }));
+
+        it('should be able to navigate to `/todos` (async)', async(() => {
+            // Arrange
+            const injector = getTestBed();
+            const router = injector.get(Router);
+            const fixture = TestBed.createComponent(AppComponent);
+            fixture.detectChanges();
+
+            // Act
+
+            // Assert
+            router.navigate(['/todos'])
+                .then(() => {
+                    expect(location.pathname.endsWith('/todos')).toBe(true);
+                });
+        }));
+
+        it('should be able to navigate to `/somepath` (async)', async(() => {
+            // Arrange
+            const injector = getTestBed();
+            const router = injector.get(Router);
+            const fixture = TestBed.createComponent(AppComponent);
+            fixture.detectChanges();
+
+            // Act
+
+            // Assert
+            router.navigate(['/somepath'])
+                .then(() => {
+                    expect(location.pathname.toString()).toEqual('/somepath');
+                });
         }));
     });
 });
-
-@Component({
-    selector: 'app-todo',
-    template: ``
-})
-class MockTodosComponent { }
