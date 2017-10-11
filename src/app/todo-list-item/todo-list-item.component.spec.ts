@@ -45,9 +45,41 @@ describe('TodoListItemComponent', () => {
         expect(component.todo).toEqual(expectedTodo);
     });
 
-    // TODO: Add event tests for emit
+    it(`should emit 'toggleComplete' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
 
-    // it('should emit on toggleTodoComplete', () => {
-    //     expect(component.todo.complete).toEqual(false);
-    // });
+        // Act
+        component.toggleComplete.subscribe((value) => todo = value);
+        component.toggleTodoComplete(expectedTodo);
+
+        // Assert
+        expect(todo).toEqual(expectedTodo);
+    }));
+
+    it(`should emit 'remove' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        component.remove.subscribe((value) => todo = value);
+        component.removeTodo(expectedTodo);
+
+        // Assert
+        expect(todo).toEqual(expectedTodo);
+    }));
+
+    it(`clicking on checkbox.toggle emits 'toggleComplete' event (async)`, async() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        component.remove.subscribe((value) => todo = value);
+        component.removeTodo(expectedTodo);
+
+        // Assert
+        expect(todo.id).toEqual(expectedTodo.id);
+        expect(todo.title).toEqual(expectedTodo.title);
+        expect(todo.complete).toEqual(expectedTodo.complete);
+    });
 });

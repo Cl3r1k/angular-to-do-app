@@ -9,8 +9,8 @@ Todos:
         Current:
             ☐ Write unit tests for events (emit) (look here - https://angular.io/guide/testing)
                 ☐ Write tests for TodoListItemComponent
-                ☐ Write tests for TodoListFooterComponent
-                ☐ Write tests for TodoListComponent
+                ✔ Write tests for TodoListFooterComponent
+                ✔ Write tests for TodoListComponent
                 ☐ Write tests for TodoListHeaderComponent
 
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung
