@@ -10,7 +10,9 @@ describe('TodoListComponent', () => {
     let component: TodoListComponent;
     let fixture: ComponentFixture<TodoListComponent>;
     let mainEl;
-    let expectedTodos: ToDo [];
+    let expectedTodos: ToDo[];
+    let todo1: ToDo;
+    let todo2: ToDo;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -27,7 +29,9 @@ describe('TodoListComponent', () => {
         component = fixture.componentInstance;
         mainEl = fixture.debugElement.query(By.css('main'));    // Find main element
 
-        expectedTodos = [ new ToDo({ id: 1, title: 'Test 1', complete: false }), new ToDo({ id: 2, title: 'Test 2', complete: true })];
+        todo1 = new ToDo({ id: 1, title: 'Test 1', complete: false });
+        todo2 = new ToDo({ id: 2, title: 'Test 2', complete: true });
+        expectedTodos = [todo1, todo2];
         component.todos = expectedTodos;
         fixture.detectChanges();
     });
@@ -50,5 +54,27 @@ describe('TodoListComponent', () => {
         expect(component.todos).toEqual(expectedTodos);
     });
 
-    // TODO: Add event tests for emit
+    it(`should emit 'toggleComplete' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        component.toggleComplete.subscribe((value) => todo = value);
+        component.onToggleTodoComplete(todo1);
+
+        // Assert
+        expect(todo).toEqual(todo1);
+    }));
+
+    it(`should emit 'remove' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        component.remove.subscribe((value) => todo = value);
+        component.onRemoveTodo(todo1);
+
+        // Assert
+        expect(todo).toEqual(todo1);
+    }));
 });

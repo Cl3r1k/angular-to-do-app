@@ -36,14 +36,12 @@ describe('TodoListFooterComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should be equal to expectedTodos', () => {
+    it('should be equal to expectedTodos @Input event (async)', async(() => {
         // Arrange
 
         // Act
 
         // Assert
         expect(component.todos).toEqual(expectedTodos);
-    });
-
-    // TODO: Add event tests for emit
+    }));
 });
