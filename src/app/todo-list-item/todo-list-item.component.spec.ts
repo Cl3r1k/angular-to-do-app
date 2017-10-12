@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
 import { ToDo } from './../to-do';
 
 import { TodoListItemComponent } from './todo-list-item.component';
@@ -7,7 +6,8 @@ import { TodoListItemComponent } from './todo-list-item.component';
 describe('TodoListItemComponent', () => {
     let component: TodoListItemComponent;
     let fixture: ComponentFixture<TodoListItemComponent>;
-    let todoEl;
+    let toggleEl;
+    let destroyEl;
     let expectedTodo: ToDo;
 
     beforeEach(async(() => {
@@ -20,7 +20,8 @@ describe('TodoListItemComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodoListItemComponent);
         component = fixture.componentInstance;
-        todoEl = fixture.debugElement.query(By.css('view'));    // Find Todo element
+        toggleEl = fixture.debugElement.nativeElement.querySelector('input[type=checkbox]');    // Find toggle checkbox element
+        destroyEl = fixture.debugElement.nativeElement.querySelector('button');                 // Find destroy button element
 
         expectedTodo = new ToDo({ id: 1, title: 'Test', complete: false });
         component.todo = expectedTodo;
@@ -69,17 +70,31 @@ describe('TodoListItemComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    it(`clicking on checkbox.toggle emits 'toggleComplete' event (async)`, async() => {
-        // Arrange
-        let todo: ToDo;
+    describe(`#view tests`, () => {
+        it(`clicking on checkbox.toggle should emits 'toggleTodoComplete' event (async)`, async () => {
+            // Arrange
 
-        // Act
-        component.remove.subscribe((value) => todo = value);
-        component.removeTodo(expectedTodo);
+            // Act
+            spyOn(component, 'toggleTodoComplete');
+            toggleEl.click();
 
-        // Assert
-        expect(todo.id).toEqual(expectedTodo.id);
-        expect(todo.title).toEqual(expectedTodo.title);
-        expect(todo.complete).toEqual(expectedTodo.complete);
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.toggleTodoComplete).toHaveBeenCalled();
+            });
+        });
+
+        it(`clicking on button.destroy should emits 'removeTodo' event (async)`, async () => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'removeTodo');
+            destroyEl.click();
+
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.removeTodo).toHaveBeenCalled();
+            });
+        });
     });
 });
