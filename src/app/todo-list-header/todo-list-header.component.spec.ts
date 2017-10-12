@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { By } from '@angular/platform-browser';
 import { ToDo } from '../to-do';
 
 import { TodoListHeaderComponent } from './todo-list-header.component';
@@ -8,7 +7,7 @@ import { TodoListHeaderComponent } from './todo-list-header.component';
 describe('TodoListHeaderComponent', () => {
     let component: TodoListHeaderComponent;
     let fixture: ComponentFixture<TodoListHeaderComponent>;
-    let headerEl;
+    let addTodoEl;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -21,7 +20,7 @@ describe('TodoListHeaderComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodoListHeaderComponent);
         component = fixture.componentInstance;
-        headerEl = fixture.debugElement.query(By.css('header'));    // Find header element
+        addTodoEl = fixture.debugElement.nativeElement.querySelector('input[type=text]');    // Find addTodoEl text field element
 
         fixture.detectChanges();
     });
@@ -54,5 +53,49 @@ describe('TodoListHeaderComponent', () => {
         expect(compiled.querySelector('h1').textContent).toContain('Todo');
     }));
 
-    // TODO: Add event tests for emit
+    it(`should emit 'add' event (async)`, async(() => {
+        // Arrange
+        const expectedTodo: ToDo = new ToDo({ id: 1, title: 'exp Todo', complete: false });
+        let newTodo: ToDo;
+
+        // Act
+        component.newTodo = expectedTodo;
+        component.add.subscribe((value) => newTodo = value);
+        component.addTodo();
+
+        // Assert
+        expect(newTodo).toEqual(expectedTodo);
+        expect(component.newTodo).toEqual(new ToDo());
+    }));
+
+    describe(`#addTodo`, () => {
+        it(`should reinit newTodo property`, async(() => {
+            // Arrange
+            const expectedTodo: ToDo = new ToDo({ id: 1, title: 'exp Todo', complete: false });
+
+            // Act
+            component.addTodo();
+
+            // Assert
+            expect(component.newTodo).toEqual(new ToDo());
+        }));
+    });
+
+    describe(`#view tests`, () => {
+        it(`press Enter on text.new-todo should emits 'addTodo' event (async)`, async () => {
+            // Arrange
+            const event = new KeyboardEvent('keyup',{
+                'key': 'Enter'
+            });
+
+            // Act
+            spyOn(component, 'addTodo');
+            addTodoEl.dispatchEvent(event);
+
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.addTodo).toHaveBeenCalled();
+            });
+        });
+    });
 });
