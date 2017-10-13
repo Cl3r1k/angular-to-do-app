@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { TodosComponent } from './todos/todos.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { TodoListItemEditComponent } from './todo-list-item-edit/todo-list-item-edit.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         TodoListItemComponent,
         TodoListFooterComponent,
         TodosComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        TodoListItemEditComponent
     ],
     imports: [
         AppRoutingModule,

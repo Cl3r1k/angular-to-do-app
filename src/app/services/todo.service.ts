@@ -23,7 +23,7 @@ export class TodoService {
     }
 
     // Simulate PUT /todos/:id
-    updateTodoById(todo: ToDo): Observable<ToDo> {
+    updateTodo(todo: ToDo): Observable<ToDo> {
         return this._api.updateTodo(todo);
     }
 
