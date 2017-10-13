@@ -17,6 +17,9 @@ export class TodoListComponent {
     @Output()
     toggleComplete: EventEmitter<ToDo> = new EventEmitter();
 
+    @Output()
+    updateTodoEvent: EventEmitter<ToDo> = new EventEmitter();
+
     constructor() { }
 
     onToggleTodoComplete(todo: ToDo) {
@@ -25,6 +28,10 @@ export class TodoListComponent {
 
     onRemoveTodo(todo: ToDo) {
         this.remove.emit(todo);
+    }
+
+    updateTodo(todo: ToDo) {
+        console.log('updateTodo in TodoListComponent - pushing todo with title: ' + todo.title + ' to UP');
     }
 
 }

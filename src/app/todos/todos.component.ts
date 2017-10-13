@@ -48,4 +48,11 @@ export class TodosComponent implements OnInit {
         });
     }
 
+    // Method to handle event emitted by TodoListComponent
+    onUpdateTodo(todo: ToDo) {
+        this._todoService.updateTodo(todo).subscribe((updatedTodo) => {
+            todo = updatedTodo;
+        });
+    }
+
 }

@@ -7,9 +7,14 @@
 Todos:
     New:
         Current:
-            ☐ Fix all TODO in all files
-
-        ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung        
+            ☐ Add posibility to edit Todo (look here https://angularclass.github.io/NG6-todomvc-starter/)
+                ☐ Update unit test for TodosComponent
+                ☐ Update unit test for TodoListComponent
+                ☐ Update unit test for TodoListItemEditComponent
+            ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung
+        
+        ☐ Add filters in footer
+        ☐ Add Clear Completed link in footer
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         ☐ Find the way to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource
     
@@ -27,6 +32,7 @@ Todos:
             ✔ Write tests for TodoListFooterComponent
             ✔ Write tests for TodoListComponent
             ✔ Write tests for TodoListHeaderComponent
+        ✔ Fix all TODO in all files
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore
