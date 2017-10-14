@@ -11,19 +11,27 @@ export class TodoListItemComponent {
     @Input() todo: ToDo;
 
     @Output()
-    remove: EventEmitter<ToDo> = new EventEmitter();
+    removeEventTodoListItem: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    toggleComplete: EventEmitter<ToDo> = new EventEmitter();
+    toggleCompleteEventTodoListItem: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
+    editTodoEventTodoListItem: EventEmitter<ToDo> = new EventEmitter();
 
     constructor() { }
 
     toggleTodoComplete(todo: ToDo) {
-        this.toggleComplete.emit(todo);
+        this.toggleCompleteEventTodoListItem.emit(todo);
     }
 
     removeTodo(todo: ToDo) {
-        this.remove.emit(todo);
+        this.removeEventTodoListItem.emit(todo);
+    }
+
+    editTodo(todo: ToDo) {
+        alert('edit todo with title: ' + this.todo.title);
+        this.editTodoEventTodoListItem.emit(todo);    // Emit the event to TodoListComponent
     }
 
 }

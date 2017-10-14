@@ -1,8 +1,8 @@
 <section class="main" *ngIf='todos.length > 0'>
     <ul class="todo-list">
         <li *ngFor='let todo of todos' [class.completed]='todo.complete'>
-            <app-todo-list-item [todo]='todo' (toggleComplete)='onToggleTodoComplete($event)' (remove)='onRemoveTodo($event)'></app-todo-list-item>
-            <app-todo-list-item-edit [todo]='todo' (toggleComplete)='onToggleTodoComplete($event)' (remove)='onRemoveTodo($event)' (updateTodoEvent)='updateTodo($event)'></app-todo-list-item-edit>
+            <app-todo-list-item [todo]='todo' (toggleCompleteEventTodoListItem)='onToggleTodoComplete($event)' (removeEventTodoListItem)='onRemoveTodo($event)' (editTodoEventTodoListItem)='onEditTodo($event)'></app-todo-list-item>
+            <app-todo-list-item-edit [todo]='todo' (toggleCompleteEventTodoListItemEdit)='onToggleTodoComplete($event)' (removeEventTodoListItemEdit)='onRemoveTodo($event)' (updateTodoEventTodoListItemEdit)='updateTodo($event)'></app-todo-list-item-edit>
         </li>
     </ul>
 </section>

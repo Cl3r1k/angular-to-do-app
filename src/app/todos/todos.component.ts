@@ -50,6 +50,7 @@ export class TodosComponent implements OnInit {
 
     // Method to handle event emitted by TodoListComponent
     onUpdateTodo(todo: ToDo) {
+        alert('todo is updated');    // TODO: Delete this string
         this._todoService.updateTodo(todo).subscribe((updatedTodo) => {
             todo = updatedTodo;
         });

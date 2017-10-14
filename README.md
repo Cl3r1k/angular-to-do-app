@@ -1,6 +1,6 @@
 # AngularToDoApp
 
-CRUD приложение с помощью Angular CLI
+CRUD TODO app with Angular CLI
 
 Demo: https://Cl3r1k.github.io/angular-to-do-app/
 
