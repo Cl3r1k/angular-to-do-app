@@ -2,9 +2,9 @@
 <section class='todoapp'>
 
     <!-- header is now replaced with app-todoo-list-header -->
-    <app-todo-list-header (add)='onAddTodo($event)'></app-todo-list-header>
+    <app-todo-list-header (addEventTodoListHeader)='onAddTodo($event)'></app-todo-list-header>
 
-    <app-todo-list [todos]='todos' (remove)='onRemoveTodo($event)' (toggleComplete)='onToggleTodoComplete($event)' (updateTodoEvent)='onUpdateTodo($event)'></app-todo-list>
+    <app-todo-list [todos]='todos' (removeEventTodoList)='onRemoveTodo($event)' (toggleCompleteEventTodoList)='onToggleTodoComplete($event)' (updateTodoEventTodoList)='onUpdateTodo($event)'></app-todo-list>
 
     <app-todo-list-footer [todos]='todos'></app-todo-list-footer>
 

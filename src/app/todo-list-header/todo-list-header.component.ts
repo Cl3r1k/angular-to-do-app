@@ -11,12 +11,12 @@ export class TodoListHeaderComponent {
     newTodo: ToDo = new ToDo();
 
     @Output()
-    add: EventEmitter<ToDo> = new EventEmitter();
+    addEventTodoListHeader: EventEmitter<ToDo> = new EventEmitter();
 
     constructor() { }
 
     addTodo() {
-        this.add.emit(this.newTodo);
+        this.addEventTodoListHeader.emit(this.newTodo);
         this.newTodo = new ToDo();
     }
 

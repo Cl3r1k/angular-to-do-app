@@ -11,13 +11,13 @@ export class TodoListItemEditComponent implements OnInit {
     @Input() todo: ToDo;
 
     @Output()
-    remove: EventEmitter<ToDo> = new EventEmitter();
+    removeEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    toggleComplete: EventEmitter<ToDo> = new EventEmitter();
+    toggleCompleteEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    updateTodoEvent: EventEmitter<ToDo> = new EventEmitter();
+    updateTodoEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();    // Rename the emitters
 
     constructor() { }
 
@@ -25,15 +25,15 @@ export class TodoListItemEditComponent implements OnInit {
     }
 
     toggleTodoComplete(todo: ToDo) {
-        this.toggleComplete.emit(todo);
+        this.toggleCompleteEventTodoListItemEdit.emit(todo);
     }
 
     removeTodo(todo: ToDo) {
-        this.remove.emit(todo);
+        this.removeEventTodoListItemEdit.emit(todo);
     }
 
     updateTodo(todo: ToDo) {
-        this.updateTodoEvent.emit(todo);
+        this.updateTodoEventTodoListItemEdit.emit(todo);    // Emit the event to TodoListComponent
     }
 
 }

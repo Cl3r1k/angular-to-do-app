@@ -11,8 +11,8 @@ Todos:
                 ☐ Update unit test for TodosComponent
                 ☐ Update unit test for TodoListComponent
                 ☐ Update unit test for TodoListItemEditComponent
-            ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung
-        
+            
+        ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung
         ☐ Add filters in footer
         ☐ Add Clear Completed link in footer
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
