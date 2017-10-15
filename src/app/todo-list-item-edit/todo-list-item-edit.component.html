@@ -1,5 +1,6 @@
 <div class='view'>
     <input type="checkbox" class="toggle" (click)='toggleTodoComplete(todo)' [checked]='todo.complete'>
     <input type="text" [(ngModel)]='todo.title' (keyup.enter)='updateTodo(todo)'>
+    <button>Some actions</button>
     <button class="destroy" (click)='removeTodo(todo)'></button>
 </div>
