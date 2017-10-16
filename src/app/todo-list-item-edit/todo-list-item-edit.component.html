@@ -3,4 +3,10 @@
     <input type="text" [(ngModel)]='todo.title' (keyup.enter)='updateTodo(todo)'>
     <button>Some actions</button>
     <button class="destroy" (click)='removeTodo(todo)'></button>
+    <div class='dynamic'>
+        <h3>Lets dynamically create some components</h3>
+        <button (click)='createHelloWorldComponent()'>Create Hello World Component</button>
+        <button (click)='createWorldHelloComponent()'>Create World Hello Component</button>
+    </div>
+    <app-dynamic-component [componentData]='componentData'></app-dynamic-component>
 </div>
