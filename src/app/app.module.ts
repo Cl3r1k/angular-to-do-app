@@ -19,6 +19,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { TodosComponent } from './todos/todos.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TodoListItemEditComponent } from './todo-list-item-edit/todo-list-item-edit.component';
+import { HelloWorldComponent } from './todo-list-item-edit/hello-world/hello-world.component';
+import { WorldHelloComponent } from './todo-list-item-edit/world-hello/world-hello.component';
+import { DynamicComponent } from './todo-list-item-edit/dynamic/dynamic.component';
 
 @NgModule({
     declarations: [
@@ -29,7 +32,10 @@ import { TodoListItemEditComponent } from './todo-list-item-edit/todo-list-item-
         TodoListFooterComponent,
         TodosComponent,
         PageNotFoundComponent,
-        TodoListItemEditComponent
+        TodoListItemEditComponent,
+        HelloWorldComponent,
+        WorldHelloComponent,
+        DynamicComponent
     ],
     imports: [
         AppRoutingModule,
