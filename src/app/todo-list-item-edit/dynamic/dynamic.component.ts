@@ -39,7 +39,7 @@ export class DynamicComponent {
 
         // Destroy the previosly created component
         if (this.currentComponent) {
-            this.currentComponent.destoy();
+            this.currentComponent.destroy();
         }
 
         this.currentComponent = component;

@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ToDo } from './../to-do';
 
+import { HelloWorldComponent } from './../todo-list-item-edit/hello-world/hello-world.component';
+import { WorldHelloComponent } from './../todo-list-item-edit/world-hello/world-hello.component';
+
 @Component({
     selector: 'app-todo-list',
     templateUrl: './todo-list.component.html',
@@ -20,6 +23,8 @@ export class TodoListComponent {
     @Output()
     updateTodoEventTodoList: EventEmitter<ToDo> = new EventEmitter();
 
+    componentData = null;    // Component info wich will be created dynamically
+
     constructor() { }
 
     onToggleTodoComplete(todo: ToDo) {
@@ -37,6 +42,24 @@ export class TodoListComponent {
 
     onEditTodo(todo: ToDo) {
         console.log('event accepted from TodoListItemComp and should pass the todo with title: ' + todo.title + ' to TodoListItemEditComp');
+    }
+
+    createHelloWorldComponent() {
+        this.componentData = {
+            component: HelloWorldComponent,
+            inputs: {
+                showNum: 9
+            }
+        };
+    }
+
+    createWorldHelloComponent() {
+        this.componentData = {
+            component: WorldHelloComponent,
+            inputs: {
+                showNum: 2
+            }
+        };
     }
 
 }

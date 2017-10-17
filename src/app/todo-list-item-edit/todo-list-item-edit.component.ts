@@ -1,10 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ToDo } from './../to-do';
 
-import { HelloWorldComponent } from './../todo-list-item-edit/hello-world/hello-world.component';
-import { WorldHelloComponent } from './../todo-list-item-edit/world-hello/world-hello.component';
-
-
 @Component({
     selector: 'app-todo-list-item-edit',
     templateUrl: './todo-list-item-edit.component.html',
@@ -21,9 +17,7 @@ export class TodoListItemEditComponent implements OnInit {
     toggleCompleteEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    updateTodoEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();    // Rename the emitters
-
-    componentData = null;
+    updateTodoEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();
 
     constructor() { }
 
@@ -40,24 +34,6 @@ export class TodoListItemEditComponent implements OnInit {
 
     updateTodo(todo: ToDo) {
         this.updateTodoEventTodoListItemEdit.emit(todo);    // Emit the event to TodoListComponent
-    }
-
-    createHelloWorldComponent() {
-        this.componentData = {
-            component: HelloWorldComponent,
-            inputs: {
-                showNum: 9
-            }
-        };
-    }
-
-    createWorldHelloComponent() {
-        this.componentData = {
-            component: WorldHelloComponent,
-            inputs: {
-                showNum: 2
-            }
-        };
     }
 
 }
