@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-hello-world',
@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelloWorldComponent implements OnInit {
 
-    constructor() { }
+    showNum = 0;
+
+    constructor(private _injector: Injector) {
+        this.showNum = this._injector.get('showNum');
+    }
 
     ngOnInit() {
     }
