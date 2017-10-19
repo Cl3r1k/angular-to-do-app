@@ -17,6 +17,7 @@ Todos:
         ☐ Add Clear Completed link in footer
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         ☐ Find the way to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource
+        ☐ Fix all TODO in all files
     
     Done:
         ✔ Update unit tests for part-2
@@ -32,7 +33,6 @@ Todos:
             ✔ Write tests for TodoListFooterComponent
             ✔ Write tests for TodoListComponent
             ✔ Write tests for TodoListHeaderComponent
-        ✔ Fix all TODO in all files
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore

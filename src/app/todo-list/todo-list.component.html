@@ -3,12 +3,6 @@
         <li *ngFor='let todo of todos' [class.completed]='todo.complete'>
             <app-todo-list-item [todo]='todo' (toggleCompleteEventTodoListItem)='onToggleTodoComplete($event)' (removeEventTodoListItem)='onRemoveTodo($event)' (editTodoEventTodoListItem)='onEditTodo($event)'></app-todo-list-item>
             <app-todo-list-item-edit [todo]='todo' (toggleCompleteEventTodoListItemEdit)='onToggleTodoComplete($event)' (removeEventTodoListItemEdit)='onRemoveTodo($event)' (updateTodoEventTodoListItemEdit)='updateTodo($event)'></app-todo-list-item-edit>
-            <div class='dynamic'>
-                <h3>Lets dynamically create some components</h3>
-                <button (click)='createHelloWorldComponent()'>Create Hello World Component</button>
-                <button (click)='createWorldHelloComponent()'>Create World Hello Component</button>
-                <app-dynamic-component [componentData]='componentData'></app-dynamic-component>
-            </div>
         </li>
     </ul>
 </section>

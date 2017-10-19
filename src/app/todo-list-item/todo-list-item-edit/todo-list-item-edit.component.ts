@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ToDo } from './../to-do';
+import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
+import { ToDo } from './../../to-do';
 
 @Component({
     selector: 'app-todo-list-item-edit',
@@ -18,6 +18,11 @@ export class TodoListItemEditComponent implements OnInit {
 
     @Output()
     updateTodoEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();
+
+    // constructor(private _injector: Injector) {
+    //     this.todo = this._injector.get('todo');
+    //     console.log('in TodoListItemEditComponent accepted todo.title: ' + this.todo.title);
+    // }
 
     constructor() { }
 
