@@ -1,4 +1,8 @@
 import { Component, ComponentFactoryResolver, Input, ReflectiveInjector, ViewChild, ViewContainerRef } from '@angular/core';
+
+import { TodoListItemViewComponent } from './../../todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListItemEditComponent } from './../../todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+// TODO: Delete these two components refs after tests
 import { HelloWorldComponent } from './../hello-world/hello-world.component';
 import { WorldHelloComponent } from './../world-hello/world-hello.component';
 
@@ -6,7 +10,8 @@ import { WorldHelloComponent } from './../world-hello/world-hello.component';
     selector: 'app-dynamic-component',
     templateUrl: './dynamic.component.html',
     styleUrls: ['./dynamic.component.css'],
-    entryComponents: [HelloWorldComponent, WorldHelloComponent] // Reference to the comp-s must be here in order to dynamically create them
+    // tslint:disable-next-line:max-line-length
+    entryComponents: [TodoListItemViewComponent, TodoListItemEditComponent, HelloWorldComponent, WorldHelloComponent] // Ref to the comp-s must be here in order to dyn-y create them
 })
 export class DynamicComponent {
 

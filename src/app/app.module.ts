@@ -18,10 +18,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { TodosComponent } from './todos/todos.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TodoListItemEditComponent } from './todo-list-item-edit/todo-list-item-edit.component';
-import { HelloWorldComponent } from './todo-list-item-edit/hello-world/hello-world.component';
-import { WorldHelloComponent } from './todo-list-item-edit/world-hello/world-hello.component';
-import { DynamicComponent } from './todo-list-item-edit/dynamic/dynamic.component';
+import { TodoListItemEditComponent } from './todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+import { TodoListItemViewComponent } from './todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { DynamicComponent } from './todo-list-item/dynamic/dynamic.component';
+import { HelloWorldComponent } from './todo-list-item/hello-world/hello-world.component';
+import { WorldHelloComponent } from './todo-list-item/world-hello/world-hello.component';
 
 @NgModule({
     declarations: [
@@ -32,10 +33,11 @@ import { DynamicComponent } from './todo-list-item-edit/dynamic/dynamic.componen
         TodoListFooterComponent,
         TodosComponent,
         PageNotFoundComponent,
+        TodoListItemViewComponent,
         TodoListItemEditComponent,
+        DynamicComponent,
         HelloWorldComponent,
-        WorldHelloComponent,
-        DynamicComponent
+        WorldHelloComponent
     ],
     imports: [
         AppRoutingModule,

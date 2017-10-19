@@ -7,7 +7,7 @@ import { Component, OnInit, Injector } from '@angular/core';
 })
 export class WorldHelloComponent implements OnInit {
 
-    showNum = 0;
+    showNum = '0';
 
     constructor(private _injector: Injector) {
         this.showNum = this._injector.get('showNum');
