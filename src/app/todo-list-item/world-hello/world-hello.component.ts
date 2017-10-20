@@ -7,10 +7,10 @@ import { Component, OnInit, Injector } from '@angular/core';
 })
 export class WorldHelloComponent implements OnInit {
 
-    showNum = '0';
+    transferedData = '0';
 
     constructor(private _injector: Injector) {
-        this.showNum = this._injector.get('showNum');
+        this.transferedData = this._injector.get('transferedData');
      }
 
     ngOnInit() {

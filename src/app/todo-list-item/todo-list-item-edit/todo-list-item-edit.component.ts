@@ -11,20 +11,18 @@ export class TodoListItemEditComponent implements OnInit {
     @Input() todo: ToDo;
 
     @Output()
-    removeEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();
+    toggleCompleteEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    toggleCompleteEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();
+    removeEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
     updateTodoEventTodoListItemEdit: EventEmitter<ToDo> = new EventEmitter();
 
-    // constructor(private _injector: Injector) {
-    //     this.todo = this._injector.get('todo');
-    //     console.log('in TodoListItemEditComponent accepted todo.title: ' + this.todo.title);
-    // }
-
-    constructor() { }
+    constructor(private _injector: Injector) {
+        this.todo = this._injector.get('todo');
+        console.log('in TodoListItemEditComponent accepted todo.title: ' + this.todo.title);
+    }
 
     ngOnInit() {
     }

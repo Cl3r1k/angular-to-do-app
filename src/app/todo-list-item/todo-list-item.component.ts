@@ -34,6 +34,7 @@ export class TodoListItemComponent {
     }
 
     removeTodo(todo: ToDo) {
+        console.log('removeTodo emit event removeEventTodoListItem from TodoListItemComponent');
         this.removeEventTodoListItem.emit(todo);
     }
 
@@ -46,7 +47,7 @@ export class TodoListItemComponent {
         this.componentData = {
             component: HelloWorldComponent,
             inputs: {
-                showNum: '9'
+                transferedData: '9'
             }
         };
     }
@@ -55,25 +56,25 @@ export class TodoListItemComponent {
         this.componentData = {
             component: WorldHelloComponent,
             inputs: {
-                showNum: '2'
+                transferedData: '2'
             }
         };
     }
 
     createTodoListItemComponent(todo: ToDo) {
         this.componentData = {
-            component: HelloWorldComponent,
+            component: TodoListItemViewComponent,
             inputs: {
-                showNum: todo.title
+                todo: todo
             }
         };
     }
 
     createTodoListItemEditComponent(todo: ToDo) {
         this.componentData = {
-            component: WorldHelloComponent,
+            component: TodoListItemEditComponent,
             inputs: {
-                showNum: todo.title + ' to edit'
+                todo: todo
             }
         };
     }

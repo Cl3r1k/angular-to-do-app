@@ -1,3 +1,5 @@
-<p>
-    todo-list-item-view works!
-</p>
+<div class='view'>
+    <input type="checkbox" class="toggle" (click)='toggleTodoComplete(todo)' [checked]='todo.complete'>
+    <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>
+    <button class="destroy" (click)='removeTodo(todo)'></button>
+</div>
