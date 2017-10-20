@@ -20,7 +20,7 @@ export class TodoListItemViewComponent implements OnInit {
     editTodoEventTodoListItemView: EventEmitter<ToDo> = new EventEmitter();
 
     constructor(private _injector: Injector) {
-        this.todo = this._injector.get('todo');
+        this.todo = this._injector.get('transferedData');
         console.log('in TodoListItemViewComponent accepted todo.title: ' + this.todo.title);
     }
 
@@ -32,7 +32,6 @@ export class TodoListItemViewComponent implements OnInit {
     }
 
     removeTodo(todo: ToDo) {
-        console.log('removeTodo emit event removeEventTodoListItemView from TodoListItemViewComponent');
         this.removeEventTodoListItemView.emit(todo);
     }
 

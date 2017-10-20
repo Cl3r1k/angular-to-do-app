@@ -1,4 +1,16 @@
-import { Component, ComponentFactoryResolver, Input, ReflectiveInjector, ViewChild, ViewContainerRef } from '@angular/core';
+// tslint:disable-next-line:max-line-length
+import {
+    Component,
+    ComponentFactoryResolver,
+    ComponentRef,
+    EventEmitter,
+    Input,
+    Output,
+    ReflectiveInjector,
+    ViewChild,
+    ViewContainerRef,
+} from '@angular/core';
+import { ToDo } from './../../to-do';
 
 import { TodoListItemViewComponent } from './../../todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListItemEditComponent } from './../../todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
@@ -39,6 +51,10 @@ export class DynamicComponent {
         // We create the component using the factory and the injector
         const component = factory.create(injector);
 
+        // Code to accept event from child component
+        const compRef = component as ComponentRef<TodoListItemViewComponent>;
+        compRef.instance.removeEventTodoListItemView.subscribe(msg => { console.log(msg); });
+
         // We insert the component into the dom container
         this.dynamicComponentContainer.insert(component.hostView);
 
@@ -50,6 +66,21 @@ export class DynamicComponent {
         this.currentComponent = component;
     }
 
+    @Output()
+    toggleCompleteDynamic: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
+    removeEventDynamic: EventEmitter<ToDo> = new EventEmitter();
+
     constructor(private _resolver: ComponentFactoryResolver) { }
+
+    toggleTodoComplete(todo: ToDo) {
+        this.toggleCompleteDynamic.emit(todo);
+    }
+
+    removeTodo(todo: ToDo) {
+        console.log('removeTodo emit event removeEventDynamic from DynamicComponent');
+        this.removeEventDynamic.emit(todo);
+    }
 
 }
