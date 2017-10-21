@@ -52,8 +52,8 @@ export class DynamicComponent {
         const component = factory.create(injector);
 
         // Code to accept event from child component
-        const compRef = component as ComponentRef<TodoListItemViewComponent>;
-        compRef.instance.removeEventTodoListItemView.subscribe(msg => { console.log(msg); });
+        // const compRef = component as ComponentRef<TodoListItemViewComponent>;
+        // compRef.instance.removeEventTodoListItemView.subscribe(msg => { console.log(msg); });
 
         // We insert the component into the dom container
         this.dynamicComponentContainer.insert(component.hostView);
