@@ -12,6 +12,7 @@ Todos:
                 ☐ Update unit test for TodoListComponent
                 ☐ Update unit test for TodoListItemEditComponent
             
+        ☐ Rewrite dynamic components with NgComponentOutlet
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung
         ☐ Add filters in footer
         ☐ Add Clear Completed link in footer

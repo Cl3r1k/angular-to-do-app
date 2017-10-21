@@ -40,7 +40,7 @@ export class TodoListItemComponent {
 
     editTodo(todo: ToDo) {
         alert('edit todo with title: ' + this.todo.title);
-        this.editTodoEventTodoListItem.emit(todo);    // Emit the event to TodoListComponent
+        this.editTodoEventTodoListItem.emit(todo);    // Emit the event to Parent component
     }
 
     createHelloWorldComponent() {
@@ -61,7 +61,7 @@ export class TodoListItemComponent {
         };
     }
 
-    createTodoListItemComponent(todo: ToDo) {
+    createTodoListItemViewComponent(todo: ToDo) {
         this.componentData = {
             component: TodoListItemViewComponent,
             inputs: {
