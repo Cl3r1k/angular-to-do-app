@@ -14,6 +14,11 @@ import { WorldHelloComponent } from './../todo-list-item/world-hello/world-hello
 })
 export class TodoListItemComponent {
 
+    /* TODO: Остановился на том, что теперь нужно создать интерфейс для TodoListItem, реализовать его в компонентах
+    TodoListItemViewComponent и TodoListItemEditComponent, изменить компонент TodoListItemComponent для загрузки
+    данамических компонентов.
+    */
+
     @Input() todo: ToDo;
 
     @Output()
@@ -29,6 +34,10 @@ export class TodoListItemComponent {
 
     constructor() { }
 
+    emitedNumber(num: number) {
+        alert('emited number from dynamic component is: ' + num);
+    }
+
     toggleTodoComplete(todo: ToDo) {
         this.toggleCompleteEventTodoListItem.emit(todo);
     }
@@ -43,11 +52,11 @@ export class TodoListItemComponent {
         this.editTodoEventTodoListItem.emit(todo);    // Emit the event to Parent component
     }
 
-    createHelloWorldComponent() {
+    createHelloWorldComponent(todo: ToDo) {
         this.componentData = {
             component: HelloWorldComponent,
             inputs: {
-                transferedData: '9'
+                todo: todo
             }
         };
     }

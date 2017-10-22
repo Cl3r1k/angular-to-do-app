@@ -1,37 +1,30 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { CustomComponent } from './../custom-component';
+import { CustomTodoComponentInterface } from './../custom-todo-component-interface';
+import { ToDo } from './../../../../to-do';
 
 @Component({
     selector: 'app-table',
     template: `
-        <h3>Table items</h3>
-        <table border=1>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-            <tr *ngFor='let item of data'>
-                <td>{{item.name}}</td>
-                <td>{{item.description}}</td>
-            </tr>
-        </table>
+        <h3>Edit TodoItem</h3>
+        <label>{{todo.title}}</label>
+        <button (click)='toggleTodoComplete(todo)'>Send data from TableComponent</button>
         <hr>
     `
 })
-export class TableComponent implements OnInit, CustomComponent {
+export class TableComponent implements OnInit, CustomTodoComponentInterface {
 
-    @Input() data: any;
+    @Input() todo: ToDo;
 
-    @Output() updateEmitter: EventEmitter<number> = new EventEmitter();
+    @Output() toggleCompleteTodoListItemEmiter: EventEmitter<ToDo> = new EventEmitter();
 
     constructor() { }
 
     ngOnInit() {
-        setTimeout(() => this.update(), 2000);
     }
 
-    update(): void {
-        this.updateEmitter.emit(3);
+    toggleTodoComplete(todo: ToDo) {
+        todo.title = todo.title + ' emited from TableComponent';
+        this.toggleCompleteTodoListItemEmiter.emit(todo);
     }
 
 }
