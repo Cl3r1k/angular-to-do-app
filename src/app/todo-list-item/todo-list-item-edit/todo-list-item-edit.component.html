@@ -5,5 +5,7 @@
     <button class="destroy" (click)='removeTodo(todo)'></button>
 </div>
 
+<button (click)='createListComponent()'>createListComponent</button>
+<button (click)='createTableComponent()'>createTableComponent</button>
 <div #container></div>
-<p>Result from the components: {{results}}</p>
+<p>Result from the components: {{resultTodo.title}}</p>

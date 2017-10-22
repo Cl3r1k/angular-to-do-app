@@ -54,7 +54,6 @@ import { TableComponent } from './todo-list-item/todo-list-item-edit/dynamic2/ta
         FormsModule
     ],
     providers: [TodoService, ApiService],
-    entryComponents: [ DetailsComponent, TableComponent ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

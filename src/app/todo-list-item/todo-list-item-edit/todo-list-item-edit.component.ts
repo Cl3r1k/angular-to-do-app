@@ -15,18 +15,21 @@ import { ToDo } from './../../to-do';
 import { TableComponent } from './dynamic2/table/table.component';
 import { DetailsComponent } from './dynamic2/details/details.component';
 
-import { CustomComponent } from './dynamic2/custom-component';
+import { CustomTodoComponentInterface } from './dynamic2/custom-todo-component-interface';
 
 @Component({
     selector: 'app-todo-list-item-edit',
     templateUrl: './todo-list-item-edit.component.html',
-    styleUrls: ['./todo-list-item-edit.component.css']
+    styleUrls: ['./todo-list-item-edit.component.css'],
+    entryComponents: [DetailsComponent, TableComponent]
 })
 export class TodoListItemEditComponent implements OnInit {
 
     @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
 
-    results = 0;
+    resultTodo: ToDo;
+
+    currentComponent = null;
 
     @Input() todo: ToDo;
 
@@ -45,27 +48,24 @@ export class TodoListItemEditComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadComponent(DetailsComponent, [
-            { detail: 'List item 1' },
-            { detail: 'List item 2' },
-            { detail: 'List item 3' }
-        ]);
-
-        this.loadComponent(TableComponent, [
-            { name: 'Item 1', description: 'Description 1' },
-            { name: 'Item 2', description: 'Description 2' },
-        ]);
     }
 
-    private loadComponent(type: Type<CustomComponent>, data: any) {
+    private loadComponent(type: Type<CustomTodoComponentInterface>, todo: ToDo) {
         const componentFactory = this._factoryResolver.resolveComponentFactory(type);
         const componentRef = this.container.createComponent(componentFactory);
-        const inst = (<CustomComponent>componentRef.instance);
+        const instanceComponent = (<CustomTodoComponentInterface>componentRef.instance);
 
-        inst.data = data;
-        inst.updateEmitter.subscribe(incomeData => {
-            this.results += incomeData;
+        instanceComponent.todo = todo;
+        instanceComponent.toggleCompleteTodoListItemEmiter.subscribe(incomeTodo => {
+            this.resultTodo = incomeTodo;
         });
+
+        // Destroy the previosly created component
+        if (this.currentComponent) {
+            this.currentComponent.destroy();
+        }
+
+        this.currentComponent = componentRef;
     }
 
     toggleTodoComplete(todo: ToDo) {
@@ -78,6 +78,14 @@ export class TodoListItemEditComponent implements OnInit {
 
     updateTodo(todo: ToDo) {
         this.updateTodoEventTodoListItemEdit.emit(todo);    // Emit the event to TodoListComponent
+    }
+
+    createListComponent() {
+        this.loadComponent(DetailsComponent, this.todo);
+    }
+
+    createTableComponent() {
+        this.loadComponent(TableComponent, this.todo);
     }
 
 }

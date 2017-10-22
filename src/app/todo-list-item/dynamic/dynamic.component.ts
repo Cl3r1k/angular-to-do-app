@@ -1,4 +1,3 @@
-// tslint:disable-next-line:max-line-length
 import {
     Component,
     ComponentFactoryResolver,
@@ -17,6 +16,8 @@ import { TodoListItemEditComponent } from './../../todo-list-item/todo-list-item
 // TODO: Delete these two components refs after tests
 import { HelloWorldComponent } from './../hello-world/hello-world.component';
 import { WorldHelloComponent } from './../world-hello/world-hello.component';
+
+import { CustomTodoComponentInterface } from '../todo-list-item-edit/dynamic2/custom-todo-component-interface';
 
 @Component({
     selector: 'app-dynamic-component',
@@ -52,8 +53,8 @@ export class DynamicComponent {
         const component = factory.create(injector);
 
         // Code to accept event from child component
-        // const compRef = component as ComponentRef<TodoListItemViewComponent>;
-        // compRef.instance.removeEventTodoListItemView.subscribe(msg => { console.log(msg); });
+        const compRef = component as ComponentRef<CustomTodoComponentInterface>;
+        compRef.instance.toggleCompleteTodoListItemEmiter.subscribe(msg => { console.log(msg); });
 
         // We insert the component into the dom container
         this.dynamicComponentContainer.insert(component.hostView);
@@ -72,6 +73,8 @@ export class DynamicComponent {
     @Output()
     removeEventDynamic: EventEmitter<ToDo> = new EventEmitter();
 
+    @Output() numberEmitter: EventEmitter<number> = new EventEmitter();
+
     constructor(private _resolver: ComponentFactoryResolver) { }
 
     toggleTodoComplete(todo: ToDo) {
@@ -81,6 +84,10 @@ export class DynamicComponent {
     removeTodo(todo: ToDo) {
         console.log('removeTodo emit event removeEventDynamic from DynamicComponent');
         this.removeEventDynamic.emit(todo);
+    }
+
+    numberEmit() {
+        this.numberEmitter.emit(10);
     }
 
 }
