@@ -14,11 +14,6 @@ import { WorldHelloComponent } from './../todo-list-item/world-hello/world-hello
 })
 export class TodoListItemComponent {
 
-    /* TODO: Остановился на том, что теперь нужно создать интерфейс для TodoListItem, реализовать его в компонентах
-    TodoListItemViewComponent и TodoListItemEditComponent, изменить компонент TodoListItemComponent для загрузки
-    данамических компонентов.
-    */
-
     @Input() todo: ToDo;
 
     @Output()

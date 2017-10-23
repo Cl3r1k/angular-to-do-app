@@ -27,7 +27,6 @@ export class HelloWorldComponent implements OnInit, CustomTodoComponentInterface
     }
 
     toggleTodoComplete(todo: ToDo) {
-        todo.title = todo.title + ' emited from DetailsComponent ';
         this.toggleCompleteTodoListItemEmiter.emit(todo);
     }
 
