@@ -25,7 +25,7 @@ import { CustomTodoComponentInterface } from './dynamic2/custom-todo-component-i
 })
 export class TodoListItemEditComponent implements OnInit {
 
-    @ViewChild('container', {read: ViewContainerRef}) container: ViewContainerRef;
+    @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
 
     resultTodo: ToDo;
 
@@ -50,23 +50,36 @@ export class TodoListItemEditComponent implements OnInit {
     ngOnInit() {
     }
 
-    private loadComponent(type: Type<CustomTodoComponentInterface>, todo: ToDo) {
+    private createComponent(type: Type<CustomTodoComponentInterface>, todo: ToDo) {
         const componentFactory = this._factoryResolver.resolveComponentFactory(type);
         const componentRef = this.container.createComponent(componentFactory);
         const instanceComponent = (<CustomTodoComponentInterface>componentRef.instance);
 
         instanceComponent.todo = todo;
+        console.log('BEFORE subscribe instanceComponent.todo.title: ' + instanceComponent.todo.title
+            + ' todoTmp.title: ' + todo.title);
         instanceComponent.toggleCompleteTodoListItemEmiter.subscribe(incomeTodo => {
-            this.resultTodo = incomeTodo;
+            // this.resultTodo = incomeTodo;
+            console.log('BEFORE instanceComponent.todo.title: ' + instanceComponent.todo.title
+                + ' todoTmp.title: ' + todo.title);
+            console.log('incomeTodo.title: ' + incomeTodo.title);
+            console.log('AFTER instanceComponent.todo.title: ' + instanceComponent.todo.title
+                + ' todoTmp.title: ' + todo.title);
         });
 
         // Destroy the previosly created component
         if (this.currentComponent) {
             this.currentComponent.destroy();
+            console.log('currentComponent destroyed');
         }
 
         this.currentComponent = componentRef;
     }
+
+    /* TODO: Остановился на том, что теперь нужно изменить интерфейс, реализовать его в компонентах
+    TodoListItemViewComponent и TodoListItemEditComponent, изменить компонент TodoListItemComponent для загрузки
+    данамических компонентов.
+    */
 
     toggleTodoComplete(todo: ToDo) {
         this.toggleCompleteEventTodoListItemEdit.emit(todo);
@@ -77,15 +90,15 @@ export class TodoListItemEditComponent implements OnInit {
     }
 
     updateTodo(todo: ToDo) {
-        this.updateTodoEventTodoListItemEdit.emit(todo);    // Emit the event to TodoListComponent
+        this.updateTodoEventTodoListItemEdit.emit(todo);    // Emit the event to Parent Component
     }
 
     createListComponent() {
-        this.loadComponent(DetailsComponent, this.todo);
+        this.createComponent(DetailsComponent, this.todo);
     }
 
     createTableComponent() {
-        this.loadComponent(TableComponent, this.todo);
+        this.createComponent(TableComponent, this.todo);
     }
 
 }

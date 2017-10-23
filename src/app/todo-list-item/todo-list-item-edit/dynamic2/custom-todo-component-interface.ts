@@ -6,5 +6,5 @@ export interface CustomTodoComponentInterface {
 
     toggleCompleteTodoListItemEmiter: EventEmitter<ToDo>;
 
-    toggleTodoComplete(todo: ToDo);
+    toggleTodoComplete(newTodo: ToDo);
 }

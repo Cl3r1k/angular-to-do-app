@@ -20,10 +20,10 @@ export class TableComponent implements OnInit, CustomTodoComponentInterface {
     constructor() { }
 
     ngOnInit() {
+        console.log('incoming todo.title in TableComponent' + this.todo.title);
     }
 
     toggleTodoComplete(todo: ToDo) {
-        todo.title = todo.title + ' emited from TableComponent';
         this.toggleCompleteTodoListItemEmiter.emit(todo);
     }
 

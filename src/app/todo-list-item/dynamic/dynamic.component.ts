@@ -53,8 +53,9 @@ export class DynamicComponent {
         const component = factory.create(injector);
 
         // Code to accept event from child component
-        const compRef = component as ComponentRef<CustomTodoComponentInterface>;
-        compRef.instance.toggleCompleteTodoListItemEmiter.subscribe(msg => { console.log(msg); });
+        // Этот код работаест для отправки данных из компонента, пробуем другой подход, если не получится, использовать этот
+        // const compRef = component as ComponentRef<CustomTodoComponentInterface>;
+        // compRef.instance.toggleCompleteTodoListItemEmiter.subscribe(msg => { console.log(msg); });
 
         // We insert the component into the dom container
         this.dynamicComponentContainer.insert(component.hostView);
