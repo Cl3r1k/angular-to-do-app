@@ -15,7 +15,13 @@ export class DetailsComponent implements OnInit, CustomTodoComponentInterface {
 
     @Input() todo: ToDo;
 
-    @Output() toggleCompleteTodoListItemEmiter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() toggleCompleteTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output() editTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output() updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output() removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     constructor() { }
 
@@ -24,7 +30,16 @@ export class DetailsComponent implements OnInit, CustomTodoComponentInterface {
     }
 
     toggleTodoComplete(todo: ToDo) {
-        this.toggleCompleteTodoListItemEmiter.emit(todo);
+        this.toggleCompleteTodoListItemEmitter.emit(todo);
     }
 
+    editTodo(todo: ToDo) {
+        throw new Error('Method not implemented.');
+    }
+    updateTodo(todo: ToDo) {
+        throw new Error('Method not implemented.');
+    }
+    removeTodo(todo: ToDo) {
+        throw new Error('Method not implemented.');
+    }
 }

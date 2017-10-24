@@ -1,44 +1,51 @@
-import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToDo } from './../../to-do';
+
+import { CustomTodoComponentInterface } from './../todo-list-item-edit/dynamic2/custom-todo-component-interface';
 
 @Component({
     selector: 'app-todo-list-item-view',
     templateUrl: './todo-list-item-view.component.html',
     styleUrls: ['./todo-list-item-view.component.css']
 })
-export class TodoListItemViewComponent implements OnInit {
+export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInterface {
 
     @Input() todo: ToDo;
 
     @Output()
-    toggleCompleteEventTodoListItemView: EventEmitter<ToDo> = new EventEmitter();
+    toggleCompleteTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    removeEventTodoListItemView: EventEmitter<ToDo> = new EventEmitter();
+    editTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    editTodoEventTodoListItemView: EventEmitter<ToDo> = new EventEmitter();
+    updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    constructor(private _injector: Injector) {
-        this.todo = this._injector.get('todo');
-        console.log('in TodoListItemViewComponent accepted todo.title: ' + this.todo.title);
+    @Output()
+    removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    constructor() {
+        // console.log('in TodoListItemViewComponent accepted todo.title: ' + this.todo.title);
     }
 
     ngOnInit() {
     }
 
     toggleTodoComplete(todo: ToDo) {
-        this.toggleCompleteEventTodoListItemView.emit(todo);
-    }
-
-    removeTodo(todo: ToDo) {
-        console.log('removeTodo emit event removeEventTodoListItemView from TodoListItemViewComponent');
-        this.removeEventTodoListItemView.emit(todo);
+        this.toggleCompleteTodoListItemEmitter.emit(todo);
     }
 
     editTodo(todo: ToDo) {
-        alert('edit todo with title: ' + this.todo.title);
-        this.editTodoEventTodoListItemView.emit(todo);    // Emit the event to TodoListComponent
+        alert('editTodo called in TodoListItemViewComponent with title: ' + this.todo.title);
+        this.editTodoListItemEmitter.emit(todo);    // Emit the event to Parent component
     }
 
+    updateTodo(todo: ToDo) {
+        //
+    }
+
+    removeTodo(todo: ToDo) {
+        console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent');
+        this.removeTodoListItemEmitter.emit(todo);
+    }
 }
