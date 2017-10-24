@@ -4,7 +4,19 @@ import { ToDo } from '../../../to-do';
 export interface CustomTodoComponentInterface {
     todo: ToDo;
 
-    toggleCompleteTodoListItemEmiter: EventEmitter<ToDo>;
+    toggleCompleteTodoListItemEmitter: EventEmitter<ToDo>;
 
-    toggleTodoComplete(newTodo: ToDo);
+    editTodoListItemEmitter: EventEmitter<ToDo>;
+
+    updateTodoListItemEmitter: EventEmitter<ToDo>;
+
+    removeTodoListItemEmitter: EventEmitter<ToDo>;
+
+    toggleTodoComplete(todo: ToDo);
+
+    editTodo(todo: ToDo);
+
+    updateTodo(todo: ToDo);
+
+    removeTodo(todo: ToDo);
 }

@@ -13,12 +13,15 @@
     </div>
 </div> -->
 
-
-<div class='dynamic'>
+<!-- <div class='dynamic'>
     <h3>Lets dynamically create some components</h3>
     <button (click)='createHelloWorldComponent(todo)'>Create HelloWorldComponent</button>
     <button (click)='createWorldHelloComponent()'>Create WorldHelloComponent</button>
     <button (click)='createTodoListItemViewComponent(todo)'>Create TodoListItemViewComponent</button>
     <button (click)='createTodoListItemEditComponent(todo)'>Create TodoListItemEditComponent</button>
     <app-dynamic-component [componentData]='componentData' (numberEmitter)='emitedNumber($event)' (toggleCompleteDynamic)='toggleTodoComplete($event)' (removeEventDynamic)='removeTodo($event)'></app-dynamic-component>
-</div>
+</div> -->
+
+<!-- <button (click)='createViewComponent()'>createViewComponent</button>
+<button (click)='createEditComponent()'>createEditComponent</button> -->
+<div #container></div>
