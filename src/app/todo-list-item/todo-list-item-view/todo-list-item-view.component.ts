@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToDo } from './../../to-do';
 
-import { CustomTodoComponentInterface } from './../todo-list-item-edit/dynamic2/custom-todo-component-interface';
+import { CustomTodoComponentInterface } from './../todo-list-item-edit/custom-todo-component-interface';
 
 @Component({
     selector: 'app-todo-list-item-view',
@@ -24,9 +24,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     @Output()
     removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    constructor() {
-        // console.log('in TodoListItemViewComponent accepted todo.title: ' + this.todo.title);
-    }
+    constructor() { }
 
     ngOnInit() {
     }
@@ -36,8 +34,8 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     editTodo(todo: ToDo) {
-        alert('editTodo called in TodoListItemViewComponent with title: ' + this.todo.title);
-        this.editTodoListItemEmitter.emit(todo);    // Emit the event to Parent component
+        console.log('editTodo called in TodoListItemViewComponent with title: ' + this.todo.title);
+        this.editTodoListItemEmitter.emit(todo);    // Emit the editTodoListItemEmitter event to Parent component
     }
 
     updateTodo(todo: ToDo) {
