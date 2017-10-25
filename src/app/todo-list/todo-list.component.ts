@@ -34,10 +34,4 @@ export class TodoListComponent {
         // console.log('updateTodo in TodoListComponent - pushing todo with title: ' + todo.title + ' to UP');  // TODO: Delete this string
         this.updateTodoEventTodoList.emit(todo);    // Emit the event to TodosComponent
     }
-
-    // TODO: Do I need this method?
-    onEditTodo(todo: ToDo) {
-        console.log('event accepted from TodoListItemComp and should pass the todo with title: ' + todo.title + ' to TodoListItemEditComp');
-    }
-
 }

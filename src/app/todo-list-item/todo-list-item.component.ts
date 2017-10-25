@@ -6,7 +6,7 @@ import { TodoListItemViewComponent } from './../todo-list-item/todo-list-item-vi
 import { TodoListItemEditComponent } from './../todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 
 // Interface for dynamic components
-import { CustomTodoComponentInterface } from './todo-list-item-edit/dynamic2/custom-todo-component-interface';
+import { CustomTodoComponentInterface } from './todo-list-item-edit/custom-todo-component-interface';
 
 @Component({
     selector: 'app-todo-list-item',
@@ -23,20 +23,20 @@ export class TodoListItemComponent implements OnInit {
     @Input() todo: ToDo;
 
     @Output()
-    removeEventTodoListItem: EventEmitter<ToDo> = new EventEmitter();
+    toggleCompleteTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    toggleCompleteEventTodoListItem: EventEmitter<ToDo> = new EventEmitter();
+    updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    editTodoEventTodoListItem: EventEmitter<ToDo> = new EventEmitter();
+    removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     componentData = null;    // Component info wich will be created dynamically
 
     constructor(private _factoryResolver: ComponentFactoryResolver) { }
 
     ngOnInit() {
-        this.createViewComponent();
+        this.createViewComponent(this.todo);
     }
 
     emitedNumber(num: number) {
@@ -44,17 +44,16 @@ export class TodoListItemComponent implements OnInit {
     }
 
     toggleTodoComplete(todo: ToDo) {
-        this.toggleCompleteEventTodoListItem.emit(todo);
+        this.toggleCompleteTodoListItemEmitter.emit(todo);
+    }
+
+    updateTodo(todo: ToDo) {
+        this.updateTodoListItemEmitter.emit(todo);    // Emit the update event to the Parent component
     }
 
     removeTodo(todo: ToDo) {
         console.log('removeTodo emit event removeEventTodoListItem from TodoListItemComponent');
-        this.removeEventTodoListItem.emit(todo);
-    }
-
-    editTodo(todo: ToDo) {
-        alert('edit todo with title: ' + this.todo.title);
-        this.editTodoEventTodoListItem.emit(todo);    // Emit the event to Parent component
+        this.removeTodoListItemEmitter.emit(todo);
     }
 
     private createComponent(type: Type<CustomTodoComponentInterface>, todo: ToDo) {
@@ -64,20 +63,19 @@ export class TodoListItemComponent implements OnInit {
 
         instanceComponent.todo = todo;
 
-        // TODO: Остановился здесь, доделать обработку методов редактирования Todo
-        // FIXME: Баг при добавление пустой задачи
-        // TODO: При редактировании, если измененное имя пустое, то удалять задачу (с запросом)
-
         instanceComponent.toggleCompleteTodoListItemEmitter.subscribe(incomeTodo => {
             this.toggleTodoComplete(incomeTodo);
         });
 
         instanceComponent.editTodoListItemEmitter.subscribe(incomeTodo => {
-            //
+            // The event from TodoListItemViewComponent
+            this.createEditComponent(incomeTodo);
         });
 
         instanceComponent.updateTodoListItemEmitter.subscribe(incomeTodo => {
-            //
+            // The event from TodoListItemEditComponent
+            this.updateTodo(incomeTodo);
+            this.createViewComponent(this.todo);
         });
 
         instanceComponent.removeTodoListItemEmitter.subscribe(incomeTodo => {
@@ -86,19 +84,19 @@ export class TodoListItemComponent implements OnInit {
 
         // Destroy the previosly created component
         if (this.currentComponent) {
+            // console.log('currentComponent (' + this.currentComponent.location.nativeElement.nodeName + ') destroyed');
             this.currentComponent.destroy();
-            console.log('currentComponent destroyed');
         }
 
         this.currentComponent = componentRef;
     }
 
-    createViewComponent() {
-        this.createComponent(TodoListItemViewComponent, this.todo);
+    createViewComponent(todo: ToDo) {
+        this.createComponent(TodoListItemViewComponent, todo);
     }
 
-    createEditComponent() {
-        this.createComponent(TodoListItemEditComponent, this.todo);
+    createEditComponent(todo: ToDo) {
+        this.createComponent(TodoListItemEditComponent, todo);
     }
 
     // createHelloWorldComponent(todo: ToDo) {

@@ -12,13 +12,14 @@ Todos:
                 ☐ Update unit test for TodoListComponent
                 ☐ Update unit test for TodoListItemEditComponent
             
-        ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet)
+        ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet or here https://habrahabr.ru/company/infowatch/blog/330030/)
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung
         ☐ Add filters in footer
         ☐ Add Clear Completed link in footer
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         ☐ Find the way to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource
         ☐ Fix all TODO in all files
+        ☐ On editing finish, if title of the todo is empty -> delete todo (with modal prompt)
     
     Done:
         ✔ Update unit tests for part-2
