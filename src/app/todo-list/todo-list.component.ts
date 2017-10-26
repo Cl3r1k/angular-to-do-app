@@ -32,6 +32,6 @@ export class TodoListComponent {
 
     updateTodo(todo: ToDo) {
         // console.log('updateTodo in TodoListComponent - pushing todo with title: ' + todo.title + ' to UP');  // TODO: Delete this string
-        this.updateTodoEventTodoList.emit(todo);    // Emit the event to TodosComponent
+        this.updateTodoEventTodoList.emit(todo);    // Emit the update event to TodosComponent
     }
 }
