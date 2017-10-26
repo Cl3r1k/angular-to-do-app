@@ -12,6 +12,8 @@ export class TodoListItemEditComponent implements OnInit, CustomTodoComponentInt
 
     @Input() todo: ToDo;
 
+    initialTodoTitle: string;
+
     @Output()
     toggleCompleteTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
@@ -27,10 +29,11 @@ export class TodoListItemEditComponent implements OnInit, CustomTodoComponentInt
     constructor() { }
 
     ngOnInit() {
+        this.initialTodoTitle = this.todo.title;
     }
 
     toggleTodoComplete(todo: ToDo) {
-        this.toggleCompleteTodoListItemEmitter.emit(todo);
+        //
     }
 
     editTodo(todo: ToDo) {
@@ -38,12 +41,23 @@ export class TodoListItemEditComponent implements OnInit, CustomTodoComponentInt
     }
 
     updateTodo(todo: ToDo) {
-        this.updateTodoListItemEmitter.emit(todo);    // Emit the event to Parent Component
+        if (todo.title) {
+            this.updateTodoListItemEmitter.emit(todo);    // Emit the event to Parent Component
+        } else {
+            this.removeTodo(todo);
+        }
     }
 
-    removeTodo(todo: ToDo) {
+    removeTodo(todo: ToDo) {    // TODO: Perform confirmation for deletion
         console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemEditComponent');
         this.removeTodoListItemEmitter.emit(todo);
     }
+
+    cancelEditTodo(todo: ToDo) {
+        todo.title = this.initialTodoTitle;
+        this.updateTodoListItemEmitter.emit(todo);
+    }
+
+    // TODO: Остановился здесь, стилизовать редактирование todo
 
 }
