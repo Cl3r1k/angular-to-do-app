@@ -7,13 +7,15 @@
 Todos:
     New:
         Current:
-            ☐ Add posibility to edit Todo (look here https://angularclass.github.io/NG6-todomvc-starter/)
+            ☐ Add posibility to edit Todo (look here http://todomvc.com/examples/angularjs/#/)
                 ☐ Update unit test for TodosComponent
                 ☐ Update unit test for TodoListComponent
                 ☐ Update unit test for TodoListItemEditComponent
+            ☐ If clicks outside of the editing Todo, cancel editing (look here http://todomvc.com/examples/angularjs/#/)
+            ☐ If todo is edited, cursor not entered in the todo title field
             
         ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet or here https://habrahabr.ru/company/infowatch/blog/330030/)
-        ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung
+        ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
         ☐ Add filters in footer
         ☐ Add Clear Completed link in footer
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
