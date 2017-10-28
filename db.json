@@ -1,16 +1,6 @@
 {
   "todos": [
     {
-      "title": "Clean inbox !Updated",
-      "complete": false,
-      "id": 2
-    },
-    {
-      "title": "Finish CRUD Ng app",
-      "complete": true,
-      "id": 1
-    },
-    {
       "title": "Add some unit tests",
       "complete": false,
       "id": 3
@@ -21,11 +11,6 @@
       "id": 8
     },
     {
-      "title": "Pass upwork verification",
-      "complete": true,
-      "id": 9
-    },
-    {
       "title": "Finish the project",
       "complete": false,
       "id": 10
@@ -34,6 +19,21 @@
       "title": "Complete the edititing todo",
       "complete": false,
       "id": 11
+    },
+    {
+      "title": "If clicks outside of the editing Todo, cancel editing",
+      "complete": false,
+      "id": 12
+    },
+    {
+      "title": "If todo is edited, cursor not entered in the todo title field",
+      "complete": false,
+      "id": 13
+    },
+    {
+      "title": "On editing finish, if title of the todo is empty -> delete todo",
+      "complete": true,
+      "id": 14
     }
   ]
 }

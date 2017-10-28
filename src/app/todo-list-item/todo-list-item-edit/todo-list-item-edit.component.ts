@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ToDo } from './../../to-do';
 
 import { CustomTodoComponentInterface } from './custom-todo-component-interface';
@@ -8,11 +8,9 @@ import { CustomTodoComponentInterface } from './custom-todo-component-interface'
     templateUrl: './todo-list-item-edit.component.html',
     styleUrls: ['./todo-list-item-edit.component.css']
 })
-export class TodoListItemEditComponent implements OnInit, CustomTodoComponentInterface {
+export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomTodoComponentInterface {
 
     @Input() todo: ToDo;
-
-    initialTodoTitle: string;
 
     @Output()
     toggleCompleteTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
@@ -26,10 +24,18 @@ export class TodoListItemEditComponent implements OnInit, CustomTodoComponentInt
     @Output()
     removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
+    initialTodoTitle: string;
+
+    @ViewChild('editedTodo') private editedTodoElementRef: ElementRef;
+
     constructor() { }
 
     ngOnInit() {
         this.initialTodoTitle = this.todo.title;
+    }
+
+    ngAfterViewInit() {
+        this.editedTodoElementRef.nativeElement.focus();
     }
 
     toggleTodoComplete(todo: ToDo) {
@@ -42,6 +48,7 @@ export class TodoListItemEditComponent implements OnInit, CustomTodoComponentInt
 
     updateTodo(todo: ToDo) {
         if (todo.title) {
+            this.todo.title = this.todo.title.trim();
             this.updateTodoListItemEmitter.emit(todo);    // Emit the event to Parent Component
         } else {
             this.removeTodo(todo);
@@ -57,7 +64,5 @@ export class TodoListItemEditComponent implements OnInit, CustomTodoComponentInt
         todo.title = this.initialTodoTitle;
         this.updateTodoListItemEmitter.emit(todo);
     }
-
-    // TODO: Остановился здесь, стилизовать редактирование todo
 
 }
