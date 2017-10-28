@@ -6,9 +6,7 @@
 
 Todos:
     New:
-        Current:            
-            ☐ If clicks outside of the editing Todo, cancel editing (look here http://todomvc.com/examples/angularjs/#/) (should we do it?)
-
+        Current:
             ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet or here https://habrahabr.ru/company/infowatch/blog/330030/)
 
             ☐ Add posibility to edit Todo (look here http://todomvc.com/examples/angularjs/#/ or here https://angularclass.github.io/NG6-todomvc-starter/)
@@ -27,7 +25,10 @@ Todos:
         ☐ Add filters in footer
         ☐ Add toggle all todo button in header
         ☐ Add 'Clear completed' in footer button
-        ☐ In footer count only unchecked todos
+        ☐ In footer - count only unchecked todos
+
+    Future:
+        ☐ Add in options value for Multiple/Single editing todo
     
     Done:
         ✔ Update unit tests for part-2
@@ -43,9 +44,12 @@ Todos:
             ✔ Write tests for TodoListFooterComponent
             ✔ Write tests for TodoListComponent
             ✔ Write tests for TodoListHeaderComponent
-        ✔ On finish editing, if the title of the todo is empty -> delete todo
-        ✔ If todo is edited, cursor not entered in the todo title field
-        ✔ In TodoListItemEditComponent change div class from 'view' to 'editContainer' and style the container
+        
+        ☐ Editing todos block
+            ✔ On finish editing, if the title of the todo is empty -> delete todo
+            ✔ If todo is edited, cursor not entered in the todo title field
+            ✔ In TodoListItemEditComponent change div class from 'view' to 'editContainer' and style the container
+            ✔ If clicks outside of the editing Todo, cancel editing (look here http://todomvc.com/examples/angularjs/#/) (blur event in template used) (use this option, if in prefs value is 'single editing todo')
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore
