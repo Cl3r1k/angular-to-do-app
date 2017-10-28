@@ -6,8 +6,7 @@
 
 Todos:
     New:
-        Current:
-            ☐ In TodoListItemEditComponent change div class from 'view' to 'editContainer' and style the container
+        Current:            
             ☐ If clicks outside of the editing Todo, cancel editing (look here http://todomvc.com/examples/angularjs/#/) (should we do it?)
 
             ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet or here https://habrahabr.ru/company/infowatch/blog/330030/)
@@ -44,8 +43,9 @@ Todos:
             ✔ Write tests for TodoListFooterComponent
             ✔ Write tests for TodoListComponent
             ✔ Write tests for TodoListHeaderComponent
-        ✔ On editing finish, if title of the todo is empty -> delete todo
+        ✔ On finish editing, if the title of the todo is empty -> delete todo
         ✔ If todo is edited, cursor not entered in the todo title field
+        ✔ In TodoListItemEditComponent change div class from 'view' to 'editContainer' and style the container
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore
