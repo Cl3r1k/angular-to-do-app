@@ -1,4 +1,4 @@
 <div class='view'>
-    <input type="text" class="edit" [(ngModel)]='todo.title' (keyup.enter)='updateTodo(todo)' (keyup.esc)='cancelEditTodo(todo)'>
-    <button class="destroy" (click)='removeTodo(todo)'></button>
+    <input type="text" class="edit" [(ngModel)]='todo.title' (keyup.enter)='updateTodo(todo)' (keyup.esc)='cancelEditTodo(todo)' placeholder="Enter name of the task" #editedTodo>
+    <!-- <button class="destroy" (click)='removeTodo(todo)'></button> -->
 </div>

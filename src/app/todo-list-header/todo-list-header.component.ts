@@ -17,6 +17,7 @@ export class TodoListHeaderComponent {
 
     addTodo() {
         if (this.newTodo.title) {
+            this.newTodo.title = this.newTodo.title.trim();
             this.addEventTodoListHeader.emit(this.newTodo);
             this.newTodo = new ToDo();
         }
