@@ -12,7 +12,9 @@ Todos:
             ☐ Add posibility to edit Todo (look here http://todomvc.com/examples/angularjs/#/ or here https://angularclass.github.io/NG6-todomvc-starter/)
                 ☐ Update unit test for TodosComponent
                 ☐ Update unit test for TodoListComponent
-                ☐ Update unit test for TodoListItemEditComponent
+                ☐ Update unit test for TodoListItemComponent
+                ☐ Update unit test for TodoListItemViewComponent
+                ☐ Update unit test for TodoListItemEditComponent                
             
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)

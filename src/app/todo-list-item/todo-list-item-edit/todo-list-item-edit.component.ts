@@ -61,8 +61,12 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
     }
 
     cancelEditTodo(todo: ToDo) {
-        todo.title = this.initialTodoTitle;
-        this.updateTodoListItemEmitter.emit(todo);
+        this.editedTodoElementRef.nativeElement.blur();    // Imitate lost focus event
+    }
+
+    stopEditTodo(todo: ToDo) {
+        this.todo.title = this.initialTodoTitle;
+        this.updateTodoListItemEmitter.emit(this.todo);
     }
 
 }
