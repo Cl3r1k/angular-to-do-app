@@ -1,4 +1,4 @@
 <div class='editContainer'>
-    <input type="text" class="edit" [(ngModel)]='todo.title' (keyup.enter)='updateTodo(todo)' (keyup.esc)='cancelEditTodo(todo)' (blur)='stopEditTodo(todo)' placeholder="Enter name of the task" #editedTodo>
+    <input type="text" class="edit" [(ngModel)]='todo.title' (keyup.enter)='updateTodo(todo)' (keyup.esc)='cancelEditTodo(todo)' (blur)='stopEditTodo()' placeholder="Enter name of the task" #editedTodo>
     <!-- <button class="destroy" (click)='removeTodo(todo)'></button> -->
 </div>
