@@ -47,12 +47,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
     }
 
     updateTodo(todo: ToDo) {
-        if (todo.title) {
-            this.todo.title = this.todo.title.trim();
-            this.updateTodoListItemEmitter.emit(todo);    // Emit the event to Parent Component
-        } else {
-            this.removeTodo(todo);
-        }
+        this.editedTodoElementRef.nativeElement.blur();    // Imitate lost focus event
     }
 
     removeTodo(todo: ToDo) {    // TODO: Perform confirmation for deletion
@@ -61,12 +56,22 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
     }
 
     cancelEditTodo(todo: ToDo) {
+        this.todo.title = this.initialTodoTitle;
         this.editedTodoElementRef.nativeElement.blur();    // Imitate lost focus event
     }
 
-    stopEditTodo(todo: ToDo) {
-        this.todo.title = this.initialTodoTitle;
-        this.updateTodoListItemEmitter.emit(this.todo);
+    stopEditTodo() {
+
+        if (this.todo.title) {
+            this.todo.title = this.todo.title.trim();
+            this.updateTodoListItemEmitter.emit(this.todo);    // Emit the update event to Parent Component
+        } else {
+            this.removeTodo(this.todo);
+        }
+
     }
+
+    // tslint:disable-next-line:max-line-length
+    // TODO: Остановился здесь, переделать динамические компоненты на NgComponentOutlet
 
 }

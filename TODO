@@ -16,6 +16,7 @@ Todos:
                 ☐ Update unit test for TodoListItemViewComponent
                 ☐ Update unit test for TodoListItemEditComponent                
             
+        ☐ Find out how stored todos (probably browser store) in the example http://todomvc.com/examples/angularjs/#/
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
         ☐ Add filters in footer
