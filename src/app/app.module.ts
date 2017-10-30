@@ -22,6 +22,10 @@ import { HttpClientModule } from '@angular/common/http';
 // Routings
 import { AppRoutingModule } from './app-routing.module';
 
+// Testing components
+import { HelloComponent } from './todo-list-item/todo-list-item-view/hello/hello.component';
+import { WorldComponent } from './todo-list-item/todo-list-item-view/world/world.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -32,7 +36,9 @@ import { AppRoutingModule } from './app-routing.module';
         TodosComponent,
         PageNotFoundComponent,
         TodoListItemViewComponent,
-        TodoListItemEditComponent
+        TodoListItemEditComponent,
+        HelloComponent,
+        WorldComponent
     ],
     imports: [
         AppRoutingModule,

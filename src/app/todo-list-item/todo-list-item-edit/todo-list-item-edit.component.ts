@@ -71,7 +71,4 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
 
     }
 
-    // tslint:disable-next-line:max-line-length
-    // TODO: Остановился здесь, переделать динамические компоненты на NgComponentOutlet
-
 }

@@ -16,7 +16,7 @@ import { CustomTodoComponentInterface } from './todo-list-item-edit/custom-todo-
 })
 export class TodoListItemComponent implements OnInit {
 
-    @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
+    @ViewChild('container', { read: ViewContainerRef }) _container: ViewContainerRef;
 
     currentComponent = null;
 
@@ -58,7 +58,7 @@ export class TodoListItemComponent implements OnInit {
 
     private createComponent(type: Type<CustomTodoComponentInterface>, todo: ToDo) {
         const componentFactory = this._factoryResolver.resolveComponentFactory(type);
-        const componentRef = this.container.createComponent(componentFactory);
+        const componentRef = this._container.createComponent(componentFactory);
         const instanceComponent = (<CustomTodoComponentInterface>componentRef.instance);
 
         instanceComponent.todo = todo;
@@ -98,41 +98,5 @@ export class TodoListItemComponent implements OnInit {
     createEditComponent(todo: ToDo) {
         this.createComponent(TodoListItemEditComponent, todo);
     }
-
-    // createHelloWorldComponent(todo: ToDo) {
-    //     this.componentData = {
-    //         component: HelloWorldComponent,
-    //         inputs: {
-    //             todo: todo
-    //         }
-    //     };
-    // }
-
-    // createWorldHelloComponent() {
-    //     this.componentData = {
-    //         component: WorldHelloComponent,
-    //         inputs: {
-    //             transferedData: '2'
-    //         }
-    //     };
-    // }
-
-    // createTodoListItemViewComponent(todo: ToDo) {
-    //     this.componentData = {
-    //         component: TodoListItemViewComponent,
-    //         inputs: {
-    //             todo: todo
-    //         }
-    //     };
-    // }
-
-    // createTodoListItemEditComponent(todo: ToDo) {
-    //     this.componentData = {
-    //         component: TodoListItemEditComponent,
-    //         inputs: {
-    //             todo: todo
-    //         }
-    //     };
-    // }
 
 }
