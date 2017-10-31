@@ -3,15 +3,10 @@ import { ToDo } from './../../to-do';
 
 import { CustomTodoComponentInterface } from './../todo-list-item-edit/custom-todo-component-interface';
 
-// Testing components
-import { HelloComponent } from './../todo-list-item-view/hello/hello.component';
-import { WorldComponent } from './../todo-list-item-view/world/world.component';
-
 @Component({
     selector: 'app-todo-list-item-view',
     templateUrl: './todo-list-item-view.component.html',
-    styleUrls: ['./todo-list-item-view.component.css'],
-    entryComponents: [HelloComponent, WorldComponent]
+    styleUrls: ['./todo-list-item-view.component.css']
 })
 export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInterface {
 
@@ -40,7 +35,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     editTodo(todo: ToDo) {
         console.log('editTodo called in TodoListItemViewComponent with title: ' + this.todo.title);
-        this.editTodoListItemEmitter.emit(todo);    // Emit the editTodoListItemEmitter event to Parent component
+        this.editTodoListItemEmitter.emit(todo);    // Emit the edit event to a Parent component
     }
 
     updateTodo(todo: ToDo) {
@@ -50,18 +45,6 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     removeTodo(todo: ToDo) {
         console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent');
         this.removeTodoListItemEmitter.emit(todo);
-    }
-
-    // TODO: Переделать динамические компоненты на NgComponentOutlet, когда будет реализованы Input/Output
-    // tslint:disable-next-line:member-ordering
-    dynamicComponent;
-
-    createHelloComponent() {
-        this.dynamicComponent = HelloComponent;
-    }
-
-    createWorldComponent() {
-        this.dynamicComponent = WorldComponent;
     }
 
 }

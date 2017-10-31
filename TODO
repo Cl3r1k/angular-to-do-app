@@ -12,7 +12,9 @@ Todos:
                 ☐ Update unit test for TodoListComponent
                 ☐ Update unit test for TodoListItemComponent
                 ☐ Update unit test for TodoListItemViewComponent
-                ☐ Update unit test for TodoListItemEditComponent                
+                ☐ Update unit test for TodoListItemEditComponent
+
+        ☐ Add posibility to parse todo with special symbols (like ☐ and ✔)
             
         ☐ Find out how stored todos (probably browser store) in the example http://todomvc.com/examples/angularjs/#/
         ☐ Add drag'n'drop posibility        
@@ -29,7 +31,9 @@ Todos:
         ☐ In footer - count only unchecked todos
 
     Future:
-        ☐ Add in options value for Multiple/Single editing todo
+        ☐ Options window:
+            ☐ Add in options value for Multiple/Single editing todo
+            ☐ Add in options value for support spec symbols (like ☐ and ✔) in new todo
 
     Scheduled:
         ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet and here https://github.com/angular/angular/pull/19713) (return to this point after 01.01.2018)

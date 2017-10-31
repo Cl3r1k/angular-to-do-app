@@ -2,7 +2,4 @@
     <input type="checkbox" class="toggle" (click)='toggleTodoComplete(todo)' [checked]='todo.complete'>
     <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>
     <button class="destroy" (click)='removeTodo(todo)'></button>
-    <button (click)='createHelloComponent()'>Create Hello component</button>
-    <button (click)='createWorldComponent()'>Create World component</button>
-    <ng-container *ngComponentOutlet='dynamicComponent'></ng-container>
 </div>

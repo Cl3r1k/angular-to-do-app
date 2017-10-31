@@ -13,7 +13,6 @@ import { TodoListItemViewComponent } from './todo-list-item/todo-list-item-view/
 import { TodoListFooterComponent } from './todo-list-footer/todo-list-footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-
 // Services
 import { TodoService } from './services/todo.service';
 import { ApiService } from './services/api.service';
@@ -21,10 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 // Routings
 import { AppRoutingModule } from './app-routing.module';
-
-// Testing components
-import { HelloComponent } from './todo-list-item/todo-list-item-view/hello/hello.component';
-import { WorldComponent } from './todo-list-item/todo-list-item-view/world/world.component';
 
 @NgModule({
     declarations: [
@@ -36,9 +31,7 @@ import { WorldComponent } from './todo-list-item/todo-list-item-view/world/world
         TodosComponent,
         PageNotFoundComponent,
         TodoListItemViewComponent,
-        TodoListItemEditComponent,
-        HelloComponent,
-        WorldComponent
+        TodoListItemEditComponent
     ],
     imports: [
         AppRoutingModule,
