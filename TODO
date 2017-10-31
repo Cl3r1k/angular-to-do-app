@@ -7,8 +7,6 @@
 Todos:
     New:
         Current:
-            ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet or here https://habrahabr.ru/company/infowatch/blog/330030/)
-
             ☐ Add posibility to edit Todo (look here http://todomvc.com/examples/angularjs/#/ or here https://angularclass.github.io/NG6-todomvc-starter/)
                 ☐ Update unit test for TodosComponent
                 ☐ Update unit test for TodoListComponent
@@ -32,6 +30,9 @@ Todos:
 
     Future:
         ☐ Add in options value for Multiple/Single editing todo
+
+    Scheduled:
+        ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet and here https://github.com/angular/angular/pull/19713) (return to this point after 01.01.2018)
     
     Done:
         ✔ Update unit tests for part-2

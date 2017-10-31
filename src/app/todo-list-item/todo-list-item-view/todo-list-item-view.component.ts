@@ -52,7 +52,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
         this.removeTodoListItemEmitter.emit(todo);
     }
 
-    // TODO: Остановился здесь, переделать динамические компоненты на NgComponentOutlet
+    // TODO: Переделать динамические компоненты на NgComponentOutlet, когда будет реализованы Input/Output
     // tslint:disable-next-line:member-ordering
     dynamicComponent;
 
