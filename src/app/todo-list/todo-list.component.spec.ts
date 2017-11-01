@@ -59,8 +59,20 @@ describe('TodoListComponent', () => {
         let todo: ToDo;
 
         // Act
-        component.toggleComplete.subscribe((value) => todo = value);
+        component.toggleCompleteTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to toggle event
         component.onToggleTodoComplete(todo1);
+
+        // Assert
+        expect(todo).toEqual(todo1);
+    }));
+
+    it(`should emit 'updateComplete' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        component.updateTodoTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to update event
+        component.updateTodo(todo1);
 
         // Assert
         expect(todo).toEqual(todo1);
@@ -71,7 +83,7 @@ describe('TodoListComponent', () => {
         let todo: ToDo;
 
         // Act
-        component.remove.subscribe((value) => todo = value);
+        component.removeTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to remove event
         component.onRemoveTodo(todo1);
 
         // Assert
