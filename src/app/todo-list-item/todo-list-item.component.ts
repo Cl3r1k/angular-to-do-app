@@ -52,7 +52,7 @@ export class TodoListItemComponent implements OnInit {
     }
 
     removeTodo(todo: ToDo) {
-        console.log('removeTodo emit event removeEventTodoListItem from TodoListItemComponent');
+        console.log('removeTodo emited event removeEventTodoListItem from TodoListItemComponent');
         this.removeTodoListItemEmitter.emit(todo);
     }
 

@@ -1,7 +1,7 @@
 {
   "todos": [
     {
-      "title": "Add some unit tests sa    x                     d",
+      "title": "Add some unit tests sa    x                 12       d",
       "complete": false,
       "id": 3
     },
@@ -21,7 +21,7 @@
       "id": 11
     },
     {
-      "title": "If clicks outside of the editing Todo, cancel editing",
+      "title": "If clicks outside of the editing Todo, update todo",
       "complete": false,
       "id": 12
     },

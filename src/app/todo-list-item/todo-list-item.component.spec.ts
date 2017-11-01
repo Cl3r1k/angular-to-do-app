@@ -51,7 +51,7 @@ describe('TodoListItemComponent', () => {
         let todo: ToDo;
 
         // Act
-        component.toggleComplete.subscribe((value) => todo = value);
+        component.toggleCompleteTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to toggle event
         component.toggleTodoComplete(expectedTodo);
 
         // Assert
@@ -63,7 +63,7 @@ describe('TodoListItemComponent', () => {
         let todo: ToDo;
 
         // Act
-        component.remove.subscribe((value) => todo = value);
+        component.removeTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to remove event
         component.removeTodo(expectedTodo);
 
         // Assert

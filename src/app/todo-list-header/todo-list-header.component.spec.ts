@@ -12,7 +12,7 @@ describe('TodoListHeaderComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [TodoListHeaderComponent],
-            imports: [ FormsModule ]
+            imports: [FormsModule]
         })
             .compileComponents();
     }));
@@ -60,7 +60,7 @@ describe('TodoListHeaderComponent', () => {
 
         // Act
         component.newTodo = expectedTodo;
-        component.add.subscribe((value) => newTodo = value);
+        component.addTodoListHeaderEmitter.subscribe((value) => newTodo = value);    // Subscribe to add event
         component.addTodo();
 
         // Assert
@@ -84,7 +84,7 @@ describe('TodoListHeaderComponent', () => {
     describe(`#view tests`, () => {
         it(`press Enter on text.new-todo should emits 'addTodo' event (async)`, async () => {
             // Arrange
-            const event = new KeyboardEvent('keyup',{
+            const event = new KeyboardEvent('keyup', {
                 'key': 'Enter'
             });
 

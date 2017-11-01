@@ -12,26 +12,25 @@ export class TodoListComponent {
     todos: ToDo[];
 
     @Output()
-    removeEventTodoList: EventEmitter<ToDo> = new EventEmitter();
+    toggleCompleteTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    toggleCompleteEventTodoList: EventEmitter<ToDo> = new EventEmitter();
+    updateTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    updateTodoEventTodoList: EventEmitter<ToDo> = new EventEmitter();
+    removeTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     constructor() { }
 
     onToggleTodoComplete(todo: ToDo) {
-        this.toggleCompleteEventTodoList.emit(todo);
-    }
-
-    onRemoveTodo(todo: ToDo) {
-        this.removeEventTodoList.emit(todo);
+        this.toggleCompleteTodoListEmitter.emit(todo);    // Emit the toggle event to TodosComponent
     }
 
     updateTodo(todo: ToDo) {
-        // console.log('updateTodo in TodoListComponent - pushing todo with title: ' + todo.title + ' to UP');  // TODO: Delete this string
-        this.updateTodoEventTodoList.emit(todo);    // Emit the update event to TodosComponent
+        this.updateTodoTodoListEmitter.emit(todo);    // Emit the update event to TodosComponent
+    }
+
+    onRemoveTodo(todo: ToDo) {
+        this.removeTodoListEmitter.emit(todo);    // Emit the remove event to TodosComponent
     }
 }
