@@ -28,7 +28,7 @@ describe('TodoListItemEditComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create an instance', () => {
+    it(`should create an instance of 'TodoListItemEditComponent'`, () => {
         // Arrange
 
         // Act

@@ -12,7 +12,7 @@ Todos:
                 ✔ Update unit test for TodosComponent
                 ☐ Update unit test for TodoListComponent
                 ☐ Update unit test for TodoListItemComponent
-                ☐ Update unit test for TodoListItemViewComponent
+                ✔ Update unit test for TodoListItemViewComponent
                 ☐ Update unit test for TodoListItemEditComponent
 
         ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service)
