@@ -35,7 +35,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
     }
 
     ngAfterViewInit() {
-        this.editedTodoElementRef.nativeElement.focus();
+        this.editedTodoElementRef.nativeElement.focus();    // To set focus to the input when the component showed
     }
 
     toggleTodoComplete(todo: ToDo) {
@@ -55,7 +55,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
         this.removeTodoListItemEmitter.emit(todo);
     }
 
-    cancelEditTodo(todo: ToDo) {
+    cancelEditTodo() {
         this.todo.title = this.initialTodoTitle;
         this.editedTodoElementRef.nativeElement.blur();    // Imitate lost focus event
     }
