@@ -4,10 +4,18 @@
     // Для получения дополнительной информации посетите: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [{
-        "type": "chrome",
-        "request": "launch",
-        "name": "Launch Chrome against localhost",
-        "url": "http://localhost:4200",
-        "webRoot": "${workspaceRoot}"
-    }]
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceRoot}"
+        },
+        {
+            "name": "ng test",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:9876",
+            "webRoot": "${workspaceRoot}"
+        }
+    ]
 }
