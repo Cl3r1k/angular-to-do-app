@@ -1,15 +1,17 @@
-import { TodoListItemComponent } from '../todo-list-item/todo-list-item.component';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { ToDo } from '../to-do';
 
 import { Component } from '@angular/core';
 import { TodoListComponent } from './todo-list.component';
+import { TodoListItemComponent } from '../todo-list-item/todo-list-item.component';
+import { TodoListItemEditComponent } from './../todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+import { TodoListItemViewComponent } from '../todo-list-item/todo-list-item-view/todo-list-item-view.component';
 
 describe('TodoListComponent', () => {
     let component: TodoListComponent;
     let fixture: ComponentFixture<TodoListComponent>;
-    let mainEl;
     let expectedTodos: ToDo[];
     let todo1: ToDo;
     let todo2: ToDo;
@@ -18,8 +20,11 @@ describe('TodoListComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 TodoListComponent,
-                TodoListItemComponent
-            ]
+                TodoListItemComponent,
+                TodoListItemViewComponent,
+                TodoListItemEditComponent
+            ],
+            imports: [FormsModule]
         })
             .compileComponents();
     }));
@@ -27,7 +32,6 @@ describe('TodoListComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodoListComponent);
         component = fixture.componentInstance;
-        mainEl = fixture.debugElement.query(By.css('main'));    // Find main element
 
         todo1 = new ToDo({ id: 1, title: 'Test 1', complete: false });
         todo2 = new ToDo({ id: 2, title: 'Test 2', complete: true });

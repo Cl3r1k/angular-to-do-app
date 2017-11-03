@@ -23,7 +23,7 @@ describe('TodoListItemEditComponent', () => {
         component = fixture.componentInstance;
         inputEl = fixture.debugElement.nativeElement.querySelector('input[type=text]');    // Find input.edit element
 
-        expectedTodo = new ToDo({ id: 1, title: 'Test', complete: false });
+        expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemEditComponent', complete: false });
         component.todo = expectedTodo;
         fixture.detectChanges();
     });

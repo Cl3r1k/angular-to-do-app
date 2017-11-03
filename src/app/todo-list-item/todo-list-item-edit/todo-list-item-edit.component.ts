@@ -51,7 +51,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
     }
 
     removeTodo(todo: ToDo) {    // TODO: Perform confirmation for deletion
-        console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemEditComponent');
+        console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemEditComponent with title: ' + todo.title);
         this.removeTodoListItemEmitter.emit(todo);
     }
 

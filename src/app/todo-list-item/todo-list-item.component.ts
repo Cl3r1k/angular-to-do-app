@@ -39,10 +39,6 @@ export class TodoListItemComponent implements OnInit {
         this.createViewComponent(this.todo);
     }
 
-    emitedNumber(num: number) {
-        alert('emited number from dynamic component is: ' + num);
-    }
-
     toggleTodoComplete(todo: ToDo) {
         this.toggleCompleteTodoListItemEmitter.emit(todo);
     }
@@ -52,7 +48,7 @@ export class TodoListItemComponent implements OnInit {
     }
 
     removeTodo(todo: ToDo) {
-        console.log('removeTodo emited event removeEventTodoListItem from TodoListItemComponent');
+        console.log('removeTodo emited event removeEventTodoListItem from TodoListItemComponent with title: ' + todo.title);
         this.removeTodoListItemEmitter.emit(todo);
     }
 

@@ -9,9 +9,9 @@ Todos:
     New:
         Current:
             ✔ Add posibility to edit Todo (look here http://todomvc.com/examples/angularjs/#/ or here https://angularclass.github.io/NG6-todomvc-starter/)
-                ✔ Update unit test for TodosComponent
-                ☐ Update unit test for TodoListComponent
-                ☐ Update unit test for TodoListItemComponent
+                ☐ Update unit test for TodosComponent
+                ✔ Update unit test for TodoListComponent
+                ✔ Update unit test for TodoListItemComponent
                 ✔ Update unit test for TodoListItemViewComponent
                 ☐ Update unit test for TodoListItemEditComponent
 
@@ -30,6 +30,8 @@ Todos:
         ☐ Add toggle all todo button in header
         ☐ Add 'Clear completed' in footer button
         ☐ In footer - count only unchecked todos
+
+        ☐ CleanUp code (delete console.log, comments and other things)
 
     Future:
         ☐ Options window:
