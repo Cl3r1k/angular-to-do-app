@@ -23,7 +23,7 @@ describe('TodoListItemViewComponent', () => {
         toggleEl = fixture.debugElement.nativeElement.querySelector('input[type=checkbox]');    // Find toggle checkbox element
         destroyEl = fixture.debugElement.nativeElement.querySelector('button');                 // Find destroy button element
 
-        expectedTodo = new ToDo({ id: 1, title: 'Test', complete: false });
+        expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
         component.todo = expectedTodo;
         fixture.detectChanges();
     });

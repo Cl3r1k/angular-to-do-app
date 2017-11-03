@@ -5,10 +5,12 @@ import { Observable } from 'rxjs/Observable';
 import { TodosComponent } from './todos.component';
 
 import { ToDo } from './../to-do';
-import { TodoListItemComponent } from './../todo-list-item/todo-list-item.component';
-import { TodoListFooterComponent } from '../todo-list-footer/todo-list-footer.component';
-import { TodoListComponent } from '../todo-list/todo-list.component';
 import { TodoListHeaderComponent } from './../todo-list-header/todo-list-header.component';
+import { TodoListComponent } from '../todo-list/todo-list.component';
+import { TodoListItemComponent } from './../todo-list-item/todo-list-item.component';
+import { TodoListItemViewComponent } from '../todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListItemEditComponent } from '../todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+import { TodoListFooterComponent } from '../todo-list-footer/todo-list-footer.component';
 
 // Services
 import { TodoService } from './../services/todo.service';
@@ -30,7 +32,9 @@ describe('TodosComponent', () => {
                 TodoListHeaderComponent,
                 TodoListComponent,
                 TodoListFooterComponent,
-                TodoListItemComponent
+                TodoListItemComponent,
+                TodoListItemViewComponent,
+                TodoListItemEditComponent
             ],
             providers: [TodoService,
                 {

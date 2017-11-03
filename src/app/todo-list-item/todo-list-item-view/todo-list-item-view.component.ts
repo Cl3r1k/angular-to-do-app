@@ -34,7 +34,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     editTodo(todo: ToDo) {
-        console.log('editTodo called in TodoListItemViewComponent with title: ' + this.todo.title);
+        console.log('editTodo called in TodoListItemViewComponent with title: ' + todo.title);
         this.editTodoListItemEmitter.emit(todo);    // Emit the edit event to a Parent component
     }
 
@@ -43,7 +43,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     removeTodo(todo: ToDo) {
-        console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent');
+        console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ' + todo.title);
         this.removeTodoListItemEmitter.emit(todo);
     }
 
