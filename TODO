@@ -8,14 +8,8 @@
 Todos:
     New:
         Current:
-            ✔ Add posibility to edit Todo (look here http://todomvc.com/examples/angularjs/#/ or here https://angularclass.github.io/NG6-todomvc-starter/)
-                ✔ Update unit test for TodosComponent
-                ✔ Update unit test for TodoListComponent
-                ✔ Update unit test for TodoListItemComponent
-                ✔ Update unit test for TodoListItemViewComponent
-                ✔ Update unit test for TodoListItemEditComponent
-
-        ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service)
+            ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service)        
+                ☐ Update test for the feature in service and components
             
         ☐ Find out how stored todos (probably browser store) in the example http://todomvc.com/examples/angularjs/#/
         ☐ Add drag'n'drop posibility        
@@ -61,6 +55,12 @@ Todos:
             ✔ If todo is edited, cursor not entered in the todo title field
             ✔ In TodoListItemEditComponent change div class from 'view' to 'editContainer' and style the container
             ✔ If clicks outside of the editing Todo, cancel editing (look here http://todomvc.com/examples/angularjs/#/) (blur event in template used) (use this option, if in prefs value is 'single editing todo')
+            ✔ Add posibility to edit Todo (look here http://todomvc.com/examples/angularjs/#/ or here https://angularclass.github.io/NG6-todomvc-starter/)
+                ✔ Update unit test for TodosComponent (according to editable Todo)
+                ✔ Update unit test for TodoListComponent (according to editable Todo)
+                ✔ Update unit test for TodoListItemComponent (according to editable Todo)
+                ✔ Update unit test for TodoListItemViewComponent (according to editable Todo)
+                ✔ Update unit test for TodoListItemEditComponent (according to editable Todo)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore

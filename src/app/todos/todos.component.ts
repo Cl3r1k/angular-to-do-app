@@ -34,6 +34,14 @@ export class TodosComponent implements OnInit {
         });
     }
 
+    // Method to handle event emitted by TodoListHeaderComponent
+    onAddBatchTodo(title: string) {
+        this._todoService.addBatchTodo(title).subscribe((todos) => {
+            console.log('incoming data in onAddBatchTodo in TodoListHeaderComponent is: ' + todos);
+            this.todos = todos;
+        });
+    }
+
     // Service is now available as this._todoDataService
     onToggleTodoComplete(todo: ToDo) {
         this._todoService.toggleTodoComplete(todo).subscribe((updatedTodo) => {
