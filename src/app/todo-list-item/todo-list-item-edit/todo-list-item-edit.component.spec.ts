@@ -73,7 +73,6 @@ describe('TodoListItemEditComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    // TODO: Fix this test
     it(`should call method 'cancelEditTodo' which apply initial title, imitate blur event, which emit 'update' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;

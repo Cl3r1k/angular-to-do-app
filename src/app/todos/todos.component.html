@@ -2,7 +2,7 @@
 <section class='todoapp'>
 
     <!-- header is now replaced with app-todoo-list-header -->
-    <app-todo-list-header (addTodoListHeaderEmitter)='onAddTodo($event)'></app-todo-list-header>
+    <app-todo-list-header (addTodoListHeaderEmitter)='onAddTodo($event)' (addBatchTodoListHeaderEmitter)='onAddBatchTodo($event)'></app-todo-list-header>
 
     <app-todo-list [todos]='todos' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (removeTodoListEmitter)='onRemoveTodo($event)'></app-todo-list>
 

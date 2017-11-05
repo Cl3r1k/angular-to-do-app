@@ -13,12 +13,21 @@ export class TodoListHeaderComponent {
     @Output()
     addTodoListHeaderEmitter: EventEmitter<ToDo> = new EventEmitter();
 
+    @Output()
+    addBatchTodoListHeaderEmitter: EventEmitter<string> = new EventEmitter();
+
     constructor() { }
 
     addTodo() {
         if (this.newTodo.title) {
             this.newTodo.title = this.newTodo.title.trim();
-            this.addTodoListHeaderEmitter.emit(this.newTodo);
+
+            if (this.newTodo.title.includes('☐') || this.newTodo.title.includes('✔')) {
+                this.addBatchTodoListHeaderEmitter.emit(this.newTodo.title);
+            } else {
+                this.addTodoListHeaderEmitter.emit(this.newTodo);
+            }
+
             this.newTodo = new ToDo();
         }
     }
