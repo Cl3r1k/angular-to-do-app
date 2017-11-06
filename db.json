@@ -22,12 +22,12 @@
     },
     {
       "title": "If clicks outside of the editing Todo, update todo",
-      "complete": false,
+      "complete": true,
       "id": 12
     },
     {
       "title": "If todo is edited, cursor not entered in the todo title field",
-      "complete": false,
+      "complete": true,
       "id": 13
     },
     {

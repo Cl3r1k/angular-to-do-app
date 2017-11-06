@@ -36,6 +36,8 @@ export class ApiService {
     // API: POST /todos    /// Pro account feature
     public createBatchTodo(title: string): Observable<ToDo[]> {
 
+        // TODO: This feauture should be realized on server side, then implement it in other branch, and come back later
+
         const chars = title.split('');
 
         let currentSplitterIndex = 0;
@@ -57,8 +59,6 @@ export class ApiService {
                 currentSplitterIndex = ind;
             }
         });
-
-        // TODO: Остановился здесь, что-то идет не так), выводи логи в вызывающих методах, что там приходит?
 
         return this._httpClient.get(API_URL + '/todos')
             .map(response => response)

@@ -10,7 +10,9 @@ Todos:
         Current:
             ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service)        
                 ☐ Update test for the feature in service and components
+            ☐ Update project to new CLI version
             
+        ☐ OnHover checkbox(or whole todo) show more effective
         ☐ Find out how stored todos (probably browser store) in the example http://todomvc.com/examples/angularjs/#/
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
