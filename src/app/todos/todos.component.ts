@@ -37,7 +37,8 @@ export class TodosComponent implements OnInit {
     // Method to handle event emitted by TodoListHeaderComponent
     onAddBatchTodo(title: string) {
         this._todoService.addBatchTodo(title).subscribe((todos) => {
-            console.log('incoming data in onAddBatchTodo in TodoListHeaderComponent is: ' + todos);
+            console.log('incoming data in onAddBatchTodo in TodoListHeaderComponent is: ');
+            console.log(todos);
             this.todos = todos;
         });
     }

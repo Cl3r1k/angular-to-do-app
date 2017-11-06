@@ -8,7 +8,7 @@ import { ToDo } from './../to-do';
 })
 export class TodoListHeaderComponent {
 
-    newTodo: ToDo = new ToDo();
+    newTodo: ToDo = new ToDo({ title: '☐ Find ☐ Add '});    // TODO: Do not forget to change it back, after tests
 
     @Output()
     addTodoListHeaderEmitter: EventEmitter<ToDo> = new EventEmitter();
