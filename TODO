@@ -8,11 +8,8 @@
 Todos:
     New:
         Current:
-            ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service)        
-                ☐ Update test for the feature in service and components
-            ☐ Update project to new CLI version
-            
-        ☐ OnHover checkbox(or whole todo) show more effective
+            ☐ OnHover checkbox(or whole todo) show more effective
+        
         ☐ Find out how stored todos (probably browser store) in the example http://todomvc.com/examples/angularjs/#/
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
@@ -33,6 +30,8 @@ Todos:
         ☐ Options window:
             ☐ Add in options value for Multiple/Single editing todo
             ☐ Add in options value for support spec symbols (like ☐ and ✔) in new todo
+        ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service)        
+            ☐ Update test for the feature in service and components
 
     Scheduled:
         ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet and here https://github.com/angular/angular/pull/19713) (return to this point after 01.01.2018)
@@ -63,6 +62,8 @@ Todos:
                 ✔ Update unit test for TodoListItemComponent (according to editable Todo)
                 ✔ Update unit test for TodoListItemViewComponent (according to editable Todo)
                 ✔ Update unit test for TodoListItemEditComponent (according to editable Todo)
+            
+        ✔ Update project to new CLI version (1.5) @done(17-11-07 09:35)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore

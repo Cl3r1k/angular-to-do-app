@@ -17,11 +17,6 @@ export class TodoService {
         return this._api.createTodo(todo);
     }
 
-    // Simulate POST /todos
-    addBatchTodo(title: string): Observable<ToDo[]> {
-        return this._api.createBatchTodo(title);
-    }
-
     // Simulate DELETE /todos/:id
     deleteTodoById(id: number): Observable<ToDo> {
         return this._api.deleteTodoById(id);

@@ -33,38 +33,6 @@ export class ApiService {
             .catch(this.handleError);
     }
 
-    // API: POST /todos    /// Pro account feature
-    public createBatchTodo(title: string): Observable<ToDo[]> {
-
-        // TODO: This feauture should be realized on server side, then implement it in other branch, and come back later
-
-        const chars = title.split('');
-
-        let currentSplitterIndex = 0;
-        chars.map( (value, ind) => {
-            if (value === '☐' || value === '✔' || ind === title.length - 1) {
-                if (currentSplitterIndex !== ind) {
-                    if ((title[currentSplitterIndex] === '☐' || title[currentSplitterIndex] === '✔') && ind - currentSplitterIndex > 1) {
-                        currentSplitterIndex++;
-                    }
-                    const tmpTitle = title.substring(currentSplitterIndex, ind).trim();
-
-                    const todo: ToDo = new ToDo({ title: tmpTitle });
-                    if (tmpTitle) {
-                        this._httpClient.post(API_URL + '/todos', todo)
-                        .map((response) => console.log(response))
-                        .catch(this.handleError);
-                    }
-                }
-                currentSplitterIndex = ind;
-            }
-        });
-
-        return this._httpClient.get(API_URL + '/todos')
-            .map(response => response)
-            .catch(this.handleError);
-    }
-
     // API: GET /todos:id
     public getTodoById(todoId: number): Observable<ToDo> {
         return this._httpClient.get(API_URL + '/todos/' + todoId)
