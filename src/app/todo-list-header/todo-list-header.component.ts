@@ -8,26 +8,17 @@ import { ToDo } from './../to-do';
 })
 export class TodoListHeaderComponent {
 
-    newTodo: ToDo = new ToDo({ title: '☐ Find ☐ Add '});    // TODO: Do not forget to change it back, after tests
+    newTodo: ToDo = new ToDo();
 
     @Output()
     addTodoListHeaderEmitter: EventEmitter<ToDo> = new EventEmitter();
-
-    @Output()
-    addBatchTodoListHeaderEmitter: EventEmitter<string> = new EventEmitter();
 
     constructor() { }
 
     addTodo() {
         if (this.newTodo.title) {
             this.newTodo.title = this.newTodo.title.trim();
-
-            if (this.newTodo.title.includes('☐') || this.newTodo.title.includes('✔')) {
-                this.addBatchTodoListHeaderEmitter.emit(this.newTodo.title);
-            } else {
-                this.addTodoListHeaderEmitter.emit(this.newTodo);
-            }
-
+            this.addTodoListHeaderEmitter.emit(this.newTodo);
             this.newTodo = new ToDo();
         }
     }
