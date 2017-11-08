@@ -1,5 +1,5 @@
-<div class='view'>
+<div class='view' [class.hovered]='hoverState && !deleteHoverState' [class.delete-hovered]='deleteHoverState' (mouseenter)='setHover(true)' (mouseleave)='setHover(false)'>
     <input type="checkbox" class="toggle" (click)='toggleTodoComplete(todo)' [checked]='todo.complete'>
     <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>
-    <button class="destroy" (click)='removeTodo(todo)'></button>
+    <button class="destroy" (click)='removeTodo(todo)' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'></button>
 </div>
