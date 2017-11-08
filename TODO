@@ -8,7 +8,7 @@
 Todos:
     New:
         Current:
-            ☐ OnHover checkbox(or whole todo) show more effective
+            ☐ Add automincremented build info in the header of the app
         
         ☐ Find out how stored todos (probably browser store) in the example http://todomvc.com/examples/angularjs/#/
         ☐ Add drag'n'drop posibility        
@@ -64,6 +64,9 @@ Todos:
                 ✔ Update unit test for TodoListItemEditComponent (according to editable Todo)
             
         ✔ Update project to new CLI version (1.5) @done(17-11-07 09:35)
+        ✔ OnHover checkbox(or whole todo) show more effective @done(17-11-07 09:53)
+        ✔ OnHover todo change bg color to a little darker @done(17-11-07 10:42)
+        ✔ OnHover todo delete change bg color to a color with some red color (like a delete button, but more lighter) @done(17-11-07 10:42)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore
