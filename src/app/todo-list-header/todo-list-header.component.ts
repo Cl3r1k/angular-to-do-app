@@ -17,9 +17,7 @@ export class TodoListHeaderComponent {
     @Output()
     addTodoListHeaderEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    constructor() {
-        console.log('Version in header is: ' + this.BUILD_VERSION);
-    }
+    constructor() { }
 
     addTodo() {
         if (this.newTodo.title) {

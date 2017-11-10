@@ -10,7 +10,8 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "json-server": "json-server --watch db.json",
-        "app": "concurrently \"npm run json-server\" \"npm --no-git-tag-version version patch\" \"node ./replace.build.js\" \"npm run start\""
+        "app": "concurrently \"npm run json-server\" \"node ./replace.build.js\" \"npm run start\"",
+        "update-patch": "npm --no-git-tag-version version patch"
     },
     "private": true,
     "dependencies": {
@@ -51,6 +52,7 @@
         "replace-in-file": "^3.0.0",
         "ts-node": "~3.2.0",
         "tslint": "~5.3.2",
-        "typescript": "~2.4.2"
+        "typescript": "~2.4.2",
+        "xmlhttprequest": "^1.8.0"
     }
 }
