@@ -8,9 +8,10 @@
 Todos:
     New:
         Current:
-            
+            ☐ Find out how stored todos (probably browser store (LocalStorage)) in the example http://todomvc.com/examples/angularjs/#/
+                ☐ Update unit tests for changed files ()
+            ☐ After implementation browser store -> update patch version
         
-        ☐ Find out how stored todos (probably browser store) in the example http://todomvc.com/examples/angularjs/#/
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
         ☐ Add filters in footer
@@ -26,12 +27,15 @@ Todos:
 
         ☐ CleanUp code (delete console.log, comments and other things)
 
+        ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
+
     Future:
         ☐ Options window:
             ☐ Add in options value for Multiple/Single editing todo
             ☐ Add in options value for support spec symbols (like ☐ and ✔) in new todo
-        ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service)        
+        ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service) (server side)
             ☐ Update test for the feature in service and components
+        ☐ Add documentation (look here https://habrahabr.ru/company/docsvision/blog/341562/)
 
     Scheduled:
         ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet and here https://github.com/angular/angular/pull/19713) (return to this point after 01.01.2018)
