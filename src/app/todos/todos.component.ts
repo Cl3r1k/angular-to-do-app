@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TodosComponent implements OnInit {
 
     todos: ToDo[] = [];
+    incompletedTodos: ToDo[] = [];
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -19,18 +20,20 @@ export class TodosComponent implements OnInit {
 
     public ngOnInit() {
         this._route.data
-          .map((data) => data['todos'])
-          .subscribe(
-            (todos) => {
-              this.todos = todos;
-            }
-          );
-      }
+            .map((data) => data['todos'])
+            .subscribe(
+                (todos) => {
+                    this.todos = todos;
+                    this.updateFooterInfo();
+                }
+            );
+    }
 
     // Method to handle event emitted by TodoListHeaderComponent
     onAddTodo(todo: ToDo) {
         this._todoService.addTodo(todo).subscribe((newTodo) => {
             this.todos = this.todos.concat(newTodo);
+            this.updateFooterInfo();
         });
     }
 
@@ -38,6 +41,7 @@ export class TodosComponent implements OnInit {
     onToggleTodoComplete(todo: ToDo) {
         this._todoService.toggleTodoComplete(todo).subscribe((updatedTodo) => {
             todo = updatedTodo;
+            this.updateFooterInfo();
         });
     }
 
@@ -45,6 +49,7 @@ export class TodosComponent implements OnInit {
     onRemoveTodo(todo: ToDo) {
         this._todoService.deleteTodoById(todo.id).subscribe((_) => {
             this.todos = this.todos.filter((val) => val.id !== todo.id);
+            this.updateFooterInfo();
         });
     }
 
@@ -53,6 +58,10 @@ export class TodosComponent implements OnInit {
         this._todoService.updateTodo(todo).subscribe((updatedTodo) => {
             todo = updatedTodo;
         });
+    }
+
+    updateFooterInfo() {
+        this.incompletedTodos = this.todos.filter(todo => !todo.complete);
     }
 
 }

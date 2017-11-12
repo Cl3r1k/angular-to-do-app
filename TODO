@@ -8,9 +8,7 @@
 Todos:
     New:
         Current:
-            ☐ Find out how stored todos (probably browser store (LocalStorage)) in the example http://todomvc.com/examples/angularjs/#/
-                ☐ Update unit tests for changed files ()
-            ☐ After implementation browser store -> update patch version
+            ☐ Set Up Absolute Paths (look here https://scotch.io/tutorials/reference-angular-imports-absolutely-for-easier-development?utm_source=newsletter&utm_medium=email&utm_campaign=reference_angular_imports_absolutely_for_easier_development&utm_term=2017-11-07)
         
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
@@ -23,11 +21,12 @@ Todos:
         ☐ Add filters in footer
         ☐ Add toggle all todo button in header
         ☐ Add 'Clear completed' in footer button
-        ☐ In footer - count only unchecked todos
+        ☐ Check the app in 'Internet mail.ru' browser
 
         ☐ CleanUp code (delete console.log, comments and other things)
 
         ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
+            ☐ After implementation browser store -> update patch version
 
     Future:
         ☐ Options window:
@@ -72,6 +71,12 @@ Todos:
         ✔ OnHover todo change bg color to a little darker @done(17-11-07 10:42)
         ✔ OnHover todo delete change bg color to a color with some red color (like a delete button, but more lighter) @done(17-11-07 10:42)
         ✔ Add automincremented build info in the header of the app @done(17-11-10 09:54)
+        ✔ In footer - count only unchecked todos @done(17-11-12 08:59)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore
+        ✘ Find out how stored todos (probably browser store (LocalStorage)) in the example http://todomvc.com/examples/angularjs/#/ @cancelled(17-11-11 09:36) -> Not applicable, and to simple for a future
+
+
+Info:
+    ☐ If count of todos is over 10k, performance of the app is very degradate (for example use db.json in db.zip file)
