@@ -28,9 +28,7 @@ export class ApiService {
     public createTodo(todo: ToDo): Observable<ToDo> {
         return this._httpClient.post(API_URL + '/todos', todo)
             .map(response => {
-                const tmpTodo = new ToDo(response);
-                localStorage.setItem(tmpTodo.id.toString(), JSON.stringify(tmpTodo));
-                return new ToDo(tmpTodo);
+                return new ToDo(response);
             })
             .catch(this.handleError);
     }
@@ -39,8 +37,6 @@ export class ApiService {
     public getTodoById(todoId: number): Observable<ToDo> {
         return this._httpClient.get(API_URL + '/todos/' + todoId)
             .map(response => {
-                console.log('getTodoById saved before todo in localStorage is: ');
-                console.log(localStorage.getItem(response['id'].toString()));
                 return new ToDo(response);
             })
             .catch(this.handleError);
@@ -50,8 +46,6 @@ export class ApiService {
     public updateTodo(todo: ToDo): Observable<ToDo> {
         return this._httpClient.put(API_URL + '/todos/' + todo.id, todo)
             .map(response => {
-                console.log('updateTodo saved before todo in localStorage is: ');
-                console.log(localStorage.getItem(response['id'].toString()));
                 return new ToDo(response);
             })
             .catch(this.handleError);
@@ -59,11 +53,8 @@ export class ApiService {
 
     // API: DELETE /todos:id
     public deleteTodoById(todoId: number): Observable<null> {
-        localStorage.removeItem(todoId.toString());
         return this._httpClient.delete(API_URL + '/todos/' + todoId)
-            .map(response => {
-                return null;
-            })
+            .map(response => null)
             .catch(this.handleError);
     }
 
