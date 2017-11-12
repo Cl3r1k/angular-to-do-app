@@ -8,7 +8,7 @@ import { ToDo } from './../to-do';
 })
 export class TodoListFooterComponent {
 
-    @Input() todos: ToDo[];
+    @Input() todosCount: number;
 
     constructor() { }
 

@@ -6,6 +6,6 @@
 
     <app-todo-list [todos]='todos' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (removeTodoListEmitter)='onRemoveTodo($event)'></app-todo-list>
 
-    <app-todo-list-footer [todos]='incompletedTodos'></app-todo-list-footer>
+    <app-todo-list-footer [todosCount]='incompletedTodosCount'></app-todo-list-footer>
 
 </section>
