@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TodosComponent implements OnInit {
 
     todos: ToDo[] = [];
-    incompletedTodos: ToDo[] = [];
+    incompletedTodosCount: number;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -61,7 +61,7 @@ export class TodosComponent implements OnInit {
     }
 
     updateFooterInfo() {
-        this.incompletedTodos = this.todos.filter(todo => !todo.complete);
+        this.incompletedTodosCount = this.todos.filter(todo => !todo.complete).length;
     }
 
 }
