@@ -8,7 +8,7 @@
 Todos:
     New:
         Current:
-            ☐ Set Up Absolute Paths (look here https://scotch.io/tutorials/reference-angular-imports-absolutely-for-easier-development?utm_source=newsletter&utm_medium=email&utm_campaign=reference_angular_imports_absolutely_for_easier_development&utm_term=2017-11-07)
+            
         
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
@@ -72,6 +72,9 @@ Todos:
         ✔ OnHover todo delete change bg color to a color with some red color (like a delete button, but more lighter) @done(17-11-07 10:42)
         ✔ Add automincremented build info in the header of the app @done(17-11-10 09:54)
         ✔ In footer - count only unchecked todos @done(17-11-12 08:59)
+        ✔ Set Up Absolute Paths (look here https://scotch.io/tutorials/reference-angular-imports-absolutely-for-easier-development?utm_source=newsletter&utm_medium=email&utm_campaign=reference_angular_imports_absolutely_for_easier_development&utm_term=2017-11-07) @done(17-11-12 10:15)
+            ✔ Update all path in the app @done(17-11-12 10:15)
+            ✔ Update unit tests @done(17-11-12 10:24)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore

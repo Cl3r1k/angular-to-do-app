@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { ToDo } from './../to-do';
+import { ToDo } from '@app/to-do';
 
-import { environment } from './../../environments/environment.prod';
+import { environment } from '@env/environment.prod';
 
 @Component({
     selector: 'app-todo-list-header',

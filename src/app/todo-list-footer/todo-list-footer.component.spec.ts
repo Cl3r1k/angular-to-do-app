@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ToDo } from './../to-do';
+import { ToDo } from '@app/to-do';
 
-import { TodoListFooterComponent } from './todo-list-footer.component';
+import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 
 describe('TodoListFooterComponent', () => {
     let component: TodoListFooterComponent;
     let fixture: ComponentFixture<TodoListFooterComponent>;
     let footerEl;
-    let expectedTodos: ToDo[];
+    let expectedIncompletedTodosCount: number;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -22,8 +22,8 @@ describe('TodoListFooterComponent', () => {
         component = fixture.componentInstance;
         footerEl = fixture.debugElement.query(By.css('footer'));    // Find footer element
 
-        expectedTodos = [new ToDo({ id: 1, title: 'Test 1', complete: false }), new ToDo({ id: 2, title: 'Test 2', complete: true })];
-        component.todos = expectedTodos;
+        expectedIncompletedTodosCount = 11;    // For example
+        component.todosCount = expectedIncompletedTodosCount;
         fixture.detectChanges();
     });
 
@@ -42,6 +42,6 @@ describe('TodoListFooterComponent', () => {
         // Act
 
         // Assert
-        expect(component.todos).toEqual(expectedTodos);
+        expect(component.todosCount).toEqual(expectedIncompletedTodosCount);
     }));
 });

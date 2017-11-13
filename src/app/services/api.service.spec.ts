@@ -1,9 +1,9 @@
-import { environment } from '../../environments/environment';
-import { ToDo } from './../to-do';
 import { async, getTestBed, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { ToDo } from '@app/to-do';
+import { environment } from '@env/environment';
 
-import { ApiService } from './api.service';
+import { ApiService } from '@app/services/api.service';
 
 describe('ApiService', () => {
 

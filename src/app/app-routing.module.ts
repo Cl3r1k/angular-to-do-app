@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TodosComponent } from './todos/todos.component';
-import { TodosResolver } from './todos.resolver';
+import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
+import { TodosComponent } from '@app/todos/todos.component';
+import { TodosResolver } from '@app/todos.resolver';
 
 const routes: Routes = [
     {

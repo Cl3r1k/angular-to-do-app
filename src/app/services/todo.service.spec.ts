@@ -1,9 +1,9 @@
 import { TestBed, async, inject } from '@angular/core/testing';
-import { ApiService } from './api.service';
-import { ApiMockService } from './api-mock.service';
+import { ApiService } from '@app/services/api.service';
+import { ApiMockService } from '@app/services/api-mock.service';
 
-import { ToDo } from './../to-do';
-import { TodoService } from './todo.service';
+import { ToDo } from '@app/to-do';
+import { TodoService } from '@app/services/todo.service';
 
 describe('TodoService', () => {
     beforeEach(() => {
