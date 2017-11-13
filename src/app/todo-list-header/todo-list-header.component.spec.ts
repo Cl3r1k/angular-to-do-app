@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { ToDo } from '../to-do';
+import { ToDo } from '@app/to-do';
 
-import { TodoListHeaderComponent } from './todo-list-header.component';
+import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
 
 describe('TodoListHeaderComponent', () => {
     let component: TodoListHeaderComponent;

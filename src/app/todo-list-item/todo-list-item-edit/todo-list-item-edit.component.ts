@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { ToDo } from './../../to-do';
+import { ToDo } from '@app/to-do';
 
-import { CustomTodoComponentInterface } from './custom-todo-component-interface';
+import { CustomTodoComponentInterface } from '@app/Interfaces/custom-todo-component-interface';
 
 @Component({
     selector: 'app-todo-list-item-edit',

@@ -1,12 +1,12 @@
 import { TestBed, inject, async, getTestBed } from '@angular/core/testing';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from '@app/app-routing.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
-import { AppModule } from './app.module';
-import { AppComponent } from './app.component';
-import { TodosComponent } from './todos/todos.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AppModule } from '@app/app.module';
+import { AppComponent } from '@app/app.component';
+import { TodosComponent } from '@app/todos/todos.component';
+import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 
 import { Component } from '@angular/core';
 
