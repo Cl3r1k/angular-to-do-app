@@ -18,6 +18,9 @@ export class TodoListComponent {
     updateTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
+    toggleAllTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
     removeTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     constructor() { }
@@ -32,5 +35,11 @@ export class TodoListComponent {
 
     onRemoveTodo(todo: ToDo) {
         this.removeTodoListEmitter.emit(todo);    // Emit the remove event to TodosComponent
+    }
+
+    toggleAllTodos(state: boolean) {
+        // console.log('current state set to: ', state);
+        this.toggleAllTodoListEmitter.emit(this.todos[0]);
+        // TODO: Остановился здесь, не идет вверх событие?
     }
 }
