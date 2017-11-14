@@ -61,6 +61,13 @@ export class TodosComponent implements OnInit {
         });
     }
 
+    onToggleAll(todo: ToDo) {
+        // console.log('onToggleAll with todo: ', todo);
+        this._todoService.toggleAll(todo).subscribe((updatedTodo) => {
+            todo = updatedTodo;
+        });
+    }
+
     updateFooterInfo() {
         this.incompletedTodosCount = this.todos.filter(todo => !todo.complete).length;
     }

@@ -57,6 +57,16 @@ export class ApiService {
             .catch(this.handleError);
     }
 
+    // API: PUT /todos
+    public toggleAll(todo: ToDo): Observable<ToDo> {
+        todo.complete = !todo.complete;
+        return this._httpClient.put(API_URL + '/todos/' + todo.id, todo)
+            .map(response => {
+                return new ToDo(response);
+            })
+            .catch(this.handleError);
+    }
+
     private handleError(error: Response | any) {
         if (error._body.type === 'error') {
             console.log('Request failed... Is json-server running?');

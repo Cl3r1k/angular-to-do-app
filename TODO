@@ -8,19 +8,17 @@
 Todos:
     New:
         Current:
-            
+            ☐ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/)
+                ☐ Update unit test for toggle All chagnges
         
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
-        ☐ Add filters in footer
-        ☐ Add Clear Completed link in footer
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         ☐ Find the way to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource
         ☐ Fix all TODO in all files        
         ☐ Modal window for request on deleting todo
-        ☐ Add filters in footer
-        ☐ Add toggle all todo button in header
-        ☐ Add 'Clear completed' in footer button
+        ☐ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/)
+        ☐ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/)
         ☐ Check the app in 'Internet mail.ru' browser
 
         ☐ CleanUp code (delete console.log, comments and other things)
