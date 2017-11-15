@@ -61,6 +61,7 @@ export class ApiService {
     public toggleAll(state: boolean): Observable<ToDo[]> {
 
         // TODO: Stopped here, we need some way to send updated data, after updated each todo
+        // TODO: Create method, to check, if all todos are checked, and change in UI checkbox
         return this._httpClient.get(API_URL + '/todos')
             .map(response => {
                 console.log('response is: ', response);
