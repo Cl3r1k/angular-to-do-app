@@ -45,7 +45,7 @@ export class TodoService {
     }
 
     // Simulate Toggle all PUT /todos/:id
-    toggleAll(todo: ToDo): Observable<ToDo> {
-        return this._api.toggleAll(todo);
+    toggleAll(state: boolean): Observable<ToDo[]> {
+        return this._api.toggleAll(state);
     }
 }

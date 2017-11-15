@@ -1,39 +1,39 @@
 {
   "todos": [
     {
+      "id": 3,
       "title": "Add some unit tests sa    x     asf            12       d",
-      "complete": false,
-      "id": 3
+      "complete": true
     },
     {
+      "id": 8,
       "title": "Do all todos",
-      "complete": false,
-      "id": 8
+      "complete": true
     },
     {
+      "id": 10,
       "title": "Finish the project",
-      "complete": false,
-      "id": 10
+      "complete": true
     },
     {
+      "id": 11,
       "title": "Complete the edititing todo",
-      "complete": false,
-      "id": 11
+      "complete": true
     },
     {
+      "id": 12,
       "title": "If clicks outside of the editing Todo, update todo",
-      "complete": true,
-      "id": 12
+      "complete": true
     },
     {
+      "id": 13,
       "title": "If todo is edited, cursor not entered in the todo title field",
-      "complete": true,
-      "id": 13
+      "complete": true
     },
     {
+      "id": 14,
       "title": "On editing finish, if title of the todo is empty -> delete todo",
-      "complete": true,
-      "id": 14
+      "complete": true
     }
   ]
 }

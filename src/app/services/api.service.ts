@@ -58,13 +58,75 @@ export class ApiService {
     }
 
     // API: PUT /todos
-    public toggleAll(todo: ToDo): Observable<ToDo> {
-        todo.complete = !todo.complete;
-        return this._httpClient.put(API_URL + '/todos/' + todo.id, todo)
+    public toggleAll(state: boolean): Observable<ToDo[]> {
+
+        // TODO: Stopped here, we need some way to send updated data, after updated each todo
+        return this._httpClient.get(API_URL + '/todos')
             .map(response => {
-                return new ToDo(response);
+                console.log('response is: ', response);
+
+                const todos: ToDo[] = [];
+
+                for (const field of Object.keys(response)) {
+                    // console.log('field: ', response[field]);
+                    const todoTmp: ToDo = new ToDo({ id: response[field].id, title: response[field].title, complete: state });
+                    console.log('todoTmp: ', todoTmp);
+                    this.updateTodo({ id: response[field].id, title: response[field].title, complete: state }).subscribe((updatedTodo) => {
+                        console.log('updatedTodo: ', updatedTodo);
+                        todos.push(updatedTodo);
+                    });
+                }
+
+                console.log('todos: ', todos);
+
+                return todos;
             })
             .catch(this.handleError);
+
+        // return this._httpClient.get(API_URL + '/todos')
+        //     .map(response => {
+        //         let todos: ToDo[] = [];
+
+        //         console.log('getAllTodos: response: ', response);
+
+        //         this.getAllTodos().subscribe(todosAll => {
+        //             todos = todosAll;
+        //             console.log('getAllTodos: all todos: ', todos);
+
+        //             todos.forEach(val => {
+        //                 val.complete = state;
+
+        //                 this.updateTodo(val).subscribe((updatedTodo) => {
+        //                     val = updatedTodo;
+        //                 });
+        //             });
+        //             console.log('after: all todos: ', todos);
+        //         });
+
+        //         console.log('will be returned: todos: ', todos);
+        //         return todos;
+        //     })
+        //     .catch(this.handleError);
+
+        ////////////////////////////////////////
+
+        // let todos: ToDo[] = [];
+
+        // this.getAllTodos().subscribe(todosAll => {
+        //     todos = todosAll;
+        //     console.log('getAllTodos: all todos: ', todos);
+
+        //     todos.forEach(val => {
+        //         val.complete = state;
+
+        //         this.updateTodo(val).subscribe((updatedTodo) => {
+        //             val = updatedTodo;
+        //         });
+        //     });
+        //     console.log('after: all todos: ', todos);
+        // });
+
+        // return null;
     }
 
     private handleError(error: Response | any) {
