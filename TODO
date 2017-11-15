@@ -8,10 +8,8 @@
 Todos:
     New:
         Current:
-            ☐ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/)
-                ☐ Update unit test for toggle All chagnges
+            ☐ Replace icons with SVG (look here https://jsfiddle.net/Cl3r1k/catLzzj9/)        
         
-        ☐ Replace icons with SVG (look here https://jsfiddle.net/Cl3r1k/catLzzj9/)
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
@@ -31,8 +29,10 @@ Todos:
         ☐ Options window:
             ☐ Add in options value for Multiple/Single editing todo
             ☐ Add in options value for support spec symbols (like ☐ and ✔) in new todo
-        ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service) (server side)
+        ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service) (server side probably)
             ☐ Update test for the feature in service and components
+        ☐ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/) (server side probably)
+            ☐ Update unit test for toggle All changes
         ☐ Add documentation (look here https://habrahabr.ru/company/docsvision/blog/341562/)
 
     Scheduled:

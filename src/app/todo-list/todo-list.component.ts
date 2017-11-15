@@ -38,8 +38,6 @@ export class TodoListComponent {
     }
 
     toggleAllTodos(state: boolean) {
-        // console.log('current state set to: ', state);
-        this.toggleAllTodoListEmitter.emit(state);
-        // TODO: Остановился здесь, не идет вверх событие?
+        this.toggleAllTodoListEmitter.emit(state);    // Emit the toggleAll event to TodosComponent
     }
 }
