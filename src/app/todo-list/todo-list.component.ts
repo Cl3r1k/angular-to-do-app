@@ -18,7 +18,7 @@ export class TodoListComponent {
     updateTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    toggleAllTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
+    toggleAllTodoListEmitter: EventEmitter<boolean> = new EventEmitter();
 
     @Output()
     removeTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
@@ -39,7 +39,7 @@ export class TodoListComponent {
 
     toggleAllTodos(state: boolean) {
         // console.log('current state set to: ', state);
-        this.toggleAllTodoListEmitter.emit(this.todos[0]);
+        this.toggleAllTodoListEmitter.emit(state);
         // TODO: Остановился здесь, не идет вверх событие?
     }
 }
