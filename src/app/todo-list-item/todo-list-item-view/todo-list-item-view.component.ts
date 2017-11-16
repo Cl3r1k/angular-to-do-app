@@ -26,6 +26,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     hoverState = false;
     deleteHoverState = false;
+    editHoverState = false;
 
     constructor() { }
 
@@ -56,6 +57,10 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     setDeleteHover(state: boolean) {
         this.deleteHoverState = state;
+    }
+
+    setEditHover(state: boolean) {
+        this.editHoverState = state;
     }
 
 }

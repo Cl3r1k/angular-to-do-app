@@ -3,17 +3,17 @@
     {
       "id": 3,
       "title": "Add some unit tests sa    x     asf            12       d",
-      "complete": true
+      "complete": false
     },
     {
       "id": 8,
       "title": "Do all todos",
-      "complete": true
+      "complete": false
     },
     {
       "id": 10,
       "title": "Finish the project",
-      "complete": true
+      "complete": false
     },
     {
       "id": 11,
