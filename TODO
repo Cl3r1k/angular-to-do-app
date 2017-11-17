@@ -8,14 +8,13 @@
 Todos:
     New:
         Current:
-            ☐ Replace all icons with SVG (look here https://jsfiddle.net/Cl3r1k/catLzzj9/)
+            ☐ Modal window for request on deleting todo
         
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         ☐ Find the way to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource
-        ☐ Fix all TODO in all files        
-        ☐ Modal window for request on deleting todo
+        ☐ Fix all TODO in all files
         ☐ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/)
         ☐ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/)
         ☐ Check the app in 'Internet mail.ru' browser
@@ -23,7 +22,7 @@ Todos:
         ☐ CleanUp code (delete console.log, comments and other things)
 
         ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
-            ☐ After implementation browser store -> update patch version
+            ☐ After implementation browser store -> update major version
 
     Future:
         ☐ Options window:
@@ -75,9 +74,10 @@ Todos:
             ✔ Update all path in the app @done(17-11-12 10:15)
             ✔ Update unit tests @done(17-11-12 10:24)
         ✔ Add icon 'edit' with SVG icon (from here https://icomoon.io) @done(17-11-16 09:42)
+        ✔ Replace 'destroy' icons with SVG (look here example https://jsfiddle.net/Cl3r1k/catLzzj9/) @done(17-11-17 09:13)
 
     Canceled:
-        ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore
+        ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)
         ✘ Find out how stored todos (probably browser store (LocalStorage)) in the example http://todomvc.com/examples/angularjs/#/ @cancelled(17-11-11 09:36) -> Not applicable, and to simple for a future
 
 

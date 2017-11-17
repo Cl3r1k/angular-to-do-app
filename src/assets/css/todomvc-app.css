@@ -206,27 +206,6 @@ label[for='toggle-all'] {
     text-decoration: line-through;
 }
 
-.todo-list li .destroy {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 10px;
-    bottom: 0;
-    width: 40px;
-    height: 40px;
-    margin: auto 0;
-    font-size: 30px;
-    font-weight: 900;
-    color: #cc9a9a;
-    margin-bottom: 11px;
-    transition: color 0.3s ease-out;
-}
-
-.todo-list li .destroy:hover {
-    color: #af5b5e;
-    cursor: pointer;
-}
-
 .hovered {
     background-color: #f5f5f5;
 }
@@ -237,14 +216,6 @@ label[for='toggle-all'] {
 
 .delete-hovered {
     background-color: #f7e8e8;
-}
-
-.todo-list li .destroy:after {
-    content: '×';
-}
-
-.todo-list li:hover .destroy {
-    display: block;
 }
 
 .todo-list li.editing:last-child {
@@ -289,14 +260,15 @@ label[for='toggle-all'] {
 
 .todo-list li .icon-pencil-edit {
     display: none;
-    font-size: 16px;
+    font-size: 18px;
     color: #bddad5;
     position: absolute;
     top: 0;
     right: 45px;
     bottom: 0;
     margin: auto 0;
-    margin-bottom: 23px;
+    padding: 3px 3px 3px 3px;
+    margin-bottom: 16px;
     transition: color 0.3s ease-out;
 }
 
@@ -306,6 +278,28 @@ label[for='toggle-all'] {
 }
 
 .todo-list li:hover .icon-pencil-edit {
+    display: block;
+}
+
+.todo-list li .icon-destroy {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+    margin: auto auto;
+    font-size: 18px;
+    color: #cc9a9a;
+    padding: 3px 3px 3px 3px;
+    transition: color 0.3s ease-out;
+}
+
+.todo-list li .icon-destroy:hover {
+    color: #af5b5e;
+    cursor: pointer;
+}
+
+.todo-list li:hover .icon-destroy {
     display: block;
 }
 
