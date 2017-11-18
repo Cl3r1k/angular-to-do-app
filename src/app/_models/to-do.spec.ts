@@ -1,6 +1,6 @@
 import { TestBed, async } from '@angular/core/testing';
 
-import { ToDo } from '@app/to-do';
+import { ToDo } from '@app/_models/to-do';
 
 
 describe('ToDo', () => {

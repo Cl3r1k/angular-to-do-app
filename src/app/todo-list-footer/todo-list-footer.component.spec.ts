@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { ToDo } from '@app/to-do';
+import { ToDo } from '@app/_models/to-do';
 
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 

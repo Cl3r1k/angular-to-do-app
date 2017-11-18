@@ -9,6 +9,8 @@ Todos:
     New:
         Current:
             ☐ Modal window for request on deleting todo
+                ☐ After implementation modal windows -> update patch version
+            ☐ Update test for TodoListItemViewComponent (with new 'edit' button)
         
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)

@@ -14,8 +14,8 @@ import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 
 // Services
-import { TodoService } from '@app/services/todo.service';
-import { ApiService } from '@app/services/api.service';
+import { TodoService } from '@app/_services/todo.service';
+import { ApiService } from '@app/_services/api.service';
 import { HttpClientModule } from '@angular/common/http';
 
 // Routings

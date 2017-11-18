@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { ToDo } from '@app/to-do';
+import { ToDo } from '@app/_models/to-do';
 
 import { Component } from '@angular/core';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';

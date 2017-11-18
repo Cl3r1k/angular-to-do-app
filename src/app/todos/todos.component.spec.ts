@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { TodosComponent } from '@app/todos/todos.component';
 
-import { ToDo } from '@app/to-do';
+import { ToDo } from '@app/_models/to-do';
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list-item/todo-list-item.component';
@@ -13,9 +13,9 @@ import { TodoListItemEditComponent } from '@app/todo-list-item/todo-list-item-ed
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 
 // Services
-import { TodoService } from '@app/services/todo.service';
-import { ApiMockService } from '@app/services/api-mock.service';
-import { ApiService } from '@app/services/api.service';
+import { TodoService } from '@app/_services/todo.service';
+import { ApiMockService } from '@app/_services/api-mock.service';
+import { ApiService } from '@app/_services/api.service';
 
 // Routers
 import { ActivatedRoute } from '@angular/router';

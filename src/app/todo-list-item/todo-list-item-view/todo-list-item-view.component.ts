@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ToDo } from '@app/to-do';
+import { ToDo } from '@app/_models/to-do';
 
-import { CustomTodoComponentInterface } from '@app/Interfaces/custom-todo-component-interface';
+import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-component-interface';
 
 @Component({
     selector: 'app-todo-list-item-view',
