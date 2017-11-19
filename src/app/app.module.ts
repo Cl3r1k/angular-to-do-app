@@ -21,6 +21,9 @@ import { HttpClientModule } from '@angular/common/http';
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
 
+// TODO: testing dialog
+import { DialogComponent } from '@app/dialog/dialog.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -31,7 +34,8 @@ import { AppRoutingModule } from '@app/app-routing.module';
         TodosComponent,
         PageNotFoundComponent,
         TodoListItemViewComponent,
-        TodoListItemEditComponent
+        TodoListItemEditComponent,
+        DialogComponent
     ],
     imports: [
         AppRoutingModule,

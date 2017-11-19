@@ -8,4 +8,11 @@
 
     <app-todo-list-footer [todosCount]='incompletedTodosCount'></app-todo-list-footer>
 
+    <button style="border: 1px solid red;" (click)='showDialog = !showDialog'>Call modal</button>
+
+    <app-dialog [(visible)]='showDialog'>
+        <h1>Hello mister</h1>
+        <button (click)='showDialog = !showDialog' style="border: 1px solid red;">Close me!</button>
+    </app-dialog>
+
 </section>

@@ -14,6 +14,8 @@ export class TodosComponent implements OnInit {
     todos: ToDo[] = [];
     incompletedTodosCount: number;
 
+    showDialog = false;
+
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
     // and assign it to a property called _todoDataService

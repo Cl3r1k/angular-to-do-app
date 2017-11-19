@@ -48,7 +48,8 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     removeTodo(todo: ToDo) {
         console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ' + todo.title);
-        this.removeTodoListItemEmitter.emit(todo);
+        // this.removeTodoListItemEmitter.emit(todo);
+        alert('Are you sure you want to delete the todo?');
     }
 
     setHover(state: boolean) {
