@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output, Renderer2 } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
 import { environment } from '@env/environment.prod';
@@ -17,7 +17,24 @@ export class TodoListHeaderComponent {
     @Output()
     addTodoListHeaderEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    constructor() { }
+    showDialog = false;
+
+    removeTodo() {
+        this.showDialogWindow(false);
+        alert('The todo deleted!');
+    }
+
+    constructor(private renderer: Renderer2) { }
+
+    showDialogWindow(state: boolean) {
+        this.showDialog = state;
+
+        if (this.showDialog) {
+            this.renderer.addClass(document.body, 'modal-open');
+        } else {
+            this.renderer.removeClass(document.body, 'modal-open');
+        }
+    }
 
     addTodo() {
         if (this.newTodo.title) {

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Components
 import { AppComponent } from '@app/app.component';
@@ -41,7 +42,8 @@ import { DialogComponent } from '@app/dialog/dialog.component';
         AppRoutingModule,
         HttpClientModule,
         BrowserModule,
-        FormsModule
+        FormsModule,
+        BrowserAnimationsModule
     ],
     providers: [TodoService, ApiService],
     bootstrap: [AppComponent]
