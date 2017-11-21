@@ -4,7 +4,14 @@
     <svg class="icon icon-pencil-edit" (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)' (click)='editTodo(todo)'>
         <use xlink:href="#icon-pencil-edit"></use>
     </svg>
-    <svg class="icon icon-destroy" (click)='removeTodo(todo)' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'>
+    <svg class="icon icon-destroy" (click)='showDialog = !showDialog' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'>
         <use xlink:href="#icon-destroy"></use>
     </svg>
+
+    <app-dialog [(visible)]='showDialog'>
+        <h5>Are you sure want to delete todo with title:</h5>
+        <p>{{todo.title}}</p>
+        <button (click)='removeTodo(todo)' style="border: 1px solid red;">Yes! Delete the todo!</button>
+        <button (click)='showDialog = !showDialog' style="border: 1px solid red;">No! Leave the todo!</button>
+    </app-dialog>
 </div>

@@ -1,12 +1,4 @@
 <header class='header'>
     <h1>Todo list <small>(v_{{BUILD_VERSION}})</small></h1>
     <input type="text" class='new-todo' placeholder='What needs to be done?' autofocus='' (keyup.enter)='addTodo()' [(ngModel)]='newTodo.title'>
-
-    <button style="border: 1px solid red;" (click)='showDialogWindow(true)'>Call modal</button>
-
-    <app-dialog [(visible)]='showDialog'>
-        <h5>Hello mister</h5>
-        <button (click)='removeTodo()' style="border: 1px solid red;">Yes! Delete the todo!</button>
-        <button (click)='showDialogWindow(false)' style="border: 1px solid red;">No! Leave the todo!</button>
-    </app-dialog>
 </header>
