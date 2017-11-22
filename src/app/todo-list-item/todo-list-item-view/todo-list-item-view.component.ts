@@ -50,9 +50,9 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     removeTodo(todo: ToDo) {
-        this.showDialog = false;
         // console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ' + todo.title);
         this.removeTodoListItemEmitter.emit(todo);
+        this.showDialog = false;
     }
 
     setHover(state: boolean) {
@@ -67,7 +67,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
         this.editHoverState = state;
     }
 
-    // Ability, to disable scrolling, when modal is active
+    // The ability, to disable scrolling, when modal is active
     // showDialogWindow(state: boolean) {
     //     this.showDialog = state;
 

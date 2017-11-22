@@ -1,4 +1,5 @@
-import { Component, OnInit, EventEmitter, Input, Output, state, transition, trigger, style, animate } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { transition, state, trigger, style, animate } from '@angular/animations';
 
 @Component({
     selector: 'app-dialog',
@@ -6,14 +7,25 @@ import { Component, OnInit, EventEmitter, Input, Output, state, transition, trig
     styleUrls: ['./dialog.component.css'],
     animations: [
         trigger('dialog', [
-            transition('void => *', [
-                style({ transform: 'scale3d(.3, .3, .3)' }),
-                animate(100)
-            ]),
-            transition('* => void', [
-                animate(100, style({ transform: 'scale3d(.0, .0, .0' }))
-            ])
-        ])
+            state('void', style({
+                opacity: 0
+            })),
+            state('*', style({
+                opacity: 1
+            })),
+            transition('void => *', animate('300ms ease-in')),
+            transition('* => void', animate('300ms ease-out'))
+        ]),
+        trigger('overlay', [
+            state('void', style({
+                opacity: 0
+            })),
+            state('*', style({
+                opacity: 1
+            })),
+            transition('void => *', animate('300ms ease-in')),
+            transition('* => void', animate('300ms ease-out'))
+        ]),
     ]
 })
 export class DialogComponent implements OnInit {

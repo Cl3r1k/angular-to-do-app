@@ -10,11 +10,16 @@ Todos:
         Current:
             ☐ Modal window for request on deleting todo
                 ☐ Center vertically modal
+                ☐ Update UI of the deletion modal window (look here https://limonte.github.io/sweetalert2/)
+                ☐ Change behavior of the 'overlay' (change to blur)
+
                 ☐ Update tests for modal windows
                 ☐ After implementation modal windows -> update patch version
+
             ☐ Update test for TodoListItemViewComponent (with new 'edit' button)
             ☐ Bug: when calceled modal on deleting, selection does not resets
         
+        ☐ Add spinner when Angular component loading
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
