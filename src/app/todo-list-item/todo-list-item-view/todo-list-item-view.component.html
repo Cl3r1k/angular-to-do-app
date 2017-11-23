@@ -9,9 +9,20 @@
     </svg>
 
     <app-dialog [(visible)]='showDialog'>
-        <h5>Are you sure want to delete todo with title:</h5>
-        <p>{{todo.title}}</p>
-        <button (click)='removeTodo(todo)' style="border: 1px solid red;">Yes! Delete the todo!</button>
-        <button (click)='showDialog = !showDialog' style="border: 1px solid red;">No! Leave the todo!</button>
+
+        <div class="sweet-alert">
+            <div class="icon warning">
+                <div class="icon-warning">!</div>
+            </div>
+
+            <h2 class="alert-title">Are you sure?</h2>
+            <div class="alert-content">You won't be able to revert this!</div>
+
+            <div class="buttons-wrapper">
+                <button (click)='removeTodo(todo)' class="btn-styled button-delete">Yes, delete it!</button>
+                <button (click)='showDialog = !showDialog' class="btn-styled button-cancel">Cancel</button>
+            </div>
+        </div>
+
     </app-dialog>
 </div>

@@ -30,7 +30,7 @@ import { transition, state, trigger, style, animate } from '@angular/animations'
 })
 export class DialogComponent implements OnInit {
 
-    @Input() closable = true;
+    @Input() closable = false;
     @Input() visible: boolean;
     @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 

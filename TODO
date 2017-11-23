@@ -11,7 +11,8 @@ Todos:
             ☐ Modal window for request on deleting todo
                 ☐ Center vertically modal
                 ☐ Update UI of the deletion modal window (look here https://limonte.github.io/sweetalert2/)
-                ☐ Change behavior of the 'overlay' (change to blur)
+                    ✔ Icon warning took here (https://codepen.io/arnaud-ritti/pen/avKNBL?q=sweet+alert&limit=all&type=type-pens) @done(17-11-22 09:51)
+                ✔ Change behavior of the 'overlay' (change to blur) @done(17-11-22 09:11)
 
                 ☐ Update tests for modal windows
                 ☐ After implementation modal windows -> update patch version
