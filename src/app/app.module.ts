@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Components
@@ -17,13 +18,14 @@ import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.compon
 // Services
 import { TodoService } from '@app/_services/todo.service';
 import { ApiService } from '@app/_services/api.service';
-import { HttpClientModule } from '@angular/common/http';
+import { ModalService } from '@app/_services/modal.service';
 
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
 
 // TODO: testing dialog
 import { DialogComponent } from '@app/dialog/dialog.component';
+import { ModalComponent } from '@app/modal/modal.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +38,8 @@ import { DialogComponent } from '@app/dialog/dialog.component';
         PageNotFoundComponent,
         TodoListItemViewComponent,
         TodoListItemEditComponent,
-        DialogComponent
+        DialogComponent,
+        ModalComponent
     ],
     imports: [
         AppRoutingModule,
@@ -45,7 +48,7 @@ import { DialogComponent } from '@app/dialog/dialog.component';
         FormsModule,
         BrowserAnimationsModule
     ],
-    providers: [TodoService, ApiService],
+    providers: [TodoService, ApiService, ModalService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

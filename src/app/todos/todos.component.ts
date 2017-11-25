@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '@app/_services/todo.service';
 import { ToDo } from '@app/_models/to-do';
+import { ModalService } from '@app/_services/modal.service';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -13,11 +14,12 @@ export class TodosComponent implements OnInit {
 
     todos: ToDo[] = [];
     incompletedTodosCount: number;
+    modalId = 'todoModal';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
     // and assign it to a property called _todoDataService
-    constructor(private _todoService: TodoService, private _route: ActivatedRoute) { }
+    constructor(private _todoService: TodoService, private _route: ActivatedRoute, public _modalService: ModalService) { }
 
     public ngOnInit() {
         this._route.data

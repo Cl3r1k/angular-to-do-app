@@ -6,6 +6,11 @@
 
     <app-todo-list [todos]='todos' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (removeTodoListEmitter)='onRemoveTodo($event)' (toggleAllTodoListEmitter)='onToggleAll($event)'></app-todo-list>
 
-    <app-todo-list-footer [todosCount]='incompletedTodosCount'></app-todo-list-footer>
+    <!-- <app-todo-list-footer [todosCount]='incompletedTodosCount'></app-todo-list-footer> -->
+
+    <button style="border: 1px solid red; background-color: #c7c7c7;" (click)='_modalService.open(modalId)'>Open modal</button>
+    <app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='modalId'>
+        <div>Text inside of the modal</div>
+    </app-modal>
 
 </section>
