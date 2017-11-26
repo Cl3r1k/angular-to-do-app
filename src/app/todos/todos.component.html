@@ -9,8 +9,20 @@
     <!-- <app-todo-list-footer [todosCount]='incompletedTodosCount'></app-todo-list-footer> -->
 
     <button style="border: 1px solid red; background-color: #c7c7c7;" (click)='_modalService.open(modalId)'>Open modal</button>
-    <app-modal [modalTitle]="'Some title'" [blocking]='false' [modalId]='modalId'>
-        <div>Text inside of the modal</div>
+    <app-modal [modalTitle]='titleModal' [blocking]='false' [modalId]='modalId'>
+        <div class="sweet-alert">
+            <div class="icon warning">
+                <div class="icon-warning">!</div>
+            </div>
+
+            <h2 class="alert-title">Are you sure?</h2>
+            <div class="alert-content">You won't be able to revert this!</div>
+
+            <div class="buttons-wrapper">
+                <button (click)='removeTodo(todo)' class="btn-styled button-delete">Yes, delete it!</button>
+                <button (click)='_modalService.close(modalId, true)' class="btn-styled button-cancel">Cancel</button>
+            </div>
+        </div>
     </app-modal>
 
 </section>

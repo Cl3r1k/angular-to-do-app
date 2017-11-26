@@ -13,8 +13,10 @@ import { ActivatedRoute } from '@angular/router';
 export class TodosComponent implements OnInit {
 
     todos: ToDo[] = [];
+    todo: ToDo = null;
     incompletedTodosCount: number;
     modalId = 'todoModal';
+    titleModal = '';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -50,10 +52,19 @@ export class TodosComponent implements OnInit {
 
     // Method to handle event emitted by TodoListComponent
     onRemoveTodo(todo: ToDo) {
+        this.todo = todo;
+        this._modalService.open(this.modalId);
+    }
+
+    removeTodo(todo: ToDo) {
+        console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ' + todo.title);
         this._todoService.deleteTodoById(todo.id).subscribe((_) => {
+            this.todo = _;
             this.todos = this.todos.filter((val) => val.id !== todo.id);
             this.updateFooterInfo();
         });
+
+        this._modalService.close(this.modalId, true);
     }
 
     // Method to handle event emitted by TodoListComponent
