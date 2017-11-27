@@ -4,25 +4,7 @@
     <svg class="icon icon-pencil-edit" (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)' (click)='editTodo(todo)'>
         <use xlink:href="#icon-pencil-edit"></use>
     </svg>
-    <svg class="icon icon-destroy" (click)='showDialog = !showDialog' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'>
+    <svg class="icon icon-destroy" (click)='removeTodo(todo)' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'>
         <use xlink:href="#icon-destroy"></use>
     </svg>
-
-    <app-dialog [(visible)]='showDialog'>
-
-        <div class="sweet-alert">
-            <div class="icon warning">
-                <div class="icon-warning">!</div>
-            </div>
-
-            <h2 class="alert-title">Are you sure?</h2>
-            <div class="alert-content">You won't be able to revert this!</div>
-
-            <div class="buttons-wrapper">
-                <button (click)='removeTodo(todo)' class="btn-styled button-delete">Yes, delete it!</button>
-                <button (click)='showDialog = !showDialog' class="btn-styled button-cancel">Cancel</button>
-            </div>
-        </div>
-
-    </app-dialog>
 </div>

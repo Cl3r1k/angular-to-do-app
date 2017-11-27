@@ -14,6 +14,7 @@ import { TodoListItemEditComponent } from '@app/todo-list-item/todo-list-item-ed
 import { TodoListItemViewComponent } from '@app/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
+import { ModalComponent } from '@app/modal/modal.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -22,10 +23,6 @@ import { ModalService } from '@app/_services/modal.service';
 
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
-
-// TODO: testing dialog
-import { DialogComponent } from '@app/dialog/dialog.component';
-import { ModalComponent } from '@app/modal/modal.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +35,6 @@ import { ModalComponent } from '@app/modal/modal.component';
         PageNotFoundComponent,
         TodoListItemViewComponent,
         TodoListItemEditComponent,
-        DialogComponent,
         ModalComponent
     ],
     imports: [

@@ -56,6 +56,7 @@ export class TodosComponent implements OnInit {
         this._modalService.open(this.modalId);
     }
 
+    // Additional method to perform deletion after modal confirmation
     removeTodo(todo: ToDo) {
         console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ' + todo.title);
         this._todoService.deleteTodoById(todo.id).subscribe((_) => {
@@ -81,5 +82,16 @@ export class TodosComponent implements OnInit {
     updateFooterInfo() {
         this.incompletedTodosCount = this.todos.filter(todo => !todo.complete).length;
     }
+
+    // The ability, to disable scrolling, when modal is active
+    // showDialogWindow(state: boolean) {
+    //     this.showDialog = state;
+
+    //     if (this.showDialog) {
+    //         this.renderer.addClass(document.body, 'modal-open');
+    //     } else {
+    //         this.renderer.removeClass(document.body, 'modal-open');
+    //     }
+    // }
 
 }

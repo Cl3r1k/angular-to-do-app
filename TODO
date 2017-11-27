@@ -13,7 +13,8 @@ Todos:
                 ✔ Update UI of the deletion modal window (look here https://limonte.github.io/sweetalert2/) @done(17-11-23 09:31)
                     ✔ Icon warning took here (https://codepen.io/arnaud-ritti/pen/avKNBL?q=sweet+alert&limit=all&type=type-pens) @done(17-11-22 09:51)
                 ✔ Change behavior of the 'overlay' (change to blur) @done(17-11-22 09:11)
-                ☐ Change modal with another approach (look here http://www.muller.tech/post/2017/04/03/angular4-create-modal/)
+                ✔ Change modal with another approach (look here http://www.muller.tech/post/2017/04/03/angular4-create-modal/) @done(17-11-27 09:05)
+                    ☐ Cancel modal when `Esc` pressed (look ModalComponent - HostListener)
 
                 ☐ Update tests for modal windows
                 ☐ After implementation modal windows -> update patch version

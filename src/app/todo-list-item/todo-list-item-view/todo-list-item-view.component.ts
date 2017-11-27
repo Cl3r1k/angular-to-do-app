@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
 import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-component-interface';
@@ -28,10 +28,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     deleteHoverState = false;
     editHoverState = false;
 
-    // The variable for a modal
-    showDialog = false;
-
-    constructor(/*private renderer: Renderer2*/) { }
+    constructor() { }
 
     ngOnInit() {
     }
@@ -52,7 +49,6 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     removeTodo(todo: ToDo) {
         // console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ' + todo.title);
         this.removeTodoListItemEmitter.emit(todo);
-        this.showDialog = false;
     }
 
     setHover(state: boolean) {
@@ -66,16 +62,5 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     setEditHover(state: boolean) {
         this.editHoverState = state;
     }
-
-    // The ability, to disable scrolling, when modal is active
-    // showDialogWindow(state: boolean) {
-    //     this.showDialog = state;
-
-    //     if (this.showDialog) {
-    //         this.renderer.addClass(document.body, 'modal-open');
-    //     } else {
-    //         this.renderer.removeClass(document.body, 'modal-open');
-    //     }
-    // }
 
 }
