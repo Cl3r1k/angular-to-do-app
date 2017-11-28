@@ -36,13 +36,8 @@ export class ModalComponent implements OnInit {
     @Input() blocking = false;
     isOpen = false;
 
-    // TODO: This part is not working
-    @HostListener('keyup') onMouseEnter(event) {
+    @HostListener('window:keyup', ['$event']) onKeyUp(event: KeyboardEvent) {
         this.keyup(event);
-    }
-
-    @HostListener('mouseup') onmouseenter(event) {
-        this.alertMouseEnter();
     }
 
     constructor(private _modalService: ModalService) { }
@@ -56,14 +51,10 @@ export class ModalComponent implements OnInit {
     }
 
     private keyup(event: KeyboardEvent) {
-        alert('keyuped');
         if (event.keyCode === 27) {
+            console.log('keyup method called in ModalComponent:', event);
             this.close(true);
         }
-    }
-
-    private alertMouseEnter() {
-        alert('Event fired');
     }
 
 }

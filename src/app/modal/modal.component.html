@@ -3,7 +3,6 @@
 <div [@modal] *ngIf='isOpen' class="modal">
     <div class="title" *ngIf='modalTitle'>
         <span class="title-text">{{modalTitle}}</span>
-        <!-- <span class="right-align" (click)='close(true)'><i class="material-icons md24">clear</i></span> -->
         <button *ngIf='!blocking' (click)='close(true)' aria-label="Close" class="dialog__close-btn">X</button>
     </div>
 

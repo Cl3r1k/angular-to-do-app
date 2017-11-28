@@ -83,7 +83,7 @@ export class TodosComponent implements OnInit {
         this.incompletedTodosCount = this.todos.filter(todo => !todo.complete).length;
     }
 
-    // The ability, to disable scrolling, when modal is active
+    // The ability, to disable scrolling, when a modal is active
     // showDialogWindow(state: boolean) {
     //     this.showDialog = state;
 

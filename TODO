@@ -14,9 +14,9 @@ Todos:
                     ✔ Icon warning took here (https://codepen.io/arnaud-ritti/pen/avKNBL?q=sweet+alert&limit=all&type=type-pens) @done(17-11-22 09:51)
                 ✔ Change behavior of the 'overlay' (change to blur) @done(17-11-22 09:11)
                 ✔ Change modal with another approach (look here http://www.muller.tech/post/2017/04/03/angular4-create-modal/) @done(17-11-27 09:05)
-                    ☐ Cancel modal when `Esc` pressed (look ModalComponent - HostListener)
+                    ✔ Cancel modal when `Esc` pressed (look ModalComponent - HostListener) @done(17-11-27 09:25)
 
-                ☐ Update tests for modal windows
+                ✔ Update tests for modal windows @done(17-11-28 08:47)
                 ☐ After implementation modal windows -> update patch version
 
             ☐ Update test for TodoListItemViewComponent (with new 'edit' button)

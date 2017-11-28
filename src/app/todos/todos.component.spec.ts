@@ -11,11 +11,13 @@ import { TodoListItemComponent } from '@app/todo-list-item/todo-list-item.compon
 import { TodoListItemViewComponent } from '@app/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListItemEditComponent } from '@app/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
+import { ModalComponent } from '@app/modal/modal.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
 import { ApiMockService } from '@app/_services/api-mock.service';
 import { ApiService } from '@app/_services/api.service';
+import { ModalService } from '@app/_services/modal.service';
 
 // Routers
 import { ActivatedRoute } from '@angular/router';
@@ -34,7 +36,8 @@ describe('TodosComponent', () => {
                 TodoListFooterComponent,
                 TodoListItemComponent,
                 TodoListItemViewComponent,
-                TodoListItemEditComponent
+                TodoListItemEditComponent,
+                ModalComponent
             ],
             providers: [TodoService,
                 {
@@ -48,7 +51,8 @@ describe('TodosComponent', () => {
                             todos: []
                         })
                     }
-                }
+                },
+                ModalService
             ]
         })
             .compileComponents();
@@ -61,7 +65,7 @@ describe('TodosComponent', () => {
     });
 
     // tslint:disable-next-line:max-line-length
-    it('Should create the app, used: Components(TodoListHeader, TodoList, TodoListFooter, TodoListItem) Services(ApiMockService, ApiService)', async(() => {
+    it('Should create the app, used: Components(TodoListHeader, TodoList, TodoListFooter, TodoListItem) Services(ApiMockService, ApiService, ModalService) (async)', async(() => {
         // Arrange
 
         // Act
