@@ -8,6 +8,7 @@ describe('TodoListItemViewComponent', () => {
     let fixture: ComponentFixture<TodoListItemViewComponent>;
     let toggleEl;
     let destroyEl;
+    let editEl;
     let expectedTodo: ToDo;
 
     beforeEach(async(() => {
@@ -21,7 +22,8 @@ describe('TodoListItemViewComponent', () => {
         fixture = TestBed.createComponent(TodoListItemViewComponent);
         component = fixture.componentInstance;
         toggleEl = fixture.debugElement.nativeElement.querySelector('input[type=checkbox]');    // Find toggle checkbox element
-        destroyEl = fixture.debugElement.nativeElement.querySelector('button');                 // Find destroy button element
+        destroyEl = fixture.debugElement.nativeElement.querySelector('.icon-destroy');          // Find destroy icon element
+        editEl = fixture.debugElement.nativeElement.querySelector('.icon-pencil-edit');         // Find edit icon element
 
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
         component.todo = expectedTodo;
@@ -82,6 +84,7 @@ describe('TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
+    // TODO: View tests are working not proper
     describe(`#view tests`, () => {
         it(`clicking on checkbox.toggle should emits 'toggleTodoComplete' event (async)`, async () => {
             // Arrange
@@ -96,7 +99,7 @@ describe('TodoListItemViewComponent', () => {
             });
         });
 
-        it(`clicking on button.destroy should emits 'removeTodo' event (async)`, async () => {
+        it(`clicking on svg.icon-destroy should call method 'close()' (async)`, async () => {
             // Arrange
 
             // Act
@@ -106,6 +109,19 @@ describe('TodoListItemViewComponent', () => {
             // Assert
             fixture.whenStable().then(() => {
                 expect(component.removeTodo).toHaveBeenCalled();
+            });
+        });
+
+        it(`clicking on svg.icon-pencil-edit should call method 'editTodo()' (async)`, async () => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'editTodo');
+            editEl.click();
+
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.editTodo).toHaveBeenCalled();
             });
         });
     });

@@ -8,28 +8,15 @@
 Todos:
     New:
         Current:
-            ☐ Modal window for request on deleting todo
-                ✔ Center vertically/horizontally modal @done(17-11-23 10:28)
-                ✔ Update UI of the deletion modal window (look here https://limonte.github.io/sweetalert2/) @done(17-11-23 09:31)
-                    ✔ Icon warning took here (https://codepen.io/arnaud-ritti/pen/avKNBL?q=sweet+alert&limit=all&type=type-pens) @done(17-11-22 09:51)
-                ✔ Change behavior of the 'overlay' (change to blur) @done(17-11-22 09:11)
-                ✔ Change modal with another approach (look here http://www.muller.tech/post/2017/04/03/angular4-create-modal/) @done(17-11-27 09:05)
-                    ✔ Cancel modal when `Esc` pressed (look ModalComponent - HostListener) @done(17-11-27 09:25)
-
-                ✔ Update tests for modal windows @done(17-11-28 08:47)
-                ✔ After implementation modal windows -> update patch version @done(17-11-28 09:38)
-
-            ☐ Update test for TodoListItemViewComponent (with new 'edit' button)
-            ☐ Bug: when calceled modal on deleting, selection does not resets
+            ☐ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/)
+            ☐ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/)
         
-        ☐ Add spinner when Angular component loading (examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here)
+        ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         ☐ Find the way to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource
         ☐ Fix all TODO in all files
-        ☐ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/)
-        ☐ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/)
         ☐ Check the app in 'Internet mail.ru' browser
 
         ☐ CleanUp code (delete console.log, comments and other things)
@@ -65,7 +52,7 @@ Todos:
             ✔ Write tests for TodoListComponent
             ✔ Write tests for TodoListHeaderComponent
         
-        ☐ Editing todos block
+        ✔ Editing todos block
             ✔ On finish editing, if the title of the todo is empty -> delete todo
             ✔ If todo is edited, cursor not entered in the todo title field
             ✔ In TodoListItemEditComponent change div class from 'view' to 'editContainer' and style the container
@@ -88,6 +75,19 @@ Todos:
             ✔ Update unit tests @done(17-11-12 10:24)
         ✔ Add icon 'edit' with SVG icon (from here https://icomoon.io) @done(17-11-16 09:42)
         ✔ Replace 'destroy' icons with SVG (look here example https://jsfiddle.net/Cl3r1k/catLzzj9/) @done(17-11-17 09:13)
+
+        ✔ Modal window for request on deleting todo @done(17-11-28 09:58)
+            ✔ Center vertically/horizontally modal @done(17-11-23 10:28)
+            ✔ Update UI of the deletion modal window (look here https://limonte.github.io/sweetalert2/) @done(17-11-23 09:31)
+                ✔ Icon warning took here (https://codepen.io/arnaud-ritti/pen/avKNBL?q=sweet+alert&limit=all&type=type-pens) @done(17-11-22 09:51)
+            ✔ Change behavior of the 'overlay' (change to blur) @done(17-11-22 09:11)
+            ✔ Change modal with another approach (look here http://www.muller.tech/post/2017/04/03/angular4-create-modal/) @done(17-11-27 09:05)
+                ✔ Cancel modal when `Esc` pressed (look ModalComponent - HostListener) @done(17-11-27 09:25)
+
+            ✔ Update tests for modal windows @done(17-11-28 08:47)
+            ✔ After implementation modal windows -> update patch version @done(17-11-28 09:38)
+        ✔ Update test for TodoListItemViewComponent (with new 'edit' button) @done(17-11-28 10:44)
+        ✔ Bug: when calceled modal on deleting, selection does not resets (fixed when TodoListItemViewComponent updated to dumb deletion - modal now called in TodosComponent) @done(17-11-28 09:58)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)
