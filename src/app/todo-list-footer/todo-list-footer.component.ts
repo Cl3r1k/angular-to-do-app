@@ -12,4 +12,8 @@ export class TodoListFooterComponent {
 
     constructor() { }
 
+    clearCompleted() {
+        alert('Clear completed tasks?');
+    }
+
 }

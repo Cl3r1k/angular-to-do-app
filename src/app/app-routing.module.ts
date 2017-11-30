@@ -18,6 +18,20 @@ const routes: Routes = [
         }
     },
     {
+        path: 'todos/active',
+        component: TodosComponent,
+        resolve: {
+            todos: TodosResolver
+        }
+    },
+    {
+        path: 'todos/completed',
+        component: TodosComponent,
+        resolve: {
+            todos: TodosResolver
+        }
+    },
+    {
         path: '**',
         component: PageNotFoundComponent
     }
