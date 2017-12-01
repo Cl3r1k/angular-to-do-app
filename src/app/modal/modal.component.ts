@@ -51,7 +51,7 @@ export class ModalComponent implements OnInit {
     }
 
     private keyup(event: KeyboardEvent) {
-        if (event.keyCode === 27) {
+        if (event.keyCode === 27 && this.isOpen) {
             console.log('keyup method called in ModalComponent:', event);
             this.close(true);
         }

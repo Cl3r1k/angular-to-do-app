@@ -23,6 +23,42 @@ export class ApiService {
             .catch(this.handleError);
     }
 
+    // API: GET /todos (only active)
+    public getAllActiveTodos(): Observable<ToDo[]> {
+        return this._httpClient.get(API_URL + '/todos')
+            .map(response => {
+                let todos: ToDo[] = [];
+                // console.log(response[0]);
+
+                Object.keys(response).forEach(key => {
+                    if (!response[key].complete) {
+                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete}));
+                    }
+                });
+
+                return todos;
+            })
+            .catch(this.handleError);
+    }
+
+    // API: GET /todos (only completed)
+    public getAllCompletedTodos(): Observable<ToDo[]> {
+        return this._httpClient.get(API_URL + '/todos')
+            .map(response => {
+                let todos: ToDo[] = [];
+                // console.log(response[0]);
+
+                Object.keys(response).forEach(key => {
+                    if (response[key].complete) {
+                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete}));
+                    }
+                });
+
+                return todos;
+            })
+            .catch(this.handleError);
+    }
+
     // API: POST /todos
     public createTodo(todo: ToDo): Observable<ToDo> {
         return this._httpClient.post(API_URL + '/todos', todo)

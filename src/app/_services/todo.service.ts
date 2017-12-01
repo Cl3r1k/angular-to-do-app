@@ -32,6 +32,16 @@ export class TodoService {
         return this._api.getAllTodos();
     }
 
+    // Simulate GET /todos (only active)
+    getAllActiveTodos(): Observable<ToDo[]> {
+        return this._api.getAllActiveTodos();
+    }
+
+    // Simulate GET /todos (only completed)
+    getAllCompletedTodos(): Observable<ToDo[]> {
+        return this._api.getAllCompletedTodos();
+    }
+
     // Simulate GET /todos/:id
     getTodoById(id: number): Observable<ToDo> {
         return this._api.getTodoById(id);

@@ -68,12 +68,12 @@ button {
 
 .todoapp h1 {
     position: absolute;
-    top: -170px;
+    top: -130px;
     width: 100%;
     font-size: 80px;
     font-weight: 100;
     text-align: center;
-    color: rgba(175, 47, 47, 0.5);
+    color: rgba(175, 47, 47, 0.3);
     -webkit-text-rendering: optimizeLegibility;
     -moz-text-rendering: optimizeLegibility;
     text-rendering: optimizeLegibility;
@@ -246,6 +246,7 @@ label[for='toggle-all'] {
     position: relative;
     float: right;
     cursor: pointer;
+    line-height: 20px;
 }
 
 .footer .btn:hover {
@@ -264,11 +265,11 @@ label[for='toggle-all'] {
 
 .footer .link:hover:not(.active) {
     cursor: pointer;
-    border-color: rgba(175, 47, 47, 0.1);
+    border-color: rgba(175, 47, 47, 0.2);
 }
 
 .link.active {
-    border-color: rgba(175, 47, 47, 0.2);
+    border-color: rgba(175, 47, 47, 0.4);
 }
 
 .todo-count {

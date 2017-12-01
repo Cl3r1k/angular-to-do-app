@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
 import { TodoService } from '@app/_services/todo.service';
 import { ToDo } from '@app/_models/to-do';
 import { ModalService } from '@app/_services/modal.service';
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: './todos.component.html',
     styleUrls: ['./todos.component.css']
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit, AfterViewChecked, OnChanges, DoCheck {
 
     todos: ToDo[] = [];
     todo: ToDo = null;
@@ -81,6 +81,25 @@ export class TodosComponent implements OnInit {
 
     updateFooterInfo() {
         this.incompletedTodosCount = this.todos.filter(todo => !todo.complete).length;
+    }
+
+    ngAfterViewChecked(changes: SimpleChanges) {
+        console.log('ngAfterViewChecked');
+    }
+
+    ngDoCheck() {
+        console.log('ngDoCheck');
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        console.log('ngOnChanges');
+        // tslint:disable-next-line:forin
+        // for (const propName in changes) {
+        //     const chng = changes[propName];
+        //     const cur = JSON.stringify(chng.currentValue);
+        //     const prev = JSON.stringify(chng.previousValue);
+        //     console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
+        // }
     }
 
     // The ability, to disable scrolling, when a modal is active

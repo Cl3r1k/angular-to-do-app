@@ -16,9 +16,9 @@
       "complete": false
     },
     {
-      "id": 11,
       "title": "Complete the edititing todo",
-      "complete": true
+      "complete": true,
+      "id": 11
     },
     {
       "id": 12,

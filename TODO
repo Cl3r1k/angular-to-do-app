@@ -10,6 +10,8 @@ Todos:
         Current:
             ☐ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/)
             ☐ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/)
+
+            ☐ Update modal with (https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html)
         
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Add drag'n'drop posibility        
