@@ -53,4 +53,9 @@ export class TodoService {
 
         return this._api.updateTodo(todo);
     }
+
+    // Simulate GET /todos (amount of active todos)
+    getActiveTodosAmount(): Observable<number> {
+        return this._api.getActiveTodosAmount();
+    }
 }

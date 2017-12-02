@@ -27,12 +27,12 @@ export class ApiService {
     public getAllActiveTodos(): Observable<ToDo[]> {
         return this._httpClient.get(API_URL + '/todos')
             .map(response => {
-                let todos: ToDo[] = [];
+                const todos: ToDo[] = [];
                 // console.log(response[0]);
 
                 Object.keys(response).forEach(key => {
                     if (!response[key].complete) {
-                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete}));
+                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
                     }
                 });
 
@@ -45,12 +45,12 @@ export class ApiService {
     public getAllCompletedTodos(): Observable<ToDo[]> {
         return this._httpClient.get(API_URL + '/todos')
             .map(response => {
-                let todos: ToDo[] = [];
+                const todos: ToDo[] = [];
                 // console.log(response[0]);
 
                 Object.keys(response).forEach(key => {
                     if (response[key].complete) {
-                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete}));
+                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
                     }
                 });
 
@@ -101,4 +101,21 @@ export class ApiService {
         return Observable.throw(error);
     }
 
+    // API: GET /todos (only active)
+    public getActiveTodosAmount(): Observable<number> {
+        return this._httpClient.get(API_URL + '/todos')
+            .map(response => {
+                const todos: ToDo[] = [];
+                // console.log(response[0]);
+
+                Object.keys(response).forEach(key => {
+                    if (!response[key].complete) {
+                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
+                    }
+                });
+
+                return todos.length;
+            })
+            .catch(this.handleError);
+    }
 }

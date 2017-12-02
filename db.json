@@ -31,9 +31,9 @@
       "complete": true
     },
     {
-      "id": 14,
       "title": "On editing finish, if title of the todo is empty -> delete todo",
-      "complete": true
+      "complete": true,
+      "id": 14
     },
     {
       "title": "Test todo",

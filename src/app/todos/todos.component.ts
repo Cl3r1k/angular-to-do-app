@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked, OnChanges, SimpleChanges, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoService } from '@app/_services/todo.service';
 import { ToDo } from '@app/_models/to-do';
 import { ModalService } from '@app/_services/modal.service';
@@ -10,13 +10,14 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: './todos.component.html',
     styleUrls: ['./todos.component.css']
 })
-export class TodosComponent implements OnInit, AfterViewChecked, OnChanges, DoCheck {
+export class TodosComponent implements OnInit {
 
     todos: ToDo[] = [];
     todo: ToDo = null;
     incompletedTodosCount: number;
     modalId = 'todoModal';
     titleModal = '';
+    activeRouteState = 0;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -29,6 +30,13 @@ export class TodosComponent implements OnInit, AfterViewChecked, OnChanges, DoCh
             .subscribe(
                 (todos) => {
                     this.todos = todos;
+                    if (this._route.routeConfig.path.endsWith('active')) {
+                        this.activeRouteState = 1;
+                    } else if (this._route.routeConfig.path.endsWith('completed')) {
+                        this.activeRouteState = 2;
+                    } else {
+                        this.activeRouteState = 0;
+                    }
                     this.updateFooterInfo();
                 }
             );
@@ -37,7 +45,9 @@ export class TodosComponent implements OnInit, AfterViewChecked, OnChanges, DoCh
     // Method to handle event emitted by TodoListHeaderComponent
     onAddTodo(todo: ToDo) {
         this._todoService.addTodo(todo).subscribe((newTodo) => {
-            this.todos = this.todos.concat(newTodo);
+            if (this.activeRouteState !== 2) {
+                this.todos = this.todos.concat(newTodo);
+            }
             this.updateFooterInfo();
         });
     }
@@ -46,6 +56,15 @@ export class TodosComponent implements OnInit, AfterViewChecked, OnChanges, DoCh
     onToggleTodoComplete(todo: ToDo) {
         this._todoService.toggleTodoComplete(todo).subscribe((updatedTodo) => {
             todo = updatedTodo;
+            if (todo.complete) {
+                if (this.activeRouteState === 1) {
+                    this.todos = this.todos.filter((val) => val.id !== todo.id);
+                }
+            } else {
+                if (this.activeRouteState === 2) {
+                    this.todos = this.todos.filter((val) => val.id !== todo.id);
+                }
+            }
             this.updateFooterInfo();
         });
     }
@@ -80,26 +99,11 @@ export class TodosComponent implements OnInit, AfterViewChecked, OnChanges, DoCh
     }
 
     updateFooterInfo() {
-        this.incompletedTodosCount = this.todos.filter(todo => !todo.complete).length;
-    }
-
-    ngAfterViewChecked(changes: SimpleChanges) {
-        console.log('ngAfterViewChecked');
-    }
-
-    ngDoCheck() {
-        console.log('ngDoCheck');
-    }
-
-    ngOnChanges(changes: SimpleChanges) {
-        console.log('ngOnChanges');
-        // tslint:disable-next-line:forin
-        // for (const propName in changes) {
-        //     const chng = changes[propName];
-        //     const cur = JSON.stringify(chng.currentValue);
-        //     const prev = JSON.stringify(chng.previousValue);
-        //     console.log(`${propName}: currentValue = ${cur}, previousValue = ${prev}`);
-        // }
+        this._todoService.getActiveTodosAmount().subscribe((data) => {
+            // console.log('incoming data in updateFooterInfo is: ', data);
+            this.incompletedTodosCount = data;
+        });
+        // this.incompletedTodosCount = this.todos.filter(todo => !todo.complete).length;    // An old code to define active todos
     }
 
     // The ability, to disable scrolling, when a modal is active
