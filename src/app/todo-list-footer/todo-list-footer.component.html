@@ -1,5 +1,5 @@
-<footer class="footer" *ngIf='todosCount > 0'>
-    <span class='todo-count'><strong>{{todosCount}}</strong> {{todosCount === 1 ? 'item' : 'items'}} left</span>
+<footer class="footer" *ngIf='todosAllAmount > 0'>
+    <span class='todo-count'><strong>{{todosIncompletedAmount}}</strong> {{todosIncompletedAmount === 1 ? 'item' : 'items'}} left</span>
     <a routerLink='/todos' class="link" routerLinkActive='active' [routerLinkActiveOptions]='{exact:true}'>All</a>
     <a routerLink='/todos/active' class="link" routerLinkActive='active'>Active</a>
     <a routerLink='/todos/completed' class="link" routerLinkActive='active'>Completed</a>

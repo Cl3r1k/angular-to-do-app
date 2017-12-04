@@ -8,7 +8,8 @@ import { ToDo } from '@app/_models/to-do';
 })
 export class TodoListFooterComponent {
 
-    @Input() todosCount: number;
+    @Input() todosIncompletedAmount: number;
+    @Input() todosAllAmount: number;
 
     constructor() { }
 

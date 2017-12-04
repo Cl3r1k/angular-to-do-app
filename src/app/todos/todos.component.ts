@@ -14,7 +14,8 @@ export class TodosComponent implements OnInit {
 
     todos: ToDo[] = [];
     todo: ToDo = null;
-    incompletedTodosCount: number;
+    incompletedTodosAmount: number;
+    allTodosAmount: number;
     modalId = 'todoModal';
     titleModal = '';
     activeRouteState = 0;
@@ -99,11 +100,17 @@ export class TodosComponent implements OnInit {
     }
 
     updateFooterInfo() {
-        this._todoService.getActiveTodosAmount().subscribe((data) => {
-            // console.log('incoming data in updateFooterInfo is: ', data);
-            this.incompletedTodosCount = data;
+        this._todoService.getAllTodosAmount().subscribe((dataAllTodosAmount) => {
+            // console.log('incoming dataAllTodosAmount in updateFooterInfo is: ', dataAllTodosAmount);
+            if (dataAllTodosAmount) {
+                this.allTodosAmount = dataAllTodosAmount;
+                this._todoService.getActiveTodosAmount().subscribe((dataIncompletedTodosAmount) => {
+                    // console.log('incoming dataIncompletedTodosAmount in updateFooterInfo is: ', dataIncompletedTodosAmount);
+                    this.incompletedTodosAmount = dataIncompletedTodosAmount;
+                });
+            }
         });
-        // this.incompletedTodosCount = this.todos.filter(todo => !todo.complete).length;    // An old code to define active todos
+        // this.incompletedTodosAmount = this.todos.filter(todo => !todo.complete).length;    // An old code to define active todos
     }
 
     // The ability, to disable scrolling, when a modal is active

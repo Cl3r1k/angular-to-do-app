@@ -10,7 +10,8 @@ Todos:
         Current:
             ✔ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-02 09:09)
             ☐ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/)
-            ☐ In footer, show footer if amount of todos it more than 1, even if all of them are completed
+            ✔ In footer, show footer if amount of todos is more than 1, even if all of them are completed @done(17-12-04 08:57)
+            ☐ Btn 'clear all', should be displayed, if there is at least 1 completed todo
                 ☐ Update unit tests for new code
 
             ☐ Update modal with (https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html)

@@ -101,7 +101,7 @@ export class ApiService {
         return Observable.throw(error);
     }
 
-    // API: GET /todos (only active)
+    // API: GET /todos (only active amount)
     public getActiveTodosAmount(): Observable<number> {
         return this._httpClient.get(API_URL + '/todos')
             .map(response => {
@@ -115,6 +115,16 @@ export class ApiService {
                 });
 
                 return todos.length;
+            })
+            .catch(this.handleError);
+    }
+
+    // API: GET /todos (all todos amount)
+    public getAllTodosAmount(): Observable<number> {
+        return this._httpClient.get(API_URL + '/todos')
+            .map(response => {
+                console.log(Object.keys(response));
+                return Object.keys(response).length;
             })
             .catch(this.handleError);
     }
