@@ -14,8 +14,9 @@ export class TodosComponent implements OnInit {
 
     todos: ToDo[] = [];
     todo: ToDo = null;
-    incompletedTodosAmount: number;
     allTodosAmount: number;
+    activeTodosAmount: number;
+    completedTodosAmount: number;
     modalId = 'todoModal';
     titleModal = '';
     activeRouteState = 0;
@@ -29,17 +30,17 @@ export class TodosComponent implements OnInit {
         this._route.data
             .map((data) => data['todos'])
             .subscribe(
-                (todos) => {
-                    this.todos = todos;
-                    if (this._route.routeConfig.path.endsWith('active')) {
-                        this.activeRouteState = 1;
-                    } else if (this._route.routeConfig.path.endsWith('completed')) {
-                        this.activeRouteState = 2;
-                    } else {
-                        this.activeRouteState = 0;
-                    }
-                    this.updateFooterInfo();
+            (todos) => {
+                this.todos = todos;
+                if (this._route.routeConfig.path.endsWith('active')) {
+                    this.activeRouteState = 1;
+                } else if (this._route.routeConfig.path.endsWith('completed')) {
+                    this.activeRouteState = 2;
+                } else {
+                    this.activeRouteState = 0;
                 }
+                this.updateFooterInfo();
+            }
             );
     }
 
@@ -100,28 +101,22 @@ export class TodosComponent implements OnInit {
     }
 
     updateFooterInfo() {
-        this._todoService.getAllTodosAmount().subscribe((dataAllTodosAmount) => {
-            // console.log('incoming dataAllTodosAmount in updateFooterInfo is: ', dataAllTodosAmount);
-            if (dataAllTodosAmount) {
-                this.allTodosAmount = dataAllTodosAmount;
-                this._todoService.getActiveTodosAmount().subscribe((dataIncompletedTodosAmount) => {
-                    // console.log('incoming dataIncompletedTodosAmount in updateFooterInfo is: ', dataIncompletedTodosAmount);
-                    this.incompletedTodosAmount = dataIncompletedTodosAmount;
-                });
-            }
+        this._todoService.getAllTodos().subscribe((dataAllTodos) => {
+            this.allTodosAmount = dataAllTodos.length;
+            this.activeTodosAmount = dataAllTodos.filter((item) => !item.complete).length;
+            this.completedTodosAmount = dataAllTodos.filter((item) => item.complete).length;
         });
-        // this.incompletedTodosAmount = this.todos.filter(todo => !todo.complete).length;    // An old code to define active todos
     }
 
-    // The ability, to disable scrolling, when a modal is active
-    // showDialogWindow(state: boolean) {
-    //     this.showDialog = state;
-
-    //     if (this.showDialog) {
-    //         this.renderer.addClass(document.body, 'modal-open');
-    //     } else {
-    //         this.renderer.removeClass(document.body, 'modal-open');
-    //     }
-    // }
+    // Method to handle event emitted by TodoListFooterComponent
+    onClearCompleted(state: boolean) {
+        console.log('Clear completed tasks: ', state);
+        // this._todoService.addTodo(todo).subscribe((newTodo) => {
+        //     if (this.activeRouteState !== 2) {
+        //         this.todos = this.todos.concat(newTodo);
+        //     }
+        //     this.updateFooterInfo();
+        // });
+    }
 
 }

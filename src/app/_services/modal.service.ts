@@ -51,4 +51,16 @@ export class ModalService {
         return null;
     }
 
+    // TODO: Define, do we need this feature?
+    // The ability, to disable scrolling, when a modal is active
+    // showDialogWindow(state: boolean) {
+    //     this.showDialog = state;
+
+    //     if (this.showDialog) {
+    //         this.renderer.addClass(document.body, 'modal-open');
+    //     } else {
+    //         this.renderer.removeClass(document.body, 'modal-open');
+    //     }
+    // }
+
 }

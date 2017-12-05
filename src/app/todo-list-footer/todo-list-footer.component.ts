@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
 @Component({
@@ -8,13 +8,16 @@ import { ToDo } from '@app/_models/to-do';
 })
 export class TodoListFooterComponent {
 
-    @Input() todosIncompletedAmount: number;
     @Input() todosAllAmount: number;
+    @Input() todosActiveAmount: number;
+    @Input() todosCompletedAmount: number;
+
+    @Output() clearTodoListFooterEmitter: EventEmitter<boolean> = new EventEmitter();
 
     constructor() { }
 
-    clearCompleted() {
-        alert('Clear completed tasks?');
+    clearCompleted(state: boolean) {
+        this.clearTodoListFooterEmitter.emit(state);
     }
 
 }

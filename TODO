@@ -11,7 +11,8 @@ Todos:
             ✔ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-02 09:09)
             ☐ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/)
             ✔ In footer, show footer if amount of todos is more than 1, even if all of them are completed @done(17-12-04 08:57)
-            ☐ Btn 'clear all', should be displayed, if there is at least 1 completed todo
+            ✔ Btn 'clear all', should be displayed, if there is at least 1 completed todo @done(17-12-05 09:26)
+            ☐ Fix position of the filter buttons, when 'clear completed' hidden
                 ☐ Update unit tests for new code
 
             ☐ Update modal with (https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html)
@@ -36,6 +37,7 @@ Todos:
         ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service) (server side probably)
             ☐ Update test for the feature in service and components
         ☐ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/) (server side probably)
+            ☐ Adopt this feature with filtering
             ☐ Update unit test for toggle All changes
         ☐ Add documentation (look here https://habrahabr.ru/company/docsvision/blog/341562/)
 
