@@ -9,14 +9,20 @@ Todos:
     New:
         Current:
             ✔ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-02 09:09)
+                ☐ Update TodoListFooterComponent tests for 'filter'
             ☐ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/)
+                ☐ Update TodoListFooterComponent tests for 'clear completed'
+                ☐ Update TodosComponent tests
             ✔ In footer, show footer if amount of todos is more than 1, even if all of them are completed @done(17-12-04 08:57)
             ✔ Btn 'clear all', should be displayed, if there is at least 1 completed todo @done(17-12-05 09:26)
-            ☐ Fix position of the filter buttons, when 'clear completed' hidden
-                ☐ Update unit tests for new code
+            ✔ Fix position of the filter buttons, when 'clear completed' hidden @done(17-12-06 12:07)
+
+            ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
+                ☐ After implementation browser store -> update major version
 
             ☐ Update modal with (https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html)
         
+        ☐ Change styles to SCSS
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
@@ -26,9 +32,6 @@ Todos:
         ☐ Check the app in 'Internet mail.ru' browser
 
         ☐ CleanUp code (delete console.log, comments and other things)
-
-        ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
-            ☐ After implementation browser store -> update major version
 
     Future:
         ☐ Options window:

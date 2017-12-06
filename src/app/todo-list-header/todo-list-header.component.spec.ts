@@ -60,7 +60,7 @@ describe('TodoListHeaderComponent', () => {
 
         // Act
         component.newTodo = expectedTodo;
-        component.addTodoListHeaderEmitter.subscribe((value) => newTodo = value);    // Subscribe to add event
+        component.addTodoListHeaderEmitter.subscribe((value) => newTodo = value);    // Subscribe to 'add' event
         component.addTodo();
 
         // Assert
