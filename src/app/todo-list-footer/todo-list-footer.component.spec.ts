@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { ToDo } from '@app/_models/to-do';
 
@@ -14,6 +15,7 @@ describe('TodoListFooterComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
+            imports: [RouterTestingModule],
             declarations: [TodoListFooterComponent]
         })
             .compileComponents();

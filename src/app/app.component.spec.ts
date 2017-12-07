@@ -4,11 +4,11 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { AppModule } from '@app/app.module';
+
+import { Component } from '@angular/core';
 import { AppComponent } from '@app/app.component';
 import { TodosComponent } from '@app/todos/todos.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
-
-import { Component } from '@angular/core';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
