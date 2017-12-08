@@ -111,6 +111,7 @@ export class TodosComponent implements OnInit {
     // Method to handle event emitted by TodoListFooterComponent
     onClearCompleted(state: boolean) {
         console.log('Clear completed tasks: ', state);
+        alert('This part is under construction');
         // this._todoService.addTodo(todo).subscribe((newTodo) => {
         //     if (this.activeRouteState !== 2) {
         //         this.todos = this.todos.concat(newTodo);

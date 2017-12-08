@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
 import { ToDo } from '@app/_models/to-do';
 
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
+import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.directive';
 
 describe('TodoListFooterComponent', () => {
     let component: TodoListFooterComponent;
@@ -15,8 +15,7 @@ describe('TodoListFooterComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [RouterTestingModule],
-            declarations: [TodoListFooterComponent]
+            declarations: [TodoListFooterComponent, RouterLinkActiveStubsDirective]
         })
             .compileComponents();
     }));
@@ -26,9 +25,9 @@ describe('TodoListFooterComponent', () => {
         component = fixture.componentInstance;
         btnClearEl = fixture.debugElement.nativeElement.querySelector('.btn-clear');    // Find button.btn-clear element
 
-        expectedtodosAllAmount = 11;                         // For example
-        expectedtodosActiveAmount = 6;                         // For example
-        expectedtodosCompletedAmount = 5;                         // For example
+        expectedtodosAllAmount = 11;                                 // For example
+        expectedtodosActiveAmount = 6;                               // For example
+        expectedtodosCompletedAmount = 5;                            // For example
         component.todosAllAmount = expectedtodosAllAmount;
         component.todosActiveAmount = expectedtodosActiveAmount;
         component.todosCompletedAmount = expectedtodosCompletedAmount;
