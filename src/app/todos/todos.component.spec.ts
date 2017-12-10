@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { TodosComponent } from '@app/todos/todos.component';
 
@@ -28,7 +29,7 @@ describe('TodosComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule],
+            imports: [FormsModule, RouterTestingModule],
             declarations: [
                 TodosComponent,
                 TodoListHeaderComponent,
