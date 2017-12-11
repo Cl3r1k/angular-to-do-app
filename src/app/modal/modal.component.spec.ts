@@ -89,7 +89,7 @@ describe('ModalComponent', () => {
             // Act
             spyOn(component, 'close');
 
-            // Set input value focus lost
+            // Call Escape event
             window.dispatchEvent(keyUpEscapeEvent);
             fixture.detectChanges();
 

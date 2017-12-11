@@ -12,6 +12,8 @@ describe('TodoListFooterComponent', () => {
     let expectedtodosAllAmount: number;
     let expectedtodosActiveAmount: number;
     let expectedtodosCompletedAmount: number;
+    let linkDes;
+    let links;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -32,6 +34,12 @@ describe('TodoListFooterComponent', () => {
         component.todosActiveAmount = expectedtodosActiveAmount;
         component.todosCompletedAmount = expectedtodosCompletedAmount;
         fixture.detectChanges();
+
+        // find DebugElements with an attached RouterLinkActiveStubsDirective
+        linkDes = fixture.debugElement.queryAll(By.directive(RouterLinkActiveStubsDirective));
+
+        // get the attached link directive instances using the DebugElement injectors
+        links = linkDes.map(de => de.injector.get(RouterLinkActiveStubsDirective) as RouterLinkActiveStubsDirective);
     });
 
     it('should create an instance', () => {
@@ -80,6 +88,18 @@ describe('TodoListFooterComponent', () => {
 
         // Assert
         expect(state).toEqual(true);
+    }));
+
+    it(`can get RouterLinkActive from the template (async)`, async(() => {
+        // Arrange
+
+        // Act
+
+        // Assert
+        expect(links.length).toBe(3, 'should have 3 links');
+        expect(links[0].routerLinkActiveOptions['exact']).toBe(true, '1st should have routerLinkActiveOptions={exact:true}');
+        expect(links[1].routerLinkActiveOptions['exact']).toBe(false, '2nd should have routerLinkActiveOptions={exact:false}');
+        expect(links[2].routerLinkActiveOptions['exact']).toBe(false, '3rd should have routerLinkActiveOptions={exact:false}');
     }));
 
     describe(`#view tests`, () => {

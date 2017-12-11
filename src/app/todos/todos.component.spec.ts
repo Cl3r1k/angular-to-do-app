@@ -23,7 +23,7 @@ import { ModalService } from '@app/_services/modal.service';
 // Routers
 import { ActivatedRoute } from '@angular/router';
 
-describe('TodosComponent', () => {
+describe(`TodosComponent`, () => {
     let component: TodosComponent;
     let fixture: ComponentFixture<TodosComponent>;
 
@@ -50,7 +50,10 @@ describe('TodosComponent', () => {
                     useValue: {
                         data: Observable.of({
                             todos: []
-                        })
+                        }),
+                        routeConfig: {
+                            path: 'active'
+                        }
                     }
                 },
                 ModalService
@@ -66,12 +69,21 @@ describe('TodosComponent', () => {
     });
 
     // tslint:disable-next-line:max-line-length
-    it('Should create the app, used: Components(TodoListHeader, TodoList, TodoListFooter, TodoListItem) Services(ApiMockService, ApiService, ModalService) (async)', async(() => {
+    it(`Should create the app, used: Components(TodoListHeader, TodoList, TodoListFooter, TodoListItem, ModalComponent) Services(ApiMockService, ApiService, ModalService) (async)`, async(() => {
         // Arrange
 
         // Act
 
         // Assert
         expect(component).toBeTruthy();
+    }));
+
+    it(`Should create the app with 'activeRouteState' is 1 according to routeConfig: { path } (async)`, async(() => {
+        // Arrange
+
+        // Act
+
+        // Assert
+        expect(component.activeRouteState).toBe(1, `incoming routeConfig: { path === 'active' }`);
     }));
 });
