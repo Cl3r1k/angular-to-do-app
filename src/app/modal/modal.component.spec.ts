@@ -81,6 +81,7 @@ describe('ModalComponent', () => {
 
         it(`pressing 'Esc' should call method 'close()' (async)`, async () => {
             // Arrange
+            component.isOpen = true;
             const keyUpEscapeEvent = new KeyboardEvent('keyup', {
                 'key': 'Escape'
             });
@@ -89,8 +90,8 @@ describe('ModalComponent', () => {
             // Act
             spyOn(component, 'close');
 
-            // Call Escape event
-            window.dispatchEvent(keyUpEscapeEvent);
+            // Call Escape event on document
+            document.dispatchEvent(keyUpEscapeEvent);
             fixture.detectChanges();
 
             // Assert

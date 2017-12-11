@@ -36,7 +36,7 @@ export class ModalComponent implements OnInit {
     @Input() blocking = false;
     isOpen = false;
 
-    @HostListener('window:keyup', ['$event']) onKeyUp(event: KeyboardEvent) {
+    @HostListener('document:keyup', ['$event']) onKeyUp(event: KeyboardEvent) {
         this.keyup(event);
     }
 
