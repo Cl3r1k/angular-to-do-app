@@ -12,12 +12,13 @@ Todos:
                 ✔ Update TodoListFooterComponent tests for 'filter' @done(17-12-11 09:11)
             ☐ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/)
                 ✔ Update TodoListFooterComponent tests for 'clear completed' @done(17-12-11 09:11)
-                ☐ Update TodosComponent tests
+                ✔ Update TodosComponent tests @done(17-12-11 09:42)
             ✔ In footer, show footer if amount of todos is more than 1, even if all of them are completed @done(17-12-04 08:57)
             ✔ Btn 'clear all', should be displayed, if there is at least 1 completed todo @done(17-12-05 09:26)
             ✔ Fix position of the filter buttons, when 'clear completed' hidden @done(17-12-06 12:07)
 
             ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
+                ☐ Update tests (ApiService) (AppComponent - with new routes)
                 ☐ After implementation browser store -> update major version
 
             ☐ Update modal with (https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html)

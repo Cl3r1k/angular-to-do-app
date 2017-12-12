@@ -101,7 +101,7 @@ export class TodosComponent implements OnInit {
     }
 
     updateFooterInfo() {
-        this._todoService.getAllTodos().subscribe((dataAllTodos) => {
+        this._todoService.getAllTodos(0).subscribe((dataAllTodos) => {
             this.allTodosAmount = dataAllTodos.length;
             this.activeTodosAmount = dataAllTodos.filter((item) => !item.complete).length;
             this.completedTodosAmount = dataAllTodos.filter((item) => item.complete).length;
@@ -110,14 +110,11 @@ export class TodosComponent implements OnInit {
 
     // Method to handle event emitted by TodoListFooterComponent
     onClearCompleted(state: boolean) {
-        console.log('Clear completed tasks: ', state);
-        alert('This part is under construction');
-        // this._todoService.addTodo(todo).subscribe((newTodo) => {
-        //     if (this.activeRouteState !== 2) {
-        //         this.todos = this.todos.concat(newTodo);
-        //     }
-        //     this.updateFooterInfo();
-        // });
+        console.log('Clear completed tasks (remove state in TodoListFooterComponent and in current method): ', state);
+        this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
+            this.todos = todos;
+            this.updateFooterInfo();
+        });
     }
 
 }

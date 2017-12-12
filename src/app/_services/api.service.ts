@@ -16,45 +16,23 @@ export class ApiService {
 
     constructor(private _httpClient: HttpClient) { }
 
-    // API: GET /todos
-    public getAllTodos(): Observable<ToDo[]> {
-        return this._httpClient.get(API_URL + '/todos')
-            .map(response => response)
-            .catch(this.handleError);
-    }
-
-    // API: GET /todos (only active)
-    public getAllActiveTodos(): Observable<ToDo[]> {
+    // API: GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
+    public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         return this._httpClient.get(API_URL + '/todos')
             .map(response => {
-                const todos: ToDo[] = [];
-                // console.log(response[0]);
+                if (activeRouteState === 1 || activeRouteState === 2) {
+                    const todos: ToDo[] = [];
 
-                Object.keys(response).forEach(key => {
-                    if (!response[key].complete) {
-                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
-                    }
-                });
+                    Object.keys(response).forEach(key => {
+                        if ( (activeRouteState === 1 && !response[key].complete) || (activeRouteState === 2 && response[key].complete) ) {
+                            todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
+                        }
+                    });
 
-                return todos;
-            })
-            .catch(this.handleError);
-    }
-
-    // API: GET /todos (only completed)
-    public getAllCompletedTodos(): Observable<ToDo[]> {
-        return this._httpClient.get(API_URL + '/todos')
-            .map(response => {
-                const todos: ToDo[] = [];
-                // console.log(response[0]);
-
-                Object.keys(response).forEach(key => {
-                    if (response[key].complete) {
-                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
-                    }
-                });
-
-                return todos;
+                    return todos;
+                } else {
+                    return response;
+                }
             })
             .catch(this.handleError);
     }
@@ -101,6 +79,7 @@ export class ApiService {
         return Observable.throw(error);
     }
 
+    // TODO: Refactor this code, and combine to one getTodosAmount
     // API: GET /todos (only active amount)
     public getActiveTodosAmount(): Observable<number> {
         return this._httpClient.get(API_URL + '/todos')
@@ -123,8 +102,30 @@ export class ApiService {
     public getAllTodosAmount(): Observable<number> {
         return this._httpClient.get(API_URL + '/todos')
             .map(response => {
-                console.log(Object.keys(response));
+                // console.log(Object.keys(response));
                 return Object.keys(response).length;
+            })
+            .catch(this.handleError);
+    }
+
+    // API: PUT /todos (delete completed todos)
+    public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
+        console.log('This part is under construction');
+        return this._httpClient.get(API_URL + '/todos')
+            .map(response => {
+                if (activeRouteState === 1 || activeRouteState === 2) {
+                    const todos: ToDo[] = [];
+
+                    Object.keys(response).forEach(key => {
+                        if ( (activeRouteState === 1 && !response[key].complete) || (activeRouteState === 2 && response[key].complete) ) {
+                            todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
+                        }
+                    });
+
+                    return todos;
+                } else {
+                    return response;
+                }
             })
             .catch(this.handleError);
     }

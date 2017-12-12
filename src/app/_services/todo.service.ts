@@ -7,9 +7,6 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class TodoService {
 
-    // lastId = 0;  // Placeholder for last id so we can simulate automatic incrementing for id's
-    // todos: ToDo[] = [];  // Array placeholder for todo's
-
     constructor(private _api: ApiService) { }
 
     // Simulate POST /todos
@@ -27,19 +24,9 @@ export class TodoService {
         return this._api.updateTodo(todo);
     }
 
-    // Simulate GET /todos
-    getAllTodos(): Observable<ToDo[]> {
-        return this._api.getAllTodos();
-    }
-
-    // Simulate GET /todos (only active)
-    getAllActiveTodos(): Observable<ToDo[]> {
-        return this._api.getAllActiveTodos();
-    }
-
-    // Simulate GET /todos (only completed)
-    getAllCompletedTodos(): Observable<ToDo[]> {
-        return this._api.getAllCompletedTodos();
+    // Simulate GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
+    getAllTodos(activeRouteState: number): Observable<ToDo[]> {
+        return this._api.getAllTodos(activeRouteState);
     }
 
     // Simulate GET /todos/:id
@@ -62,5 +49,9 @@ export class TodoService {
     // Simulate GET /todos (amount of all todos)
     getAllTodosAmount(): Observable<number> {
         return this._api.getAllTodosAmount();
+    }
+
+    clearCompleted(activeRouteState: number) {
+        return this._api.clearCompleted(activeRouteState);
     }
 }

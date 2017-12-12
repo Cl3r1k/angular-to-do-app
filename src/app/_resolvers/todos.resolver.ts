@@ -10,7 +10,7 @@ export class TodosResolver implements Resolve<Observable<ToDo[]>> {
     constructor(private _todoService: TodoService) { }
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ToDo[]> {
-        return this._todoService.getAllTodos();
+        return this._todoService.getAllTodos(0);
     }
 
 }
