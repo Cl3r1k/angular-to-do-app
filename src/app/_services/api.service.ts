@@ -111,6 +111,9 @@ export class ApiService {
     // API: PUT /todos (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
         console.log('This part is under construction');
+
+        // Testing IndexedDb
+
         return this._httpClient.get(API_URL + '/todos')
             .map(response => {
                 if (activeRouteState === 1 || activeRouteState === 2) {
