@@ -34,6 +34,12 @@ Todos:
 
         ☐ CleanUp code (delete console.log, comments and other things)
 
+        ☐ Idea to implement multiple editing items
+        `сгруппировать/смерджить несколько observable httpClient.post, чтобы каждый последующий отправлялся только после выполенения предыдущего
+         flatMap -> 
+         post(...).flatMap(result => post(result.data))
+         ....data)).subscribe(finalResult => ....) (https://t.me/angular_ru/78351)`
+
     Future:
         ☐ Options window:
             ☐ Add in options value for Multiple/Single editing todo
