@@ -9,8 +9,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-// import { AngularIndexedDB } from 'angular2-indexeddb';
-
 const API_URL = environment.apiUrl;
 
 @Injectable()
@@ -114,9 +112,6 @@ export class ApiService {
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
         console.log('This part is under construction');
 
-        // Testing IndexedDb
-        this.operateIndexedDb();
-
         return this._httpClient.get(API_URL + '/todos')
             .map(response => {
                 if (activeRouteState === 1 || activeRouteState === 2) {
@@ -134,20 +129,5 @@ export class ApiService {
                 }
             })
             .catch(this.handleError);
-    }
-
-    operateIndexedDb() {
-        // let db = new AngularIndexedDB('todoDb', 1);
-
-        // db.openDatabase(1, (evt) => {
-        //     let objectStore = evt.currentTarget.result.createObjectStore(
-        //         'people', { keyPath: 'id', autoIncrement: true }
-        //     );
-
-        //     objectStore.createIndex('name', 'name', { unique: false });
-        //     objectStore.createIndex('email', 'email', { unique: false });
-
-        //     console.log('db created?');
-        // });
     }
 }
