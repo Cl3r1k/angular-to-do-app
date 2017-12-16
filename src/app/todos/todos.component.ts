@@ -4,6 +4,7 @@ import { ToDo } from '@app/_models/to-do';
 import { ModalService } from '@app/_services/modal.service';
 
 import { ActivatedRoute } from '@angular/router';
+import { IndexedDbService } from '@app/_services/indexed-db.service';
 
 @Component({
     selector: 'app-todos',
@@ -24,7 +25,10 @@ export class TodosComponent implements OnInit {
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
     // and assign it to a property called _todoDataService
-    constructor(private _todoService: TodoService, private _route: ActivatedRoute, public _modalService: ModalService) { }
+    constructor(private _todoService: TodoService,
+        private _route: ActivatedRoute,
+        public _modalService: ModalService,
+        public _indexedDbService: IndexedDbService) { }    // TODO: After IndexedDbService implementation, move it calls in TodoService
 
     public ngOnInit() {
         this._route.data
@@ -111,10 +115,21 @@ export class TodosComponent implements OnInit {
     // Method to handle event emitted by TodoListFooterComponent
     onClearCompleted(state: boolean) {
         console.log('Clear completed tasks (remove state in TodoListFooterComponent and in current method): ', state);
-        this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
-            this.todos = todos;
-            this.updateFooterInfo();
-        });
+        // this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
+        //     this.todos = todos;
+        //     this.updateFooterInfo();
+        // });
+
+        this._indexedDbService.clearCompleted(0);    // Init base
+        // this._indexedDbService.clearCompleted(1);
+        setTimeout(() => { this._indexedDbService.clearCompleted(1); }, 1000);    // Add new todo
+        setTimeout(() => { this._indexedDbService.clearCompleted(2); }, 2000);    // finByTodoTitle
+        setTimeout(() => { this._indexedDbService.clearCompleted(3); }, 3000);    // finById
+        setTimeout(() => { this._indexedDbService.clearCompleted(1); }, 4000);    // Add new todo again
+        setTimeout(() => { this._indexedDbService.clearCompleted(4); }, 5000);    // updateById
+        setTimeout(() => { this._indexedDbService.clearCompleted(6); }, 6000);    // getAll
+        setTimeout(() => { this._indexedDbService.clearCompleted(5); }, 7000);    // removeById
+        // setTimeout(() => { this._indexedDbService.clearCompleted(7); }, 7000);    // clearStore
     }
 
 }

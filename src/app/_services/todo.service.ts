@@ -51,7 +51,7 @@ export class TodoService {
         return this._api.getAllTodosAmount();
     }
 
-    clearCompleted(activeRouteState: number) {
+    clearCompleted(activeRouteState: number): Observable<ToDo[]> {
         return this._api.clearCompleted(activeRouteState);
     }
 }
