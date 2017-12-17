@@ -105,6 +105,7 @@ Todos:
             ✔ After implementation modal windows -> update patch version @done(17-11-28 09:38)
         ✔ Update test for TodoListItemViewComponent (with new 'edit' button) @done(17-11-28 10:44)
         ✔ Bug: when calceled modal on deleting, selection does not resets (fixed when TodoListItemViewComponent updated to dumb deletion - modal now called in TodosComponent) @done(17-11-28 09:58)
+        ✔ Update Cli to 1.6.1 @done(17-12-17 10:59)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)
