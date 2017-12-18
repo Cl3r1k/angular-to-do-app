@@ -68,7 +68,7 @@ export class IndexedDbService {
     addItem() {
         const todo: ToDo = new ToDo({ title: 'Find some gold!', complete: false });
         this.db.add(this.storeName, todo).then(() => {
-            console.log('addItem - todo.title %s added', todo.title);
+            console.log('addItem - added todo with title: %s', todo.title);
         }, (error) => {
             console.error('addItem error: ', error);
         });
@@ -76,7 +76,7 @@ export class IndexedDbService {
 
     finByTodoTitle(todoTitle: string) {
         this.db.getByIndex(this.storeName, 'title', todoTitle).then((todo) => {
-            console.log('finByTodoTitle todo result: ', todo);
+            console.log('finByTodoTitle - todo result: ', todo);
         }, (error) => {
             console.error('finByTodoTitle error: ', error);
         });
@@ -84,7 +84,7 @@ export class IndexedDbService {
 
     finById(todoId: number) {
         this.db.getByKey(this.storeName, todoId).then((todo) => {
-            console.log('finById todo result: ' , todo);
+            console.log('finById - todo result: ' , todo);
         }, (error) => {
             console.error('finById error: ', error);
         });
@@ -94,7 +94,7 @@ export class IndexedDbService {
         const todo: ToDo = new ToDo({ title: 'Find some gold! (updated)', complete: true });
 
         this.db.update(this.storeName, { title: todo.title, complete: todo.complete, id: todoId }).then(() => {
-            console.log('updateById updated value for item with id: ', todoId);
+            console.log('updateById - updated value for item with id: ', todoId);
         }, (error) => {
             console.error('updateById error', error);
         });
@@ -102,7 +102,7 @@ export class IndexedDbService {
 
     removeById(todoId: number) {
         this.db.delete(this.storeName, todoId).then(() => {
-            console.log('removeById deleted value with id: ', todoId);
+            console.log('removeById - deleted value with id: ', todoId);
         }, (error) => {
             console.error('removeById error: ', error);
         });
@@ -110,7 +110,7 @@ export class IndexedDbService {
 
     getAll() {
         this.db.getAll(this.storeName).then((data) => {
-            console.log('getAll data: ', data);
+            console.log('getAll - data: ', data);
         }, (error) => {
             console.error('getAll error: ', error);
         });

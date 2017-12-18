@@ -18,6 +18,7 @@ Todos:
             ✔ Fix position of the filter buttons, when 'clear completed' hidden @done(17-12-06 12:07)
 
             ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
+                ☐ Use DI to change service on-the-fly
                 ☐ Update tests (ApiService) (AppComponent - with new routes)
                 ☐ After implementation browser store -> update major version
 
