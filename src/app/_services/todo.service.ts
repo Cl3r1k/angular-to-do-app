@@ -7,6 +7,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class TodoService {
 
+    // TODO: Use DI to define service
     constructor(private _api: ApiService) { }
 
     // Simulate POST /todos

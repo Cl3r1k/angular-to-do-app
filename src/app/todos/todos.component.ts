@@ -120,16 +120,27 @@ export class TodosComponent implements OnInit {
         //     this.updateFooterInfo();
         // });
 
-        this._indexedDbService.clearCompleted(0);    // Init base
-        // this._indexedDbService.clearCompleted(1);
-        setTimeout(() => { this._indexedDbService.clearCompleted(1); }, 1000);    // Add new todo
-        setTimeout(() => { this._indexedDbService.clearCompleted(2); }, 2000);    // finByTodoTitle
-        setTimeout(() => { this._indexedDbService.clearCompleted(3); }, 3000);    // finById
-        setTimeout(() => { this._indexedDbService.clearCompleted(1); }, 4000);    // Add new todo again
-        setTimeout(() => { this._indexedDbService.clearCompleted(4); }, 5000);    // updateById
-        setTimeout(() => { this._indexedDbService.clearCompleted(6); }, 6000);    // getAll
-        setTimeout(() => { this._indexedDbService.clearCompleted(5); }, 7000);    // removeById
-        // setTimeout(() => { this._indexedDbService.clearCompleted(7); }, 7000);    // clearStore
+        this._indexedDbService.clearCompleted(0);    // Init/Open base
+
+        // setTimeout(() => { this._indexedDbService.clearCompleted(1); }, 1000);    // Add new todo
+        // setTimeout(() => { this._indexedDbService.clearCompleted(2); }, 2000);    // finByTodoTitle
+        // setTimeout(() => { this._indexedDbService.clearCompleted(3); }, 3000);    // finById
+        // setTimeout(() => { this._indexedDbService.clearCompleted(1); }, 4000);    // Add new todo again
+        // setTimeout(() => { this._indexedDbService.clearCompleted(4); }, 5000);    // updateById
+        // setTimeout(() => { this._indexedDbService.clearCompleted(6); }, 6000);    // getAll
+        // setTimeout(() => { this._indexedDbService.clearCompleted(5); }, 7000);    // removeById
+        // // setTimeout(() => { this._indexedDbService.clearCompleted(7); }, 7000);    // clearStore
+
+        let todo: ToDo = new ToDo({ title: 'Created new todo', complete: false });
+
+        setTimeout(() => { this._indexedDbService.addTodo(todo); }, 1000);    // Add new todo
+
+        // this._indexedDbService.addTodo(todo).subscribe((newTodo) => {
+        //     if (this.activeRouteState !== 2) {
+        //         this.todos = this.todos.concat(newTodo);
+        //     }
+        //     this.updateFooterInfo();
+        // });
     }
 
 }

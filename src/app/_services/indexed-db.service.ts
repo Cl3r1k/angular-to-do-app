@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
+import { Observable } from 'rxjs/Observable';
+
 import { AngularIndexedDB } from 'angular2-indexeddb';
 
 @Injectable()
@@ -20,8 +22,8 @@ export class IndexedDbService {
             case 0:    // Init base
                 this.openIndexedDb();
                 break;
-            case 1:    // addItem
-                this.addItem();
+            case 1:    // addTodo
+                // this.addTodo();
                 break;
             case 2:    // finByTodoTitle
                 this.finByTodoTitle('Find some gold!');
@@ -65,12 +67,12 @@ export class IndexedDbService {
         });
     }
 
-    addItem() {
-        const todo: ToDo = new ToDo({ title: 'Find some gold!', complete: false });
+    addTodo(todo: ToDo) {
         this.db.add(this.storeName, todo).then(() => {
-            console.log('addItem - added todo with title: %s', todo.title);
+            console.log('addTodo - added todo with title: %s', todo.title);
+            // return
         }, (error) => {
-            console.error('addItem error: ', error);
+            this.handleError(error);
         });
     }
 
@@ -122,6 +124,11 @@ export class IndexedDbService {
         }, (error) => {
             console.error('clearStore error', error);
         });
+    }
+
+    private handleError(error: Event | any) {
+        console.error('IndexedDbService - handleError: ', error);
+        return Observable.throw(error);
     }
 
 }
