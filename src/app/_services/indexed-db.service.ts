@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { AngularIndexedDB } from 'angular2-indexeddb';
 
+import 'rxjs/add/observable/fromPromise';
+
 @Injectable()
 export class IndexedDbService {
     baseName = 'todoDb';
@@ -32,7 +34,7 @@ export class IndexedDbService {
                 this.finById(1);
                 break;
             case 4:    // updateById
-            this.updateById(2);
+                this.updateById(2);
                 break;
             case 5:    // removeById
                 this.removeById(2);
@@ -53,7 +55,7 @@ export class IndexedDbService {
     openIndexedDb() {
         this.db = new AngularIndexedDB(this.baseName, 1);
 
-        console.log('db %s was initialised/connected.', this.baseName);
+        console.log('IndexedDb %s was initialised/opened.', this.baseName);
 
         this.db.openDatabase(1, (evt) => {
             const objectStore = evt.currentTarget.result.createObjectStore(
@@ -67,14 +69,31 @@ export class IndexedDbService {
         });
     }
 
-    addTodo(todo: ToDo) {
-        this.db.add(this.storeName, todo).then(() => {
-            console.log('addTodo - added todo with title: %s', todo.title);
-            // return
+    addTodo(todo: ToDo): Observable<ToDo> {
+
+        // const banners: any = ['1', '2', '3'];
+
+        // return Observable.of(banners);
+
+        return Observable.fromPromise(this.db.add(this.storeName, todo).then((newTodo) => {
+            console.log('addTodo - added new todo: ', newTodo);
+            return newTodo;
         }, (error) => {
             this.handleError(error);
-        });
+        })
+        );
     }
+
+    // addItem(itemName: string): Observable<string> {
+
+    //     return Observable.of(this.db.add(this.storeName, { title: itemName, complete: false }).then((newItem) => {
+    //         console.log('addItem - added new item: ', newItem);
+    //         return newItem;
+    //     }, (error) => {
+    //         return Observable.throw(error);
+    //     })
+    //     );
+    // }
 
     finByTodoTitle(todoTitle: string) {
         this.db.getByIndex(this.storeName, 'title', todoTitle).then((todo) => {
@@ -86,7 +105,7 @@ export class IndexedDbService {
 
     finById(todoId: number) {
         this.db.getByKey(this.storeName, todoId).then((todo) => {
-            console.log('finById - todo result: ' , todo);
+            console.log('finById - todo result: ', todo);
         }, (error) => {
             console.error('finById error: ', error);
         });

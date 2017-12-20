@@ -46,6 +46,9 @@ export class TodosComponent implements OnInit {
                 this.updateFooterInfo();
             }
             );
+
+        // TODO: Do not forget to change the opening IndexedDb method
+        this._indexedDbService.clearCompleted(0);    // Init/Open base
     }
 
     // Method to handle event emitted by TodoListHeaderComponent
@@ -120,7 +123,7 @@ export class TodosComponent implements OnInit {
         //     this.updateFooterInfo();
         // });
 
-        this._indexedDbService.clearCompleted(0);    // Init/Open base
+        // this._indexedDbService.clearCompleted(0);    // Init/Open base
 
         // setTimeout(() => { this._indexedDbService.clearCompleted(1); }, 1000);    // Add new todo
         // setTimeout(() => { this._indexedDbService.clearCompleted(2); }, 2000);    // finByTodoTitle
@@ -131,15 +134,20 @@ export class TodosComponent implements OnInit {
         // setTimeout(() => { this._indexedDbService.clearCompleted(5); }, 7000);    // removeById
         // // setTimeout(() => { this._indexedDbService.clearCompleted(7); }, 7000);    // clearStore
 
-        let todo: ToDo = new ToDo({ title: 'Created new todo', complete: false });
+        const todo: ToDo = new ToDo({ title: 'Created new todo', complete: false });
 
-        setTimeout(() => { this._indexedDbService.addTodo(todo); }, 1000);    // Add new todo
+        // setTimeout(() => { this._indexedDbService.addTodo(todo); }, 1000);    // Add new todo
 
-        // this._indexedDbService.addTodo(todo).subscribe((newTodo) => {
-        //     if (this.activeRouteState !== 2) {
-        //         this.todos = this.todos.concat(newTodo);
-        //     }
-        //     this.updateFooterInfo();
+        this._indexedDbService.addTodo(todo).subscribe((newTodo) => {
+            console.log('newTodo is: ', newTodo);
+            // if (this.activeRouteState !== 2) {
+            //     this.todos = this.todos.concat(newTodo);
+            // }
+            // this.updateFooterInfo();
+        });
+
+        // this._indexedDbService.addItem('Item desc').subscribe((newItem) => {
+        //     console.log('newItem is: ', newItem);
         // });
     }
 
