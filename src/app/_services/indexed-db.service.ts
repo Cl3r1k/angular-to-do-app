@@ -69,37 +69,21 @@ export class IndexedDbService {
         });
     }
 
-    addTodo(todo: ToDo): Observable<ToDo> {
-
-        // const banners: any = ['1', '2', '3'];
-
-        // return Observable.of(banners);
-
+    createTodo(todo: ToDo): Observable<ToDo> {
         return Observable.fromPromise(this.db.add(this.storeName, todo).then((newTodo) => {
-            console.log('addTodo - added new todo: ', newTodo);
-            return newTodo;
+            console.log('createTodo - added new todo: ', newTodo);
+            return new ToDo({ id: newTodo.key, title: newTodo.value.title, complete: newTodo.value.complete });
         }, (error) => {
             this.handleError(error);
         })
         );
     }
 
-    // addItem(itemName: string): Observable<string> {
-
-    //     return Observable.of(this.db.add(this.storeName, { title: itemName, complete: false }).then((newItem) => {
-    //         console.log('addItem - added new item: ', newItem);
-    //         return newItem;
-    //     }, (error) => {
-    //         return Observable.throw(error);
-    //     })
-    //     );
-    // }
-
     finByTodoTitle(todoTitle: string) {
         this.db.getByIndex(this.storeName, 'title', todoTitle).then((todo) => {
             console.log('finByTodoTitle - todo result: ', todo);
         }, (error) => {
-            console.error('finByTodoTitle error: ', error);
+            this.handleError(error);
         });
     }
 
@@ -107,7 +91,7 @@ export class IndexedDbService {
         this.db.getByKey(this.storeName, todoId).then((todo) => {
             console.log('finById - todo result: ', todo);
         }, (error) => {
-            console.error('finById error: ', error);
+            this.handleError(error);
         });
     }
 
@@ -117,7 +101,7 @@ export class IndexedDbService {
         this.db.update(this.storeName, { title: todo.title, complete: todo.complete, id: todoId }).then(() => {
             console.log('updateById - updated value for item with id: ', todoId);
         }, (error) => {
-            console.error('updateById error', error);
+            this.handleError(error);
         });
     }
 
@@ -125,7 +109,7 @@ export class IndexedDbService {
         this.db.delete(this.storeName, todoId).then(() => {
             console.log('removeById - deleted value with id: ', todoId);
         }, (error) => {
-            console.error('removeById error: ', error);
+            this.handleError(error);
         });
     }
 
@@ -133,7 +117,7 @@ export class IndexedDbService {
         this.db.getAll(this.storeName).then((data) => {
             console.log('getAll - data: ', data);
         }, (error) => {
-            console.error('getAll error: ', error);
+            this.handleError(error);
         });
     }
 
@@ -141,7 +125,7 @@ export class IndexedDbService {
         this.db.clear(this.storeName).then(() => {
             console.log('clearStore -> all items deleted');
         }, (error) => {
-            console.error('clearStore error', error);
+            this.handleError(error);
         });
     }
 

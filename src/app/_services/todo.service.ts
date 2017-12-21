@@ -1,18 +1,29 @@
 import { Injectable } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
-import { ApiService } from '@app/_services/api.service';
 import { Observable } from 'rxjs/Observable';
+
+import { ApiService } from '@app/_services/api.service';
+import { IndexedDbService } from '@app/_services/indexed-db.service';
 
 @Injectable()
 export class TodoService {
 
+    serviceState = 1;
+
     // TODO: Use DI to define service
-    constructor(private _api: ApiService) { }
+    constructor(private _api: ApiService, public _indexedDbService: IndexedDbService) {
+        // TODO: Do not forget to move the opening IndexedDb method to resolver
+        this._indexedDbService.clearCompleted(0);    // Init/Open base
+    }
 
     // Simulate POST /todos
     addTodo(todo: ToDo): Observable<ToDo> {
-        return this._api.createTodo(todo);
+        if (this.serviceState === 1) {
+            return this._indexedDbService.createTodo(todo);
+        } else {
+            return this._api.createTodo(todo);
+        }
     }
 
     // Simulate DELETE /todos/:id
