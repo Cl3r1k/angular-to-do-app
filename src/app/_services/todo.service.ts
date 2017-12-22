@@ -15,6 +15,8 @@ export class TodoService {
     constructor(private _api: ApiService, public _indexedDbService: IndexedDbService) {
         // TODO: Do not forget to move the opening IndexedDb method to resolver
         this._indexedDbService.clearCompleted(0);    // Init/Open base
+        // Наверное нужно использовать приватную переменную типа Интерфейс, а также имплементировать интерфейс в сервисы
+        // и уже в конструкторе в зависимости от состояния, использовать тот или иной сервис, но это не точно.
     }
 
     // Simulate POST /todos
@@ -28,7 +30,11 @@ export class TodoService {
 
     // Simulate DELETE /todos/:id
     deleteTodoById(id: number): Observable<ToDo> {
-        return this._api.deleteTodoById(id);
+        if (this.serviceState === 1) {
+            return this._indexedDbService.deleteTodoById(id);
+        } else {
+            return this._api.deleteTodoById(id);
+        }
     }
 
     // Simulate PUT /todos/:id

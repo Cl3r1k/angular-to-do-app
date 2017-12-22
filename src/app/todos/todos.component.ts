@@ -79,7 +79,7 @@ export class TodosComponent implements OnInit {
 
     // Additional method to perform deletion after modal confirmation
     removeTodo(todo: ToDo) {
-        console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ' + todo.title);
+        console.log('removeTodo emited evt removeTodoListItemEmitter from TodoListItemView with ttl: %s (id: %d)' + todo.title, todo.id);
         this._todoService.deleteTodoById(todo.id).subscribe((_) => {
             this.todo = _;
             this.todos = this.todos.filter((val) => val.id !== todo.id);

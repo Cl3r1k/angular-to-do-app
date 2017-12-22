@@ -36,8 +36,8 @@ export class IndexedDbService {
             case 4:    // updateById
                 this.updateById(2);
                 break;
-            case 5:    // removeById
-                this.removeById(2);
+            case 5:    // deleteTodoById
+                this.deleteTodoById(2);
                 break;
             case 6:    // getAll
                 this.getAll();
@@ -105,12 +105,14 @@ export class IndexedDbService {
         });
     }
 
-    removeById(todoId: number) {
-        this.db.delete(this.storeName, todoId).then(() => {
-            console.log('removeById - deleted value with id: ', todoId);
+    deleteTodoById(todoId: number): Observable<null> {
+        return Observable.fromPromise(this.db.delete(this.storeName, todoId).then(() => {
+            console.log('deleteTodoById - deleted value with id: ', todoId);
+            return null;
         }, (error) => {
             this.handleError(error);
-        });
+        })
+        );
     }
 
     getAll() {

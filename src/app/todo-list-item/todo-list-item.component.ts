@@ -48,7 +48,7 @@ export class TodoListItemComponent implements OnInit {
     }
 
     removeTodo(todo: ToDo) {
-        console.log('removeTodo emited event removeEventTodoListItem from TodoListItemComponent with title: ' + todo.title);
+        console.log('removeTodo emited evt removeEventTodoListItem from TodoListItemComponent with ttl: %s (id: %d)', todo.title, todo.id);
         this.removeTodoListItemEmitter.emit(todo);
     }
 
