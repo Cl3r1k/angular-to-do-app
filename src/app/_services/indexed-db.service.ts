@@ -20,44 +20,44 @@ export class IndexedDbService {
 
         // Testing IndexedDb
 
-        switch (activeRouteState) {
-            case 0:    // Init base
-                this.openIndexedDb();
-                break;
-            case 1:    // addTodo
-                // this.addTodo();
-                break;
-            case 2:    // finByTodoTitle
-                this.finByTodoTitle('Find some gold!');
-                break;
-            case 3:    // finById
-                this.finById(1);
-                break;
-            case 4:    // updateById
-                this.updateById(2);
-                break;
-            case 5:    // deleteTodoById
-                this.deleteTodoById(2);
-                break;
-            case 6:    // getAll
-                this.getAll();
-                break;
-            case 7:    // clearStore
-                this.clearStore();
-                break;
+        // switch (activeRouteState) {
+        //     case 0:    // Init base
+        //         this.openIndexedDb();
+        //         break;
+        //     case 1:    // addTodo
+        //         // this.addTodo();
+        //         break;
+        //     case 2:    // finByTodoTitle
+        //         this.finByTodoTitle('Find some gold!');
+        //         break;
+        //     case 3:    // finById
+        //         this.finById(1);
+        //         break;
+        //     case 4:    // updateTodo
+        //         this.updateTodo(new ToDo({ id: 1, title: 'Test todo!', complete: false }));
+        //         break;
+        //     case 5:    // deleteTodoById
+        //         this.deleteTodoById(2);
+        //         break;
+        //     case 6:    // getAll
+        //         this.getAll();
+        //         break;
+        //     case 7:    // clearStore
+        //         this.clearStore();
+        //         break;
 
-            default:
-                break;
-        }
+        //     default:
+        //         break;
+        // }
 
     }
 
-    openIndexedDb() {
+    openIndexedDb(): Observable<boolean> {
         this.db = new AngularIndexedDB(this.baseName, 1);
 
         console.log('IndexedDb %s was initialised/opened.', this.baseName);
 
-        this.db.openDatabase(1, (evt) => {
+        return Observable.fromPromise(this.db.openDatabase(1, (evt) => {
             const objectStore = evt.currentTarget.result.createObjectStore(
                 this.storeName, { keyPath: 'id', autoIncrement: true }
             );
@@ -66,7 +66,13 @@ export class IndexedDbService {
             objectStore.createIndex('complete', 'complete', { unique: false });
 
             console.log('Created %s with store %s (v%d)', this.baseName, this.storeName, 1);
-        });
+        }).then(() => {
+            console.log('DB INITED');
+            return true;
+        }, (error) => {
+            this.handleError(error);
+        })
+        );
     }
 
     createTodo(todo: ToDo): Observable<ToDo> {
@@ -95,14 +101,14 @@ export class IndexedDbService {
         });
     }
 
-    updateById(todoId: number) {
-        const todo: ToDo = new ToDo({ title: 'Find some gold! (updated)', complete: true });
-
-        this.db.update(this.storeName, { title: todo.title, complete: todo.complete, id: todoId }).then(() => {
-            console.log('updateById - updated value for item with id: ', todoId);
+    updateTodo(todo: ToDo): Observable<ToDo> {
+        return Observable.fromPromise(this.db.update(this.storeName, todo).then((newTodo) => {
+            console.log('updateTodo - updated value for item with id: %d, and title: %s', newTodo.id, newTodo.title);
+            return newTodo;
         }, (error) => {
             this.handleError(error);
-        });
+        })
+        );
     }
 
     deleteTodoById(todoId: number): Observable<null> {
@@ -115,12 +121,16 @@ export class IndexedDbService {
         );
     }
 
-    getAll() {
-        this.db.getAll(this.storeName).then((data) => {
-            console.log('getAll - data: ', data);
+    // API: GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
+    getAllTodos(activeRouteState: number): Observable<ToDo[]> {
+        console.log('calling getAllTodos in IndexedDbService');
+        return Observable.fromPromise(this.db.getAll(this.storeName).then((data) => {
+            console.log('getAllTodos - data: ', data);
+            return data;
         }, (error) => {
             this.handleError(error);
-        });
+        })
+        );
     }
 
     clearStore() {

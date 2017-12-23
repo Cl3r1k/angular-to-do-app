@@ -13,10 +13,13 @@ export class TodoService {
 
     // TODO: Use DI to define service
     constructor(private _api: ApiService, public _indexedDbService: IndexedDbService) {
-        // TODO: Do not forget to move the opening IndexedDb method to resolver
-        this._indexedDbService.clearCompleted(0);    // Init/Open base
         // Наверное нужно использовать приватную переменную типа Интерфейс, а также имплементировать интерфейс в сервисы
         // и уже в конструкторе в зависимости от состояния, использовать тот или иной сервис, но это не точно.
+        console.log('constructor in TodoService');
+    }
+
+    initIndexedDbBase(): Observable<boolean> {
+        return this._indexedDbService.openIndexedDb();    // Init/Open base
     }
 
     // Simulate POST /todos
@@ -39,12 +42,20 @@ export class TodoService {
 
     // Simulate PUT /todos/:id
     updateTodo(todo: ToDo): Observable<ToDo> {
-        return this._api.updateTodo(todo);
+        if (this.serviceState === 1) {
+            return this._indexedDbService.updateTodo(todo);
+        } else {
+            return this._api.updateTodo(todo);
+        }
     }
 
     // Simulate GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {
-        return this._api.getAllTodos(activeRouteState);
+        if (this.serviceState === 11) {
+            return this._indexedDbService.getAllTodos(activeRouteState);
+        } else {
+            return this._api.getAllTodos(activeRouteState);
+        }
     }
 
     // Simulate GET /todos/:id

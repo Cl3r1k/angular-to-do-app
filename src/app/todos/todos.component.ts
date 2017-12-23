@@ -101,6 +101,7 @@ export class TodosComponent implements OnInit {
     }
 
     updateFooterInfo() {
+        console.log('updateFooterInfo() called');
         this._todoService.getAllTodos(0).subscribe((dataAllTodos) => {
             this.allTodosAmount = dataAllTodos.length;
             this.activeTodosAmount = dataAllTodos.filter((item) => !item.complete).length;
