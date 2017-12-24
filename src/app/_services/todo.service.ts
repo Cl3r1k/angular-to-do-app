@@ -51,7 +51,7 @@ export class TodoService {
 
     // Simulate GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {
-        if (this.serviceState === 11) {
+        if (this.serviceState === 1) {
             return this._indexedDbService.getAllTodos(activeRouteState);
         } else {
             return this._api.getAllTodos(activeRouteState);

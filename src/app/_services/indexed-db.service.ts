@@ -124,9 +124,22 @@ export class IndexedDbService {
     // API: GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         console.log('calling getAllTodos in IndexedDbService');
-        return Observable.fromPromise(this.db.getAll(this.storeName).then((data) => {
-            console.log('getAllTodos - data: ', data);
-            return data;
+        return Observable.fromPromise(this.db.getAll(this.storeName).then((response) => {
+            console.log('getAllTodos - response: ', response);
+
+            if (activeRouteState === 1 || activeRouteState === 2) {
+                const todos: ToDo[] = [];
+
+                Object.keys(response).forEach(key => {
+                    if ((activeRouteState === 1 && !response[key].complete) || (activeRouteState === 2 && response[key].complete)) {
+                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
+                    }
+                });
+
+                return todos;
+            } else {
+                return response;
+            }
         }, (error) => {
             this.handleError(error);
         })

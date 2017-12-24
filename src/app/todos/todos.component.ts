@@ -31,6 +31,7 @@ export class TodosComponent implements OnInit {
             .map((data) => data['todos'])
             .subscribe(
             (todos) => {
+                console.log('incoming data from resolver', todos);
                 this.todos = todos;
                 if (this._route.routeConfig.path.endsWith('active')) {
                     this.activeRouteState = 1;
