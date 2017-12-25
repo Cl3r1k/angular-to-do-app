@@ -60,14 +60,22 @@ export class TodoService {
 
     // Simulate GET /todos/:id
     getTodoById(id: number): Observable<ToDo> {
-        return this._api.getTodoById(id);
+        if (this.serviceState === 1) {
+            return this._indexedDbService.getTodoById(id);
+        } else {
+            return this._api.getTodoById(id);
+        }
     }
 
     // Toggle todo complete
-    toggleTodoComplete(todo: ToDo) {
+    toggleTodoComplete(todo: ToDo): Observable<ToDo> {
         todo.complete = !todo.complete;
 
-        return this._api.updateTodo(todo);
+        if (this.serviceState === 1) {
+            return this._indexedDbService.updateTodo(todo);
+        } else {
+            return this._api.updateTodo(todo);
+        }
     }
 
     // Simulate GET /todos (amount of active todos)
@@ -81,6 +89,10 @@ export class TodoService {
     }
 
     clearCompleted(activeRouteState: number): Observable<ToDo[]> {
-        return this._api.clearCompleted(activeRouteState);
+        if (this.serviceState === 1) {
+            return this._indexedDbService.clearCompleted(activeRouteState);
+        } else {
+            return this._api.clearCompleted(activeRouteState);
+        }
     }
 }

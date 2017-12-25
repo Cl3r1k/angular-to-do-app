@@ -17,16 +17,24 @@ Todos:
             ✔ Btn 'clear all', should be displayed, if there is at least 1 completed todo @done(17-12-05 09:26)
             ✔ Fix position of the filter buttons, when 'clear completed' hidden @done(17-12-06 12:07)
 
+            ☐ Refactor observable variables, and add $ to thier names
+
             ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
                 ☐ Use DI to change service on-the-fly
                 ☐ Update tests (IndexedDbService)
                 ☐ Update tests (ApiService) (AppComponent - with new routes)
                 ☐ After implementation browser store -> update major version
 
-            ☐ Update modal with (https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html)
+                ☐ Refactor method updateFooterInfo(), and return from service next object -> { all: 'number', active: 'number', complete: 'number' }
+
+            ☐ Update modal with next examples: 
+                `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
+                `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
         
+        ☐ Find out, is there any way to use on resolver (transfer filterState in router?)
         ☐ Fix header min resizing issue (when window width is small, header flows)
         ☐ Change styles to SCSS
+        ☐ Add filtering by todo name
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Add drag'n'drop posibility        
         ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)

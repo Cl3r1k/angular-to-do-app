@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TodoService } from '@app/_services/todo.service';
 import { ToDo } from '@app/_models/to-do';
 import { ModalService } from '@app/_services/modal.service';
@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: './todos.component.html',
     styleUrls: ['./todos.component.css']
 })
-export class TodosComponent implements OnInit {
+export class TodosComponent implements OnInit, OnDestroy {
 
     todos: ToDo[] = [];
     todo: ToDo = null;
@@ -31,6 +31,8 @@ export class TodosComponent implements OnInit {
             .map((data) => data['todos'])
             .subscribe(
             (todos) => {
+                // console.log('this._route.params: ', this._route.params);
+                // console.log('this._route.queryParams: ', this._route.queryParams);
                 console.log('incoming data from resolver', todos);
                 this.todos = todos;
                 if (this._route.routeConfig.path.endsWith('active')) {
@@ -45,6 +47,12 @@ export class TodosComponent implements OnInit {
             );
     }
 
+    ngOnDestroy() {
+        console.log('Do not forget to Unsubscribe!');
+        // this._route.data.unsubscribe();
+        // this.todos.unsubscribe();
+    }
+
     // Method to handle event emitted by TodoListHeaderComponent
     onAddTodo(todo: ToDo) {
         this._todoService.addTodo(todo).subscribe((newTodo) => {
@@ -55,7 +63,7 @@ export class TodosComponent implements OnInit {
         });
     }
 
-    // Service is now available as this._todoDataService
+    // Service is now available as this._todoService
     onToggleTodoComplete(todo: ToDo) {
         this._todoService.toggleTodoComplete(todo).subscribe((updatedTodo) => {
             todo = updatedTodo;
