@@ -15,7 +15,7 @@ export class IndexedDbService {
 
     constructor() { }
 
-    public openIndexedDb(): Observable<boolean> {
+    public openIndexedDb(): Observable<null> {
         this.db = new AngularIndexedDB(this.baseName, 1);
 
         console.log('IndexedDb %s was initialised/opened.', this.baseName);
@@ -31,7 +31,7 @@ export class IndexedDbService {
             console.log('Created %s with store %s (v%d)', this.baseName, this.storeName, 1);
         }).then(() => {
             console.log('DB INITED');
-            return true;
+            return null;
         }, (error) => {
             this.handleError(error);
         })

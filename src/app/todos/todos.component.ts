@@ -125,17 +125,6 @@ export class TodosComponent implements OnInit, OnDestroy {
             this.todos = todos;
             this.updateFooterInfo();
         });
-
-        // this._indexedDbService.clearCompleted(0);    // Init/Open base
-
-        // setTimeout(() => { this._indexedDbService.clearCompleted(1); }, 1000);    // Add new todo
-        // setTimeout(() => { this._indexedDbService.clearCompleted(2); }, 2000);    // finByTodoTitle
-        // setTimeout(() => { this._indexedDbService.clearCompleted(3); }, 3000);    // finById
-        // setTimeout(() => { this._indexedDbService.clearCompleted(1); }, 4000);    // Add new todo again
-        // setTimeout(() => { this._indexedDbService.clearCompleted(4); }, 5000);    // updateById
-        // setTimeout(() => { this._indexedDbService.clearCompleted(6); }, 6000);    // getAll
-        // setTimeout(() => { this._indexedDbService.clearCompleted(5); }, 7000);    // removeById
-        // // setTimeout(() => { this._indexedDbService.clearCompleted(7); }, 7000);    // clearStore
     }
 
 }

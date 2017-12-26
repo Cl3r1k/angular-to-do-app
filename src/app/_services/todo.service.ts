@@ -18,7 +18,7 @@ export class TodoService {
         console.log('constructor in TodoService');
     }
 
-    initIndexedDbBase(): Observable<boolean> {
+    initIndexedDbBase(): Observable<null> {
         return this._indexedDbService.openIndexedDb();    // Init/Open base
     }
 
