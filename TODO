@@ -25,7 +25,7 @@ Todos:
                 ☐ Update tests (ApiService) (AppComponent - with new routes)
                 ☐ After implementation browser store -> update major version
 
-                ☐ Refactor method updateFooterInfo(), and return from service next object -> { all: 'number', active: 'number', complete: 'number' }
+                ☐ Refactor method updateFooterInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' }
 
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`

@@ -113,17 +113,20 @@ export class IndexedDbService {
         );
     }
 
-    public clearStore() {
-        this.db.clear(this.storeName).then(() => {
+    public clearStore(): Observable<null> {
+        return Observable.fromPromise(this.db.clear(this.storeName).then(() => {
             console.log('clearStore -> all items deleted');
+            return null;
         }, (error) => {
             this.handleError(error);
-        });
+        })
+        );
     }
 
     // API: (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
 
+        // TODO: Implement this method correctly
         return Observable.fromPromise(this.db.getAll(this.storeName).then((response) => {
             console.log('clearCompleted - response: ', response);
 
