@@ -10,7 +10,7 @@ Todos:
         Current:
             ✔ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-02 09:09)
                 ✔ Update TodoListFooterComponent tests for 'filter' @done(17-12-11 09:11)
-            ☐ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/)
+            ✔ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-28 09:52)
                 ✔ Update TodoListFooterComponent tests for 'clear completed' @done(17-12-11 09:11)
                 ✔ Update TodosComponent tests @done(17-12-11 09:42)
             ✔ In footer, show footer if amount of todos is more than 1, even if all of them are completed @done(17-12-04 08:57)

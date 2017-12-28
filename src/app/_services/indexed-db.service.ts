@@ -126,8 +126,7 @@ export class IndexedDbService {
     // API: (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
 
-        // TODO: Implement this method correctly
-        return Observable.fromPromise(this.db.getAll(this.storeName).then((response) => {
+        return Observable.fromPromise(this.db.deleteByIndexValue(this.storeName, 'complete', true).then((response) => {
             console.log('clearCompleted - response: ', response);
 
             if (activeRouteState === 1 || activeRouteState === 2) {
