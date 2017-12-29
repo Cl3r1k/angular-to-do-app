@@ -17,7 +17,11 @@ Todos:
             ✔ Btn 'clear all', should be displayed, if there is at least 1 completed todo @done(17-12-05 09:26)
             ✔ Fix position of the filter buttons, when 'clear completed' hidden @done(17-12-06 12:07)
 
-            ☐ Refactor observable variables, and add $ to thier names
+            ✔ Refactor observable variables, and add $ to thier names (the app don't have it yet) @done(17-12-29 09:35)
+
+            ☐ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/) (server side probably)
+                ☐ Adopt this feature with filtering
+                ☐ Update unit test for toggle All changes
 
             ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
                 ☐ Use DI to change service on-the-fly
@@ -31,6 +35,7 @@ Todos:
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
                 `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
         
+        ☐ Read about Service Workers and change architecture of the app (https://habrahabr.ru/company/2gis/blog/345552/)
         ☐ Find out, is there any way to use on resolver (transfer filterState in router?)
         ☐ Fix header min resizing issue (when window width is small, header flows)
         ☐ Change styles to SCSS
@@ -67,9 +72,6 @@ Todos:
             ☐ Add in options value for support spec symbols (like ☐ and ✔) in new todo
         ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service) (server side probably)
             ☐ Update test for the feature in service and components
-        ☐ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/) (server side probably)
-            ☐ Adopt this feature with filtering
-            ☐ Update unit test for toggle All changes
         ☐ Add documentation (look here https://habrahabr.ru/company/docsvision/blog/341562/)
 
     Scheduled:

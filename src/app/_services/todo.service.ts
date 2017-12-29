@@ -88,11 +88,18 @@ export class TodoService {
         return this._api.getAllTodosAmount();
     }
 
+    // Simulate clear Completed PUT /todos
     clearCompleted(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
             return this._indexedDbService.clearCompleted(activeRouteState);
         } else {
             return this._api.clearCompleted(activeRouteState);
         }
+    }
+
+    // Simulate Toggle all PUT /todos
+    toggleAll(state: boolean): Observable<ToDo[]> {
+        // return this._api.toggleAll(state);
+        return this._indexedDbService.getAllTodos(0);
     }
 }
