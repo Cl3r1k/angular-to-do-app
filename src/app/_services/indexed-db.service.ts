@@ -18,7 +18,8 @@ export class IndexedDbService {
     public openIndexedDb(): Observable<null> {
         this.db = new AngularIndexedDB(this.baseName, 1);
 
-        console.log('IndexedDb %s was initialised/opened.', this.baseName);
+        console.log(`this.db.dbWrapper.dbName: `, this.db.dbWrapper.dbName, this.db.dbWrapper.db);
+        console.log('IndexedDb %s was initialised/opened. And db is: ', this.baseName, this.db);
 
         return Observable.fromPromise(this.db.openDatabase(1, (evt) => {
             const objectStore = evt.currentTarget.result.createObjectStore(
@@ -33,7 +34,7 @@ export class IndexedDbService {
             console.log('DB INITED');
             return null;
         }, (error) => {
-            this.handleError(error);
+            this.handleError('openIndexedDb', error);
         })
         );
     }
@@ -43,27 +44,27 @@ export class IndexedDbService {
             console.log('createTodo - added new todo: ', newTodo);
             return new ToDo({ id: newTodo.key, title: newTodo.value.title, complete: newTodo.value.complete });
         }, (error) => {
-            this.handleError(error);
+            this.handleError('createTodo', error);
         })
         );
     }
 
     public getTodoByTitle(todoTitle: string): Observable<ToDo> {
         return Observable.fromPromise(this.db.getByIndex(this.storeName, 'title', todoTitle).then((todo) => {
-            console.log('finByTodoTitle - todo result: ', todo);
+            console.log('getTodoByTitle - todo result: ', todo);
             return todo;
         }, (error) => {
-            this.handleError(error);
+            this.handleError('getTodoByTitle', error);
         })
         );
     }
 
     public getTodoById(todoId: number): Observable<ToDo> {
         return Observable.fromPromise(this.db.getByKey(this.storeName, todoId).then((todo) => {
-            console.log('finById - todo result: ', todo);
+            console.log('getTodoById - todo result: ', todo);
             return todo;
         }, (error) => {
-            this.handleError(error);
+            this.handleError('getTodoById', error);
         })
         );
     }
@@ -73,7 +74,7 @@ export class IndexedDbService {
             console.log('updateTodo - updated value for item with id: %d, and title: %s', newTodo.id, newTodo.title);
             return newTodo;
         }, (error) => {
-            this.handleError(error);
+            this.handleError('updateTodo', error);
         })
         );
     }
@@ -83,7 +84,7 @@ export class IndexedDbService {
             console.log('deleteTodoById - deleted value with id: ', todoId);
             return null;
         }, (error) => {
-            this.handleError(error);
+            this.handleError('deleteTodoById', error);
         })
         );
     }
@@ -108,7 +109,7 @@ export class IndexedDbService {
                 return response;
             }
         }, (error) => {
-            this.handleError(error);
+            this.handleError('getAllTodos', error);
         })
         );
     }
@@ -118,7 +119,7 @@ export class IndexedDbService {
             console.log('clearStore -> all items deleted');
             return null;
         }, (error) => {
-            this.handleError(error);
+            this.handleError('clearStore', error);
         })
         );
     }
@@ -143,14 +144,14 @@ export class IndexedDbService {
                 return response;
             }
         }, (error) => {
-            this.handleError(error);
+            this.handleError('clearCompleted', error);
         })
         );
 
     }
 
-    private handleError(error: Event | any) {
-        console.error('IndexedDbService - handleError: ', error);
+    private handleError(source: string, error: Event | any) {
+        console.error('IndexedDbService (%s) - handleError: ', source, error);
         return Observable.throw(error);
     }
 

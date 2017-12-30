@@ -47,6 +47,12 @@ Todos:
         ☐ Find the way to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource
         ☐ Fix all TODO in all files
         ☐ Check the app in 'Internet mail.ru' browser
+            ☐ Add additional page 'upgrade' if browser not supported (for example https://pomotodo.com/upgrade)
+        ☐ Add new column in DB with name 'deletePending'
+            ☐ Upgrade indexedDb with new base version
+            ☐ Add watcher (or timer/something else) to delete todo with flag true in 'deletePending' after some time (and show button to cancel deletion)
+
+        ☐ Consider to use for IndexedDb Dexie.jf (https://github.com/dfahlander/Dexie.js)
 
         ☐ CleanUp code (delete console.log, comments and other things)
 
@@ -73,6 +79,7 @@ Todos:
         ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service) (server side probably)
             ☐ Update test for the feature in service and components
         ☐ Add documentation (look here https://habrahabr.ru/company/docsvision/blog/341562/)
+        ☐ In IndexedDB parse next events `IDBOpenDBRequest.onblocked` and `IDBOpenDBRequest.onupgradeneeded` (look here https://developer.mozilla.org/en-US/docs/Web/API/IDBOpenDBRequest)
 
     Scheduled:
         ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet and here https://github.com/angular/angular/pull/19713) (return to this point after 01.01.2018)
