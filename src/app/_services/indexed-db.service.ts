@@ -18,8 +18,8 @@ export class IndexedDbService {
     public openIndexedDb(): Observable<null> {
         this.db = new AngularIndexedDB(this.baseName, 1);
 
-        console.log(`this.db.dbWrapper.dbName: `, this.db.dbWrapper.dbName, this.db.dbWrapper.db);
-        console.log('IndexedDb %s was initialised/opened. And db is: ', this.baseName, this.db);
+        // console.log(`%c initial this.db.dbWrapper: `, 'color: green;', this.db.dbWrapper);
+        // console.log('IndexedDb %s was initialised/opened. And db is: ', this.baseName, this.db);
 
         return Observable.fromPromise(this.db.openDatabase(1, (evt) => {
             const objectStore = evt.currentTarget.result.createObjectStore(
@@ -31,10 +31,15 @@ export class IndexedDbService {
 
             console.log('Created %s with store %s (v%d)', this.baseName, this.storeName, 1);
         }).then(() => {
-            console.log('DB INITED');
+            console.log('%c DB INITED', 'color: green;');
             return null;
         }, (error) => {
-            this.handleError('openIndexedDb', error);
+            if (error === 'undefined (UnknownError: Internal error opening backing store for indexedDB.open.)') {
+                // alert('delete base and create new one!');
+                return this.deleteTodoById(1);
+            } else {
+                this.handleError('openIndexedDb', error);
+            }
         })
         );
     }
