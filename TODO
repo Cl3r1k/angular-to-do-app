@@ -29,6 +29,7 @@ Todos:
                 ☐ Update tests (IndexedDbService)
                 ☐ Update tests (ApiService) (AppComponent - with new routes)
                 ☐ After implementation browser store -> update major version
+            ☐ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage)
 
                 ☐ Refactor method updateFooterInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' }
 
@@ -53,7 +54,6 @@ Todos:
             ☐ Upgrade indexedDb with new base version
             ☐ Add watcher (or timer/something else) to delete todo with flag true in 'deletePending' after some time (and show button to cancel deletion)
 
-        ☐ Consider to use for IndexedDb Dexie.jf (https://github.com/dfahlander/Dexie.js)
 
         ☐ CleanUp code (delete console.log, comments and other things)
 

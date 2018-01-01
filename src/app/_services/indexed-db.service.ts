@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { AngularIndexedDB } from 'angular2-indexeddb';
 
 import 'rxjs/add/observable/fromPromise';
+import 'rxjs/add/operator/switchMap';    // Testing part
 
 @Injectable()
 export class IndexedDbService {
@@ -15,13 +16,20 @@ export class IndexedDbService {
 
     constructor() { }
 
-    public openIndexedDb(): Observable<null> {
+    // Testing part
+    deleteObjectStore() {
+        this.db.dbWrapper.deleteObjectStore(this.storeName);
+    }
+    // end Testing part
+
+    public openIndexedDb(num: number): Observable<null> {
         this.db = new AngularIndexedDB(this.baseName, 1);
 
         // console.log(`%c initial this.db.dbWrapper: `, 'color: green;', this.db.dbWrapper);
         // console.log('IndexedDb %s was initialised/opened. And db is: ', this.baseName, this.db);
 
         return Observable.fromPromise(this.db.openDatabase(1, (evt) => {
+            console.log('evt: ', evt);
             const objectStore = evt.currentTarget.result.createObjectStore(
                 this.storeName, { keyPath: 'id', autoIncrement: true }
             );
@@ -32,6 +40,23 @@ export class IndexedDbService {
             console.log('Created %s with store %s (v%d)', this.baseName, this.storeName, 1);
         }).then(() => {
             console.log('%c DB INITED', 'color: green;');
+            if (num === 1) {
+                console.log('%c Will be cleared DB: ', 'color: aqua', this.db);
+
+                let req = this.db.utils.indexedDB.deleteDatabase(this.baseName);
+                req.onsuccess = function () {
+                    console.log('Deleted database successfully');
+                };
+                req.onerror = function () {
+                    console.log('Couldn\'t delete database');
+                };
+                req.onblocked = function () {
+                    console.log('Couldn\'t delete database due to the operation being blocked');
+                };
+
+                // return this.clearStore().switchMap(() => this.openIndexedDb(0));
+                return this.openIndexedDb(0);
+            }
             return null;
         }, (error) => {
             if (error === 'undefined (UnknownError: Internal error opening backing store for indexedDB.open.)') {
