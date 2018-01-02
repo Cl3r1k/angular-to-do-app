@@ -20,18 +20,20 @@ Todos:
             ✔ Refactor observable variables, and add $ to thier names (the app don't have it yet) @done(17-12-29 09:35)
 
             ☐ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/) (server side probably)
-                ☐ Adopt this feature with filtering
+                ☐ Adopt this feature with filtering (routings)
                 ☐ Update unit test for toggle All changes
 
             ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
-                ☐ Handle exception when base couldn't be opened
+                ☐ Handle exception when IndexedDb base couldn't be opened (IndexedDbService->openIndexedDb) (Delayed until will be lib for IndexedDb chosen)
                 ☐ Use DI to change service on-the-fly
                 ☐ Update tests (IndexedDbService)
                 ☐ Update tests (ApiService) (AppComponent - with new routes)
                 ☐ After implementation browser store -> update major version
             ☐ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage)
 
-                ☐ Refactor method updateFooterInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' }
+            ☐ Refactor method updateFooterInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' }
+
+            ☐ Update resolvers (TodosActiveResolver, TodosCompletedResolver)
 
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`

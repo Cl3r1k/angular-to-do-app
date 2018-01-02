@@ -18,19 +18,9 @@ export class TodoService {
         console.log('constructor in TodoService');
     }
 
-    // initIndexedDbBase(): Observable<null> {
-    //     return this._indexedDbService.openIndexedDb();    // Init/Open base
-    // }
-
-    // ------ Testing part ------
-    initIndexedDbBase(num: number): Observable<null> {
-        return this._indexedDbService.openIndexedDb(num);    // Init/Open base
+    initIndexedDbBase(): Observable<null> {
+        return this._indexedDbService.openIndexedDb();    // Init/Open base
     }
-
-    deleteObjectStore() {
-        this._indexedDbService.deleteObjectStore();
-    }
-    // ----------------------------------------------------------------------------
 
     // Simulate POST /todos
     addTodo(todo: ToDo): Observable<ToDo> {
@@ -108,9 +98,9 @@ export class TodoService {
     }
 
     // Simulate Toggle all PUT /todos
-    toggleAll(state: boolean): Observable<ToDo[]> {
+    toggleAll(state: boolean, activeRouteState: number): Observable<ToDo[]> {
         // return this._api.toggleAll(state);
-        return this._indexedDbService.getAllTodos(0);
+        return this._indexedDbService.toggleAll(state, activeRouteState);
     }
 
 }

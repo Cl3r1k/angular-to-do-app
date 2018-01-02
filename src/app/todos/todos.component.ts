@@ -106,22 +106,11 @@ export class TodosComponent implements OnInit, OnDestroy {
     }
 
     onToggleAll(state: boolean) {
-        // this._todoService.toggleAll(state).subscribe((todos) => {
-        //     console.log('incoming todos:', todos);
-        //     this.todos = todos;
-        //     this.updateFooterInfo();
-        //     console.log('after incoming todo list is:', this.todos);
-        // });
-
-        // Testing fix for corrupted DB
-        // this._todoService.deleteObjectStore();
-
-        // this._todoService.initIndexedDbBase(1).subscribe((dataIncome) => {
-        //     console.log('dataIncome from initIndexedDbBase: ', dataIncome);
-        // });
-
-        this._todoService.initIndexedDbBase(1).switchMap(() => this._todoService.getAllTodos(0)).subscribe((dataIncome) => {
-            console.log('dataIncome from initIndexedDbBase: ', dataIncome);
+        this._todoService.toggleAll(state, this.activeRouteState).subscribe((todos) => {
+            console.log('in onToggleAll incoming todos:', todos);
+            this.todos = todos;
+            this.updateFooterInfo();
+            console.log('after incoming todo list is:', this.todos);
         });
     }
 

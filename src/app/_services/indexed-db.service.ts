@@ -16,13 +16,7 @@ export class IndexedDbService {
 
     constructor() { }
 
-    // Testing part
-    deleteObjectStore() {
-        this.db.dbWrapper.deleteObjectStore(this.storeName);
-    }
-    // end Testing part
-
-    public openIndexedDb(num: number): Observable<null> {
+    public openIndexedDb(): Observable<null> {
         this.db = new AngularIndexedDB(this.baseName, 1);
 
         // console.log(`%c initial this.db.dbWrapper: `, 'color: green;', this.db.dbWrapper);
@@ -40,28 +34,14 @@ export class IndexedDbService {
             console.log('Created %s with store %s (v%d)', this.baseName, this.storeName, 1);
         }).then(() => {
             console.log('%c DB INITED', 'color: green;');
-            if (num === 1) {
-                console.log('%c Will be cleared DB: ', 'color: aqua', this.db);
-
-                let req = this.db.utils.indexedDB.deleteDatabase(this.baseName);
-                req.onsuccess = function () {
-                    console.log('Deleted database successfully');
-                };
-                req.onerror = function () {
-                    console.log('Couldn\'t delete database');
-                };
-                req.onblocked = function () {
-                    console.log('Couldn\'t delete database due to the operation being blocked');
-                };
-
-                // return this.clearStore().switchMap(() => this.openIndexedDb(0));
-                return this.openIndexedDb(0);
-            }
             return null;
         }, (error) => {
             if (error === 'undefined (UnknownError: Internal error opening backing store for indexedDB.open.)') {
-                // alert('delete base and create new one!');
-                return this.deleteTodoById(1);
+                console.log('%c Should be cleared DB: ', 'color: aqua', this.db);
+
+                // TODO: Delete base/store and return observable 'openIndexedDb'
+
+                this.handleError('openIndexedDb', error);
             } else {
                 this.handleError('openIndexedDb', error);
             }
@@ -156,7 +136,6 @@ export class IndexedDbService {
 
     // API: (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
-
         return Observable.fromPromise(this.db.deleteByIndexValue(this.storeName, 'complete', true).then((response) => {
             console.log('clearCompleted - response: ', response);
 
@@ -177,7 +156,30 @@ export class IndexedDbService {
             this.handleError('clearCompleted', error);
         })
         );
+    }
 
+    // API: (toggle all todos complete status)
+    public toggleAll(state: boolean, activeRouteState: number): Observable<ToDo[]> {
+        return Observable.fromPromise(this.db.updateAllByIndexValue(this.storeName, 'complete', state).then((response) => {
+            console.log('toggleAll - response: ', response);
+
+            if (activeRouteState === 1 || activeRouteState === 2) {
+                const todos: ToDo[] = [];
+
+                Object.keys(response).forEach(key => {
+                    if ((activeRouteState === 1 && !response[key].complete) || (activeRouteState === 2 && response[key].complete)) {
+                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
+                    }
+                });
+
+                return todos;
+            } else {
+                return response;
+            }
+        }, (error) => {
+            this.handleError('toggleAll', error);
+        })
+        );
     }
 
     private handleError(source: string, error: Event | any) {
