@@ -1,5 +1,5 @@
-<section class="main" *ngIf='todos.length > 0'>
-    <input type="checkbox" class='toggle-all' *ngIf='todos.length' #toggleAll (click)='toggleAllTodos(toggleAll.checked)'>
+<section class="main" *ngIf='todosAllAmount > 0'>
+    <input type="checkbox" class='toggle-all' *ngIf='todosAllAmount' #toggleAll (click)='toggleAllTodos(toggleAll.checked)' [checked]='todosAllCompleted'>
     <ul class="todo-list">
         <li *ngFor='let todo of todos' [class.completed]='todo.complete'>
             <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)' (updateTodoListItemEmitter)='updateTodo($event)'></app-todo-list-item>

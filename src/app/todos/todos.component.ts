@@ -17,6 +17,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     allTodosAmount: number;
     activeTodosAmount: number;
     completedTodosAmount: number;
+    allCompleted: boolean;                    // The variable is for toggleAll checkbox
     modalId = 'todoModal';
     titleModal = '';
     activeRouteState = 0;
@@ -42,7 +43,7 @@ export class TodosComponent implements OnInit, OnDestroy {
                 } else {
                     this.activeRouteState = 0;
                 }
-                this.updateFooterInfo();
+                this.updateFooterAndToggleAllInfo();
             }
             );
     }
@@ -59,7 +60,7 @@ export class TodosComponent implements OnInit, OnDestroy {
             if (this.activeRouteState !== 2) {
                 this.todos = this.todos.concat(newTodo);
             }
-            this.updateFooterInfo();
+            this.updateFooterAndToggleAllInfo();
         });
     }
 
@@ -76,7 +77,7 @@ export class TodosComponent implements OnInit, OnDestroy {
                     this.todos = this.todos.filter((val) => val.id !== todo.id);
                 }
             }
-            this.updateFooterInfo();
+            this.updateFooterAndToggleAllInfo();
         });
     }
 
@@ -92,7 +93,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         this._todoService.deleteTodoById(todo.id).subscribe((_) => {
             this.todo = _;
             this.todos = this.todos.filter((val) => val.id !== todo.id);
-            this.updateFooterInfo();
+            this.updateFooterAndToggleAllInfo();
         });
 
         this._modalService.close(this.modalId, true);
@@ -109,17 +110,18 @@ export class TodosComponent implements OnInit, OnDestroy {
         this._todoService.toggleAll(state, this.activeRouteState).subscribe((todos) => {
             console.log('in onToggleAll incoming todos:', todos);
             this.todos = todos;
-            this.updateFooterInfo();
+            this.updateFooterAndToggleAllInfo();
             console.log('after incoming todo list is:', this.todos);
         });
     }
 
-    updateFooterInfo() {
-        console.log('updateFooterInfo() called');
+    updateFooterAndToggleAllInfo() {
+        console.log('updateFooterAndToggleAllInfo() called');
         this._todoService.getAllTodos(0).subscribe((dataAllTodos) => {
             this.allTodosAmount = dataAllTodos.length;
             this.activeTodosAmount = dataAllTodos.filter((item) => !item.complete).length;
             this.completedTodosAmount = dataAllTodos.filter((item) => item.complete).length;
+            this.allCompleted = this.allTodosAmount === this.completedTodosAmount;
         });
     }
 
@@ -128,7 +130,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         console.log('Clear completed tasks (remove state in TodoListFooterComponent and in current method): ', state);
         this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
             this.todos = todos;
-            this.updateFooterInfo();
+            this.updateFooterAndToggleAllInfo();
         });
     }
 

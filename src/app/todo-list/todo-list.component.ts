@@ -8,8 +8,10 @@ import { ToDo } from '@app/_models/to-do';
 })
 export class TodoListComponent {
 
-    @Input()
-    todos: ToDo[];
+    @Input() todos: ToDo[];
+
+    @Input() todosAllAmount: number;
+    @Input() todosAllCompleted: boolean;
 
     @Output()
     toggleCompleteTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
