@@ -49,6 +49,11 @@ export class IndexedDbService {
         );
     }
 
+    /**
+   * Sets an item value in local storage (IndexedDb)
+   * @param todo The todo (object of ToDo class)
+   * @returns The created todo value, wrapped in an RxJS Observable, otherwise exception will rise
+   */
     public createTodo(todo: ToDo): Observable<ToDo> {
         return Observable.fromPromise(this.db.add(this.storeName, todo).then((newTodo) => {
             console.log('createTodo - added new todo: ', newTodo);

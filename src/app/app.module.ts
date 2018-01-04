@@ -20,7 +20,8 @@ import { ModalComponent } from '@app/modal/modal.component';
 import { TodoService } from '@app/_services/todo.service';
 import { ApiService } from '@app/_services/api.service';
 import { ModalService } from '@app/_services/modal.service';
-import { IndexedDbService } from '@app/_services/indexed-db.service';
+import { IndexedDbService } from '@app/_services/indexed-db.service';                    // TODO: ----> Consider to use one of them
+import { IndexedDbDexieService } from '@app/_services/indexed-db-dexie.service';         // -----|
 
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
@@ -45,7 +46,7 @@ import { AppRoutingModule } from '@app/app-routing.module';
         FormsModule,
         BrowserAnimationsModule
     ],
-    providers: [TodoService, ApiService, ModalService, IndexedDbService],
+    providers: [TodoService, ApiService, ModalService, IndexedDbService, IndexedDbDexieService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

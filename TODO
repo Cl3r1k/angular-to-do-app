@@ -24,8 +24,9 @@ Todos:
                 ☐ Update unit test for toggle All changes
 
             ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
-                ☐ Handle exception when IndexedDb base couldn't be opened (IndexedDbService->openIndexedDb) (Delayed until will be lib for IndexedDb chosen)
-                ☐ Use DI to change service on-the-fly
+                ☐ Reproduce base corruption (probably in debug mode, start adding 10k objects and break the debugging)
+                    ☐ Handle exception when IndexedDb base couldn't be opened (IndexedDbService->openIndexedDb) (Delayed until will be lib for IndexedDb chosen)
+                ☐ Use DI to change service on-the-fly (look here https://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html and here https://angular.io/guide/dependency-injection)
                 ☐ Update tests (IndexedDbService)
                 ☐ Update tests (ApiService) (AppComponent - with new routes)
                 ☐ After implementation browser store -> update major version
@@ -34,7 +35,7 @@ Todos:
             ☐ Refactor method updateFooterInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' }
 
             ☐ Update resolvers (TodosActiveResolver, TodosCompletedResolver)
-                ☐ Find out, is there any way to use on resolver (transfer filterState in router?)
+                ☐ Find out, is there any way to use on resolver (transfer filterState variable in router?) (look in sources https://github.com/angular/angular/tree/master/packages/router/src)
 
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -85,6 +86,7 @@ Todos:
         ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service) (server side probably)
             ☐ Update test for the feature in service and components
         ☐ Add documentation (look here https://habrahabr.ru/company/docsvision/blog/341562/)
+            ☐ Add docs to methods in services like in IndexedDbService createTodo
         ☐ In IndexedDB parse next events `IDBOpenDBRequest.onblocked` and `IDBOpenDBRequest.onupgradeneeded` (look here https://developer.mozilla.org/en-US/docs/Web/API/IDBOpenDBRequest)
 
     Scheduled:

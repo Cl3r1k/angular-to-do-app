@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from '@app/_services/api.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
+import { IndexedDbDexieService } from '@app/_services/indexed-db-dexie.service';
 
 @Injectable()
 export class TodoService {
@@ -12,7 +13,8 @@ export class TodoService {
     serviceState = 1;
 
     // TODO: Use DI to define service
-    constructor(private _api: ApiService, public _indexedDbService: IndexedDbService) {
+    // tslint:disable-next-line:max-line-length
+    constructor(private _api: ApiService, public _indexedDbService: IndexedDbService, public _indexedDbServiceDexie: IndexedDbDexieService) {
         // Наверное нужно использовать приватную переменную типа Интерфейс, а также имплементировать интерфейс в сервисы
         // и уже в конструкторе в зависимости от состояния, использовать тот или иной сервис, но это не точно.
         console.log('constructor in TodoService');
