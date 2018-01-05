@@ -15,12 +15,13 @@ export class TodoService {
     // TODO: Use DI to define service
     // tslint:disable-next-line:max-line-length
     constructor(private _api: ApiService, public _indexedDbService: IndexedDbService, public _indexedDbServiceDexie: IndexedDbDexieService) {
-        // Наверное нужно использовать приватную переменную типа Интерфейс, а также имплементировать интерфейс в сервисы
-        // и уже в конструкторе в зависимости от состояния, использовать тот или иной сервис, но это не точно.
+        // Possibly use private variable implemnets Interface, and implement the Interface to services
+        // and in constructor define it variable as one of services according some state, imho.
         console.log('constructor in TodoService');
     }
 
     initIndexedDbBase(): Observable<null> {
+        this._indexedDbServiceDexie.openIndexedDb();
         return this._indexedDbService.openIndexedDb();    // Init/Open base
     }
 

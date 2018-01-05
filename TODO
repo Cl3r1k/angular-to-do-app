@@ -41,6 +41,8 @@ Todos:
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
                 `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
         
+        ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
+        ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
         ☐ Use DI for services implementation (look here https://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
         ☐ In modal for deletion set focus on 'Cancel' button

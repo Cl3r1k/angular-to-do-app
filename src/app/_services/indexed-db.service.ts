@@ -6,7 +6,6 @@ import { Observable } from 'rxjs/Observable';
 import { AngularIndexedDB } from 'angular2-indexeddb';
 
 import 'rxjs/add/observable/fromPromise';
-import 'rxjs/add/operator/switchMap';    // Testing part
 
 @Injectable()
 export class IndexedDbService {
