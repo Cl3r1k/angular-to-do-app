@@ -63,16 +63,6 @@ export class IndexedDbService {
         );
     }
 
-    public getTodoByTitle(todoTitle: string): Observable<ToDo> {
-        return Observable.fromPromise(this.db.getByIndex(this.storeName, 'title', todoTitle).then((todo) => {
-            console.log('getTodoByTitle - todo result: ', todo);
-            return todo;
-        }, (error) => {
-            this.handleError('getTodoByTitle', error);
-        })
-        );
-    }
-
     public getTodoById(todoId: number): Observable<ToDo> {
         return Observable.fromPromise(this.db.getByKey(this.storeName, todoId).then((todo) => {
             console.log('getTodoById - todo result: ', todo);
@@ -83,22 +73,12 @@ export class IndexedDbService {
         );
     }
 
-    public updateTodo(todo: ToDo): Observable<ToDo> {
-        return Observable.fromPromise(this.db.update(this.storeName, todo).then((newTodo) => {
-            console.log('updateTodo - updated value for item with id: %d, and title: %s', newTodo.id, newTodo.title);
-            return newTodo;
+    public getTodoByTitle(todoTitle: string): Observable<ToDo> {
+        return Observable.fromPromise(this.db.getByIndex(this.storeName, 'title', todoTitle).then((todo) => {
+            console.log('getTodoByTitle - todo result: ', todo);
+            return todo;
         }, (error) => {
-            this.handleError('updateTodo', error);
-        })
-        );
-    }
-
-    public deleteTodoById(todoId: number): Observable<null> {
-        return Observable.fromPromise(this.db.delete(this.storeName, todoId).then(() => {
-            console.log('deleteTodoById - deleted value with id: ', todoId);
-            return null;
-        }, (error) => {
-            this.handleError('deleteTodoById', error);
+            this.handleError('getTodoByTitle', error);
         })
         );
     }
@@ -128,12 +108,46 @@ export class IndexedDbService {
         );
     }
 
-    public clearStore(): Observable<null> {
-        return Observable.fromPromise(this.db.clear(this.storeName).then(() => {
-            console.log('clearStore -> all items deleted');
+    public updateTodo(todo: ToDo): Observable<ToDo> {
+        return Observable.fromPromise(this.db.update(this.storeName, todo).then((newTodo) => {
+            console.log('updateTodo - updated value for item with id: %d, and title: %s', newTodo.id, newTodo.title);
+            return newTodo;
+        }, (error) => {
+            this.handleError('updateTodo', error);
+        })
+        );
+    }
+
+    // API: (toggle all todos complete status)
+    public toggleAll(state: boolean, activeRouteState: number): Observable<ToDo[]> {
+        return Observable.fromPromise(this.db.updateAllByIndexValue(this.storeName, 'complete', state).then((response) => {
+            console.log('toggleAll - response: ', response);
+
+            if (activeRouteState === 1 || activeRouteState === 2) {
+                const todos: ToDo[] = [];
+
+                Object.keys(response).forEach(key => {
+                    if ((activeRouteState === 1 && !response[key].complete) || (activeRouteState === 2 && response[key].complete)) {
+                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
+                    }
+                });
+
+                return todos;
+            } else {
+                return response;
+            }
+        }, (error) => {
+            this.handleError('toggleAll', error);
+        })
+        );
+    }
+
+    public deleteTodoById(todoId: number): Observable<null> {
+        return Observable.fromPromise(this.db.delete(this.storeName, todoId).then(() => {
+            console.log('deleteTodoById - deleted value with id: ', todoId);
             return null;
         }, (error) => {
-            this.handleError('clearStore', error);
+            this.handleError('deleteTodoById', error);
         })
         );
     }
@@ -162,26 +176,12 @@ export class IndexedDbService {
         );
     }
 
-    // API: (toggle all todos complete status)
-    public toggleAll(state: boolean, activeRouteState: number): Observable<ToDo[]> {
-        return Observable.fromPromise(this.db.updateAllByIndexValue(this.storeName, 'complete', state).then((response) => {
-            console.log('toggleAll - response: ', response);
-
-            if (activeRouteState === 1 || activeRouteState === 2) {
-                const todos: ToDo[] = [];
-
-                Object.keys(response).forEach(key => {
-                    if ((activeRouteState === 1 && !response[key].complete) || (activeRouteState === 2 && response[key].complete)) {
-                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
-                    }
-                });
-
-                return todos;
-            } else {
-                return response;
-            }
+    public clearStore(): Observable<null> {
+        return Observable.fromPromise(this.db.clear(this.storeName).then(() => {
+            console.log('clearStore -> all items deleted');
+            return null;
         }, (error) => {
-            this.handleError('toggleAll', error);
+            this.handleError('clearStore', error);
         })
         );
     }

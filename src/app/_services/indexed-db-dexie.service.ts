@@ -14,16 +14,25 @@ export class IndexedDbDexieService extends Dexie {
     constructor() {
         super('todoDatabase');
 
+        // How to upgrade DB version (http://dexie.org/docs/Tutorial/Design#database-versioning)
         this.version(1).stores({
             dbTable: '++id, title, complete'
         });
         this.dbTable.mapToClass(ToDo);
-        console.log('%cCreated/Inited %s (v%d)', this.consoleTextColor, this.name, 1);
+        console.log('%c Created/Inited %s (v%d)', this.consoleTextColor, this.name, 1);
+
+        // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
+        this.on('populate', () => {
+            this.dbTable.add(new ToDo({ title: 'Add more todos!', complete: false }));
+            this.dbTable.add(new ToDo({ title: 'Click on checkbox to make me done!', complete: false }));
+            this.dbTable.add(new ToDo({ title: 'Press on trash to delete me!', complete: false }));
+            this.dbTable.add(new ToDo({ title: 'Press on pen to edit me!', complete: false }));
+        });
     }
 
     public openIndexedDb() {
         this.open().then(() => {
-            console.log('%cOpened %s successfully (v%d)', this.consoleTextColor, this.name, 1);
+            console.log('%c Opened %s successfully (v%d)', this.consoleTextColor, this.name, 1);
         }).catch(function (err) {
             console.error('Errod during opening database: ', err.stack || err);
         });
@@ -32,29 +41,62 @@ export class IndexedDbDexieService extends Dexie {
         // this.dbTable = this.table(this.storeName);
     }
 
+    public createTodo(todo: ToDo) {
+        this.dbTable.add(todo).then((newTodo) => {
+            console.log('%c createTodo - added new todo: ', this.consoleTextColor, newTodo);
+        });
+    }
+
+    public getTodoById(todoId: number) {
+        this.dbTable.get(todoId).then(todo => {
+            console.log('%c getTodoById - todo result: ', this.consoleTextColor, todo);
+        }).catch(error => {
+            console.error(error);
+        });
+    }
+
+    public getTodoByTitle(todoTitle: string) {
+        this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(todos => {
+            console.log('%c getTodoByTitle - todos result: ', this.consoleTextColor, todos);
+        }).catch(error => {
+            console.error(error);
+        });
+    }
+
     public getAllTodos() {
-        console.log('%ccalling getAllTodos in IndexedDbDexieService', this.consoleTextColor);
+
+        // Observable.fromPromise(this._databaseService.people.toArray())    // Observabel example
+
+        console.log('%c calling getAllTodos in IndexedDbDexieService', this.consoleTextColor);
         this.dbTable.toArray().then((todos) => {
             console.log('todos: ', todos);
         });
     }
 
-    public createTodo(todo: ToDo) {
-        this.dbTable.add(todo).then((newTodo) => {
-            console.log('%ccreateTodo - added new todo: ', this.consoleTextColor, newTodo);
+    public updateTodo(todo: ToDo) {
+        this.dbTable.update(todo.id, todo).then((newTodo) => {
+            console.log('%c updateTodo - updated value for item: ', this.consoleTextColor, newTodo);
         });
     }
 
-    public updateTodo(todo: ToDo) {
-        this.dbTable.update(todo.id, todo).then((newTodo) => {
-            console.log('%cupdateTodo - updated value for item: ', this.consoleTextColor, newTodo);
-        });
+    // API: (toggle all todos complete status)
+    public toggleAll(state: boolean, activeRouteState: number) {
+        //
     }
 
     public deleteTodoById(todoId: number) {
         this.dbTable.delete(todoId).then(() => {
-            console.log('%cdeleteTodoById - deleted value with id: ', this.consoleTextColor, todoId);
+            console.log('%c deleteTodoById - deleted value with id: ', this.consoleTextColor, todoId);
         });
+    }
+
+    // API: (delete completed todos)
+    public clearCompleted(activeRouteState: number) {
+        //
+    }
+
+    public clearStore() {
+        //
     }
 
 }
