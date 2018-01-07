@@ -23,10 +23,11 @@ export class IndexedDbDexieService extends Dexie {
 
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {
-            this.dbTable.add(new ToDo({ title: 'Add more todos!', complete: false }));
-            this.dbTable.add(new ToDo({ title: 'Click on checkbox to make me done!', complete: false }));
-            this.dbTable.add(new ToDo({ title: 'Press on trash to delete me!', complete: false }));
-            this.dbTable.add(new ToDo({ title: 'Press on pen to edit me!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 1, title: 'Add more todos!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 2, title: 'Click on checkbox to make me done!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 3, title: 'Press on trash to delete me!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 4, title: 'Press on pen to edit me!', complete: false }));
+            console.log('%c DB populated', this.consoleTextColor);
         });
     }
 
@@ -63,14 +64,26 @@ export class IndexedDbDexieService extends Dexie {
         });
     }
 
-    public getAllTodos() {
+    public getAllTodos(activeRouteState: number) {
 
         // Observable.fromPromise(this._databaseService.people.toArray())    // Observabel example
 
+        // try this http://dexie.org/docs/Collection/Collection.each()
         console.log('%c calling getAllTodos in IndexedDbDexieService', this.consoleTextColor);
-        this.dbTable.toArray().then((todos) => {
-            console.log('todos: ', todos);
-        });
+        if (activeRouteState === 1 || activeRouteState === 2) {
+            // As far equals() does not support boolean, query by 0 and 1 instead of false and true
+            this.dbTable.where('complete').equals(1).toArray().then((todos) => {
+                console.log('%c getAllTodos - with activeRouteState = %d todos: ', this.consoleTextColor, activeRouteState, todos);
+            }).catch(error => {
+                console.error(error);
+            });
+        } else {
+            this.dbTable.toArray().then((todos) => {
+                console.log('%c getAllTodos - todos: ', this.consoleTextColor, todos);
+            }).catch(error => {
+                console.error(error);
+            });
+        }
     }
 
     public updateTodo(todo: ToDo) {
@@ -81,7 +94,7 @@ export class IndexedDbDexieService extends Dexie {
 
     // API: (toggle all todos complete status)
     public toggleAll(state: boolean, activeRouteState: number) {
-        //
+        // Use primaryKeys for performance (http://dexie.org/docs/Collection/Collection.primaryKeys())
     }
 
     public deleteTodoById(todoId: number) {
@@ -92,7 +105,7 @@ export class IndexedDbDexieService extends Dexie {
 
     // API: (delete completed todos)
     public clearCompleted(activeRouteState: number) {
-        //
+        // Use primaryKeys for performance (http://dexie.org/docs/Collection/Collection.primaryKeys())
     }
 
     public clearStore() {

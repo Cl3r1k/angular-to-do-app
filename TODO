@@ -61,7 +61,8 @@ Todos:
         ☐ Add new column in DB with name 'deletePending'
             ☐ Upgrade indexedDb with new base version
             ☐ Add watcher (or timer/something else) to delete todo with flag true in 'deletePending' after some time (and show button to cancel deletion)
-        ☐ Limit amount of todo by 100 (more will be available in pro)        
+        ☐ Limit amount of todo by 100 (more will be available in pro)
+        ☐ Possibility to sync DB (look here https://github.com/dfahlander/Dexie.js/issues/437)
 
         ☐ CleanUp code (delete console.log, comments and other things)
 

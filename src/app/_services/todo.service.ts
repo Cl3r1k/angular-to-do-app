@@ -22,6 +22,7 @@ export class TodoService {
 
     initIndexedDbBase(): Observable<null> {
         this._indexedDbServiceDexie.openIndexedDb();
+        this._indexedDbServiceDexie.getAllTodos(1);
         return this._indexedDbService.openIndexedDb();    // Init/Open base
     }
 
