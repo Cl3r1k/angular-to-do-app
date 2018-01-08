@@ -21,9 +21,14 @@ export class TodoService {
     }
 
     initIndexedDbBase(): Observable<null> {
-        this._indexedDbServiceDexie.openIndexedDb();
-        this._indexedDbServiceDexie.getAllTodos(1);
-        return this._indexedDbService.openIndexedDb();    // Init/Open base
+        return this._indexedDbServiceDexie.openIndexedDb();
+        // this._indexedDbServiceDexie.getAllTodos(0);
+        // this._indexedDbServiceDexie.updateTodo(new ToDo({ title: 'Press on pen to edit me!', complete: false, id: 4 }));
+        // this._indexedDbServiceDexie.getTodoById(1);
+        // this._indexedDbServiceDexie.getTodoByTitle('Add more todos!');
+        // this._indexedDbServiceDexie.createTodo(new ToDo({ title: 'New todo!', complete: false }));
+
+        // return this._indexedDbService.openIndexedDb();    // Init/Open base
     }
 
     // Simulate POST /todos
@@ -56,6 +61,7 @@ export class TodoService {
     // Simulate GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
+            // return this._indexedDbServiceDexie.getAllTodos(activeRouteState);
             return this._indexedDbService.getAllTodos(activeRouteState);
         } else {
             return this._api.getAllTodos(activeRouteState);
