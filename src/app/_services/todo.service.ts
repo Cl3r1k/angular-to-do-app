@@ -34,18 +34,40 @@ export class TodoService {
     // Simulate POST /todos
     addTodo(todo: ToDo): Observable<ToDo> {
         if (this.serviceState === 1) {
-            return this._indexedDbService.createTodo(todo);
+            return this._indexedDbServiceDexie.createTodo(todo);
+            // return this._indexedDbService.createTodo(todo);
         } else {
             return this._api.createTodo(todo);
         }
     }
 
-    // Simulate DELETE /todos/:id
-    deleteTodoById(id: number): Observable<ToDo> {
+    // Simulate GET /todos/:id
+    getTodoById(id: number): Observable<ToDo> {
         if (this.serviceState === 1) {
-            return this._indexedDbService.deleteTodoById(id);
+            return this._indexedDbServiceDexie.getTodoById(id);
+            // return this._indexedDbService.getTodoById(id);
         } else {
-            return this._api.deleteTodoById(id);
+            return this._api.getTodoById(id);
+        }
+    }
+
+    // Simulate GET /todos (amount of active todos)
+    getActiveTodosAmount(): Observable<number> {
+        return this._api.getActiveTodosAmount();
+    }
+
+    // Simulate GET /todos (amount of all todos)
+    getAllTodosAmount(): Observable<number> {
+        return this._api.getAllTodosAmount();
+    }
+
+    // Simulate GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
+    getAllTodos(activeRouteState: number): Observable<ToDo[]> {
+        if (this.serviceState === 1) {
+            return this._indexedDbServiceDexie.getAllTodos(activeRouteState);
+            // return this._indexedDbService.getAllTodos(activeRouteState);
+        } else {
+            return this._api.getAllTodos(activeRouteState);
         }
     }
 
@@ -55,25 +77,6 @@ export class TodoService {
             return this._indexedDbService.updateTodo(todo);
         } else {
             return this._api.updateTodo(todo);
-        }
-    }
-
-    // Simulate GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
-    getAllTodos(activeRouteState: number): Observable<ToDo[]> {
-        if (this.serviceState === 1) {
-            // return this._indexedDbServiceDexie.getAllTodos(activeRouteState);
-            return this._indexedDbService.getAllTodos(activeRouteState);
-        } else {
-            return this._api.getAllTodos(activeRouteState);
-        }
-    }
-
-    // Simulate GET /todos/:id
-    getTodoById(id: number): Observable<ToDo> {
-        if (this.serviceState === 1) {
-            return this._indexedDbService.getTodoById(id);
-        } else {
-            return this._api.getTodoById(id);
         }
     }
 
@@ -88,14 +91,19 @@ export class TodoService {
         }
     }
 
-    // Simulate GET /todos (amount of active todos)
-    getActiveTodosAmount(): Observable<number> {
-        return this._api.getActiveTodosAmount();
+    // Simulate Toggle all PUT /todos
+    toggleAll(state: boolean, activeRouteState: number): Observable<ToDo[]> {
+        // return this._api.toggleAll(state);
+        return this._indexedDbService.toggleAll(state, activeRouteState);
     }
 
-    // Simulate GET /todos (amount of all todos)
-    getAllTodosAmount(): Observable<number> {
-        return this._api.getAllTodosAmount();
+    // Simulate DELETE /todos/:id
+    deleteTodoById(id: number): Observable<ToDo> {
+        if (this.serviceState === 1) {
+            return this._indexedDbService.deleteTodoById(id);
+        } else {
+            return this._api.deleteTodoById(id);
+        }
     }
 
     // Simulate clear Completed PUT /todos
@@ -105,12 +113,6 @@ export class TodoService {
         } else {
             return this._api.clearCompleted(activeRouteState);
         }
-    }
-
-    // Simulate Toggle all PUT /todos
-    toggleAll(state: boolean, activeRouteState: number): Observable<ToDo[]> {
-        // return this._api.toggleAll(state);
-        return this._indexedDbService.toggleAll(state, activeRouteState);
     }
 
 }

@@ -10,7 +10,6 @@ import 'rxjs/add/observable/fromPromise';
 @Injectable()
 export class IndexedDbDexieService extends Dexie {
 
-    storeName = 'todoTable';    // TODO: Delete this variable?
     dbTable: Dexie.Table<ToDo, number>;
     // ... other tables will go here... for more info look here (dexie.org/docs/Typescript)
     consoleTextColor = 'color: #5dc2af;';
@@ -35,47 +34,47 @@ export class IndexedDbDexieService extends Dexie {
         });
     }
 
-    // TODO: Try asyn/await
     public openIndexedDb(): Observable<null> {
-        return Observable.fromPromise(this.open().then(() => {
+        return Observable.fromPromise(this.open().then(async () => {
             console.log('%c Opened %s successfully (v%d)', this.consoleTextColor, this.name, 1);
             return null;
-        }).catch(function (error) {
+        }).catch(error => {
             this.handleError('openIndexedDb', error);
         }));
     }
 
-    public createTodo(todo: ToDo) {
-        this.dbTable.add(todo).then(async (newId) => {
+    public createTodo(todo: ToDo): Observable<ToDo> {
+        return Observable.fromPromise(this.dbTable.add(todo).then(async (newId) => {
             const newTodo = await this.dbTable.get(newId);
             console.log('%c createTodo - added new todo: ', this.consoleTextColor, newTodo);
-        });
+            return newTodo;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
-    public getTodoById(todoId: number) {
-        this.dbTable.get(todoId).then(todo => {
+    public getTodoById(todoId: number): Observable<ToDo> {
+        return Observable.fromPromise(this.dbTable.get(todoId).then(async (todo) => {
             console.log('%c getTodoById - todo result: ', this.consoleTextColor, todo);
+            return todo;
         }).catch(error => {
-            console.error(error);
-        });
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
     public getTodoByTitle(todoTitle: string) {
-        this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(todos => {
+        this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
             console.log('%c getTodoByTitle - todos result: ', this.consoleTextColor, todos);
         }).catch(error => {
             console.error(error);
         });
     }
 
-    public getAllTodos(activeRouteState: number) {
-
-        // Observable.fromPromise(this._databaseService.people.toArray())    // Observabel example
-
+    public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         // TODO: Improve this method when Dexie 3.0 will be released (when equals() will support boolean)
         console.log('%c calling getAllTodos in IndexedDbDexieService', this.consoleTextColor);
 
-        return Observable.fromPromise(this.dbTable.toArray().then((response) => {
+        return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
             if (activeRouteState === 1 || activeRouteState === 2) {
                 let todos: ToDo[] = [];
 
@@ -84,14 +83,13 @@ export class IndexedDbDexieService extends Dexie {
                 });
 
                 console.log('%c getAllTodos - with activeRouteState = %d todos: ', this.consoleTextColor, activeRouteState, todos);
-                // return todos;
+                return todos;
             } else {
                 console.log('%c getAllTodos - response: ', this.consoleTextColor, response);
-                // return response;
+                return response;
             }
-
         }).catch(error => {
-            console.error(error);
+            return error;    // TODO: Handle error properly as Observable
         }));
     }
 
@@ -119,6 +117,7 @@ export class IndexedDbDexieService extends Dexie {
 
 
         // TODO: Decide to use the method return type as ToDo or number (0 or 1) as far update() returns 1 if data updated and 0 if not
+        // For perfomance Dexie.transaction() used (http://dexie.org/docs/Dexie/Dexie.transaction())
         this.transaction('rw', this.dbTable, async () => {
             await this.dbTable.update(todo.id, todo);
             return await this.dbTable.get(todo.id);
@@ -136,7 +135,7 @@ export class IndexedDbDexieService extends Dexie {
     }
 
     public deleteTodoById(todoId: number) {
-        this.dbTable.delete(todoId).then(() => {
+        this.dbTable.delete(todoId).then(async () => {
             console.log('%c deleteTodoById - deleted value with id: ', this.consoleTextColor, todoId);
         });
     }
@@ -144,6 +143,7 @@ export class IndexedDbDexieService extends Dexie {
     // API: (delete completed todos)
     public clearCompleted(activeRouteState: number) {
         // Use primaryKeys for performance (http://dexie.org/docs/Collection/Collection.primaryKeys())
+        // Example here https://github.com/jtorhoff/flier/blob/5c52eb0bda447fa6fcfc3d0bb99ef37e24d347cd/src/tg/Storage/DexieStorage.ts
     }
 
     public clearStore() {
