@@ -119,8 +119,8 @@ export class IndexedDbService {
     }
 
     // API: (toggle all todos complete status)
-    public toggleAll(state: boolean, activeRouteState: number): Observable<ToDo[]> {
-        return Observable.fromPromise(this.db.updateAllByIndexValue(this.storeName, 'complete', state).then((response) => {
+    public toggleAll(toggleState: boolean, activeRouteState: number): Observable<ToDo[]> {
+        return Observable.fromPromise(this.db.updateAllByIndexValue(this.storeName, 'complete', toggleState).then((response) => {
             console.log('toggleAll - response: ', response);
 
             if (activeRouteState === 1 || activeRouteState === 2) {

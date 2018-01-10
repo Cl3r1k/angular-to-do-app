@@ -74,7 +74,8 @@ export class TodoService {
     // Simulate PUT /todos/:id
     updateTodo(todo: ToDo): Observable<ToDo> {
         if (this.serviceState === 1) {
-            return this._indexedDbService.updateTodo(todo);
+            return this._indexedDbServiceDexie.updateTodo(todo);
+            // return this._indexedDbService.updateTodo(todo);
         } else {
             return this._api.updateTodo(todo);
         }
@@ -84,17 +85,14 @@ export class TodoService {
     toggleTodoComplete(todo: ToDo): Observable<ToDo> {
         todo.complete = !todo.complete;
 
-        if (this.serviceState === 1) {
-            return this._indexedDbService.updateTodo(todo);
-        } else {
-            return this._api.updateTodo(todo);
-        }
+        return this.updateTodo(todo);
     }
 
     // Simulate Toggle all PUT /todos
-    toggleAll(state: boolean, activeRouteState: number): Observable<ToDo[]> {
+    toggleAll(toggleState: boolean, activeRouteState: number): Observable<ToDo[]> {
         // return this._api.toggleAll(state);
-        return this._indexedDbService.toggleAll(state, activeRouteState);
+        return this._indexedDbServiceDexie.toggleAll(toggleState, activeRouteState);
+        // return this._indexedDbService.toggleAll(toggleState, activeRouteState);
     }
 
     // Simulate DELETE /todos/:id
@@ -109,6 +107,7 @@ export class TodoService {
     // Simulate clear Completed PUT /todos
     clearCompleted(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
+            this._indexedDbServiceDexie.clearCompleted(activeRouteState);
             return this._indexedDbService.clearCompleted(activeRouteState);
         } else {
             return this._api.clearCompleted(activeRouteState);

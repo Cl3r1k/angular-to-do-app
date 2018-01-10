@@ -39,7 +39,7 @@ export class TodoListComponent {
         this.removeTodoListEmitter.emit(todo);    // Emit the remove event to TodosComponent
     }
 
-    toggleAllTodos(state: boolean) {
-        this.toggleAllTodoListEmitter.emit(state);    // Emit the toggleAll event to TodosComponent
+    toggleAllTodos(toggleState: boolean) {
+        this.toggleAllTodoListEmitter.emit(toggleState);    // Emit the toggleAll event to TodosComponent
     }
 }

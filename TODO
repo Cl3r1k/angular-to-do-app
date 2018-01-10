@@ -32,6 +32,8 @@ Todos:
                 ☐ After implementation browser store -> update major version
             ☐ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage)
 
+            ☐ Improve this part: when editing canceled emit cancelEvent and don't propagate the event to parent, just load view component
+
             ☐ Refactor method updateFooterInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' }
 
             ☐ Update resolvers (TodosActiveResolver, TodosCompletedResolver)
@@ -84,7 +86,7 @@ Todos:
 
     Future:
         ☐ Options window:
-            ☐ Add in options value for Multiple/Single editing todo
+            ☐ Add in options value for Multiple/Single editing todo (use http://dexie.org/docs/Table/Table.bulkAdd())
             ☐ Add in options value for support spec symbols (like ☐ and ✔) in new todo
         ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service) (server side probably)
             ☐ Update test for the feature in service and components

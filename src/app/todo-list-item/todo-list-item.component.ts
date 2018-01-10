@@ -68,6 +68,7 @@ export class TodoListItemComponent implements OnInit {
             this.createEditComponent(incomeTodo);
         });
 
+        // TODO: Improve this part: when editing canceled emit cancelEvent and don't propagate the event to parent, just load view component
         instanceComponent.updateTodoListItemEmitter.subscribe(incomeTodo => {
             // The event from TodoListItemEditComponent
             this.updateTodo(incomeTodo);

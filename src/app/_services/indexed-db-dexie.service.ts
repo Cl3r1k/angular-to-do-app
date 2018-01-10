@@ -62,18 +62,18 @@ export class IndexedDbDexieService extends Dexie {
         }));
     }
 
-    public getTodoByTitle(todoTitle: string) {
-        this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
+    public getTodoByTitle(todoTitle: string): Observable<ToDo[]> {
+        return Observable.fromPromise(this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
             console.log('%c getTodoByTitle - todos result: ', this.consoleTextColor, todos);
+            return todos;
         }).catch(error => {
-            console.error(error);
-        });
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
+    // TODO: Improve this method when Dexie 3.0 will be released (when equals() will support boolean)
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
-        // TODO: Improve this method when Dexie 3.0 will be released (when equals() will support boolean)
-        console.log('%c calling getAllTodos in IndexedDbDexieService', this.consoleTextColor);
-
+        // console.log('%c calling getAllTodos in IndexedDbDexieService', this.consoleTextColor);
         return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
             if (activeRouteState === 1 || activeRouteState === 2) {
                 let todos: ToDo[] = [];
@@ -93,62 +93,100 @@ export class IndexedDbDexieService extends Dexie {
         }));
     }
 
-    public updateTodo(todo: ToDo) {
-        // this.transaction('rw', this.dbTable, () => {
-        //     this.dbTable.update(todo.id, todo).then(updResult => {
-        //         if (updResult) {
-        //             this.dbTable.get(todo.id).then(updatedTodo => {
-        //                 console.log('%c updateTodo - updated value for item: ', this.consoleTextColor, updatedTodo);
-        //             });
-        //         }
-        //     });
-
-        //     // if (updResult) {
-        //     //     const updatedTodo = this.dbTable.get(todo.id);
-        //     //     console.log('%c updateTodo - updated value for item: ', this.consoleTextColor, updatedTodo);
-        //     // }
-
-        //     // this.dbTable.get(2).then(updatedTodo => {
-        //     //     console.log('%c updateTodo - updated value for item: ', this.consoleTextColor, updatedTodo);
-        //     // });
-        // }).catch(error => {
-        //     console.log(error);
-        // });
-
-
-        // TODO: Decide to use the method return type as ToDo or number (0 or 1) as far update() returns 1 if data updated and 0 if not
+    // TODO: Decide to use the method return type as ToDo or number (0 or 1) as far update() returns 1 if data updated and 0 if not
+    public updateTodo(todo: ToDo): Observable<ToDo> {
         // For perfomance Dexie.transaction() used (http://dexie.org/docs/Dexie/Dexie.transaction())
-        this.transaction('rw', this.dbTable, async () => {
+        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
             await this.dbTable.update(todo.id, todo);
             return await this.dbTable.get(todo.id);
         }).then(async (updatedTodo) => {
             console.log('%c Transaction committed updatedTodo: ', this.consoleTextColor, updatedTodo);
-
-        }).catch(err => {
-            console.error(err.stack);
-        });
+            return updatedTodo;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
     // API: (toggle all todos complete status)
-    public toggleAll(state: boolean, activeRouteState: number) {
-        // Use primaryKeys for performance (http://dexie.org/docs/Collection/Collection.primaryKeys())
+    public toggleAll(toggleState: boolean, activeRouteState: number): Observable<ToDo[]> {
+        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+            const todos: ToDo[] = await this.dbTable.toArray();
+
+            todos.forEach(todo => {
+                return todo.complete = toggleState;
+            });
+
+            const lastKey = await this.dbTable.bulkPut(todos);
+
+            console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
+
+            if (activeRouteState === 1 || activeRouteState === 2) {
+                todos.filter(todo => {
+                    return todo.complete === toggleState;
+                });
+            }
+
+            return todos;
+        }).then(async (updatedTodos) => {
+            console.log('%c Transaction committed toggleAll: ', this.consoleTextColor, updatedTodos);
+            return updatedTodos;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
-    public deleteTodoById(todoId: number) {
-        this.dbTable.delete(todoId).then(async () => {
+    public deleteTodoById(todoId: number): Observable<null> {
+        return Observable.fromPromise(this.dbTable.delete(todoId).then(async () => {
             console.log('%c deleteTodoById - deleted value with id: ', this.consoleTextColor, todoId);
-        });
+            return null;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
     // API: (delete completed todos)
     public clearCompleted(activeRouteState: number) {
         // Use primaryKeys for performance (http://dexie.org/docs/Collection/Collection.primaryKeys())
         // Example here https://github.com/jtorhoff/flier/blob/5c52eb0bda447fa6fcfc3d0bb99ef37e24d347cd/src/tg/Storage/DexieStorage.ts
+
+        this.transaction('rw', this.dbTable, async () => {
+            const todos: ToDo[] = await this.dbTable.toArray();
+
+            // TODO: Остановился здесь, продолжить доработку сервиса
+
+            // todos.forEach(todo => {
+            //     return todo.complete = toggleState;
+            // });
+
+            // const lastKey = await this.dbTable.bulkPut(todos);
+
+            // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
+
+            // if (activeRouteState === 1 || activeRouteState === 2) {
+            //     todos.filter(todo => {
+            //         return todo.complete === toggleState;
+            //     });
+            // }
+
+            return todos;
+        }).then(async (updatedTodos) => {
+            console.log('%c Transaction committed toggleAll: ', this.consoleTextColor, updatedTodos);
+            return updatedTodos;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        });
     }
 
-    public clearStore() {
-        //
+    public clearStore(): Observable<null> {
+        return Observable.fromPromise(this.dbTable.clear().then(() => {
+            console.log('%c clearStore -> all items deleted', this.consoleTextColor);
+            return null;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
+
+    // TODO: Add bulkAdd method using http://dexie.org/docs/Table/Table.bulkAdd() (look in todo file)
 
     private handleError(source: string, error: Event | any) {
         console.error('IndexedDbDexieService (%s) - handleError: ', source, error.stack || error);

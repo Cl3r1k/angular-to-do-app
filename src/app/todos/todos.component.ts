@@ -106,8 +106,8 @@ export class TodosComponent implements OnInit, OnDestroy {
         });
     }
 
-    onToggleAll(state: boolean) {
-        this._todoService.toggleAll(state, this.activeRouteState).subscribe((todos) => {
+    onToggleAll(toggleState: boolean) {
+        this._todoService.toggleAll(toggleState, this.activeRouteState).subscribe((todos) => {
             console.log('in onToggleAll incoming todos:', todos);
             this.todos = todos;
             this.updateFooterAndToggleAllInfo();
