@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from '@app/_services/api.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
-import { IndexedDbDexieService } from '@app/_services/indexed-db-dexie.service';
 
 @Injectable()
 export class TodoService {
@@ -13,29 +12,20 @@ export class TodoService {
     serviceState = 1;
 
     // TODO: Use DI to define service
-    // tslint:disable-next-line:max-line-length
-    constructor(private _api: ApiService, public _indexedDbService: IndexedDbService, public _indexedDbServiceDexie: IndexedDbDexieService) {
-        // Possibly use private variable implemnets Interface, and implement the Interface to services
+    constructor(private _api: ApiService, public _indexedDbService: IndexedDbService) {
+        // Possibly use private variable wich implements Interface, and implement the Interface to services
         // and in constructor define it variable as one of services according some state, imho.
         console.log('constructor in TodoService');
     }
 
     initIndexedDbBase(): Observable<null> {
-        return this._indexedDbServiceDexie.openIndexedDb();
-        // this._indexedDbServiceDexie.getAllTodos(0);
-        // this._indexedDbServiceDexie.updateTodo(new ToDo({ title: 'Press on pen to edit me!', complete: false, id: 4 }));
-        // this._indexedDbServiceDexie.getTodoById(1);
-        // this._indexedDbServiceDexie.getTodoByTitle('Add more todos!');
-        // this._indexedDbServiceDexie.createTodo(new ToDo({ title: 'New todo!', complete: false }));
-
-        // return this._indexedDbService.openIndexedDb();    // Init/Open base
+        return this._indexedDbService.openIndexedDb();    // Init/Open base
     }
 
     // Simulate POST /todos
     addTodo(todo: ToDo): Observable<ToDo> {
         if (this.serviceState === 1) {
-            return this._indexedDbServiceDexie.createTodo(todo);
-            // return this._indexedDbService.createTodo(todo);
+            return this._indexedDbService.createTodo(todo);
         } else {
             return this._api.createTodo(todo);
         }
@@ -44,8 +34,7 @@ export class TodoService {
     // Simulate GET /todos/:id
     getTodoById(id: number): Observable<ToDo> {
         if (this.serviceState === 1) {
-            return this._indexedDbServiceDexie.getTodoById(id);
-            // return this._indexedDbService.getTodoById(id);
+            return this._indexedDbService.getTodoById(id);
         } else {
             return this._api.getTodoById(id);
         }
@@ -64,8 +53,7 @@ export class TodoService {
     // Simulate GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
-            return this._indexedDbServiceDexie.getAllTodos(activeRouteState);
-            // return this._indexedDbService.getAllTodos(activeRouteState);
+            return this._indexedDbService.getAllTodos(activeRouteState);
         } else {
             return this._api.getAllTodos(activeRouteState);
         }
@@ -74,8 +62,7 @@ export class TodoService {
     // Simulate PUT /todos/:id
     updateTodo(todo: ToDo): Observable<ToDo> {
         if (this.serviceState === 1) {
-            return this._indexedDbServiceDexie.updateTodo(todo);
-            // return this._indexedDbService.updateTodo(todo);
+            return this._indexedDbService.updateTodo(todo);
         } else {
             return this._api.updateTodo(todo);
         }
@@ -91,8 +78,7 @@ export class TodoService {
     // Simulate Toggle all PUT /todos
     toggleAll(toggleState: boolean, activeRouteState: number): Observable<ToDo[]> {
         // return this._api.toggleAll(state);
-        return this._indexedDbServiceDexie.toggleAll(toggleState, activeRouteState);
-        // return this._indexedDbService.toggleAll(toggleState, activeRouteState);
+        return this._indexedDbService.toggleAll(toggleState, activeRouteState);
     }
 
     // Simulate DELETE /todos/:id
@@ -107,7 +93,6 @@ export class TodoService {
     // Simulate clear Completed PUT /todos
     clearCompleted(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
-            this._indexedDbServiceDexie.clearCompleted(activeRouteState);
             return this._indexedDbService.clearCompleted(activeRouteState);
         } else {
             return this._api.clearCompleted(activeRouteState);

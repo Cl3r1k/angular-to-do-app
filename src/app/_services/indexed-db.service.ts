@@ -3,191 +3,197 @@ import { ToDo } from '@app/_models/to-do';
 
 import { Observable } from 'rxjs/Observable';
 
-import { AngularIndexedDB } from 'angular2-indexeddb';
+import Dexie from 'dexie';    // https://github.com/dfahlander/Dexie.js
 
 import 'rxjs/add/observable/fromPromise';
 
 @Injectable()
-export class IndexedDbService {
-    baseName = 'todoDb';
-    storeName = 'todoStore';
-    db;
+export class IndexedDbService extends Dexie {
 
-    constructor() { }
+    dbTable: Dexie.Table<ToDo, number>;
+    // ... other tables will go here... for more info look here (dexie.org/docs/Typescript)
+    consoleTextColor = 'color: #5dc2af;';
 
-    public openIndexedDb(): Observable<null> {
-        this.db = new AngularIndexedDB(this.baseName, 1);
+    constructor() {
+        super('todoDatabase');
 
-        // console.log(`%c initial this.db.dbWrapper: `, 'color: green;', this.db.dbWrapper);
-        // console.log('IndexedDb %s was initialised/opened. And db is: ', this.baseName, this.db);
+        // How to upgrade DB version (http://dexie.org/docs/Tutorial/Design#database-versioning)
+        this.version(1).stores({
+            dbTable: '++id, title, complete'
+        });
+        this.dbTable.mapToClass(ToDo);
+        console.log('%c Created/Inited %s (v%d)', this.consoleTextColor, this.name, 1);
 
-        return Observable.fromPromise(this.db.openDatabase(1, (evt) => {
-            console.log('evt: ', evt);
-            const objectStore = evt.currentTarget.result.createObjectStore(
-                this.storeName, { keyPath: 'id', autoIncrement: true }
-            );
-
-            objectStore.createIndex('title', 'title', { unique: false });
-            objectStore.createIndex('complete', 'complete', { unique: false });
-
-            console.log('Created %s with store %s (v%d)', this.baseName, this.storeName, 1);
-        }).then(() => {
-            console.log('%c DB INITED', 'color: green;');
-            return null;
-        }, (error) => {
-            if (error === 'undefined (UnknownError: Internal error opening backing store for indexedDB.open.)') {
-                console.log('%c Should be cleared DB: ', 'color: aqua', this.db);
-
-                // TODO: Delete base/store and return observable 'openIndexedDb'
-
-                this.handleError('openIndexedDb', error);
-            } else {
-                this.handleError('openIndexedDb', error);
-            }
-        })
-        );
+        // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
+        this.on('populate', () => {
+            this.dbTable.add(new ToDo({ id: 0, title: 'Add more todos!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 1, title: 'Click on checkbox to make me done!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 2, title: 'Press on trash to delete me!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 3, title: 'Press on pen to edit me!', complete: false }));
+            console.log('%c DB populated successfully', this.consoleTextColor);
+        });
     }
 
-    /**
-   * Sets an item value in local storage (IndexedDb)
-   * @param todo The todo (object of ToDo class)
-   * @returns The created todo value, wrapped in an RxJS Observable, otherwise exception will rise
-   */
+    public openIndexedDb(): Observable<null> {
+        return Observable.fromPromise(this.open().then(async () => {
+            console.log('%c Opened %s successfully (v%d)', this.consoleTextColor, this.name, 1);
+            return null;
+        }).catch(error => {
+            this.handleError('openIndexedDb', error);
+        }));
+    }
+
     public createTodo(todo: ToDo): Observable<ToDo> {
-        return Observable.fromPromise(this.db.add(this.storeName, todo).then((newTodo) => {
-            console.log('createTodo - added new todo: ', newTodo);
-            return new ToDo({ id: newTodo.key, title: newTodo.value.title, complete: newTodo.value.complete });
-        }, (error) => {
-            this.handleError('createTodo', error);
-        })
-        );
+        return Observable.fromPromise(this.dbTable.add(todo).then(async (newId) => {
+            const newTodo = await this.dbTable.get(newId);
+            console.log('%c createTodo - added new todo: ', this.consoleTextColor, newTodo);
+            return newTodo;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
     public getTodoById(todoId: number): Observable<ToDo> {
-        return Observable.fromPromise(this.db.getByKey(this.storeName, todoId).then((todo) => {
-            console.log('getTodoById - todo result: ', todo);
+        return Observable.fromPromise(this.dbTable.get(todoId).then(async (todo) => {
+            console.log('%c getTodoById - todo result: ', this.consoleTextColor, todo);
             return todo;
-        }, (error) => {
-            this.handleError('getTodoById', error);
-        })
-        );
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
-    public getTodoByTitle(todoTitle: string): Observable<ToDo> {
-        return Observable.fromPromise(this.db.getByIndex(this.storeName, 'title', todoTitle).then((todo) => {
-            console.log('getTodoByTitle - todo result: ', todo);
-            return todo;
-        }, (error) => {
-            this.handleError('getTodoByTitle', error);
-        })
-        );
+    public getTodoByTitle(todoTitle: string): Observable<ToDo[]> {
+        return Observable.fromPromise(this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
+            console.log('%c getTodoByTitle - todos result: ', this.consoleTextColor, todos);
+            return todos;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
-    // API: GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
+    // TODO: Improve this method when Dexie 3.0 will be released (when equals() will support boolean)
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
-        console.log('calling getAllTodos in IndexedDbService');
-        return Observable.fromPromise(this.db.getAll(this.storeName).then((response) => {
-            console.log('getAllTodos - response: ', response);
-
+        // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColor);
+        return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
             if (activeRouteState === 1 || activeRouteState === 2) {
-                const todos: ToDo[] = [];
+                let todos: ToDo[] = [];
 
-                Object.keys(response).forEach(key => {
-                    if ((activeRouteState === 1 && !response[key].complete) || (activeRouteState === 2 && response[key].complete)) {
-                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
-                    }
+                todos = response.filter(todo => {
+                    return todo.complete === (activeRouteState === 2 ? true : false);
                 });
 
+                console.log('%c getAllTodos - with activeRouteState = %d todos: ', this.consoleTextColor, activeRouteState, todos);
                 return todos;
             } else {
+                console.log('%c getAllTodos - response: ', this.consoleTextColor, response);
                 return response;
             }
-        }, (error) => {
-            this.handleError('getAllTodos', error);
-        })
-        );
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
+    // TODO: Decide to use the method return type as ToDo or number (0 or 1) as far update() returns 1 if data updated and 0 if not
     public updateTodo(todo: ToDo): Observable<ToDo> {
-        return Observable.fromPromise(this.db.update(this.storeName, todo).then((newTodo) => {
-            console.log('updateTodo - updated value for item with id: %d, and title: %s', newTodo.id, newTodo.title);
-            return newTodo;
-        }, (error) => {
-            this.handleError('updateTodo', error);
-        })
-        );
+        // For perfomance Dexie.transaction() used (http://dexie.org/docs/Dexie/Dexie.transaction())
+        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+            await this.dbTable.update(todo.id, todo);
+            return await this.dbTable.get(todo.id);
+        }).then(async (updatedTodo) => {
+            console.log('%c Transaction committed updatedTodo: ', this.consoleTextColor, updatedTodo);
+            return updatedTodo;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
     // API: (toggle all todos complete status)
     public toggleAll(toggleState: boolean, activeRouteState: number): Observable<ToDo[]> {
-        return Observable.fromPromise(this.db.updateAllByIndexValue(this.storeName, 'complete', toggleState).then((response) => {
-            console.log('toggleAll - response: ', response);
+        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+            const todos: ToDo[] = await this.dbTable.toArray();
+
+            todos.forEach(todo => {
+                return todo.complete = toggleState;
+            });
+
+            const lastKey = await this.dbTable.bulkPut(todos);
+
+            console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
 
             if (activeRouteState === 1 || activeRouteState === 2) {
-                const todos: ToDo[] = [];
-
-                Object.keys(response).forEach(key => {
-                    if ((activeRouteState === 1 && !response[key].complete) || (activeRouteState === 2 && response[key].complete)) {
-                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
-                    }
+                todos.filter(todo => {
+                    return todo.complete === toggleState;
                 });
-
-                return todos;
-            } else {
-                return response;
             }
-        }, (error) => {
-            this.handleError('toggleAll', error);
-        })
-        );
+
+            return todos;
+        }).then(async (updatedTodos) => {
+            console.log('%c Transaction committed toggleAll: ', this.consoleTextColor, updatedTodos);
+            return updatedTodos;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
     public deleteTodoById(todoId: number): Observable<null> {
-        return Observable.fromPromise(this.db.delete(this.storeName, todoId).then(() => {
-            console.log('deleteTodoById - deleted value with id: ', todoId);
+        return Observable.fromPromise(this.dbTable.delete(todoId).then(async () => {
+            console.log('%c deleteTodoById - deleted value with id: ', this.consoleTextColor, todoId);
             return null;
-        }, (error) => {
-            this.handleError('deleteTodoById', error);
-        })
-        );
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
     // API: (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
-        return Observable.fromPromise(this.db.deleteByIndexValue(this.storeName, 'complete', true).then((response) => {
-            console.log('clearCompleted - response: ', response);
+        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+            let todos: ToDo[] = await this.dbTable.toArray();
+            const todosIds: number[] = [];
+
+            todos.forEach(todo => {
+                if (todo.complete) {
+                    todosIds.push(todo.id);
+                }
+            });
+
+            // console.log('%c todos Ids to delete:', this.consoleTextColor, todosIds);
+
+            const resDelete = await this.dbTable.bulkDelete(todosIds);
+
+            todos = await this.dbTable.toArray();
 
             if (activeRouteState === 1 || activeRouteState === 2) {
-                const todos: ToDo[] = [];
-
-                Object.keys(response).forEach(key => {
-                    if ((activeRouteState === 1 && !response[key].complete) || (activeRouteState === 2 && response[key].complete)) {
-                        todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
-                    }
+                todos = todos.filter(todo => {
+                    return todo.complete === (activeRouteState === 2 ? true : false);
                 });
-
-                return todos;
-            } else {
-                return response;
             }
-        }, (error) => {
-            this.handleError('clearCompleted', error);
-        })
-        );
+
+            // console.log('%c returned todos:', this.consoleTextColor, todos);
+            return todos;
+        }).then(async (updatedTodos) => {
+            console.log('%c Transaction committed clearCompleted: ', this.consoleTextColor, updatedTodos);
+            return updatedTodos;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
     public clearStore(): Observable<null> {
-        return Observable.fromPromise(this.db.clear(this.storeName).then(() => {
-            console.log('clearStore -> all items deleted');
+        return Observable.fromPromise(this.dbTable.clear().then(() => {
+            console.log('%c clearStore -> all items deleted', this.consoleTextColor);
             return null;
-        }, (error) => {
-            this.handleError('clearStore', error);
-        })
-        );
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
+    }
+
+    // TODO: Add bulkAdd method using http://dexie.org/docs/Table/Table.bulkAdd() (look in todo file)
+    public addBatch() {
+        //
     }
 
     private handleError(source: string, error: Event | any) {
-        console.error('IndexedDbService (%s) - handleError: ', source, error);
+        console.error('IndexedDbService (%s) - handleError: ', source, error.stack || error);
         return Observable.throw(error);
     }
 
