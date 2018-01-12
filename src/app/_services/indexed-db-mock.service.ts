@@ -52,7 +52,7 @@ export class IndexedDbMockService {
         return Observable.of(null);
     }
 
-    public clearCompleted(): Observable<ToDo[]> {
+    public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
         return Observable.of([
             new ToDo({ id: 1, title: 'Read article (IndexedDb)', complete: false })
         ]);

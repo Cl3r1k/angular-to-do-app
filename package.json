@@ -29,7 +29,6 @@
         "@angular/platform-browser-dynamic": "^5.1.0",
         "@angular/platform-server": "^5.1.0",
         "@angular/router": "^5.1.0",
-        "angular2-indexeddb": "^1.2.2",
         "core-js": "^2.5.1",
         "dexie": "^2.0.1",
         "json-server": "^0.12.1",

@@ -1,9 +1,12 @@
 import { TestBed, async, inject } from '@angular/core/testing';
+import { ToDo } from '@app/_models/to-do';
+
+// Services
+import { TodoService } from '@app/_services/todo.service';
 import { ApiService } from '@app/_services/api.service';
 import { ApiMockService } from '@app/_services/api-mock.service';
-
-import { ToDo } from '@app/_models/to-do';
-import { TodoService } from '@app/_services/todo.service';
+import { IndexedDbService } from '@app/_services/indexed-db.service';
+import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
 
 describe('TodoService', () => {
     beforeEach(() => {
@@ -12,6 +15,10 @@ describe('TodoService', () => {
                 {
                     provide: ApiService,
                     useClass: ApiMockService
+                },
+                {
+                    provide: IndexedDbService,
+                    useClass: IndexedDbMockService
                 }
             ]
         });

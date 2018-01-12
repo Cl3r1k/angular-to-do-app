@@ -19,6 +19,8 @@ import { TodoService } from '@app/_services/todo.service';
 import { ApiMockService } from '@app/_services/api-mock.service';
 import { ApiService } from '@app/_services/api.service';
 import { ModalService } from '@app/_services/modal.service';
+import { IndexedDbService } from '@app/_services/indexed-db.service';
+import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
 
 // Routers
 import { ActivatedRoute } from '@angular/router';
@@ -46,6 +48,10 @@ describe(`TodosComponent`, () => {
                     useClass: ApiMockService
                 },
                 {
+                    provide: IndexedDbService,
+                    useClass: IndexedDbMockService
+                },
+                {
                     provide: ActivatedRoute,
                     useValue: {
                         data: Observable.of({
@@ -69,7 +75,7 @@ describe(`TodosComponent`, () => {
     });
 
     // tslint:disable-next-line:max-line-length
-    it(`Should create the app, used: Components(TodoListHeader, TodoList, TodoListFooter, TodoListItem, ModalComponent) Services(ApiMockService, ApiService, ModalService) (async)`, async(() => {
+    it(`Should create the app, used: Components(TodoListHeader, TodoList, TodoListFooter, TodoListItem, ModalComponent) Services(ApiMockService, ApiService, ModalService, IndexedDbMockService) (async)`, async(() => {
         // Arrange
 
         // Act
