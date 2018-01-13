@@ -84,7 +84,7 @@ describe('TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    // TODO: View tests are working not proper
+    // TODO: View tests are working not proper (look in nativeElements - they are not working proper)
     describe(`#view tests`, () => {
         it(`clicking on checkbox.toggle should emits 'toggleTodoComplete' event (async)`, async () => {
             // Arrange

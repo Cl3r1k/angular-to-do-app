@@ -2,10 +2,9 @@
 <section class='todoapp'>
 
     <!-- header is now replaced with app-todoo-list-header -->
-    <app-todo-list-header (addTodoListHeaderEmitter)='onAddTodo($event)'></app-todo-list-header>
+    <app-todo-list-header [todosAllAmount]='allTodosAmount' [todosAllCompleted]='allCompleted' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAll($event)'></app-todo-list-header>
 
-    <app-todo-list [todos]='todos' [todosAllAmount]='allTodosAmount' [todosAllCompleted]='allCompleted' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (removeTodoListEmitter)='onRemoveTodo($event)'
-        (toggleAllTodoListEmitter)='onToggleAll($event)'></app-todo-list>
+    <app-todo-list [todos]='todos' [todosAllAmount]='allTodosAmount' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (removeTodoListEmitter)='onRemoveTodo($event)'></app-todo-list>
 
     <app-todo-list-footer [todosAllAmount]='allTodosAmount' [todosActiveAmount]='activeTodosAmount' [todosCompletedAmount]='completedTodosAmount' (clearTodoListFooterEmitter)='onClearCompleted($event)'></app-todo-list-footer>
 

@@ -8,12 +8,6 @@ export class ApiMockService {
 
     constructor() { }
 
-    public getAllTodos(): Observable<ToDo[]> {
-        return Observable.of([
-            new ToDo({ id: 1, title: 'Read article', complete: false })
-        ]);
-    }
-
     public createTodo(todo: ToDo): Observable<ToDo> {
         return Observable.of(
             new ToDo({ id: 1, title: 'Read article', complete: false })
@@ -22,18 +16,30 @@ export class ApiMockService {
 
     public getTodoById(todoId: number): Observable<ToDo> {
         return Observable.of(
-            new ToDo({id: 1, title: 'Read article', complete: false })
+            new ToDo({ id: 1, title: 'Read article', complete: false })
         );
+    }
+
+    public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
+        return Observable.of([
+            new ToDo({ id: 1, title: 'Read article', complete: false })
+        ]);
     }
 
     public updateTodo(todo: ToDo): Observable<ToDo> {
         return Observable.of(
-            new ToDo({id: 1, title: 'Read article', complete: false })
+            new ToDo({ id: 1, title: 'Read article', complete: false })
         );
     }
 
     public deleteTodoById(todoid: number): Observable<ToDo> {
         return null;
+    }
+
+    public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
+        return Observable.of([
+            new ToDo({ id: 1, title: 'Read article (IndexedDb)', complete: false })
+        ]);
     }
 
 }

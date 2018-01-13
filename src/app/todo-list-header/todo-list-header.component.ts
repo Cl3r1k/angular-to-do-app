@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
 import { environment } from '@env/environment.prod';
@@ -14,8 +14,14 @@ export class TodoListHeaderComponent {
 
     newTodo: ToDo = new ToDo();
 
+    @Input() todosAllAmount: number;
+    @Input() todosAllCompleted: boolean;
+
     @Output()
     addTodoListHeaderEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
+    toggleAllTodoListHeaderEmitter: EventEmitter<boolean> = new EventEmitter();
 
     constructor() { }
 
@@ -25,6 +31,10 @@ export class TodoListHeaderComponent {
             this.addTodoListHeaderEmitter.emit(this.newTodo);
             this.newTodo = new ToDo();
         }
+    }
+
+    toggleAllTodos(toggleState: boolean) {
+        this.toggleAllTodoListHeaderEmitter.emit(toggleState);    // Emit the toggleAll event to TodosComponent
     }
 
 }

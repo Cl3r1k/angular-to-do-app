@@ -8,31 +8,21 @@
 Todos:
     New:
         Current:
-            ✔ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-02 09:09)
-                ✔ Update TodoListFooterComponent tests for 'filter' @done(17-12-11 09:11)
-            ✔ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-28 09:52)
-                ✔ Update TodoListFooterComponent tests for 'clear completed' @done(17-12-11 09:11)
-                ✔ Update TodosComponent tests @done(17-12-11 09:42)
-            ✔ In footer, show footer if amount of todos is more than 1, even if all of them are completed @done(17-12-04 08:57)
-            ✔ Btn 'clear all', should be displayed, if there is at least 1 completed todo @done(17-12-05 09:26)
-            ✔ Fix position of the filter buttons, when 'clear completed' hidden @done(17-12-06 12:07)
-
-            ✔ Refactor observable variables, and add $ to thier names (the app don't have it yet) @done(17-12-29 09:35)
 
             ✔ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/) @done(18-01-03 09:14)
                 ✔ Adopt this feature with filtering (routings) @done(18-01-03 09:14)
-                ☐ Update unit test for toggle All changes
+                ✔ Update unit test for 'toggleAll' changes @done(18-01-13 09:04)
+
+            ☐ Improve this part: when editing canceled emit cancelEvent and don't propagate the event to parent, just load view component
 
             ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
                 ☐ Reproduce base corruption (probably in debug mode, start adding 10k objects and break the debugging)
                     ☐ Handle exception when IndexedDb base couldn't be opened (IndexedDbService->openIndexedDb) (Delayed until will be chosen the lib for IndexedDb)
                 ☐ Use DI to change service on-the-fly (look here https://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html and here https://angular.io/guide/dependency-injection)
                 ☐ Update tests (IndexedDbService)
-                ☐ Update tests (ApiService) (AppComponent - with new routes)
+                ✔ Update tests (ApiService) (AppComponent - with new routes) @done(18-01-12 11:19)
                 ☐ After implementation browser store -> update major version
             ☐ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage)
-
-            ☐ Improve this part: when editing canceled emit cancelEvent and don't propagate the event to parent, just load view component
 
             ☐ Refactor method updateFooterInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' }
 
@@ -42,7 +32,7 @@ Todos:
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
                 `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
-        
+        ☐ Add animation when hover on 'clearCompleted' highlight completed todos
         ☐ Improve animation when 'toggleAll' todos (look single check and toggleAll)
         ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
@@ -51,7 +41,7 @@ Todos:
         ☐ In modal for deletion set focus on 'Cancel' button
         ☐ Read about Service Workers and change architecture of the app (https://habrahabr.ru/company/2gis/blog/345552/)
         ☐ Fix header min resizing issue (when window width is small, header flows)
-        ☐ Change styles to SCSS
+        ☐ Change styles to SCSS (look here https://scotch.io/tutorials/using-sass-with-the-angular-cli and here https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931)
         ☐ Add filtering by todo name
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Add drag'n'drop posibility        
@@ -150,6 +140,16 @@ Todos:
         ✔ Update test for TodoListItemViewComponent (with new 'edit' button) @done(17-11-28 10:44)
         ✔ Bug: when calceled modal on deleting, selection does not resets (fixed when TodoListItemViewComponent updated to dumb deletion - modal now called in TodosComponent) @done(17-11-28 09:58)
         ✔ Update Cli to 1.6.1 @done(17-12-17 10:59)
+        ✔ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-02 09:09)
+            ✔ Update TodoListFooterComponent tests for 'filter' @done(17-12-11 09:11)
+        ✔ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-28 09:52)
+            ✔ Update TodoListFooterComponent tests for 'clear completed' @done(17-12-11 09:11)
+            ✔ Update TodosComponent tests @done(17-12-11 09:42)
+        ✔ In footer, show footer if amount of todos is more than 1, even if all of them are completed @done(17-12-04 08:57)
+        ✔ Btn 'clear all', should be displayed, if there is at least 1 completed todo @done(17-12-05 09:26)
+        ✔ Fix position of the filter buttons, when 'clear completed' hidden @done(17-12-06 12:07)
+
+        ✔ Refactor observable variables, and add $ to thier names (the app don't have it yet) @done(17-12-29 09:35)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)

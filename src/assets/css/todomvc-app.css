@@ -116,14 +116,19 @@ label[for='toggle-all'] {
     display: none;
 }
 
+.header {
+    position: relative;
+}
+
 .toggle-all {
     position: absolute;
-    top: -55px;
+    top: 11px;
     left: -12px;
     width: 60px;
     height: 34px;
     text-align: center;
     border: none;
+    z-index: 2;
     /* Mobile Safari */
 }
 
