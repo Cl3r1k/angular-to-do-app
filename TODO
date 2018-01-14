@@ -5,21 +5,18 @@
 // ng build --prod --base-href "https://Cl3r1k.github.io/angular-to-do-app/"
 // angular-cli-ghpages --repo=https://github.com/Cl3r1k/angular-to-do-app.git --name=Cl3r1k --email=cl3r1k2@gmail.com --no-silent
 
+Commit message:
+
+    
 Todos:
     New:
         Current:
-
-            ✔ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/) @done(18-01-03 09:14)
-                ✔ Adopt this feature with filtering (routings) @done(18-01-03 09:14)
-                ✔ Update unit test for 'toggleAll' changes @done(18-01-13 09:04)
-
-            ☐ Improve this part: when editing canceled emit cancelEvent and don't propagate the event to parent, just load view component
 
             ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
                 ☐ Reproduce base corruption (probably in debug mode, start adding 10k objects and break the debugging)
                     ☐ Handle exception when IndexedDb base couldn't be opened (IndexedDbService->openIndexedDb) (Delayed until will be chosen the lib for IndexedDb)
                 ☐ Use DI to change service on-the-fly (look here https://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html and here https://angular.io/guide/dependency-injection)
-                ☐ Update tests (IndexedDbService)
+                ✔ Update tests (IndexedDbService) @done(18-01-13 09:24)
                 ✔ Update tests (ApiService) (AppComponent - with new routes) @done(18-01-12 11:19)
                 ☐ After implementation browser store -> update major version
             ☐ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage)
@@ -32,11 +29,11 @@ Todos:
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
                 `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
+                
         ☐ Add animation when hover on 'clearCompleted' highlight completed todos
         ☐ Improve animation when 'toggleAll' todos (look single check and toggleAll)
         ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
-        ☐ Use DI for services implementation (look here https://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
         ☐ In modal for deletion set focus on 'Cancel' button
         ☐ Read about Service Workers and change architecture of the app (https://habrahabr.ru/company/2gis/blog/345552/)
@@ -150,6 +147,11 @@ Todos:
         ✔ Fix position of the filter buttons, when 'clear completed' hidden @done(17-12-06 12:07)
 
         ✔ Refactor observable variables, and add $ to thier names (the app don't have it yet) @done(17-12-29 09:35)
+
+        ✔ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/) @done(18-01-03 09:14)
+            ✔ Adopt this feature with filtering (routings) @done(18-01-03 09:14)
+            ✔ Update unit test for 'toggleAll' changes @done(18-01-13 09:04)
+        ✔ Improve this part: when editing canceled emit cancelEvent and don't propagate the event to parent, just load view component @done(18-01-13 09:19)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)

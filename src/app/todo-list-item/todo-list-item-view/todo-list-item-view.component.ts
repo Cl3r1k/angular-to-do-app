@@ -22,6 +22,9 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
+    cancelTodoListItemEmitter: EventEmitter<boolean> = new EventEmitter();
+
+    @Output()
     removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     hoverState = false;

@@ -22,9 +22,13 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
     updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
+    cancelTodoListItemEmitter: EventEmitter<boolean> = new EventEmitter();
+
+    @Output()
     removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     initialTodoTitle: string;
+    isCanceled: boolean;
 
     @ViewChild('editedTodo') private editedTodoElementRef: ElementRef;
 
@@ -57,14 +61,19 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
 
     cancelEditTodo() {
         this.todo.title = this.initialTodoTitle;
+        this.isCanceled = true;
         this.editedTodoElementRef.nativeElement.blur();    // Imitate lost focus event
     }
 
     stopEditTodo() {
 
         if (this.todo.title) {
-            this.todo.title = this.todo.title.trim();
-            this.updateTodoListItemEmitter.emit(this.todo);    // Emit the update event to Parent Component
+            if (this.isCanceled) {
+                this.cancelTodoListItemEmitter.emit(true);
+            } else {
+                this.todo.title = this.todo.title.trim();
+                this.updateTodoListItemEmitter.emit(this.todo);    // Emit the update event to Parent Component
+            }
         } else {
             this.removeTodo(this.todo);
         }
