@@ -7,19 +7,18 @@
 
 Commit message:
 
-    
+
 Todos:
     New:
         Current:
 
-            ☐ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html)
-                ☐ Reproduce base corruption (probably in debug mode, start adding 10k objects and break the debugging)
-                    ☐ Handle exception when IndexedDb base couldn't be opened (IndexedDbService->openIndexedDb) (Delayed until will be chosen the lib for IndexedDb)
-                ☐ Use DI to change service on-the-fly (look here https://blog.thoughtram.io/angular/2015/05/18/dependency-injection-in-angular-2.html and here https://angular.io/guide/dependency-injection)
+            ✔ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html) @done(18-01-15 09:13)
+                ✘ Reproduce base corruption (probably in debug mode, start adding 10k objects and break the debugging) -> Couldn't reproduce base curruption @cancelled(18-01-14 10:27)
+                ✘ Use DI to change service on-the-fly -> Use another approach (sync db) instead using two services (TypeScript interfaces aren't valid tokens (https://angular.io/guide/dependency-injection#typescript-interfaces-arent-valid-tokens)) @cancelled(18-01-14 09:33)
                 ✔ Update tests (IndexedDbService) @done(18-01-13 09:24)
                 ✔ Update tests (ApiService) (AppComponent - with new routes) @done(18-01-12 11:19)
-                ☐ After implementation browser store -> update major version
-            ☐ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage)
+                ✔ After implementation browser store -> update major version @done(18-01-15 09:13)
+            ✔ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage) -> Chosen Dexie as more flexible @done(18-01-14 10:36)
 
             ☐ Refactor method updateFooterInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' }
 

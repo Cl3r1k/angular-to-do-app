@@ -11,10 +11,8 @@ export class TodoService {
 
     serviceState = 1;
 
-    // TODO: Use DI to define service
+    // TODO: Use only IndexedDbService, and sync data with backend
     constructor(private _api: ApiService, public _indexedDbService: IndexedDbService) {
-        // Possibly use private variable wich implements Interface, and implement the Interface to services
-        // and in constructor define it variable as one of services according some state, imho.
         console.log('constructor in TodoService');
     }
 
