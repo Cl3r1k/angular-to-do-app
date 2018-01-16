@@ -30,6 +30,12 @@ export class IndexedDbMockService {
         );
     }
 
+    public getTodosAmountObject(): Observable<Object> {
+        return Observable.of(
+            { all: 5, active: 3, complete: 2 }
+        );
+    }
+
     public getAllTodos(): Observable<ToDo[]> {
         return Observable.of([
             new ToDo({ id: 1, title: 'Read article (IndexedDb)', complete: false })

@@ -117,10 +117,10 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     updateFooterAndToggleAllInfo() {
         console.log('updateFooterAndToggleAllInfo() called');
-        this._todoService.getAllTodos(0).subscribe((dataAllTodos) => {
-            this.allTodosAmount = dataAllTodos.length;
-            this.activeTodosAmount = dataAllTodos.filter((item) => !item.complete).length;
-            this.completedTodosAmount = dataAllTodos.filter((item) => item.complete).length;
+        this._todoService.getTodosAmountObject().subscribe((todosAmountObject) => {
+            this.allTodosAmount = todosAmountObject['all'];
+            this.activeTodosAmount = todosAmountObject['active'];
+            this.completedTodosAmount = todosAmountObject['complete'];
             this.allCompleted = this.allTodosAmount === this.completedTodosAmount;
         });
     }

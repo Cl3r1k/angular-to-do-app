@@ -10,7 +10,7 @@ export class TodosActiveResolver implements Resolve<Observable<ToDo[]>> {
     constructor(private _todoService: TodoService) { }
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ToDo[]> {
-        return this._todoService.getAllTodos(1);    // TODO: Update this part
+        return this._todoService.initIndexedDbBase().switchMap(() => this._todoService.getAllTodos(1));    // Open base anyway
     }
 
 }

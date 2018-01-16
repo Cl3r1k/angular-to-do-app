@@ -22,7 +22,7 @@ export class IndexedDbService extends Dexie {
             dbTable: '++id, title, complete'
         });
         this.dbTable.mapToClass(ToDo);
-        console.log('%c Created/Inited %s (v%d)', this.consoleTextColor, this.name, 1);
+        console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColor, this.name, 1);
 
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {
@@ -66,6 +66,26 @@ export class IndexedDbService extends Dexie {
         return Observable.fromPromise(this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
             console.log('%c getTodoByTitle - todos result: ', this.consoleTextColor, todos);
             return todos;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
+    }
+
+    public getTodosAmountObject(): Observable<Object> {
+        return Observable.fromPromise(this.transaction('r', this.dbTable, async () => {
+            const todos: ToDo[] = await this.dbTable.toArray();
+
+            let activeTodos = 0;
+            let completeTodos = 0;
+
+            todos.forEach(todo => {
+                todo.complete ? completeTodos++ : activeTodos++;
+            });
+
+            return { all: todos.length, active: activeTodos, complete: completeTodos };
+        }).then(async (todosAmount) => {
+            console.log('%c Transaction committed getTodosAmountObject: ', this.consoleTextColor, todosAmount);
+            return todosAmount;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
         }));

@@ -25,6 +25,9 @@ import { IndexedDbService } from '@app/_services/indexed-db.service';
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
 
+// Directives
+import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.directive';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -36,7 +39,8 @@ import { AppRoutingModule } from '@app/app-routing.module';
         PageNotFoundComponent,
         TodoListItemViewComponent,
         TodoListItemEditComponent,
-        ModalComponent
+        ModalComponent,
+        RouterLinkActiveStubsDirective
     ],
     imports: [
         AppRoutingModule,

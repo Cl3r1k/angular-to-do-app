@@ -7,22 +7,14 @@
 
 Commit message:
 
-
+    
 Todos:
     New:
         Current:
 
-            ✔ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html) @done(18-01-15 09:13)
-                ✘ Reproduce base corruption (probably in debug mode, start adding 10k objects and break the debugging) -> Couldn't reproduce base curruption @cancelled(18-01-14 10:27)
-                ✘ Use DI to change service on-the-fly -> Use another approach (sync db) instead using two services (TypeScript interfaces aren't valid tokens (https://angular.io/guide/dependency-injection#typescript-interfaces-arent-valid-tokens)) @cancelled(18-01-14 09:33)
-                ✔ Update tests (IndexedDbService) @done(18-01-13 09:24)
-                ✔ Update tests (ApiService) (AppComponent - with new routes) @done(18-01-12 11:19)
-                ✔ After implementation browser store -> update major version @done(18-01-15 09:13)
-            ✔ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage) -> Chosen Dexie as more flexible @done(18-01-14 10:36)
+            ✔ Refactor method updateFooterAndToggleAllInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' } @done(18-01-15 10:08)
 
-            ☐ Refactor method updateFooterInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' }
-
-            ☐ Update resolvers (TodosActiveResolver, TodosCompletedResolver)
+            ✔ Update resolvers (TodosActiveResolver, TodosCompletedResolver) @done(18-01-15 10:50)
                 ☐ Find out, is there any way to use on resolver (transfer filterState variable in router?) (look in sources https://github.com/angular/angular/tree/master/packages/router/src)
 
             ☐ Update modal with next examples: 
@@ -151,6 +143,14 @@ Todos:
             ✔ Adopt this feature with filtering (routings) @done(18-01-03 09:14)
             ✔ Update unit test for 'toggleAll' changes @done(18-01-13 09:04)
         ✔ Improve this part: when editing canceled emit cancelEvent and don't propagate the event to parent, just load view component @done(18-01-13 09:19)
+
+        ✔ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html) @done(18-01-15 09:13)
+            ✘ Reproduce base corruption (probably in debug mode, start adding 10k objects and break the debugging) -> Couldn't reproduce base curruption @cancelled(18-01-14 10:27)
+            ✘ Use DI to change service on-the-fly -> Use another approach (sync db) instead using two services (TypeScript interfaces aren't valid tokens (https://angular.io/guide/dependency-injection#typescript-interfaces-arent-valid-tokens)) @cancelled(18-01-14 09:33)
+            ✔ Update tests (IndexedDbService) @done(18-01-13 09:24)
+            ✔ Update tests (ApiService) (AppComponent - with new routes) @done(18-01-12 11:19)
+            ✔ 🔥🎉🎉 After implementation browser store -> update major version @done(18-01-15 09:13)
+        ✔ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage) -> Chosen Dexie as more flexible @done(18-01-14 10:36)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)

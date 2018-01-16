@@ -48,6 +48,10 @@ export class TodoService {
         return this._api.getAllTodosAmount();
     }
 
+    getTodosAmountObject(): Observable<Object> {
+        return this._indexedDbService.getTodosAmountObject();
+    }
+
     // Simulate GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
