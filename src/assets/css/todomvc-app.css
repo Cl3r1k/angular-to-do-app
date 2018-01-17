@@ -155,6 +155,10 @@ label[for='toggle-all'] {
     border-bottom: 1px solid #ededed;
 }
 
+.todoapp.clearHover .todo-list li {
+    background-color: royalblue;
+}
+
 .todo-list li:last-child {
     border-bottom: none;
 }

@@ -21,6 +21,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     modalId = 'todoModal';
     titleModal = '';
     activeRouteState = 0;
+    clearHoverState = false;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -126,12 +127,17 @@ export class TodosComponent implements OnInit, OnDestroy {
     }
 
     // Method to handle event emitted by TodoListFooterComponent
-    onClearCompleted(state: boolean) {
-        console.log('Clear completed tasks (remove state in TodoListFooterComponent and in current method): ', state);
+    onClearCompleted(clearState: boolean) {
+        console.log('onClearCompleted (remove %s in TodoListFooterComponent and in current method): ', clearState);
         this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
             this.todos = todos;
             this.updateFooterAndToggleAllInfo();
         });
+    }
+
+    onClearHoverSetState(hoverState: boolean) {
+        console.log('onClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', hoverState);
+        this.clearHoverState = hoverState;
     }
 
 }

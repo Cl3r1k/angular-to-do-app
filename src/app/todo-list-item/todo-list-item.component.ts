@@ -57,7 +57,7 @@ export class TodoListItemComponent implements OnInit {
         const componentRef = this._container.createComponent(componentFactory);
         const instanceComponent = (<CustomTodoComponentInterface>componentRef.instance);
 
-        instanceComponent.todo = todo;
+        instanceComponent.todo = todo;    // Pass todo to childrenComponent
 
         instanceComponent.toggleCompleteTodoListItemEmitter.subscribe(incomeTodo => {
             this.toggleTodoComplete(incomeTodo);

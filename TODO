@@ -7,41 +7,38 @@
 
 Commit message:
 
-    
+
 Todos:
     New:
         Current:
-
-            ✔ Refactor method updateFooterAndToggleAllInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' } @done(18-01-15 10:08)
-
-            ✔ Update resolvers (TodosActiveResolver, TodosCompletedResolver) @done(18-01-15 10:50)
-                ☐ Find out, is there any way to use on resolver (transfer filterState variable in router?) (look in sources https://github.com/angular/angular/tree/master/packages/router/src)
-
+            ☐ Change styles to SCSS (look here https://scotch.io/tutorials/using-sass-with-the-angular-cli and here https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931)
+                ☐ Add animation when hover on 'clearCompleted' highlight completed todos
+                ☐ Fix header min resizing issue (when window width is small, header flows)
+                ☐ Improve animation when 'toggleAll' todos (look single check and toggleAll)
+                ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
+            
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
                 `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
-                
-        ☐ Add animation when hover on 'clearCompleted' highlight completed todos
-        ☐ Improve animation when 'toggleAll' todos (look single check and toggleAll)
-        ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
+                ☐ In modal for deletion set focus on 'Cancel' button
+        
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
-        ☐ In modal for deletion set focus on 'Cancel' button
         ☐ Read about Service Workers and change architecture of the app (https://habrahabr.ru/company/2gis/blog/345552/)
-        ☐ Fix header min resizing issue (when window width is small, header flows)
-        ☐ Change styles to SCSS (look here https://scotch.io/tutorials/using-sass-with-the-angular-cli and here https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931)
         ☐ Add filtering by todo name
+            ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Add drag'n'drop posibility        
-        ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
+        
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
-        ☐ Find the way to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource
+        
         ☐ Fix all TODO in all files
         ☐ Check the app in 'Internet mail.ru' browser
             ☐ Add additional page 'upgrade' if browser not supported (for example https://pomotodo.com/upgrade)
         ☐ Add new column in DB with name 'deletePending'
             ☐ Upgrade indexedDb with new base version
             ☐ Add watcher (or timer/something else) to delete todo with flag true in 'deletePending' after some time (and show button to cancel deletion)
+            
         ☐ Limit amount of todo by 100 (more will be available in pro)
         ☐ Possibility to sync DB (look here https://github.com/dfahlander/Dexie.js/issues/437)
 
@@ -152,10 +149,16 @@ Todos:
             ✔ 🔥🎉🎉 After implementation browser store -> update major version @done(18-01-15 09:13)
         ✔ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage) -> Chosen Dexie as more flexible @done(18-01-14 10:36)
 
+        ✔ Refactor method updateFooterAndToggleAllInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' } @done(18-01-15 10:08)
+        ✔ Update resolvers (TodosActiveResolver, TodosCompletedResolver) @done(18-01-15 10:50)
+            ✔ Find out, is there any way to use on resolver (transfer filterState variable in router?) (look in sources https://github.com/angular/angular/tree/master/packages/router/src) @done(18-01-16 09:02)
+                ✔ It's not a good practice to use one big Resolver @done(18-01-16 09:03)
+
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)
         ✘ Find out how stored todos (probably browser store (LocalStorage)) in the example http://todomvc.com/examples/angularjs/#/ @cancelled(17-11-11 09:36) -> Not applicable, and to simple for a future
         ✘ Fix saving in db.json data algoritm (previously saved with order Id->title->complete, now saves title->complete->Id) @cancelled(17-12-02 09:48)
+        ✘ Find the way to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource -> no need in this part still @cancelled(18-01-16 09:06)
 
 Info:
     ☐ If count of todos is over 10k, performance of the app is very degradate (for example use db.json in db.zip file)
