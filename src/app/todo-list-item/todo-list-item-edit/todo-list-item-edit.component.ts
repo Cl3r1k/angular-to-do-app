@@ -6,7 +6,7 @@ import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-compo
 @Component({
     selector: 'app-todo-list-item-edit',
     templateUrl: './todo-list-item-edit.component.html',
-    styleUrls: ['./todo-list-item-edit.component.css']
+    styleUrls: ['./todo-list-item-edit.component.scss']
 })
 export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomTodoComponentInterface {
 

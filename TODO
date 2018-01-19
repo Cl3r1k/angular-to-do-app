@@ -11,15 +11,21 @@ Commit message:
 Todos:
     New:
         Current:
-            ☐ Change styles to SCSS (look here https://scotch.io/tutorials/using-sass-with-the-angular-cli and here https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931)
+            ✔ Change styles to SCSS (look here https://scotch.io/tutorials/using-sass-with-the-angular-cli and here https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931) @done(18-01-18 10:11)
                 ✔ Add animation when hover on 'clearCompleted' highlight completed todos @done(18-01-17 10:05)
                 ☐ Fix header min resizing issue (when window width is small, header flows)
                 ☐ Improve animation when 'toggleAll' todos (look single check and toggleAll)
                 ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
+                ☐ Update all styles files to new scss style (format styles)
+                    ✔ Update global.scss @done(18-01-18 10:45)
+                    ☐ Update todomvc-app.scss
+                    ☐ Update modal.component.scss
             
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
                 `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
+                `http://www.front-nika.ru/ru/angular-2-modalnoe-okno-s-pomoshhyu-router-outlet/`
+                `http://www.front-nika.ru/ru/angular2-modal-okno-c-pomoshhyu-ng-template/`
                 ☐ In modal for deletion set focus on 'Cancel' button
         
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)

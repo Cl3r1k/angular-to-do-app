@@ -6,7 +6,7 @@ import { environment } from '@env/environment.prod';
 @Component({
     selector: 'app-todo-list-header',
     templateUrl: './todo-list-header.component.html',
-    styleUrls: ['./todo-list-header.component.css']
+    styleUrls: ['./todo-list-header.component.scss']
 })
 export class TodoListHeaderComponent {
 

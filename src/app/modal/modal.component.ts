@@ -5,7 +5,7 @@ import { ModalService } from '@app/_services/modal.service';
 @Component({
     selector: 'app-modal',
     templateUrl: './modal.component.html',
-    styleUrls: ['./modal.component.css'],
+    styleUrls: ['./modal.component.scss'],
     animations: [
         trigger('modal', [
             state('void', style({

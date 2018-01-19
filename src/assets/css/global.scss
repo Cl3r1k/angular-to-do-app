@@ -15,9 +15,8 @@ body {
     margin: 0 auto;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-body.modal-open {
-    /* body overflow is hidden to hide main scrollbar when modal window is open */
-    overflow: hidden;
+    &.modal-open {
+        /* body overflow is hidden to hide main scrollbar when modal window is open, set this class programmatically in ModalService */
+        overflow: hidden;
+    }
 }
