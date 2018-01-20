@@ -13,13 +13,16 @@ Todos:
         Current:
             ✔ Change styles to SCSS (look here https://scotch.io/tutorials/using-sass-with-the-angular-cli and here https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931) @done(18-01-18 10:11)
                 ✔ Add animation when hover on 'clearCompleted' highlight completed todos @done(18-01-17 10:05)
+                    ✔ Fix animation when 'clearCompleted' clicked (after click the 'clearHoverState' is still true) @done(18-01-19 08:52)
                 ☐ Fix header min resizing issue (when window width is small, header flows)
                 ☐ Improve animation when 'toggleAll' todos (look single check and toggleAll)
                 ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos)
-                ☐ Update all styles files to new scss style (format styles)
+                ☐ Update all styles files to new scss styles (format styles)
                     ✔ Update global.scss @done(18-01-18 10:45)
                     ☐ Update todomvc-app.scss
-                    ☐ Update modal.component.scss
+                    ✔ Update modal.component.scss @done(18-01-19 08:47)
+            
+            ☐ Fix 'toggleAll' checkbox style in FF and Edge
             
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`

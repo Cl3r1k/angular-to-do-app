@@ -18,8 +18,8 @@
         "testTsconfig": "tsconfig.spec.json",
         "prefix": "app",
         "styles": [
-            "assets/css/global.scss",
-            "assets/css/todomvc-app.scss",
+            "assets/scss/global.scss",
+            "assets/scss/todomvc-app.scss",
             "styles.scss"
         ],
         "scripts": [],
