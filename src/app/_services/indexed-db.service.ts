@@ -138,7 +138,7 @@ export class IndexedDbService extends Dexie {
 
             const lastKey = await this.dbTable.bulkPut(todos);
 
-            console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
+            // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
 
             if (activeRouteState === 1 || activeRouteState === 2) {
                 todos.filter(todo => {
