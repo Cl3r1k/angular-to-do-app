@@ -1,4 +1,4 @@
-<div class='view' [class.hovered]='hoverState && !deleteHoverState && !editHoverState' [class.delete-hovered]='deleteHoverState' [class.edit-hovered]='editHoverState' (mouseenter)='setHover(true)' (mouseleave)='setHover(false)'>
+<div class='view' [class.hovered]='hoverState && !deleteHoverState && !editHoverState' [class.delete-hovered]='deleteHoverState' [class.edit-hovered]='editHoverState'>
     <input type="checkbox" class="toggle" (click)='toggleTodoComplete(todo)' [checked]='todo.complete'>
     <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>
     <svg class="icon icon-pencil-edit" (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)' (click)='editTodo(todo)'>

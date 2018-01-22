@@ -27,7 +27,6 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     @Output()
     removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    hoverState = false;
     deleteHoverState = false;
     editHoverState = false;
 
@@ -52,10 +51,6 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     removeTodo(todo: ToDo) {
         // console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ' + todo.title);
         this.removeTodoListItemEmitter.emit(todo);
-    }
-
-    setHover(state: boolean) {
-        this.hoverState = state;
     }
 
     setDeleteHover(state: boolean) {

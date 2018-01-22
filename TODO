@@ -7,7 +7,7 @@
 
 Commit message:
 
-
+    
 Todos:
     New:
         Current:
@@ -17,6 +17,7 @@ Todos:
                 ☐ Fix header min resizing issue (when window width is small, header flows)
                 ☐ Improve animation when 'toggleAll' todos (look single check and toggleAll -> when toggleAll clicked all data reloaded, so we should use Angular animation when in component)
                 ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos like here https://developers.google.com/web/updates/2017/10/animated-blur)
+                ☐ Add animation when checkbox of todo hover -> strikeling the text (look in `&.completed label` style)
                 ☐ Update all styles files to new scss styles (format styles)
                     ✔ Update global.scss @done(18-01-18 10:45)
                     ☐ Update todomvc-app.scss
