@@ -137,7 +137,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     }
 
     onClearHoverSetState(hoverState: boolean) {
-        console.log('onClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', hoverState);
+        // console.log('onClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', hoverState);
         this.clearHoverState = hoverState;
     }
 

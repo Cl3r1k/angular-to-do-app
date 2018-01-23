@@ -130,7 +130,7 @@ export class IndexedDbService extends Dexie {
     // API: (toggle all todos complete status)
     public toggleAll(toggleState: boolean, activeRouteState: number): Observable<ToDo[]> {
         return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
-            const todos: ToDo[] = await this.dbTable.toArray();
+            let todos: ToDo[] = await this.dbTable.toArray();
 
             todos.forEach(todo => {
                 return todo.complete = toggleState;
@@ -141,8 +141,9 @@ export class IndexedDbService extends Dexie {
             // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
 
             if (activeRouteState === 1 || activeRouteState === 2) {
-                todos.filter(todo => {
-                    return todo.complete === toggleState;
+
+                todos = todos.filter(todo => {
+                    return todo.complete === (activeRouteState === 2 ? true : false);
                 });
             }
 

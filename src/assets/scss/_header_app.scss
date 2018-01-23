@@ -4,6 +4,18 @@
 
 .header {
     position: relative;
+    h1 {
+        position: absolute;
+        top: -130px;
+        width: 100%;
+        font-size: 80px;
+        font-weight: 100;
+        text-align: center;
+        color: rgba(175, 47, 47, 0.3);
+        -webkit-text-rendering: optimizeLegibility;
+        -moz-text-rendering: optimizeLegibility;
+        text-rendering: optimizeLegibility;
+    }
     .toggle-all {
         position: absolute;
         top: 11px;
