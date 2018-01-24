@@ -17,7 +17,7 @@ Todos:
                 ☐ Fix header min resizing issue (when window width is small, header flows)
                 ☐ Improve animation when 'toggleAll' todos (look for single check and toggleAll -> when toggleAll clicked all data reloaded, so we should use Angular animation when in component)
                 ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos like here https://developers.google.com/web/updates/2017/10/animated-blur)
-                ☐ Add animation when checkbox of todo hover -> strikeline the text (look in `&.completed label` style)
+                ✔ Add animation when checkbox of todo hovered -> strikeline the text (look in `&.completed label` style) @done(18-01-23 14:46)
                     ☐ Add animation for 'toggleAll' onHover (strikeline all todos)
                 ✔ Update all styles files to new scss styles (format styles) @done(18-01-22 09:30)
                     ✔ Update global.scss @done(18-01-18 10:45)
@@ -34,8 +34,9 @@ Todos:
                 `http://www.front-nika.ru/ru/angular2-modal-okno-c-pomoshhyu-ng-template/`
                 ☐ In modal for deletion set focus on 'Cancel' button
         
+        ☐ Change styles to CSS-grids
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
-        Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
+        ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
         ☐ Read about Service Workers and change architecture of the app (https://habrahabr.ru/company/2gis/blog/345552/)
         ☐ Add filtering by todo name
             ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
