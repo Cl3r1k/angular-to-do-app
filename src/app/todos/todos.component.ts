@@ -22,6 +22,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     titleModal = '';
     activeRouteState = 0;
     clearHoverState = false;
+    toggleAllHoverState = false;
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -136,9 +137,16 @@ export class TodosComponent implements OnInit, OnDestroy {
         });
     }
 
-    onClearHoverSetState(hoverState: boolean) {
-        // console.log('onClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', hoverState);
-        this.clearHoverState = hoverState;
+    onClearHoverSetState(clearCompletetHoverState: boolean) {
+        // tslint:disable-next-line:max-line-length
+        // console.log('onClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', clearCompletetHoverState);
+        this.clearHoverState = clearCompletetHoverState;
+    }
+
+    onToggleAllHoverSetState(toggleAllHoverState: boolean) {
+        // tslint:disable-next-line:max-line-length
+        // console.log('onToggleAllHoverSetState emited evt toggleAllHoverStateTodoListHeaderEmitter from TodoListItemView with state: ', toggleAllHoverState);
+        this.toggleAllHoverState = toggleAllHoverState;
     }
 
 }

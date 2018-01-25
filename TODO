@@ -1,6 +1,8 @@
 // C:\Windows\System32\cmd.exe /k "C:\Program Files\nodejs\nodevars.bat" // To start from VSC terminal node env
 // ng test -sm=false // To get the right error messages while testing the app.
 
+// Initial example: http://todomvc.com/examples/angularjs/#/
+
 // To push changes on githubpages
 // ng build --prod --base-href "https://Cl3r1k.github.io/angular-to-do-app/"
 // angular-cli-ghpages --repo=https://github.com/Cl3r1k/angular-to-do-app.git --name=Cl3r1k --email=cl3r1k2@gmail.com --no-silent
@@ -14,18 +16,20 @@ Todos:
             ✔ Change styles to SCSS (look here https://scotch.io/tutorials/using-sass-with-the-angular-cli and here https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931) @done(18-01-18 10:11)
                 ✔ Add animation when hover on 'clearCompleted' highlight completed todos @done(18-01-17 10:05)
                     ✔ Fix animation when 'clearCompleted' clicked (after click the 'clearHoverState' is still true) @done(18-01-19 08:52)
+                    ✔ Add animation when 'clearCompleted' hovered -> display trash icons @done(18-01-24 09:47)
                 ☐ Fix header min resizing issue (when window width is small, header flows)
                 ☐ Improve animation when 'toggleAll' todos (look for single check and toggleAll -> when toggleAll clicked all data reloaded, so we should use Angular animation when in component)
                 ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos like here https://developers.google.com/web/updates/2017/10/animated-blur)
                 ✔ Add animation when checkbox of todo hovered -> strikeline the text (look in `&.completed label` style) @done(18-01-23 14:46)
-                    ☐ Add animation for 'toggleAll' onHover (strikeline all todos)
+                    ✔ Add animation for 'toggleAll' onHover (strikeline all todos) @done(18-01-24 09:39)
+                ✔ Improve animation for icons 'delete' and 'edit' @done(18-01-24 09:48)
                 ✔ Update all styles files to new scss styles (format styles) @done(18-01-22 09:30)
                     ✔ Update global.scss @done(18-01-18 10:45)
                     ✔ Update todomvc-app.scss @done(18-01-22 09:29)
                     ✔ Update modal.component.scss @done(18-01-19 08:47)
             
             ✔ Fix 'toggleAll' for filtered list @done(18-01-22 09:40)
-            ☐ Fix 'toggleAll' checkbox style in FF and Edge
+            ☐ Fix 'toggleAll' checkbox style in FF and Edge (look here http://yoksel.github.io/url-encoder/ and here http://css.yoksel.ru/svg-angular-firefox/)
             
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`

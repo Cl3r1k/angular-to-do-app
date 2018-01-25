@@ -21,8 +21,8 @@ export class TodoListFooterComponent {
         this.clearTodoListFooterEmitter.emit(clearState);
     }
 
-    setClearCompletedHoverState(hoverState: boolean) {
-        this.clearHoverStateTodoListFooterEmitter.emit(hoverState);
+    setClearCompletedHoverState(clearCompletetHoverState: boolean) {
+        this.clearHoverStateTodoListFooterEmitter.emit(clearCompletetHoverState);
     }
 
 }

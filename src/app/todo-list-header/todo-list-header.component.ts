@@ -17,11 +17,10 @@ export class TodoListHeaderComponent {
     @Input() todosAllAmount: number;
     @Input() todosAllCompleted: boolean;
 
-    @Output()
-    addTodoListHeaderEmitter: EventEmitter<ToDo> = new EventEmitter();
+    @Output() addTodoListHeaderEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    @Output()
-    toggleAllTodoListHeaderEmitter: EventEmitter<boolean> = new EventEmitter();
+    @Output() toggleAllTodoListHeaderEmitter: EventEmitter<boolean> = new EventEmitter();
+    @Output() toggleAllHoverStateTodoListHeaderEmitter: EventEmitter<boolean> = new EventEmitter();
 
     constructor() { }
 
@@ -35,6 +34,10 @@ export class TodoListHeaderComponent {
 
     toggleAllTodos(toggleState: boolean) {
         this.toggleAllTodoListHeaderEmitter.emit(toggleState);    // Emit the toggleAll event to TodosComponent
+    }
+
+    setToggleAllHoverState(toggleAllHoverState: boolean) {
+        this.toggleAllHoverStateTodoListHeaderEmitter.emit(toggleAllHoverState);
     }
 
 }

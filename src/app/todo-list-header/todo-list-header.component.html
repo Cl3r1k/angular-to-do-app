@@ -1,5 +1,5 @@
 <header class='header'>
     <h1>Todo list <small>(v_{{BUILD_VERSION}})</small></h1>
-    <input type='checkbox' class='toggle-all' *ngIf='todosAllAmount' #toggleAll (click)='toggleAllTodos(toggleAll.checked)' [checked]='todosAllCompleted'>
+    <input type='checkbox' class='toggle-all' *ngIf='todosAllAmount' #toggleAll (click)='toggleAllTodos(toggleAll.checked)' [checked]='todosAllCompleted' (mouseenter)='setToggleAllHoverState(true)' (mouseleave)='setToggleAllHoverState(false)'>
     <input type='text' class='new-todo' placeholder='What needs to be done?' autofocus='' (keyup.enter)='addTodo()' [(ngModel)]='newTodo.title'>
 </header>

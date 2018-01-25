@@ -1,8 +1,8 @@
 <!-- src/app/todos/todos.component.ts -->
-<section class='todoapp' [class.clearAllHovered]='clearHoverState'>
+<section class='todoapp' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
 
     <!-- header is now replaced with app-todoo-list-header -->
-    <app-todo-list-header [todosAllAmount]='allTodosAmount' [todosAllCompleted]='allCompleted' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAll($event)'></app-todo-list-header>
+    <app-todo-list-header [todosAllAmount]='allTodosAmount' [todosAllCompleted]='allCompleted' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAll($event)' (toggleAllHoverStateTodoListHeaderEmitter)='onToggleAllHoverSetState($event)'></app-todo-list-header>
 
     <app-todo-list [todos]='todos' [todosAllAmount]='allTodosAmount' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (removeTodoListEmitter)='onRemoveTodo($event)'></app-todo-list>
 
