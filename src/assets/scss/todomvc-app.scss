@@ -33,6 +33,7 @@ button {
     font-weight: inherit;
     color: inherit;
     -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -70,8 +71,10 @@ button {
     }
     .toggle-all {
         -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
         transform: rotate(90deg);
         -webkit-appearance: none;
+        -moz-appearance: none;
         appearance: none;
     }
 }
