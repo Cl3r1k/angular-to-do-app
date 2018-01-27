@@ -29,7 +29,11 @@ Todos:
                     ✔ Update modal.component.scss @done(18-01-19 08:47)
             
             ✔ Fix 'toggleAll' for filtered list @done(18-01-22 09:40)
-            ☐ Fix 'toggleAll' checkbox style in FF and Edge (look here http://yoksel.github.io/url-encoder/ and here http://css.yoksel.ru/svg-angular-firefox/)
+            ✔ Fix 'toggleAll' checkbox style in FF (look here http://yoksel.github.io/url-encoder/ and here http://css.yoksel.ru/svg-angular-firefox/) @done(18-01-26 09:28)
+            ☐ Fix 'toggleAll' checkbox style in Edge (use http://yoksel.github.io/url-encoder/)
+            ☐ Fix styles for checkbox.toggle in FF
+
+            ☐ Update Angular CLI to version 1.6.5
             
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -62,7 +66,7 @@ Todos:
         ☐ CleanUp code (delete console.log, comments and other things)
 
         ☐ Idea to implement multiple editing items
-        `сгруппировать/смерджить несколько observable httpClient.post, чтобы каждый последующий отправлялся только после выполенения предыдущего
+        `сгруппировать/смерджить несколько observable httpClient.post, чтобы каждый последующий отправлялся только после выполнения предыдущего
          flatMap -> 
          post(...).flatMap(result => post(result.data))
          ....data)).subscribe(finalResult => ....) (https://t.me/angular_ru/78351)`
