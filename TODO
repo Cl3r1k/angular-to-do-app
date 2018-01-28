@@ -13,27 +13,10 @@ Commit message:
 Todos:
     New:
         Current:
-            ✔ Change styles to SCSS (look here https://scotch.io/tutorials/using-sass-with-the-angular-cli and here https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931) @done(18-01-18 10:11)
-                ✔ Add animation when hover on 'clearCompleted' highlight completed todos @done(18-01-17 10:05)
-                    ✔ Fix animation when 'clearCompleted' clicked (after click the 'clearHoverState' is still true) @done(18-01-19 08:52)
-                    ✔ Add animation when 'clearCompleted' hovered -> display trash icons @done(18-01-24 09:47)
-                ☐ Fix header min resizing issue (when window width is small, header flows)
-                ☐ Improve animation when 'toggleAll' todos (look for single check and toggleAll -> when toggleAll clicked all data reloaded, so we should use Angular animation when in component)
-                ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos like here https://developers.google.com/web/updates/2017/10/animated-blur)
-                ✔ Add animation when checkbox of todo hovered -> strikeline the text (look in `&.completed label` style) @done(18-01-23 14:46)
-                    ✔ Add animation for 'toggleAll' onHover (strikeline all todos) @done(18-01-24 09:39)
-                ✔ Improve animation for icons 'delete' and 'edit' @done(18-01-24 09:48)
-                ✔ Update all styles files to new scss styles (format styles) @done(18-01-22 09:30)
-                    ✔ Update global.scss @done(18-01-18 10:45)
-                    ✔ Update todomvc-app.scss @done(18-01-22 09:29)
-                    ✔ Update modal.component.scss @done(18-01-19 08:47)
             
-            ✔ Fix 'toggleAll' for filtered list @done(18-01-22 09:40)
-            ✔ Fix 'toggleAll' checkbox style in FF (look here http://yoksel.github.io/url-encoder/ and here http://css.yoksel.ru/svg-angular-firefox/) @done(18-01-26 09:28)
-            ☐ Fix 'toggleAll' checkbox style in Edge (use http://yoksel.github.io/url-encoder/)
-            ☐ Fix styles for checkbox.toggle in FF
-
-            ☐ Update Angular CLI to version 1.6.5
+            ✔ Update Angular CLI to version 1.6.6 @done(18-01-27 10:26)
+            ✔ Update all modules to latests versions @done(18-01-28 09:47)
+                ☐ Update tests for new karma
             
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -43,6 +26,12 @@ Todos:
                 ☐ In modal for deletion set focus on 'Cancel' button
         
         ☐ Change styles to CSS-grids
+            ☐ Fix header min resizing issue (when window width is small, header flows)
+            ☐ Improve animation when 'toggleAll' todos (look for single check and toggleAll -> when toggleAll clicked all data reloaded, so we should use Angular animation when in component)
+            ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos like here https://developers.google.com/web/updates/2017/10/animated-blur)
+            ☐ Fix 'toggleAll' checkbox style in Edge (use http://yoksel.github.io/url-encoder/)
+            ☐ Fix styles for checkbox.toggle in FF and Edge
+
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
         ☐ Read about Service Workers and change architecture of the app (https://habrahabr.ru/company/2gis/blog/345552/)
@@ -174,6 +163,21 @@ Todos:
         ✔ Update resolvers (TodosActiveResolver, TodosCompletedResolver) @done(18-01-15 10:50)
             ✔ Find out, is there any way to use on resolver (transfer filterState variable in router?) (look in sources https://github.com/angular/angular/tree/master/packages/router/src) @done(18-01-16 09:02)
                 ✔ It's not a good practice to use one big Resolver @done(18-01-16 09:03)
+
+        ✔ Change styles to SCSS (look here https://scotch.io/tutorials/using-sass-with-the-angular-cli and here https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931) @done(18-01-18 10:11)
+            ✔ Add animation when hover on 'clearCompleted' highlight completed todos @done(18-01-17 10:05)
+                ✔ Fix animation when 'clearCompleted' clicked (after click the 'clearHoverState' is still true) @done(18-01-19 08:52)
+                ✔ Add animation when 'clearCompleted' hovered -> display trash icons @done(18-01-24 09:47)
+            ✔ Add animation when checkbox of todo hovered -> strikeline the text (look in `&.completed label` style) @done(18-01-23 14:46)
+                ✔ Add animation for 'toggleAll' onHover (strikeline all todos) @done(18-01-24 09:39)
+            ✔ Improve animation for icons 'delete' and 'edit' @done(18-01-24 09:48)
+            ✔ Update all styles files to new scss styles (format styles) @done(18-01-22 09:30)
+                ✔ Update global.scss @done(18-01-18 10:45)
+                ✔ Update todomvc-app.scss @done(18-01-22 09:29)
+                ✔ Update modal.component.scss @done(18-01-19 08:47)
+        
+        ✔ Fix 'toggleAll' for filtered list @done(18-01-22 09:40)
+        ✔ Fix 'toggleAll' checkbox style in FF (look here http://yoksel.github.io/url-encoder/ and here http://css.yoksel.ru/svg-angular-firefox/) @done(18-01-26 09:28)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)
