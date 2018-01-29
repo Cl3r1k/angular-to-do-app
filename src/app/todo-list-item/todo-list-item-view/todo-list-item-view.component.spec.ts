@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+
 import { ToDo } from '@app/_models/to-do';
 
 import { TodoListItemViewComponent } from '@app/todo-list-item/todo-list-item-view/todo-list-item-view.component';
@@ -22,8 +24,10 @@ describe('TodoListItemViewComponent', () => {
         fixture = TestBed.createComponent(TodoListItemViewComponent);
         component = fixture.componentInstance;
         toggleEl = fixture.debugElement.nativeElement.querySelector('input[type=checkbox]');    // Find toggle checkbox element
-        destroyEl = fixture.debugElement.nativeElement.querySelector('.icon-destroy');          // Find destroy icon element
+        // destroyEl = fixture.debugElement.nativeElement.querySelector('.icon-destroy');          // Find destroy icon element
         editEl = fixture.debugElement.nativeElement.querySelector('.icon-pencil-edit');         // Find edit icon element
+
+        destroyEl = fixture.debugElement.query(By.css('.icon-destroy'));
 
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
         component.todo = expectedTodo;
@@ -101,10 +105,18 @@ describe('TodoListItemViewComponent', () => {
 
         it(`clicking on svg.icon-destroy should call method 'close()' (async)`, async () => {
             // Arrange
+            console.log('%c destroyEl: ', 'color: #b03911;', destroyEl);
 
             // Act
             spyOn(component, 'removeTodo');
-            destroyEl.click();
+            // destroyEl.click();
+
+            if (destroyEl instanceof HTMLElement) {
+                destroyEl.click();
+            } else {
+                destroyEl.triggerEventHandler('click', { button: 0 });
+            }
+            fixture.detectChanges();
 
             // Assert
             fixture.whenStable().then(() => {

@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { ModalComponent } from './modal.component';
 import { ModalService } from '@app/_services/modal.service';
@@ -20,8 +21,15 @@ describe('ModalComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(ModalComponent);
         component = fixture.componentInstance;
-        dialogCloseBtnEl = fixture.debugElement.nativeElement.querySelector('.dialog__close-btn');       // Find close button element
+        dialogCloseBtnEl = fixture.debugElement.nativeElement.querySelector('button');       // Find close button element
         modalOverlayEl = fixture.debugElement.nativeElement.querySelector('.modal-overlay');             // Find div overlay element
+
+        // modalOverlayEl = fixture.debugElement.query(By.css('.modal-overlay'));
+        // let button = fixture.debugElement.nativeElement.querySelector('button');
+        // console.log('fixture: ', fixture);
+        // console.log('component: ', component);
+        // console.log('modalOverlayEl: ', modalOverlayEl);
+        // console.log('button: ', button);
 
         component.modalId = 'testId';
         component.modalTitle = '';
