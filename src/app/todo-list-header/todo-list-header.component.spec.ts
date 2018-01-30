@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+
 import { ToDo } from '@app/_models/to-do';
 
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
@@ -21,8 +22,12 @@ describe('TodoListHeaderComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodoListHeaderComponent);
         component = fixture.componentInstance;
-        addTodoEl = fixture.debugElement.nativeElement.querySelector('.new-todo');              // Find addTodoEl text field element
-        toggleAllEl = fixture.debugElement.nativeElement.querySelector('.toggle-all');            // Find toggleAll checkbox element
+
+        component.todosAllAmount = 11;    // Lets count that we have more than 0 todo
+        fixture.detectChanges();
+
+        addTodoEl = fixture.debugElement.nativeElement.querySelector('input[type=text].new-todo');      // Find addTodoEl text field element
+        toggleAllEl = fixture.debugElement.nativeElement.querySelector('input[type=checkbox].toggle-all'); // Find toggleAll checkbox elem
 
         fixture.detectChanges();
     });
@@ -95,7 +100,6 @@ describe('TodoListHeaderComponent', () => {
         }));
     });
 
-    // TODO: View tests are working not proper (look in nativeElements - they are not working proper)
     describe(`#view tests`, () => {
         it(`press Enter on text.new-todo should call method 'addTodo' (async)`, async () => {
             // Arrange

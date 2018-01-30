@@ -23,11 +23,9 @@ describe('TodoListItemViewComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodoListItemViewComponent);
         component = fixture.componentInstance;
-        toggleEl = fixture.debugElement.nativeElement.querySelector('input[type=checkbox]');    // Find toggle checkbox element
-        // destroyEl = fixture.debugElement.nativeElement.querySelector('.icon-destroy');          // Find destroy icon element
-        editEl = fixture.debugElement.nativeElement.querySelector('.icon-pencil-edit');         // Find edit icon element
-
-        destroyEl = fixture.debugElement.query(By.css('.icon-destroy'));
+        toggleEl = fixture.debugElement.query(By.css('input[type=checkbox]'));        // Find toggle checkbox element
+        destroyEl = fixture.debugElement.query(By.css('svg.icon-destroy'));           // Find destroy icon element
+        editEl = fixture.debugElement.query(By.css('svg.icon-pencil-edit'));          // Find edit icon element
 
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
         component.todo = expectedTodo;
@@ -88,39 +86,21 @@ describe('TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    // TODO: View tests are working not proper (look in nativeElements - they are not working proper)
     describe(`#view tests`, () => {
         it(`clicking on checkbox.toggle should emits 'toggleTodoComplete' event (async)`, async () => {
             // Arrange
 
             // Act
             spyOn(component, 'toggleTodoComplete');
-            toggleEl.click();
+            if (toggleEl instanceof HTMLElement) {
+                toggleEl.click();
+            } else {
+                toggleEl.triggerEventHandler('click', { button: 0 });
+            }
 
             // Assert
             fixture.whenStable().then(() => {
                 expect(component.toggleTodoComplete).toHaveBeenCalled();
-            });
-        });
-
-        it(`clicking on svg.icon-destroy should call method 'close()' (async)`, async () => {
-            // Arrange
-            console.log('%c destroyEl: ', 'color: #b03911;', destroyEl);
-
-            // Act
-            spyOn(component, 'removeTodo');
-            // destroyEl.click();
-
-            if (destroyEl instanceof HTMLElement) {
-                destroyEl.click();
-            } else {
-                destroyEl.triggerEventHandler('click', { button: 0 });
-            }
-            fixture.detectChanges();
-
-            // Assert
-            fixture.whenStable().then(() => {
-                expect(component.removeTodo).toHaveBeenCalled();
             });
         });
 
@@ -129,11 +109,32 @@ describe('TodoListItemViewComponent', () => {
 
             // Act
             spyOn(component, 'editTodo');
-            editEl.click();
+            if (editEl instanceof HTMLElement) {
+                editEl.click();
+            } else {
+                editEl.triggerEventHandler('click', { button: 0 });
+            }
 
             // Assert
             fixture.whenStable().then(() => {
                 expect(component.editTodo).toHaveBeenCalled();
+            });
+        });
+
+        it(`clicking on svg.icon-destroy should call method 'close()' (async)`, async () => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'removeTodo');
+            if (destroyEl instanceof HTMLElement) {
+                destroyEl.click();
+            } else {
+                destroyEl.triggerEventHandler('click', { button: 0 });
+            }
+
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.removeTodo).toHaveBeenCalled();
             });
         });
     });

@@ -25,6 +25,11 @@ describe('TodoListFooterComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodoListFooterComponent);
         component = fixture.componentInstance;
+
+        component.todosAllAmount = 1;            // Lets count that we have more than 0 todo
+        component.todosCompletedAmount = 1;      // Lets count that we have more than 0 completed todo
+        fixture.detectChanges();
+
         btnClearEl = fixture.debugElement.nativeElement.querySelector('.btn-clear');    // Find button.btn-clear element
 
         expectedtodosAllAmount = 11;                                 // For example

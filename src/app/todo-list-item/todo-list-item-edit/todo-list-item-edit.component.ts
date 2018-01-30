@@ -65,7 +65,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
         this.editedTodoElementRef.nativeElement.blur();    // Imitate lost focus event
     }
 
-    stopEditTodo() {
+    stopEditTodoOnBlur() {
 
         if (this.todo.title) {
             if (this.isCanceled) {
