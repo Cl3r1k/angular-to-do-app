@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { By } from '@angular/platform-browser';
 
 import { ModalComponent } from './modal.component';
@@ -13,7 +14,8 @@ describe('ModalComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [ModalComponent],
-            providers: [ModalService]
+            providers: [ModalService],
+            imports: [ BrowserAnimationsModule]
         })
             .compileComponents();
     }));
