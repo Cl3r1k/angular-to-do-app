@@ -15,7 +15,7 @@ describe('ModalComponent', () => {
         TestBed.configureTestingModule({
             declarations: [ModalComponent],
             providers: [ModalService],
-            imports: [ BrowserAnimationsModule]
+            imports: [BrowserAnimationsModule]
         })
             .compileComponents();
     }));
@@ -23,18 +23,18 @@ describe('ModalComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(ModalComponent);
         component = fixture.componentInstance;
-        dialogCloseBtnEl = fixture.debugElement.nativeElement.querySelector('button');       // Find close button element
-        modalOverlayEl = fixture.debugElement.nativeElement.querySelector('.modal-overlay');             // Find div overlay element
-
-        // modalOverlayEl = fixture.debugElement.query(By.css('.modal-overlay'));
-        // let button = fixture.debugElement.nativeElement.querySelector('button');
-        // console.log('fixture: ', fixture);
-        // console.log('component: ', component);
-        // console.log('modalOverlayEl: ', modalOverlayEl);
-        // console.log('button: ', button);
 
         component.modalId = 'testId';
         component.modalTitle = '';
+        component.isOpen = true;
+        component.modalTitle = 'Somet title';
+        component.blocking = false;
+        fixture.detectChanges();
+
+        modalOverlayEl = fixture.debugElement.nativeElement.querySelector('.modal-overlay');             // Find div overlay element
+        // Applyed By.css - with querySelector view test fails
+        dialogCloseBtnEl = fixture.debugElement.query(By.css('.dialog__close-btn'));       // Find close button element
+
         fixture.detectChanges();
     });
 
@@ -68,7 +68,11 @@ describe('ModalComponent', () => {
 
             // Act
             spyOn(component, 'close');
-            dialogCloseBtnEl.click();
+            if (dialogCloseBtnEl instanceof HTMLElement) {
+                dialogCloseBtnEl.click();
+            } else {
+                dialogCloseBtnEl.triggerEventHandler('click', { button: 0 });
+            }
 
             // Assert
             fixture.whenStable().then(() => {

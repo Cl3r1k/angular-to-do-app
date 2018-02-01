@@ -13,10 +13,12 @@ Commit message:
 Todos:
     New:
         Current:
+
+            ☐ Add drag'n'drop posibility (look here ...)
             
             ✔ Update Angular CLI to version 1.6.6 @done(18-01-27 10:26)
             ✔ Update all modules to latests versions @done(18-01-28 09:47)
-                ☐ Update tests for new karma
+                ✔ Update tests for new karma @done(18-01-31 09:46)
             
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -38,7 +40,6 @@ Todos:
         ☐ Add filtering by todo name
             ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
-        ☐ Add drag'n'drop posibility        
         
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         
