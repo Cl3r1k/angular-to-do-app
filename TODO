@@ -14,11 +14,9 @@ Todos:
     New:
         Current:
 
-            ☐ Add drag'n'drop posibility (look here ...)
-            
-            ✔ Update Angular CLI to version 1.6.6 @done(18-01-27 10:26)
-            ✔ Update all modules to latests versions @done(18-01-28 09:47)
-                ✔ Update tests for new karma @done(18-01-31 09:46)
+            ☐ Add drag'n'drop posibility (look here https://shekhargulati.com/2017/09/21/building-an-angular-4-drag-and-drop-application-in-15-minutes/)
+
+            ☐ Fix styles for edit-Icon in todo with large text
             
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -29,10 +27,12 @@ Todos:
         
         ☐ Change styles to CSS-grids
             ☐ Fix header min resizing issue (when window width is small, header flows)
+            ☐ Improve animations for checkbox, edit-Icon, delete-Icon -> use opacity onHover todo
             ☐ Improve animation when 'toggleAll' todos (look for single check and toggleAll -> when toggleAll clicked all data reloaded, so we should use Angular animation when in component)
             ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos like here https://developers.google.com/web/updates/2017/10/animated-blur)
             ☐ Fix 'toggleAll' checkbox style in Edge (use http://yoksel.github.io/url-encoder/)
             ☐ Fix styles for checkbox.toggle in FF and Edge
+            ☐ Autoresize fields for new todo and editing todo with large text
 
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
@@ -179,6 +179,10 @@ Todos:
         
         ✔ Fix 'toggleAll' for filtered list @done(18-01-22 09:40)
         ✔ Fix 'toggleAll' checkbox style in FF (look here http://yoksel.github.io/url-encoder/ and here http://css.yoksel.ru/svg-angular-firefox/) @done(18-01-26 09:28)
+
+        ✔ Update Angular CLI to version 1.6.6 @done(18-01-27 10:26)
+        ✔ Update all modules to latests versions @done(18-01-28 09:47)
+            ✔ Update tests for new karma @done(18-01-31 09:46)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)
