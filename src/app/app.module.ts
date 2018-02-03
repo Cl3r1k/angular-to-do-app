@@ -28,6 +28,9 @@ import { AppRoutingModule } from '@app/app-routing.module';
 // Directives
 import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.directive';
 
+// Modules
+import { DndModule } from 'ng2-dnd';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -47,7 +50,8 @@ import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.direc
         HttpClientModule,
         BrowserModule,
         FormsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        DndModule.forRoot()
     ],
     providers: [TodoService, ApiService, ModalService, IndexedDbService],
     bootstrap: [AppComponent]
