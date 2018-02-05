@@ -1,10 +1,11 @@
 <div class='view' [class.delete-hovered]='deleteHoverState' [class.edit-hovered]='editHoverState' [class.complete-hovered]='completeHoverState'>
-    <input type="checkbox" class="toggle" (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)'>
+    <span class='handle'>=</span>
+    <input type='checkbox' class='toggle' (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)'>
     <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>
-    <svg class="icon icon-pencil-edit" (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)' (click)='editTodo(todo)'>
-        <use xlink:href="#icon-pencil-edit"></use>
+    <svg class='icon icon-pencil-edit' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)' (click)='editTodo(todo)'>
+        <use xlink:href='#icon-pencil-edit'></use>
     </svg>
-    <svg class="icon icon-destroy" (click)='removeTodo(todo)' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'>
-        <use xlink:href="#icon-destroy"></use>
+    <svg class='icon icon-destroy' (click)='removeTodo(todo)' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'>
+        <use xlink:href='#icon-destroy'></use>
     </svg>
 </div>
