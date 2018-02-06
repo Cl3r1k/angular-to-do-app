@@ -33,6 +33,7 @@ Todos:
             ☐ Fix 'toggleAll' checkbox style in Edge (use http://yoksel.github.io/url-encoder/)
             ☐ Fix styles for checkbox.toggle in FF and Edge
             ☐ Autoresize fields for new todo and editing todo with large text
+            ☐ Update UI for DnD (look here )
 
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
@@ -40,6 +41,7 @@ Todos:
         ☐ Add filtering by todo name
             ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
+        ☐ Use Reactive forms
         
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         

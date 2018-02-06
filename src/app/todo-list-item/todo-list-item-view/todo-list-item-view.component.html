@@ -1,5 +1,5 @@
 <div class='view' [class.delete-hovered]='deleteHoverState' [class.edit-hovered]='editHoverState' [class.complete-hovered]='completeHoverState'>
-    <span class='handle'>=</span>
+    <span class='handle' dnd-sortable-handle>=</span>
     <input type='checkbox' class='toggle' (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)'>
     <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>
     <svg class='icon icon-pencil-edit' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)' (click)='editTodo(todo)'>

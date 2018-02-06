@@ -21,6 +21,8 @@ export class TodoListComponent {
     @Output()
     removeTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
+    dragEnabled = true;    // Variable for prefs to enable/disable dnd
+
     constructor() { }
 
     onUpdateTodo(todo: ToDo) {
@@ -33,6 +35,10 @@ export class TodoListComponent {
 
     onRemoveTodo(todo: ToDo) {
         this.removeTodoListEmitter.emit(todo);    // Emit the remove event to TodosComponent
+    }
+
+    onMove(todo: ToDo, position: number) {
+        console.log('new position: %d for todo: ', position, todo);
     }
 
 }
