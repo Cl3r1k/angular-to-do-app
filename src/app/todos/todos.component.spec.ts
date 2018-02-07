@@ -25,13 +25,20 @@ import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
 // Routers
 import { ActivatedRoute } from '@angular/router';
 
+// Modules
+import { DndModule, DragDropService, DragDropConfig, DragDropSortableService } from 'ng2-dnd';
+
 describe(`TodosComponent`, () => {
     let component: TodosComponent;
     let fixture: ComponentFixture<TodosComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [FormsModule, RouterTestingModule],
+            imports: [
+                FormsModule,
+                RouterTestingModule,
+                DndModule
+            ],
             declarations: [
                 TodosComponent,
                 TodoListHeaderComponent,
@@ -62,7 +69,10 @@ describe(`TodosComponent`, () => {
                         }
                     }
                 },
-                ModalService
+                ModalService,
+                DragDropService,
+                DragDropConfig,
+                DragDropSortableService
             ]
         })
             .compileComponents();

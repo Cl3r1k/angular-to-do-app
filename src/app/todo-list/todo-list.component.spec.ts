@@ -9,12 +9,16 @@ import { TodoListItemComponent } from '@app/todo-list-item/todo-list-item.compon
 import { TodoListItemEditComponent } from '@app/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 import { TodoListItemViewComponent } from '@app/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 
+// Modules
+import { DndModule } from 'ng2-dnd';
+
 describe('TodoListComponent', () => {
     let component: TodoListComponent;
     let fixture: ComponentFixture<TodoListComponent>;
     let expectedTodos: ToDo[];
     let todo1: ToDo;
     let todo2: ToDo;
+    let todo3: ToDo;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -24,7 +28,10 @@ describe('TodoListComponent', () => {
                 TodoListItemViewComponent,
                 TodoListItemEditComponent
             ],
-            imports: [FormsModule]
+            imports: [
+                FormsModule,
+                DndModule.forRoot()
+            ]
         })
             .compileComponents();
     }));
@@ -33,9 +40,13 @@ describe('TodoListComponent', () => {
         fixture = TestBed.createComponent(TodoListComponent);
         component = fixture.componentInstance;
 
+        component.todosAllAmount = 1;                // Lets count that we have more than 0 todo
+        fixture.detectChanges();
+
         todo1 = new ToDo({ id: 1, title: 'Test 1', complete: false });
         todo2 = new ToDo({ id: 2, title: 'Test 2', complete: true });
-        expectedTodos = [todo1, todo2];
+        todo3 = new ToDo({ id: 3, title: 'Test 3', complete: false });
+        expectedTodos = [todo1, todo2, todo3];
         component.todos = expectedTodos;
         fixture.detectChanges();
     });
@@ -92,5 +103,25 @@ describe('TodoListComponent', () => {
 
         // Assert
         expect(todo).toEqual(todo1);
+    }));
+
+    it(`should move todo at top to bottom (async)`, async(() => {
+        // Arrange
+        fixture.detectChanges();
+
+        const editEl = fixture.debugElement.query(By.css('.todo-list'));          // Find edit icon element
+
+        const todoToDragEl = fixture.debugElement.queryAll(By.css('li'))[0].nativeElement;
+        const todoToDropEl = fixture.debugElement.queryAll(By.css('li'))[2].nativeElement;
+        const handleEl = fixture.debugElement.queryAll(By.css('.handle'))[0].nativeElement;
+
+        console.log('%c todoToDragEl: ', 'color: aqua;', todoToDragEl);
+        console.log('%c todoToDropEl: ', 'color: aqua;', todoToDropEl);
+        console.log('%c handleEl: ', 'color: aqua;', handleEl);
+
+        // Act
+
+
+        // Assert
     }));
 });

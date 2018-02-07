@@ -21,7 +21,7 @@ export class TodoListComponent {
     @Output()
     removeTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    dragEnabled = true;    // Variable for prefs to enable/disable dnd
+    dragEnabled = true;    // Variable for prefs to enable/disable DnD
 
     constructor() { }
 

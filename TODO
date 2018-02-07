@@ -15,6 +15,7 @@ Todos:
         Current:
 
             ☐ Add drag'n'drop posibility (look here https://shekhargulati.com/2017/09/21/building-an-angular-4-drag-and-drop-application-in-15-minutes/)
+                ☐ Update unit tests
 
             ☐ Fix styles for edit-Icon in todo with large text
             
