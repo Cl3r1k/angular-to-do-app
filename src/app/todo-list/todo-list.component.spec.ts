@@ -109,19 +109,25 @@ describe('TodoListComponent', () => {
         // Arrange
         fixture.detectChanges();
 
-        const editEl = fixture.debugElement.query(By.css('.todo-list'));          // Find edit icon element
-
         const todoToDragEl = fixture.debugElement.queryAll(By.css('li'))[0].nativeElement;
         const todoToDropEl = fixture.debugElement.queryAll(By.css('li'))[2].nativeElement;
         const handleEl = fixture.debugElement.queryAll(By.css('.handle'))[0].nativeElement;
 
-        console.log('%c todoToDragEl: ', 'color: aqua;', todoToDragEl);
-        console.log('%c todoToDropEl: ', 'color: aqua;', todoToDropEl);
-        console.log('%c handleEl: ', 'color: aqua;', handleEl);
-
         // Act
-
+        triggerEvent(handleEl, 'mousedown', 'MouseEvent');
+        triggerEvent(todoToDragEl, 'dragstart', 'MouseEvent');
+        triggerEvent(todoToDropEl, 'dragenter', 'MouseEvent');
+        triggerEvent(handleEl, 'mouseup', 'MouseEvent');
+        triggerEvent(todoToDragEl, 'drop', 'MouseEvent');
+        fixture.detectChanges();
 
         // Assert
+        expect(component.todos.map(todo => todo.id)).toEqual([2, 3, 1]);
     }));
+
+    function triggerEvent(elem: HTMLElement, eventName: string, eventType: string) {
+        const event: Event = document.createEvent(eventType);
+        event.initEvent(eventName, true, true);
+        elem.dispatchEvent(event);
+    }
 });

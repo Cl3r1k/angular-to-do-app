@@ -15,7 +15,8 @@ Todos:
         Current:
 
             ☐ Add drag'n'drop posibility (look here https://shekhargulati.com/2017/09/21/building-an-angular-4-drag-and-drop-application-in-15-minutes/)
-                ☐ Update unit tests
+                ☐ Update styles for DnD support
+                ✔ Update unit tests for DnD support @done(18-02-07 09:08)
 
             ☐ Fix styles for edit-Icon in todo with large text
             
@@ -34,7 +35,7 @@ Todos:
             ☐ Fix 'toggleAll' checkbox style in Edge (use http://yoksel.github.io/url-encoder/)
             ☐ Fix styles for checkbox.toggle in FF and Edge
             ☐ Autoresize fields for new todo and editing todo with large text
-            ☐ Update UI for DnD (look here )
+            ☐ Update UI for DnD (look here https://github.com/atlassian/react-beautiful-dnd)
 
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
