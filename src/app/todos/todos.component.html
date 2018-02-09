@@ -4,7 +4,7 @@
     <!-- header is now replaced with app-todoo-list-header -->
     <app-todo-list-header [todosAllAmount]='allTodosAmount' [todosAllCompleted]='allCompleted' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAll($event)' (toggleAllHoverStateTodoListHeaderEmitter)='onToggleAllHoverSetState($event)'></app-todo-list-header>
 
-    <app-todo-list [todos]='todos' [todosAllAmount]='allTodosAmount' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (removeTodoListEmitter)='onRemoveTodo($event)'></app-todo-list>
+    <app-todo-list [todos]='todos' [todosAllAmount]='allTodosAmount' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (removeTodoListEmitter)='onRemoveTodo($event)' (moveTodoListEmitter)='onMoveTodo($event)'></app-todo-list>
 
     <app-todo-list-footer [todosAllAmount]='allTodosAmount' [todosActiveAmount]='activeTodosAmount' [todosCompletedAmount]='completedTodosAmount' (clearTodoListFooterEmitter)='onClearCompleted($event)' (clearHoverStateTodoListFooterEmitter)='onClearHoverSetState($event)'></app-todo-list-footer>
 

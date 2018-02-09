@@ -50,15 +50,6 @@
             &.delete-hovered {
                 background-color: #f7e8e8;
             }
-            .handle1 {
-                width: 40px;
-                /* auto, since non-Webkit browsers doesn't support input styling */
-                height: auto;
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                margin: auto 0;
-            }
         }
         .edit {
             @extend .input-field-style;
@@ -90,14 +81,15 @@
         }
         label {
             word-break: break-all;
-            padding: 15px 60px 15px 15px;
-            margin-left: 45px;
+            padding: 15px 15px 15px 15px;
+            margin-left: 40px;
+            margin-right: 94px;
             display: block;
             line-height: 1.2;
             transition: color 0.4s;
         }
         .icon-move-vertical {
-            width: 0.375em;
+            // width: 0.375em;
             font-size: 18px;
             color: #939dc9;
             display: none;

@@ -149,4 +149,8 @@ export class TodosComponent implements OnInit, OnDestroy {
         this.toggleAllHoverState = toggleAllHoverState;
     }
 
+    onMoveTodo(moveState: Object) {
+        console.log('onMoveTodo (in TodoListComponent and) in current method moveState is: ', moveState);
+    }
+
 }

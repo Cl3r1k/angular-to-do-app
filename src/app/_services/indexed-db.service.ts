@@ -210,6 +210,40 @@ export class IndexedDbService extends Dexie {
         }));
     }
 
+    // API: (move todo to new position)
+    public moveTodo(moveState: Object): Observable<null> {
+        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+            let todos: ToDo[] = await this.dbTable.toArray();
+            const todosIds: number[] = [];
+
+            todos.forEach(todo => {
+                if (todo.complete) {
+                    todosIds.push(todo.id);
+                }
+            });
+
+            // console.log('%c todos Ids to delete:', this.consoleTextColor, todosIds);
+
+            const resDelete = await this.dbTable.bulkDelete(todosIds);
+
+            todos = await this.dbTable.toArray();
+
+            // if (activeRouteState === 1 || activeRouteState === 2) {
+            //     todos = todos.filter(todo => {
+            //         return todo.complete === (activeRouteState === 2 ? true : false);
+            //     });
+            // }
+
+            // console.log('%c returned todos:', this.consoleTextColor, todos);
+            return null;
+        }).then(async () => {
+            console.log('%c Transaction committed moveTodo: ', this.consoleTextColor);
+            return null;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
+    }
+
     // TODO: Add bulkAdd method using http://dexie.org/docs/Table/Table.bulkAdd() (look in todo file)
     public addBatch() {
         //

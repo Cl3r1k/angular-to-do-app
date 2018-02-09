@@ -14,11 +14,12 @@ Todos:
     New:
         Current:
 
-            ☐ Add drag'n'drop posibility (look here https://shekhargulati.com/2017/09/21/building-an-angular-4-drag-and-drop-application-in-15-minutes/)
-                ☐ Update styles for DnD support
+            ☐ Add drag'n'drop posibility (look here https://shekhargulati.com/2017/09/21/building-an-angular-4-drag-and-drop-application-in-15-minutes/ and https://github.com/akserg/ng2-dnd)
+                ✔ Update styles for DnD support @done(18-02-08 09:11)
                 ✔ Update unit tests for DnD support @done(18-02-07 09:08)
+                ☐ Change app logic for DnD support
 
-            ☐ Fix styles for edit-Icon in todo with large text
+            ✔ Fix styles for edit-Icon in todo with large text @done(18-02-08 09:12)
             
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`

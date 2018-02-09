@@ -21,6 +21,9 @@ export class TodoListComponent {
     @Output()
     removeTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
+    @Output()
+    moveTodoListEmitter: EventEmitter<Object> = new EventEmitter();
+
     dragEnabled = true;    // Variable for prefs to enable/disable DnD
 
     constructor() { }
@@ -37,8 +40,14 @@ export class TodoListComponent {
         this.removeTodoListEmitter.emit(todo);    // Emit the remove event to TodosComponent
     }
 
-    onMove(todo: ToDo, position: number) {
-        console.log('new position: %d for todo: ', position, todo);
+    onMove(oldPostition: number, newPosition: number) {
+        console.log('old position: %d, new position: %d', oldPostition, newPosition);
+        if (oldPostition !== newPosition) {
+            this.moveTodoListEmitter.emit({movedTodIdSource: this.todos[newPosition].id, movedTodIdDest: this.todos[oldPostition].id});
+        }
+        // console.log('new position: %d for todo: ', position, todo);
+        // console.log('The list after movements', this.todos);
+        // this.moveTodoListEmitter.emit({movedTodId: todo.id, newTodoPosition: position});
     }
 
 }
