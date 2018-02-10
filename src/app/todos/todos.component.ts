@@ -151,6 +151,9 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     onMoveTodo(moveState: Object) {
         console.log('onMoveTodo (in TodoListComponent and) in current method moveState is: ', moveState);
+        this._todoService.moveTodo(moveState).subscribe(() => {
+            console.log('onMoveTodo updated Data in IndexedDb!');
+        });
     }
 
 }

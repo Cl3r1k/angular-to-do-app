@@ -45,6 +45,7 @@ Todos:
             ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Use Reactive forms
+        Notify if user blocked notification (look here example https://codingthesmartway.com/angular-material-introduction/ - left bottom corner)
         
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         

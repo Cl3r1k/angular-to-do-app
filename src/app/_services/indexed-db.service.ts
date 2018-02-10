@@ -31,7 +31,7 @@ export class IndexedDbService extends Dexie {
             this.dbTable.add(new ToDo({ id: 2, title: 'Press on trash to delete me!', complete: false }));
             this.dbTable.add(new ToDo({ id: 3, title: 'Press on pen to edit me!', complete: false }));
             // tslint:disable-next-line:max-line-length
-            this.dbTable.add(new ToDo({ id: 4, title: 'Fix styles for edit-Icon in todo with large text, example ---------------------------------------------------------------------------------->', complete: false }));
+            this.dbTable.add(new ToDo({ id: 4, title: 'Fix styles for edit-Icon in todo with large text, example ------------------------------------------------------------------------>', complete: false }));
             console.log('%c DB populated successfully', this.consoleTextColor);
         });
     }
@@ -213,20 +213,40 @@ export class IndexedDbService extends Dexie {
     // API: (move todo to new position)
     public moveTodo(moveState: Object): Observable<null> {
         return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
-            let todos: ToDo[] = await this.dbTable.toArray();
-            const todosIds: number[] = [];
+            const todos: ToDo[] = await this.dbTable.toArray();
+            // const todosIds: number[] = [];
 
-            todos.forEach(todo => {
-                if (todo.complete) {
-                    todosIds.push(todo.id);
-                }
-            });
+            console.log('%c moveState in service:', this.consoleTextColor, moveState);
+
+            const movedTodo = todos.filter(todo => todo.id === moveState['movedTodIdSource']);
+
+            console.log('%c movedTodo is:', this.consoleTextColor, movedTodo);
+
+            todos.splice(moveState['movedTodIdDest'], 0, todos.splice(moveState['movedTodIdSource'], 1)[0]);
+
+            todos[moveState['movedTodIdDest']].complete = !todos[moveState['movedTodIdDest']].complete;
+            todos[moveState['movedTodIdDest']].id++;
+
+            console.log('%c movement Array is:', this.consoleTextColor, todos);
+
+            await this.dbTable.clear();
+            const lastKey = await this.dbTable.bulkPut(todos);
+            console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
+
+            const todosUpdated: ToDo[] = await this.dbTable.toArray();
+            console.log('%c todosUpdated is:', this.consoleTextColor, todosUpdated);
+
+            // todos.forEach(todo => {
+            //     if (todo.complete) {
+            //         todosIds.push(todo.id);
+            //     }
+            // });
 
             // console.log('%c todos Ids to delete:', this.consoleTextColor, todosIds);
 
-            const resDelete = await this.dbTable.bulkDelete(todosIds);
+            // const resDelete = await this.dbTable.bulkDelete(todosIds);
 
-            todos = await this.dbTable.toArray();
+            // todos = await this.dbTable.toArray();
 
             // if (activeRouteState === 1 || activeRouteState === 2) {
             //     todos = todos.filter(todo => {

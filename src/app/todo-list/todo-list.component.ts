@@ -43,7 +43,7 @@ export class TodoListComponent {
     onMove(oldPostition: number, newPosition: number) {
         console.log('old position: %d, new position: %d', oldPostition, newPosition);
         if (oldPostition !== newPosition) {
-            this.moveTodoListEmitter.emit({movedTodIdSource: this.todos[newPosition].id, movedTodIdDest: this.todos[oldPostition].id});
+            this.moveTodoListEmitter.emit({movedTodIdSource: oldPostition, movedTodIdDest: newPosition});
         }
         // console.log('new position: %d for todo: ', position, todo);
         // console.log('The list after movements', this.todos);
