@@ -214,27 +214,69 @@ export class IndexedDbService extends Dexie {
     public moveTodo(moveState: Object): Observable<null> {
         return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
             const todos: ToDo[] = await this.dbTable.toArray();
-            // const todosIds: number[] = [];
+            const fromId = moveState['movedTodoIdDest'];
+            const toId = moveState['movedTodoIdSource'];
+
+            const direction = fromId < toId ? 1 : -1;
+
+            if (direction > 0) {
+                let processMovement = false;
+                let performBreak = false;
+                for (let index = todos.length - 1; index >= 0; index--) {
+                    if (todos[index].id === fromId) {
+                        performBreak = true;
+                    }
+                    if (processMovement) {
+                        const todoIdTmp = todos[index].id;
+                        todos[index].id = todos[index + 1].id;
+                        todos[index + 1].id = todoIdTmp;
+                        if (performBreak) {
+                            break;
+                        }
+                    }
+                    if (todos[index].id === toId) {
+                        processMovement = true;
+                    }
+                }
+            } else {
+                let processMovement = false;
+                let performBreak = false;
+                for (let index = 0; index < todos.length; index++) {
+                    if (todos[index].id === fromId) {
+                        performBreak = true;
+                    }
+                    if (processMovement) {
+                        const todoIdTmp = todos[index].id;
+                        todos[index].id = todos[index - 1].id;
+                        todos[index - 1].id = todoIdTmp;
+                        if (performBreak) {
+                            break;
+                        }
+                    }
+                    if (todos[index].id === toId) {
+                        processMovement = true;
+                    }
+                }
+            }
 
             console.log('%c moveState in service:', this.consoleTextColor, moveState);
 
-            const movedTodo = todos.filter(todo => todo.id === moveState['movedTodIdSource']);
+            // const movedTodo = todos.filter(todo => todo.id === moveState['movedTodoIdSource']);
+            // console.log('%c movedTodo is:', this.consoleTextColor, movedTodo);
 
-            console.log('%c movedTodo is:', this.consoleTextColor, movedTodo);
+            // todos.splice(moveState['movedTodoIdDest'], 0, todos.splice(moveState['movedTodoIdSource'], 1)[0]);
 
-            todos.splice(moveState['movedTodIdDest'], 0, todos.splice(moveState['movedTodIdSource'], 1)[0]);
+            // todos[moveState['movedTodoIdDest']].complete = !todos[moveState['movedTodoIdDest']].complete;
+            // todos[moveState['movedTodoIdDest']].id++;
 
-            todos[moveState['movedTodIdDest']].complete = !todos[moveState['movedTodIdDest']].complete;
-            todos[moveState['movedTodIdDest']].id++;
-
-            console.log('%c movement Array is:', this.consoleTextColor, todos);
+            console.log('%c AFTER movements Array is:', this.consoleTextColor, todos);
 
             await this.dbTable.clear();
             const lastKey = await this.dbTable.bulkPut(todos);
-            console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
+            // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
 
-            const todosUpdated: ToDo[] = await this.dbTable.toArray();
-            console.log('%c todosUpdated is:', this.consoleTextColor, todosUpdated);
+            // const todosUpdated: ToDo[] = await this.dbTable.toArray();
+            // console.log('%c todosUpdated is:', this.consoleTextColor, todosUpdated);
 
             // todos.forEach(todo => {
             //     if (todo.complete) {

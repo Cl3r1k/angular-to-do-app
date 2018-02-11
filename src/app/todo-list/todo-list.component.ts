@@ -41,9 +41,12 @@ export class TodoListComponent {
     }
 
     onMove(oldPostition: number, newPosition: number) {
-        console.log('old position: %d, new position: %d', oldPostition, newPosition);
+        console.log('Moved from position: %d, to position: %d', oldPostition, newPosition);
+        console.log('updated array in TodoListComponent: ', this.todos);
         if (oldPostition !== newPosition) {
-            this.moveTodoListEmitter.emit({movedTodIdSource: oldPostition, movedTodIdDest: newPosition});
+            const shiftedTodoPos = oldPostition > newPosition ? newPosition + 1 : newPosition - 1;
+            console.log('%c prevTodoId: ', 'color: red;', shiftedTodoPos);
+            this.moveTodoListEmitter.emit({movedTodoIdSource: this.todos[shiftedTodoPos].id, movedTodoIdDest: this.todos[newPosition].id});
         }
         // console.log('new position: %d for todo: ', position, todo);
         // console.log('The list after movements', this.todos);
