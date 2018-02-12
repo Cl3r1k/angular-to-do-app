@@ -14,12 +14,14 @@ Todos:
     New:
         Current:
 
-            ☐ Add drag'n'drop posibility (look here https://shekhargulati.com/2017/09/21/building-an-angular-4-drag-and-drop-application-in-15-minutes/ and https://github.com/akserg/ng2-dnd)
+            ✔ Add drag'n'drop posibility (look here https://shekhargulati.com/2017/09/21/building-an-angular-4-drag-and-drop-application-in-15-minutes/ and https://github.com/akserg/ng2-dnd) @done(18-02-11 09:33)
                 ✔ Update styles for DnD support @done(18-02-08 09:11)
                 ✔ Update unit tests for DnD support @done(18-02-07 09:08)
-                ☐ Change app logic for DnD support
+                ✔ Change app logic for DnD support @done(18-02-11 09:33)
 
             ✔ Fix styles for edit-Icon in todo with large text @done(18-02-08 09:12)
+
+            ✔ Improve styles for editing todo (decrease space before text) @done(18-02-11 10:17)
             
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -45,7 +47,7 @@ Todos:
             ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Use Reactive forms
-        Notify if user blocked notification (look here example https://codingthesmartway.com/angular-material-introduction/ - left bottom corner)
+        ☐ Notify if user blocked notification (look here example https://codingthesmartway.com/angular-material-introduction/ - left bottom corner)
         
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         

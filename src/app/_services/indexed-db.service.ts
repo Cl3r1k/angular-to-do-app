@@ -27,9 +27,9 @@ export class IndexedDbService extends Dexie {
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {
             this.dbTable.add(new ToDo({ id: 0, title: 'Add more todos!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 1, title: 'Click on checkbox to make me done!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 1, title: 'Press on pen to edit me!', complete: false }));
             this.dbTable.add(new ToDo({ id: 2, title: 'Press on trash to delete me!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 3, title: 'Press on pen to edit me!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 3, title: 'Click on checkbox to make me done!', complete: false }));
             // tslint:disable-next-line:max-line-length
             this.dbTable.add(new ToDo({ id: 4, title: 'Fix styles for edit-Icon in todo with large text, example ------------------------------------------------------------------------>', complete: false }));
             console.log('%c DB populated successfully', this.consoleTextColor);
@@ -211,13 +211,15 @@ export class IndexedDbService extends Dexie {
     }
 
     // API: (move todo to new position)
-    public moveTodo(moveState: Object): Observable<null> {
+    public moveTodo(moveState: Object, activeRouteState: number): Observable<ToDo[]> {
         return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
-            const todos: ToDo[] = await this.dbTable.toArray();
+            let todos: ToDo[] = await this.dbTable.toArray();
             const fromId = moveState['movedTodoIdDest'];
             const toId = moveState['movedTodoIdSource'];
 
             const direction = fromId < toId ? 1 : -1;
+
+            // console.log('%c moveState in service:', this.consoleTextColor, moveState);
 
             if (direction > 0) {
                 let processMovement = false;
@@ -259,48 +261,24 @@ export class IndexedDbService extends Dexie {
                 }
             }
 
-            console.log('%c moveState in service:', this.consoleTextColor, moveState);
-
-            // const movedTodo = todos.filter(todo => todo.id === moveState['movedTodoIdSource']);
-            // console.log('%c movedTodo is:', this.consoleTextColor, movedTodo);
-
-            // todos.splice(moveState['movedTodoIdDest'], 0, todos.splice(moveState['movedTodoIdSource'], 1)[0]);
-
-            // todos[moveState['movedTodoIdDest']].complete = !todos[moveState['movedTodoIdDest']].complete;
-            // todos[moveState['movedTodoIdDest']].id++;
-
-            console.log('%c AFTER movements Array is:', this.consoleTextColor, todos);
+            // console.log('%c AFTER movements Array is:', this.consoleTextColor, todos);
 
             await this.dbTable.clear();
             const lastKey = await this.dbTable.bulkPut(todos);
             // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
 
-            // const todosUpdated: ToDo[] = await this.dbTable.toArray();
-            // console.log('%c todosUpdated is:', this.consoleTextColor, todosUpdated);
+            todos = await this.dbTable.toArray();
 
-            // todos.forEach(todo => {
-            //     if (todo.complete) {
-            //         todosIds.push(todo.id);
-            //     }
-            // });
+            if (activeRouteState === 1 || activeRouteState === 2) {
+                todos = todos.filter(todo => {
+                    return todo.complete === (activeRouteState === 2 ? true : false);
+                });
+            }
 
-            // console.log('%c todos Ids to delete:', this.consoleTextColor, todosIds);
-
-            // const resDelete = await this.dbTable.bulkDelete(todosIds);
-
-            // todos = await this.dbTable.toArray();
-
-            // if (activeRouteState === 1 || activeRouteState === 2) {
-            //     todos = todos.filter(todo => {
-            //         return todo.complete === (activeRouteState === 2 ? true : false);
-            //     });
-            // }
-
-            // console.log('%c returned todos:', this.consoleTextColor, todos);
-            return null;
-        }).then(async () => {
-            console.log('%c Transaction committed moveTodo: ', this.consoleTextColor);
-            return null;
+            return todos;
+        }).then(async (updatedTodos) => {
+            console.log('%c Transaction committed moveTodo: ', this.consoleTextColor, updatedTodos);
+            return updatedTodos;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
         }));

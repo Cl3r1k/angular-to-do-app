@@ -102,8 +102,8 @@ export class TodoService {
     }
 
     // Perform moveTodo in Service
-    moveTodo(moveState: Object): Observable<null> {
-        return this._indexedDbService.moveTodo(moveState);
+    moveTodo(moveState: Object, activeRouteState: number): Observable<ToDo[]> {
+        return this._indexedDbService.moveTodo(moveState, activeRouteState);
     }
 
 }

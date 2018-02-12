@@ -25,14 +25,14 @@
         }
         &:hover {
             background-color: #f5f5f5;
+            .toggle:not(:checked) {
+                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/></svg>');
+            }
             .icon-move-vertical,
             .icon-pencil-edit,
             .icon-destroy {
-                display: block;
+                opacity: 1;
             }
-        }
-        &:hover .toggle:not(:checked) {
-            content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/></svg>');
         }
         // &.editing {
         //     border-bottom: none;
@@ -55,7 +55,7 @@
             @extend .input-field-style;
             display: block;
             width: 706px;
-            padding: 11px 16px 12px 16px;
+            padding: 11px 16px 12px 11px;
             margin: 0 0 0 43px;
         }
         .toggle {
@@ -90,22 +90,24 @@
         }
         .icon-move-vertical {
             // width: 0.375em;
+            // display: none;
             font-size: 18px;
             color: #939dc9;
-            display: none;
             position: absolute;
             top: 0;
             right: 70px;
             bottom: 0;
             margin: auto auto;
             padding: 3px 3px 3px 3px;
+            transition: 0.3s ease-out;
+            opacity: 0;
             &:hover {
                 color: #687197;
                 cursor: pointer;
             }
         }
         .icon-pencil-edit {
-            display: none;
+            // display: none;
             font-size: 18px;
             color: #bddad5;
             position: absolute;
@@ -115,14 +117,15 @@
             margin: auto auto;
             padding: 3px 3px 3px 3px;
             // margin-bottom: 16px;
-            transition: color 0.3s ease-out;
+            transition: 0.3s ease-out;
+            opacity: 0;
             &:hover {
                 color: #5dc2af;
                 cursor: pointer;
             }
         }
         .icon-destroy {
-            display: none;
+            // display: none;
             font-size: 18px;
             color: #cc9a9a;
             position: absolute;
@@ -132,7 +135,8 @@
             margin: auto auto;
             font-size: 18px;
             padding: 3px 3px 3px 3px;
-            transition: color 0.3s ease-out;
+            transition: 0.3s ease-out;
+            opacity: 0;
             &:hover {
                 color: #af5b5e;
                 cursor: pointer;
