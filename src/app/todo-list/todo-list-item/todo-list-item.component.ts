@@ -2,8 +2,8 @@ import { Component, Input, Output, OnInit, EventEmitter, ComponentFactoryResolve
 import { ToDo } from '@app/_models/to-do';
 
 // Dynamically created components
-import { TodoListItemViewComponent } from '@app/todo-list-item/todo-list-item-view/todo-list-item-view.component';
-import { TodoListItemEditComponent } from '@app/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 
 // Interface for dynamic components
 import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-component-interface';

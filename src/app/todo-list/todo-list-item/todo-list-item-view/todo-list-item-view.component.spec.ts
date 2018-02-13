@@ -3,7 +3,7 @@ import { By } from '@angular/platform-browser';
 
 import { ToDo } from '@app/_models/to-do';
 
-import { TodoListItemViewComponent } from '@app/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 
 describe('TodoListItemViewComponent', () => {
     let component: TodoListItemViewComponent;

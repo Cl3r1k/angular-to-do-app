@@ -5,9 +5,9 @@ import { ToDo } from '@app/_models/to-do';
 
 import { Component } from '@angular/core';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
-import { TodoListItemComponent } from '@app/todo-list-item/todo-list-item.component';
-import { TodoListItemEditComponent } from '@app/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
-import { TodoListItemViewComponent } from '@app/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
+import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 
 // Modules
 import { DndModule } from 'ng2-dnd';
@@ -40,7 +40,7 @@ describe('TodoListComponent', () => {
         fixture = TestBed.createComponent(TodoListComponent);
         component = fixture.componentInstance;
 
-        component.todosAllAmount = 1;                // Lets count that we have more than 0 todo
+        component.todosAllAmount = 3;                // Lets count that we have more than 0 todo
         fixture.detectChanges();
 
         todo1 = new ToDo({ id: 1, title: 'Test 1', complete: false });

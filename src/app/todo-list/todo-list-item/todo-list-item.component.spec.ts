@@ -2,9 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { ToDo } from '@app/_models/to-do';
 
-import { TodoListItemComponent } from '@app/todo-list-item/todo-list-item.component';
-import { TodoListItemEditComponent } from '@app/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
-import { TodoListItemViewComponent } from '@app/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
+import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 
 describe('TodoListItemComponent', () => {
     let component: TodoListItemComponent;

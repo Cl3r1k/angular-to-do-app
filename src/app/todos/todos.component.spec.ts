@@ -8,9 +8,9 @@ import { TodosComponent } from '@app/todos/todos.component';
 import { ToDo } from '@app/_models/to-do';
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
-import { TodoListItemComponent } from '@app/todo-list-item/todo-list-item.component';
-import { TodoListItemViewComponent } from '@app/todo-list-item/todo-list-item-view/todo-list-item-view.component';
-import { TodoListItemEditComponent } from '@app/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
+import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
+import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 import { ModalComponent } from '@app/modal/modal.component';
 
