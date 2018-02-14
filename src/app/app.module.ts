@@ -30,6 +30,7 @@ import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.direc
 
 // Modules
 import { DndModule } from 'ng2-dnd';
+import { Autosize } from 'ng-autosize/src/autosize.directive';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { DndModule } from 'ng2-dnd';
         TodoListItemViewComponent,
         TodoListItemEditComponent,
         ModalComponent,
-        RouterLinkActiveStubsDirective
+        RouterLinkActiveStubsDirective,
+        Autosize
     ],
     imports: [
         AppRoutingModule,
