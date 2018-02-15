@@ -14,6 +14,8 @@ Todos:
     New:
         Current:
             ☐ Autoresize fields for new todo and editing todo with large text
+                ☐ Disable width changes for textarea
+                ☐ Improve processing 'Enter' in textarea (currently Enter adds linebreak and saves todo -> only saves todo should be)
 
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -41,6 +43,7 @@ Todos:
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Use Reactive forms
         ☐ Notify if user blocked notification (look here example https://codingthesmartway.com/angular-material-introduction/ - left bottom corner)
+        ☐ Use UserGuide on first run like here `discordapp.com`
         
         ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
         

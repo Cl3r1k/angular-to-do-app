@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
 import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-component-interface';
@@ -8,7 +8,7 @@ import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-compo
     templateUrl: './todo-list-item-edit.component.html',
     styleUrls: ['./todo-list-item-edit.component.scss']
 })
-export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomTodoComponentInterface {
+export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterViewChecked, CustomTodoComponentInterface {
 
     @Input() todo: ToDo;
 
@@ -29,6 +29,8 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
 
     initialTodoTitle: string;
     isCanceled: boolean;
+    afterViewCheckedCount = 0;
+    updatedTextHeight = false;
 
     @ViewChild('editedTodo') private editedTodoElementRef: ElementRef;
 
@@ -40,6 +42,25 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, CustomT
 
     ngAfterViewInit() {
         this.editedTodoElementRef.nativeElement.focus();    // To set focus to the input when the component showed
+    }
+
+    ngAfterViewChecked() {
+        // Workaround for autosize Textarea with two-side binding text
+        if (this.afterViewCheckedCount >= 1) {
+            if (!this.updatedTextHeight) {
+                let el: HTMLElement;
+                el = this.editedTodoElementRef.nativeElement;
+                if (el.style.height !== this.editedTodoElementRef.nativeElement.scrollHeight + 'px') {
+                    el.style.overflow = 'hidden';
+                    el.style.height = 'auto';
+                    el.style.height = el.scrollHeight + 'px';
+                }
+
+                this.updatedTextHeight = true;
+            }
+        } else {
+            this.afterViewCheckedCount++;
+        }
     }
 
     toggleTodoComplete(todo: ToDo) {
