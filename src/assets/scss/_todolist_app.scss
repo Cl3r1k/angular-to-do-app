@@ -55,9 +55,10 @@
             @extend .input-field-style;
             display: block;
             width: 706px;
-            // line-height: 1.5em;
             padding: 11px 16px 12px 11px;
             margin: 0 0 0 43px;
+            resize: none;
+            word-break: break-all;
         }
         .toggle {
             text-align: center;

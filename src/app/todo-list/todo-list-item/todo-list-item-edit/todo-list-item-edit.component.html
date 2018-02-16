@@ -1,5 +1,5 @@
 <div class='editContainer'>
-    <textarea autosize [minHeight]='60' class='edit' [(ngModel)]='todo.title' (keyup.enter)='updateTodo(todo)' (keyup.esc)='cancelEditTodo()' (blur)='stopEditTodoOnBlur()' placeholder='Enter name of the task or press Enter to delete the task' #editedTodo></textarea>
+    <textarea autosize class='edit' [(ngModel)]='todo.title' (keydown.enter)='updateTodo(todo); false' (keyup.esc)='cancelEditTodo()' (blur)='stopEditTodoOnBlur()' placeholder='Enter name of the task or press Enter to delete the task' #editedTodo></textarea>
     <!-- <input type='text' autosize [minHeight]='60' class='edit' [(ngModel)]='todo.title' (keyup.enter)='updateTodo(todo)' (keyup.esc)='cancelEditTodo()' (blur)='stopEditTodoOnBlur()' placeholder='Enter name of the task or press Enter to delete the task' #editedTodo> -->
     <!-- <button class='destroy' (click)='removeTodo(todo)'></button> -->
 </div>
