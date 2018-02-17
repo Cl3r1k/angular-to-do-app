@@ -13,7 +13,8 @@ Commit message:
 Todos:
     New:
         Current:
-            
+
+            ☐ Start grids from TodoListItemEditComponent and TodoListItemViewComponent            
 
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -37,6 +38,7 @@ Todos:
                 ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch)
             ☐ Update UI for DnD (look here https://github.com/atlassian/react-beautiful-dnd)
 
+        ☐ In header add button with icon 'Enter', which will be visible, when input is focused
         ☐ Use Material Snackbar for cancel deleted todo (look here https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18)
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
