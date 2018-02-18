@@ -10,11 +10,13 @@
     margin: 0;
     padding: 0;
     list-style: none;
+    cursor: default; // Styles to prevent ng2-dnd styles for element
     li {
         position: relative;
         font-size: 24px;
         border-bottom: 1px solid #ededed;
         transition: background-color 0.3s ease-out;
+        cursor: default !important; // Styles to prevent ng2-dnd styles for element
         &.completed label,
         .complete-hovered label {
             color: #d9d9d9;
@@ -165,7 +167,7 @@
     .todoapp.clearAll-hovered & li.completed {
         background-color: #f7e8e8;
         .icon-destroy {
-            display: block;
+            opacity: 1;
         }
     }
     .todoapp.toggleAll-hovered & li {
