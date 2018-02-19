@@ -10,7 +10,6 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    cursor: default; // Styles to prevent ng2-dnd styles for element
     li {
         position: relative;
         font-size: 24px;
@@ -58,14 +57,17 @@
                 background-color: #f7e8e8;
             }
         }
-        .edit {
-            @extend .input-field-style;
-            display: block;
-            width: 706px;
-            padding: 11px 16px 12px 11px;
-            margin: 0 0 0 43px;
-            resize: none;
-            word-break: break-all;
+        .editContainer {
+            display: grid;
+            grid-template-columns: repeat(16, 1fr);
+            align-items: center;
+            .edit {
+                @extend .input-field-style;
+                grid-column: 2/17;
+                padding: 12px 14px 12px 14px;
+                resize: none; // Disable resizing for todo
+                word-break: break-all;
+            }
         }
         .toggle {
             text-align: center;
@@ -82,7 +84,6 @@
             -moz-appearance: none;
             appearance: none;
             grid-column: span 1;
-            background-color: aqua;
             &:after {
                 content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
             }
@@ -104,7 +105,9 @@
         .buttons-block {
             grid-column: span 2;
             background-color: greenyellow;
-            margin: auto;
+            display: grid;
+            height: 100%;
+            grid-template-columns: repeat(3, 1fr);
             .icon-move-vertical {
                 // width: 0.375em;
                 // display: none;
