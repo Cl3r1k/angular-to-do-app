@@ -80,7 +80,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
         this.editedTodoElementRef.nativeElement.blur();    // Imitate lost focus event
     }
 
-    removeTodo(todo: ToDo) {    // TODO: Perform confirmation for deletion
+    removeTodo(todo: ToDo) {
         console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemEditComponent with title: ' + todo.title);
         this.removeTodoListItemEmitter.emit(todo);
     }

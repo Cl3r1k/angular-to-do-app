@@ -4,10 +4,17 @@
 
 .header {
     position: relative;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(216, 21, 21, 0.767);
+    z-index: 0;
     h1 {
-        position: absolute;
-        top: -130px;
-        width: 100%;
+        // position: absolute;
+        // top: -130px;
+        // width: 100%;
+        grid-column: span 16;
+        background-color: #2276b2;
         font-size: 80px;
         font-weight: 100;
         text-align: center;
@@ -17,10 +24,12 @@
         text-rendering: optimizeLegibility;
     }
     .toggle-all {
-        position: absolute;
-        top: 11px;
-        left: -12px;
-        width: 60px;
+        // position: absolute;
+        // top: 11px;
+        // left: -12px;
+        // width: 60px;
+        grid-column: span 1;
+        background-color: firebrick;
         height: 34px;
         text-align: center;
         border: none;
@@ -30,7 +39,7 @@
             content: '❯';
             font-size: 22px;
             color: #e6e6e6;
-            padding: 10px 27px 10px 27px;
+            // padding: 10px 27px 10px 27px;
         }
         &:checked:before {
             color: #737373;
@@ -40,8 +49,10 @@
         display: none;
     }
     .new-todo {
+        background-color: #3fbf28;
+        grid-column: span 15;
         @extend .input-field-style;
-        padding: 16px 16px 16px 60px;
+        padding: 14px 14px 14px 14px;
         border: none;
         background: rgba(0, 0, 0, 0.003);
         box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
