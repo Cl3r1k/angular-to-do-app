@@ -15,6 +15,7 @@ Todos:
         Current:
 
             ☐ Implement grids in TodoListHeaderComponent
+                ☐ Fix small issue at bottom of the 'toggleAll' and input.new-todo (look bottom border input.new-todo)
 
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`

@@ -1,16 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
-import { environment } from '@env/environment.prod';
-
 @Component({
     selector: 'app-todo-list-header',
     templateUrl: './todo-list-header.component.html',
     styleUrls: ['./todo-list-header.component.scss']
 })
 export class TodoListHeaderComponent {
-
-    BUILD_VERSION = environment.version;
 
     newTodo: ToDo = new ToDo();
 

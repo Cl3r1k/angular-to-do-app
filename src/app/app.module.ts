@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Components
 import { AppComponent } from '@app/app.component';
 import { TodosComponent } from '@app/todos/todos.component';
+import { TodoTitleComponent } from '@app/todo-title/todo-title.component';
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
@@ -45,7 +46,8 @@ import { Autosize } from 'ng-autosize/src/autosize.directive';
         TodoListItemEditComponent,
         ModalComponent,
         RouterLinkActiveStubsDirective,
-        Autosize
+        Autosize,
+        TodoTitleComponent
     ],
     imports: [
         AppRoutingModule,

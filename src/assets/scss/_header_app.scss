@@ -7,12 +7,15 @@
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(216, 21, 21, 0.767);
-    z-index: 0;
+    // box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(216, 21, 21, 0.767);
+    // z-index: 0;
     h1 {
         // position: absolute;
         // top: -130px;
         // width: 100%;
+        line-height: initial;
+        margin: 0;
+        word-break: break-all;
         grid-column: span 16;
         background-color: #2276b2;
         font-size: 80px;

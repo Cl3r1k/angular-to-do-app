@@ -72,7 +72,7 @@
         .toggle {
             text-align: center;
             width: 40px;
-            /* auto, since non-Webkit browsers doesn't support input styling */
+            /* auto-height, since non-Webkit browsers doesn't support input styling */
             height: auto;
             // position: absolute;
             // top: 0;
