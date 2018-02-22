@@ -16,6 +16,7 @@ Todos:
 
             ☐ Implement grids in TodoListHeaderComponent
                 ☐ Fix small issue at bottom of the 'toggleAll' and input.new-todo (look bottom border input.new-todo)
+                ☐ Improve styles for 'checkbox.toggleAll' (change height to center element and update 'checkbox.toggle' to center)
 
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -26,6 +27,7 @@ Todos:
         
         ☐ Change styles to CSS-grids
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
+                ☐ Improve styles for 'checkbox.toggle' (currently not centered in container)
                 ☐ Improve styles for action-buttons (hover should work on more area) -> Delayed for some time (Consider to implement this feature)
                     ☐ Improve styles if window width < 600 (make buttons-block responsive)
             ✔ Implement grids in TodoListItemEditComponent @done(18-02-18 12:14)
