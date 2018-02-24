@@ -8,39 +8,47 @@
     align-items: center;
     // position: relative;
     // z-index: 0;
-    .toggle-all {
-        // position: absolute;
-        // top: 11px;
-        // left: -12px;
-        // width: 60px;
-        // z-index: 2;
+    .toggleAll-container {
         grid-column: span 1;
-        // background-color: firebrick;
-        height: 32px;
-        text-align: center;
-        border: none;
-        /* Mobile Safari */
-        &:before {
-            content: '❯';
-            font-size: 22px;
-            color: #e6e6e6;
-            // padding: 10px 27px 10px 27px;
+        display: grid;
+        height: 100%;
+        align-items: center;
+        box-shadow: inset 0 -2px 0px rgba(0, 0, 0, 0.03);
+        .toggle-all {
+            // position: absolute;
+            // top: 11px;
+            // left: -12px;
+            // width: 60px;
+            // z-index: 2;
+            // background-color: firebrick;
+            height: 32px;
+            width: 32px;
+            margin: auto;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            /* Mobile Safari */
+            &:before {
+                content: '❯';
+                font-size: 22px;
+                color: #e6e6e6;
+                // padding: 10px 27px 10px 27px;
+            }
+            &:checked:before {
+                color: #737373;
+            }
         }
-        &:checked:before {
-            color: #737373;
+        label[for='toggle-all'] {
+            display: none;
         }
-    }
-    label[for='toggle-all'] {
-        display: none;
     }
     .new-todo {
-        background-color: #3fbf28;
         grid-column: span 15;
         @extend .input-field-style;
         padding: 14px 14px 14px 14px;
         border: none;
         background: rgba(0, 0, 0, 0.003);
-        box-shadow: inset 0 -2px 1px rgba(0, 0, 0, 0.03);
+        box-shadow: inset 0 -2px 0px rgba(0, 0, 0, 0.03);
     }
 }
 

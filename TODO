@@ -15,9 +15,9 @@ Todos:
         Current:
 
             ☐ Implement grids in TodoListHeaderComponent
-                ☐ Fix small issue at bottom of the 'toggleAll' and input.new-todo (look bottom border input.new-todo)
+                ✔ Fix small issue at bottom of the 'toggleAll' and input.new-todo (look bottom border input.new-todo) @done(18-02-23 10:58)
                 ✔ Improve styles for 'checkbox.toggleAll' (change height to center element and update 'checkbox.toggle' to center) @done(18-02-22 09:59)
-            ☐ Fix issue -> when todo hovered -> buttons shifts
+            ☐ Fix issue -> when todo hovered (zoom on 90% or 110%) -> buttons shifts ---> Delayed for some time
 
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -32,7 +32,8 @@ Todos:
                 ☐ Improve styles for action-buttons (hover should work on more area) -> Delayed for some time (Consider to implement this feature)
                     ☐ Improve styles if window width < 600 (make buttons-block responsive)
             ✔ Implement grids in TodoListItemEditComponent @done(18-02-18 12:14)
-            ☐ Implement grids in TodoListFooterComponent <=== CURRENT
+            ☐ Implement grids in TodoListHeaderComponent <=== CURRENT
+            ☐ Implement grids in TodoListFooterComponent
             ☐ Fix header min resizing issue (when window width is small, header flows)
             ✔ Improve animations for move-Icon, edit-Icon, delete-Icon -> use opacity onHover todo @done(18-02-12 09:25)
             ☐ Improve animation when 'toggleAll' todos (look for single check and toggleAll -> when toggleAll clicked all data reloaded, so we should use Angular animation when in component)
