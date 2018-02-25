@@ -1,5 +1,4 @@
 <header class='header'>
-    <!-- <h1>Todo list <small>(v_{{BUILD_VERSION}})</small></h1> -->
     <div class='toggleAll-container'>
         <input type='checkbox' class='toggle-all' *ngIf='todosAllAmount' #toggleAll (click)='toggleAllTodos(toggleAll.checked)' [checked]='todosAllCompleted' (mouseenter)='setToggleAllHoverState(true)' (mouseleave)='setToggleAllHoverState(false)'>
     </div>

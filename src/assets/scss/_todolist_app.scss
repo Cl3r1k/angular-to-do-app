@@ -1,7 +1,7 @@
 /* TodoList section */
 
 .main {
-    position: relative;
+    // position: relative;
     z-index: 2;
     border-top: 1px solid #e6e6e6;
 }
@@ -11,7 +11,7 @@
     padding: 0;
     list-style: none;
     li {
-        position: relative;
+        // position: relative;
         font-size: 24px;
         border-bottom: 1px solid #ededed;
         transition: background-color 0.3s ease-out;
@@ -64,7 +64,7 @@
             .edit {
                 @extend .input-field-style;
                 grid-column: 2/17;
-                padding: 12px 14px 12px 14px;
+                padding: 11px 14px 12px 14px;
                 resize: none; // Disable resizing for todo
                 word-break: break-all;
             }
