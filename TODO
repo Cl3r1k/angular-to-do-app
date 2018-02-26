@@ -14,8 +14,7 @@ Todos:
     New:
         Current:
 
-            ✔ Implement grids in TodoListFooterComponent @done(18-02-24 10:19)
-                ☐ Fix footer styles when window size less than 650px ---> Delayed for some time (When will be adaption for responsive)
+            ✔ Implement grids in TodosComponent @done(18-02-25 10:29)
 
             ☐ Update modal with next examples: 
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
@@ -28,15 +27,16 @@ Todos:
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
                 ✔ Improve styles for 'checkbox.toggle' (currently not centered in container) @done(18-02-24 09:26)
                 ✔ Fix header min resizing issue (when window width is small, header flows) @done(18-02-24 09:28)
-                ☐ Fix issue -> when todo hovered (zoom on 90% or 110%) -> buttons shifts ---> Delayed for some time (When will be adaption for responsive)
+                ☐ Fix issue -> when todo hovered (zoom in 90% or 110%) -> buttons shift ---> Delayed for some time (When will be adaption for responsive)
                 ☐ Improve styles for action-buttons (hover should work on more area) -> Delayed for some time (Consider to implement this feature)
                     ☐ Improve styles if window width < 600 (make buttons-block responsive)
             ✔ Implement grids in TodoListItemEditComponent @done(18-02-18 12:14)
             ✔ Implement grids in TodoListHeaderComponent @done(18-02-24 09:25)
                 ✔ Fix small issue at bottom of the 'toggleAll' and input.new-todo (look bottom border input.new-todo) @done(18-02-23 10:58)
                 ✔ Improve styles for 'checkbox.toggleAll' (change height to center element and update 'checkbox.toggle' to center) @done(18-02-22 09:59)
-            ☐ Implement grids in TodoListFooterComponent <=== CURRENT
-            ☐ Implement grids in TodosComponent
+            ✔ Implement grids in TodoListFooterComponent @done(18-02-24 10:19)
+                ☐ Fix footer styles when window size less than 650px ---> Delayed for some time (When will be adaption for responsive)
+            ☐ Implement grids in TodosComponent <=== CURRENT
             ✔ Improve animations for move-Icon, edit-Icon, delete-Icon -> use opacity onHover todo @done(18-02-12 09:25)
             ☐ Improve animation when 'toggleAll' todos (look for single check and toggleAll -> when toggleAll clicked all data reloaded, so we should use Angular animation when in component)
             ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos like here https://developers.google.com/web/updates/2017/10/animated-blur)

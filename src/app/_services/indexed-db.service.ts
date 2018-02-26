@@ -31,7 +31,7 @@ export class IndexedDbService extends Dexie {
             this.dbTable.add(new ToDo({ id: 2, title: 'Press on trash to delete me!', complete: false }));
             this.dbTable.add(new ToDo({ id: 3, title: 'Click on checkbox to make me done!', complete: false }));
             // tslint:disable-next-line:max-line-length
-            this.dbTable.add(new ToDo({ id: 4, title: 'Fix styles for edit-Icon in todo with large text, example ------------------------------------------------------------------------>', complete: false }));
+            this.dbTable.add(new ToDo({ id: 4, title: 'Fix styles for edit-Icon in todo with large text, example ---------------------------------------------------------------------->', complete: false }));
             console.log('%c DB populated successfully', this.consoleTextColor);
         });
     }

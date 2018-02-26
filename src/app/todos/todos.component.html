@@ -1,31 +1,44 @@
-<section class='app'>
-    <app-todo-title></app-todo-title>
+<section class='app-grid-container'>
+    <div class='header-container'>
+        <!-- <h1 class='header-title'>Angular Todo app</h1> -->
+    </div>
 
-    <!-- src/app/todos/todos.component.ts -->
-    <section class='todoapp' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
+    <div class='content-container'>
+        <app-todo-title></app-todo-title>
 
-        <!-- header is now replaced with app-todoo-list-header -->
-        <app-todo-list-header [todosAllAmount]='allTodosAmount' [todosAllCompleted]='allCompleted' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAll($event)' (toggleAllHoverStateTodoListHeaderEmitter)='onToggleAllHoverSetState($event)'></app-todo-list-header>
+        <!-- src/app/todos/todos.component.ts -->
+        <section class='todoapp' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
 
-        <app-todo-list [todos]='todos' [todosAllAmount]='allTodosAmount' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (removeTodoListEmitter)='onRemoveTodo($event)' (moveTodoListEmitter)='onMoveTodo($event)'></app-todo-list>
+            <!-- header is now replaced with app-todoo-list-header -->
+            <app-todo-list-header [todosAllAmount]='allTodosAmount' [todosAllCompleted]='allCompleted' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAll($event)' (toggleAllHoverStateTodoListHeaderEmitter)='onToggleAllHoverSetState($event)'></app-todo-list-header>
 
-        <app-todo-list-footer [todosAllAmount]='allTodosAmount' [todosActiveAmount]='activeTodosAmount' [todosCompletedAmount]='completedTodosAmount' (clearTodoListFooterEmitter)='onClearCompleted($event)' (clearHoverStateTodoListFooterEmitter)='onClearHoverSetState($event)'></app-todo-list-footer>
+            <app-todo-list [todos]='todos' [todosAllAmount]='allTodosAmount' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (removeTodoListEmitter)='onRemoveTodo($event)' (moveTodoListEmitter)='onMoveTodo($event)'></app-todo-list>
 
-        <app-modal [modalTitle]='titleModal' [blocking]='false' [modalId]='modalId'>
-            <div class="sweet-alert">
-                <div class="icon warning">
-                    <div class="icon-warning">!</div>
+            <app-todo-list-footer [todosAllAmount]='allTodosAmount' [todosActiveAmount]='activeTodosAmount' [todosCompletedAmount]='completedTodosAmount' (clearTodoListFooterEmitter)='onClearCompleted($event)' (clearHoverStateTodoListFooterEmitter)='onClearHoverSetState($event)'></app-todo-list-footer>
+
+            <app-modal [modalTitle]='titleModal' [blocking]='false' [modalId]='modalId'>
+                <div class='sweet-alert'>
+                    <div class='icon warning'>
+                        <div class='icon-warning'>!</div>
+                    </div>
+
+                    <h2 class='alert-title'>Are you sure?</h2>
+                    <div class='alert-content'>You won't be able to revert this!</div>
+
+                    <div class='buttons-wrapper'>
+                        <button (click)='removeTodo(todo)' class='btn-styled button-delete'>Yes, delete it!</button>
+                        <button (click)='_modalService.close(modalId, true)' class='btn-styled button-cancel'>Cancel</button>
+                    </div>
                 </div>
+            </app-modal>
 
-                <h2 class="alert-title">Are you sure?</h2>
-                <div class="alert-content">You won't be able to revert this!</div>
+        </section>
+    </div>
 
-                <div class="buttons-wrapper">
-                    <button (click)='removeTodo(todo)' class="btn-styled button-delete">Yes, delete it!</button>
-                    <button (click)='_modalService.close(modalId, true)' class="btn-styled button-cancel">Cancel</button>
-                </div>
-            </div>
-        </app-modal>
-
-    </section>
+    <div class='footer-container'>
+        <div>
+            <p class='text-center'>
+                Made with <img width='30' src='data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo='>                by <a href='https://github.com/Cl3r1k' target='_blank'>Cl3r1k</a></p>
+        </div>
+    </div>
 </section>
