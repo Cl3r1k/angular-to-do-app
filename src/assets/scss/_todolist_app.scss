@@ -100,11 +100,11 @@
             line-height: 1.2;
             transition: color 0.4s;
             grid-column: span 13;
-            background-color: fuchsia;
+            // background-color: fuchsia;   // For debuging
         }
         .buttons-block {
             grid-column: span 2;
-            background-color: greenyellow;
+            // background-color: greenyellow;   // For debuging
             display: grid;
             height: 100%;
             grid-template-columns: repeat(3, 1fr);
@@ -118,11 +118,11 @@
                 // bottom: 0;
                 font-size: 18px;
                 color: #939dc9;
-                background-color: #555;
+                // background-color: #555;   // For debuging
                 margin: auto auto;
                 padding: 3px 3px 3px 3px;
                 transition: 0.3s ease-out;
-                opacity: 1;
+                opacity: 0;
                 &:hover {
                     color: #687197;
                     cursor: pointer;
@@ -137,11 +137,11 @@
                 // margin-bottom: 16px;
                 font-size: 18px;
                 color: #bddad5;
-                background-color: #888;
+                // background-color: #888;   // For debuging
                 margin: auto auto;
                 padding: 3px 3px 3px 3px;
                 transition: 0.3s ease-out;
-                opacity: 1;
+                opacity: 0;
                 &:hover {
                     color: #5dc2af;
                     cursor: pointer;
@@ -155,12 +155,12 @@
                 // bottom: 0;
                 font-size: 18px;
                 color: #cc9a9a;
-                background-color: #321;
+                // background-color: #321;   // For debuging
                 margin: auto auto;
                 font-size: 18px;
                 padding: 3px 3px 3px 3px;
                 transition: 0.3s ease-out;
-                opacity: 1;
+                opacity: 0;
                 &:hover {
                     color: #af5b5e;
                     cursor: pointer;

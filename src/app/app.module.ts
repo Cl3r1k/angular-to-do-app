@@ -15,7 +15,8 @@ import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-li
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
-import { ModalComponent } from '@app/modal/modal.component';
+import { ModalComponent } from '@app/modal/modal.component';    // TODO: Remove this component
+import { DialogComponent } from '@app/dialog/dialog.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -32,6 +33,7 @@ import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.direc
 // Modules
 import { DndModule } from 'ng2-dnd';
 import { Autosize } from 'ng-autosize/src/autosize.directive';
+import { MatDialogModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -47,7 +49,8 @@ import { Autosize } from 'ng-autosize/src/autosize.directive';
         ModalComponent,
         RouterLinkActiveStubsDirective,
         Autosize,
-        TodoTitleComponent
+        TodoTitleComponent,
+        DialogComponent
     ],
     imports: [
         AppRoutingModule,
@@ -55,9 +58,12 @@ import { Autosize } from 'ng-autosize/src/autosize.directive';
         BrowserModule,
         FormsModule,
         BrowserAnimationsModule,
-        DndModule.forRoot()
+        DndModule.forRoot(),
+        MatDialogModule,
+        MatButtonModule
     ],
     providers: [TodoService, ApiService, ModalService, IndexedDbService],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [DialogComponent]
 })
 export class AppModule { }

@@ -1,9 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TodoService } from '@app/_services/todo.service';
 import { ToDo } from '@app/_models/to-do';
-import { ModalService } from '@app/_services/modal.service';
 
 import { ActivatedRoute } from '@angular/router';
+
+import { DialogComponent } from '@app/dialog/dialog.component';
+
+import { ModalService } from '@app/_services/modal.service';
+
+import { MatDialog } from '@angular/material';
 
 @Component({
     selector: 'app-todos',
@@ -27,7 +32,10 @@ export class TodosComponent implements OnInit, OnDestroy {
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
     // and assign it to a property called _todoDataService
-    constructor(private _todoService: TodoService, private _route: ActivatedRoute, public _modalService: ModalService) { }
+    constructor(private _todoService: TodoService,
+        private _route: ActivatedRoute,
+        public _modalService: ModalService,
+        public dialog: MatDialog) { }
 
     public ngOnInit() {
         this._route.data
@@ -86,7 +94,20 @@ export class TodosComponent implements OnInit, OnDestroy {
     // Method to handle event emitted by TodoListComponent
     onRemoveTodo(todo: ToDo) {
         this.todo = todo;
-        this._modalService.open(this.modalId);
+        // this._modalService.open(this.modalId);
+
+        const dialogRef = this.dialog.open(DialogComponent, {
+            width: '600px',
+            data: 'This text is passed into the dialog!'
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result) {
+                console.log('result is: ', result);
+            } else {
+                // User clicked 'Cancel' or clicked outside the dialog
+            }
+        });
     }
 
     // Additional method to perform deletion after modal confirmation

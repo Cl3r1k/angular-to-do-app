@@ -1,0 +1,19 @@
+<div>
+    <h2 mat-dialog-title>{{dialogTitle}}</h2>
+    <div mat-dialog-content>
+        <!-- <mat-form-field class='full-width'>
+            <input matInput [(ngModel)]='recipeName' placeholder='Recipe Name'>
+        </mat-form-field>
+        <br>
+        <mat-form-field class='full-width'>
+            <textarea matInput [(ngModel)]='recipeIngredients' placeholder='Enter Ingredients,Separated,By Commas'></textarea>
+        </mat-form-field> -->
+
+        <br>
+        <!-- <strong>{{data}}</strong> -->
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color='primary' (click)='onConfirm()'>{{buttonTitle}}</button>&nbsp;
+        <button mat-raised-button (click)='dialogRef.close()'>Cancel</button>
+    </div>
+</div>
