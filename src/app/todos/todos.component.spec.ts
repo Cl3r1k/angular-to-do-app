@@ -12,13 +12,11 @@ import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-i
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
-import { ModalComponent } from '@app/modal/modal.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
 import { ApiMockService } from '@app/_services/api-mock.service';
 import { ApiService } from '@app/_services/api.service';
-import { ModalService } from '@app/_services/modal.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
 import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
 
@@ -46,8 +44,7 @@ describe(`TodosComponent`, () => {
                 TodoListFooterComponent,
                 TodoListItemComponent,
                 TodoListItemViewComponent,
-                TodoListItemEditComponent,
-                ModalComponent
+                TodoListItemEditComponent
             ],
             providers: [TodoService,
                 {
@@ -69,7 +66,6 @@ describe(`TodosComponent`, () => {
                         }
                     }
                 },
-                ModalService,
                 DragDropService,
                 DragDropConfig,
                 DragDropSortableService
@@ -85,7 +81,7 @@ describe(`TodosComponent`, () => {
     });
 
     // tslint:disable-next-line:max-line-length
-    it(`Should create the app, used: Components(TodoListHeader, TodoList, TodoListFooter, TodoListItem, ModalComponent) Services(ApiMockService, ApiService, ModalService, IndexedDbMockService) (async)`, async(() => {
+    it(`Should create the app, used: Components(TodoListHeader, TodoList, TodoListFooter, TodoListItem) Services(ApiMockService, ApiService, IndexedDbMockService) (async)`, async(() => {
         // Arrange
 
         // Act

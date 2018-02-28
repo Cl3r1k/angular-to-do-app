@@ -19,6 +19,7 @@ Todos:
                 `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
                 `https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18`
                 `https://alligator.io/angular/dialogs-angular-material/`
+                ☐ Update tests for new dialog
                 
                 ☐ In modal for deletion set focus on 'Cancel' button
                 ☐ Add modal for 'clearCompleted' (with amount of deleted todos)

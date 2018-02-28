@@ -6,9 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { DialogComponent } from '@app/dialog/dialog.component';
 
-import { ModalService } from '@app/_services/modal.service';
-
 import { MatDialog } from '@angular/material';
+import 'hammerjs';
 
 @Component({
     selector: 'app-todos',
@@ -32,10 +31,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
     // and assign it to a property called _todoDataService
-    constructor(private _todoService: TodoService,
-        private _route: ActivatedRoute,
-        public _modalService: ModalService,
-        public dialog: MatDialog) { }
+    constructor(private _todoService: TodoService, private _route: ActivatedRoute, public dialog: MatDialog) { }
 
     public ngOnInit() {
         this._route.data
@@ -94,16 +90,17 @@ export class TodosComponent implements OnInit, OnDestroy {
     // Method to handle event emitted by TodoListComponent
     onRemoveTodo(todo: ToDo) {
         this.todo = todo;
-        // this._modalService.open(this.modalId);
 
         const dialogRef = this.dialog.open(DialogComponent, {
             width: '600px',
-            data: 'This text is passed into the dialog!'
+            data: {
+                todoTitle: todo.title
+            }
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            if (result) {
-                console.log('result is: ', result);
+            if (result === 'Confirm') {
+                this.removeTodo(todo);
             } else {
                 // User clicked 'Cancel' or clicked outside the dialog
             }
@@ -118,8 +115,6 @@ export class TodosComponent implements OnInit, OnDestroy {
             this.todos = this.todos.filter((val) => val.id !== todo.id);
             this.updateFooterAndToggleAllInfo();
         });
-
-        this._modalService.close(this.modalId, true);
     }
 
     // Method to handle event emitted by TodoListComponent

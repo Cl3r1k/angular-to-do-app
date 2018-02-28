@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
     selector: 'app-dialog',
@@ -9,13 +9,13 @@ import { MatDialogRef } from '@angular/material';
 })
 export class DialogComponent implements OnInit {
 
-    constructor(public dialogRef: MatDialogRef<DialogComponent>) { }
+    constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
 
     ngOnInit() {
     }
 
     onConfirm() {
-        this.dialogRef.close('testing data');
+        this.dialogRef.close('Confirm');
     }
 
 }

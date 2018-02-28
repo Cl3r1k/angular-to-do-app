@@ -15,13 +15,11 @@ import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-li
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
-import { ModalComponent } from '@app/modal/modal.component';    // TODO: Remove this component
 import { DialogComponent } from '@app/dialog/dialog.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
 import { ApiService } from '@app/_services/api.service';
-import { ModalService } from '@app/_services/modal.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
 
 // Routings
@@ -46,7 +44,6 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
         PageNotFoundComponent,
         TodoListItemViewComponent,
         TodoListItemEditComponent,
-        ModalComponent,
         RouterLinkActiveStubsDirective,
         Autosize,
         TodoTitleComponent,
@@ -62,7 +59,7 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
         MatDialogModule,
         MatButtonModule
     ],
-    providers: [TodoService, ApiService, ModalService, IndexedDbService],
+    providers: [TodoService, ApiService, IndexedDbService],
     bootstrap: [AppComponent],
     entryComponents: [DialogComponent]
 })
