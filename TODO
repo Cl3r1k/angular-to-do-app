@@ -24,6 +24,8 @@ Todos:
                 ☐ In modal for deletion set focus on 'Cancel' button
                 ☐ Add modal for 'clearCompleted' (with amount of deleted todos)
 
+        ☐ Fix issue with textarea, when todo is edited, and anothe checkbox.toggle hovered -> textarea autosizes
+
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
                 ✔ Improve styles for 'checkbox.toggle' (currently not centered in container) @done(18-02-24 09:26)
@@ -47,7 +49,7 @@ Todos:
                 ✔ Disable width changes for textarea @done(18-02-15 09:41)
                 ✔ Improve processing 'Enter' in textarea (currently Enter adds linebreak and saves todo -> only saves todo should be) @done(18-02-15 09:20)
                 ✔ Improve initial size for textarea (when single line todo.title, and check multiple lines todo.title) @done(18-02-15 10:16)
-                ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch)
+                ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here https://github.com/stevepapa/ng-autosize/issues/9)
             ☐ Update UI for DnD (look here https://github.com/atlassian/react-beautiful-dnd)
 
         

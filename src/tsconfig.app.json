@@ -11,7 +11,7 @@
         "**/*.spec.ts"
     ],
     "include": [
-        "../node_modules/ng-autosize/**/*.ts",
-        "**/*.ts"
+        "**/*.ts",
+        "../node_modules/ng-autosize/**/*.ts"
     ]
 }

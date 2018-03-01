@@ -45,7 +45,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
     }
 
     ngAfterViewChecked() {
-        // Workaround for autosize Textarea with two-side binding text
+        // Workaround for autosize Textarea with two-side binding initial text
         // Another workaround is adjust height if length of todo.title more than 50 symbols, and if not height === 58px
         if (this.afterViewCheckedCount >= 1) {
             if (!this.updatedTextHeight) {
