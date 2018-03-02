@@ -19,7 +19,22 @@ describe('TodoTitleComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it(`should create an instance (async)`, async(() => {
+        // Arrange
+
+        // Act
+
+        // Assert
         expect(component).toBeTruthy();
-    });
+    }));
+
+    it('should display "Todo" in h1 tag (async)', async(() => {
+        // Arrange
+        const compiled = fixture.debugElement.nativeElement;
+
+        // Act
+
+        // Assert
+        expect(compiled.querySelector('h1').textContent).toContain('Todo');
+    }));
 });

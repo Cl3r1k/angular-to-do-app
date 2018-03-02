@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TodosComponent } from '@app/todos/todos.component';
 
 import { ToDo } from '@app/_models/to-do';
+import { TodoTitleComponent } from '@app/todo-title/todo-title.component';
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
@@ -39,6 +40,7 @@ describe(`TodosComponent`, () => {
             ],
             declarations: [
                 TodosComponent,
+                TodoTitleComponent,
                 TodoListHeaderComponent,
                 TodoListComponent,
                 TodoListFooterComponent,
@@ -81,7 +83,7 @@ describe(`TodosComponent`, () => {
     });
 
     // tslint:disable-next-line:max-line-length
-    it(`Should create the app, used: Components(TodoListHeader, TodoList, TodoListFooter, TodoListItem) Services(ApiMockService, ApiService, IndexedDbMockService) (async)`, async(() => {
+    it(`Should create the app, used: Components(TodoTitleComponent, TodoListHeaderComponent, TodoListComponent, TodoListFooterComponent, TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent) Services(ApiMockService, ApiService, IndexedDbMockService) (async)`, async(() => {
         // Arrange
 
         // Act

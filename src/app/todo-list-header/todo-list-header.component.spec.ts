@@ -50,16 +50,6 @@ describe('TodoListHeaderComponent', () => {
         expect(component.newTodo instanceof ToDo).toBeTruthy();
     }));
 
-    it('should display "Todo" in h1 tag (async)', async(() => {
-        // Arrange
-        const compiled = fixture.debugElement.nativeElement;
-
-        // Act
-
-        // Assert
-        expect(compiled.querySelector('h1').textContent).toContain('Todo');
-    }));
-
     it(`should emit 'add' event (async)`, async(() => {
         // Arrange
         const expectedTodo: ToDo = new ToDo({ id: 1, title: 'exp Todo', complete: false });
