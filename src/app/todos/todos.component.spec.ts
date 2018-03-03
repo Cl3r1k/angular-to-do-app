@@ -26,6 +26,7 @@ import { ActivatedRoute } from '@angular/router';
 
 // Modules
 import { DndModule, DragDropService, DragDropConfig, DragDropSortableService } from 'ng2-dnd';
+import { MatDialogModule } from '@angular/material';
 
 describe(`TodosComponent`, () => {
     let component: TodosComponent;
@@ -36,7 +37,8 @@ describe(`TodosComponent`, () => {
             imports: [
                 FormsModule,
                 RouterTestingModule,
-                DndModule
+                DndModule,
+                MatDialogModule
             ],
             declarations: [
                 TodosComponent,
@@ -83,7 +85,7 @@ describe(`TodosComponent`, () => {
     });
 
     // tslint:disable-next-line:max-line-length
-    it(`Should create the app, used: Components(TodoTitleComponent, TodoListHeaderComponent, TodoListComponent, TodoListFooterComponent, TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent) Services(ApiMockService, ApiService, IndexedDbMockService) (async)`, async(() => {
+    it(`Should create the app, used:  Components(TodoTitleComponent, TodoListHeaderComponent, TodoListComponent, TodoListFooterComponent, TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent) Services(ApiMockService, ApiService, IndexedDbMockService) Modules(DndModule, MatDialogModule) (async)`, async(() => {
         // Arrange
 
         // Act

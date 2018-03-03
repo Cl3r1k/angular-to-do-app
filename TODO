@@ -14,14 +14,15 @@ Todos:
     New:
         Current:
 
-            ☐ Update modal with next examples: 
+            ✔ Update modal with next examples: @done(18-03-02 10:57)
                 `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
                 `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
                 `https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18`
                 `https://alligator.io/angular/dialogs-angular-material/`
-                ☐ Update tests for new dialog
+                ✔ Update tests with new dialog @done(18-03-02 09:35)
+                    ☐ Improve tests for DialogComponent (test 'Cancel' click, and 'Esc' event) (look here https://medium.com/curiouscaloo/testing-angular-components-containing-mddialog-2430144b5894)
                 
-                ☐ In modal for deletion set focus on 'Cancel' button
+                ☐ In modal for deletion set focus on 'Cancel' button <=== CURRENT
                 ☐ Add modal for 'clearCompleted' (with amount of deleted todos)
 
         ☐ Fix issue with textarea, when todo is edited, and anothe checkbox.toggle hovered -> textarea autosizes
