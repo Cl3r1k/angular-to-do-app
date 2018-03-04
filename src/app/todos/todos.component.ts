@@ -37,20 +37,20 @@ export class TodosComponent implements OnInit, OnDestroy {
         this._route.data
             .map((data) => data['todos'])
             .subscribe(
-            (todos) => {
-                // console.log('this._route.params: ', this._route.params);
-                // console.log('this._route.queryParams: ', this._route.queryParams);
-                console.log('incoming data from resolver', todos);
-                this.todos = todos;
-                if (this._route.routeConfig.path.endsWith('active')) {
-                    this.activeRouteState = 1;
-                } else if (this._route.routeConfig.path.endsWith('completed')) {
-                    this.activeRouteState = 2;
-                } else {
-                    this.activeRouteState = 0;
+                (todos) => {
+                    // console.log('this._route.params: ', this._route.params);
+                    // console.log('this._route.queryParams: ', this._route.queryParams);
+                    console.log('incoming data from resolver', todos);
+                    this.todos = todos;
+                    if (this._route.routeConfig.path.endsWith('active')) {
+                        this.activeRouteState = 1;
+                    } else if (this._route.routeConfig.path.endsWith('completed')) {
+                        this.activeRouteState = 2;
+                    } else {
+                        this.activeRouteState = 0;
+                    }
+                    this.updateFooterAndToggleAllInfo();
                 }
-                this.updateFooterAndToggleAllInfo();
-            }
             );
     }
 
@@ -91,10 +91,16 @@ export class TodosComponent implements OnInit, OnDestroy {
     onRemoveTodo(todo: ToDo) {
         this.todo = todo;
 
+        const dataForDialog = {
+            dialogTitle: 'Delete Todo',
+            contentTitle: 'Are you sure want to delete todo with name:',
+            contentData: todo.title
+        };
+
         const dialogRef = this.dialog.open(DialogComponent, {
             width: '600px',
             data: {
-                todoTitle: todo.title
+                data: dataForDialog
             }
         });
 
@@ -145,6 +151,36 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     // Method to handle event emitted by TodoListFooterComponent
     onClearCompleted(clearState: boolean) {
+        const dataForDialog = {
+            dialogTitle: 'Delete Todos',
+            contentTitle: 'Are you sure want to delete todos amount: ',
+            contentData: this.todos.filter(todo => todo.complete === true).length,
+            isClearCompleted: true
+        };
+
+        const dialogRef = this.dialog.open(DialogComponent, {
+            width: '600px',
+            data: {
+                data: dataForDialog
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result === 'Confirm') {
+                this.clearCompleted(clearState);
+            } else {
+                // User clicked 'Cancel' or clicked outside the dialog
+            }
+        });
+
+        this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
+            this.todos = todos;
+            this.updateFooterAndToggleAllInfo();
+            this.onClearHoverSetState(false);
+        });
+    }
+
+    clearCompleted(clearState: boolean) {
         console.log('onClearCompleted (remove %s in TodoListFooterComponent and in current method): ', clearState);
         this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
             this.todos = todos;

@@ -14,18 +14,8 @@ Todos:
     New:
         Current:
 
-            ✔ Update modal with next examples: @done(18-03-02 10:57)
-                `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
-                `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
-                `https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18`
-                `https://alligator.io/angular/dialogs-angular-material/`
-                ✔ Update tests with new dialog @done(18-03-02 09:35)
-                    ☐ Improve tests for DialogComponent (test 'Cancel' click, and 'Esc' event) (look here https://medium.com/curiouscaloo/testing-angular-components-containing-mddialog-2430144b5894)
-                
-                ☐ In modal for deletion set focus on 'Cancel' button <=== CURRENT
-                ☐ Add modal for 'clearCompleted' (with amount of deleted todos)
-
-        ☐ Fix issue with textarea, when todo is edited, and anothe checkbox.toggle hovered -> textarea autosizes
+            ☐ In header add button with icon 'Enter', which will be visible, when input is focused <=== CURRENT
+        
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
@@ -54,7 +44,6 @@ Todos:
             ☐ Update UI for DnD (look here https://github.com/atlassian/react-beautiful-dnd)
 
         
-        ☐ In header add button with icon 'Enter', which will be visible, when input is focused
         ☐ Use Material Snackbar for cancel deleted todo (look here https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18)
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
@@ -218,6 +207,19 @@ Todos:
         ✔ Fix styles for edit-Icon in todo with large text @done(18-02-08 09:12)
 
         ✔ Improve styles for editing todo (decrease space before text) @done(18-02-11 10:17)
+
+        ✔ Update modal with next examples: @done(18-03-02 10:57)
+            `https://blog.thoughtram.io/angular/2017/11/27/custom-overlays-with-angulars-cdk-part-two.html`
+            `http://brianflove.com/2017/07/17/angular-delete-confirmation/`
+            `https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18`
+            `https://alligator.io/angular/dialogs-angular-material/`
+            ✔ Update tests with new dialog @done(18-03-02 09:35)
+                ☐ Improve tests for DialogComponent (test 'Cancel' click, and 'Esc' event) (look here https://medium.com/curiouscaloo/testing-angular-components-containing-mddialog-2430144b5894)
+            
+            ✔ In modal for deletion set focus on 'Cancel' button (cdkFocusRegionstart used) @done(18-03-03 09:10)
+            ✔ Add modal for 'clearCompleted' (with amount of deleted todos) @done(18-03-03 09:41)
+
+        ✔ Fix issue with textarea, when todo is edited, and another checkbox.toggle hovered -> textarea autosizes (Not catched anymore) @done(18-03-03 09:49)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)

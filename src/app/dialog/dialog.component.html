@@ -1,14 +1,14 @@
 <div class='delete-dialog'>
-    <h2 mat-dialog-title>Delete Todo</h2>
+    <h2 mat-dialog-title>{{data.data.dialogTitle}}</h2>
     <hr>
     <div mat-dialog-content>
-        <h2 mat-dialog-title>Are you sure want to delete todo with name:</h2>
-        <p>{{data.todoTitle}}</p>
+        <h2 mat-dialog-title>{{data.data.contentTitle}} {{data.data.isClearCompleted ? data.data.contentData : '0'}} </h2>
+        <p *ngIf='!data.data.isClearCompleted'>{{data.data.contentData}}</p>
     </div>
     <div mat-dialog-actions>
         <!-- This fills the remaining space of the current row -->
         <span class='fill-space'></span>
         <button mat-raised-button color='warn' (click)='onConfirm()' class='dialog__confirm-btn'>Yes, delete it!</button>&nbsp;
-        <button mat-raised-button (click)='dialogRef.close()'>Cancel</button>
+        <button mat-raised-button (click)='dialogRef.close()' cdkFocusRegionstart>Cancel</button>
     </div>
 </div>
