@@ -6,8 +6,14 @@
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     align-items: center;
-    // position: relative;
+    position: relative;
     // z-index: 0;
+    &:focus {
+        border: 1px solid #29B0D9;
+        .icon-keyboard_return {
+            color: red;
+        }
+    }
     .toggleAll-container {
         grid-column: span 1;
         display: grid;
@@ -45,10 +51,23 @@
     .new-todo {
         grid-column: span 15;
         @extend .input-field-style;
-        padding: 14px 14px 14px 14px;
+        padding: 14px 40px 14px 14px;
         border: none;
         background: rgba(0, 0, 0, 0.003);
         box-shadow: inset 0 -2px 0px rgba(0, 0, 0, 0.03);
+    }
+    .icon-keyboard_return {
+        position: absolute;
+        top: 19px;
+        right: 11px;
+        font-size: 18px;
+        color: #939dc9;
+        padding: 3px 3px 3px 3px;
+        margin: auto auto;
+        &:hover {
+            color: #687197;
+            cursor: pointer;
+        }
     }
 }
 
