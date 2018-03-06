@@ -8,8 +8,9 @@ import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.
 describe('TodoListHeaderComponent', () => {
     let component: TodoListHeaderComponent;
     let fixture: ComponentFixture<TodoListHeaderComponent>;
-    let addTodoEl;
+    let addTodoInputEl;
     let toggleAllEl;
+    let addTodoSvgEl;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -26,8 +27,11 @@ describe('TodoListHeaderComponent', () => {
         component.todosAllAmount = 11;    // Lets count that we have more than 0 todo
         fixture.detectChanges();
 
-        addTodoEl = fixture.debugElement.nativeElement.querySelector('input[type=text].new-todo');      // Find addTodoEl text field element
+        addTodoInputEl = fixture.debugElement.nativeElement.querySelector('input[type=text].new-todo'); // Find new-todo text field elem
         toggleAllEl = fixture.debugElement.nativeElement.querySelector('input[type=checkbox].toggle-all'); // Find toggleAll checkbox elem
+        addTodoSvgEl = fixture.debugElement.nativeElement.querySelector('svg.icon-keyboard_return'); // Find svg.icon-keyboard_return elem
+
+        console.log('%c addTodoSvgEl: ', 'color: red;', addTodoSvgEl);
 
         fixture.detectChanges();
     });
@@ -90,6 +94,19 @@ describe('TodoListHeaderComponent', () => {
         }));
     });
 
+    describe(`#setNewTodoFocus`, () => {
+        it(`should set state for 'newTodoFocusState' (async)`, async(() => {
+            // Arrange
+            component.newTodoFocusState = false;
+
+            // Act
+            component.setNewTodoFocus(true);
+
+            // Assert
+            expect(component.newTodoFocusState).toEqual(true);
+        }));
+    });
+
     describe(`#view tests`, () => {
         it(`press Enter on text.new-todo should call method 'addTodo' (async)`, async () => {
             // Arrange
@@ -99,7 +116,7 @@ describe('TodoListHeaderComponent', () => {
 
             // Act
             spyOn(component, 'addTodo');
-            addTodoEl.dispatchEvent(event);
+            addTodoInputEl.dispatchEvent(event);
 
             // Assert
             fixture.whenStable().then(() => {
@@ -119,5 +136,20 @@ describe('TodoListHeaderComponent', () => {
                 expect(component.toggleAllTodos).toHaveBeenCalled();
             });
         });
+
+        it(`clicking on svg.icon-keyboard_return should call method 'addTodo' (async)`, async () => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'addTodo');
+            addTodoSvgEl.click();
+
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.addTodo).toHaveBeenCalled();
+            });
+        });
+
+        // TODO: test hover and blur on svg
     });
 });

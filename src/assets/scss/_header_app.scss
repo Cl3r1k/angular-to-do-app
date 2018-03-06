@@ -8,12 +8,6 @@
     align-items: center;
     position: relative;
     // z-index: 0;
-    &:focus {
-        border: 1px solid #29B0D9;
-        .icon-keyboard_return {
-            color: red;
-        }
-    }
     .toggleAll-container {
         grid-column: span 1;
         display: grid;
@@ -64,9 +58,14 @@
         color: #939dc9;
         padding: 3px 3px 3px 3px;
         margin: auto auto;
+        transition: 0.3s ease-out;
+        opacity: 0;
         &:hover {
             color: #687197;
             cursor: pointer;
+        }
+        &.new-todo-focused {
+            opacity: 1;
         }
     }
 }

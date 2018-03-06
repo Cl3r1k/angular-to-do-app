@@ -4,19 +4,31 @@ import { By } from '@angular/platform-browser';
 import { DialogComponent } from './dialog.component';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { MatDialogRefMock, MatDialogDataMock } from '@app/_testing/mat-dialog-mock';
+import { MatDialogRefMock } from '@app/_testing/mat-dialog-mock';
 
 describe('DialogComponent', () => {
     let component: DialogComponent;
     let fixture: ComponentFixture<DialogComponent>;
     let dialogConfirmBtnEl;
 
+    // Mock MAT_DIALOG_DATA with the Object
+    const dataForDialog = {
+        dialogTitle: 'Delete Todos',
+        contentTitle: 'Are you sure want to delete todos amount: ',
+        contentData: 5,
+        isClearCompleted: true
+    };
+
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [DialogComponent],
             providers: [
                 { provide: MatDialogRef, useClass: MatDialogRefMock },
-                { provide: MAT_DIALOG_DATA, useClass: MatDialogDataMock }
+                { provide: MAT_DIALOG_DATA, useValue: {
+                    data: {
+                        data: dataForDialog
+                    }
+                } }
             ]
         })
             .compileComponents();

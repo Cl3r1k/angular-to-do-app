@@ -18,6 +18,8 @@ export class TodoListHeaderComponent {
     @Output() toggleAllTodoListHeaderEmitter: EventEmitter<boolean> = new EventEmitter();
     @Output() toggleAllHoverStateTodoListHeaderEmitter: EventEmitter<boolean> = new EventEmitter();
 
+    newTodoFocusState = false;
+
     constructor() { }
 
     addTodo() {
@@ -34,6 +36,10 @@ export class TodoListHeaderComponent {
 
     setToggleAllHoverState(toggleAllHoverState: boolean) {
         this.toggleAllHoverStateTodoListHeaderEmitter.emit(toggleAllHoverState);
+    }
+
+    setNewTodoFocus(newTodoFocusState: boolean) {
+        this.newTodoFocusState = newTodoFocusState;
     }
 
 }

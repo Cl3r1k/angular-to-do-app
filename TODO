@@ -14,7 +14,8 @@ Todos:
     New:
         Current:
 
-            ☐ In header add button with icon 'Enter', which will be visible, when input is focused <=== CURRENT
+            ✔ In header add button with icon 'Enter', which will be visible, when input is focused @done(18-03-05 09:33)
+                ☐ Update tests for new button in header <=== CURRENT
         
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
