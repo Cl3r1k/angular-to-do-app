@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 
 import { ToDo } from '@app/_models/to-do';
 
@@ -29,14 +30,14 @@ describe('TodoListHeaderComponent', () => {
 
         addTodoInputEl = fixture.debugElement.nativeElement.querySelector('input[type=text].new-todo'); // Find new-todo text field elem
         toggleAllEl = fixture.debugElement.nativeElement.querySelector('input[type=checkbox].toggle-all'); // Find toggleAll checkbox elem
-        addTodoSvgEl = fixture.debugElement.nativeElement.querySelector('svg.icon-keyboard_return'); // Find svg.icon-keyboard_return elem
+        addTodoSvgEl = fixture.debugElement.query(By.css('svg.icon-keyboard_return'));        // Find svg.icon-keyboard_return elem
 
         console.log('%c addTodoSvgEl: ', 'color: red;', addTodoSvgEl);
 
         fixture.detectChanges();
     });
 
-    it('should create an instance (async)', async(() => {
+    it(`should create an instance (async)`, async(() => {
         // Arrange
 
         // Act
@@ -45,7 +46,7 @@ describe('TodoListHeaderComponent', () => {
         expect(component).toBeTruthy();
     }));
 
-    it('should have a newTodo as instance of Todo (async)', async(() => {
+    it(`should have a newTodo as instance of Todo (async)`, async(() => {
         // Arrange
 
         // Act
@@ -124,6 +125,38 @@ describe('TodoListHeaderComponent', () => {
             });
         });
 
+        it(`losing focus input.new-todo should call method 'setNewTodoFocus()' (async)`, async () => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'setNewTodoFocus');
+
+            // Set input value focus lost
+            addTodoInputEl.dispatchEvent(new Event('blur'));
+            fixture.detectChanges();
+
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.setNewTodoFocus).toHaveBeenCalled();
+            });
+        });
+
+        it(`setting focus input.new-todo should call method 'setNewTodoFocus()' (async)`, async () => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'setNewTodoFocus');
+
+            // Set input value focus lost
+            addTodoInputEl.dispatchEvent(new Event('focus'));
+            fixture.detectChanges();
+
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.setNewTodoFocus).toHaveBeenCalled();
+            });
+        });
+
         it(`clicking on checkbox.toggle-all should call method 'toggleAllTodos()' (async)`, async () => {
             // Arrange
 
@@ -137,19 +170,21 @@ describe('TodoListHeaderComponent', () => {
             });
         });
 
-        it(`clicking on svg.icon-keyboard_return should call method 'addTodo' (async)`, async () => {
+        it(`clicking on svg.icon-keyboard_return should call method 'addTodo()' (async)`, async () => {
             // Arrange
 
             // Act
             spyOn(component, 'addTodo');
-            addTodoSvgEl.click();
+            if (addTodoSvgEl instanceof HTMLElement) {
+                addTodoSvgEl.click();
+            } else {
+                addTodoSvgEl.triggerEventHandler('click', { button: 0 });
+            }
 
             // Assert
             fixture.whenStable().then(() => {
                 expect(component.addTodo).toHaveBeenCalled();
             });
         });
-
-        // TODO: test hover and blur on svg
     });
 });

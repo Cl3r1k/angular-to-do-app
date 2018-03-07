@@ -37,7 +37,7 @@ describe('TodoListItemEditComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should be equal to expectedTodo', () => {
+    it(`should be equal to expectedTodo`, () => {
         // Arrange
 
         // Act
@@ -46,7 +46,7 @@ describe('TodoListItemEditComponent', () => {
         expect(component.todo).toEqual(expectedTodo);
     });
 
-    it(`should call method 'updateTodo' which imitates blur event, which emits 'update' event (async)`, async(() => {
+    it(`should call method 'updateTodo()' which imitates blur event, which emits 'update' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
@@ -61,7 +61,7 @@ describe('TodoListItemEditComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    it(`should call method 'removeTodo' which imitate blur event, which emit 'remove' event (async)`, async(() => {
+    it(`should call method 'removeTodo()' which imitate blur event, which emit 'remove' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
@@ -73,7 +73,7 @@ describe('TodoListItemEditComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    it(`should call method 'cancelEditTodo' which imitates blur event, which emits 'cancel' event (async)`, async(() => {
+    it(`should call method 'cancelEditTodo()' which imitates blur event, which emits 'cancel' event (async)`, async(() => {
         // Arrange
         let cancelState: boolean;
 
@@ -86,7 +86,7 @@ describe('TodoListItemEditComponent', () => {
         expect(cancelState).toEqual(true);
     }));
 
-    it(`should call method 'stopEditTodoOnBlur' which emit 'update' event with new title (async)`, async(() => {
+    it(`should call method 'stopEditTodoOnBlur()' which emit 'update' event with new title (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
@@ -100,7 +100,7 @@ describe('TodoListItemEditComponent', () => {
         expect(todo.title).toEqual('new title');
     }));
 
-    it(`should call method 'stopEditTodoOnBlur' which emits 'remove' event if title is impty (async)`, async(() => {
+    it(`should call method 'stopEditTodoOnBlur()' which emits 'remove' event if title is impty (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
@@ -115,7 +115,7 @@ describe('TodoListItemEditComponent', () => {
     }));
 
     describe(`#view tests`, () => {
-        it(`losing focus input.edit should call 'stopEditTodoOnBlur' method (async)`, async () => {
+        it(`losing focus input.edit should call method 'stopEditTodoOnBlur()' (async)`, async () => {
             // Arrange
 
             // Act
