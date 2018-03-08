@@ -16,6 +16,7 @@ Todos:
 
 
             ☐ Add pin icon and use two categories: pinned(important) and unpinned(not important) <=== CURRENT
+                ☐ Update test for 'pin_icon'
         
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
