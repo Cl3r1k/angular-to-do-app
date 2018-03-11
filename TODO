@@ -16,7 +16,19 @@ Todos:
 
 
             ☐ Add pin icon and use two categories: pinned(important) and unpinned(not important) <=== CURRENT
+                ☐ Reorganize app structure
+                    ☐ Add member 'pin'
+                    ☐ Add additional 'id' field
+                    ☐ Add field 'created_time'
+                    ☐ Add field 'deleted_time'
+                    ☐ Add field 'completed_time'
+                    ☐ Add field 'updated_time'
+                    ☐ Add logic and styles for pin/unpin todo
+                    ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage))
+                    
                 ☐ Update test for 'pin_icon'
+            
+            ☐ Restyle DnD icon and move from end to begin of todo item
         
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
@@ -45,7 +57,6 @@ Todos:
                 ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here https://github.com/stevepapa/ng-autosize/issues/9)
             ☐ Update UI for DnD (look here https://github.com/atlassian/react-beautiful-dnd)
 
-        ☐ Restyle DnD icon and move from end to begin of todo item
         ☐ Use Material Snackbar for cancel deleted todo (look here https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18)
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
