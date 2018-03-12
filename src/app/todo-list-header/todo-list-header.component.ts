@@ -27,6 +27,8 @@ export class TodoListHeaderComponent {
             this.newTodo.title = this.newTodo.title.trim();
             this.addTodoListHeaderEmitter.emit(this.newTodo);
             this.newTodo = new ToDo();
+
+            // console.log('%c Added new Todo, created_time: ', 'color: brown;', this.newTodo.created_time.toISOString());
         }
     }
 
