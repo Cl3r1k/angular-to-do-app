@@ -4,15 +4,19 @@ export class ToDo {
     title = '';
     complete = false;
     inner_id: string;
-    created_time: Date;
-    updated_time: Date;
-    completed_time: Date;
-    deleted_time: Date;
+    created_time: string;
+    updated_time: string;
+    completed_time: string;
+    deleted_time: string;
     pin = false;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);
-        this.created_time = new Date();
+        this.created_time = new Date().toISOString();
+        this.completed_time = null;
+        this.updated_time = null;
+        this.deleted_time = null;
+        this.inner_id = null;
     }
 
 }

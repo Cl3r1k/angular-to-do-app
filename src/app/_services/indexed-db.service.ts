@@ -21,6 +21,9 @@ export class IndexedDbService extends Dexie {
         this.version(1).stores({
             dbTable: '++id, title, complete'
         });
+        this.version(2).stores({
+            dbTable: '++id, title, complete, inner_id, created_time, updated_time, completed_time, deleted_time, pin'
+        });
         this.dbTable.mapToClass(ToDo);
         console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColor, this.name, 1);
 
@@ -135,6 +138,10 @@ export class IndexedDbService extends Dexie {
             let todos: ToDo[] = await this.dbTable.toArray();
 
             todos.forEach(todo => {
+                todo.updated_time = new Date().toISOString();
+
+                toggleState ? todo.completed_time = todo.updated_time : todo.completed_time = null;
+
                 return todo.complete = toggleState;
             });
 
@@ -159,7 +166,17 @@ export class IndexedDbService extends Dexie {
     }
 
     public deleteTodoById(todoId: number): Observable<null> {
-        return Observable.fromPromise(this.dbTable.delete(todoId).then(async () => {
+        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+            const todo = await this.dbTable.get(todoId);
+            todo.updated_time = new Date().toISOString();
+            todo.deleted_time = todo.updated_time;
+            await this.dbTable.update(todo.id, todo);
+            await this.dbTable.delete(todoId);
+
+            // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
+
+            return null;
+        }).then(async () => {
             console.log('%c deleteTodoById - deleted value with id: ', this.consoleTextColor, todoId);
             return null;
         }).catch(error => {

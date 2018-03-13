@@ -63,6 +63,9 @@ export class TodoService {
 
     // Simulate PUT /todos/:id
     updateTodo(todo: ToDo): Observable<ToDo> {
+
+        todo.updated_time = new Date().toISOString();
+
         if (this.serviceState === 1) {
             return this._indexedDbService.updateTodo(todo);
         } else {
@@ -73,6 +76,8 @@ export class TodoService {
     // Toggle todo complete
     toggleTodoComplete(todo: ToDo): Observable<ToDo> {
         todo.complete = !todo.complete;
+
+        todo.complete ? todo.completed_time = new Date().toISOString() : todo.completed_time = null;
 
         return this.updateTodo(todo);
     }

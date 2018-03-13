@@ -23,6 +23,7 @@ Todos:
                     ✔ Add field 'created_time' @done(18-03-11 10:49)
                     ✔ Add field 'completed_time' @done(18-03-11 10:49)
                     ✔ Add field 'updated_time' @done(18-03-11 10:49)
+                        ☐ Update test for the model
                     ☐ Update logic for new fields
                     ☐ Add logic and styles for pin/unpin todo
                     ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage))
@@ -58,7 +59,8 @@ Todos:
                 ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here https://github.com/stevepapa/ng-autosize/issues/9)
             ☐ Update UI for DnD (look here https://github.com/atlassian/react-beautiful-dnd)
 
-        ☐ Use Material Snackbar for cancel deleted todo (look here https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18)
+        ☐ Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?) (look in IndexedDbService)
+            ☐ Use Material Snackbar for cancel deleted todo (look here https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18)
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
         ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
         ☐ Add filtering by todo name
