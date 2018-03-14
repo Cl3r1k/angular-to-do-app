@@ -22,7 +22,7 @@ export class IndexedDbService extends Dexie {
             dbTable: '++id, title, complete'
         });
         this.version(2).stores({
-            dbTable: '++id, title, complete, inner_id, created_time, updated_time, completed_time, deleted_time, pin'
+            dbTable: '++id, title, complete, inner_id, created_time, completed_time, updated_time, deleted_time, pin'
         });
         this.dbTable.mapToClass(ToDo);
         console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColor, this.name, 1);
@@ -192,6 +192,8 @@ export class IndexedDbService extends Dexie {
 
             todos.forEach(todo => {
                 if (todo.complete) {
+                    todo.completed_time = new Date().toISOString();
+                    todo.updated_time = todo.completed_time;
                     todosIds.push(todo.id);
                 }
             });
