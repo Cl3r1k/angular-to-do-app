@@ -14,11 +14,13 @@ Todos:
     New:
         Current:
 
+            ✔ Fix issue with 'clearCompleted' dialog (todos deleted when dialog showed) @done(18-03-14 10:17)
 
             ☐ Add pin icon and use two categories: pinned(important) and unpinned(not important) <=== CURRENT
                 ☐ Reorganize app structure
                     ✔ Add member 'pin' @done(18-03-11 10:48)
                     ✔ Add additional 'inner_id' field @done(18-03-11 10:48)
+                        ☐ In constructor set unique 'inner_id'
                     ✔ Add field 'deleted_time' @done(18-03-11 10:49)
                     ✔ Add field 'created_time' @done(18-03-11 10:49)
                     ✔ Add field 'completed_time' @done(18-03-11 10:49)

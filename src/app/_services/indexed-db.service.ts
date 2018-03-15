@@ -200,6 +200,8 @@ export class IndexedDbService extends Dexie {
 
             // console.log('%c todos Ids to delete:', this.consoleTextColor, todosIds);
 
+            // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
+
             const resDelete = await this.dbTable.bulkDelete(todosIds);
 
             todos = await this.dbTable.toArray();

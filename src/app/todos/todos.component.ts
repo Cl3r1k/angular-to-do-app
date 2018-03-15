@@ -172,12 +172,6 @@ export class TodosComponent implements OnInit, OnDestroy {
                 // User clicked 'Cancel' or clicked outside the dialog
             }
         });
-
-        this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
-            this.todos = todos;
-            this.updateFooterAndToggleAllInfo();
-            this.onClearHoverSetState(false);
-        });
     }
 
     clearCompleted(clearState: boolean) {
