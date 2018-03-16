@@ -20,7 +20,7 @@ Todos:
                 ☐ Reorganize app structure
                     ✔ Add member 'pin' @done(18-03-11 10:48)
                     ✔ Add additional 'inner_id' field @done(18-03-11 10:48)
-                        ☐ In constructor set unique 'inner_id'
+                        ✔ In constructor set unique 'inner_id' @done(18-03-15 11:47)
                     ✔ Add field 'deleted_time' @done(18-03-11 10:49)
                     ✔ Add field 'created_time' @done(18-03-11 10:49)
                     ✔ Add field 'completed_time' @done(18-03-11 10:49)

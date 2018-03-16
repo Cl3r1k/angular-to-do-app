@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export class ToDo {
 
     id: number;
@@ -16,7 +18,7 @@ export class ToDo {
         this.completed_time = null;
         this.updated_time = null;
         this.deleted_time = null;
-        this.inner_id = null;
+        this.inner_id = uuidv4();    // Generate new UUID
     }
 
 }
