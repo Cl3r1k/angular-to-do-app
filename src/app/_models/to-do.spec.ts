@@ -3,17 +3,17 @@ import { TestBed, async } from '@angular/core/testing';
 import { ToDo } from '@app/_models/to-do';
 
 
-describe('ToDo', () => {
-    it('Should create an instance', () => {
+describe(`ToDo`, () => {
+    it(`Should create an instance (async)`, async(() => {
         // Arrange
 
         // Act
 
         // Assert
         expect(new ToDo()).toBeTruthy();
-    });
+    }));
 
-    it('Should accept values in the constructor', () => {
+    it(`Should accept values in the constructor (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
@@ -26,6 +26,37 @@ describe('ToDo', () => {
         // Assert
         expect(todo.title).toEqual('Hello');
         expect(todo.complete).toEqual(true);
+    }));
 
-    });
+    it(`Should have not null 'created_time' after init (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        todo = new ToDo( {
+            title: 'Hello',
+            complete: true
+        });
+
+        // Assert
+        expect(todo.created_time).toBeTruthy();
+        expect(todo.completed_time).toBeNull();
+        expect(todo.updated_time).toBeNull();
+        expect(todo.deleted_time).toBeNull();
+    }));
+
+    it(`Should have not null 'inner_id' with length=36 after init (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        todo = new ToDo( {
+            title: 'Hello',
+            complete: true
+        });
+
+        // Assert
+        expect(todo.inner_id).toBeTruthy();
+        expect(todo.inner_id.length).toEqual(36);
+    }));
 });

@@ -13,10 +13,13 @@ export class TodoListComponent {
     @Input() todosAllAmount: number;
 
     @Output()
+    toggleCompleteTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
     updateTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    toggleCompleteTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
+    pinTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
     removeTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
@@ -28,16 +31,20 @@ export class TodoListComponent {
 
     constructor() { }
 
-    onUpdateTodo(todo: ToDo) {
-        this.updateTodoTodoListEmitter.emit(todo);    // Emit the update event to TodosComponent
+    onToggleTodoComplete(todo: ToDo) {
+        this.toggleCompleteTodoListEmitter.emit(todo);    // Emit the 'toggle' event to TodosComponent
     }
 
-    onToggleTodoComplete(todo: ToDo) {
-        this.toggleCompleteTodoListEmitter.emit(todo);    // Emit the toggle event to TodosComponent
+    onUpdateTodo(todo: ToDo) {
+        this.updateTodoTodoListEmitter.emit(todo);    // Emit the 'update' event to TodosComponent
+    }
+
+    onPinTodo(todo: ToDo) {
+        this.pinTodoTodoListEmitter.emit(todo);    // Emit the 'pin' event to TodosComponent
     }
 
     onRemoveTodo(todo: ToDo) {
-        this.removeTodoListEmitter.emit(todo);    // Emit the remove event to TodosComponent
+        this.removeTodoListEmitter.emit(todo);    // Emit the 'remove' event to TodosComponent
     }
 
     onMove(oldPostition: number, newPosition: number) {

@@ -29,6 +29,9 @@ export class TodoListItemComponent implements OnInit {
     updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
+    pinTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
     removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     componentData = null;    // Component info wich will be created dynamically
@@ -44,7 +47,11 @@ export class TodoListItemComponent implements OnInit {
     }
 
     updateTodo(todo: ToDo) {
-        this.updateTodoListItemEmitter.emit(todo);    // Emit the update event to the Parent component
+        this.updateTodoListItemEmitter.emit(todo);    // Emit the 'update' event to the Parent component
+    }
+
+    pinTodo(todo: ToDo) {
+        this.pinTodoListItemEmitter.emit(todo);    // Emit the 'pin' event to the Parent component
     }
 
     removeTodo(todo: ToDo) {
@@ -72,6 +79,11 @@ export class TodoListItemComponent implements OnInit {
             // The event from TodoListItemEditComponent
             this.updateTodo(incomeTodo);
             this.createViewComponent(this.todo);
+        });
+
+        instanceComponent.pinTodoListItemEmitter.subscribe(incomeTodo => {
+            // The event from TodoListItemViewComponent
+            this.pinTodo(incomeTodo);
         });
 
         instanceComponent.cancelTodoListItemEmitter.subscribe(isCanceled => {

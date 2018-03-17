@@ -25,9 +25,11 @@ Todos:
                     ✔ Add field 'created_time' @done(18-03-11 10:49)
                     ✔ Add field 'completed_time' @done(18-03-11 10:49)
                     ✔ Add field 'updated_time' @done(18-03-11 10:49)
-                        ☐ Update test for the model
-                    ☐ Update logic for new fields
-                    ☐ Add logic and styles for pin/unpin todo
+                        ✔ Update tests for the model @done(18-03-16 09:27)
+                    ✔ Add logic and styles for pin/unpin todo (some styles(like position and other) will be finished, when buttons will be reorganized) @done(18-03-16 10:25)
+                        ☐ Update test for updated interface and components using this interface
+                        ☐ Update logic for new fields
+                            ☐ Update tests for logic with new fields                    
                     ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage))
                     
                 ☐ Update test for 'pin_icon'

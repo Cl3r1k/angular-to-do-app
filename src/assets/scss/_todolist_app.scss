@@ -178,6 +178,9 @@
                     color: #c93b40;
                     cursor: pointer;
                 }
+                &.pinned {
+                    color: red;
+                }
             }
         }
     }

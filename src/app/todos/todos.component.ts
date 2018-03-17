@@ -87,7 +87,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         });
     }
 
-    // Method to handle event emitted by TodoListComponent
+    // Method to handle event emitted by TodoListComponent and call Dialog
     onRemoveTodo(todo: ToDo) {
         this.todo = todo;
 
@@ -106,7 +106,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result === 'Confirm') {
-                this.removeTodo(todo);
+                this.removeTodo(todo);    // User confirmed action, call 'removeTodo()'
             } else {
                 // User clicked 'Cancel' or clicked outside the dialog
             }
@@ -123,9 +123,14 @@ export class TodosComponent implements OnInit, OnDestroy {
         });
     }
 
-    // Method to handle event emitted by TodoListComponent
     onUpdateTodo(todo: ToDo) {
         this._todoService.updateTodo(todo).subscribe((updatedTodo) => {
+            todo = updatedTodo;
+        });
+    }
+
+    onPinTodo(todo: ToDo) {
+        this._todoService.pinTodo(todo).subscribe((updatedTodo) => {
             todo = updatedTodo;
         });
     }
@@ -149,7 +154,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         });
     }
 
-    // Method to handle event emitted by TodoListFooterComponent
+    // Method to handle event emitted by TodoListFooterComponent and call Dialog
     onClearCompleted(clearState: boolean) {
         const dataForDialog = {
             dialogTitle: 'Delete Todos',
@@ -167,7 +172,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
         dialogRef.afterClosed().subscribe(result => {
             if (result === 'Confirm') {
-                this.clearCompleted(clearState);
+                this.clearCompleted(clearState);    // User confirmed action, call 'clearCompleted()'
             } else {
                 // User clicked 'Cancel' or clicked outside the dialog
             }

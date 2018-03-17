@@ -22,6 +22,9 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
+    pinTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
     cancelTodoListItemEmitter: EventEmitter<boolean> = new EventEmitter();
 
     @Output()
@@ -41,16 +44,21 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     editTodo(todo: ToDo) {
-        console.log('editTodo called in TodoListItemViewComponent with title: ' + todo.title);
-        this.editTodoListItemEmitter.emit(todo);    // Emit the edit event to a Parent component
+        console.log('editTodo called in TodoListItemViewComponent with title: ', todo.title);
+        this.editTodoListItemEmitter.emit(todo);    // Emit the 'edit' event to a Parent component
     }
 
     updateTodo(todo: ToDo) {
         //
     }
 
+    pinTodo(todo: ToDo) {
+        console.log('pinTodo called in TodoListItemViewComponent with title: %s, and id: %c%s', todo.title, 'color: red;', todo.inner_id);
+        this.pinTodoListItemEmitter.emit(todo);    // Emit the 'pin' event to a Parent component
+    }
+
     removeTodo(todo: ToDo) {
-        // console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ' + todo.title);
+        // console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ', todo.title);
         this.removeTodoListItemEmitter.emit(todo);
     }
 

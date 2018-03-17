@@ -82,6 +82,12 @@ export class TodoService {
         return this.updateTodo(todo);
     }
 
+    pinTodo(todo: ToDo): Observable<ToDo> {
+        todo.pin = !todo.pin;
+
+        return this.updateTodo(todo);
+    }
+
     // Simulate Toggle all PUT /todos
     toggleAll(toggleState: boolean, activeRouteState: number): Observable<ToDo[]> {
         // return this._api.toggleAll(state);
