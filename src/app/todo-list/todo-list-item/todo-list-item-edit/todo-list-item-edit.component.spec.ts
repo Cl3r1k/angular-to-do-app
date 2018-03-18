@@ -28,23 +28,32 @@ describe('TodoListItemEditComponent', () => {
         fixture.detectChanges();
     });
 
-    it(`should create an instance of 'TodoListItemEditComponent'`, () => {
+    it(`should create an instance of 'TodoListItemEditComponent' (async)`, async(() => {
         // Arrange
 
         // Act
 
         // Assert
         expect(component).toBeTruthy();
-    });
+    }));
 
-    it(`should be equal to expectedTodo`, () => {
+    it(`should be equal to expectedTodo (async)`, async(() => {
         // Arrange
 
         // Act
 
         // Assert
         expect(component.todo).toEqual(expectedTodo);
-    });
+    }));
+
+    it(`should have pinTodoListItemEmitter (async)`, async(() => {
+        // Arrange
+
+        // Act
+
+        // Assert
+        expect(component.pinTodoListItemEmitter).toBeTruthy();
+    }));
 
     it(`should call method 'updateTodo()' which imitates blur event, which emits 'update' event (async)`, async(() => {
         // Arrange
@@ -115,7 +124,7 @@ describe('TodoListItemEditComponent', () => {
     }));
 
     describe(`#view tests`, () => {
-        it(`losing focus input.edit should call method 'stopEditTodoOnBlur()' (async)`, async () => {
+        it(`losing focus input.edit should call method 'stopEditTodoOnBlur()' (async)`, async(() => {
             // Arrange
 
             // Act
@@ -129,6 +138,6 @@ describe('TodoListItemEditComponent', () => {
             fixture.whenStable().then(() => {
                 expect(component.stopEditTodoOnBlur).toHaveBeenCalled();
             });
-        });
+        }));
     });
 });

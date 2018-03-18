@@ -27,7 +27,13 @@ Todos:
                     ✔ Add field 'updated_time' @done(18-03-11 10:49)
                         ✔ Update tests for the model @done(18-03-16 09:27)
                     ✔ Add logic and styles for pin/unpin todo (some styles(like position and other) will be finished, when buttons will be reorganized) @done(18-03-16 10:25)
-                        ☐ Update test for updated interface and components using this interface
+                        ☐ Update tests for updated interface and components using this interface
+                            ✔ Update tests for TodoListItemEditComponent @done(18-03-17 09:44)
+                            ☐ Update tests for TodoListItemViewComponent
+                            ☐ Update tests for TodoListItemComponent
+                            ☐ Update tests for TodoListComponent
+                            ☐ Update tests for TodosComponent
+                            ☐ Add tests for interface?
                         ☐ Update logic for new fields
                             ☐ Update tests for logic with new fields                    
                     ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage))
