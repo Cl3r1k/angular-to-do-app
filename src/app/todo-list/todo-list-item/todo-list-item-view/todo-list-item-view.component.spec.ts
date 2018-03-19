@@ -9,8 +9,9 @@ describe('TodoListItemViewComponent', () => {
     let component: TodoListItemViewComponent;
     let fixture: ComponentFixture<TodoListItemViewComponent>;
     let toggleEl;
-    let destroyEl;
     let editEl;
+    let destroyEl;
+    let pinEl;
     let expectedTodo: ToDo;
 
     beforeEach(async(() => {
@@ -24,8 +25,9 @@ describe('TodoListItemViewComponent', () => {
         fixture = TestBed.createComponent(TodoListItemViewComponent);
         component = fixture.componentInstance;
         toggleEl = fixture.debugElement.query(By.css('input[type=checkbox]'));        // Find toggle checkbox element
-        destroyEl = fixture.debugElement.query(By.css('svg.icon-destroy'));           // Find destroy icon element
         editEl = fixture.debugElement.query(By.css('svg.icon-pencil-edit'));          // Find edit icon element
+        destroyEl = fixture.debugElement.query(By.css('svg.icon-destroy'));           // Find destroy icon element
+        pinEl = fixture.debugElement.query(By.css('svg.icon-pin'));                   // Find pin icon element
 
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
         component.todo = expectedTodo;
@@ -86,6 +88,18 @@ describe('TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
+    it(`should emit 'pin' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        component.pinTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to pin event
+        component.pinTodo(expectedTodo);
+
+        // Assert
+        expect(todo).toEqual(expectedTodo);
+    }));
+
     describe(`#view tests`, () => {
         it(`clicking on checkbox.toggle should emits 'toggleTodoComplete' event (async)`, async () => {
             // Arrange
@@ -135,6 +149,23 @@ describe('TodoListItemViewComponent', () => {
             // Assert
             fixture.whenStable().then(() => {
                 expect(component.removeTodo).toHaveBeenCalled();
+            });
+        });
+
+        it(`clicking on svg.icon-pin should call method 'pinTodo()' (async)`, async () => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'pinTodo');
+            if (pinEl instanceof HTMLElement) {
+                pinEl.click();
+            } else {
+                pinEl.triggerEventHandler('click', { button: 0 });
+            }
+
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.pinTodo).toHaveBeenCalled();
             });
         });
     });

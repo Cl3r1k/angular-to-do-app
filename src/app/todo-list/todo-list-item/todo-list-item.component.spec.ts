@@ -81,4 +81,16 @@ describe('TodoListItemComponent', () => {
         // Assert
         expect(todo).toEqual(expectedTodo);
     }));
+
+    it(`should emit 'pin' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        component.pinTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to pin event
+        component.pinTodo(expectedTodo);
+
+        // Assert
+        expect(todo).toEqual(expectedTodo);
+    }));
 });

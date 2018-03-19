@@ -29,9 +29,9 @@ Todos:
                     ✔ Add logic and styles for pin/unpin todo (some styles(like position and other) will be finished, when buttons will be reorganized) @done(18-03-16 10:25)
                         ☐ Update tests for updated interface and components using this interface
                             ✔ Update tests for TodoListItemEditComponent @done(18-03-17 09:44)
-                            ☐ Update tests for TodoListItemViewComponent
-                            ☐ Update tests for TodoListItemComponent
-                            ☐ Update tests for TodoListComponent
+                            ✔ Update tests for TodoListItemViewComponent @done(18-03-18 10:24)
+                            ✔ Update tests for TodoListItemComponent @done(18-03-18 10:27)
+                            ✔ Update tests for TodoListComponent @done(18-03-18 10:31)
                             ☐ Update tests for TodosComponent
                             ☐ Add tests for interface?
                         ☐ Update logic for new fields

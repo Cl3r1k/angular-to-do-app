@@ -69,7 +69,19 @@ describe('TodoListComponent', () => {
         expect(component.todos).toEqual(expectedTodos);
     });
 
-    it(`should emit 'updateComplete' event (async)`, async(() => {
+    it(`should emit 'toggleComplete' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        component.toggleCompleteTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to toggle event
+        component.onToggleTodoComplete(todo1);
+
+        // Assert
+        expect(todo).toEqual(todo1);
+    }));
+
+    it(`should emit 'update' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
@@ -81,13 +93,13 @@ describe('TodoListComponent', () => {
         expect(todo).toEqual(todo1);
     }));
 
-    it(`should emit 'toggleComplete' event (async)`, async(() => {
+    it(`should emit 'pin' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
         // Act
-        component.toggleCompleteTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to toggle event
-        component.onToggleTodoComplete(todo1);
+        component.pinTodoTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to pin event
+        component.onPinTodo(todo1);
 
         // Assert
         expect(todo).toEqual(todo1);

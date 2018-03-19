@@ -5,13 +5,13 @@
         <svg class='icon icon-move-vertical handle' dnd-sortable-handle>
             <use xlink:href='#icon-move-vertical'></use>
         </svg>
-        <svg class='icon icon-pencil-edit' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)' (click)='editTodo(todo)'>
+        <svg class='icon icon-pencil-edit' (click)='editTodo(todo)' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)'>
             <use xlink:href='#icon-pencil-edit'></use>
         </svg>
         <svg class='icon icon-destroy' (click)='removeTodo(todo)' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'>
             <use xlink:href='#icon-destroy'></use>
         </svg>
-        <svg class='icon icon-pin' (click)='pinTodo(todo)' [class.pinned]='todo.pin'>
+        <svg class='icon icon-pin' [class.pinned]='todo.pin' (click)='pinTodo(todo)'>
             <use xlink:href='#icon-pin'></use>
         </svg>
     </div>
