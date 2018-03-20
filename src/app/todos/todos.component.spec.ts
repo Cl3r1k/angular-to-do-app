@@ -31,6 +31,7 @@ import { MatDialogModule } from '@angular/material';
 describe(`TodosComponent`, () => {
     let component: TodosComponent;
     let fixture: ComponentFixture<TodosComponent>;
+    let expectedTodo;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -81,6 +82,8 @@ describe(`TodosComponent`, () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodosComponent);
         component = fixture.componentInstance;
+
+        expectedTodo = new ToDo({ id: 1, title: 'Test 1', complete: false });
         fixture.detectChanges();
     });
 
@@ -102,4 +105,6 @@ describe(`TodosComponent`, () => {
         // Assert
         expect(component.activeRouteState).toBe(1, `incoming routeConfig: { path === 'active' }`);
     }));
+
+    // TODO: Rewrite test for 'TodosComponent' (currently not complete)
 });

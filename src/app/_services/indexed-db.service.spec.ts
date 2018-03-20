@@ -12,4 +12,6 @@ describe('IndexedDbService', () => {
     it('should be created', inject([IndexedDbService], (service: IndexedDbService) => {
         expect(service).toBeTruthy();
     }));
+
+    // TODO: Rewrite test for 'IndexedDbService' (currently not complete)
 });

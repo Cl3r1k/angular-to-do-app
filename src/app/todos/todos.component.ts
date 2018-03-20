@@ -125,13 +125,13 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     onUpdateTodo(todo: ToDo) {
         this._todoService.updateTodo(todo).subscribe((updatedTodo) => {
-            todo = updatedTodo;
+            // todo = updatedTodo;        // We even do not need to update inner todo
         });
     }
 
     onPinTodo(todo: ToDo) {
         this._todoService.pinTodo(todo).subscribe((updatedTodo) => {
-            todo = updatedTodo;
+            // todo = updatedTodo;        // We even do not need to update inner todo
         });
     }
 

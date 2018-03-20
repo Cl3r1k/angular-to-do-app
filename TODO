@@ -16,7 +16,7 @@ Todos:
 
             ✔ Fix issue with 'clearCompleted' dialog (todos deleted when dialog showed) @done(18-03-14 10:17)
 
-            ☐ Add pin icon and use two categories: pinned(important) and unpinned(not important) <=== CURRENT
+            ☐ Add pin icon and use two categories: pinned(important) and unpinned(not important)
                 ☐ Reorganize app structure
                     ✔ Add member 'pin' @done(18-03-11 10:48)
                     ✔ Add additional 'inner_id' field @done(18-03-11 10:48)
@@ -27,15 +27,14 @@ Todos:
                     ✔ Add field 'updated_time' @done(18-03-11 10:49)
                         ✔ Update tests for the model @done(18-03-16 09:27)
                     ✔ Add logic and styles for pin/unpin todo (some styles(like position and other) will be finished, when buttons will be reorganized) @done(18-03-16 10:25)
-                        ☐ Update tests for updated interface and components using this interface
+                        ✔ Update tests for updated interface and components using this interface @done(18-03-19 09:40)
                             ✔ Update tests for TodoListItemEditComponent @done(18-03-17 09:44)
                             ✔ Update tests for TodoListItemViewComponent @done(18-03-18 10:24)
                             ✔ Update tests for TodoListItemComponent @done(18-03-18 10:27)
                             ✔ Update tests for TodoListComponent @done(18-03-18 10:31)
-                            ☐ Update tests for TodosComponent
-                            ☐ Add tests for interface?
-                        ☐ Update logic for new fields
-                            ☐ Update tests for logic with new fields                    
+                            ✔ Update tests for TodosComponent @done(18-03-19 09:39)
+                        ✔ Update logic for new members in 'ToDo' model (maded previously) @done(18-03-19 09:53)
+                            ☐ Update tests for logic with new fields <========================================================= CURRENT TASK
                     ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage))
                     
                 ☐ Update test for 'pin_icon'
@@ -69,6 +68,9 @@ Todos:
                 ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here https://github.com/stevepapa/ng-autosize/issues/9)
             ☐ Update UI for DnD (look here https://github.com/atlassian/react-beautiful-dnd)
 
+        ☐ Rewrite test for 'TodosComponent' (currently not complete)
+        ☐ Rewrite test for 'IndexedDbService' (currently not complete)
+        ☐ Fix bug when todo edited with small text, size of textarea autosized (for example start edit todo with name 'Add more todos!')
         ☐ Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?) (look in IndexedDbService)
             ☐ Use Material Snackbar for cancel deleted todo (look here https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18)
         ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
