@@ -73,7 +73,13 @@ export class ApiService {
 
                     Object.keys(response).forEach(key => {
                         if ((activeRouteState === 1 && !response[key].complete) || (activeRouteState === 2 && response[key].complete)) {
-                            todos.push(new ToDo({ id: response[key].id, title: response[key].title, complete: response[key].complete }));
+                            const tmpTodo = new ToDo({id: response[key].id, title: response[key].title, complete: response[key].complete});
+                            tmpTodo.created_time = response[key].created_time;
+                            tmpTodo.completed_time = response[key].completed_time;
+                            tmpTodo.updated_time = response[key].updated_time;
+                            tmpTodo.deleted_time = response[key].deleted_time;
+                            tmpTodo.inner_id = response[key].inner_id;
+                            todos.push(tmpTodo);
                         }
                     });
 

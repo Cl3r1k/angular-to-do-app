@@ -58,16 +58,16 @@ describe('TodoListHeaderComponent', () => {
     it(`should emit 'add' event (async)`, async(() => {
         // Arrange
         const expectedTodo: ToDo = new ToDo({ id: 1, title: 'exp Todo', complete: false });
-        let newTodo: ToDo;
+        let newTodoEmitted: ToDo;
 
         // Act
         component.newTodo = expectedTodo;
-        component.addTodoListHeaderEmitter.subscribe((value) => newTodo = value);    // Subscribe to 'add' event
+        component.addTodoListHeaderEmitter.subscribe((value) => newTodoEmitted = value);    // Subscribe to 'add' event
         component.addTodo();
 
         // Assert
-        expect(newTodo).toEqual(expectedTodo);
-        expect(component.newTodo).toEqual(new ToDo());
+        expect(newTodoEmitted).toEqual(expectedTodo);
+        expect(component.newTodo.title).toBe('', 'the title should be empty');
     }));
 
     it(`should emit 'toggleAll' event (async)`, async(() => {
@@ -83,7 +83,7 @@ describe('TodoListHeaderComponent', () => {
     }));
 
     describe(`#addTodo`, () => {
-        it(`should reinit newTodo property (async)`, async(() => {
+        it(`should reinit newTodo property and has empty title (async)`, async(() => {
             // Arrange
             const expectedTodo: ToDo = new ToDo({ id: 1, title: 'exp Todo', complete: false });
 
@@ -91,7 +91,7 @@ describe('TodoListHeaderComponent', () => {
             component.addTodo();
 
             // Assert
-            expect(component.newTodo).toEqual(new ToDo());
+            expect(component.newTodo.title).toBe('', 'the title should be empty');
         }));
     });
 

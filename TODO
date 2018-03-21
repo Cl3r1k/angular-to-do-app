@@ -34,8 +34,8 @@ Todos:
                             ✔ Update tests for TodoListComponent @done(18-03-18 10:31)
                             ✔ Update tests for TodosComponent @done(18-03-19 09:39)
                         ✔ Update logic for new members in 'ToDo' model (maded previously) @done(18-03-19 09:53)
-                            ☐ Update tests for logic with new fields <========================================================= CURRENT TASK
-                    ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage))
+                            ✔ Update tests for logic with new fields @done(18-03-20 10:47)
+                    ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage)) <========================================================= CURRENT TASK
                     
                 ☐ Update test for 'pin_icon'
             
