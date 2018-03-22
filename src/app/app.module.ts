@@ -21,6 +21,7 @@ import { DialogComponent } from '@app/dialog/dialog.component';
 import { TodoService } from '@app/_services/todo.service';
 import { ApiService } from '@app/_services/api.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
+import { TodoOrderService } from '@app/_services/todo-order.service';
 
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
@@ -59,7 +60,7 @@ import { MatDialogModule, MatButtonModule } from '@angular/material';
         MatDialogModule,
         MatButtonModule
     ],
-    providers: [TodoService, ApiService, IndexedDbService],
+    providers: [TodoService, ApiService, IndexedDbService, TodoOrderService],
     bootstrap: [AppComponent],
     entryComponents: [DialogComponent]
 })

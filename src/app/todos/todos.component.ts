@@ -1,11 +1,17 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TodoService } from '@app/_services/todo.service';
 import { ToDo } from '@app/_models/to-do';
 
+// Services
+import { TodoService } from '@app/_services/todo.service';
+import { TodoOrderService } from '@app/_services/todo-order.service';
+
+// Routes
 import { ActivatedRoute } from '@angular/router';
 
+// Components
 import { DialogComponent } from '@app/dialog/dialog.component';
 
+// Modules
 import { MatDialog } from '@angular/material';
 import 'hammerjs';
 
@@ -31,7 +37,10 @@ export class TodosComponent implements OnInit, OnDestroy {
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
     // and assign it to a property called _todoDataService
-    constructor(private _todoService: TodoService, private _route: ActivatedRoute, public dialog: MatDialog) { }
+    constructor(private _todoService: TodoService,
+        private _route: ActivatedRoute,
+        public dialog: MatDialog,
+        private _todoOrderService: TodoOrderService) { }
 
     public ngOnInit() {
         this._route.data
@@ -66,6 +75,7 @@ export class TodosComponent implements OnInit, OnDestroy {
             if (this.activeRouteState !== 2) {
                 this.todos = this.todos.concat(newTodo);
             }
+            this.updateOrder();
             this.updateFooterAndToggleAllInfo();
         });
     }
@@ -119,6 +129,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         this._todoService.deleteTodoById(todo.id).subscribe((_) => {
             this.todo = _;
             this.todos = this.todos.filter((val) => val.id !== todo.id);
+            this.updateOrder();
             this.updateFooterAndToggleAllInfo();
         });
     }
@@ -183,6 +194,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         console.log('onClearCompleted (remove %s in TodoListFooterComponent and in current method): ', clearState);
         this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
             this.todos = todos;
+            this.updateOrder();
             this.updateFooterAndToggleAllInfo();
             this.onClearHoverSetState(false);
         });
@@ -205,6 +217,17 @@ export class TodosComponent implements OnInit, OnDestroy {
         this._todoService.moveTodo(moveState, this.activeRouteState).subscribe((todos) => {
             console.log('in onMoveTodo incoming todos:', todos);
             this.todos = todos;
+        });
+    }
+
+    updateOrder() {
+
+        const todoOrderList = this.todos.map(todo => {
+            return todo.inner_id;
+        });
+
+        this._todoOrderService.updateOrder(todoOrderList).subscribe(() => {
+            //
         });
     }
 

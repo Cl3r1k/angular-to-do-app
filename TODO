@@ -36,6 +36,7 @@ Todos:
                         ✔ Update logic for new members in 'ToDo' model (maded previously) @done(18-03-19 09:53)
                             ✔ Update tests for logic with new fields @done(18-03-20 10:47)
                     ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage)) <========================================================= CURRENT TASK
+                        ☐ Add service to manage todos Order
                     
                 ☐ Update test for 'pin_icon'
             
