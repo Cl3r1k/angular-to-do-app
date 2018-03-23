@@ -214,10 +214,12 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     onMoveTodo(moveState: Object) {
         console.log('onMoveTodo (in TodoListComponent and) in current method moveState is: ', moveState);
-        this._todoService.moveTodo(moveState, this.activeRouteState).subscribe((todos) => {
-            console.log('in onMoveTodo incoming todos:', todos);
-            this.todos = todos;
-        });
+        // this._todoService.moveTodo(moveState, this.activeRouteState).subscribe((todos) => {
+        //     console.log('in onMoveTodo incoming todos:', todos);
+        //     this.todos = todos;
+        // });
+
+        this.updateOrder();
     }
 
     updateOrder() {

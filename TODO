@@ -37,6 +37,7 @@ Todos:
                             ✔ Update tests for logic with new fields @done(18-03-20 10:47)
                     ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage)) <========================================================= CURRENT TASK
                         ☐ Add service to manage todos Order
+                            ☐ Write tests for 'TodoOrderService'
                     
                 ☐ Update test for 'pin_icon'
             

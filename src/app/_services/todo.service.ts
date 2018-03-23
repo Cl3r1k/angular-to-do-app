@@ -55,6 +55,13 @@ export class TodoService {
     // Simulate GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
+
+            // return this._indexedDbService.getAllTodos(activeRouteState).switchMap((todos) => {
+
+            //     let todoList: ToDo[];
+            //     return Observable.of(todoList);
+            // });
+
             return this._indexedDbService.getAllTodos(activeRouteState);
         } else {
             return this._api.getAllTodos(activeRouteState);
@@ -113,8 +120,8 @@ export class TodoService {
     }
 
     // Perform moveTodo in Service
-    moveTodo(moveState: Object, activeRouteState: number): Observable<ToDo[]> {
-        return this._indexedDbService.moveTodo(moveState, activeRouteState);
-    }
+    // moveTodo(moveState: Object, activeRouteState: number): Observable<ToDo[]> {
+    //     return this._indexedDbService.moveTodo(moveState, activeRouteState);
+    // }
 
 }

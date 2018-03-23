@@ -232,78 +232,78 @@ export class IndexedDbService extends Dexie {
     }
 
     // API: (move todo to new position)
-    public moveTodo(moveState: Object, activeRouteState: number): Observable<ToDo[]> {
-        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
-            let todos: ToDo[] = await this.dbTable.toArray();
-            const fromId = moveState['movedTodoIdDest'];
-            const toId = moveState['movedTodoIdSource'];
+    // public moveTodo(moveState: Object, activeRouteState: number): Observable<ToDo[]> {
+    //     return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+    //         let todos: ToDo[] = await this.dbTable.toArray();
+    //         const fromId = moveState['movedTodoIdDest'];
+    //         const toId = moveState['movedTodoIdSource'];
 
-            const direction = fromId < toId ? 1 : -1;
+    //         const direction = fromId < toId ? 1 : -1;
 
-            // console.log('%c moveState in service:', this.consoleTextColor, moveState);
+    //         // console.log('%c moveState in service:', this.consoleTextColor, moveState);
 
-            if (direction > 0) {
-                let processMovement = false;
-                let performBreak = false;
-                for (let index = todos.length - 1; index >= 0; index--) {
-                    if (todos[index].id === fromId) {
-                        performBreak = true;
-                    }
-                    if (processMovement) {
-                        const todoIdTmp = todos[index].id;
-                        todos[index].id = todos[index + 1].id;
-                        todos[index + 1].id = todoIdTmp;
-                        if (performBreak) {
-                            break;
-                        }
-                    }
-                    if (todos[index].id === toId) {
-                        processMovement = true;
-                    }
-                }
-            } else {
-                let processMovement = false;
-                let performBreak = false;
-                for (let index = 0; index < todos.length; index++) {
-                    if (todos[index].id === fromId) {
-                        performBreak = true;
-                    }
-                    if (processMovement) {
-                        const todoIdTmp = todos[index].id;
-                        todos[index].id = todos[index - 1].id;
-                        todos[index - 1].id = todoIdTmp;
-                        if (performBreak) {
-                            break;
-                        }
-                    }
-                    if (todos[index].id === toId) {
-                        processMovement = true;
-                    }
-                }
-            }
+    //         if (direction > 0) {
+    //             let processMovement = false;
+    //             let performBreak = false;
+    //             for (let index = todos.length - 1; index >= 0; index--) {
+    //                 if (todos[index].id === fromId) {
+    //                     performBreak = true;
+    //                 }
+    //                 if (processMovement) {
+    //                     const todoIdTmp = todos[index].id;
+    //                     todos[index].id = todos[index + 1].id;
+    //                     todos[index + 1].id = todoIdTmp;
+    //                     if (performBreak) {
+    //                         break;
+    //                     }
+    //                 }
+    //                 if (todos[index].id === toId) {
+    //                     processMovement = true;
+    //                 }
+    //             }
+    //         } else {
+    //             let processMovement = false;
+    //             let performBreak = false;
+    //             for (let index = 0; index < todos.length; index++) {
+    //                 if (todos[index].id === fromId) {
+    //                     performBreak = true;
+    //                 }
+    //                 if (processMovement) {
+    //                     const todoIdTmp = todos[index].id;
+    //                     todos[index].id = todos[index - 1].id;
+    //                     todos[index - 1].id = todoIdTmp;
+    //                     if (performBreak) {
+    //                         break;
+    //                     }
+    //                 }
+    //                 if (todos[index].id === toId) {
+    //                     processMovement = true;
+    //                 }
+    //             }
+    //         }
 
-            // console.log('%c AFTER movements Array is:', this.consoleTextColor, todos);
+    //         // console.log('%c AFTER movements Array is:', this.consoleTextColor, todos);
 
-            await this.dbTable.clear();
-            const lastKey = await this.dbTable.bulkPut(todos);
-            // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
+    //         await this.dbTable.clear();
+    //         const lastKey = await this.dbTable.bulkPut(todos);
+    //         // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
 
-            todos = await this.dbTable.toArray();
+    //         todos = await this.dbTable.toArray();
 
-            if (activeRouteState === 1 || activeRouteState === 2) {
-                todos = todos.filter(todo => {
-                    return todo.complete === (activeRouteState === 2 ? true : false);
-                });
-            }
+    //         if (activeRouteState === 1 || activeRouteState === 2) {
+    //             todos = todos.filter(todo => {
+    //                 return todo.complete === (activeRouteState === 2 ? true : false);
+    //             });
+    //         }
 
-            return todos;
-        }).then(async (updatedTodos) => {
-            console.log('%c Transaction committed moveTodo: ', this.consoleTextColor, updatedTodos);
-            return updatedTodos;
-        }).catch(error => {
-            return error;    // TODO: Handle error properly as Observable
-        }));
-    }
+    //         return todos;
+    //     }).then(async (updatedTodos) => {
+    //         console.log('%c Transaction committed moveTodo: ', this.consoleTextColor, updatedTodos);
+    //         return updatedTodos;
+    //     }).catch(error => {
+    //         return error;    // TODO: Handle error properly as Observable
+    //     }));
+    // }
 
     // TODO: Add bulkAdd method using http://dexie.org/docs/Table/Table.bulkAdd() (look in todo file)
     public addBatch() {
