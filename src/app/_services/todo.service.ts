@@ -3,8 +3,12 @@ import { ToDo } from '@app/_models/to-do';
 
 import { Observable } from 'rxjs/Observable';
 
+// Services
 import { ApiService } from '@app/_services/api.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
+import { TodoOrderService } from '@app/_services/todo-order.service';
+
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class TodoService {
@@ -12,7 +16,7 @@ export class TodoService {
     serviceState = 1;
 
     // TODO: Use only IndexedDbService, and sync data with backend
-    constructor(private _api: ApiService, public _indexedDbService: IndexedDbService) {
+    constructor(private _api: ApiService, public _indexedDbService: IndexedDbService, private _todoOrderService: TodoOrderService) {
         console.log('constructor in TodoService');
     }
 
@@ -56,13 +60,37 @@ export class TodoService {
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
 
-            // return this._indexedDbService.getAllTodos(activeRouteState).switchMap((todos) => {
+            return this._indexedDbService.getAllTodos(activeRouteState).switchMap((todos) => {
 
-            //     let todoList: ToDo[];
-            //     return Observable.of(todoList);
-            // });
+                if (activeRouteState === 0) {
+                    let todoList: ToDo[];
 
-            return this._indexedDbService.getAllTodos(activeRouteState);
+                    const todoOrderList = this._todoOrderService.getOrder();
+
+                    const todosRestult = todoOrderList.map(inner_id => {
+                        // console.log('%ccurrent inner_id: ', 'color: blue;', inner_id);
+                        const todoTmp = todos.map(todo => {
+                            // console.log('%ccurrent todo: ', 'color: green;', todo);
+                            if (todo.inner_id === inner_id) {
+                                // console.log('%cfound todo: ', 'color: green;', todo);
+                                return todo;
+                            }
+                            // return todo.inner_id === inner_id;
+                        });
+
+                        console.log('%cfound todoTmp: ', 'color: green;', todoTmp);
+                        return todoTmp;
+                    });
+
+                    console.log('%cfound todosRestult: ', 'color: red;', todosRestult);
+
+                    return Observable.of(todoList);
+                }
+
+                return Observable.of(todos);
+            });
+
+            // return this._indexedDbService.getAllTodos(activeRouteState);
         } else {
             return this._api.getAllTodos(activeRouteState);
         }

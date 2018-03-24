@@ -23,12 +23,14 @@ export class TodoOrderService {
         return Observable.of(null);
     }
 
-    getOrder() {
-        const data = localStorage.getItem('_orderList');
+    getOrder(): string[] {
+        const data = JSON.parse(localStorage.getItem('_orderList'));
 
         const todoOrderList: string[] = data['order'];
 
         console.log('%cin TodoOrderService in getOrder() order: ', 'color: blue;', todoOrderList);
+
+        return todoOrderList;
     }
 
 }
