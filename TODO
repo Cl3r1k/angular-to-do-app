@@ -70,6 +70,7 @@ Todos:
                 ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here https://github.com/stevepapa/ng-autosize/issues/9)
             ☐ Update UI for DnD (look here https://github.com/atlassian/react-beautiful-dnd)
 
+        ☐ Handle error properly as Observable (look here http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)
         ☐ Rewrite test for 'IndexedDbService' (currently not complete)
         ☐ Fix bug when todo edited with small text, size of textarea autosized (for example start edit todo with name 'Add more todos!')

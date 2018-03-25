@@ -9,6 +9,7 @@ import { IndexedDbService } from '@app/_services/indexed-db.service';
 import { TodoOrderService } from '@app/_services/todo-order.service';
 
 import 'rxjs/add/observable/of';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class TodoService {
@@ -60,29 +61,49 @@ export class TodoService {
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
 
+            // TODO: Don't forget to delete import Observable.of
+            // return this._indexedDbService.getAllTodos(activeRouteState).pipe(
+            //     map(todos => {
+            //         if (activeRouteState === 0) {    // Perform sorting by order only for unfiltered list
+            //             const todoList: ToDo[] = [];
+
+            //             const todoOrderList = this._todoOrderService.getOrder();
+
+            //             todoOrderList.map(inner_id => {
+            //                 todos.map(todo => {
+            //                     if (todo.inner_id === inner_id) {
+            //                         // console.log('%cfound todo: ', 'color: green;', todo);
+            //                         todoList.push(todo);
+            //                     }
+            //                 });
+            //             });
+
+            //             // console.log('%cfound todoList: ', 'color: red;', todoList);
+
+            //             return (todoList);
+            //         }
+
+            //         return (todos);
+            //     })
+            // );
+
             return this._indexedDbService.getAllTodos(activeRouteState).switchMap((todos) => {
 
                 if (activeRouteState === 0) {
-                    let todoList: ToDo[];
+                    const todoList: ToDo[] = [];
 
                     const todoOrderList = this._todoOrderService.getOrder();
 
-                    const todosRestult = todoOrderList.map(inner_id => {
-                        // console.log('%ccurrent inner_id: ', 'color: blue;', inner_id);
-                        const todoTmp = todos.map(todo => {
-                            // console.log('%ccurrent todo: ', 'color: green;', todo);
+                    todoOrderList.map(inner_id => {
+                        todos.map(todo => {
                             if (todo.inner_id === inner_id) {
                                 // console.log('%cfound todo: ', 'color: green;', todo);
-                                return todo;
+                                todoList.push(todo);
                             }
-                            // return todo.inner_id === inner_id;
                         });
-
-                        console.log('%cfound todoTmp: ', 'color: green;', todoTmp);
-                        return todoTmp;
                     });
 
-                    console.log('%cfound todosRestult: ', 'color: red;', todosRestult);
+                    // console.log('%cfound todoList: ', 'color: red;', todoList);
 
                     return Observable.of(todoList);
                 }
