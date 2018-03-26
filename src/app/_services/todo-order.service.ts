@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-
 @Injectable()
 export class TodoOrderService {
 
     constructor() { }
 
-    updateOrder(todoOrderList: string[]): Observable<null> {
+    updateOrder(todoOrderList: string[]): boolean {
 
         let data: Object;
 
@@ -20,7 +18,8 @@ export class TodoOrderService {
         };
 
         localStorage.setItem('_orderList', JSON.stringify(data));
-        return Observable.of(null);
+
+        return true;
     }
 
     getOrder(): string[] {

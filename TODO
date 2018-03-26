@@ -38,6 +38,7 @@ Todos:
                     ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage)) <========================================================= CURRENT TASK
                         ☐ Add service to manage todos Order
                             ☐ Write tests for 'TodoOrderService'
+                            ☐ Fix issue when app first runed (the order list is not found and app crashes (look in getAllTodos() method))
                     
                 ☐ Update test for 'pin_icon'
             

@@ -8,8 +8,8 @@ import { ApiService } from '@app/_services/api.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
 import { TodoOrderService } from '@app/_services/todo-order.service';
 
-import 'rxjs/add/observable/of';
 import { map } from 'rxjs/operators';
+import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class TodoService {
@@ -61,55 +61,30 @@ export class TodoService {
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
 
-            // TODO: Don't forget to delete import Observable.of
-            // return this._indexedDbService.getAllTodos(activeRouteState).pipe(
-            //     map(todos => {
-            //         if (activeRouteState === 0) {    // Perform sorting by order only for unfiltered list
-            //             const todoList: ToDo[] = [];
+            return this._indexedDbService.getAllTodos(activeRouteState).pipe(
+                map(todos => {
+                    if (activeRouteState === 0) {    // Perform sorting by order only for unfiltered list
+                        const todoList: ToDo[] = [];
 
-            //             const todoOrderList = this._todoOrderService.getOrder();
+                        const todoOrderList = this._todoOrderService.getOrder();
 
-            //             todoOrderList.map(inner_id => {
-            //                 todos.map(todo => {
-            //                     if (todo.inner_id === inner_id) {
-            //                         // console.log('%cfound todo: ', 'color: green;', todo);
-            //                         todoList.push(todo);
-            //                     }
-            //                 });
-            //             });
-
-            //             // console.log('%cfound todoList: ', 'color: red;', todoList);
-
-            //             return (todoList);
-            //         }
-
-            //         return (todos);
-            //     })
-            // );
-
-            return this._indexedDbService.getAllTodos(activeRouteState).switchMap((todos) => {
-
-                if (activeRouteState === 0) {
-                    const todoList: ToDo[] = [];
-
-                    const todoOrderList = this._todoOrderService.getOrder();
-
-                    todoOrderList.map(inner_id => {
-                        todos.map(todo => {
-                            if (todo.inner_id === inner_id) {
-                                // console.log('%cfound todo: ', 'color: green;', todo);
-                                todoList.push(todo);
-                            }
+                        todoOrderList.map(inner_id => {
+                            todos.map(todo => {
+                                if (todo.inner_id === inner_id) {
+                                    // console.log('%cfound todo: ', 'color: green;', todo);
+                                    todoList.push(todo);
+                                }
+                            });
                         });
-                    });
 
-                    // console.log('%cfound todoList: ', 'color: red;', todoList);
+                        // console.log('%cfound todoList: ', 'color: red;', todoList);
 
-                    return Observable.of(todoList);
-                }
+                        return (todoList);
+                    }
 
-                return Observable.of(todos);
-            });
+                    return (todos);
+                })
+            );
 
             // return this._indexedDbService.getAllTodos(activeRouteState);
         } else {
@@ -138,10 +113,34 @@ export class TodoService {
         return this.updateTodo(todo);
     }
 
-    pinTodo(todo: ToDo): Observable<ToDo> {
+    pinTodo(todo: ToDo, todos: ToDo[]): Observable<ToDo[]> {
+        const prevTodoPinState = todo.pin;
         todo.pin = !todo.pin;
 
-        return this.updateTodo(todo);
+        return this.updateTodo(todo).switchMap((todoResult) => {
+            console.log('prevTodoPinState: ', prevTodoPinState);
+            console.log('todoResult.pin: ', todoResult.pin);
+
+            // Do actions to reorder list with new state of todo
+            const todoOrderList = this._todoOrderService.getOrder();
+
+            console.log('%cBefore todoOrderList: ', 'color: red;', todoOrderList);
+            const indexTodo = todoOrderList.indexOf(todo.inner_id, 0);
+            todoOrderList.splice(indexTodo, 1);
+            if (!prevTodoPinState) {    // If todo wasn't pinned, pin to top
+                todoOrderList.unshift(todo.inner_id);
+            } else {                    // If todo was pinned, place on bottom of the list
+                todoOrderList.push(todo.inner_id);
+            }
+
+            const updatedOrder = this._todoOrderService.updateOrder(todoOrderList);
+
+            console.log('%cAfter todoOrderList: ', 'color: red;', todoOrderList);
+
+            return this.getAllTodos(0);
+        });
+
+        // return this.updateTodo(todo);
     }
 
     // Simulate Toggle all PUT /todos

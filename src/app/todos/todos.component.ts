@@ -141,8 +141,10 @@ export class TodosComponent implements OnInit, OnDestroy {
     }
 
     onPinTodo(todo: ToDo) {
-        this._todoService.pinTodo(todo).subscribe((updatedTodo) => {
+        this._todoService.pinTodo(todo, this.todos).subscribe((updatedTodos) => {
             // todo = updatedTodo;        // We even do not need to update inner todo
+            console.log('in onPinTodo updatedTodos: ', updatedTodos);
+            this.todos = updatedTodos;
         });
     }
 
@@ -228,9 +230,7 @@ export class TodosComponent implements OnInit, OnDestroy {
             return todo.inner_id;
         });
 
-        this._todoOrderService.updateOrder(todoOrderList).subscribe(() => {
-            //
-        });
+        const updatedOrder = this._todoOrderService.updateOrder(todoOrderList);
     }
 
 }
