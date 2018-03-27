@@ -7,6 +7,8 @@ import { ApiService } from '@app/_services/api.service';
 import { ApiMockService } from '@app/_services/api-mock.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
 import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
+import { TodoOrderService } from '@app/_services/todo-order.service';
+import { TodoOrderMockService } from '@app/_services/todo-order-mock.service';
 
 describe('TodoService', () => {
     beforeEach(() => {
@@ -19,6 +21,10 @@ describe('TodoService', () => {
                 {
                     provide: IndexedDbService,
                     useClass: IndexedDbMockService
+                },
+                {
+                    provide: TodoOrderService,
+                    useClass: TodoOrderMockService
                 }
             ]
         });
@@ -27,4 +33,6 @@ describe('TodoService', () => {
     it('Should be created', inject([TodoService], (service: TodoService) => {
         expect(service).toBeTruthy();
     }));
+
+    // TODO: Rewrite test for 'TodoService' (currently not complete)
 });

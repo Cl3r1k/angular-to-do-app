@@ -20,6 +20,8 @@ import { ApiMockService } from '@app/_services/api-mock.service';
 import { ApiService } from '@app/_services/api.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
 import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
+import { TodoOrderService } from '@app/_services/todo-order.service';
+import { TodoOrderMockService } from '@app/_services/todo-order-mock.service';
 
 // Routers
 import { ActivatedRoute } from '@angular/router';
@@ -73,7 +75,11 @@ describe(`TodosComponent`, () => {
                 },
                 DragDropService,
                 DragDropConfig,
-                DragDropSortableService
+                DragDropSortableService,
+                {
+                    provide: TodoOrderService,
+                    useClass: TodoOrderMockService
+                }
             ]
         })
             .compileComponents();

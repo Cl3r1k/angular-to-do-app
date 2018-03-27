@@ -10,6 +10,13 @@ describe('TodoOrderService', () => {
     });
 
     it('should be created', inject([TodoOrderService], (service: TodoOrderService) => {
+        // Arrange
+
+        // Act
+
+        // Assert
         expect(service).toBeTruthy();
     }));
+
+    // TODO: Rewrite test for 'TodoOrderService' (currently not complete)
 });

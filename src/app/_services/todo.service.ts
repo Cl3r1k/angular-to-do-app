@@ -66,7 +66,15 @@ export class TodoService {
                     if (activeRouteState === 0) {    // Perform sorting by order only for unfiltered list
                         const todoList: ToDo[] = [];
 
-                        const todoOrderList = this._todoOrderService.getOrder();
+                        let todoOrderList = this._todoOrderService.getOrder();
+
+                        if (!todoOrderList) {
+                            todoOrderList = todos.map(todo => {
+                                return todo.inner_id;
+                            });
+
+                            this._todoOrderService.updateOrder(todoOrderList);
+                        }
 
                         todoOrderList.map(inner_id => {
                             todos.map(todo => {
@@ -129,7 +137,8 @@ export class TodoService {
             todoOrderList.splice(indexTodo, 1);
             if (!prevTodoPinState) {    // If todo wasn't pinned, pin to top
                 todoOrderList.unshift(todo.inner_id);
-            } else {                    // If todo was pinned, place on bottom of the list
+            } else {                    // If todo was pinned, place at bottom of the list
+                // TODO: Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos
                 todoOrderList.push(todo.inner_id);
             }
 

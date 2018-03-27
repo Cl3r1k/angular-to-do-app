@@ -10,11 +10,12 @@ export class TodoOrderService {
         let data: Object;
 
         const update_time = new Date().toISOString();
-        console.log('%cin TodoOrderService current order: ', 'color: blue;', todoOrderList);
+        console.log('%cin TodoOrderService in updateOrder() order to save: ', 'color: orange;', todoOrderList);
 
         data = {
             update_time: update_time,
-            order: todoOrderList
+            order: todoOrderList,
+            __dirty: true
         };
 
         localStorage.setItem('_orderList', JSON.stringify(data));
@@ -23,11 +24,15 @@ export class TodoOrderService {
     }
 
     getOrder(): string[] {
+
         const data = JSON.parse(localStorage.getItem('_orderList'));
 
-        const todoOrderList: string[] = data['order'];
+        let todoOrderList: string[] = null;
+        if (data) {
+            todoOrderList = data['order'];
+        }
 
-        console.log('%cin TodoOrderService in getOrder() order: ', 'color: blue;', todoOrderList);
+        console.log('%cin TodoOrderService in getOrder() order: ', 'color: orange;', todoOrderList);
 
         return todoOrderList;
     }

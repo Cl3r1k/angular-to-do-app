@@ -14,10 +14,12 @@ Todos:
     New:
         Current:
 
+            ✔ Update style for 'toggle' checkbox (use 'pointer' cursor when checkbox hovered) @done(18-03-26 10:09)
+
             ✔ Fix issue with 'clearCompleted' dialog (todos deleted when dialog showed) @done(18-03-14 10:17)
 
-            ☐ Add pin icon and use two categories: pinned(important) and unpinned(not important)
-                ☐ Reorganize app structure
+            ☐ Add pin icon and use two categories: pinned(important) and unpinned(not important) <========================================================= CURRENT TASK
+                ✔ Reorganize app structure @done(18-03-26 09:58)
                     ✔ Add member 'pin' @done(18-03-11 10:48)
                     ✔ Add additional 'inner_id' field @done(18-03-11 10:48)
                         ✔ In constructor set unique 'inner_id' @done(18-03-15 11:47)
@@ -35,14 +37,14 @@ Todos:
                             ✔ Update tests for TodosComponent @done(18-03-19 09:39)
                         ✔ Update logic for new members in 'ToDo' model (maded previously) @done(18-03-19 09:53)
                             ✔ Update tests for logic with new fields @done(18-03-20 10:47)
-                    ☐ Reorganize DnD logic (use additional list ordered todos (stored in localStorage)) <========================================================= CURRENT TASK
-                        ☐ Add service to manage todos Order
-                            ☐ Write tests for 'TodoOrderService'
-                            ☐ Fix issue when app first runed (the order list is not found and app crashes (look in getAllTodos() method))
-                    
-                ☐ Update test for 'pin_icon'
+                    ✔ Reorganize DnD logic (use additional list ordered todos (stored in localStorage)) @done(18-03-26 09:58)
+                        ✔ Add service to manage todos Order @done(18-03-26 09:54)
+                            ✔ Write tests for 'TodoOrderService' @done(18-03-26 09:58)
+                        ✔ Fix issue when app first run (the order list is not found and app crashes (look in getAllTodos() method)) @done(18-03-26 09:43)
+                ✔ Update test for 'pin_icon' @done(18-03-26 10:21)
+
             
-            ☐ Restyle DnD icon and move from end to begin of todo item
+            ☐ Restyle DnD icon and move from right to left of todo item
         
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
@@ -71,6 +73,7 @@ Todos:
                 ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here https://github.com/stevepapa/ng-autosize/issues/9)
             ☐ Update UI for DnD (look here https://github.com/atlassian/react-beautiful-dnd)
 
+        ☐ Use zones for DnD (for pinned, unpinned, and completed use three different zones)
         ☐ Handle error properly as Observable (look here http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)
         ☐ Rewrite test for 'IndexedDbService' (currently not complete)
