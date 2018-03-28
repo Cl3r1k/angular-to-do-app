@@ -1,10 +1,12 @@
 <div class='viewContainer' [class.delete-hovered]='deleteHoverState' [class.edit-hovered]='editHoverState' [class.complete-hovered]='completeHoverState'>
-    <input type='checkbox' class='toggle' (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)'>
-    <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>
-    <div class='buttons-block'>
+    <div class='buttons-before-block'>
         <svg class='icon icon-move-vertical handle' dnd-sortable-handle>
             <use xlink:href='#icon-move-vertical'></use>
         </svg>
+        <input type='checkbox' class='toggle' (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)'>
+    </div>
+    <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>
+    <div class='buttons-block'>
         <svg class='icon icon-pencil-edit' (click)='editTodo(todo)' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)'>
             <use xlink:href='#icon-pencil-edit'></use>
         </svg>
