@@ -1,7 +1,10 @@
 <div class='viewContainer' [class.delete-hovered]='deleteHoverState' [class.edit-hovered]='editHoverState' [class.complete-hovered]='completeHoverState'>
     <div class='buttons-before-block'>
-        <svg class='icon icon-move-vertical handle' dnd-sortable-handle>
+        <!-- <svg class='icon icon-move-vertical handle' dnd-sortable-handle>
             <use xlink:href='#icon-move-vertical'></use>
+        </svg> -->
+        <svg class='icon icon-ellipsis-v handle' dnd-sortable-handle>
+            <use xlink:href='#icon-ellipsis-v'></use>
         </svg>
         <input type='checkbox' class='toggle' (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)'>
     </div>
