@@ -14,8 +14,11 @@ Todos:
     New:
         Current:
 
-            ☐ Restyle DnD icon and move from right to left of todo item <========================================================= CURRENT TASK
-                ☐ Use custom cursor for DnD icon
+            ☐ Replace 'edit-icon' and 'delete-icon' by 'icon-more' <========================================================= CURRENT TASK
+                ☐ Deprecate 'edit-icon'
+                ☐ Move 'delete-icon' to 'TodoListItemEditComponent'
+                    ☐ Update test            
+                
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
@@ -41,8 +44,10 @@ Todos:
                 ✔ Improve processing 'Enter' in textarea (currently Enter adds linebreak and saves todo -> only saves todo should be) @done(18-02-15 09:20)
                 ✔ Improve initial size for textarea (when single line todo.title, and check multiple lines todo.title) @done(18-02-15 10:16)
                 ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here https://github.com/stevepapa/ng-autosize/issues/9)
-            ☐ Update UI for DnD (look here https://github.com/atlassian/react-beautiful-dnd)
+            ☐ Rewrite part for DnD (use https://github.com/atlassian/react-beautiful-dnd and adopt it to angular)
+                ☐ Use custom cursor for DnD icon (look here https://github.com/atlassian/react-beautiful-dnd/blob/master/src/view/style-marshal/get-styles.js#L110)
 
+        ☐ Add priority block with styles between drag icon and checkbox
         ☐ Use zones for DnD (for pinned, unpinned, and completed use three different zones)
         ☐ Handle error properly as Observable (look here http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)
@@ -257,6 +262,8 @@ Todos:
                         ✔ Write tests for 'TodoOrderService' @done(18-03-26 09:58)
                     ✔ Fix issue when app first run (the order list is not found and app crashes (look in getAllTodos() method)) @done(18-03-26 09:43)
             ✔ Update test for 'pin_icon' @done(18-03-26 10:21)
+
+        ✔ Restyle DnD icon and move from right to left of todo item @done(18-03-29 09:35)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)

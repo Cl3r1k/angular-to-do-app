@@ -10,12 +10,12 @@
     </div>
     <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>
     <div class='buttons-block'>
-        <svg class='icon icon-pencil-edit' (click)='editTodo(todo)' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)'>
+        <!-- <svg class='icon icon-pencil-edit' (click)='editTodo(todo)' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)'>
             <use xlink:href='#icon-pencil-edit'></use>
         </svg>
         <svg class='icon icon-destroy' (click)='removeTodo(todo)' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'>
             <use xlink:href='#icon-destroy'></use>
-        </svg>
+        </svg> -->
         <svg class='icon icon-pin' [class.pinned]='todo.pin' (click)='pinTodo(todo)'>
             <use xlink:href='#icon-pin'></use>
         </svg>
