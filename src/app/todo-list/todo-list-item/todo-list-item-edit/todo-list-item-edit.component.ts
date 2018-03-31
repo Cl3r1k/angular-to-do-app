@@ -22,6 +22,9 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
     updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
+    moreTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
     pinTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
@@ -81,6 +84,10 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
 
     updateTodo(todo: ToDo) {
         this.editedTodoElementRef.nativeElement.blur();    // Imitate lost focus event
+    }
+
+    showMore(todo: ToDo) {
+        //
     }
 
     pinTodo(todo: ToDo) {

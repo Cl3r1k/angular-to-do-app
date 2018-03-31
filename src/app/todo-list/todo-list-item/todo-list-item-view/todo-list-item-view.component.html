@@ -10,6 +10,9 @@
     </div>
     <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>
     <div class='buttons-block'>
+        <svg class='icon icon-more_horiz' (click)='showMore(todo)'>
+            <use xlink:href='#icon-more_horiz'></use>
+        </svg>
         <!-- <svg class='icon icon-pencil-edit' (click)='editTodo(todo)' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)'>
             <use xlink:href='#icon-pencil-edit'></use>
         </svg>

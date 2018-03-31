@@ -36,8 +36,10 @@
                 content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/></svg>');
             }
             .buttons-block {
+                .icon-more_horiz,
                 .icon-pencil-edit,
-                .icon-destroy {
+                .icon-destroy,
+                .icon-pin {
                     opacity: 1;
                 }
             }
@@ -145,17 +147,30 @@
             padding: 15px 15px 15px 15px;
             line-height: 1.2;
             transition: color 0.4s;
-            grid-column: span 13;
+            grid-column: span 14;
             background-color: fuchsia; // For debuging
         }
         .buttons-block {
-            grid-column: span 2;
+            grid-column: span 1;
             // background-color: greenyellow; // For debuging
             display: grid;
             height: 100%;
             grid-template-columns: repeat(3, 1fr);
             align-items: center;
             padding-right: 5px;
+            .icon-more_horiz {
+                font-size: 20px;
+                color: #bddad5;
+                background-color: #888; // For debuging
+                margin: auto auto;
+                padding: 3px 3px 3px 3px;
+                transition: 0.3s ease-out;
+                opacity: 1;
+                &:hover {
+                    color: #5dc2af;
+                    cursor: pointer;
+                }
+            }
             .icon-pencil-edit {
                 // display: none;
                 // position: absolute;
@@ -194,7 +209,7 @@
                 }
             }
             .icon-pin {
-                font-size: 18px;
+                font-size: 20px;
                 color: #858585;
                 background-color: #639663; // For debuging
                 margin: auto auto;
@@ -207,6 +222,7 @@
                 }
                 &.pinned {
                     color: red;
+                    opacity: 1;
                 }
             }
         }

@@ -19,6 +19,9 @@ export class TodoListComponent {
     updateTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
+    moreTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
     pinTodoTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
@@ -37,6 +40,10 @@ export class TodoListComponent {
 
     onUpdateTodo(todo: ToDo) {
         this.updateTodoTodoListEmitter.emit(todo);    // Emit the 'update' event to TodosComponent
+    }
+
+    onMoreTodo(todo: ToDo) {
+        this.moreTodoTodoListEmitter.emit(todo);    // Emit the 'more' event to TodosComponent
     }
 
     onPinTodo(todo: ToDo) {

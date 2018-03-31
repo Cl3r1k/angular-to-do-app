@@ -1,7 +1,7 @@
 <section class='main' *ngIf='todosAllAmount > 0'>
     <ul class='todo-list' dnd-sortable-container [sortableData]='todos'>
         <li *ngFor='let todo of todos; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='dragEnabled' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
-            <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>
+            <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (moreTodoListItemEmitter)='onMoreTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>
         </li>
     </ul>
 </section>

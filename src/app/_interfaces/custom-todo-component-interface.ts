@@ -10,6 +10,8 @@ export interface CustomTodoComponentInterface {
 
     updateTodoListItemEmitter: EventEmitter<ToDo>;
 
+    moreTodoListItemEmitter: EventEmitter<ToDo>;
+
     pinTodoListItemEmitter: EventEmitter<ToDo>;
 
     cancelTodoListItemEmitter: EventEmitter<boolean>;

@@ -29,6 +29,9 @@ export class TodoListItemComponent implements OnInit {
     updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
+    moreTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
     pinTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
@@ -50,6 +53,10 @@ export class TodoListItemComponent implements OnInit {
         this.updateTodoListItemEmitter.emit(todo);    // Emit the 'update' event to the Parent component
     }
 
+    moreTodo(todo: ToDo) {
+        this.moreTodoListItemEmitter.emit(todo);    // Emit the 'pin' event to the Parent component
+    }
+
     pinTodo(todo: ToDo) {
         this.pinTodoListItemEmitter.emit(todo);    // Emit the 'pin' event to the Parent component
     }
@@ -67,31 +74,38 @@ export class TodoListItemComponent implements OnInit {
         instanceComponent.todo = todo;    // Pass todo to childrenComponent
 
         instanceComponent.toggleCompleteTodoListItemEmitter.subscribe(incomeTodo => {
+            // The event 'toggleComplete' from TodoListItemViewComponent
             this.toggleTodoComplete(incomeTodo);
         });
 
         instanceComponent.editTodoListItemEmitter.subscribe(incomeTodo => {
-            // The event from TodoListItemViewComponent
+            // The event 'edit' from TodoListItemViewComponent
             this.createEditComponent(incomeTodo);
         });
 
         instanceComponent.updateTodoListItemEmitter.subscribe(incomeTodo => {
-            // The event from TodoListItemEditComponent
+            // The event 'update' from TodoListItemEditComponent
             this.updateTodo(incomeTodo);
             this.createViewComponent(this.todo);
         });
 
+        instanceComponent.moreTodoListItemEmitter.subscribe(incomeTodo => {
+            // The event 'more' from TodoListItemViewComponent
+            this.moreTodo(incomeTodo);
+        });
+
         instanceComponent.pinTodoListItemEmitter.subscribe(incomeTodo => {
-            // The event from TodoListItemViewComponent
+            // The event 'pin' from TodoListItemViewComponent
             this.pinTodo(incomeTodo);
         });
 
         instanceComponent.cancelTodoListItemEmitter.subscribe(isCanceled => {
-            // The event from TodoListItemEditComponent
+            // The event 'cancel' from TodoListItemEditComponent
             this.createViewComponent(this.todo);
         });
 
         instanceComponent.removeTodoListItemEmitter.subscribe(incomeTodo => {
+            // The event 'remove' from TodoListItemEditComponent
             this.removeTodo(incomeTodo);
         });
 

@@ -22,6 +22,9 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     updateTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
+    moreTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
+
+    @Output()
     pinTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
@@ -50,6 +53,11 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     updateTodo(todo: ToDo) {
         //
+    }
+
+    showMore(todo: ToDo) {
+        console.log('showMore called in TodoListItemViewComponent with title: %s, and id: %c%s', todo.title, 'color: red;', todo.inner_id);
+        this.moreTodoListItemEmitter.emit(todo);    // Emit the 'more' event to a Parent component
     }
 
     pinTodo(todo: ToDo) {
