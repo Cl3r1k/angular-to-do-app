@@ -52,6 +52,7 @@ Todos:
 
         ☐ Add priority block with styles between drag icon and checkbox
         ☐ Use zones for DnD (for pinned, unpinned, and completed use three different zones)
+        ☐ Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos (look in 'TodoService' 'pinTodo()')
         ☐ Handle error properly as Observable (look here http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)
         ☐ Rewrite test for 'IndexedDbService' (currently not complete)

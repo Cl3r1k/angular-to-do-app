@@ -142,11 +142,8 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     onMoreTodo(todo: ToDo) {
         alert('in TodosComponent called onMoreTodo()');
-        // this._todoService.pinTodo(todo, this.todos).subscribe((updatedTodos) => {
-        //     // todo = updatedTodo;        // We even do not need to update inner todo
-        //     console.log('in onPinTodo updatedTodos: ', updatedTodos);
-        //     this.todos = updatedTodos;
-        // });
+
+        // Call dialog with name 'Advanced settings'
     }
 
     onPinTodo(todo: ToDo) {
