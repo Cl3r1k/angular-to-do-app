@@ -14,12 +14,16 @@ Todos:
     New:
         Current:
 
+            ☐ Fix 'clearCompleted' order issue (if 'clearComplete()' called order of todos going wrong)
+
             ☐ Replace 'edit-icon' and 'delete-icon' by 'icon-more' <========================================================= CURRENT TASK
                 ✔ Add 'icon-more' in 'TodoListItemViewComponent' @done(18-03-30 10:48)
                 ✔ Emit 'more' event from 'TodoListItemViewComponent' to 'TodosComponent' @done(18-03-30 11:08)
                 ☐ Deprecate 'edit-icon'
                 ☐ Move 'delete-icon' to 'TodoListItemEditComponent'
                     ☐ Update test
+                ☐ Add new dialog for 'more' prefs
+                    ☐ Write tests for 'DialogMoreComponent'
             ☐ Add baloon tooltips for buttons
                 
 

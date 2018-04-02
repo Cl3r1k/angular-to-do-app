@@ -1,0 +1,21 @@
+<div class='more-dialog'>
+    <h2 mat-dialog-title>{{data.data.dialogTitle}}</h2>
+    <button (click)='dialogRef.close()'>Close</button>
+    <hr>
+    <div mat-dialog-content>
+        <p>Costed todos</p>
+        <mat-form-field>
+            <input matInput [(ngModel)]='data.data.todoCost'>
+        </mat-form-field>
+        <p>Elapsed todos</p>
+        <mat-form-field>
+            <input matInput [(ngModel)]='data.data.todoCost'>
+        </mat-form-field>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-raised-button color='warn' (click)='onConfirmDelete()' class='dialog__confirm-delete-btn'>Delete</button>
+        <!-- This fills the remaining space of the current row -->
+        <span class='fill-space'></span>
+        <button mat-raised-button (click)='onConfirmSave()' class='dialog__confirm-save-btn' cdkFocusRegionstart>Save</button>
+    </div>
+</div>

@@ -9,7 +9,8 @@ import { TodoOrderService } from '@app/_services/todo-order.service';
 import { ActivatedRoute } from '@angular/router';
 
 // Components
-import { DialogComponent } from '@app/dialog/dialog.component';
+import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
+import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
 
 // Modules
 import { MatDialog } from '@angular/material';
@@ -97,7 +98,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         });
     }
 
-    // Method to handle event emitted by TodoListComponent and call Dialog
+    // Method to handle event emitted by TodoListComponent and call DialogDelete
     onRemoveTodo(todo: ToDo) {
         this.todo = todo;
 
@@ -107,7 +108,7 @@ export class TodosComponent implements OnInit, OnDestroy {
             contentData: todo.title
         };
 
-        const dialogRef = this.dialog.open(DialogComponent, {
+        const dialogRef = this.dialog.open(DialogDeleteComponent, {
             width: '600px',
             data: {
                 data: dataForDialog
@@ -140,10 +141,38 @@ export class TodosComponent implements OnInit, OnDestroy {
         });
     }
 
+    // Method to handle event emitted by TodoListComponent and call DialogMore
     onMoreTodo(todo: ToDo) {
-        alert('in TodosComponent called onMoreTodo()');
-
         // Call dialog with name 'Advanced settings'
+
+        const dataForDialog = {
+            dialogTitle: 'Advanced settings',
+            todoCost: 15,
+            estimatedTodos: 5,
+            remind: true,
+            remindTime: new Date().toDateString,
+            noteTodo: 'Some interesting task'
+        };
+
+        const dialogRef = this.dialog.open(DialogMoreComponent, {
+            width: '600px',
+            data: {
+                data: dataForDialog
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            if (result === 'ConfirmSave' || result === 'ConfirmDelete') {
+                // User confirmed actions, call 'removeTodo()' or 'onUpdateTodo()'
+                if (result === 'ConfirmDelete') {
+                    this.removeTodo(todo);
+                } else {
+                    alert('in TodosComponent result is ConfirmSave');
+                }
+            } else {
+                // User clicked 'Cancel' or clicked outside the dialog
+            }
+        });
     }
 
     onPinTodo(todo: ToDo) {
@@ -182,7 +211,7 @@ export class TodosComponent implements OnInit, OnDestroy {
             isClearCompleted: true
         };
 
-        const dialogRef = this.dialog.open(DialogComponent, {
+        const dialogRef = this.dialog.open(DialogDeleteComponent, {
             width: '600px',
             data: {
                 data: dataForDialog

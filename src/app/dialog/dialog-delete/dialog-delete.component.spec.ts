@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { DialogComponent } from './dialog.component';
+import { DialogDeleteComponent } from './dialog-delete.component';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatDialogRefMock } from '@app/_testing/mat-dialog-mock';
 
-describe('DialogComponent', () => {
-    let component: DialogComponent;
-    let fixture: ComponentFixture<DialogComponent>;
+describe('DialogDeleteComponent', () => {
+    let component: DialogDeleteComponent;
+    let fixture: ComponentFixture<DialogDeleteComponent>;
     let dialogConfirmBtnEl;
 
     // Mock MAT_DIALOG_DATA with the Object
@@ -21,7 +21,7 @@ describe('DialogComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [DialogComponent],
+            declarations: [DialogDeleteComponent],
             providers: [
                 { provide: MatDialogRef, useClass: MatDialogRefMock },
                 { provide: MAT_DIALOG_DATA, useValue: {
@@ -35,7 +35,7 @@ describe('DialogComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(DialogComponent);
+        fixture = TestBed.createComponent(DialogDeleteComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
 
@@ -44,7 +44,7 @@ describe('DialogComponent', () => {
         fixture.detectChanges();
     });
 
-    it(`should create an instance of 'DialogComponent' (async)`, async(() => {
+    it(`should create an instance of 'DialogDeleteComponent' (async)`, async(() => {
         // Arrange
 
         // Act
