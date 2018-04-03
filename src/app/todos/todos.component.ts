@@ -155,7 +155,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         };
 
         const dialogRef = this.dialog.open(DialogMoreComponent, {
-            width: '600px',
+            width: '400px',
             data: {
                 data: dataForDialog
             }

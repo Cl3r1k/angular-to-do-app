@@ -1,9 +1,34 @@
 .more-dialog {
-    h2 {
-        margin: 0px;
+    .dialog-header {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        h2 {
+            margin: 0px;
+            grid-column: span 11;
+        }
+        .dialog__close-btn {
+            grid-column: span 1;
+        }
     }
     hr {
         margin: 0px auto 20px auto;
+    }
+    .dialog-content {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        align-items: center;
+        mat-form-field {
+            grid-column: span 12;
+            textarea {
+                height: 70px;
+            }
+        }
+        mat-checkbox {
+            grid-column: 1/6;
+        }
+        .datepicker {
+            grid-column: 6/13;
+        }
     }
 }
 
