@@ -4,24 +4,28 @@
         <button (click)='dialogRef.close()' class='dialog__close-btn'>Close</button>
     </div>
     <hr>
+
     <div mat-dialog-content class='dialog-content'>
         <mat-form-field>
             <input matInput [(ngModel)]='data.data.todoCost' placeholder='Costed todos'>
         </mat-form-field>
+
         <mat-form-field>
             <input matInput [(ngModel)]='data.data.estimatedTodos' placeholder='Estimated todos'>
         </mat-form-field>
-        <mat-checkbox [(ngModel)]='data.data.remind'>Remind me at: </mat-checkbox>
+
+        <mat-checkbox [(ngModel)]='data.data.remind' (click)='toggleRemind()'>Remind me at: </mat-checkbox>
         <mat-form-field class='datepicker'>
-            <input matInput [matDatepicker]='picker' placeholder='Choose a date' disabled>
+            <input matInput [matDatepicker]='picker' placeholder='Choose a date' [attr.disabled]='dis'>
             <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <br>
+
         <mat-form-field>
             <textarea matInput [(ngModel)]='data.data.noteTodo' placeholder='Enter note for the todo'></textarea>
         </mat-form-field>
     </div>
+
     <div mat-dialog-actions>
         <button mat-raised-button color='warn' (click)='onConfirmDelete()' class='dialog__confirm-delete-btn'>Delete</button>
         <!-- This fills the remaining space of the current row -->
