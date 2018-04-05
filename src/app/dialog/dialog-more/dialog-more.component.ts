@@ -9,8 +9,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class DialogMoreComponent implements OnInit {
 
-    dis = true;
-
     constructor(public dialogRef: MatDialogRef<DialogMoreComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
 
     ngOnInit() {
@@ -22,14 +20,6 @@ export class DialogMoreComponent implements OnInit {
 
     onConfirmDelete() {
         this.dialogRef.close('ConfirmDelete');
-    }
-
-    toggleRemind() {
-        // this.data['data']['remind'] = !this.data['data']['remind'];
-        // console.log('remind: ', this.data['data']['remind']);
-
-        this.dis = !this.dis;
-        console.log('dis: ', this.dis);
     }
 
 }

@@ -2,12 +2,21 @@
     .dialog-header {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
+        align-items: center;
         h2 {
             margin: 0px;
             grid-column: span 11;
         }
         .dialog__close-btn {
             grid-column: span 1;
+            color: #777;
+            font: 14px/100% arial, sans-serif;
+            text-decoration: none;
+            text-shadow: 0 1px 0 #fff;
+            cursor: pointer;
+            &:after {
+                content: '✖'; // UTF-8 symbol
+            }
         }
     }
     hr {
