@@ -162,12 +162,13 @@ export class TodosComponent implements OnInit, OnDestroy {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            if (result === 'ConfirmSave' || result === 'ConfirmDelete') {
+            if (result && (result['dialogResult'] === 'ConfirmSave' || result['dialogResult'] === 'ConfirmDelete')) {
                 // User confirmed actions, call 'removeTodo()' or 'onUpdateTodo()'
-                if (result === 'ConfirmDelete') {
+                if (result['dialogResult'] === 'ConfirmDelete') {
                     this.removeTodo(todo);
                 } else {
-                    alert('in TodosComponent result is ConfirmSave');
+                    console.log('in TodosComponent in onMoreTodo() result: ', result);
+                    alert('in TodosComponent result.dialogResult is ConfirmSave');
                 }
             } else {
                 // User clicked 'Cancel' or clicked outside the dialog

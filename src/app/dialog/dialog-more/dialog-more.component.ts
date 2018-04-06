@@ -9,17 +9,36 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class DialogMoreComponent implements OnInit {
 
+    dataFromDialog: Object;
+
     constructor(public dialogRef: MatDialogRef<DialogMoreComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
 
     ngOnInit() {
     }
 
     onConfirmSave() {
-        this.dialogRef.close('ConfirmSave');
+        console.log('return data: ', this.data);
+        console.log('remindTime: ', this.data['data']['remindTime']);
+
+        this.dataFromDialog = {
+            dialogResult: 'ConfirmSave',
+            todoCost: this.data['data']['todoCost'],
+            estimatedTodos: this.data['data']['estimatedTodos'],
+            remind: this.data['data']['remind'],
+            remindTime: this.data['data']['remindTime'],
+            noteTodo: this.data['data']['noteTodo']
+        };
+
+        this.dialogRef.close(this.dataFromDialog);
     }
 
     onConfirmDelete() {
-        this.dialogRef.close('ConfirmDelete');
+
+        this.dataFromDialog = {
+            dialogResult: 'ConfirmDelete'
+        };
+
+        this.dialogRef.close(this.dataFromDialog);
     }
 
 }

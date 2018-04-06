@@ -1,4 +1,5 @@
 .more-dialog {
+    margin-top: -10px;
     .dialog-header {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -9,6 +10,7 @@
         }
         .dialog__close-btn {
             grid-column: span 1;
+            justify-self: end;
             color: #777;
             font: 14px/100% arial, sans-serif;
             text-decoration: none;

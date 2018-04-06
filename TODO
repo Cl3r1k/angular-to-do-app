@@ -24,6 +24,10 @@ Todos:
                     ☐ Update test
                 ☐ Add new dialog for 'more' prefs
                     ☐ Write tests for 'DialogMoreComponent'
+                ☐ Add new fields in the model
+                    ☐ Update tests for the model
+                ☐ Update app logic for new fields
+                    ☐ Update tests for new logic
             ☐ Add baloon tooltips for buttons
                 
 
