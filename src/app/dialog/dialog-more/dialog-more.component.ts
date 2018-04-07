@@ -26,7 +26,7 @@ export class DialogMoreComponent implements OnInit {
             estimatedTodos: this.data['data']['estimatedTodos'],
             remind: this.data['data']['remind'],
             remindTime: this.data['data']['remindTime'],
-            noteTodo: this.data['data']['noteTodo']
+            note: this.data['data']['note']
         };
 
         this.dialogRef.close(this.dataFromDialog);

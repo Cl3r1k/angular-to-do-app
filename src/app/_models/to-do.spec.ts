@@ -28,7 +28,29 @@ describe(`ToDo`, () => {
         expect(todo.complete).toEqual(true);
     }));
 
-    it(`Should have not null 'created_time' after init (async)`, async(() => {
+    it(`Should have initial vaules after init (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        todo = new ToDo( {
+            title: 'Hello',
+            complete: true
+        });
+
+        // Assert
+        expect(todo.id).toEqual(undefined);
+        expect(todo.title).toEqual('Hello');
+        expect(todo.complete).toEqual(true);
+        expect(todo.pin).toEqual(false);
+        expect(todo.costedPomo).toEqual(0);
+        expect(todo.estimatedPomos).toEqual(0);
+        expect(todo.remindMe).toEqual(false);
+        expect(todo.remindTime).toBeNull();
+        expect(todo.note).toBeNull();
+    }));
+
+    it(`Should have not null 'created_time' and null other times after init (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 

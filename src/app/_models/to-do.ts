@@ -11,6 +11,11 @@ export class ToDo {
     completed_time: string;
     deleted_time: string;
     pin = false;
+    costedPomo = 0;
+    estimatedPomos = 0;
+    remindMe = false;
+    remindTime = null;
+    note = null;
 
     constructor(values: Object = {}) {
         Object.assign(this, values);

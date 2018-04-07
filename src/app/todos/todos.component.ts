@@ -119,7 +119,7 @@ export class TodosComponent implements OnInit, OnDestroy {
             if (result === 'Confirm') {
                 this.removeTodo(todo);    // User confirmed action, call 'removeTodo()'
             } else {
-                // User clicked 'Cancel' or clicked outside the dialog
+                // User clicked 'Cancel' or clicked outside of the dialog
             }
         });
     }
@@ -147,11 +147,11 @@ export class TodosComponent implements OnInit, OnDestroy {
 
         const dataForDialog = {
             dialogTitle: 'Advanced settings',
-            todoCost: 15,
-            estimatedTodos: 5,
-            remind: true,
-            remindTime: new Date().toDateString,
-            noteTodo: 'Some interesting task'
+            todoCost: todo.costedPomo,
+            estimatedTodos: todo.estimatedPomos,
+            remind: todo.remindMe,
+            remindTime: todo.remindTime,
+            note: todo.note
         };
 
         const dialogRef = this.dialog.open(DialogMoreComponent, {
@@ -168,10 +168,17 @@ export class TodosComponent implements OnInit, OnDestroy {
                     this.removeTodo(todo);
                 } else {
                     console.log('in TodosComponent in onMoreTodo() result: ', result);
-                    alert('in TodosComponent result.dialogResult is ConfirmSave');
+
+                    todo.costedPomo = result['todoCost'];
+                    todo.estimatedPomos = result['estimatedTodos'];
+                    todo.remindMe = result['remind'];
+                    todo.remindTime = result['remindTime'];
+                    todo.note = result['note'];
+
+                    this.onUpdateTodo(todo);    // Save changes by calling 'onUpdateTodo()'
                 }
             } else {
-                // User clicked 'Cancel' or clicked outside the dialog
+                // User clicked 'Cancel' or clicked outside of the dialog
             }
         });
     }
@@ -223,7 +230,7 @@ export class TodosComponent implements OnInit, OnDestroy {
             if (result === 'Confirm') {
                 this.clearCompleted(clearState);    // User confirmed action, call 'clearCompleted()'
             } else {
-                // User clicked 'Cancel' or clicked outside the dialog
+                // User clicked 'Cancel' or clicked outside of the dialog
             }
         });
     }

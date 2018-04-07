@@ -21,8 +21,17 @@ export class IndexedDbService extends Dexie {
         this.version(1).stores({
             dbTable: '++id, title, complete'
         });
+
+        // In version 2 added fields for 'pin' and 'time-operations'
         this.version(2).stores({
             dbTable: '++id, title, complete, inner_id, created_time, completed_time, updated_time, deleted_time, pin'
+        });
+
+        // In version 3 added fields for 'more-dialog'
+        this.version(3).stores({
+            dbTable: `++id, title, complete,
+                        inner_id, created_time, completed_time, updated_time, deleted_time, pin,
+                        costedPomo, estimatedPomos, remindMe, remindTime, note`
         });
         this.dbTable.mapToClass(ToDo);
         console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColor, this.name, 1);
