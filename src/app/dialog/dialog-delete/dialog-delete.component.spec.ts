@@ -39,7 +39,7 @@ describe('DialogDeleteComponent', () => {
         component = fixture.componentInstance;
         fixture.detectChanges();
 
-        dialogConfirmBtnEl = fixture.debugElement.query(By.css('.dialog__confirm-btn'));       // Find close button element
+        dialogConfirmBtnEl = fixture.debugElement.query(By.css('.dialog__confirm-btn'));       // Find confirm button element
 
         fixture.detectChanges();
     });
