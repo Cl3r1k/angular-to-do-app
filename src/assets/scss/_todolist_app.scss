@@ -36,9 +36,8 @@
                 content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/></svg>');
             }
             .buttons-block {
-                .icon-more_horiz,
-                .icon-pencil-edit,
-                .icon-destroy,
+                .icon-more_horiz, // .icon-pencil-edit,
+                // .icon-destroy,
                 .icon-pin {
                     opacity: 1;
                 }
@@ -60,20 +59,52 @@
             &.edit-hovered {
                 background-color: #dfebe0;
             }
-            &.delete-hovered {
-                background-color: #f7e8e8;
-            }
         }
         .editContainer {
             display: grid;
             grid-template-columns: repeat(16, 1fr);
             align-items: center;
-            .edit {
-                @extend .input-field-style;
+            &.delete-hovered {
+                background-color: #f7e8e8;
+            }
+            .editContainerControls {
                 grid-column: 2/17;
-                padding: 11px 14px 12px 14px;
-                resize: none; // Disable resizing for todo
-                word-break: break-all;
+                display: grid;
+                grid-template-columns: repeat(16, 1fr);
+                align-items: center;
+                // background-color: cornflowerblue; // For debuging
+                .edit {
+                    @extend .input-field-style;
+                    border: none;
+                    box-shadow: inset 0 -2px 0px rgba(0, 0, 0, 0.03);
+                    grid-column: 1/16;
+                    padding: 11px 14px 12px 14px;
+                    resize: none; // Disable resizing for todo
+                    word-break: break-all;
+                }
+                .buttons-block-edit {
+                    display: grid;
+                    align-items: center;
+                    grid-column: 16/17;
+                    .icon-destroy {
+                        // display: none;
+                        // position: absolute;
+                        // top: 0;
+                        // right: 20px;
+                        // bottom: 0;
+                        font-size: 18px;
+                        color: #cc9a9a;
+                        background-color: #321; // For debuging
+                        margin: auto auto;
+                        padding: 3px 3px 3px 3px;
+                        transition: 0.3s ease-out;
+                        opacity: 1;
+                        &:hover {
+                            color: #af5b5e;
+                            cursor: pointer;
+                        }
+                    }
+                }
             }
         }
         .buttons-before-block {
@@ -171,43 +202,25 @@
                     cursor: pointer;
                 }
             }
-            .icon-pencil-edit {
-                // display: none;
-                // position: absolute;
-                // top: 0;
-                // right: 45px;
-                // bottom: 0;
-                // margin-bottom: 16px;
-                font-size: 18px;
-                color: #bddad5;
-                background-color: #888; // For debuging
-                margin: auto auto;
-                padding: 3px 3px 3px 3px;
-                transition: 0.3s ease-out;
-                opacity: 1;
-                &:hover {
-                    color: #5dc2af;
-                    cursor: pointer;
-                }
-            }
-            .icon-destroy {
-                // display: none;
-                // position: absolute;
-                // top: 0;
-                // right: 20px;
-                // bottom: 0;
-                font-size: 18px;
-                color: #cc9a9a;
-                background-color: #321; // For debuging
-                margin: auto auto;
-                padding: 3px 3px 3px 3px;
-                transition: 0.3s ease-out;
-                opacity: 1;
-                &:hover {
-                    color: #af5b5e;
-                    cursor: pointer;
-                }
-            }
+            // .icon-pencil-edit {
+            //     // display: none;
+            //     // position: absolute;
+            //     // top: 0;
+            //     // right: 45px;
+            //     // bottom: 0;
+            //     // margin-bottom: 16px;
+            //     font-size: 18px;
+            //     color: #bddad5;
+            //     background-color: #888; // For debuging
+            //     margin: auto auto;
+            //     padding: 3px 3px 3px 3px;
+            //     transition: 0.3s ease-out;
+            //     opacity: 1;
+            //     &:hover {
+            //         color: #5dc2af;
+            //         cursor: pointer;
+            //     }
+            // }
             .icon-pin {
                 font-size: 20px;
                 color: #858585;

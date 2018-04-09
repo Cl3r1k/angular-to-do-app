@@ -75,7 +75,6 @@ describe('DialogMoreComponent', () => {
         // look here https://github.com/angular/material2/blob/master/src/lib/dialog/dialog.spec.ts#L178
         // here https://github.com/angular/material2/blob/d1128febe6d23f1a1f20446692bc2a8358e8b8cf/src/lib/dialog/dialog.spec.ts#L116-L116
         // and here https://medium.com/@aleixsuau/testing-angular-components-with-material-dialog-mddialog-1ae658b4e4b3
-
         // it(`clicking on button.dialog__close-btn should call method 'dialogRef.close()' (async)`, async () => {
         //     // Arrange
 

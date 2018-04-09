@@ -37,6 +37,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
     isCanceled: boolean;
     afterViewCheckedCount = 0;
     updatedTextHeight = false;
+    deleteHoverState = false;
 
     @ViewChild('editedTodo') private editedTodoElementRef: ElementRef;
 
@@ -118,6 +119,10 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
             this.removeTodo(this.todo);
         }
 
+    }
+
+    setDeleteHover(state: boolean) {
+        this.deleteHoverState = state;
     }
 
 }

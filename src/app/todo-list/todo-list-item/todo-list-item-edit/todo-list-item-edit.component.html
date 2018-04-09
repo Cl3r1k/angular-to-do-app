@@ -1,5 +1,13 @@
-<div class='editContainer'>
-    <textarea autosize class='edit' [(ngModel)]='todo.title' (keydown.enter)='updateTodo(todo); false' (keyup.esc)='cancelEditTodo()' (blur)='stopEditTodoOnBlur()' placeholder='Enter name of the task or press Enter to delete the task' #editedTodo></textarea>
-    <!-- <input type='text' autosize [minHeight]='60' class='edit' [(ngModel)]='todo.title' (keyup.enter)='updateTodo(todo)' (keyup.esc)='cancelEditTodo()' (blur)='stopEditTodoOnBlur()' placeholder='Enter name of the task or press Enter to delete the task' #editedTodo> -->
-    <!-- <button class='destroy' (click)='removeTodo(todo)'></button> -->
+<div class='editContainer' [class.delete-hovered]='deleteHoverState'>
+    <div class='editContainerControls'>
+        <!-- <textarea autosize class='edit' [(ngModel)]='todo.title' (keydown.enter)='updateTodo(todo); false' (keyup.esc)='cancelEditTodo()' (blur)='stopEditTodoOnBlur()' placeholder='Enter name of the task or press Enter to delete the task' #editedTodo></textarea> -->
+        <textarea autosize class='edit' [(ngModel)]='todo.title' (keydown.enter)='updateTodo(todo); false' (keyup.esc)='cancelEditTodo()' placeholder='Enter name of the task or press Enter to delete the task' #editedTodo></textarea>
+        <div class='buttons-block-edit'>
+            <svg class='icon icon-destroy' (click)='removeTodo(todo)' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'>
+                <use xlink:href='#icon-destroy'></use>
+            </svg>
+        </div>
+        <!-- <input type='text' autosize [minHeight]='60' class='edit' [(ngModel)]='todo.title' (keyup.enter)='updateTodo(todo)' (keyup.esc)='cancelEditTodo()' (blur)='stopEditTodoOnBlur()' placeholder='Enter name of the task or press Enter to delete the task' #editedTodo> -->
+        <!-- <button class='destroy' (click)='removeTodo(todo)'></button> -->
+    </div>
 </div>
