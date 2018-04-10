@@ -20,7 +20,9 @@ Todos:
                 ✔ Add 'icon-more' in 'TodoListItemViewComponent' @done(18-03-30 10:48)
                 ✔ Emit 'more' event from 'TodoListItemViewComponent' to 'TodosComponent' @done(18-03-30 11:08)
                 ✔ Deprecate 'edit-icon' and its styles @done(18-04-08 09:51)
-                ☐ Move 'delete-icon' to 'TodoListItemEditComponent' <========================================================= CURRENT TASK
+                ☐ Move 'delete-icon' to 'TodoListItemEditComponent' 
+                    ✔ Update styles for 'TodoListItemEditComponent' @done(18-04-09 10:47)
+                        ☐ Fix autoheight for 'TodoListItemEditComponent' <========================================================= CURRENT TASK
                     ☐ Update test
                 ✔ Add new dialog for 'more' prefs @done(18-04-06 10:28)
                     ✔ Write tests for 'DialogMoreComponent' @done(18-04-08 09:47)
