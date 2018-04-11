@@ -65,14 +65,14 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
                 if (el.style.height !== this.editedTodoElementRef.nativeElement.scrollHeight + 'px') {
                     el.style.overflow = 'hidden';
                     el.style.height = 'auto';
-                    if (this.todo.title.length >= 50) {
-                        el.style.height = el.scrollHeight + 'px';
-                    } else {
-                        el.style.height = '58px';
+                    el.style.height = el.scrollHeight + 'px';
+                } else {
+                    if (this.todo.title.length < 50) {
+                        el.style.height = '56px';
                     }
-
-                    console.log('%cheight set to ', 'color: pink', el.style.height);
                 }
+
+                console.log('%cheight set to ', 'color: pink', el.style.height);
 
                 this.updatedTextHeight = true;
             }

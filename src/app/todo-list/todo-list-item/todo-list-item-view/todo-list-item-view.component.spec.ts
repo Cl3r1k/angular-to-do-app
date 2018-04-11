@@ -10,7 +10,6 @@ describe('TodoListItemViewComponent', () => {
     let fixture: ComponentFixture<TodoListItemViewComponent>;
     let toggleEl;
     let editEl;
-    let destroyEl;
     let pinEl;
     let expectedTodo: ToDo;
 
@@ -26,7 +25,6 @@ describe('TodoListItemViewComponent', () => {
         component = fixture.componentInstance;
         toggleEl = fixture.debugElement.query(By.css('input[type=checkbox]'));        // Find toggle checkbox element
         editEl = fixture.debugElement.query(By.css('svg.icon-pencil-edit'));          // Find edit icon element
-        destroyEl = fixture.debugElement.query(By.css('svg.icon-destroy'));           // Find destroy icon element
         pinEl = fixture.debugElement.query(By.css('svg.icon-pin'));                   // Find pin icon element
 
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
@@ -132,23 +130,6 @@ describe('TodoListItemViewComponent', () => {
             // Assert
             fixture.whenStable().then(() => {
                 expect(component.editTodo).toHaveBeenCalled();
-            });
-        });
-
-        it(`clicking on svg.icon-destroy should call method 'close()' (async)`, async () => {
-            // Arrange
-
-            // Act
-            spyOn(component, 'removeTodo');
-            if (destroyEl instanceof HTMLElement) {
-                destroyEl.click();
-            } else {
-                destroyEl.triggerEventHandler('click', { button: 0 });
-            }
-
-            // Assert
-            fixture.whenStable().then(() => {
-                expect(component.removeTodo).toHaveBeenCalled();
             });
         });
 

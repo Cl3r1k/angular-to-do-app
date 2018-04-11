@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ToDo } from '@app/_models/to-do';
 
@@ -8,6 +9,7 @@ describe('TodoListItemEditComponent', () => {
     let component: TodoListItemEditComponent;
     let fixture: ComponentFixture<TodoListItemEditComponent>;
     let inputEl;
+    let destroyEl;
     let expectedTodo: ToDo;
 
     beforeEach(async(() => {
@@ -21,7 +23,12 @@ describe('TodoListItemEditComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodoListItemEditComponent);
         component = fixture.componentInstance;
+
         inputEl = fixture.debugElement.nativeElement.querySelector('textarea.edit');    // Find textarea.edit element
+        // destroyEl = fixture.debugElement.nativeElement.querySelector('svg.icon-destroy');    // Find destroy icon element
+        destroyEl = fixture.debugElement.query(By.css('svg.icon-destroy'));           // Find destroy icon element
+
+        console.log('%cdestroyEl: ', 'color: brown;', destroyEl);
 
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemEditComponent', complete: false });
         component.todo = expectedTodo;
@@ -139,5 +146,38 @@ describe('TodoListItemEditComponent', () => {
                 expect(component.stopEditTodoOnBlur).toHaveBeenCalled();
             });
         }));
+
+        it(`hover on svg.icon-destroy should call method 'setDeleteHover()' (async)`, async(() => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'setDeleteHover');
+
+            // Set svg hover state
+            destroyEl.dispatchEvent(new Event('blur'));
+            fixture.detectChanges();
+
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.setDeleteHover).toHaveBeenCalled();
+            });
+        }));
+
+        it(`clicking on svg.icon-destroy should call method 'close()' (async)`, async () => {
+            // Arrange
+
+            // Act
+            spyOn(component, 'removeTodo');
+            if (destroyEl instanceof HTMLElement) {
+                destroyEl.click();
+            } else {
+                destroyEl.triggerEventHandler('click', { button: 0 });
+            }
+
+            // Assert
+            fixture.whenStable().then(() => {
+                expect(component.removeTodo).toHaveBeenCalled();
+            });
+        });
     });
 });
