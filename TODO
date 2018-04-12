@@ -24,8 +24,8 @@ Todos:
                     ✔ Update styles for 'TodoListItemEditComponent' @done(18-04-09 10:47)
                         ✔ Fix autoheight for 'TodoListItemEditComponent' @done(18-04-10 12:26)
                     ☐ Update test
-                        ☐ Update test for 'TodoListItemEditComponent' <========================================================= CURRENT TASK
-                        ☐ Update test for 'TodoListItemViewComponent'
+                        ✔ Update test for 'TodoListItemEditComponent' @done(18-04-11 11:12)
+                        ☐ Update test for 'TodoListItemViewComponent' <========================================================= CURRENT TASK
                 ✔ Add new dialog for 'more' prefs @done(18-04-06 10:28)
                     ✔ Write tests for 'DialogMoreComponent' @done(18-04-08 09:47)
                     ☐ Change DatePicker to DateTimePicker

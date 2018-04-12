@@ -8,7 +8,7 @@ import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-li
 describe('TodoListItemEditComponent', () => {
     let component: TodoListItemEditComponent;
     let fixture: ComponentFixture<TodoListItemEditComponent>;
-    let inputEl;
+    let textareaEl;
     let destroyEl;
     let expectedTodo: ToDo;
 
@@ -24,11 +24,10 @@ describe('TodoListItemEditComponent', () => {
         fixture = TestBed.createComponent(TodoListItemEditComponent);
         component = fixture.componentInstance;
 
-        inputEl = fixture.debugElement.nativeElement.querySelector('textarea.edit');    // Find textarea.edit element
-        // destroyEl = fixture.debugElement.nativeElement.querySelector('svg.icon-destroy');    // Find destroy icon element
+        textareaEl = fixture.debugElement.nativeElement.querySelector('textarea.edit');    // Find textarea.edit element
         destroyEl = fixture.debugElement.query(By.css('svg.icon-destroy'));           // Find destroy icon element
 
-        console.log('%cdestroyEl: ', 'color: brown;', destroyEl);
+        // console.log('%cdestroyEl: ', 'color: brown;', destroyEl);
 
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemEditComponent', complete: false });
         component.todo = expectedTodo;
@@ -68,10 +67,10 @@ describe('TodoListItemEditComponent', () => {
 
         // Act
         component.todo = expectedTodo;
-        console.log('in updateTodo component.todo.title: ' + component.todo.title);
+        // console.log('%cin updateTodo component.todo.title: ', 'color: brown;', component.todo.title);
         component.updateTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to update event
         component.updateTodo(expectedTodo);
-        inputEl.dispatchEvent(new Event('blur'));    // Call explicitly blur event, sometimes it won't called in method 'updateTodo'
+        textareaEl.dispatchEvent(new Event('blur'));    // Call explicitly blur event, sometimes it won't called in method 'updateTodo'
 
         // Assert
         expect(todo).toEqual(expectedTodo);
@@ -96,7 +95,7 @@ describe('TodoListItemEditComponent', () => {
         // Act
         component.cancelTodoListItemEmitter.subscribe((value) => cancelState = value);    // Subscribe to update event
         component.cancelEditTodo();
-        inputEl.dispatchEvent(new Event('blur'));    // Call explicitly blur event, sometimes it won't called in method 'cancelEditTodo'
+        textareaEl.dispatchEvent(new Event('blur'));    // Call explicitly blur event, sometimes it won't called in method 'cancelEditTodo'
 
         // Assert
         expect(cancelState).toEqual(true);
@@ -131,52 +130,111 @@ describe('TodoListItemEditComponent', () => {
     }));
 
     describe(`#view tests`, () => {
-        it(`losing focus input.edit should call method 'stopEditTodoOnBlur()' (async)`, async(() => {
-            // Arrange
 
-            // Act
-            spyOn(component, 'stopEditTodoOnBlur');
+        describe(`input.edit`, () => {
+            it(`press 'Enter' on 'input.edit' should call method 'updateTodo()' (async)`, async () => {
+                // Arrange
+                const keyDownEnterEvent = new KeyboardEvent('keydown', {
+                    'key': 'Enter'
+                });
 
-            // Set input value focus lost
-            inputEl.dispatchEvent(new Event('blur'));
-            fixture.detectChanges();
+                // Act
+                spyOn(component, 'updateTodo');
+                textareaEl.dispatchEvent(keyDownEnterEvent);
+                fixture.detectChanges();
 
-            // Assert
-            fixture.whenStable().then(() => {
-                expect(component.stopEditTodoOnBlur).toHaveBeenCalled();
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.updateTodo).toHaveBeenCalled();
+                });
             });
-        }));
 
-        it(`hover on svg.icon-destroy should call method 'setDeleteHover()' (async)`, async(() => {
-            // Arrange
+            it(`press 'Esc' on 'input.edit' should call method 'cancelEditTodo()' (async)`, async () => {
+                // Arrange
+                const keyUpEscapeEvent = new KeyboardEvent('keyup', {
+                    'key': 'Escape'
+                });
+                Object.defineProperty(keyUpEscapeEvent, 'keyCode', { 'value': 27 });
 
-            // Act
-            spyOn(component, 'setDeleteHover');
+                // Act
+                spyOn(component, 'cancelEditTodo');
+                textareaEl.dispatchEvent(keyUpEscapeEvent);
+                fixture.detectChanges();
 
-            // Set svg hover state
-            destroyEl.dispatchEvent(new Event('blur'));
-            fixture.detectChanges();
-
-            // Assert
-            fixture.whenStable().then(() => {
-                expect(component.setDeleteHover).toHaveBeenCalled();
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.cancelEditTodo).toHaveBeenCalled();
+                });
             });
-        }));
 
-        it(`clicking on svg.icon-destroy should call method 'close()' (async)`, async () => {
-            // Arrange
+            it(`losing focus 'input.edit' should call method 'stopEditTodoOnBlur()' (async)`, async(() => {
+                // Arrange
 
-            // Act
-            spyOn(component, 'removeTodo');
-            if (destroyEl instanceof HTMLElement) {
-                destroyEl.click();
-            } else {
-                destroyEl.triggerEventHandler('click', { button: 0 });
-            }
+                // Act
+                spyOn(component, 'stopEditTodoOnBlur');
 
-            // Assert
-            fixture.whenStable().then(() => {
-                expect(component.removeTodo).toHaveBeenCalled();
+                // Set input value focus lost
+                textareaEl.dispatchEvent(new Event('blur'));
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.stopEditTodoOnBlur).toHaveBeenCalled();
+                });
+            }));
+        });
+
+        describe(`svg.icon-destroy`, () => {
+            it(`'mouseenter' on 'svg.icon-destroy' should call method 'setDeleteHover()' (async)`, async(() => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'setDeleteHover');
+
+                // Set svg hover state
+                destroyEl.triggerEventHandler('mouseenter', null);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setDeleteHover).toHaveBeenCalled();
+                });
+            }));
+
+            it(`'mouseleave' on 'svg.icon-destroy' should call method 'setDeleteHover()' (async)`, async(() => {
+                // Arrange
+                // Firstly set 'mouseenter' state for 'svg.icon-destroy'
+                destroyEl.triggerEventHandler('mouseenter', null);
+                fixture.detectChanges();
+
+                // Act
+                spyOn(component, 'setDeleteHover');
+
+                // Set svg hover state
+                destroyEl.triggerEventHandler('mouseleave', null);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setDeleteHover).toHaveBeenCalled();
+                });
+            }));
+
+            it(`clicking on 'svg.icon-destroy' should call method 'close()' (async)`, async () => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'removeTodo');
+                if (destroyEl instanceof HTMLElement) {
+                    destroyEl.click();
+                } else {
+                    destroyEl.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.removeTodo).toHaveBeenCalled();
+                });
             });
         });
     });
