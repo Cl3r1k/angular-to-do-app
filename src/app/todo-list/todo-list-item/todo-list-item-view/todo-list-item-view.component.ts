@@ -33,7 +33,8 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     @Output()
     removeTodoListItemEmitter: EventEmitter<ToDo> = new EventEmitter();
 
-    editHoverState = false;
+    // TODO: Cleanup 'edit' code later
+    // editHoverState = false;
     completeHoverState = false;
 
     constructor() { }
@@ -46,8 +47,8 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     editTodo(todo: ToDo) {
-        console.log('editTodo called in TodoListItemViewComponent with title: ', todo.title);
-        this.editTodoListItemEmitter.emit(todo);    // Emit the 'edit' event to a Parent component
+        // console.log('editTodo called in TodoListItemViewComponent with title: ', todo.title);
+        // this.editTodoListItemEmitter.emit(todo);    // Emit the 'edit' event to a Parent component
     }
 
     updateTodo(todo: ToDo) {
@@ -69,9 +70,9 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
         this.removeTodoListItemEmitter.emit(todo);
     }
 
-    setEditHover(state: boolean) {
-        this.editHoverState = state;
-    }
+    // setEditHover(state: boolean) {
+    //     this.editHoverState = state;
+    // }
 
     setCompleteHover(completeHoverState: boolean) {
         this.completeHoverState = completeHoverState;

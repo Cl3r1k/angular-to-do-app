@@ -9,7 +9,9 @@ describe('TodoListItemViewComponent', () => {
     let component: TodoListItemViewComponent;
     let fixture: ComponentFixture<TodoListItemViewComponent>;
     let toggleEl;
-    let editEl;
+    let labelEl;
+    // let editEl;
+    let moreEl;
     let pinEl;
     let expectedTodo: ToDo;
 
@@ -24,7 +26,9 @@ describe('TodoListItemViewComponent', () => {
         fixture = TestBed.createComponent(TodoListItemViewComponent);
         component = fixture.componentInstance;
         toggleEl = fixture.debugElement.query(By.css('input[type=checkbox]'));        // Find toggle checkbox element
-        editEl = fixture.debugElement.query(By.css('svg.icon-pencil-edit'));          // Find edit icon element
+        labelEl = fixture.debugElement.query(By.css('label'));                        // Find label element
+        // editEl = fixture.debugElement.query(By.css('svg.icon-pencil-edit'));          // Find edit icon element
+        moreEl = fixture.debugElement.query(By.css('svg.icon-more_horiz'));           // Find more icon element
         pinEl = fixture.debugElement.query(By.css('svg.icon-pin'));                   // Find pin icon element
 
         expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
@@ -55,20 +59,44 @@ describe('TodoListItemViewComponent', () => {
         let todo: ToDo;
 
         // Act
-        component.toggleCompleteTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to toggle event
+        component.toggleCompleteTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to 'toggle' event
         component.toggleTodoComplete(expectedTodo);
 
         // Assert
         expect(todo).toEqual(expectedTodo);
     }));
 
-    it(`should emit 'edit' event (async)`, async(() => {
+    // it(`should emit 'edit' event (async)`, async(() => {
+    //     // Arrange
+    //     let todo: ToDo;
+
+    //     // Act
+    //     component.editTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to 'edit' event
+    //     component.editTodo(expectedTodo);
+
+    //     // Assert
+    //     expect(todo).toEqual(expectedTodo);
+    // }));
+
+    it(`should emit 'more' event (async)`, async(() => {
         // Arrange
         let todo: ToDo;
 
         // Act
-        component.editTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to edit event
-        component.editTodo(expectedTodo);
+        component.moreTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to 'more' event
+        component.showMore(expectedTodo);
+
+        // Assert
+        expect(todo).toEqual(expectedTodo);
+    }));
+
+    it(`should emit 'pin' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        component.pinTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to 'pin' event
+        component.pinTodo(expectedTodo);
 
         // Assert
         expect(todo).toEqual(expectedTodo);
@@ -86,67 +114,130 @@ describe('TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    it(`should emit 'pin' event (async)`, async(() => {
-        // Arrange
-        let todo: ToDo;
+    describe(`#view tests:`, () => {
 
-        // Act
-        component.pinTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to pin event
-        component.pinTodo(expectedTodo);
+        describe(`checkbox.toggle:`, () => {
+            it(`'mouseenter' on 'checkbox.toggle' should call method 'setCompleteHover()' (async)`, async(() => {
+                // Arrange
 
-        // Assert
-        expect(todo).toEqual(expectedTodo);
-    }));
+                // Act
+                spyOn(component, 'setCompleteHover');
 
-    describe(`#view tests`, () => {
-        it(`clicking on checkbox.toggle should emits 'toggleTodoComplete' event (async)`, async () => {
-            // Arrange
+                // Set svg hover state
+                toggleEl.triggerEventHandler('mouseenter', null);
+                fixture.detectChanges();
 
-            // Act
-            spyOn(component, 'toggleTodoComplete');
-            if (toggleEl instanceof HTMLElement) {
-                toggleEl.click();
-            } else {
-                toggleEl.triggerEventHandler('click', { button: 0 });
-            }
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setCompleteHover).toHaveBeenCalled();
+                });
+            }));
 
-            // Assert
-            fixture.whenStable().then(() => {
-                expect(component.toggleTodoComplete).toHaveBeenCalled();
+            it(`'mouseleave' on 'checkbox.toggle' should call method 'setCompleteHover()' (async)`, async(() => {
+                // Arrange
+                // Firstly set 'mouseenter' state for 'checkbox.toggle'
+                toggleEl.triggerEventHandler('mouseenter', null);
+                fixture.detectChanges();
+
+                // Act
+                spyOn(component, 'setCompleteHover');
+
+                // Set svg hover state
+                toggleEl.triggerEventHandler('mouseleave', null);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setCompleteHover).toHaveBeenCalled();
+                });
+            }));
+
+            it(`clicking on 'checkbox.toggle' should call method 'toggleTodoComplete()' event (async)`, async () => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'toggleTodoComplete');
+                if (toggleEl instanceof HTMLElement) {
+                    toggleEl.click();
+                } else {
+                    toggleEl.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.toggleTodoComplete).toHaveBeenCalled();
+                });
             });
         });
 
-        it(`clicking on svg.icon-pencil-edit should call method 'editTodo()' (async)`, async () => {
-            // Arrange
+        // TODO: Delete tests and variable for svg.icon-pencil-edit later
+        // it(`clicking on svg.icon-pencil-edit should call method 'editTodo()' (async)`, async () => {
+        //     // Arrange
 
-            // Act
-            spyOn(component, 'editTodo');
-            if (editEl instanceof HTMLElement) {
-                editEl.click();
-            } else {
-                editEl.triggerEventHandler('click', { button: 0 });
-            }
+        //     // Act
+        //     spyOn(component, 'editTodo');
+        //     if (editEl instanceof HTMLElement) {
+        //         editEl.click();
+        //     } else {
+        //         editEl.triggerEventHandler('click', { button: 0 });
+        //     }
 
-            // Assert
-            fixture.whenStable().then(() => {
-                expect(component.editTodo).toHaveBeenCalled();
+        //     // Assert
+        //     fixture.whenStable().then(() => {
+        //         expect(component.editTodo).toHaveBeenCalled();
+        //     });
+        // });
+
+        describe(`label:`, () => {
+            it(`'dblclick' on 'label' should call method 'editTodo()' (async)`, async () => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'editTodo');
+                labelEl.triggerEventHandler('dblclick', new MouseEvent('dblclick'));
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.editTodo).toHaveBeenCalled();
+                });
             });
         });
 
-        it(`clicking on svg.icon-pin should call method 'pinTodo()' (async)`, async () => {
-            // Arrange
+        describe(`svg.icon-more_horiz:`, () => {
+            it(`clicking on 'svg.icon-more_horiz' should call method 'showMore()' (async)`, async () => {
+                // Arrange
 
-            // Act
-            spyOn(component, 'pinTodo');
-            if (pinEl instanceof HTMLElement) {
-                pinEl.click();
-            } else {
-                pinEl.triggerEventHandler('click', { button: 0 });
-            }
+                // Act
+                spyOn(component, 'showMore');
+                if (moreEl instanceof HTMLElement) {
+                    moreEl.click();
+                } else {
+                    moreEl.triggerEventHandler('click', { button: 0 });
+                }
 
-            // Assert
-            fixture.whenStable().then(() => {
-                expect(component.pinTodo).toHaveBeenCalled();
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.showMore).toHaveBeenCalled();
+                });
+            });
+        });
+
+        describe(`svg.icon-pin:`, () => {
+            it(`clicking on 'svg.icon-pin' should call method 'pinTodo()' (async)`, async () => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'pinTodo');
+                if (pinEl instanceof HTMLElement) {
+                    pinEl.click();
+                } else {
+                    pinEl.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.pinTodo).toHaveBeenCalled();
+                });
             });
         });
     });

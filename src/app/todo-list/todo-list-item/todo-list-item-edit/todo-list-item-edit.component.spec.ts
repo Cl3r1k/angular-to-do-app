@@ -129,9 +129,9 @@ describe('TodoListItemEditComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    describe(`#view tests`, () => {
+    describe(`#view tests:`, () => {
 
-        describe(`input.edit`, () => {
+        describe(`input.edit:`, () => {
             it(`press 'Enter' on 'input.edit' should call method 'updateTodo()' (async)`, async () => {
                 // Arrange
                 const keyDownEnterEvent = new KeyboardEvent('keydown', {
@@ -184,7 +184,7 @@ describe('TodoListItemEditComponent', () => {
             }));
         });
 
-        describe(`svg.icon-destroy`, () => {
+        describe(`svg.icon-destroy:`, () => {
             it(`'mouseenter' on 'svg.icon-destroy' should call method 'setDeleteHover()' (async)`, async(() => {
                 // Arrange
 
