@@ -129,8 +129,8 @@ export class TodoService {
             console.log('prevTodoPinState: ', prevTodoPinState);
             console.log('todoResult.pin: ', todoResult.pin);
 
-            // Do actions to reorder list with new state of todo
-            const todoOrderList = this._todoOrderService.getOrder();
+            // Reorder list with new state of todo
+            const todoOrderList: string[] = this._todoOrderService.getOrder();
 
             console.log('%cBefore todoOrderList: ', 'color: red;', todoOrderList);
             const indexTodo = todoOrderList.indexOf(todo.inner_id, 0);
@@ -142,8 +142,7 @@ export class TodoService {
                 todoOrderList.push(todo.inner_id);
             }
 
-            const updatedOrder = this._todoOrderService.updateOrder(todoOrderList);
-
+            const updatedOrder: boolean = this._todoOrderService.updateOrder(todoOrderList);
             console.log('%cAfter todoOrderList: ', 'color: red;', todoOrderList);
 
             return this.getAllTodos(0);
@@ -170,7 +169,52 @@ export class TodoService {
     // Simulate clear Completed PUT /todos
     clearCompleted(activeRouteState: number): Observable<ToDo[]> {
         if (this.serviceState === 1) {
-            return this._indexedDbService.clearCompleted(activeRouteState);
+            return this._indexedDbService.clearCompleted(activeRouteState).pipe(
+                map(todos => {
+                    // Reorder list with new list of todos
+                    const todoOrderList = this._todoOrderService.getOrder();
+
+                    console.log('%cBefore todoOrderList: ', 'color: red;', todoOrderList);
+
+                    // todos.forEach(todo => {
+                    //     let isPresent = false;
+
+                    //     todoOrderList.forEach(inner_id);
+
+                    //     const indexTodo = todoOrderList.indexOf(todo.inner_id, 0);
+                    //     if (indexTodo < 0) {
+                    //         //
+                    //     }
+                    // });
+
+                    const innerIdList = todos.map(todo => {
+                        return todo.inner_id;
+                    });
+
+                    for (let i = todoOrderList.length - 1; i >= 0; i--) {
+                        const indexTodo = innerIdList.indexOf(todoOrderList[i], 0);
+                        if (indexTodo < 0) {
+                            todoOrderList.splice(i, 1);
+                        }
+                        console.log('for ' + todoOrderList[i] + ' index is: ' + indexTodo );
+                    }
+
+                    // const indexTodo = todoOrderList.indexOf(todo.inner_id, 0);
+                    // todoOrderList.splice(indexTodo, 1);
+
+                    // if (!prevTodoPinState) {    // If todo wasn't pinned, pin to top
+                    //     todoOrderList.unshift(todo.inner_id);
+                    // } else {                    // If todo was pinned, place at bottom of the list
+                    //     // TODO: Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos
+                    //     todoOrderList.push(todo.inner_id);
+                    // }
+
+                    // const updatedOrder = this._todoOrderService.updateOrder(todoOrderList);
+                    console.log('%cAfter todoOrderList: ', 'color: red;', todoOrderList);
+
+                    return todos;
+                })
+            );
         } else {
             return this._api.clearCompleted(activeRouteState);
         }

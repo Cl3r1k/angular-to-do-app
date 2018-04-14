@@ -14,9 +14,7 @@ Todos:
     New:
         Current:
 
-            ☐ Change 'switchMap' in 'pinTodo' pipeable operator <========================================================= CURRENT TASK
-
-            ☐ Fix 'clearCompleted' order issue (if 'clearComplete()' called - order of todos is wrong)
+            ☐ Fix 'clearCompleted' order issue (if 'clearComplete()' called - order of todos is wrong) <========================================================= CURRENT TASK
 
             ☐ Add baloon tooltips for buttons
                 
