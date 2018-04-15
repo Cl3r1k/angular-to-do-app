@@ -14,10 +14,8 @@ Todos:
     New:
         Current:
 
-            ☐ Fix 'clearCompleted' order issue (if 'clearComplete()' called - order of todos is wrong) <========================================================= CURRENT TASK
+            ☐ Add baloon tooltips for buttons <========================================================= CURRENT TASK
 
-            ☐ Add baloon tooltips for buttons
-                
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
@@ -281,6 +279,8 @@ Todos:
             ✔ Add new fields in the model @done(18-04-06 09:48)
                 ✔ Update tests for the model 'ToDo' @done(18-04-06 09:53)
             ✔ Update app logic for new fields @done(18-04-06 10:27)
+        
+        ✔ Fix 'clearCompleted' order issue (if 'clearComplete()' called - order resets) @done(18-04-14 10:03)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)

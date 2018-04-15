@@ -64,26 +64,11 @@ export class TodoService {
             return this._indexedDbService.getAllTodos(activeRouteState).pipe(
                 map(todos => {
                     if (activeRouteState === 0) {    // Perform sorting by order only for unfiltered list
-                        const todoList: ToDo[] = [];
+                        let todoList: ToDo[] = [];
 
-                        let todoOrderList = this._todoOrderService.getOrder();
+                        const todoOrderList = this._todoOrderService.getOrder();
 
-                        if (!todoOrderList) {
-                            todoOrderList = todos.map(todo => {
-                                return todo.inner_id;
-                            });
-
-                            this._todoOrderService.updateOrder(todoOrderList);
-                        }
-
-                        todoOrderList.map(inner_id => {
-                            todos.map(todo => {
-                                if (todo.inner_id === inner_id) {
-                                    // console.log('%cfound todo: ', 'color: green;', todo);
-                                    todoList.push(todo);
-                                }
-                            });
-                        });
+                        todoList = this.sortListByOrder(todos, todoOrderList);
 
                         // console.log('%cfound todoList: ', 'color: red;', todoList);
 
@@ -126,13 +111,14 @@ export class TodoService {
         todo.pin = !todo.pin;
 
         return this.updateTodo(todo).switchMap((todoResult) => {
-            console.log('prevTodoPinState: ', prevTodoPinState);
-            console.log('todoResult.pin: ', todoResult.pin);
+            // console.log('prevTodoPinState: ', prevTodoPinState);
+            // console.log('todoResult.pin: ', todoResult.pin);
 
             // Reorder list with new state of todo
             const todoOrderList: string[] = this._todoOrderService.getOrder();
 
-            console.log('%cBefore todoOrderList: ', 'color: red;', todoOrderList);
+            // console.log('%cBefore todoOrderList: ', 'color: red;', todoOrderList);
+
             const indexTodo = todoOrderList.indexOf(todo.inner_id, 0);
             todoOrderList.splice(indexTodo, 1);
             if (!prevTodoPinState) {    // If todo wasn't pinned, pin to top
@@ -143,7 +129,7 @@ export class TodoService {
             }
 
             const updatedOrder: boolean = this._todoOrderService.updateOrder(todoOrderList);
-            console.log('%cAfter todoOrderList: ', 'color: red;', todoOrderList);
+            // console.log('%cAfter todoOrderList: ', 'color: red;', todoOrderList);
 
             return this.getAllTodos(0);
         });
@@ -172,45 +158,23 @@ export class TodoService {
             return this._indexedDbService.clearCompleted(activeRouteState).pipe(
                 map(todos => {
                     // Reorder list with new list of todos
-                    const todoOrderList = this._todoOrderService.getOrder();
+                    let todoOrderList = this._todoOrderService.getOrder();
 
-                    console.log('%cBefore todoOrderList: ', 'color: red;', todoOrderList);
-
-                    // todos.forEach(todo => {
-                    //     let isPresent = false;
-
-                    //     todoOrderList.forEach(inner_id);
-
-                    //     const indexTodo = todoOrderList.indexOf(todo.inner_id, 0);
-                    //     if (indexTodo < 0) {
-                    //         //
-                    //     }
-                    // });
+                    // console.log('%cBefore todoOrderList: ', 'color: red;', todoOrderList);
 
                     const innerIdList = todos.map(todo => {
                         return todo.inner_id;
                     });
 
-                    for (let i = todoOrderList.length - 1; i >= 0; i--) {
-                        const indexTodo = innerIdList.indexOf(todoOrderList[i], 0);
-                        if (indexTodo < 0) {
-                            todoOrderList.splice(i, 1);
-                        }
-                        console.log('for ' + todoOrderList[i] + ' index is: ' + indexTodo );
-                    }
+                    todoOrderList = todoOrderList.filter(todoInnerId => {
+                        const indexTodo = innerIdList.indexOf(todoInnerId, 0);
+                        return indexTodo >= 0;
+                    });
 
-                    // const indexTodo = todoOrderList.indexOf(todo.inner_id, 0);
-                    // todoOrderList.splice(indexTodo, 1);
+                    todos = this.sortListByOrder(todos, todoOrderList);
 
-                    // if (!prevTodoPinState) {    // If todo wasn't pinned, pin to top
-                    //     todoOrderList.unshift(todo.inner_id);
-                    // } else {                    // If todo was pinned, place at bottom of the list
-                    //     // TODO: Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos
-                    //     todoOrderList.push(todo.inner_id);
-                    // }
-
-                    // const updatedOrder = this._todoOrderService.updateOrder(todoOrderList);
-                    console.log('%cAfter todoOrderList: ', 'color: red;', todoOrderList);
+                    const updatedOrder = this._todoOrderService.updateOrder(todoOrderList);
+                    // console.log('%cAfter todoOrderList: ', 'color: red;', todoOrderList);
 
                     return todos;
                 })
@@ -218,6 +182,29 @@ export class TodoService {
         } else {
             return this._api.clearCompleted(activeRouteState);
         }
+    }
+
+    sortListByOrder(todos: ToDo[], todoOrderList: string[]): ToDo[] {
+        const todoList: ToDo[] = [];
+
+        if (!todoOrderList) {
+            todoOrderList = todos.map(todo => {
+                return todo.inner_id;
+            });
+
+            this._todoOrderService.updateOrder(todoOrderList);
+        }
+
+        todoOrderList.map(inner_id => {
+            todos.map(todo => {
+                if (todo.inner_id === inner_id) {
+                    // console.log('%cfound todo: ', 'color: green;', todo);
+                    todoList.push(todo);
+                }
+            });
+        });
+
+        return (todoList);
     }
 
     // Perform moveTodo in Service
