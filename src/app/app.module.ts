@@ -34,7 +34,7 @@ import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.direc
 import { DndModule } from 'ng2-dnd';
 import { Autosize } from 'ng-autosize/src/autosize.directive';
 // tslint:disable-next-line:max-line-length
-import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatTooltipModule, MatCardModule } from '@angular/material';
 
 @NgModule({
     declarations: [
@@ -66,7 +66,8 @@ import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, M
         MatInputModule,
         MatCheckboxModule,
         MatDatepickerModule,
-        MatNativeDateModule
+        MatNativeDateModule,
+        MatTooltipModule
     ],
     providers: [TodoService, ApiService, IndexedDbService, TodoOrderService],
     bootstrap: [AppComponent],
