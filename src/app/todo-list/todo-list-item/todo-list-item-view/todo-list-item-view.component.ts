@@ -47,8 +47,8 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     editTodo(todo: ToDo) {
-        // console.log('editTodo called in TodoListItemViewComponent with title: ', todo.title);
-        // this.editTodoListItemEmitter.emit(todo);    // Emit the 'edit' event to a Parent component
+        console.log('editTodo called in TodoListItemViewComponent with title: ', todo.title);
+        this.editTodoListItemEmitter.emit(todo);    // Emit the 'edit' event to a Parent component
     }
 
     updateTodo(todo: ToDo) {

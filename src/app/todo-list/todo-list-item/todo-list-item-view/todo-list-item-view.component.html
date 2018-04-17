@@ -1,11 +1,9 @@
 <div class='viewContainer' [class.edit-hovered]='editHoverState' [class.complete-hovered]='completeHoverState'>
     <div class='buttons-before-block'>
-        <!-- <svg class='icon icon-move-vertical handle' dnd-sortable-handle>
-            <use xlink:href='#icon-move-vertical'></use>
-        </svg> -->
         <svg class='icon icon-ellipsis-v handle' dnd-sortable-handle>
             <use xlink:href='#icon-ellipsis-v'></use>
         </svg>
+        <div class='priority-block'></div>
         <input type='checkbox' class='toggle' (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)' matTooltip='Toggle complete' matTooltipPosition='above'>
     </div>
     <label (dblclick)='editTodo(todo)'>{{todo.title}}</label>

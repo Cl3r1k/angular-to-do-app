@@ -2,7 +2,7 @@
     <div class='editContainerControls'>
         <textarea autosize class='edit' [(ngModel)]='todo.title' (keydown.enter)='updateTodo(todo); false' (keyup.esc)='cancelEditTodo()' (blur)='stopEditTodoOnBlur()' placeholder='Enter name of the task or press Enter to delete the task' #editedTodo></textarea>
         <div class='buttons-block-edit'>
-            <svg class='icon icon-destroy' (click)='removeTodo(todo)' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)'>
+            <svg class='icon icon-destroy' (click)='removeTodo(todo)' (mouseenter)='setDeleteHover(true)' (mouseleave)='setDeleteHover(false)' matTooltip='Delete todo' matTooltipPosition='above'>
                 <use xlink:href='#icon-destroy'></use>
             </svg>
         </div>

@@ -66,17 +66,17 @@ describe('TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
-    // it(`should emit 'edit' event (async)`, async(() => {
-    //     // Arrange
-    //     let todo: ToDo;
+    it(`should emit 'edit' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
 
-    //     // Act
-    //     component.editTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to 'edit' event
-    //     component.editTodo(expectedTodo);
+        // Act
+        component.editTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to 'edit' event
+        component.editTodo(expectedTodo);
 
-    //     // Assert
-    //     expect(todo).toEqual(expectedTodo);
-    // }));
+        // Assert
+        expect(todo).toEqual(expectedTodo);
+    }));
 
     it(`should emit 'more' event (async)`, async(() => {
         // Arrange

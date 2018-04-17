@@ -116,10 +116,11 @@
             // background-color: greenyellow; // For debuging
             display: grid;
             height: 100%;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             align-items: center;
             .icon-ellipsis-v {
                 // width: 0.2138671875em;
+                width: 10px;
                 font-size: 20px;
                 color: #939dc9;
                 // background-color: #555; // For debuging
@@ -131,6 +132,12 @@
                     color: #687197;
                     cursor: pointer;
                 }
+            }
+            .priority-block {
+                background-color: red; // For debuging
+                width: 5px;
+                height: 70%;
+                border-radius: 10px;
             }
             // .icon-move-vertical {
             //     // width: 0.375em;
