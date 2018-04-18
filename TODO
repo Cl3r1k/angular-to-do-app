@@ -14,8 +14,8 @@ Todos:
     New:
         Current:
 
-            ☐ Add 'priority-block' with styles between 'drag icon' and 'checkbox.toggle' for todo (if label todo has symbols '!' then use colored block, for example - !!! - the color is red, !!!! - the color is orange, etc) <========================================================= CURRENT TASK
-                ☐ Update logic app
+            ☐ Add 'priority-block' with styles between 'drag icon' and 'checkbox.toggle' for todo (if label todo has symbols '!' then use colored block, for example - !!! - the color is red, !!!! - the color is orange, etc)
+                ☐ Update logic app <========================================================= CURRENT TASK
                     ☐ Update tests for new logic with 'priority-block'
 
 

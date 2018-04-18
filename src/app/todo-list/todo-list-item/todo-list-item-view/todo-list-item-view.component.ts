@@ -36,10 +36,15 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     // TODO: Cleanup 'edit' code later
     // editHoverState = false;
     completeHoverState = false;
+    priorityColors = ['transparent', 'red', 'orange', 'yellow', 'blue', 'pink', 'gray', 'green'];
+    priorityColor = this.priorityColors[0];
+    titleToView = '';
 
     constructor() { }
 
     ngOnInit() {
+        this.titleToView = this.parseTitle(this.todo);
+        console.log('parse in ngOnInit -> title: %s and priorityColor: ', this.todo.title, this.priorityColor);
     }
 
     toggleTodoComplete(todo: ToDo) {
@@ -76,6 +81,10 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     setCompleteHover(completeHoverState: boolean) {
         this.completeHoverState = completeHoverState;
+    }
+
+    parseTitle(todo: ToDo) {
+        return todo.title;
     }
 
 }
