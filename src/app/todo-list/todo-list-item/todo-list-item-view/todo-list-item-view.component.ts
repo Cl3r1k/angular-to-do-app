@@ -84,6 +84,45 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     parseTitle(todo: ToDo) {
+
+        const tmpTitle = todo.title;
+
+        let foundPriority = false;
+
+        for (let mainInd = tmpTitle.length - 1; mainInd >= 0; mainInd--) {
+            const lastIndex = tmpTitle.lastIndexOf('!', mainInd);
+
+            if (lastIndex < 0) {
+                break;    // '!' not found, skip parsing
+            }
+
+            if (lastIndex === tmpTitle.length - 1 || tmpTitle[lastIndex + 1] === ' ') {
+                let counter = 0;
+                let notPriority = false;
+                for (let i = lastIndex; i >= 0; i--) {
+                    if (tmpTitle[i] === '!') {
+                        counter++;
+                        continue;
+                    }
+                    if (tmpTitle[i] === ' ') {
+                        foundPriority = true;
+                        break;
+                    } else {
+                        notPriority = true;
+                        break;
+                    }
+                }
+
+                if (foundPriority) {
+                    break;
+                }
+            } else {
+                continue;
+            }
+        }
+
+        // if (!notPriority)
+
         return todo.title;
     }
 
