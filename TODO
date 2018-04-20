@@ -14,9 +14,7 @@ Todos:
     New:
         Current:
 
-            ☐ Add 'priority-block' with styles between 'drag icon' and 'checkbox.toggle' for todo (if label todo has symbols '!' then use colored block, for example - !!! - the color is red, !!!! - the color is orange, etc)
-                ☐ Update logic app <========================================================= CURRENT TASK
-                    ☐ Update tests for new logic with 'priority-block'
+            ☐ Use zones for DnD (for pinned, unpinned, and completed use three different zones) <========================================================= CURRENT TASK
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
@@ -46,7 +44,7 @@ Todos:
             ☐ Rewrite part for DnD (use https://github.com/atlassian/react-beautiful-dnd and adopt it to angular)
                 ☐ Use custom cursor for DnD icon (look here https://github.com/atlassian/react-beautiful-dnd/blob/master/src/view/style-marshal/get-styles.js#L110)
 
-        ☐ Use zones for DnD (for pinned, unpinned, and completed use three different zones)
+
         ☐ Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos (look in 'TodoService' 'pinTodo()')
         ☐ Handle error properly as Observable (look here http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)
@@ -288,6 +286,10 @@ Todos:
             ✔ Add tooltips to 'TodoListItemEditComponent' @done(18-04-16 09:05)
             ✔ Add tooltips to 'TodoListHeaderComponent' @done(18-04-16 09:10)
             ✔ Add tooltips to 'TodoListFooterComponent' @done(18-04-16 09:12)
+
+        ✔ Add 'priority-block' with styles between 'drag icon' and 'checkbox.toggle' for todo (if label todo has symbols '!' then use colored block, for example - !!! - the color is red, !!!! - the color is orange, etc) @done(18-04-19 10:17)
+            ✔ Update logic app with 'priority-block'  @done(18-04-19 09:57)
+                ✔ Update tests for new logic with 'priority-block' @done(18-04-19 10:17)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)

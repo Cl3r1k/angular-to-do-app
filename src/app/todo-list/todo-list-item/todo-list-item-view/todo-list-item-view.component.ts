@@ -36,7 +36,8 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     // TODO: Cleanup 'edit' code later
     // editHoverState = false;
     completeHoverState = false;
-    priorityColors = ['transparent', 'red', 'orange', 'yellow', 'blue', 'pink', 'gray', 'green'];
+    // tslint:disable-next-line:max-line-length
+    priorityColors = ['transparent', 'red', 'orange', 'tomato', 'royalblue', 'steelblue', 'skyblue', 'forestgreen', 'limegreen', 'mediumspringgreen', 'paleturquoise'];
     priorityColor = this.priorityColors[0];
     titleToView = '';
 
@@ -44,7 +45,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     ngOnInit() {
         this.titleToView = this.parseTitle(this.todo);
-        console.log('parse in ngOnInit -> title: %s and priorityColor: ', this.todo.title, this.priorityColor);
+        // console.log('parse in ngOnInit -> title: %s and priorityColor: ', this.todo.title, this.priorityColor);
     }
 
     toggleTodoComplete(todo: ToDo) {
@@ -85,19 +86,21 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     parseTitle(todo: ToDo) {
 
-        const tmpTitle = todo.title;
+        let tmpTitle = todo.title;
 
         let foundPriority = false;
+        let lastIndex: number;
+        let counter = 0;
 
         for (let mainInd = tmpTitle.length - 1; mainInd >= 0; mainInd--) {
-            const lastIndex = tmpTitle.lastIndexOf('!', mainInd);
+            lastIndex = tmpTitle.lastIndexOf('!', mainInd);
 
             if (lastIndex < 0) {
                 break;    // '!' not found, skip parsing
             }
 
             if (lastIndex === tmpTitle.length - 1 || tmpTitle[lastIndex + 1] === ' ') {
-                let counter = 0;
+                counter = 0;
                 let notPriority = false;
                 for (let i = lastIndex; i >= 0; i--) {
                     if (tmpTitle[i] === '!') {
@@ -121,9 +124,19 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
             }
         }
 
-        // if (!notPriority)
+        if (foundPriority) {
+            // console.log('lastIndex: ', lastIndex);
+            // console.log('counter: ', counter);
+            this.priorityColor = this.priorityColors[counter > 10 ? 10 : counter];
+            let tmpTitleParsed = tmpTitle.slice(0, lastIndex - counter);
+            if (lastIndex < tmpTitle.length - 1) {
+                tmpTitleParsed += tmpTitle.slice(lastIndex + 1, tmpTitle.length);
+            }
+            tmpTitle = tmpTitleParsed;
+            // console.log('%ctmpTitleParsed: ', 'color: green;', tmpTitleParsed);
+        }
 
-        return todo.title;
+        return tmpTitle;
     }
 
 }

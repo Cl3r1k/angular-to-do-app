@@ -114,6 +114,80 @@ describe('TodoListItemViewComponent', () => {
         expect(todo).toEqual(expectedTodo);
     }));
 
+    describe(`#parseTitle`, () => {
+        it(`Should return initial string without changes and 'priorityColor' should be 'transparent' (async)`, async(() => {
+            // Arrange
+            const todo: ToDo = new ToDo({title: 'Add more todos!'});
+
+            // Act
+            const result = component.parseTitle(todo);
+
+            // Assert
+            expect(result).toEqual('Add more todos!');
+            expect(component.priorityColor).toEqual('transparent');
+        }));
+
+        it(`Should return initial string(contains a!) without changes and 'priorityColor' should be 'transparent' (async)`, async(() => {
+            // Arrange
+            const todo: ToDo = new ToDo({title: 'Add more todos a!'});
+
+            // Act
+            const result = component.parseTitle(todo);
+
+            // Assert
+            expect(result).toEqual('Add more todos a!');
+            expect(component.priorityColor).toEqual('transparent');
+        }));
+
+        it(`Should return parsed string with changes and 'priorityColor' should be 'red' (async)`, async(() => {
+            // Arrange
+            const todo: ToDo = new ToDo({title: 'Add more todos !'});
+
+            // Act
+            const result = component.parseTitle(todo);
+
+            // Assert
+            expect(result).toEqual('Add more todos');
+            expect(component.priorityColor).toEqual('red');
+        }));
+
+        it(`Should return parsed string with changes and 'priorityColor' should be 'orange' (async)`, async(() => {
+            // Arrange
+            const todo: ToDo = new ToDo({title: 'Add more todos ! !!'});
+
+            // Act
+            const result = component.parseTitle(todo);
+
+            // Assert
+            expect(result).toEqual('Add more todos !');
+            expect(component.priorityColor).toEqual('orange');
+        }));
+
+        it(`Should return parsed string(contains ! in middle) with changes and 'priorityColor' should be 'tomato' (async)`, async(() => {
+            // Arrange
+            const todo: ToDo = new ToDo({title: 'Add more ! todos ! !!!'});
+
+            // Act
+            const result = component.parseTitle(todo);
+
+            // Assert
+            expect(result).toEqual('Add more ! todos !');
+            expect(component.priorityColor).toEqual('tomato');
+        }));
+
+        it(`Should return parsed string(contains many !) with changes and 'priorityColor' should be 'paleturquoise' (async)`, async(() => {
+            // Arrange
+            const todo: ToDo = new ToDo({title: 'Add more todos ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'});
+
+            // Act
+            const result = component.parseTitle(todo);
+
+            // Assert
+            expect(result).toEqual('Add more todos !');
+            expect(component.priorityColor).toEqual('paleturquoise');
+        }));
+    });
+
     describe(`#view tests:`, () => {
 
         describe(`checkbox.toggle:`, () => {
