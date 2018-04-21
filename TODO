@@ -15,6 +15,9 @@ Todos:
         Current:
 
             ☐ Use zones for DnD (for pinned, unpinned, and completed use three different zones) <========================================================= CURRENT TASK
+                ☐ Use 'Multi list sortable between containers' in 'ng2-dnd' (look here `http://embed.plnkr.co/JbG8Si`)
+                ☐ Split list to 3 zones
+                    ☐ Update test for zones
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
@@ -44,7 +47,7 @@ Todos:
             ☐ Rewrite part for DnD (use https://github.com/atlassian/react-beautiful-dnd and adopt it to angular)
                 ☐ Use custom cursor for DnD icon (look here https://github.com/atlassian/react-beautiful-dnd/blob/master/src/view/style-marshal/get-styles.js#L110)
 
-
+        ☐ Add delay for popups
         ☐ Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos (look in 'TodoService' 'pinTodo()')
         ☐ Handle error properly as Observable (look here http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)

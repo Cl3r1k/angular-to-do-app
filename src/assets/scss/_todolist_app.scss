@@ -2,8 +2,20 @@
 
 .main {
     // position: relative;
-    z-index: 2;
+    // z-index: 2;
     border-top: 1px solid #e6e6e6;
+    .pinned-list {
+        // height: 100px;                           // For Debug
+        // background-color: royalblue;             // For Debug
+    }
+    .unpinned-list {
+        // height: 100px;                           // For Debug
+        // background-color: rgb(153, 65, 225);     // For Debug
+    }
+    .completed-list {
+        // height: 100px;                           // For Debug
+        // background-color: rgb(47, 207, 181);     // For Debug
+    }
 }
 
 .todo-list {

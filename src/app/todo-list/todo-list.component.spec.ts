@@ -117,25 +117,27 @@ describe('TodoListComponent', () => {
         expect(todo).toEqual(todo1);
     }));
 
-    it(`should move todo at top to bottom (async)`, async(() => {
-        // Arrange
-        fixture.detectChanges();
+    describe(`#view tests:`, () => {
+        it(`should move todo at top to bottom (async)`, async(() => {
+            // Arrange
+            fixture.detectChanges();
 
-        const todoToDragEl = fixture.debugElement.queryAll(By.css('li'))[0].nativeElement;
-        const todoToDropEl = fixture.debugElement.queryAll(By.css('li'))[2].nativeElement;
-        const handleEl = fixture.debugElement.queryAll(By.css('.handle'))[0].nativeElement;
+            const todoToDragEl = fixture.debugElement.queryAll(By.css('li'))[0].nativeElement;
+            const todoToDropEl = fixture.debugElement.queryAll(By.css('li'))[2].nativeElement;
+            const handleEl = fixture.debugElement.queryAll(By.css('.handle'))[0].nativeElement;
 
-        // Act
-        triggerEvent(handleEl, 'mousedown', 'MouseEvent');
-        triggerEvent(todoToDragEl, 'dragstart', 'MouseEvent');
-        triggerEvent(todoToDropEl, 'dragenter', 'MouseEvent');
-        triggerEvent(handleEl, 'mouseup', 'MouseEvent');
-        triggerEvent(todoToDragEl, 'drop', 'MouseEvent');
-        fixture.detectChanges();
+            // Act
+            triggerEvent(handleEl, 'mousedown', 'MouseEvent');
+            triggerEvent(todoToDragEl, 'dragstart', 'MouseEvent');
+            triggerEvent(todoToDropEl, 'dragenter', 'MouseEvent');
+            triggerEvent(handleEl, 'mouseup', 'MouseEvent');
+            triggerEvent(todoToDragEl, 'drop', 'MouseEvent');
+            fixture.detectChanges();
 
-        // Assert
-        expect(component.todos.map(todo => todo.id)).toEqual([2, 3, 1]);
-    }));
+            // Assert
+            expect(component.todos.map(todo => todo.id)).toEqual([2, 3, 1]);
+        }));
+    });
 
     function triggerEvent(elem: HTMLElement, eventName: string, eventType: string) {
         const event: Event = document.createEvent(eventType);
