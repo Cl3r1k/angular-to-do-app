@@ -9,6 +9,7 @@ import { ToDo } from '@app/_models/to-do';
 export class TodoListComponent implements OnInit {
 
     @Input() todos: ToDo[];
+    @Input() todosToView: [ToDo[]];
 
     @Input() todosAllAmount: number;
 
@@ -31,15 +32,11 @@ export class TodoListComponent implements OnInit {
     moveTodoListEmitter: EventEmitter<Object> = new EventEmitter();
 
     dragEnabled = true;    // Variable for prefs to enable/disable DnD
-    pinnedTodos: ToDo[];
-    unpinnedTodos: ToDo[];
-    completedTodos: ToDo[];
 
     constructor() { }
 
     ngOnInit() {
         console.log('in ngOnInit -> todos: ', this.todos);
-        this.transformView(this.todos);
     }
 
     onToggleTodoComplete(todo: ToDo) {
@@ -67,24 +64,6 @@ export class TodoListComponent implements OnInit {
             const shiftedTodoPos = oldPostition > newPosition ? newPosition + 1 : newPosition - 1;
             this.moveTodoListEmitter.emit({movedTodoIdSource: this.todos[shiftedTodoPos].id, movedTodoIdDest: this.todos[newPosition].id});
         }
-    }
-
-    transformView(todos: ToDo[]) {
-        this.pinnedTodos = todos.filter(todo => {
-            return !todo.complete && todo.pin;
-        });
-
-        this.unpinnedTodos = todos.filter(todo => {
-            return !todo.complete && !todo.pin;
-        });
-
-        this.completedTodos = todos.filter(todo => {
-            return todo.complete;
-        });
-
-        // console.log('%cpinnedTodos', 'color: salmon;', this.pinnedTodos);
-        // console.log('%cpinnedTodos', 'color: salmon;', this.unpinnedTodos);
-        // console.log('%cpinnedTodos', 'color: salmon;', this.completedTodos);
     }
 
 }

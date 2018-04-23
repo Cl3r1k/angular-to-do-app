@@ -1,21 +1,21 @@
 <section class='main' *ngIf='todosAllAmount > 0'>
-    <div class='pinned-list' *ngIf='pinnedTodos.length' dnd-sortable-container [dropZones]="['todos-zone-pinned']" [sortableData]='pinnedTodos'>
+    <div class='pinned-list' *ngIf='todosToView[0].length' dnd-sortable-container [dropZones]="['todos-zone-pinned']" [sortableData]='todosToView[0]'>
         <ul class='todo-list'>
-            <li *ngFor='let todo of pinnedTodos; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='dragEnabled' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
+            <li *ngFor='let todo of todosToView[0]; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='dragEnabled' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
                 <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (moreTodoListItemEmitter)='onMoreTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>
             </li>
         </ul>
     </div>
-    <div class='unpinned-list' *ngIf='unpinnedTodos.length' class='pinned-list' dnd-sortable-container [dropZones]="['todos-zone-unpinned']" [sortableData]='unpinnedTodos'>
+    <div class='unpinned-list' *ngIf='todosToView[1].length' dnd-sortable-container [dropZones]="['todos-zone-unpinned']" [sortableData]='todosToView[1]'>
         <ul class='todo-list'>
-            <li *ngFor='let todo of unpinnedTodos; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='dragEnabled' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
+            <li *ngFor='let todo of todosToView[1]; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='dragEnabled' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
                 <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (moreTodoListItemEmitter)='onMoreTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>
             </li>
         </ul>
     </div>
-    <div class='completed-list' *ngIf='completedTodos.length' dnd-sortable-container [dropZones]="['todos-zone-completed']" [sortableData]='completedTodos'>
+    <div class='completed-list' *ngIf='todosToView[2].length' dnd-sortable-container [dropZones]="['todos-zone-completed']" [sortableData]='todosToView[2]'>
         <ul class='todo-list'>
-            <li *ngFor='let todo of completedTodos; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='dragEnabled' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
+            <li *ngFor='let todo of todosToView[2]; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='dragEnabled' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
                 <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (moreTodoListItemEmitter)='onMoreTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>
             </li>
         </ul>

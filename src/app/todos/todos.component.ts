@@ -25,6 +25,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     todos: ToDo[] = [];
     todo: ToDo = null;
+    todosToView: [ToDo[]] = [[]];
     allTodosAmount: number;
     activeTodosAmount: number;
     completedTodosAmount: number;
@@ -59,6 +60,7 @@ export class TodosComponent implements OnInit, OnDestroy {
                     } else {
                         this.activeRouteState = 0;
                     }
+                    this.transformView();
                     this.updateFooterAndToggleAllInfo();
                 }
             );
@@ -274,6 +276,32 @@ export class TodosComponent implements OnInit, OnDestroy {
         });
 
         const updatedOrder = this._todoOrderService.updateOrder(todoOrderList);
+    }
+
+    transformView() {
+        let pinnedTodos: ToDo[];
+        let unpinnedTodos: ToDo[];
+        let completedTodos: ToDo[];
+
+        pinnedTodos = this.todos.filter(todo => {
+            return !todo.complete && todo.pin;
+        });
+
+        unpinnedTodos = this.todos.filter(todo => {
+            return !todo.complete && !todo.pin;
+        });
+
+        completedTodos = this.todos.filter(todo => {
+            return todo.complete;
+        });
+
+        this.todosToView[0] = pinnedTodos;
+        this.todosToView.push(unpinnedTodos);
+        this.todosToView.push(completedTodos);
+
+        console.log('%cpinnedTodos', 'color: salmon;', pinnedTodos);
+        console.log('%cpinnedTodos', 'color: salmon;', unpinnedTodos);
+        console.log('%cpinnedTodos', 'color: salmon;', completedTodos);
     }
 
 }
