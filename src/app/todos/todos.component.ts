@@ -79,6 +79,7 @@ export class TodosComponent implements OnInit, OnDestroy {
                 this.todos = this.todos.concat(newTodo);
             }
             this.updateOrder();
+            this.transformView();
             this.updateFooterAndToggleAllInfo();
         });
     }
@@ -96,6 +97,7 @@ export class TodosComponent implements OnInit, OnDestroy {
                     this.todos = this.todos.filter((val) => val.id !== todo.id);
                 }
             }
+            this.transformView();
             this.updateFooterAndToggleAllInfo();
         });
     }
@@ -133,6 +135,7 @@ export class TodosComponent implements OnInit, OnDestroy {
             this.todo = _;
             this.todos = this.todos.filter((val) => val.id !== todo.id);
             this.updateOrder();
+            this.transformView();
             this.updateFooterAndToggleAllInfo();
         });
     }
@@ -190,6 +193,7 @@ export class TodosComponent implements OnInit, OnDestroy {
             // todo = updatedTodo;        // We even do not need to update inner todo
             console.log('in onPinTodo updatedTodos: ', updatedTodos);
             this.todos = updatedTodos;
+            this.transformView();
         });
     }
 
@@ -198,6 +202,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         this._todoService.toggleAll(toggleState, this.activeRouteState).subscribe((todos) => {
             console.log('in onToggleAll incoming todos:', todos);
             this.todos = todos;
+            this.transformView();
             this.updateFooterAndToggleAllInfo();
         });
     }
@@ -294,6 +299,8 @@ export class TodosComponent implements OnInit, OnDestroy {
         completedTodos = this.todos.filter(todo => {
             return todo.complete;
         });
+
+        this.todosToView = [[]];
 
         this.todosToView[0] = pinnedTodos;
         this.todosToView.push(unpinnedTodos);

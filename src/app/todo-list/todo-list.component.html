@@ -15,7 +15,7 @@
     </div>
     <div class='completed-list' *ngIf='todosToView[2].length' dnd-sortable-container [dropZones]="['todos-zone-completed']" [sortableData]='todosToView[2]'>
         <ul class='todo-list'>
-            <li *ngFor='let todo of todosToView[2]; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='dragEnabled' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
+            <li *ngFor='let todo of todosToView[2]; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='false' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
                 <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (moreTodoListItemEmitter)='onMoreTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>
             </li>
         </ul>

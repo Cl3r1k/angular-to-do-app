@@ -6,17 +6,17 @@
     // border-top: 1px solid #e6e6e6;
     .pinned-list {
         // height: 100px;                           // For Debug
-        background-color: royalblue; // For Debug
+        background-color: #b76fee; // For Debug
         border-top: 1px solid #e6e6e6;
     }
     .unpinned-list {
         // height: 100px;                           // For Debug
-        background-color: rgb(153, 65, 225); // For Debug
+        background-color: #6889ee; // For Debug
         border-top: 1px solid #e6e6e6;
     }
     .completed-list {
         // height: 100px;                           // For Debug
-        background-color: rgb(47, 207, 181); // For Debug
+        background-color: #62e9d2; // For Debug
         border-top: 1px solid #e6e6e6;
     }
 }
@@ -218,7 +218,7 @@
             .icon-more_horiz {
                 font-size: 20px;
                 color: #bddad5;
-                background-color: #888; // For debuging
+                background-color: #0066ff; // For debuging
                 margin: auto auto;
                 padding: 3px 3px 3px 3px;
                 transition: 0.3s ease-out;
@@ -250,7 +250,7 @@
             .icon-pin {
                 font-size: 20px;
                 color: #858585;
-                background-color: #639663; // For debuging
+                background-color: #50f550; // For debuging
                 margin: auto auto;
                 padding: 3px 3px 3px 3px;
                 transition: 0.3s ease-out;
