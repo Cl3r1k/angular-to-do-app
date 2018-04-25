@@ -113,28 +113,46 @@ export class TodoService {
         return this.updateTodo(todo).switchMap((todoResult) => {
             // console.log('prevTodoPinState: ', prevTodoPinState);
             // console.log('todoResult.pin: ', todoResult.pin);
+            let pinnedTodosOrderList: string[];
+            let unpinnedTodosOrderList: string[];
+            let completedTodosOrderList: string[];
 
-            // Reorder list with new state of todo
-            const todoOrderList: string[] = this._todoOrderService.getOrder();
+            pinnedTodosOrderList = todos.filter(todoItem => {
+                return !todoItem.complete && todoItem.pin;
+            }).map(todoId => {
+                return todoId.inner_id;
+            });
 
-            // console.log('%cBefore todoOrderList: ', 'color: red;', todoOrderList);
+            unpinnedTodosOrderList = todos.filter(todoItem => {
+                return !todoItem.complete && !todoItem.pin;
+            }).map(todoId => {
+                return todoId.inner_id;
+            });
 
-            const indexTodo = todoOrderList.indexOf(todo.inner_id, 0);
-            todoOrderList.splice(indexTodo, 1);
-            if (!prevTodoPinState) {    // If todo wasn't pinned, pin to top
-                todoOrderList.unshift(todo.inner_id);
-            } else {                    // If todo was pinned, place at bottom of the list
-                // TODO: Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos
-                todoOrderList.push(todo.inner_id);
+            completedTodosOrderList = todos.filter(todoItem => {
+                return todoItem.complete;
+            }).map(todoId => {
+                return todoId.inner_id;
+            });
+
+            if (!prevTodoPinState) {    // The list comes from parent updated, and we need to pump todo to top of the list
+                const indexTodo = pinnedTodosOrderList.indexOf(todo.inner_id, 0);
+                pinnedTodosOrderList.splice(indexTodo, 1);
+                pinnedTodosOrderList.unshift(todo.inner_id);
+            } else {
+                const indexTodo = unpinnedTodosOrderList.indexOf(todo.inner_id, 0);
+                unpinnedTodosOrderList.splice(indexTodo, 1);
+                unpinnedTodosOrderList.unshift(todo.inner_id);
             }
+
+            // Reorder list with new state
+            const todoOrderList: string[] = pinnedTodosOrderList.concat(unpinnedTodosOrderList, completedTodosOrderList);
 
             const updatedOrder: boolean = this._todoOrderService.updateOrder(todoOrderList);
             // console.log('%cAfter todoOrderList: ', 'color: red;', todoOrderList);
 
             return this.getAllTodos(0);
         });
-
-        // return this.updateTodo(todo);
     }
 
     // Simulate Toggle all PUT /todos
