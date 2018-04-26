@@ -86,17 +86,24 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     // Service is now available as this._todoService
     onToggleTodoComplete(todo: ToDo) {
-        this._todoService.toggleTodoComplete(todo).subscribe((updatedTodo) => {
-            todo = updatedTodo;
-            if (todo.complete) {
-                if (this.activeRouteState === 1) {
-                    this.todos = this.todos.filter((val) => val.id !== todo.id);
-                }
-            } else {
-                if (this.activeRouteState === 2) {
-                    this.todos = this.todos.filter((val) => val.id !== todo.id);
-                }
-            }
+        // this._todoService.toggleTodoComplete(todo).subscribe((updatedTodo) => {
+        //     todo = updatedTodo;
+        //     if (todo.complete) {
+        //         if (this.activeRouteState === 1) {
+        //             this.todos = this.todos.filter((val) => val.id !== todo.id);
+        //         }
+        //     } else {
+        //         if (this.activeRouteState === 2) {
+        //             this.todos = this.todos.filter((val) => val.id !== todo.id);
+        //         }
+        //     }
+        //     this.transformView();
+        //     this.updateFooterAndToggleAllInfo();
+        // });
+
+        this._todoService.toggleTodoComplete(todo, this.todos).subscribe((updatedTodos) => {
+            console.log('in onToggleTodoComplete updatedTodos: ', updatedTodos);
+            this.todos = updatedTodos;
             this.transformView();
             this.updateFooterAndToggleAllInfo();
         });

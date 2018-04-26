@@ -98,12 +98,63 @@ export class TodoService {
     }
 
     // Toggle todo complete
-    toggleTodoComplete(todo: ToDo): Observable<ToDo> {
+    toggleTodoComplete(todo: ToDo, todos: ToDo[]): Observable<ToDo[]> {
+        const prevTodoCompleteState = todo.complete;
         todo.complete = !todo.complete;
 
         todo.complete ? todo.completed_time = new Date().toISOString() : todo.completed_time = null;
 
-        return this.updateTodo(todo);
+        return this.updateTodo(todo).switchMap((todoResult) => {
+            // console.log('prevTodoPinState: ', prevTodoPinState);
+            // console.log('todoResult.pin: ', todoResult.pin);
+            let pinnedTodosOrderList: string[];
+            let unpinnedTodosOrderList: string[];
+            let completedTodosOrderList: string[];
+
+            pinnedTodosOrderList = todos.filter(todoItem => {
+                return !todoItem.complete && todoItem.pin;
+            }).map(todoId => {
+                return todoId.inner_id;
+            });
+
+            unpinnedTodosOrderList = todos.filter(todoItem => {
+                return !todoItem.complete && !todoItem.pin;
+            }).map(todoId => {
+                return todoId.inner_id;
+            });
+
+            completedTodosOrderList = todos.filter(todoItem => {
+                return todoItem.complete;
+            }).map(todoId => {
+                return todoId.inner_id;
+            });
+
+            if (!prevTodoCompleteState) {    // The list comes from parent updated, and we need to pump todo to top of the completed list
+                const indexTodo = completedTodosOrderList.indexOf(todo.inner_id, 0);
+                completedTodosOrderList.splice(indexTodo, 1);
+                completedTodosOrderList.unshift(todo.inner_id);
+            } else {
+                if (todo.pin) {
+                    const indexTodo = pinnedTodosOrderList.indexOf(todo.inner_id, 0);
+                    pinnedTodosOrderList.splice(indexTodo, 1);
+                    pinnedTodosOrderList.push(todo.inner_id);
+                } else {
+                    const indexTodo = unpinnedTodosOrderList.indexOf(todo.inner_id, 0);
+                    unpinnedTodosOrderList.splice(indexTodo, 1);
+                    unpinnedTodosOrderList.push(todo.inner_id);
+                }
+            }
+
+            // Reorder list with new state
+            const todoOrderList: string[] = pinnedTodosOrderList.concat(unpinnedTodosOrderList, completedTodosOrderList);
+
+            const updatedOrder: boolean = this._todoOrderService.updateOrder(todoOrderList);
+            // console.log('%cAfter todoOrderList: ', 'color: red;', todoOrderList);
+
+            return this.getAllTodos(0);
+        });
+
+        // return this.updateTodo(todo);
     }
 
     pinTodo(todo: ToDo, todos: ToDo[]): Observable<ToDo[]> {
@@ -157,8 +208,9 @@ export class TodoService {
 
     // Simulate Toggle all PUT /todos
     toggleAll(toggleState: boolean, activeRouteState: number): Observable<ToDo[]> {
-        // return this._api.toggleAll(state);
-        return this._indexedDbService.toggleAll(toggleState, activeRouteState);
+        return this._indexedDbService.toggleAll(toggleState, activeRouteState).switchMap((todoResult) => {
+            return this.getAllTodos(0);    // In this method current list order will be saved AS IS
+        });
     }
 
     // Simulate DELETE /todos/:id
