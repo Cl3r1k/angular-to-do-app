@@ -60,6 +60,7 @@ export class TodoListComponent implements OnInit {
     }
 
     onMove(oldPostition: number, newPosition: number) {
+        // TODO: Update this part, currently DnD is not working
         if (oldPostition !== newPosition) {
             const shiftedTodoPos = oldPostition > newPosition ? newPosition + 1 : newPosition - 1;
             this.moveTodoListEmitter.emit({movedTodoIdSource: this.todos[shiftedTodoPos].id, movedTodoIdDest: this.todos[newPosition].id});
