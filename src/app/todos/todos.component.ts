@@ -74,11 +74,9 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     // Method to handle event emitted by TodoListHeaderComponent
     onAddTodo(todo: ToDo) {
-        this._todoService.addTodo(todo).subscribe((newTodo) => {
-            if (this.activeRouteState !== 2) {
-                this.todos = this.todos.concat(newTodo);
-            }
-            this.updateOrder();
+        this._todoService.addTodo(todo, this.todos).subscribe((updatedTodos) => {
+            console.log('in onAddTodo() updatedTodos: ', updatedTodos);
+            this.todos = updatedTodos;
             this.transformView();
             this.updateFooterAndToggleAllInfo();
         });
@@ -271,13 +269,14 @@ export class TodosComponent implements OnInit, OnDestroy {
         this.toggleAllHoverState = toggleAllHoverState;
     }
 
-    onMoveTodo(moveState: Object) {
-        console.log('onMoveTodo (in TodoListComponent and) in current method moveState is: ', moveState);
+    onMoveTodo(todosUpdated: ToDo[]) {
+        console.log('onMoveTodo (in TodoListComponent and) in current method todosUpdated is: ', todosUpdated);
         // this._todoService.moveTodo(moveState, this.activeRouteState).subscribe((todos) => {
         //     console.log('in onMoveTodo incoming todos:', todos);
         //     this.todos = todos;
         // });
 
+        this.todos = todosUpdated;
         this.updateOrder();
     }
 

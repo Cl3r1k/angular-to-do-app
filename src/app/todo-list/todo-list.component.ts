@@ -29,7 +29,7 @@ export class TodoListComponent implements OnInit {
     removeTodoListEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output()
-    moveTodoListEmitter: EventEmitter<Object> = new EventEmitter();
+    moveTodoListEmitter: EventEmitter<ToDo[]> = new EventEmitter();
 
     dragEnabled = true;    // Variable for prefs to enable/disable DnD
 
@@ -60,11 +60,18 @@ export class TodoListComponent implements OnInit {
     }
 
     onMove(oldPostition: number, newPosition: number) {
-        // TODO: Update this part, currently DnD is not working
-        if (oldPostition !== newPosition) {
-            const shiftedTodoPos = oldPostition > newPosition ? newPosition + 1 : newPosition - 1;
-            this.moveTodoListEmitter.emit({movedTodoIdSource: this.todos[shiftedTodoPos].id, movedTodoIdDest: this.todos[newPosition].id});
-        }
+
+        // Reorder list with new state
+        const todosUpdated: ToDo[] = this.todosToView[0].concat(this.todosToView[1], this.todosToView[2]);
+
+        this.moveTodoListEmitter.emit(todosUpdated);
+
+        // An old code for DnD
+        // if (oldPostition !== newPosition) {
+        //     console.log('todosToView: ', this.todosToView);
+        //     const shiftedTodoPos = oldPostition > newPosition ? newPosition + 1 : newPosition - 1;
+        //  this.moveTodoListEmitter.emit({movedTodoIdSource: this.todos[shiftedTodoPos].id, movedTodoIdDest: this.todos[newPosition].id});
+        // }
     }
 
 }

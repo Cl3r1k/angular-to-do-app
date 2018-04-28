@@ -26,12 +26,47 @@ export class TodoService {
     }
 
     // Simulate POST /todos
-    addTodo(todo: ToDo): Observable<ToDo> {
-        if (this.serviceState === 1) {
-            return this._indexedDbService.createTodo(todo);
-        } else {
-            return this._api.createTodo(todo);
-        }
+    addTodo(todo: ToDo, todos: ToDo[]): Observable<ToDo[]> {
+        return this._indexedDbService.createTodo(todo).switchMap((todoResult) => {
+            // console.log('prevTodoPinState: ', prevTodoPinState);
+            // console.log('todoResult.pin: ', todoResult.pin);
+            let pinnedTodosOrderList: string[];
+            let unpinnedTodosOrderList: string[];
+            let completedTodosOrderList: string[];
+
+            pinnedTodosOrderList = todos.filter(todoItem => {
+                return !todoItem.complete && todoItem.pin;
+            }).map(todoId => {
+                return todoId.inner_id;
+            });
+
+            unpinnedTodosOrderList = todos.filter(todoItem => {
+                return !todoItem.complete && !todoItem.pin;
+            }).map(todoId => {
+                return todoId.inner_id;
+            });
+
+            completedTodosOrderList = todos.filter(todoItem => {
+                return todoItem.complete;
+            }).map(todoId => {
+                return todoId.inner_id;
+            });
+
+            unpinnedTodosOrderList.push(todoResult.inner_id);
+
+            // Reorder list with new state
+            const todoOrderList: string[] = pinnedTodosOrderList.concat(unpinnedTodosOrderList, completedTodosOrderList);
+
+            const updatedOrder: boolean = this._todoOrderService.updateOrder(todoOrderList);
+            // console.log('%cAfter todoOrderList: ', 'color: red;', todoOrderList);
+
+            return this.getAllTodos(0);
+        });
+        // if (this.serviceState === 1) {
+        //     return this._indexedDbService.createTodo(todo);
+        // } else {
+        //     return this._api.createTodo(todo);
+        // }
     }
 
     // Simulate GET /todos/:id
