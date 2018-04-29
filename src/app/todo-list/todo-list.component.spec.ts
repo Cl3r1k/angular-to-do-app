@@ -15,10 +15,16 @@ import { DndModule } from 'ng2-dnd';
 describe('TodoListComponent', () => {
     let component: TodoListComponent;
     let fixture: ComponentFixture<TodoListComponent>;
-    let expectedTodos: ToDo[];
-    let todo1: ToDo;
-    let todo2: ToDo;
-    let todo3: ToDo;
+    const expectedTodos: [ToDo[]] = [[]];
+    let todo1pinned: ToDo;
+    let todo2pinned: ToDo;
+    let todo3pinned: ToDo;
+    let todo1unpinned: ToDo;
+    let todo2unpinned: ToDo;
+    let todo3unpinned: ToDo;
+    let todo1completed: ToDo;
+    let todo2completed: ToDo;
+    let todo3completed: ToDo;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -40,14 +46,24 @@ describe('TodoListComponent', () => {
         fixture = TestBed.createComponent(TodoListComponent);
         component = fixture.componentInstance;
 
-        component.todosAllAmount = 3;                // Lets count that we have more than 0 todo
-        fixture.detectChanges();
+        todo1pinned = new ToDo({ id: 1, title: 'Test 1 pinned', complete: false });
+        todo1pinned.pin = true;
+        todo2pinned = new ToDo({ id: 2, title: 'Test 2 pinned', complete: false });
+        todo2pinned.pin = true;
+        todo3pinned = new ToDo({ id: 3, title: 'Test 3 pinned', complete: false });
+        todo3pinned.pin = true;
+        todo1unpinned = new ToDo({ id: 4, title: 'Test 4 unpinned', complete: false });
+        todo2unpinned = new ToDo({ id: 5, title: 'Test 5 unpinned', complete: false });
+        todo3unpinned = new ToDo({ id: 6, title: 'Test 6 unpinned', complete: false });
+        todo1completed = new ToDo({ id: 7, title: 'Test 7 completed', complete: true });
+        todo2completed = new ToDo({ id: 8, title: 'Test 8 completed', complete: true });
+        todo3completed = new ToDo({ id: 9, title: 'Test 9 completed', complete: true });
 
-        todo1 = new ToDo({ id: 1, title: 'Test 1', complete: false });
-        todo2 = new ToDo({ id: 2, title: 'Test 2', complete: true });
-        todo3 = new ToDo({ id: 3, title: 'Test 3', complete: false });
-        expectedTodos = [todo1, todo2, todo3];
-        component.todos = expectedTodos;
+        expectedTodos[0] = [todo1pinned, todo2pinned, todo3pinned];
+        expectedTodos.push([todo1unpinned, todo2unpinned, todo3unpinned]);
+        expectedTodos.push([todo1completed, todo2completed, todo3completed]);
+        component.todosToView = expectedTodos;
+        component.todosAllAmount = 3;                // Lets count that we have more than 0 todo
         fixture.detectChanges();
     });
 
@@ -66,7 +82,7 @@ describe('TodoListComponent', () => {
         // Act
 
         // Assert
-        expect(component.todos).toEqual(expectedTodos);
+        expect(component.todosToView).toEqual(expectedTodos);
     });
 
     it(`should emit 'toggleComplete' event (async)`, async(() => {

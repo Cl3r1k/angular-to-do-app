@@ -36,7 +36,7 @@ export class TodoListComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        console.log('in ngOnInit -> todos: ', this.todos);
+        // console.log('in ngOnInit -> todosToView: ', this.todosToView);
     }
 
     onToggleTodoComplete(todo: ToDo) {

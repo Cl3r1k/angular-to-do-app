@@ -25,14 +25,19 @@ describe('TodoListItemViewComponent', () => {
     beforeEach(() => {
         fixture = TestBed.createComponent(TodoListItemViewComponent);
         component = fixture.componentInstance;
+
+        expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
+        component.todo = expectedTodo;                    // Lets count that we todo with 'complete' = false
+        fixture.detectChanges();
+
+        // console.log(`%c'beforeEach()' in 'TodoListItemViewComponent' component.todo:`, 'color: teal;', component.todo);
+
         toggleEl = fixture.debugElement.query(By.css('input[type=checkbox]'));        // Find toggle checkbox element
         labelEl = fixture.debugElement.query(By.css('label'));                        // Find label element
-        // editEl = fixture.debugElement.query(By.css('svg.icon-pencil-edit'));          // Find edit icon element
+        // editEl = fixture.debugElement.query(By.css('svg.icon-pencil-edit'));       // Find edit icon element
         moreEl = fixture.debugElement.query(By.css('svg.icon-more_horiz'));           // Find more icon element
         pinEl = fixture.debugElement.query(By.css('svg.icon-pin'));                   // Find pin icon element
 
-        expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
-        component.todo = expectedTodo;
         fixture.detectChanges();
     });
 

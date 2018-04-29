@@ -24,13 +24,17 @@ describe('TodoListItemEditComponent', () => {
         fixture = TestBed.createComponent(TodoListItemEditComponent);
         component = fixture.componentInstance;
 
+        expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemViewComponent', complete: false });
+        component.todo = expectedTodo;                    // Lets count that we todo with 'complete' = false
+        fixture.detectChanges();
+
+        // console.log(`%c'beforeEach()' in 'TodoListItemEditComponent' component.todo:`, 'color: teal;', component.todo);
+
         textareaEl = fixture.debugElement.nativeElement.querySelector('textarea.edit');    // Find textarea.edit element
         destroyEl = fixture.debugElement.query(By.css('svg.icon-destroy'));           // Find destroy icon element
 
-        // console.log('%cdestroyEl: ', 'color: brown;', destroyEl);
+        // console.log('%cdestroyEl: ', 'color: teal;', destroyEl);
 
-        expectedTodo = new ToDo({ id: 1, title: 'Test title in TodoListItemEditComponent', complete: false });
-        component.todo = expectedTodo;
         fixture.detectChanges();
     });
 
