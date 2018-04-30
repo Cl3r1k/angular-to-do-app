@@ -32,7 +32,7 @@ describe('TodoListHeaderComponent', () => {
         toggleAllEl = fixture.debugElement.nativeElement.querySelector('input[type=checkbox].toggle-all'); // Find toggleAll checkbox elem
         addTodoSvgEl = fixture.debugElement.query(By.css('svg.icon-keyboard_return'));        // Find svg.icon-keyboard_return elem
 
-        console.log('%c addTodoSvgEl: ', 'color: red;', addTodoSvgEl);
+        console.log('%c addTodoSvgEl: ', 'color: teal;', addTodoSvgEl);
 
         fixture.detectChanges();
     });

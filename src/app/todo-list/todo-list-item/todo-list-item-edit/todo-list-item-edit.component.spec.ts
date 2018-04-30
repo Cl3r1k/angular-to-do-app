@@ -71,7 +71,7 @@ describe('TodoListItemEditComponent', () => {
 
         // Act
         component.todo = expectedTodo;
-        // console.log('%cin updateTodo component.todo.title: ', 'color: brown;', component.todo.title);
+        // console.log('%cin updateTodo component.todo.title: ', 'color: teal;', component.todo.title);
         component.updateTodoListItemEmitter.subscribe((value) => todo = value);    // Subscribe to update event
         component.updateTodo(expectedTodo);
         textareaEl.dispatchEvent(new Event('blur'));    // Call explicitly blur event, sometimes it won't called in method 'updateTodo'

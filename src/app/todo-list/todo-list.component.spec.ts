@@ -90,11 +90,11 @@ describe('TodoListComponent', () => {
         let todo: ToDo;
 
         // Act
-        component.toggleCompleteTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to toggle event
-        component.onToggleTodoComplete(todo1);
+        component.toggleCompleteTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to 'toggle' event
+        component.onToggleTodoComplete(todo1unpinned);
 
         // Assert
-        expect(todo).toEqual(todo1);
+        expect(todo).toEqual(todo1unpinned);
     }));
 
     it(`should emit 'update' event (async)`, async(() => {
@@ -102,11 +102,23 @@ describe('TodoListComponent', () => {
         let todo: ToDo;
 
         // Act
-        component.updateTodoTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to update event
-        component.onUpdateTodo(todo1);
+        component.updateTodoTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to 'update' event
+        component.onUpdateTodo(todo1unpinned);
 
         // Assert
-        expect(todo).toEqual(todo1);
+        expect(todo).toEqual(todo1unpinned);
+    }));
+
+    it(`should emit 'more' event (async)`, async(() => {
+        // Arrange
+        let todo: ToDo;
+
+        // Act
+        component.moreTodoTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to 'more' event
+        component.onMoreTodo(todo1unpinned);
+
+        // Assert
+        expect(todo).toEqual(todo1unpinned);
     }));
 
     it(`should emit 'pin' event (async)`, async(() => {
@@ -114,11 +126,11 @@ describe('TodoListComponent', () => {
         let todo: ToDo;
 
         // Act
-        component.pinTodoTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to pin event
-        component.onPinTodo(todo1);
+        component.pinTodoTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to 'pin' event
+        component.onPinTodo(todo1unpinned);
 
         // Assert
-        expect(todo).toEqual(todo1);
+        expect(todo).toEqual(todo1unpinned);
     }));
 
     it(`should emit 'remove' event (async)`, async(() => {
@@ -126,11 +138,23 @@ describe('TodoListComponent', () => {
         let todo: ToDo;
 
         // Act
-        component.removeTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to remove event
-        component.onRemoveTodo(todo1);
+        component.removeTodoListEmitter.subscribe((value) => todo = value);    // Subscribe to 'remove' event
+        component.onRemoveTodo(todo1unpinned);
 
         // Assert
-        expect(todo).toEqual(todo1);
+        expect(todo).toEqual(todo1unpinned);
+    }));
+
+    it(`should emit 'move' event (async)`, async(() => {
+        // Arrange
+        let todos: ToDo[];
+
+        // Act
+        component.moveTodoListEmitter.subscribe((value) => todos = value);    // Subscribe to 'move' event
+        component.onMove(1, 2);
+
+        // Assert
+        expect(todos).toEqual(expectedTodos[0].concat(expectedTodos[1], expectedTodos[2]));
     }));
 
     describe(`#view tests:`, () => {
@@ -142,6 +166,10 @@ describe('TodoListComponent', () => {
             const todoToDropEl = fixture.debugElement.queryAll(By.css('li'))[2].nativeElement;
             const handleEl = fixture.debugElement.queryAll(By.css('.handle'))[0].nativeElement;
 
+            // console.log(`%c'#view tests' in 'TodoListComponent' todoToDragEl:`, 'color: teal;', todoToDragEl);
+            // console.log(`%c'#view tests' in 'TodoListComponent' todoToDropEl:`, 'color: teal;', todoToDropEl);
+            // console.log(`%c'#view tests' in 'TodoListComponent' handleEl:`, 'color: teal;', handleEl);
+
             // Act
             triggerEvent(handleEl, 'mousedown', 'MouseEvent');
             triggerEvent(todoToDragEl, 'dragstart', 'MouseEvent');
@@ -151,7 +179,7 @@ describe('TodoListComponent', () => {
             fixture.detectChanges();
 
             // Assert
-            expect(component.todos.map(todo => todo.id)).toEqual([2, 3, 1]);
+            expect(component.todosToView[0].map(todo => todo.id)).toEqual([2, 3, 1]);
         }));
     });
 

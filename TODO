@@ -16,7 +16,7 @@ Todos:
 
             ✔ Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos (look in 'TodoService' 'pinTodo()') @done(18-04-24 10:42)
 
-            ☐ Refactor color of console.log to 'teal' for all tests, and use this color for tests as recommened
+            ✔ Refactor color of console.log to 'teal' for all tests, and use this color for tests as recommened @done(18-04-29 09:51)
 
             ☐ Use zones for DnD (for pinned, unpinned, and completed use three different zones)
                 ☐ Use 'Multi list sortable between containers' in 'ng2-dnd' (look here `http://embed.plnkr.co/JbG8Si`)
@@ -26,9 +26,9 @@ Todos:
                         ✔ Update logic when added new todo, or deleted @done(18-04-25 10:13)
                         ✔ Update logic for DnD for 'pinned' and 'unpinned' order @done(18-04-27 09:46)
                         ✔ Update logic for 'onAddTodo()' method @done(18-04-27 10:20)
-                            ☐ Update tests for 'TodoListComponent' (test pin and more emitters) <========================================================= CURRENT TASK
+                            ✔ Update tests for 'TodoListComponent' (test 'pin' and 'move' emitters) @done(18-04-29 09:46)
                         ✔ Disable additional buttons for completed todos @done(18-04-25 10:11)
-                            ☐ Improve styles for disabled buttons (correct width of containers)
+                            ☐ Improve styles for disabled buttons (correct width of containers) <========================================================= CURRENT TASK
                     ☐ Update view for 'completed' list (use collapse button)
                 ☐ Update test for zones
 
