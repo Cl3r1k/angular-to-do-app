@@ -21,15 +21,15 @@ Todos:
             ☐ Use zones for DnD (for pinned, unpinned, and completed use three different zones)
                 ☐ Use 'Multi list sortable between containers' in 'ng2-dnd' (look here `http://embed.plnkr.co/JbG8Si`)
                 ☐ Split list to 3 zones
-                    ☐ Update logic for 'pinnedTodos', 'unpinnedTodos', 'completedTodos'
+                    ✔ Update logic for 'pinnedTodos', 'unpinnedTodos', 'completedTodos' @done(18-04-30 12:19)
                         ✔ Update 'toggleTodoComplete' and 'toggleAll' logic @done(18-04-25 10:12)
                         ✔ Update logic when added new todo, or deleted @done(18-04-25 10:13)
                         ✔ Update logic for DnD for 'pinned' and 'unpinned' order @done(18-04-27 09:46)
                         ✔ Update logic for 'onAddTodo()' method @done(18-04-27 10:20)
                             ✔ Update tests for 'TodoListComponent' (test 'pin' and 'move' emitters) @done(18-04-29 09:46)
                         ✔ Disable additional buttons for completed todos @done(18-04-25 10:11)
-                            ☐ Improve styles for disabled buttons (correct width of containers) <========================================================= CURRENT TASK
-                    ☐ Update view for 'completed' list (use collapse button)
+                            ✔ Improve styles for disabled buttons (correct width of containers) @done(18-04-30 12:19)
+                    ☐ Update view for 'completed' list (use collapse button) <========================================================= CURRENT TASK
                 ☐ Update test for zones
 
 

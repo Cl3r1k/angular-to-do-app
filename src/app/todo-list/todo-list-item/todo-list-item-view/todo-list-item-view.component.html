@@ -1,6 +1,6 @@
 <div class='viewContainer' [class.edit-hovered]='editHoverState' [class.complete-hovered]='completeHoverState'>
     <div class='buttons-before-block'>
-        <svg class='icon icon-ellipsis-v handle' dnd-sortable-handle *ngIf='!todo.complete'>
+        <svg class='icon icon-ellipsis-v handle' dnd-sortable-handle [class.completed]='todo.complete'>
             <use xlink:href='#icon-ellipsis-v'></use>
         </svg>
         <div class='priority-block' [style.background-color]="priorityColor"></div>

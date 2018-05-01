@@ -147,6 +147,10 @@
                     color: #687197;
                     cursor: pointer;
                 }
+                &.completed {
+                    opacity: 0;
+                    cursor: default;
+                }
             }
             .priority-block {
                 // background-color: red; // For debuging
