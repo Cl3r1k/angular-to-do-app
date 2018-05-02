@@ -65,13 +65,15 @@ button {
 @media screen and (-webkit-min-device-pixel-ratio: 0),
 screen and (min--moz-device-pixel-ratio: 0) {
     .toggle-all,
+    .collapse-button,
     .todo-list li .toggle {
         background: none;
     }
     .todo-list li .toggle {
         height: 40px;
     }
-    .toggle-all {
+    .toggle-all,
+    .collapse-button {
         -webkit-transform: rotate(90deg);
         -moz-transform: rotate(90deg);
         transform: rotate(90deg);

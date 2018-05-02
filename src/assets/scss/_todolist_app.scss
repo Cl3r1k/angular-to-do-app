@@ -19,6 +19,34 @@
         background-color: #62e9d2; // For Debug
         border-top: 1px solid #e6e6e6;
     }
+    .collapse-container {
+        height: 32px;
+        background-color: #42cf65; // For Debug
+        .collapse-button {
+            // position: absolute;
+            // top: 11px;
+            // left: -12px;
+            // width: 60px;
+            // z-index: 2;
+            // background-color: firebrick;
+            height: 32px;
+            width: 32px;
+            margin: auto;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            /* Mobile Safari */
+            &:before {
+                content: '❯';
+                font-size: 22px;
+                color: #e6e6e6;
+                // padding: 10px 27px 10px 27px;
+            }
+            &:checked:before {
+                color: #737373;
+            }
+        }
+    }
 }
 
 .todo-list {
