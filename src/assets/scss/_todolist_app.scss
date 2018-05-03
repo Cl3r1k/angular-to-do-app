@@ -18,34 +18,56 @@
         // height: 100px;                           // For Debug
         background-color: #62e9d2; // For Debug
         border-top: 1px solid #e6e6e6;
+        grid-column: span 16;
     }
     .collapse-container {
-        height: 32px;
+        // height: 32px;
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
         background-color: #42cf65; // For Debug
-        .collapse-button {
-            // position: absolute;
-            // top: 11px;
-            // left: -12px;
-            // width: 60px;
-            // z-index: 2;
-            // background-color: firebrick;
-            height: 32px;
-            width: 32px;
-            margin: auto;
-            text-align: center;
-            border: none;
+        color: #777777;
+        .completed-todos {
+            grid-column: 1/5;
+            background-color: #08b2eb; // For Debug
+            margin: 5px;
+            border: 1px solid #d9d9d9;
+            border-radius: 3px;
+            align-items: center;
             cursor: pointer;
-            /* Mobile Safari */
-            &:before {
-                content: '❯';
-                font-size: 22px;
-                color: #e6e6e6;
-                // padding: 10px 27px 10px 27px;
+            display: grid;
+            grid-template-columns: repeat(16, 1fr);
+            &:hover {
+                border-color: #737373;
             }
-            &:checked:before {
-                color: #737373;
+            .collapse-button {
+                grid-column: span 3;
+                height: 32px;
+                width: 32px;
+                margin: auto;
+                text-align: center;
+                border: none;
+                cursor: pointer;
+                color: #e6e6e6;
+                &.completed-todos-hovered {
+                    color: #737373;
+                }
+                /* Mobile Safari */
+                &:before {
+                    content: '❯';
+                    font-size: 22px;
+                    // padding: 10px 27px 10px 27px;
+                }
+                &:checked:before {
+                    color: #737373;
+                }
+            }
+            span {
+                grid-column: span 13;
             }
         }
+    }
+    .hidden {
+        display: none;
     }
 }
 

@@ -32,6 +32,8 @@ export class TodoListComponent implements OnInit {
     moveTodoListEmitter: EventEmitter<ToDo[]> = new EventEmitter();
 
     dragEnabled = true;    // Variable for prefs to enable/disable DnD
+    collapseState = true;
+    completedTodosHoverState = false;
 
     constructor() { }
 
@@ -76,6 +78,11 @@ export class TodoListComponent implements OnInit {
 
     collapseCompletedTodos(collapseState: boolean) {
         console.log('in collapseCompletedTodos collapseState: ', collapseState);
+        this.collapseState = !this.collapseState;
+    }
+
+    setCompletedTodosHoverState(completedTodosHoverState: boolean) {
+        this.completedTodosHoverState = completedTodosHoverState;
     }
 
 }

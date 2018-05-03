@@ -8,7 +8,7 @@
     </div>
     <label (dblclick)='editTodo(todo)'>{{titleToView}}</label>
     <div class='buttons-block' *ngIf='!todo.complete'>
-        <svg class='icon icon-more_horiz' (click)='showMore(todo)' matTooltip='Advanced settings' matTooltipPosition='above'>
+        <svg class='icon icon-more_horiz' (click)='showMore(todo)' matTooltip='Edit advanced settings' matTooltipPosition='above'>
             <use xlink:href='#icon-more_horiz'></use>
         </svg>
         <!-- <svg class='icon icon-pencil-edit' (click)='editTodo(todo)' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)'>
