@@ -75,6 +75,8 @@ screen and (min--moz-device-pixel-ratio: 0) {
     .toggle-all {
         -webkit-transform: rotate(90deg);
         -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
         transform: rotate(90deg);
         -webkit-appearance: none;
         -moz-appearance: none;

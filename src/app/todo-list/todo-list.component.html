@@ -14,11 +14,11 @@
         </ul>
     </div>
     <div class='collapse-container'>
-        <div class='completed-todos' (mouseenter)='setCompletedTodosHoverState(true)' (mouseleave)='setCompletedTodosHoverState(false)' matTooltip='Collapse recent completed todos' matTooltipPosition='above'>
-            <input type='checkbox' class='collapse-button' #collapse (click)='collapseCompletedTodos(collapse.checked)' [checked]='todosAllCompleted' [class.completed-todos-hovered]='completedTodosHoverState'>
+        <div class='completed-todos' (click)='collapseCompletedTodos(collapse.checked)' (mouseenter)='setCompletedTodosHoverState(true)' (mouseleave)='setCompletedTodosHoverState(false)' matTooltip='Collapse recent completed todos' matTooltipPosition='above'>
+            <input type='checkbox' class='collapse-button' #collapse [checked]='!collapseState' [class.completed-todos-hovered]='completedTodosHoverState'>
             <span>Completed todos</span>
         </div>
-        <div class='completed-list' *ngIf='todosToView[2].length' dnd-sortable-container [dropZones]="['todos-zone-completed']" [sortableData]='todosToView[2]' [class.hidden]='collapseState'>
+        <div class='completed-list' *ngIf='todosToView[2].length' dnd-sortable-container [dropZones]="['todos-zone-completed']" [sortableData]='todosToView[2]' [class.collapsed]='collapseState'>
             <ul class='todo-list'>
                 <li *ngFor='let todo of todosToView[2]; let i = index' dnd-sortable [sortableIndex]='i' [class.completed]='todo.complete' [dragEnabled]='false' [dragData]='i' (onDropSuccess)='onMove($event, i)'>
                     <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (moreTodoListItemEmitter)='onMoreTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>

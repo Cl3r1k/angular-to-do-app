@@ -19,6 +19,13 @@
         background-color: #62e9d2; // For Debug
         border-top: 1px solid #e6e6e6;
         grid-column: span 16;
+        overflow: hidden;
+        max-height: 100px;
+        transition: max-height 0.25s ease-in;
+        // .collapsed {
+        //     max-height: 50px;
+        //     transition: max-height 0.15s ease-out;
+        // }
     }
     .collapse-container {
         // height: 32px;
@@ -30,6 +37,8 @@
             grid-column: 1/5;
             background-color: #08b2eb; // For Debug
             margin: 5px;
+            margin-left: 15px;
+            // margin: 5px, 0px, 5px, 15px;
             border: 1px solid #d9d9d9;
             border-radius: 3px;
             align-items: center;
@@ -48,6 +57,8 @@
                 border: none;
                 cursor: pointer;
                 color: #e6e6e6;
+                transition: color 0.3s ease-out;
+                transition: transform 0.2s ease-out;
                 &.completed-todos-hovered {
                     color: #737373;
                 }
@@ -57,17 +68,21 @@
                     font-size: 22px;
                     // padding: 10px 27px 10px 27px;
                 }
-                &:checked:before {
-                    color: #737373;
+                &:checked {
+                    -webkit-transform: rotate(90deg);
+                    -moz-transform: rotate(90deg);
+                    -ms-transform: rotate(90deg);
+                    -o-transform: rotate(90deg);
+                    transform: rotate(90deg);
+                    &:before {
+                        color: #737373;
+                    }
                 }
             }
             span {
                 grid-column: span 13;
             }
         }
-    }
-    .hidden {
-        display: none;
     }
 }
 
