@@ -77,7 +77,7 @@ export class TodoListComponent implements OnInit {
     }
 
     collapseCompletedTodos(collapseState: boolean) {
-        console.log('in collapseCompletedTodos collapseState: ', collapseState);
+        // console.log('in collapseCompletedTodos collapseState: ', collapseState);
         this.collapseState = !this.collapseState;
     }
 

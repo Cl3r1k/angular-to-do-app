@@ -252,6 +252,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
             this.todos = todos;
             // this.updateOrder();    // Order was updated previously in service
+            this.transformView();
             this.updateFooterAndToggleAllInfo();
             this.onClearHoverSetState(false);
         });

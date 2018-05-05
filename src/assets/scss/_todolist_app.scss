@@ -14,21 +14,9 @@
         background-color: #6889ee; // For Debug
         border-top: 1px solid #e6e6e6;
     }
-    .completed-list {
-        // height: 100px;                           // For Debug
-        background-color: #62e9d2; // For Debug
-        border-top: 1px solid #e6e6e6;
-        grid-column: span 16;
-        overflow: hidden;
-        max-height: 100px;
-        transition: max-height 0.25s ease-in;
-        // .collapsed {
-        //     max-height: 50px;
-        //     transition: max-height 0.15s ease-out;
-        // }
-    }
     .collapse-container {
         // height: 32px;
+        border-top: 1px solid #e6e6e6;
         display: grid;
         grid-template-columns: repeat(16, 1fr);
         background-color: #42cf65; // For Debug
@@ -81,6 +69,20 @@
             }
             span {
                 grid-column: span 13;
+            }
+        }
+        .completed-list {
+            // height: 100px;                           // For Debug
+            background-color: #62e9d2; // For Debug
+            border-top: 1px solid #e6e6e6;
+            grid-column: span 16;
+            overflow: hidden;
+            max-height: 500px;
+            transition: max-height 0.25s ease-in;
+            &.collapsed {
+                border-top: 0px solid #e6e6e6;
+                max-height: 0px;
+                transition: max-height 0.15s ease-out;
             }
         }
     }

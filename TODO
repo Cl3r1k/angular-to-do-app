@@ -29,7 +29,11 @@ Todos:
                             ✔ Update tests for 'TodoListComponent' (test 'pin' and 'move' emitters) @done(18-04-29 09:46)
                         ✔ Disable additional buttons for completed todos @done(18-04-25 10:11)
                             ✔ Improve styles for disabled buttons (correct width of containers) @done(18-04-30 12:19)
-                    ☐ Update view for 'completed' list (use collapse button) <========================================================= CURRENT TASK
+                    ☐ Update view for 'completed' list (use collapse button)
+                        ☐ Add icon 'icon-broom' for 'completed' list (at the end of line) with hint 'Clean recent completed todos'
+                            ☐ Change logic for 'icon-broom' (apply logic 'clearCompleted' to the icon and deprecate 'clearCompleted') <========================================================= CURRENT TASK
+                                ✔ Fix 'clearCompleted' with new 'completed' list @done(18-05-04 09:56)
+                            ☐ Update tests for 'completed' list (for collapse button)
                 ☐ Update test for zones
 
 
