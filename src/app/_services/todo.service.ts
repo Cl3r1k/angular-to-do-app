@@ -292,7 +292,9 @@ export class TodoService {
     sortListByOrder(todos: ToDo[], todoOrderList: string[]): ToDo[] {
         const todoList: ToDo[] = [];
 
-        if (!todoOrderList) {
+        // If orderedList is empty or, ordered list length not equal to todo list length, then rewrite new list
+        // TODO: Test this part, when will be realized sync with back
+        if (!todoOrderList || todos.length !== todoOrderList.length) {
             todoOrderList = todos.map(todo => {
                 return todo.inner_id;
             });

@@ -30,8 +30,8 @@ Todos:
                         ✔ Disable additional buttons for completed todos @done(18-04-25 10:11)
                             ✔ Improve styles for disabled buttons (correct width of containers) @done(18-04-30 12:19)
                     ☐ Update view for 'completed' list (use collapse button)
-                        ☐ Add icon 'icon-broom' for 'completed' list (at the end of line) with hint 'Clean recent completed todos'
-                            ☐ Change logic for 'icon-broom' (apply logic 'clearCompleted' to the icon and deprecate 'clearCompleted') <========================================================= CURRENT TASK
+                        ☐ Add icon 'icon-broom' for 'completed' list (at the end of line) with hint 'Clean recent completed todos' <========================================================= CURRENT TASK
+                            ☐ Change logic for 'icon-broom' (apply logic 'clearCompleted' to the icon and deprecate 'clearCompleted')
                                 ✔ Fix 'clearCompleted' with new 'completed' list @done(18-05-04 09:56)
                             ☐ Update tests for 'completed' list (for collapse button)
                 ☐ Update test for zones
@@ -64,6 +64,7 @@ Todos:
             ☐ Rewrite part for DnD (use https://github.com/atlassian/react-beautiful-dnd and adopt it to angular)
                 ☐ Use custom cursor for DnD icon (look here https://github.com/atlassian/react-beautiful-dnd/blob/master/src/view/style-marshal/get-styles.js#L110)
 
+        ☐ Use some UI ideas for dialog like here `https://comining.io/account/wallets#`
         ☐ Add delay for popups
         ☐ Handle error properly as Observable (look here http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)

@@ -13,6 +13,7 @@ export class IndexedDbService extends Dexie {
     dbTable: Dexie.Table<ToDo, number>;
     // ... other tables will go here... for more info look here (dexie.org/docs/Typescript)
     consoleTextColor = 'color: #5dc2af;';
+    baseVersion = 3;
 
     constructor() {
         super('todoDatabase');
@@ -34,7 +35,7 @@ export class IndexedDbService extends Dexie {
                         costedPomo, estimatedPomos, remindMe, remindTime, note`
         });
         this.dbTable.mapToClass(ToDo);
-        console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColor, this.name, 1);
+        console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColor, this.name, this.baseVersion);
 
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {

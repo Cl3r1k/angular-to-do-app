@@ -14,61 +14,85 @@
         background-color: #6889ee; // For Debug
         border-top: 1px solid #e6e6e6;
     }
-    .collapse-container {
+    .completed-container {
         // height: 32px;
-        border-top: 1px solid #e6e6e6;
         display: grid;
         grid-template-columns: repeat(16, 1fr);
         background-color: #42cf65; // For Debug
         color: #777777;
-        .completed-todos {
-            grid-column: 1/5;
-            background-color: #08b2eb; // For Debug
-            margin: 5px;
-            margin-left: 15px;
-            // margin: 5px, 0px, 5px, 15px;
-            border: 1px solid #d9d9d9;
-            border-radius: 3px;
-            align-items: center;
-            cursor: pointer;
+        .collapse-container {
+            border-top: 1px solid #e6e6e6;
+            // border-bottom: 1px solid #e6e6e6;
+            grid-column: span 16;
             display: grid;
             grid-template-columns: repeat(16, 1fr);
-            &:hover {
-                border-color: #737373;
-            }
-            .collapse-button {
-                grid-column: span 3;
-                height: 32px;
-                width: 32px;
-                margin: auto;
-                text-align: center;
-                border: none;
+            .completed-todos {
+                grid-column: 1/5;
+                background-color: #08b2eb; // For Debug
+                margin: 5px;
+                margin-left: 15px;
+                // margin: 5px, 0px, 5px, 15px;
+                border: 1px solid #d9d9d9;
+                border-radius: 3px;
+                align-items: center;
                 cursor: pointer;
-                color: #e6e6e6;
-                transition: color 0.3s ease-out;
-                transition: transform 0.2s ease-out;
-                &.completed-todos-hovered {
-                    color: #737373;
+                display: grid;
+                grid-template-columns: repeat(16, 1fr);
+                &:hover {
+                    border-color: #737373;
                 }
-                /* Mobile Safari */
-                &:before {
-                    content: '❯';
-                    font-size: 22px;
-                    // padding: 10px 27px 10px 27px;
-                }
-                &:checked {
-                    -webkit-transform: rotate(90deg);
-                    -moz-transform: rotate(90deg);
-                    -ms-transform: rotate(90deg);
-                    -o-transform: rotate(90deg);
-                    transform: rotate(90deg);
-                    &:before {
+                .collapse-button {
+                    grid-column: span 3;
+                    height: 32px;
+                    width: 32px;
+                    margin: auto;
+                    text-align: center;
+                    border: none;
+                    cursor: pointer;
+                    color: #e6e6e6;
+                    transition: color 0.3s ease-out;
+                    transition: transform 0.2s ease-out;
+                    &.completed-todos-hovered {
                         color: #737373;
                     }
+                    /* Mobile Safari */
+                    &:before {
+                        content: '❯';
+                        font-size: 22px;
+                        // padding: 10px 27px 10px 27px;
+                    }
+                    &:checked {
+                        -webkit-transform: rotate(90deg);
+                        -moz-transform: rotate(90deg);
+                        -ms-transform: rotate(90deg);
+                        -o-transform: rotate(90deg);
+                        transform: rotate(90deg);
+                        &:before {
+                            color: #737373;
+                        }
+                    }
+                }
+                span {
+                    grid-column: span 13;
                 }
             }
-            span {
-                grid-column: span 13;
+            .icon-broom {
+                grid-column: 16/17;
+                font-size: 20px;
+                color: #858585;
+                background-color: #50f550; // For debuging
+                margin: auto auto;
+                padding: 3px 3px 3px 3px;
+                transition: 0.3s ease-out;
+                opacity: 1;
+                &:hover {
+                    color: #c93b40;
+                    cursor: pointer;
+                }
+                &.pinned {
+                    color: red;
+                    opacity: 1;
+                }
             }
         }
         .completed-list {
@@ -80,7 +104,6 @@
             max-height: 500px;
             transition: max-height 0.25s ease-in;
             &.collapsed {
-                border-top: 0px solid #e6e6e6;
                 max-height: 0px;
                 transition: max-height 0.15s ease-out;
             }
