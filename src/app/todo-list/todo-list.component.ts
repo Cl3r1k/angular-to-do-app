@@ -31,6 +31,9 @@ export class TodoListComponent implements OnInit {
     @Output()
     moveTodoListEmitter: EventEmitter<ToDo[]> = new EventEmitter();
 
+    @Output() clearTodoListEmitter: EventEmitter<boolean> = new EventEmitter();
+    @Output() clearHoverStateTodoListEmitter: EventEmitter<boolean> = new EventEmitter();
+
     dragEnabled = true;    // Variable for prefs to enable/disable DnD
     collapseState = true;
     completedTodosHoverState = false;
@@ -83,6 +86,16 @@ export class TodoListComponent implements OnInit {
 
     setCompletedTodosHoverState(completedTodosHoverState: boolean) {
         this.completedTodosHoverState = completedTodosHoverState;
+    }
+
+    clearCompleted(clearState: boolean) {
+        // console.log('%cin TodoListComponent clearState: ', 'color: cadetblue;', clearState);
+        this.clearTodoListEmitter.emit(clearState);
+    }
+
+    setClearCompletedHoverState(clearCompletetHoverState: boolean) {
+        // console.log('%cin TodoListComponent clearCompletetHoverState: ', 'color: cadetblue;', clearCompletetHoverState);
+        this.clearHoverStateTodoListEmitter.emit(clearCompletetHoverState);
     }
 
 }

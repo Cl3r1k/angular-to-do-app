@@ -22,9 +22,9 @@
             <!-- <svg class='icon icon-pin' [class.pinned]='todo.pin' (click)='pinTodo(todo)' matTooltip='Pin/unpin todo' matTooltipPosition='above'>
                         <use xlink:href='#icon-pin'></use>
                     </svg> -->
-            <svg class='icon icon-broom'>
-                        <use xlink:href='#icon-broom'></use>
-                    </svg>
+            <svg class='icon icon-broom' (click)='clearCompleted(true)' (mouseenter)='setClearCompletedHoverState(true)' (mouseleave)='setClearCompletedHoverState(false)' matTooltip='Clear recent completed todos' matTooltipPosition='above'>
+                <use xlink:href='#icon-broom'></use>
+            </svg>
         </div>
         <div class='completed-list' dnd-sortable-container [dropZones]="['todos-zone-completed']" [sortableData]='todosToView[2]' [class.collapsed]='collapseState'>
             <ul class='todo-list'>

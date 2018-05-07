@@ -16,7 +16,10 @@ Todos:
 
             ✔ Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos (look in 'TodoService' 'pinTodo()') @done(18-04-24 10:42)
 
-            ✔ Refactor color of console.log to 'teal' for all tests, and use this color for tests as recommened @done(18-04-29 09:51)
+            ✔ Refactor color of console.log to 'Teal' for all tests, and use this color for tests as recommened @done(18-04-29 09:51)
+            ☐ Refactor color of console.log to 'Cadetblue' for all components, and use this color for components as recommened
+            ☐ Refactor color of console.log to 'Salmon' for all services, and use this color for services as recommened
+            ☐ Refactor color of console.log to 'Rosybrown' for all resolvers, and use this color for resolvers as recommened
 
             ☐ Use zones for DnD (for pinned, unpinned, and completed use three different zones)
                 ☐ Use 'Multi list sortable between containers' in 'ng2-dnd' (look here `http://embed.plnkr.co/JbG8Si`)
@@ -30,10 +33,11 @@ Todos:
                         ✔ Disable additional buttons for completed todos @done(18-04-25 10:11)
                             ✔ Improve styles for disabled buttons (correct width of containers) @done(18-04-30 12:19)
                     ☐ Update view for 'completed' list (use collapse button)
-                        ☐ Add icon 'icon-broom' for 'completed' list (at the end of line) with hint 'Clean recent completed todos' <========================================================= CURRENT TASK
-                            ☐ Change logic for 'icon-broom' (apply logic 'clearCompleted' to the icon and deprecate 'clearCompleted')
+                        ✔ Add icon 'icon-broom' for 'completed' list (at the end of line) with hint 'Clear recent completed todos' @done(18-05-06 10:16)
+                            ☐ Change logic for 'icon-broom' (apply logic 'clearCompleted' to the icon and deprecate 'clearCompleted') <========================================================= CURRENT TASK
                                 ✔ Fix 'clearCompleted' with new 'completed' list @done(18-05-04 09:56)
                             ☐ Update tests for 'completed' list (for collapse button)
+                            ☐ Refactor tests for 'clearCompleted' list (more from 'footer' tests to 'list' tests)
                 ☐ Update test for zones
 
 

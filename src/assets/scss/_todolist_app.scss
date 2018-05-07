@@ -78,20 +78,15 @@
             }
             .icon-broom {
                 grid-column: 16/17;
-                font-size: 20px;
-                color: #858585;
+                font-size: 18px;
+                color: #a8a8a8;
                 background-color: #50f550; // For debuging
                 margin: auto auto;
                 padding: 3px 3px 3px 3px;
                 transition: 0.3s ease-out;
-                opacity: 1;
                 &:hover {
-                    color: #c93b40;
+                    color: #737373;
                     cursor: pointer;
-                }
-                &.pinned {
-                    color: red;
-                    opacity: 1;
                 }
             }
         }

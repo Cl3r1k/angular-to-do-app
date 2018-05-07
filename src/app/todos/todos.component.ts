@@ -260,20 +260,20 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     onClearHoverSetState(clearCompletetHoverState: boolean) {
         // tslint:disable-next-line:max-line-length
-        // console.log('onClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', clearCompletetHoverState);
+        // console.log('%conClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', 'color: cadetblue;', clearCompletetHoverState);
         this.clearHoverState = clearCompletetHoverState;
     }
 
     onToggleAllHoverSetState(toggleAllHoverState: boolean) {
         // tslint:disable-next-line:max-line-length
-        // console.log('onToggleAllHoverSetState emited evt toggleAllHoverStateTodoListHeaderEmitter from TodoListItemView with state: ', toggleAllHoverState);
+        // console.log('%conToggleAllHoverSetState emited evt toggleAllHoverStateTodoListHeaderEmitter from TodoListItemView with state: ', 'color: cadetblue;', toggleAllHoverState);
         this.toggleAllHoverState = toggleAllHoverState;
     }
 
     onMoveTodo(todosUpdated: ToDo[]) {
-        console.log('onMoveTodo (in TodoListComponent and) in current method todosUpdated is: ', todosUpdated);
+        console.log('%conMoveTodo (in TodoListComponent and) in current method todosUpdated is: ', 'color: cadetblue;', todosUpdated);
         // this._todoService.moveTodo(moveState, this.activeRouteState).subscribe((todos) => {
-        //     console.log('in onMoveTodo incoming todos:', todos);
+        //     console.log('%cin onMoveTodo incoming todos:', 'color: cadetblue;', todos);
         //     this.todos = todos;
         // });
 
@@ -313,9 +313,9 @@ export class TodosComponent implements OnInit, OnDestroy {
         this.todosToView.push(unpinnedTodos);
         this.todosToView.push(completedTodos);
 
-        console.log('%cpinnedTodos', 'color: salmon;', pinnedTodos);
-        console.log('%cpinnedTodos', 'color: salmon;', unpinnedTodos);
-        console.log('%cpinnedTodos', 'color: salmon;', completedTodos);
+        console.log('%cin TodosComponent pinnedTodos', 'color: cadetblue;', pinnedTodos);
+        console.log('%cin TodosComponent unpinnedTodos', 'color: cadetblue;', unpinnedTodos);
+        console.log('%cin TodosComponent completedTodos', 'color: cadetblue;', completedTodos);
     }
 
 }
