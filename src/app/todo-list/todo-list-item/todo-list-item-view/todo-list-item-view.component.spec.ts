@@ -202,7 +202,7 @@ describe('TodoListItemViewComponent', () => {
                 // Act
                 spyOn(component, 'setCompleteHover');
 
-                // Set svg hover state
+                // Set svg 'mouseenter' hover state
                 toggleEl.triggerEventHandler('mouseenter', null);
                 fixture.detectChanges();
 
@@ -215,13 +215,13 @@ describe('TodoListItemViewComponent', () => {
             it(`'mouseleave' on 'checkbox.toggle' should call method 'setCompleteHover()' (async)`, async(() => {
                 // Arrange
                 // Firstly set 'mouseenter' state for 'checkbox.toggle'
-                toggleEl.triggerEventHandler('mouseenter', null);
-                fixture.detectChanges();
+                // toggleEl.triggerEventHandler('mouseenter', null);
+                // fixture.detectChanges();
 
                 // Act
                 spyOn(component, 'setCompleteHover');
 
-                // Set svg hover state
+                // Set svg 'mouseleave' hover state
                 toggleEl.triggerEventHandler('mouseleave', null);
                 fixture.detectChanges();
 
@@ -282,6 +282,7 @@ describe('TodoListItemViewComponent', () => {
             });
         });
 
+        // TODO: Add test for mouseenter/mouseleave events for elemnts
         describe(`svg.icon-more_horiz:`, () => {
             it(`clicking on 'svg.icon-more_horiz' should call method 'showMore()' (async)`, async () => {
                 // Arrange

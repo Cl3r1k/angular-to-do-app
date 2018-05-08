@@ -12,17 +12,6 @@ export class TodoListFooterComponent {
     @Input() todosActiveAmount: number;
     @Input() todosCompletedAmount: number;
 
-    @Output() clearTodoListFooterEmitter: EventEmitter<boolean> = new EventEmitter();
-    @Output() clearHoverStateTodoListFooterEmitter: EventEmitter<boolean> = new EventEmitter();
-
     constructor() { }
-
-    clearCompleted(clearState: boolean) {
-        this.clearTodoListFooterEmitter.emit(clearState);
-    }
-
-    setClearCompletedHoverState(clearCompletetHoverState: boolean) {
-        this.clearHoverStateTodoListFooterEmitter.emit(clearCompletetHoverState);
-    }
 
 }

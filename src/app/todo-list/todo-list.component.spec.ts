@@ -25,6 +25,8 @@ describe('TodoListComponent', () => {
     let todo1completed: ToDo;
     let todo2completed: ToDo;
     let todo3completed: ToDo;
+    let divCompletedTodosEl;
+    let svgBroomEl;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -63,7 +65,14 @@ describe('TodoListComponent', () => {
         expectedTodos.push([todo1unpinned, todo2unpinned, todo3unpinned]);
         expectedTodos.push([todo1completed, todo2completed, todo3completed]);
         component.todosToView = expectedTodos;
-        component.todosAllAmount = 3;                // Lets count that we have more than 0 todo
+        component.todosAllAmount = 9;                // Lets count that we have more than 0 todo
+        fixture.detectChanges();
+
+        divCompletedTodosEl = fixture.debugElement.query(By.css('div.completed-todos'));     // Find div.completed-todos element
+        svgBroomEl = fixture.debugElement.query(By.css('svg.icon-broom'));                   // Find svg.icon-broom element
+        // console.log(`%c'beforeEach()' in 'TodoListComponent' nativeElement:`, 'color: teal;', fixture.debugElement.nativeElement);
+        // console.log(`%c'beforeEach()' in 'TodoListComponent' svgBroomEl:`, 'color: teal;', svgBroomEl);
+
         fixture.detectChanges();
     });
 
@@ -157,6 +166,30 @@ describe('TodoListComponent', () => {
         expect(todos).toEqual(expectedTodos[0].concat(expectedTodos[1], expectedTodos[2]));
     }));
 
+    it(`should emit 'clear' event (async)`, async(() => {
+        // Arrange
+        let state: boolean;
+
+        // Act
+        component.clearTodoListEmitter.subscribe((value) => state = value);    // Subscribe to 'clear' event
+        component.clearCompleted(true);
+
+        // Assert
+        expect(state).toEqual(true);
+    }));
+
+    it(`should emit 'clearHoverState' event (async)`, async(() => {
+        // Arrange
+        let state: boolean;
+
+        // Act
+        component.clearHoverStateTodoListEmitter.subscribe((value) => state = value);    // Subscribe to 'clearHoverState' event
+        component.setClearCompletedHoverState(true);
+
+        // Assert
+        expect(state).toEqual(true);
+    }));
+
     describe(`#view tests:`, () => {
         it(`should move todo at top to bottom (async)`, async(() => {
             // Arrange
@@ -181,6 +214,108 @@ describe('TodoListComponent', () => {
             // Assert
             expect(component.todosToView[0].map(todo => todo.id)).toEqual([2, 3, 1]);
         }));
+
+        describe(`div.completed-todos:`, () => {
+            it(`'mouseenter' on 'div.completed-todos' should call method 'setCompletedTodosHoverState()' (async)`, async(() => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'setCompletedTodosHoverState');
+
+                // Set div 'mouseenter' hover state
+                divCompletedTodosEl.triggerEventHandler('mouseenter', null);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setCompletedTodosHoverState).toHaveBeenCalled();
+                });
+            }));
+
+            it(`'mouseleave' on 'div.completed-todos' should call method 'setCompletedTodosHoverState()' (async)`, async(() => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'setCompletedTodosHoverState');
+
+                // Set div 'mouseleave' hover state
+                divCompletedTodosEl.triggerEventHandler('mouseleave', null);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setCompletedTodosHoverState).toHaveBeenCalled();
+                });
+            }));
+
+            it(`clicking on div.completed-todos should call method 'clearCompleted()' (async)`, async () => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'collapseCompletedTodos');
+                if (divCompletedTodosEl instanceof HTMLElement) {
+                    divCompletedTodosEl.click();
+                } else {
+                    divCompletedTodosEl.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.collapseCompletedTodos).toHaveBeenCalled();
+                });
+            });
+        });
+
+        describe(`svg.icon-broom:`, () => {
+            it(`'mouseenter' on 'svg.icon-broom' should call method 'setClearCompletedHoverState()' (async)`, async(() => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'setClearCompletedHoverState');
+
+                // Set svg 'mouseenter' hover state
+                svgBroomEl.triggerEventHandler('mouseenter', null);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setClearCompletedHoverState).toHaveBeenCalled();
+                });
+            }));
+
+            it(`'mouseleave' on 'svg.icon-broom' should call method 'setClearCompletedHoverState()' (async)`, async(() => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'setClearCompletedHoverState');
+
+                // Set svg 'mouseleave' hover state
+                svgBroomEl.triggerEventHandler('mouseleave', null);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setClearCompletedHoverState).toHaveBeenCalled();
+                });
+            }));
+
+            it(`clicking on svg.icon-broom should call method 'clearCompleted()' (async)`, async () => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'clearCompleted');
+                if (svgBroomEl instanceof HTMLElement) {
+                    svgBroomEl.click();
+                } else {
+                    svgBroomEl.triggerEventHandler('click', { button: 0 });
+                }
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.clearCompleted).toHaveBeenCalled();
+                });
+            });
+        });
     });
 
     function triggerEvent(elem: HTMLElement, eventName: string, eventType: string) {

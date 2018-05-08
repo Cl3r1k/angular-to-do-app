@@ -8,7 +8,6 @@ import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.direc
 describe('TodoListFooterComponent', () => {
     let component: TodoListFooterComponent;
     let fixture: ComponentFixture<TodoListFooterComponent>;
-    let btnClearEl;
     let expectedtodosAllAmount: number;
     let expectedtodosActiveAmount: number;
     let expectedtodosCompletedAmount: number;
@@ -29,8 +28,6 @@ describe('TodoListFooterComponent', () => {
         component.todosAllAmount = 1;            // Lets count that we have more than 0 todo
         component.todosCompletedAmount = 1;      // Lets count that we have more than 0 completed todo
         fixture.detectChanges();
-
-        btnClearEl = fixture.debugElement.nativeElement.querySelector('.btn-clear');    // Find button.btn-clear element
 
         expectedtodosAllAmount = 11;                                 // For example
         expectedtodosActiveAmount = 6;                               // For example
@@ -83,18 +80,6 @@ describe('TodoListFooterComponent', () => {
         expect(component.todosCompletedAmount).toEqual(expectedtodosCompletedAmount);
     }));
 
-    it(`should emit 'clear' event (async)`, async(() => {
-        // Arrange
-        let state: boolean;
-
-        // Act
-        component.clearTodoListFooterEmitter.subscribe((value) => state = value);    // Subscribe to 'clear' event
-        component.clearCompleted(true);
-
-        // Assert
-        expect(state).toEqual(true);
-    }));
-
     it(`can get RouterLinkActive from the template (async)`, async(() => {
         // Arrange
 
@@ -106,19 +91,4 @@ describe('TodoListFooterComponent', () => {
         expect(links[1].routerLinkActiveOptions['exact']).toBe(false, '2nd should have routerLinkActiveOptions={exact:false}');
         expect(links[2].routerLinkActiveOptions['exact']).toBe(false, '3rd should have routerLinkActiveOptions={exact:false}');
     }));
-
-    describe(`#view tests`, () => {
-        it(`clicking on button.btn-clear should call method 'clearCompleted()' (async)`, async () => {
-            // Arrange
-
-            // Act
-            spyOn(component, 'clearCompleted');
-            btnClearEl.click();
-
-            // Assert
-            fixture.whenStable().then(() => {
-                expect(component.clearCompleted).toHaveBeenCalled();
-            });
-        });
-    });
 });

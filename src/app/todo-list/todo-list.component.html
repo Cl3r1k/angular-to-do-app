@@ -19,9 +19,6 @@
                 <input type='checkbox' class='collapse-button' #collapse [checked]='!collapseState' [class.completed-todos-hovered]='completedTodosHoverState'>
                 <span>Completed todos</span>
             </div>
-            <!-- <svg class='icon icon-pin' [class.pinned]='todo.pin' (click)='pinTodo(todo)' matTooltip='Pin/unpin todo' matTooltipPosition='above'>
-                        <use xlink:href='#icon-pin'></use>
-                    </svg> -->
             <svg class='icon icon-broom' (click)='clearCompleted(true)' (mouseenter)='setClearCompletedHoverState(true)' (mouseleave)='setClearCompletedHoverState(false)' matTooltip='Clear recent completed todos' matTooltipPosition='above'>
                 <use xlink:href='#icon-broom'></use>
             </svg>
