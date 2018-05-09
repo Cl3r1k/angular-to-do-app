@@ -191,29 +191,106 @@ describe('TodoListComponent', () => {
     }));
 
     describe(`#view tests:`, () => {
-        it(`should move todo at top to bottom (async)`, async(() => {
-            // Arrange
-            fixture.detectChanges();
+        describe(`DnD tests:`, () => {
+            it(`should move todo at top to bottom (async)`, async(() => {
+                // Arrange
+                fixture.detectChanges();
 
-            const todoToDragEl = fixture.debugElement.queryAll(By.css('li'))[0].nativeElement;
-            const todoToDropEl = fixture.debugElement.queryAll(By.css('li'))[2].nativeElement;
-            const handleEl = fixture.debugElement.queryAll(By.css('.handle'))[0].nativeElement;
+                const todoToDragEl = fixture.debugElement.queryAll(By.css('li'))[0].nativeElement;    // First todo in 'pinnedList'
+                const todoToDropEl = fixture.debugElement.queryAll(By.css('li'))[2].nativeElement;    // Third todo in 'pinnedList'
+                const handleEl = fixture.debugElement.queryAll(By.css('.handle'))[0].nativeElement;
 
-            // console.log(`%c'#view tests' in 'TodoListComponent' todoToDragEl:`, 'color: teal;', todoToDragEl);
-            // console.log(`%c'#view tests' in 'TodoListComponent' todoToDropEl:`, 'color: teal;', todoToDropEl);
-            // console.log(`%c'#view tests' in 'TodoListComponent' handleEl:`, 'color: teal;', handleEl);
+                // console.log(`%c'#view tests' in 'TodoListComponent' todoToDragEl:`, 'color: teal;', todoToDragEl);
+                // console.log(`%c'#view tests' in 'TodoListComponent' todoToDropEl:`, 'color: teal;', todoToDropEl);
+                // console.log(`%c'#view tests' in 'TodoListComponent' handleEl:`, 'color: teal;', handleEl);
 
-            // Act
-            triggerEvent(handleEl, 'mousedown', 'MouseEvent');
-            triggerEvent(todoToDragEl, 'dragstart', 'MouseEvent');
-            triggerEvent(todoToDropEl, 'dragenter', 'MouseEvent');
-            triggerEvent(handleEl, 'mouseup', 'MouseEvent');
-            triggerEvent(todoToDragEl, 'drop', 'MouseEvent');
-            fixture.detectChanges();
+                // Act
+                triggerEvent(handleEl, 'mousedown', 'MouseEvent');
+                triggerEvent(todoToDragEl, 'dragstart', 'MouseEvent');
+                triggerEvent(todoToDropEl, 'dragenter', 'MouseEvent');
+                triggerEvent(handleEl, 'mouseup', 'MouseEvent');
+                triggerEvent(todoToDragEl, 'drop', 'MouseEvent');
+                fixture.detectChanges();
 
-            // Assert
-            expect(component.todosToView[0].map(todo => todo.id)).toEqual([2, 3, 1]);
-        }));
+                // Assert
+                expect(component.todosToView[0].map(todo => todo.id)).toEqual([2, 3, 1]);
+            }));
+
+            it(`shouldn't move todo from 'unpinnedList' to 'pinnedList' (async)`, async(() => {
+                // Arrange
+                fixture.detectChanges();
+
+                const todoToDragEl = fixture.debugElement.queryAll(By.css('li'))[0].nativeElement;    // First todo in 'pinnedList'
+                const todoToDropEl = fixture.debugElement.queryAll(By.css('li'))[3].nativeElement;    // First todo in 'unpinnedList'
+                const handleEl = fixture.debugElement.queryAll(By.css('.handle'))[0].nativeElement;
+
+                // console.log(`%c'#view tests' in 'TodoListComponent' todoToDragEl:`, 'color: teal;', todoToDragEl);
+                // console.log(`%c'#view tests' in 'TodoListComponent' todoToDropEl:`, 'color: teal;', todoToDropEl);
+                // console.log(`%c'#view tests' in 'TodoListComponent' handleEl:`, 'color: teal;', handleEl);
+
+                // Act
+                triggerEvent(handleEl, 'mousedown', 'MouseEvent');
+                triggerEvent(todoToDragEl, 'dragstart', 'MouseEvent');
+                triggerEvent(todoToDropEl, 'dragenter', 'MouseEvent');
+                triggerEvent(handleEl, 'mouseup', 'MouseEvent');
+                triggerEvent(todoToDragEl, 'drop', 'MouseEvent');
+                fixture.detectChanges();
+
+                // Assert
+                expect(component.todosToView[0].map(todo => todo.id)).toEqual([1, 2, 3]);
+                expect(component.todosToView[1].map(todo => todo.id)).toEqual([4, 5, 6]);
+            }));
+
+            it(`shouldn't move todo from 'completedList' to 'pinnedList' (async)`, async(() => {
+                // Arrange
+                fixture.detectChanges();
+
+                const todoToDragEl = fixture.debugElement.queryAll(By.css('li'))[0].nativeElement;    // First todo in 'pinnedList'
+                const todoToDropEl = fixture.debugElement.queryAll(By.css('li'))[6].nativeElement;    // First todo in 'completedList'
+                const handleEl = fixture.debugElement.queryAll(By.css('.handle'))[0].nativeElement;
+
+                // console.log(`%c'#view tests' in 'TodoListComponent' todoToDragEl:`, 'color: teal;', todoToDragEl);
+                // console.log(`%c'#view tests' in 'TodoListComponent' todoToDropEl:`, 'color: teal;', todoToDropEl);
+                // console.log(`%c'#view tests' in 'TodoListComponent' handleEl:`, 'color: teal;', handleEl);
+
+                // Act
+                triggerEvent(handleEl, 'mousedown', 'MouseEvent');
+                triggerEvent(todoToDragEl, 'dragstart', 'MouseEvent');
+                triggerEvent(todoToDropEl, 'dragenter', 'MouseEvent');
+                triggerEvent(handleEl, 'mouseup', 'MouseEvent');
+                triggerEvent(todoToDragEl, 'drop', 'MouseEvent');
+                fixture.detectChanges();
+
+                // Assert
+                expect(component.todosToView[0].map(todo => todo.id)).toEqual([1, 2, 3]);
+                expect(component.todosToView[2].map(todo => todo.id)).toEqual([7, 8, 9]);
+            }));
+
+            it(`shouldn't move todo from 'completedList' to 'unpinnedList' (async)`, async(() => {
+                // Arrange
+                fixture.detectChanges();
+
+                const todoToDragEl = fixture.debugElement.queryAll(By.css('li'))[3].nativeElement;    // First todo in 'unpinnedList'
+                const todoToDropEl = fixture.debugElement.queryAll(By.css('li'))[6].nativeElement;    // First todo in 'completedList'
+                const handleEl = fixture.debugElement.queryAll(By.css('.handle'))[3].nativeElement;
+
+                // console.log(`%c'#view tests' in 'TodoListComponent' todoToDragEl:`, 'color: teal;', todoToDragEl);
+                // console.log(`%c'#view tests' in 'TodoListComponent' todoToDropEl:`, 'color: teal;', todoToDropEl);
+                // console.log(`%c'#view tests' in 'TodoListComponent' handleEl:`, 'color: teal;', handleEl);
+
+                // Act
+                triggerEvent(handleEl, 'mousedown', 'MouseEvent');
+                triggerEvent(todoToDragEl, 'dragstart', 'MouseEvent');
+                triggerEvent(todoToDropEl, 'dragenter', 'MouseEvent');
+                triggerEvent(handleEl, 'mouseup', 'MouseEvent');
+                triggerEvent(todoToDragEl, 'drop', 'MouseEvent');
+                fixture.detectChanges();
+
+                // Assert
+                expect(component.todosToView[1].map(todo => todo.id)).toEqual([4, 5, 6]);
+                expect(component.todosToView[2].map(todo => todo.id)).toEqual([7, 8, 9]);
+            }));
+        });
 
         describe(`div.completed-todos:`, () => {
             it(`'mouseenter' on 'div.completed-todos' should call method 'setCompletedTodosHoverState()' (async)`, async(() => {

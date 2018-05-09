@@ -214,9 +214,6 @@ describe('TodoListItemViewComponent', () => {
 
             it(`'mouseleave' on 'checkbox.toggle' should call method 'setCompleteHover()' (async)`, async(() => {
                 // Arrange
-                // Firstly set 'mouseenter' state for 'checkbox.toggle'
-                // toggleEl.triggerEventHandler('mouseenter', null);
-                // fixture.detectChanges();
 
                 // Act
                 spyOn(component, 'setCompleteHover');
