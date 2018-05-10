@@ -14,6 +14,7 @@ export class TodosResolver implements Resolve<Observable<ToDo[]>> {
     constructor(private _todoService: TodoService) { }
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ToDo[]> {
+        // console.log(`%cresolve() in TodosResolver`, 'color: royalblue;');
         if (this.serviceState === 1) {
             // Thank's to @thekiba (https://t.me/angular_ru/81332)
             return this._todoService.initIndexedDbBase().switchMap(() => this._todoService.getAllTodos(0));    // Open base anyway

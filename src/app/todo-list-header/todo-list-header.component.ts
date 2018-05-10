@@ -8,6 +8,8 @@ import { ToDo } from '@app/_models/to-do';
 })
 export class TodoListHeaderComponent {
 
+    consoleTextColorComponent = 'color: cadetblue;';
+
     newTodo: ToDo = new ToDo();
 
     @Input() todosAllAmount: number;
@@ -28,7 +30,7 @@ export class TodoListHeaderComponent {
             this.addTodoListHeaderEmitter.emit(this.newTodo);
             this.newTodo = new ToDo();
 
-            // console.log('%c Added new Todo, created_time: ', 'color: brown;', this.newTodo.created_time);
+            // console.log('%c Added new Todo, created_time: ', this.consoleTextColorComponent, this.newTodo.created_time);
         }
     }
 

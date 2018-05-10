@@ -23,6 +23,8 @@ import 'hammerjs';
 })
 export class TodosComponent implements OnInit, OnDestroy {
 
+    consoleTextColorComponent = 'color: cadetblue;';
+
     todos: ToDo[] = [];
     todo: ToDo = null;
     todosToView: [ToDo[]] = [[]];
@@ -49,9 +51,9 @@ export class TodosComponent implements OnInit, OnDestroy {
             .map((data) => data['todos'])
             .subscribe(
                 (todos) => {
-                    // console.log('this._route.params: ', this._route.params);
-                    // console.log('this._route.queryParams: ', this._route.queryParams);
-                    console.log('incoming data from resolver', todos);
+                    // console.log('%cthis._route.params: ', this.consoleTextColorComponent, this._route.params);
+                    // console.log('%cthis._route.queryParams: ', this.consoleTextColorComponent, this._route.queryParams);
+                    console.log('%cincoming data from resolver', this.consoleTextColorComponent, todos);
                     this.todos = todos;
                     if (this._route.routeConfig.path.endsWith('active')) {
                         this.activeRouteState = 1;
@@ -67,7 +69,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        console.log('Do not forget to Unsubscribe!');
+        console.log('%cDo not forget to Unsubscribe!', this.consoleTextColorComponent);
         // this._route.data.unsubscribe();
         // this.todos.unsubscribe();
     }
@@ -75,7 +77,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     // Method to handle event emitted by TodoListHeaderComponent
     onAddTodo(todo: ToDo) {
         this._todoService.addTodo(todo, this.todos).subscribe((updatedTodos) => {
-            console.log('in onAddTodo() updatedTodos: ', updatedTodos);
+            console.log('%cin onAddTodo() updatedTodos: ', this.consoleTextColorComponent, updatedTodos);
             this.todos = updatedTodos;
             this.transformView();
             this.updateFooterAndToggleAllInfo();
@@ -100,7 +102,7 @@ export class TodosComponent implements OnInit, OnDestroy {
         // });
 
         this._todoService.toggleTodoComplete(todo, this.todos).subscribe((updatedTodos) => {
-            console.log('in onToggleTodoComplete updatedTodos: ', updatedTodos);
+            console.log('%cin onToggleTodoComplete updatedTodos: ', this.consoleTextColorComponent, updatedTodos);
             this.todos = updatedTodos;
             this.transformView();
             this.updateFooterAndToggleAllInfo();
@@ -135,7 +137,8 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     // Additional method to perform deletion after modal confirmation
     removeTodo(todo: ToDo) {
-        console.log('removeTodo emited evt removeTodoListItemEmitter from TodoListItemView with ttl: %s (id: %d)' + todo.title, todo.id);
+        // tslint:disable-next-line:max-line-length
+        console.log('%cremoveTodo emited evt removeTodoListItemEmitter from TodoListItemView with ttl: %s (id: %d)', this.consoleTextColorComponent, todo.title, todo.id);
         this._todoService.deleteTodoById(todo.id).subscribe((_) => {
             this.todo = _;
             this.todos = this.todos.filter((val) => val.id !== todo.id);
@@ -177,7 +180,7 @@ export class TodosComponent implements OnInit, OnDestroy {
                 if (result['dialogResult'] === 'ConfirmDelete') {
                     this.removeTodo(todo);
                 } else {
-                    console.log('in TodosComponent in onMoreTodo() result: ', result);
+                    console.log('%cin TodosComponent in onMoreTodo() result: ', this.consoleTextColorComponent, result);
 
                     todo.costedPomo = result['todoCost'];
                     todo.estimatedPomos = result['estimatedTodos'];
@@ -196,16 +199,16 @@ export class TodosComponent implements OnInit, OnDestroy {
     onPinTodo(todo: ToDo) {
         this._todoService.pinTodo(todo, this.todos).subscribe((updatedTodos) => {
             // todo = updatedTodo;        // We even do not need to update inner todo
-            console.log('in onPinTodo updatedTodos: ', updatedTodos);
+            console.log('%cin onPinTodo updatedTodos: ', this.consoleTextColorComponent, updatedTodos);
             this.todos = updatedTodos;
             this.transformView();
         });
     }
 
     onToggleAll(toggleState: boolean) {
-        console.log('toggleState() called');
+        console.log('%ctoggleState() called', this.consoleTextColorComponent);
         this._todoService.toggleAll(toggleState, this.activeRouteState).subscribe((todos) => {
-            console.log('in onToggleAll incoming todos:', todos);
+            console.log('%cin onToggleAll incoming todos:', this.consoleTextColorComponent, todos);
             this.todos = todos;
             this.transformView();
             this.updateFooterAndToggleAllInfo();
@@ -213,7 +216,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     }
 
     updateFooterAndToggleAllInfo() {
-        console.log('updateFooterAndToggleAllInfo() called');
+        console.log('%cupdateFooterAndToggleAllInfo() called', this.consoleTextColorComponent);
         this._todoService.getTodosAmountObject().subscribe((todosAmountObject) => {
             this.allTodosAmount = todosAmountObject['all'];
             this.activeTodosAmount = todosAmountObject['active'];
@@ -248,7 +251,8 @@ export class TodosComponent implements OnInit, OnDestroy {
     }
 
     clearCompleted(clearState: boolean) {
-        console.log('onClearCompleted (remove %s in TodoListFooterComponent and in current method): ', clearState);
+        // tslint:disable-next-line:max-line-length
+        console.log('%conClearCompleted (remove %s in TodoListFooterComponent and in current method): ', this.consoleTextColorComponent, clearState);
         this._todoService.clearCompleted(this.activeRouteState).subscribe((todos) => {
             this.todos = todos;
             // this.updateOrder();    // Order was updated previously in service
@@ -260,20 +264,21 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     onClearHoverSetState(clearCompletetHoverState: boolean) {
         // tslint:disable-next-line:max-line-length
-        // console.log('%conClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', 'color: cadetblue;', clearCompletetHoverState);
+        // console.log('%conClearHoverSetState emited evt clearHoverStateTodoListItemEmitter from TodoListItemView with state: ', this.consoleTextColorComponent, clearCompletetHoverState);
         this.clearHoverState = clearCompletetHoverState;
     }
 
     onToggleAllHoverSetState(toggleAllHoverState: boolean) {
         // tslint:disable-next-line:max-line-length
-        // console.log('%conToggleAllHoverSetState emited evt toggleAllHoverStateTodoListHeaderEmitter from TodoListItemView with state: ', 'color: cadetblue;', toggleAllHoverState);
+        // console.log('%conToggleAllHoverSetState emited evt toggleAllHoverStateTodoListHeaderEmitter from TodoListItemView with state: ', this.consoleTextColorComponent, toggleAllHoverState);
         this.toggleAllHoverState = toggleAllHoverState;
     }
 
     onMoveTodo(todosUpdated: ToDo[]) {
-        console.log('%conMoveTodo (in TodoListComponent and) in current method todosUpdated is: ', 'color: cadetblue;', todosUpdated);
+        // tslint:disable-next-line:max-line-length
+        console.log('%conMoveTodo (in TodoListComponent and) in current method todosUpdated is: ', this.consoleTextColorComponent, todosUpdated);
         // this._todoService.moveTodo(moveState, this.activeRouteState).subscribe((todos) => {
-        //     console.log('%cin onMoveTodo incoming todos:', 'color: cadetblue;', todos);
+        //     console.log('%cin onMoveTodo incoming todos:', this.consoleTextColorComponent, todos);
         //     this.todos = todos;
         // });
 
@@ -313,9 +318,9 @@ export class TodosComponent implements OnInit, OnDestroy {
         this.todosToView.push(unpinnedTodos);
         this.todosToView.push(completedTodos);
 
-        console.log('%cin TodosComponent pinnedTodos', 'color: cadetblue;', pinnedTodos);
-        console.log('%cin TodosComponent unpinnedTodos', 'color: cadetblue;', unpinnedTodos);
-        console.log('%cin TodosComponent completedTodos', 'color: cadetblue;', completedTodos);
+        console.log('%cin TodosComponent pinnedTodos', this.consoleTextColorComponent, pinnedTodos);
+        console.log('%cin TodosComponent unpinnedTodos', this.consoleTextColorComponent, unpinnedTodos);
+        console.log('%cin TodosComponent completedTodos', this.consoleTextColorComponent, completedTodos);
     }
 
 }

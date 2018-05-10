@@ -8,6 +8,8 @@ import { ToDo } from '@app/_models/to-do';
 })
 export class TodoListComponent implements OnInit {
 
+    consoleTextColorComponent = 'color: cadetblue;';
+
     @Input() todos: ToDo[];
     @Input() todosToView: [ToDo[]];
 
@@ -41,7 +43,7 @@ export class TodoListComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        // console.log('in ngOnInit -> todosToView: ', this.todosToView);
+        // console.log('%cin ngOnInit -> todosToView: ', this.consoleTextColorComponent, this.todosToView);
     }
 
     onToggleTodoComplete(todo: ToDo) {
@@ -73,14 +75,14 @@ export class TodoListComponent implements OnInit {
 
         // An old code for DnD
         // if (oldPostition !== newPosition) {
-        //     console.log('todosToView: ', this.todosToView);
+        //     console.log('%ctodosToView: ', this.consoleTextColorComponent, this.todosToView);
         //     const shiftedTodoPos = oldPostition > newPosition ? newPosition + 1 : newPosition - 1;
         //  this.moveTodoListEmitter.emit({movedTodoIdSource: this.todos[shiftedTodoPos].id, movedTodoIdDest: this.todos[newPosition].id});
         // }
     }
 
     collapseCompletedTodos(collapseState: boolean) {
-        // console.log('in collapseCompletedTodos collapseState: ', collapseState);
+        // console.log('%cin collapseCompletedTodos collapseState: ', this.consoleTextColorComponent, collapseState);
         this.collapseState = !this.collapseState;
     }
 
@@ -89,12 +91,12 @@ export class TodoListComponent implements OnInit {
     }
 
     clearCompleted(clearState: boolean) {
-        // console.log('%cin TodoListComponent clearState: ', 'color: cadetblue;', clearState);
+        // console.log('%cin TodoListComponent clearState: ', this.consoleTextColorComponent, clearState);
         this.clearTodoListEmitter.emit(clearState);
     }
 
     setClearCompletedHoverState(clearCompletetHoverState: boolean) {
-        // console.log('%cin TodoListComponent clearCompletetHoverState: ', 'color: cadetblue;', clearCompletetHoverState);
+        // console.log('%cin TodoListComponent clearCompletetHoverState: ', this.consoleTextColorComponent, clearCompletetHoverState);
         this.clearHoverStateTodoListEmitter.emit(clearCompletetHoverState);
     }
 

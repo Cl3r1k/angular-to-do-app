@@ -10,6 +10,8 @@ import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-compo
 })
 export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterViewChecked, CustomTodoComponentInterface {
 
+    consoleTextColorComponent = 'color: cadetblue;';
+
     @Input() todo: ToDo;
 
     @Output()
@@ -54,9 +56,9 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
     ngAfterViewChecked() {
         // Workaround for autosize Textarea with two-side binding initial text
         // Another workaround is adjust height if length of todo.title more than 50 symbols, and if not height === 58px
-        // console.log('%cvalue', 'color: pink', this.editedTodoElementRef.nativeElement.value);
-        // console.log('%cheight', 'color: pink', this.editedTodoElementRef.nativeElement.style.height);
-        // console.log('%cscrollHeight', 'color: pink', this.editedTodoElementRef.nativeElement.scrollHeight);
+        // console.log('%cvalue', this.consoleTextColorComponent, this.editedTodoElementRef.nativeElement.value);
+        // console.log('%cheight', this.consoleTextColorComponent, this.editedTodoElementRef.nativeElement.style.height);
+        // console.log('%cscrollHeight', this.consoleTextColorComponent, this.editedTodoElementRef.nativeElement.scrollHeight);
 
         if (this.afterViewCheckedCount >= 1) {
             if (!this.updatedTextHeight) {
@@ -72,7 +74,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
                     }
                 }
 
-                // console.log('%cheight set to ', 'color: pink', el.style.height);
+                // console.log('%cheight set to ', this.consoleTextColorComponent, el.style.height);
 
                 this.updatedTextHeight = true;
             }
@@ -102,7 +104,8 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
     }
 
     removeTodo(todo: ToDo) {
-        console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemEditComponent with title: ' + todo.title);
+        // tslint:disable-next-line:max-line-length
+        console.log('%cremoveTodo emited event removeTodoListItemEmitter from TodoListItemEditComponent with title: ', this.consoleTextColorComponent, todo.title);
         this.removeTodoListItemEmitter.emit(todo);
     }
 

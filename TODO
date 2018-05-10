@@ -6,6 +6,7 @@
 // To push changes on githubpages
 // ng build --prod --base-href "https://Cl3r1k.github.io/angular-to-do-app/"
 // angular-cli-ghpages --repo=https://github.com/Cl3r1k/angular-to-do-app.git --name=Cl3r1k --email=cl3r1k2@gmail.com --no-silent
+// Colors for modules: tests - `Teal`, components - `Cadetblue`, services - `Salmon`, resolvers - `Royalblue`
 
 Commit message:
 
@@ -13,13 +14,9 @@ Commit message:
 Todos:
     New:
         Current:
-
-            ✔ Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos (look in 'TodoService' 'pinTodo()') @done(18-04-24 10:42)
-
-            ✔ Refactor color of console.log to 'Teal' for all tests, and use this color for tests as recommened @done(18-04-29 09:51)
-            ☐ Refactor color of console.log to 'Cadetblue' for all components, and use this color for components as recommened <========================================================= CURRENT TASK
-            ☐ Refactor color of console.log to 'Salmon' for all services, and use this color for services as recommened
-            ☐ Refactor color of console.log to 'Rosybrown' for all resolvers, and use this color for resolvers as recommened
+            
+            ☐ Improve logic, if db cleared, and orderList is present <========================================================= CURRENT TASK
+            ☐ Add tags support (for example #tagName)            
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
@@ -50,7 +47,6 @@ Todos:
                 ☐ Use custom cursor for DnD icon (look here https://github.com/atlassian/react-beautiful-dnd/blob/master/src/view/style-marshal/get-styles.js#L110)
 
         ☐ Add delay for popups (use another lib for popups, not material)
-        ☐ Add tags support (for example #tagName)
         ☐ Use some UI ideas for dialog like here `https://comining.io/account/wallets#`        
         ☐ Handle error properly as Observable (look here http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)
@@ -315,6 +311,15 @@ Todos:
                         ✔ Update tests for 'completed' list (for collapse button) @done(18-05-07 11:05)
                         ✔ Refactor tests for 'clearCompleted' list (more from 'footer' tests to 'list' tests) @done(18-05-07 11:05)
             ✔ Update test for zones @done(18-05-08 09:31)
+
+        ✔ Consider to use another behaviour, if todo was pinned, then unpin and place at top of unpinned todos (look in 'TodoService' 'pinTodo()') @done(18-04-24 10:42)
+
+        ✔ Refactor color of console.log to `Teal` for all tests, and use this color for tests as recommened @done(18-04-29 09:51)
+        ✔ Refactor color of console.log to `Cadetblue` for all components, and use this color for components as recommened @done(18-05-09 10:00)
+        ✔ Refactor color of console.log to `Salmon` for all services, and use this color for services as recommened @done(18-05-09 09:37)
+        ✔ Refactor color of console.log to `Royalblue` for all resolvers, and use this color for resolvers as recommened @done(18-05-09 09:41)
+
+        ✔ Fix warning ([Deprecation] Using unescaped '#' characters in a data URI body is deprecated and will be removed in M67, around May 2018. Please use '%23' instead. See https://www.chromestatus.com/features/5656049583390720 for more details.) (User `https://github.com/stylus/stylus/issues/2379` -> changed color for SVG elemnts in styles) @done(18-05-09 10:10)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)

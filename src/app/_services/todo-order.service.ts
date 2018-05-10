@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class TodoOrderService {
 
+    consoleTextColorService = 'color: salmon;';
+
     constructor() { }
 
     updateOrder(todoOrderList: string[]): boolean {
@@ -10,7 +12,7 @@ export class TodoOrderService {
         let data: Object;
 
         const update_time = new Date().toISOString();
-        console.log('%cin TodoOrderService in updateOrder() order to save: ', 'color: orange;', todoOrderList);
+        console.log('%cin TodoOrderService in updateOrder() order to save: ', this.consoleTextColorService, todoOrderList);
 
         data = {
             update_time: update_time,
@@ -32,7 +34,7 @@ export class TodoOrderService {
             todoOrderList = data['order'];
         }
 
-        console.log('%cin TodoOrderService in getOrder() order: ', 'color: orange;', todoOrderList);
+        console.log('%cin TodoOrderService in getOrder() order: ', this.consoleTextColorService, todoOrderList);
 
         return todoOrderList;
     }

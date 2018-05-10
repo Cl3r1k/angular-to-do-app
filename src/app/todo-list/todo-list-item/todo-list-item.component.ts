@@ -19,6 +19,7 @@ export class TodoListItemComponent implements OnInit {
     @ViewChild('container', { read: ViewContainerRef }) _container: ViewContainerRef;
 
     currentComponent = null;
+    consoleTextColorComponent = 'color: cadetblue;';
 
     @Input() todo: ToDo;
 
@@ -62,7 +63,8 @@ export class TodoListItemComponent implements OnInit {
     }
 
     removeTodo(todo: ToDo) {
-        console.log('removeTodo emited evt removeEventTodoListItem from TodoListItemComponent with ttl: %s (id: %d)', todo.title, todo.id);
+        // tslint:disable-next-line:max-line-length
+        console.log('%cremoveTodo emited evt removeEventTodoListItem from TodoListItemComponent with ttl: %s (id: %d)', this.consoleTextColorComponent, todo.title, todo.id);
         this.removeTodoListItemEmitter.emit(todo);
     }
 
@@ -111,7 +113,8 @@ export class TodoListItemComponent implements OnInit {
 
         // Destroy the previosly created component
         if (this.currentComponent) {
-            // console.log('currentComponent (' + this.currentComponent.location.nativeElement.nodeName + ') destroyed');
+            // tslint:disable-next-line:max-line-length
+            // console.log('%ccurrentComponent (' + this.currentComponent.location.nativeElement.nodeName + ') destroyed', this.consoleTextColorComponent);
             this.currentComponent.destroy();
         }
 

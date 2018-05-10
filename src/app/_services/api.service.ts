@@ -15,6 +15,8 @@ const API_URL = environment.apiUrl;
 @Injectable()
 export class ApiService {
 
+    consoleTextColorService = 'color: salmon;';
+
     constructor(private _httpClient: HttpClient) { }
 
     // API: POST /todos
@@ -109,7 +111,7 @@ export class ApiService {
 
     // API: PUT /todos (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
-        console.log('This part is under construction');
+        console.log(`%cThis part is under construction`, this.consoleTextColorService);
 
         return this._httpClient.get(API_URL + '/todos')
             .map(response => {
@@ -132,9 +134,9 @@ export class ApiService {
 
     private handleError(error: Response | any) {
         if (error._body.type === 'error') {
-            console.log('Request failed... Is json-server running?');
+            console.log(`%cRequest failed... Is json-server running?`, this.consoleTextColorService);
         }
-        console.error('ApiService::handleError', error);
+        console.error(`%cApiService::handleError`, this.consoleTextColorService, error);
         return Observable.throw(error);
     }
 

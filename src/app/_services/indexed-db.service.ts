@@ -12,7 +12,7 @@ export class IndexedDbService extends Dexie {
 
     dbTable: Dexie.Table<ToDo, number>;
     // ... other tables will go here... for more info look here (dexie.org/docs/Typescript)
-    consoleTextColor = 'color: #5dc2af;';
+    consoleTextColorService = 'color: salmon;';
     baseVersion = 3;
 
     constructor() {
@@ -35,7 +35,7 @@ export class IndexedDbService extends Dexie {
                         costedPomo, estimatedPomos, remindMe, remindTime, note`
         });
         this.dbTable.mapToClass(ToDo);
-        console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColor, this.name, this.baseVersion);
+        console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColorService, this.name, this.baseVersion);
 
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {
@@ -46,13 +46,13 @@ export class IndexedDbService extends Dexie {
             this.dbTable.add(new ToDo({ id: 4, title: '5. Click on checkbox to mark as completed!', complete: false }));
             // tslint:disable-next-line:max-line-length
             this.dbTable.add(new ToDo({ id: 5, title: '6. Fix styles for edit-Icon in todo with large text, example ---------------------------------------------------------------------->', complete: false }));
-            console.log('%c DB populated successfully', this.consoleTextColor);
+            console.log('%c DB populated successfully', this.consoleTextColorService);
         });
     }
 
     public openIndexedDb(): Observable<null> {
         return Observable.fromPromise(this.open().then(async () => {
-            console.log('%c Opened %s successfully (v%d)', this.consoleTextColor, this.name, 1);
+            console.log('%c Opened %s successfully (v%d)', this.consoleTextColorService, this.name, 1);
             return null;
         }).catch(error => {
             this.handleError('openIndexedDb', error);
@@ -62,7 +62,7 @@ export class IndexedDbService extends Dexie {
     public createTodo(todo: ToDo): Observable<ToDo> {
         return Observable.fromPromise(this.dbTable.add(todo).then(async (newId) => {
             const newTodo = await this.dbTable.get(newId);
-            console.log('%c createTodo - added new todo: ', this.consoleTextColor, newTodo);
+            console.log('%c createTodo - added new todo: ', this.consoleTextColorService, newTodo);
             return newTodo;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -71,7 +71,7 @@ export class IndexedDbService extends Dexie {
 
     public getTodoById(todoId: number): Observable<ToDo> {
         return Observable.fromPromise(this.dbTable.get(todoId).then(async (todo) => {
-            console.log('%c getTodoById - todo result: ', this.consoleTextColor, todo);
+            console.log('%c getTodoById - todo result: ', this.consoleTextColorService, todo);
             return todo;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -80,7 +80,7 @@ export class IndexedDbService extends Dexie {
 
     public getTodoByTitle(todoTitle: string): Observable<ToDo[]> {
         return Observable.fromPromise(this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
-            console.log('%c getTodoByTitle - todos result: ', this.consoleTextColor, todos);
+            console.log('%c getTodoByTitle - todos result: ', this.consoleTextColorService, todos);
             return todos;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -100,7 +100,7 @@ export class IndexedDbService extends Dexie {
 
             return { all: todos.length, active: activeTodos, complete: completeTodos };
         }).then(async (todosAmount) => {
-            console.log('%c Transaction committed getTodosAmountObject: ', this.consoleTextColor, todosAmount);
+            console.log('%c Transaction committed getTodosAmountObject: ', this.consoleTextColorService, todosAmount);
             return todosAmount;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -109,7 +109,7 @@ export class IndexedDbService extends Dexie {
 
     // TODO: Improve this method when Dexie 3.0 will be released (when equals() will support boolean)
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
-        // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColor);
+        // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
         return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
             if (activeRouteState === 1 || activeRouteState === 2) {
                 let todos: ToDo[] = [];
@@ -118,10 +118,10 @@ export class IndexedDbService extends Dexie {
                     return todo.complete === (activeRouteState === 2 ? true : false);
                 });
 
-                console.log('%c getAllTodos - with activeRouteState = %d todos: ', this.consoleTextColor, activeRouteState, todos);
+                console.log('%c getAllTodos - with activeRouteState = %d todos: ', this.consoleTextColorService, activeRouteState, todos);
                 return todos;
             } else {
-                console.log('%c getAllTodos - response: ', this.consoleTextColor, response);
+                console.log('%c getAllTodos - response: ', this.consoleTextColorService, response);
                 return response;
             }
         }).catch(error => {
@@ -136,7 +136,7 @@ export class IndexedDbService extends Dexie {
             await this.dbTable.update(todo.id, todo);
             return await this.dbTable.get(todo.id);
         }).then(async (updatedTodo) => {
-            console.log('%c Transaction committed updatedTodo: ', this.consoleTextColor, updatedTodo);
+            console.log('%c Transaction committed updatedTodo: ', this.consoleTextColorService, updatedTodo);
             return updatedTodo;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -158,7 +158,7 @@ export class IndexedDbService extends Dexie {
 
             const lastKey = await this.dbTable.bulkPut(todos);
 
-            // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
+            // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColorService, lastKey, todos[todos.length - 1].id);
 
             if (activeRouteState === 1 || activeRouteState === 2) {
 
@@ -169,7 +169,7 @@ export class IndexedDbService extends Dexie {
 
             return todos;
         }).then(async (updatedTodos) => {
-            console.log('%c Transaction committed toggleAll: ', this.consoleTextColor, updatedTodos);
+            console.log('%c Transaction committed toggleAll: ', this.consoleTextColorService, updatedTodos);
             return updatedTodos;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -188,7 +188,7 @@ export class IndexedDbService extends Dexie {
 
             return null;
         }).then(async () => {
-            console.log('%c deleteTodoById - deleted value with id: ', this.consoleTextColor, todoId);
+            console.log('%c deleteTodoById - deleted value with id: ', this.consoleTextColorService, todoId);
             return null;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -209,7 +209,7 @@ export class IndexedDbService extends Dexie {
                 }
             });
 
-            // console.log('%c todos Ids to delete:', this.consoleTextColor, todosIds);
+            // console.log('%c todos Ids to delete:', this.consoleTextColorService, todosIds);
 
             // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
 
@@ -223,10 +223,10 @@ export class IndexedDbService extends Dexie {
                 });
             }
 
-            // console.log('%c returned todos:', this.consoleTextColor, todos);
+            // console.log('%c returned todos:', this.consoleTextColorService, todos);
             return todos;
         }).then(async (updatedTodos) => {
-            console.log('%c Transaction committed clearCompleted: ', this.consoleTextColor, updatedTodos);
+            console.log('%c Transaction committed clearCompleted: ', this.consoleTextColorService, updatedTodos);
             return updatedTodos;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -235,7 +235,7 @@ export class IndexedDbService extends Dexie {
 
     public clearStore(): Observable<null> {
         return Observable.fromPromise(this.dbTable.clear().then(() => {
-            console.log('%c clearStore -> all items deleted', this.consoleTextColor);
+            console.log('%c clearStore -> all items deleted', this.consoleTextColorService);
             return null;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -251,7 +251,7 @@ export class IndexedDbService extends Dexie {
 
     //         const direction = fromId < toId ? 1 : -1;
 
-    //         // console.log('%c moveState in service:', this.consoleTextColor, moveState);
+    //         // console.log('%c moveState in service:', this.consoleTextColorService, moveState);
 
     //         if (direction > 0) {
     //             let processMovement = false;
@@ -293,11 +293,12 @@ export class IndexedDbService extends Dexie {
     //             }
     //         }
 
-    //         // console.log('%c AFTER movements Array is:', this.consoleTextColor, todos);
+    //         // console.log('%c AFTER movements Array is:', this.consoleTextColorService, todos);
 
     //         await this.dbTable.clear();
     //         const lastKey = await this.dbTable.bulkPut(todos);
-    //         // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColor, lastKey, todos[todos.length - 1].id);
+               // tslint:disable-next-line:max-line-length
+    //         // console.log('%c lastKey: %d, todos[length - 1].id: %d', this.consoleTextColorService, lastKey, todos[todos.length - 1].id);
 
     //         todos = await this.dbTable.toArray();
 
@@ -309,7 +310,7 @@ export class IndexedDbService extends Dexie {
 
     //         return todos;
     //     }).then(async (updatedTodos) => {
-    //         console.log('%c Transaction committed moveTodo: ', this.consoleTextColor, updatedTodos);
+    //         console.log('%c Transaction committed moveTodo: ', this.consoleTextColorService, updatedTodos);
     //         return updatedTodos;
     //     }).catch(error => {
     //         return error;    // TODO: Handle error properly as Observable

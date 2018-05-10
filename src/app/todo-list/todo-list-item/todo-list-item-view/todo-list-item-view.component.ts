@@ -10,6 +10,8 @@ import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-compo
 })
 export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInterface {
 
+    consoleTextColorComponent = 'color: cadetblue;';
+
     @Input() todo: ToDo;
 
     @Output()
@@ -45,7 +47,8 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     ngOnInit() {
         this.titleToView = this.parseTitle(this.todo);
-        // console.log('parse in ngOnInit -> title: %s and priorityColor: ', this.todo.title, this.priorityColor);
+        // tslint:disable-next-line:max-line-length
+        // console.log('%cparse in ngOnInit -> title: %s and priorityColor: ', this.consoleTextColorComponent, this.priorityColor);
     }
 
     toggleTodoComplete(todo: ToDo) {
@@ -53,7 +56,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     editTodo(todo: ToDo) {
-        console.log('editTodo called in TodoListItemViewComponent with title: ', todo.title);
+        console.log('%ceditTodo called in TodoListItemViewComponent with title: ', this.consoleTextColorComponent, todo.title);
         this.editTodoListItemEmitter.emit(todo);    // Emit the 'edit' event to a Parent component
     }
 
@@ -62,17 +65,20 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     showMore(todo: ToDo) {
-        console.log('showMore called in TodoListItemViewComponent with title: %s, and id: %c%s', todo.title, 'color: red;', todo.inner_id);
+        // tslint:disable-next-line:max-line-length
+        console.log('showMore called in TodoListItemViewComponent with title: %s, and id: %c%s', todo.title, this.consoleTextColorComponent, todo.inner_id);
         this.moreTodoListItemEmitter.emit(todo);    // Emit the 'more' event to a Parent component
     }
 
     pinTodo(todo: ToDo) {
-        console.log('pinTodo called in TodoListItemViewComponent with title: %s, and id: %c%s', todo.title, 'color: red;', todo.inner_id);
+        // tslint:disable-next-line:max-line-length
+        console.log('pinTodo called in TodoListItemViewComponent with title: %s, and id: %c%s', todo.title, this.consoleTextColorComponent, todo.inner_id);
         this.pinTodoListItemEmitter.emit(todo);    // Emit the 'pin' event to a Parent component
     }
 
     removeTodo(todo: ToDo) {
-        // console.log('removeTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ', todo.title);
+        // tslint:disable-next-line:max-line-length
+        // console.log('%cremoveTodo emited event removeTodoListItemEmitter from TodoListItemViewComponent with title: ', this.consoleTextColorComponent, todo.title);
         this.removeTodoListItemEmitter.emit(todo);
     }
 
@@ -125,15 +131,15 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
         }
 
         if (foundPriority) {
-            // console.log('lastIndex: ', lastIndex);
-            // console.log('counter: ', counter);
+            // console.log('%clastIndex: ', this.consoleTextColorComponent, lastIndex);
+            // console.log('%ccounter: ', this.consoleTextColorComponent, counter);
             this.priorityColor = this.priorityColors[counter > 10 ? 10 : counter];
             let tmpTitleParsed = tmpTitle.slice(0, lastIndex - counter);
             if (lastIndex < tmpTitle.length - 1) {
                 tmpTitleParsed += tmpTitle.slice(lastIndex + 1, tmpTitle.length);
             }
             tmpTitle = tmpTitleParsed;
-            // console.log('%ctmpTitleParsed: ', 'color: green;', tmpTitleParsed);
+            // console.log('%ctmpTitleParsed: ', this.consoleTextColorComponent, tmpTitleParsed);
         }
 
         return tmpTitle;

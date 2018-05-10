@@ -10,6 +10,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class DialogMoreComponent implements OnInit {
 
     dataFromDialog: Object;
+    consoleTextColorComponent = 'color: cadetblue;';
 
     constructor(public dialogRef: MatDialogRef<DialogMoreComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
 
@@ -17,8 +18,8 @@ export class DialogMoreComponent implements OnInit {
     }
 
     onConfirmSave() {
-        console.log('return data: ', this.data);
-        console.log('remindTime: ', this.data['data']['remindTime']);
+        console.log('%creturn data: ', this.consoleTextColorComponent, this.data);
+        console.log('%cremindTime: ', this.consoleTextColorComponent, this.data['data']['remindTime']);
 
         this.dataFromDialog = {
             dialogResult: 'ConfirmSave',
