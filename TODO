@@ -15,8 +15,7 @@ Todos:
     New:
         Current:
             
-            ☐ Improve logic, if db cleared, and orderList is present <========================================================= CURRENT TASK
-            ☐ Add tags support (for example #tagName)            
+            ☐ Add tags support (for example #tagName) <========================================================= CURRENT TASK
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)

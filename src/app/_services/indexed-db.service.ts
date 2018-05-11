@@ -41,11 +41,13 @@ export class IndexedDbService extends Dexie {
         this.on('populate', () => {
             this.dbTable.add(new ToDo({ id: 0, title: '1. Add more todos!', complete: false }));
             this.dbTable.add(new ToDo({ id: 1, title: '2. Todo with priority 1 !', complete: false }));
-            this.dbTable.add(new ToDo({ id: 2, title: '3. Press on trash to delete me!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 3, title: '4. Press on pen or double click to edit me!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 4, title: '5. Click on checkbox to mark as completed!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 2, title: '3. Todo with #tagName', complete: false }));
+            this.dbTable.add(new ToDo({ id: 3, title: '4. Double click to edit me!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 4, title: '5. Press on pin icon to pin me!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 5, title: '6. Press on dots for more settings!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 6, title: '7. Click on checkbox to mark as completed!', complete: false }));
             // tslint:disable-next-line:max-line-length
-            this.dbTable.add(new ToDo({ id: 5, title: '6. Fix styles for edit-Icon in todo with large text, example ---------------------------------------------------------------------->', complete: false }));
+            this.dbTable.add(new ToDo({ id: 7, title: '8. Todo with large text example ---------------------------------------------------------------------------------------------------------->', complete: false }));
             console.log('%c DB populated successfully', this.consoleTextColorService);
         });
     }

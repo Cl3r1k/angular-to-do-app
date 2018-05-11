@@ -142,7 +142,46 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
             // console.log('%ctmpTitleParsed: ', this.consoleTextColorComponent, tmpTitleParsed);
         }
 
+        this.parseTitleByTags(tmpTitle);
+
         return tmpTitle;
+    }
+
+    parseTitleByTags(title: string) {
+        const tagIndex = title.indexOf('#', 0);
+
+        if (tagIndex < 0) {
+            return;    // '#' not found, skip parsing
+        }
+
+        console.log('%cin parseTitleByTags() title with #: ', this.consoleTextColorComponent, title);
+
+        let tpmTitle = '';
+        let inRow = false;
+        let currentTag = '';
+        for (let ind = 0; ind < title.length; ind++) {
+            if (title[ind] === '#' && (ind === 0 || (ind - 1 > 0 && title[ind - 1] === ' '))) {
+                inRow = true;
+                continue;
+            }
+
+            if (inRow) {
+                if (ind === title.length - 1 || title[ind] === ' ') {
+                    if (ind === title.length - 1) {
+                        currentTag += title[ind];
+                    }
+                    tpmTitle += '<span>#' + currentTag + '</span>';
+                    inRow = false;
+                } else {
+                    currentTag += title[ind];
+                }
+            } else {
+                inRow = false;
+                tpmTitle += title[ind];
+            }
+        }
+
+        console.log('%cin parseTitleByTags() tpmTitle: ', this.consoleTextColorComponent, tpmTitle);
     }
 
 }
