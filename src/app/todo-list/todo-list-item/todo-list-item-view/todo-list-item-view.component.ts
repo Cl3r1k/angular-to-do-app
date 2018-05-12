@@ -142,16 +142,16 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
             // console.log('%ctmpTitleParsed: ', this.consoleTextColorComponent, tmpTitleParsed);
         }
 
-        this.parseTitleByTags(tmpTitle);
+        tmpTitle = this.parseTitleByTags(tmpTitle);
 
         return tmpTitle;
     }
 
-    parseTitleByTags(title: string) {
+    parseTitleByTags(title: string): string {
         const tagIndex = title.indexOf('#', 0);
 
         if (tagIndex < 0) {
-            return;    // '#' not found, skip parsing
+            return title;    // '#' not found, skip parsing
         }
 
         console.log('%cin parseTitleByTags() title with #: ', this.consoleTextColorComponent, title);
@@ -169,19 +169,28 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
                 if (ind === title.length - 1 || title[ind] === ' ') {
                     if (ind === title.length - 1) {
                         currentTag += title[ind];
+                        tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
+                    } else {
+                        tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
+                        tpmTitle += title[ind];
                     }
-                    tpmTitle += '<span>#' + currentTag + '</span>';
                     inRow = false;
+                    currentTag = '';
                 } else {
                     currentTag += title[ind];
                 }
             } else {
-                inRow = false;
                 tpmTitle += title[ind];
             }
         }
 
         console.log('%cin parseTitleByTags() tpmTitle: ', this.consoleTextColorComponent, tpmTitle);
+
+        return tpmTitle;
+    }
+
+    filterWithTag(tagName: string) {
+        console.log('%cin filterWithTag() tagName: ', this.consoleTextColorComponent, tagName);
     }
 
 }

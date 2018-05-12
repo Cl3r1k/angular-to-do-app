@@ -16,6 +16,9 @@ Todos:
         Current:
             
             ☐ Add tags support (for example #tagName) <========================================================= CURRENT TASK
+                ☐ In 'todo Title' show tags as blocks with colors
+                    ☐ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color)
+                ☐ Click on tag should add 'tag-block' to 'header' and filter list
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
@@ -106,6 +109,7 @@ Todos:
 
     Scheduled:
         ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet and here https://github.com/angular/angular/pull/19713) (return to this point after 01.01.2018)
+            look example here `https://github.com/thekiba/ngx-component-outlet` and here `https://gist.github.com/thekiba/9b7fc4e32c92353e26890320f255f712`
     
     Done:
         ✔ Update unit tests for part-2

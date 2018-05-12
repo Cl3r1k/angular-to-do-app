@@ -116,8 +116,8 @@
         border-bottom: 1px solid #ededed;
         transition: background-color 0.3s ease-out;
         cursor: default !important; // Styles to prevent ng2-dnd styles for element
-        &.completed label,
-        .complete-hovered label {
+        &.completed .todoTitle,
+        .complete-hovered .todoTitle {
             color: #d9d9d9;
             text-decoration: line-through;
         }
@@ -285,7 +285,7 @@
                 }
             }
         }
-        label {
+        .todoTitle {
             // margin-left: 40px;
             // margin-right: 94px;
             // display: block;
@@ -294,7 +294,11 @@
             line-height: 1.2;
             transition: color 0.4s;
             grid-column: span 14;
-            background-color: fuchsia; // For debuging
+            background-color: rgb(235, 119, 235); // For debuging
+            .tag-class {
+                cursor: pointer;
+                color: red;
+            }
         }
         .buttons-block {
             grid-column: span 1;
