@@ -169,9 +169,11 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
                 if (ind === title.length - 1 || title[ind] === ' ') {
                     if (ind === title.length - 1) {
                         currentTag += title[ind];
-                        tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
+                        // tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
+                        tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
                     } else {
-                        tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
+                        // tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
+                        tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
                         tpmTitle += title[ind];
                     }
                     inRow = false;
