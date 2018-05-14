@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
 import { ToDo } from '@app/_models/to-do';
 
 import { CustomTodoComponentInterface } from '@app/_interfaces/custom-todo-component-interface';
@@ -43,7 +45,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     priorityColor = this.priorityColors[0];
     titleToView = '';
 
-    constructor() { }
+    constructor(private sanitizer: DomSanitizer) { }
 
     ngOnInit() {
         this.titleToView = this.parseTitle(this.todo);
@@ -170,10 +172,22 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
                     if (ind === title.length - 1) {
                         currentTag += title[ind];
                         // tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
-                        tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
+                        // const clickText = this.sanitizer.bypassSecurityTrustScript(`javascript:alert("Hi there")`);
+                        // tpmTitle += `<span #tagName class='tag-class' (click)='` + clickText + `'>#` + currentTag + `</span>`;
+                        // const clickText = this.sanitizer.bypassSecurityTrustUrl('javascript:alert("Hi there")');
+                        // tpmTitle += `<a class="tag-class" [href]="` + clickText + `">Click me</a>`;
+                        // tslint:disable-next-line:max-line-length
+                        tpmTitle += this.sanitizer.bypassSecurityTrustHtml(`<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`);
+                        // tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
                     } else {
                         // tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
-                        tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
+                        // const clickText = this.sanitizer.bypassSecurityTrustScript(`javascript:alert("Hi there")`);
+                        // tpmTitle += `<span #tagName class='tag-class' (click)='` + clickText + `'>#` + currentTag + `</span>`;
+                        // const clickText = this.sanitizer.bypassSecurityTrustUrl('javascript:alert("Hi there")');
+                        // tpmTitle += `<a class="tag-class" [href]="` + clickText + `">Click me</a>`;
+                        // tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
+                        // tslint:disable-next-line:max-line-length
+                        tpmTitle += this.sanitizer.bypassSecurityTrustHtml(`<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`);
                         tpmTitle += title[ind];
                     }
                     inRow = false;
