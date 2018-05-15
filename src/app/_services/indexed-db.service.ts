@@ -43,8 +43,8 @@ export class IndexedDbService extends Dexie {
             this.dbTable.add(new ToDo({ id: 1, title: '2. Todo with priority 1 !', complete: false }));
             this.dbTable.add(new ToDo({ id: 2, title: '3. Todo with #tagName', complete: false }));
             this.dbTable.add(new ToDo({ id: 3, title: '4. Double click to edit me!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 4, title: '5. Press on pin icon to pin me!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 5, title: '6. Press on dots for more settings!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 4, title: '5. Press on pin icon to pin/unpin me!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 5, title: '6. Press on dots for advanced settings!', complete: false }));
             this.dbTable.add(new ToDo({ id: 6, title: '7. Click on checkbox to mark as completed!', complete: false }));
             // tslint:disable-next-line:max-line-length
             this.dbTable.add(new ToDo({ id: 7, title: '8. Todo with large text example ---------------------------------------------------------------------------------------------------------->', complete: false }));
