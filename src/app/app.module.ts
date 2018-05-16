@@ -30,6 +30,9 @@ import { AppRoutingModule } from '@app/app-routing.module';
 // Directives
 import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.directive';
 
+// Pipes
+import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
+
 // Modules
 import { DndModule } from 'ng2-dnd';
 import { Autosize } from 'ng-autosize/src/autosize.directive';
@@ -51,7 +54,8 @@ import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, M
         Autosize,
         TodoTitleComponent,
         DialogDeleteComponent,
-        DialogMoreComponent
+        DialogMoreComponent,
+        ParseTagPipe
     ],
     imports: [
         AppRoutingModule,

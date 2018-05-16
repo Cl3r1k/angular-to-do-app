@@ -175,15 +175,13 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
                         // const clickText = this.sanitizer.bypassSecurityTrustScript(`javascript:alert("Hi there")`);
                         // tpmTitle += `<span #tagName class='tag-class' (click)='` + clickText + `'>#` + currentTag + `</span>`;
                         // tslint:disable-next-line:max-line-length
-                        tpmTitle += this.sanitizer.bypassSecurityTrustHtml(`<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`);
-                        // tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
+                        // tpmTitle += this.sanitizer.bypassSecurityTrustHtml(`<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`);
+                        tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
                     } else {
                         // tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
-                        // const clickText = this.sanitizer.bypassSecurityTrustScript(`javascript:alert("Hi there")`);
-                        // tpmTitle += `<span #tagName class='tag-class' (click)='` + clickText + `'>#` + currentTag + `</span>`;
                         // tslint:disable-next-line:max-line-length
-                        tpmTitle += this.sanitizer.bypassSecurityTrustHtml(`<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`);
-                        // tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
+                        // tpmTitle += this.sanitizer.bypassSecurityTrustHtml(`<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`);
+                        tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
                         tpmTitle += title[ind];
                     }
                     inRow = false;
