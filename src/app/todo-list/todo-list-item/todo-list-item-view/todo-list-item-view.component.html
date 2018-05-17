@@ -7,7 +7,7 @@
         <input type='checkbox' class='toggle' (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)' matTooltip='Toggle complete' matTooltipPosition='above'>
     </div>
     <!-- <label (dblclick)='editTodo(todo)'>{{titleToView}}</label> -->
-    <div class='todoTitle' (dblclick)='editTodo(todo)' [innerHTML]='titleToView | parseTag'></div>
+    <div class='todoTitle' (dblclick)='editTodo(todo)' [innerHTML]='titleToView | parseTagPipe' appDynamicContentDirective></div>
     <div class='buttons-block' *ngIf='!todo.complete'>
         <svg class='icon icon-more_horiz' (click)='showMore(todo)' matTooltip='Edit advanced settings' matTooltipPosition='above'>
             <use xlink:href='#icon-more_horiz'></use>

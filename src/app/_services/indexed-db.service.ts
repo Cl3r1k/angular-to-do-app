@@ -39,15 +39,16 @@ export class IndexedDbService extends Dexie {
 
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {
-            this.dbTable.add(new ToDo({ id: 0, title: '1. Add more todos!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 0, title: '1. Add more todos!', complete: true }));
             this.dbTable.add(new ToDo({ id: 1, title: '2. Todo with priority 1 !', complete: false }));
             this.dbTable.add(new ToDo({ id: 2, title: '3. Todo with #tagName', complete: false }));
-            this.dbTable.add(new ToDo({ id: 3, title: '4. Double click to edit me!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 4, title: '5. Press on pin icon to pin/unpin me!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 5, title: '6. Press on dots for advanced settings!', complete: false }));
-            this.dbTable.add(new ToDo({ id: 6, title: '7. Click on checkbox to mark as completed!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 3, title: '4. Todo with URL https://google.com', complete: false }));
+            this.dbTable.add(new ToDo({ id: 4, title: '5. Double click to edit me!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 5, title: '6. Press on pin icon to pin/unpin me!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 6, title: '7. Press on dots for advanced settings!', complete: false }));
+            this.dbTable.add(new ToDo({ id: 7, title: '8. Click on checkbox to mark as completed!', complete: false }));
             // tslint:disable-next-line:max-line-length
-            this.dbTable.add(new ToDo({ id: 7, title: '8. Todo with large text example ---------------------------------------------------------------------------------------------------------->', complete: false }));
+            this.dbTable.add(new ToDo({ id: 8, title: '9. Todo with large text example ---------------------------------------------------------------------------------------------------------->', complete: false }));
             console.log('%c DB populated successfully', this.consoleTextColorService);
         });
     }

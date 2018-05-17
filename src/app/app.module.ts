@@ -29,6 +29,7 @@ import { AppRoutingModule } from '@app/app-routing.module';
 
 // Directives
 import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.directive';
+import { DynamicContentDirective } from '@app/_directives/dynamic-content.directive';
 
 // Pipes
 import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
@@ -55,7 +56,8 @@ import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, M
         TodoTitleComponent,
         DialogDeleteComponent,
         DialogMoreComponent,
-        ParseTagPipe
+        ParseTagPipe,
+        DynamicContentDirective
     ],
     imports: [
         AppRoutingModule,
