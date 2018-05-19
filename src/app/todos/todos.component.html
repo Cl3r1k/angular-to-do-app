@@ -10,7 +10,7 @@
         <section class='todoapp' [class.clearAll-hovered]='clearHoverState' [class.toggleAll-hovered]='toggleAllHoverState'>
 
             <!-- header is now replaced with app-todoo-list-header -->
-            <app-todo-list-header [todosAllAmount]='allTodosAmount' [todosAllCompleted]='allCompleted' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAll($event)' (toggleAllHoverStateTodoListHeaderEmitter)='onToggleAllHoverSetState($event)'></app-todo-list-header>
+            <app-todo-list-header [todosAllAmount]='allTodosAmount' [todosAllCompleted]='allCompleted' [hashTagToFilter]='hashTagToFilter' (addTodoListHeaderEmitter)='onAddTodo($event)' (toggleAllTodoListHeaderEmitter)='onToggleAll($event)' (toggleAllHoverStateTodoListHeaderEmitter)='onToggleAllHoverSetState($event)'></app-todo-list-header>
 
             <app-todo-list [todos]='todos' [todosToView]='todosToView' [todosAllAmount]='allTodosAmount' (toggleCompleteTodoListEmitter)='onToggleTodoComplete($event)' (updateTodoTodoListEmitter)='onUpdateTodo($event)' (moreTodoTodoListEmitter)='onMoreTodo($event)'
                 (pinTodoTodoListEmitter)='onPinTodo($event)' (removeTodoListEmitter)='onRemoveTodo($event)' (moveTodoListEmitter)='onMoveTodo($event)' (clearTodoListEmitter)='onClearCompleted($event)' (clearHoverStateTodoListEmitter)='onClearHoverSetState($event)'></app-todo-list>

@@ -37,6 +37,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     activeRouteState = 0;
     clearHoverState = false;
     toggleAllHoverState = false;
+    hashTagToFilter = 'dev';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'

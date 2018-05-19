@@ -19,6 +19,11 @@ export class DynamicContentDirective {
 
             alert('filter todos with hashtag: ' + link.trim());
             this.router.navigateByUrl('/todos/filter/hashtag/' + link.trim(), { skipLocationChange: false });
+            // this.router.navigate('/todos/filter/hashtag', {
+            //     queryParams: {
+            //         'hashtag': link.trim()
+            //     }
+            // });
         }
     }
 

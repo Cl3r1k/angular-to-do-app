@@ -5,6 +5,7 @@ import { TodosComponent } from '@app/todos/todos.component';
 import { TodosResolver } from '@app/_resolvers/todos.resolver';
 import { TodosActiveResolver } from '@app/_resolvers/todos-active.resolver';
 import { TodosCompletedResolver } from '@app/_resolvers/todos-completed.resolver';
+import { TodosFilterHashtagResolver } from '@app/_resolvers/todos-filter-hashtag.resolver';
 
 const routes: Routes = [
     {
@@ -34,6 +35,13 @@ const routes: Routes = [
         }
     },
     {
+        path: 'todos/filter/hashtag/:hashtag',
+        component: TodosComponent,
+        resolve: {
+            todos: TodosFilterHashtagResolver
+        }
+    },
+    {
         path: '**',
         component: PageNotFoundComponent
     }
@@ -42,6 +50,6 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
-    providers: [TodosResolver, TodosActiveResolver, TodosCompletedResolver]
+    providers: [TodosResolver, TodosActiveResolver, TodosCompletedResolver, TodosFilterHashtagResolver]
 })
 export class AppRoutingModule { }

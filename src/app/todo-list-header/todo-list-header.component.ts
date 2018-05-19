@@ -15,6 +15,8 @@ export class TodoListHeaderComponent {
     @Input() todosAllAmount: number;
     @Input() todosAllCompleted: boolean;
 
+    @Input() hashTagToFilter: string;
+
     @Output() addTodoListHeaderEmitter: EventEmitter<ToDo> = new EventEmitter();
 
     @Output() toggleAllTodoListHeaderEmitter: EventEmitter<boolean> = new EventEmitter();
