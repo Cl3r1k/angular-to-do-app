@@ -7,10 +7,10 @@ import { ToDo } from '@app/_models/to-do';
 @Injectable()
 export class TodosFilterHashtagResolver implements Resolve<Observable<ToDo[]>> {
 
-    constructor(private _todoService: TodoService, private activatedRoute: ActivatedRoute) { }
+    constructor(private _todoService: TodoService) { }
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ToDo[]> {
-        console.log(`%cin 'TodosFilterHashtagResolver' hashtag: `, 'color: royalblue;', this.activatedRoute.snapshot.params['hashtag']);
+        console.log(`%cin 'TodosFilterHashtagResolver' hashtag: `, 'color: royalblue;', route.params['hashtag']);
         return this._todoService.initIndexedDbBase().switchMap(() => this._todoService.getAllTodos(2));    // Open base anyway
     }
 

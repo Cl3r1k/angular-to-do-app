@@ -52,14 +52,25 @@ export class TodosComponent implements OnInit, OnDestroy {
             .map((data) => data['todos'])
             .subscribe(
                 (todos) => {
-                    // console.log('%cthis._route.params: ', this.consoleTextColorComponent, this._route.params);
-                    // console.log('%cthis._route.queryParams: ', this.consoleTextColorComponent, this._route.queryParams);
-                    console.log('%cincoming data from resolver', this.consoleTextColorComponent, todos);
+                    // TODO: Rewrite part with resolvers, and return from resolver Object like {activeRouteState, params, todos}
+                    console.log(`%cin 'TodosComponent' _route.params: `, this.consoleTextColorComponent, this._route.params);
+                    console.log(`%cin 'TodosComponent' _route.queryParams: `, this.consoleTextColorComponent, this._route.queryParams);
+                    // tslint:disable-next-line:max-line-length
+                    console.log(`%cin 'TodosComponent' _route.routeConfig.path: `, this.consoleTextColorComponent, this._route.routeConfig.path);
+                    console.log(`%cincoming data from resolver`, this.consoleTextColorComponent, todos);
                     this.todos = todos;
                     if (this._route.routeConfig.path.endsWith('active')) {
                         this.activeRouteState = 1;
                     } else if (this._route.routeConfig.path.endsWith('completed')) {
                         this.activeRouteState = 2;
+                    } else if (this._route.routeConfig.path.endsWith('hashtag')) {
+                        console.log(`%cin 'TodosComponent' path.endsWith: hashtag`, this.consoleTextColorComponent);
+                        // tslint:disable-next-line:max-line-length
+                        console.log(`%cin 'TodosComponent' path.endsWith: this._route.params['hashtag']`, this.consoleTextColorComponent, this._route.params['hashtag']);
+                        this.activeRouteState = 3;
+                        if (this._route.params['hashtag']) {
+                            this.hashTagToFilter = this._route.params['hashtag'];
+                        }
                     } else {
                         this.activeRouteState = 0;
                     }

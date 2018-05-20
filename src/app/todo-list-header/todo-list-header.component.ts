@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
 @Component({
@@ -6,7 +6,7 @@ import { ToDo } from '@app/_models/to-do';
     templateUrl: './todo-list-header.component.html',
     styleUrls: ['./todo-list-header.component.scss']
 })
-export class TodoListHeaderComponent {
+export class TodoListHeaderComponent implements OnInit {
 
     consoleTextColorComponent = 'color: cadetblue;';
 
@@ -25,6 +25,10 @@ export class TodoListHeaderComponent {
     newTodoFocusState = false;
 
     constructor() { }
+
+    ngOnInit() {
+        console.log(`%cin 'TodoListHeaderComponent' hashTagToFilter: `, this.consoleTextColorComponent, this.hashTagToFilter);
+    }
 
     addTodo() {
         if (this.newTodo.title) {

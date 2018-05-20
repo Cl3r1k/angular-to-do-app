@@ -22,6 +22,7 @@ Todos:
                 ☐ Add URL support in 'todo Title'
                 ☐ Update tests for 'DynamicContentDirective' and 'ParseTagPipe'
 
+            ☐ Rewrite part with resolvers, and return from resolver Object like {activeRouteState, params, todos}
             ☐ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode')
             ☐ Update styles for 'completed-todos' span
 
