@@ -37,7 +37,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     activeRouteState = 0;
     clearHoverState = false;
     toggleAllHoverState = false;
-    hashTagToFilter = 'dev';
+    hashTagToFilter = '';
 
     // Ask Angular DI system to inject the dependency
     // associated with the dependency injection token 'TodoDataService'
@@ -66,10 +66,10 @@ export class TodosComponent implements OnInit, OnDestroy {
                     } else if (this._route.routeConfig.path.endsWith('hashtag')) {
                         console.log(`%cin 'TodosComponent' path.endsWith: hashtag`, this.consoleTextColorComponent);
                         // tslint:disable-next-line:max-line-length
-                        console.log(`%cin 'TodosComponent' path.endsWith: this._route.params['hashtag']`, this.consoleTextColorComponent, this._route.params['hashtag']);
+                        console.log(`%cin 'TodosComponent' this._route.snapshot.params['hashtag']: `, this.consoleTextColorComponent, this._route.snapshot.params['hashtag']);
                         this.activeRouteState = 3;
-                        if (this._route.params['hashtag']) {
-                            this.hashTagToFilter = this._route.params['hashtag'];
+                        if (this._route.snapshot.params['hashtag']) {
+                            this.hashTagToFilter = this._route.snapshot.params['hashtag'];
                         }
                     } else {
                         this.activeRouteState = 0;
