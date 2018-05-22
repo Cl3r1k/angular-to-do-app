@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
+import { Router } from '@angular/router';
+
 @Component({
     selector: 'app-todo-list-header',
     templateUrl: './todo-list-header.component.html',
@@ -24,7 +26,7 @@ export class TodoListHeaderComponent implements OnInit {
 
     newTodoFocusState = false;
 
-    constructor() { }
+    constructor(private router: Router) { }
 
     ngOnInit() {
         console.log(`%cin 'TodoListHeaderComponent' hashTagToFilter: `, this.consoleTextColorComponent, this.hashTagToFilter);
@@ -50,6 +52,10 @@ export class TodoListHeaderComponent implements OnInit {
 
     setNewTodoFocus(newTodoFocusState: boolean) {
         this.newTodoFocusState = newTodoFocusState;
+    }
+
+    resetFilter() {
+        this.router.navigate(['/todos']);
     }
 
 }
