@@ -21,10 +21,11 @@ Todos:
                 ☐ Click on tag should add 'tag-block' to 'header' and filter list
                 ☐ Add URL support in 'todo Title'
                 ☐ Update tests for 'DynamicContentDirective' and 'ParseTagPipe'
+                ☐ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate)
 
             ☐ Rewrite part with resolvers, and return from resolver Object like {activeRouteState, params, todos}
             ☐ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode')
-            ☐ Update styles for 'completed-todos' span
+            ☐ Update styles for 'completed-todos' span (hover and active looks not proper)
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
