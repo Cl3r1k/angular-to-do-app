@@ -12,7 +12,8 @@ export class TodosFilterHashtagResolver implements Resolve<Observable<ToDo[]>> {
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ToDo[]> {
         console.log(`%cin 'TodosFilterHashtagResolver' hashtag: `, 'color: royalblue;', route.params['hashtag']);
         // tslint:disable-next-line:max-line-length
-        return this._todoService.initIndexedDbBase().switchMap(() => this._todoService.getTodosWithHashtag(route.params['hashtag']));    // Open base anyway
+        // return this._todoService.initIndexedDbBase().switchMap(() => this._todoService.getTodosWithHashtag(route.params['hashtag']));    // Open base anyway
+        return this._todoService.initIndexedDbBase().switchMap(() => this._todoService.getAllTodos(0));    // Open base anyway
     }
 
 }

@@ -18,10 +18,11 @@ Todos:
             ☐ Add tags support (for example #tagName) <========================================================= CURRENT TASK
                 ☐ In 'todo Title' show tags as blocks with colors
                     ☐ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color)
-                ☐ Click on tag should add 'tag-block' to 'header' and filter list
-                ☐ Add URL support in 'todo Title'
+                ✔ Click on tag should add 'tag-block' to 'header' and filter list @done(18-05-23 10:05)
+                ✔ Add URL support in 'todo Title' @done(18-05-23 10:06)
                 ☐ Update tests for 'DynamicContentDirective' and 'ParseTagPipe'
                 ☐ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate)
+                    ☐ Now 'getTodosWithHashtag()' is redundant?
 
             ☐ Rewrite part with resolvers, and return from resolver Object like {activeRouteState, params, todos}
             ☐ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode')

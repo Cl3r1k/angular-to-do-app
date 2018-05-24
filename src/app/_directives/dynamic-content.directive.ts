@@ -17,7 +17,7 @@ export class DynamicContentDirective {
             event.preventDefault();
             event.stopPropagation();
 
-            // alert('filter todos with hashtag: ' + link.trim());
+            // console.log('filter todos with hashtag: ', link.trim());
             // this.router.navigateByUrl('/todos/filter/hashtag/' + link.trim(), { skipLocationChange: false });
 
             this.router.navigate(['/todos/filter/hashtag/', link.trim()]);

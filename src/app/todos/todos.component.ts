@@ -313,15 +313,27 @@ export class TodosComponent implements OnInit, OnDestroy {
         let completedTodos: ToDo[];
 
         pinnedTodos = this.todos.filter(todo => {
-            return !todo.complete && todo.pin;
+            if (this.activeRouteState === 3) {
+                return !todo.complete && todo.pin && todo.title.toLowerCase().indexOf('#tagName'.toLowerCase()) > 0;
+            } else {
+                return !todo.complete && todo.pin;
+            }
         });
 
         unpinnedTodos = this.todos.filter(todo => {
-            return !todo.complete && !todo.pin;
+            if (this.activeRouteState === 3) {
+                return !todo.complete && !todo.pin && todo.title.toLowerCase().indexOf('#tagName'.toLowerCase()) > 0;
+            } else {
+                return !todo.complete && !todo.pin;
+            }
         });
 
         completedTodos = this.todos.filter(todo => {
-            return todo.complete;
+            if (this.activeRouteState === 3) {
+                return todo.complete && todo.title.toLowerCase().indexOf('#tagName'.toLowerCase()) > 0;
+            } else {
+                return todo.complete;
+            }
         });
 
         this.todosToView = [[]];
