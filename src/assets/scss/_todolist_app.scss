@@ -297,7 +297,10 @@
             background-color: rgb(235, 119, 235); // For debuging
             .tag-class {
                 cursor: pointer;
-                color: red;
+                color: #ffffff;
+                background-color: #00ced1;
+                padding: 1px 5px 1px 5px;
+                border-radius: 3px;
             }
         }
         .buttons-block {

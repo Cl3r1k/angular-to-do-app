@@ -314,7 +314,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
         pinnedTodos = this.todos.filter(todo => {
             if (this.activeRouteState === 3) {
-                return !todo.complete && todo.pin && todo.title.toLowerCase().indexOf('#tagName'.toLowerCase()) > 0;
+                return !todo.complete && todo.pin && todo.title.toLowerCase().indexOf(this.hashTagToFilter.toLowerCase()) > 0;
             } else {
                 return !todo.complete && todo.pin;
             }
@@ -322,7 +322,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
         unpinnedTodos = this.todos.filter(todo => {
             if (this.activeRouteState === 3) {
-                return !todo.complete && !todo.pin && todo.title.toLowerCase().indexOf('#tagName'.toLowerCase()) > 0;
+                return !todo.complete && !todo.pin && todo.title.toLowerCase().indexOf(this.hashTagToFilter.toLowerCase()) > 0;
             } else {
                 return !todo.complete && !todo.pin;
             }
@@ -330,7 +330,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
         completedTodos = this.todos.filter(todo => {
             if (this.activeRouteState === 3) {
-                return todo.complete && todo.title.toLowerCase().indexOf('#tagName'.toLowerCase()) > 0;
+                return todo.complete && todo.title.toLowerCase().indexOf(this.hashTagToFilter.toLowerCase()) > 0;
             } else {
                 return todo.complete;
             }
