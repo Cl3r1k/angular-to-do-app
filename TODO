@@ -15,7 +15,7 @@ Todos:
     New:
         Current:
             
-            ☐ Add tags support (for example #tagName) <========================================================= CURRENT TASK
+            ☐ Add tags support (for example #tagName)
                 ☐ In 'todo Title' show tags as blocks with colors
                     ☐ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color)
                 ✔ Click on tag should add 'tag-block' to 'header' and filter list @done(18-05-23 10:05)
@@ -24,9 +24,11 @@ Todos:
                 ☐ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate)
                     ☐ Now 'getTodosWithHashtag()' is redundant?
 
-            ☐ Rewrite part with resolvers, and return from resolver Object like {activeRouteState, params, todos}
+            ☐ Rewrite part with resolvers, and return from resolver Object/Class like {activeRouteState, params, todos} <========================================================= CURRENT TASK
             ☐ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode')
             ☐ Update styles for 'completed-todos' span (hover and active looks not proper)
+
+            ☐ Update CLI to version 6 (look here `https://blog.codewithdan.com/2018/05/03/upgrading-an-application-to-angular-6-step-by-step/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more`)
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
