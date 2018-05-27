@@ -49,31 +49,18 @@ export class TodosComponent implements OnInit, OnDestroy {
 
     public ngOnInit() {
         this._route.data
-            .map((data) => data['todos'])
+            .map((data) => data['resolverData'])
             .subscribe(
-                (todos) => {
-                    // TODO: Rewrite part with resolvers, and return from resolver Object like {activeRouteState, params, todos}
-                    console.log(`%cin 'TodosComponent' _route.params: `, this.consoleTextColorComponent, this._route.params);
-                    console.log(`%cin 'TodosComponent' _route.queryParams: `, this.consoleTextColorComponent, this._route.queryParams);
-                    // tslint:disable-next-line:max-line-length
-                    console.log(`%cin 'TodosComponent' _route.routeConfig.path: `, this.consoleTextColorComponent, this._route.routeConfig.path);
-                    console.log(`%cincoming data from resolver`, this.consoleTextColorComponent, todos);
-                    this.todos = todos;
-                    if (this._route.routeConfig.path.endsWith('active')) {
-                        this.activeRouteState = 1;
-                    } else if (this._route.routeConfig.path.endsWith('completed')) {
-                        this.activeRouteState = 2;
-                    } else if (this._route.routeConfig.path.endsWith('hashtag')) {
-                        console.log(`%cin 'TodosComponent' path.endsWith: hashtag`, this.consoleTextColorComponent);
-                        // tslint:disable-next-line:max-line-length
-                        console.log(`%cin 'TodosComponent' this._route.snapshot.params['hashtag']: `, this.consoleTextColorComponent, this._route.snapshot.params['hashtag']);
-                        this.activeRouteState = 3;
-                        if (this._route.snapshot.params['hashtag']) {
-                            this.hashTagToFilter = this._route.snapshot.params['hashtag'];
-                        }
-                    } else {
-                        this.activeRouteState = 0;
-                    }
+                (resolverData) => {
+                    // console.log(`%c'TodosComponent' _route.params: `, this.consoleTextColorComponent, this._route.params);
+                    // console.log(`%c'TodosComponent' _route.queryParams: `, this.consoleTextColorComponent, this._route.queryParams);
+                    // console.log(`%c'TodosComponent' routeConfig.path: `, this.consoleTextColorComponent, this._route.routeConfig.path);
+
+                    // console.log(`%cincoming 'resolverData' from resolver: `, this.consoleTextColorComponent, resolverData);
+                    this.activeRouteState = resolverData.activeRouteState;
+                    this.hashTagToFilter = resolverData.params;
+                    this.todos = resolverData.todos;
+
                     this.transformView();
                     this.updateFooterAndToggleAllInfo();
                 }

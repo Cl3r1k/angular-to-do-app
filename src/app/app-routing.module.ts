@@ -17,28 +17,28 @@ const routes: Routes = [
         path: 'todos',
         component: TodosComponent,
         resolve: {
-            todos: TodosResolver
+            resolverData: TodosResolver
         }
     },
     {
         path: 'todos/active',
         component: TodosComponent,
         resolve: {
-            todos: TodosActiveResolver
+            resolverData: TodosActiveResolver
         }
     },
     {
         path: 'todos/completed',
         component: TodosComponent,
         resolve: {
-            todos: TodosCompletedResolver
+            resolverData: TodosCompletedResolver
         }
     },
     {
         path: 'todos/filter/hashtag/:hashtag',
         component: TodosComponent,
         resolve: {
-            todos: TodosFilterHashtagResolver
+            resolverData: TodosFilterHashtagResolver
         }
     },
     {

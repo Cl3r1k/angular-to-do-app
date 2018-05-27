@@ -3,10 +3,10 @@ import { ToDo } from '@app/_models/to-do';
 export class ResolverData {
     todos: ToDo[] = [];
     activeRouteState: number;
-    hashTagToFilter = '';
+    params = '';
 
-    constructor(activeRouteState: number, hashTagToFilter: string) {
+    constructor(activeRouteState: number, params: string) {
         this.activeRouteState = activeRouteState;
-        this.hashTagToFilter = hashTagToFilter;
+        this.params = params;
     }
 }
