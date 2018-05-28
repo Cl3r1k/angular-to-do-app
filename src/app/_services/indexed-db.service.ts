@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
+import { Tag } from '@app/_models/tag';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -11,12 +12,13 @@ import 'rxjs/add/observable/fromPromise';
 export class IndexedDbService extends Dexie {
 
     dbTable: Dexie.Table<ToDo, number>;
+    tagTable: Dexie.Table<Tag, number>;
     // ... other tables will go here... for more info look here (dexie.org/docs/Typescript)
     consoleTextColorService = 'color: salmon;';
     baseVersion = 3;
 
     constructor() {
-        super('todoDatabase');
+        super('Database');
 
         // How to upgrade DB version (http://dexie.org/docs/Tutorial/Design#database-versioning)
         this.version(1).stores({
@@ -34,12 +36,23 @@ export class IndexedDbService extends Dexie {
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
                         costedPomo, estimatedPomos, remindMe, remindTime, note`
         });
+
+        // In version 4 added fields for 'more-dialog'
+        this.version(4).stores({
+            dbTable: `++id, title, complete,
+                        inner_id, created_time, completed_time, updated_time, deleted_time, pin,
+                        costedPomo, estimatedPomos, remindMe, remindTime, note`,
+            tagTable: `++id, tagName, created_time, updated_time, color`
+        });
+
+        // mapToClass (http://dexie.org/docs/Table/Table.mapToClass())
         this.dbTable.mapToClass(ToDo);
+        this.tagTable.mapToClass(Tag);
         console.log('%c Created/Inited/Opened %s (v%d)', this.consoleTextColorService, this.name, this.baseVersion);
 
         // This function runs once when base created (http://dexie.org/docs/Dexie/Dexie.on.populate#description)
         this.on('populate', () => {
-            this.dbTable.add(new ToDo({ id: 0, title: '1. Add more todos!', complete: true }));
+            this.dbTable.add(new ToDo({ id: 0, title: '1. Add more todos!', complete: false }));
             this.dbTable.add(new ToDo({ id: 1, title: '2. Todo with priority 1 !', complete: false }));
             this.dbTable.add(new ToDo({ id: 2, title: '3. Todo with #tagName', complete: false }));
             this.dbTable.add(new ToDo({ id: 3, title: '4. Todo with URL https://google.com', complete: false }));
@@ -49,6 +62,7 @@ export class IndexedDbService extends Dexie {
             this.dbTable.add(new ToDo({ id: 7, title: '8. Click on checkbox to mark as completed!', complete: false }));
             // tslint:disable-next-line:max-line-length
             this.dbTable.add(new ToDo({ id: 8, title: '9. Todo with large text example ---------------------------------------------------------------------------------------------------------->', complete: false }));
+            this.dbTable.add(new ToDo({ id: 9, title: '10. Completed todo', complete: true }));
             console.log('%c DB populated successfully', this.consoleTextColorService);
         });
     }
@@ -152,7 +166,9 @@ export class IndexedDbService extends Dexie {
     // TODO: Decide to use the method return type as ToDo or number (0 or 1) as far update() returns 1 if data updated and 0 if not
     public updateTodo(todo: ToDo): Observable<ToDo> {
         // For perfomance Dexie.transaction() used (http://dexie.org/docs/Dexie/Dexie.transaction())
-        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+        return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
+            const tag: Tag = new Tag('#tagName');
+
             await this.dbTable.update(todo.id, todo);
             return await this.dbTable.get(todo.id);
         }).then(async (updatedTodo) => {
