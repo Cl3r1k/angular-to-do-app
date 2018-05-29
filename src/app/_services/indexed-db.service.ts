@@ -17,6 +17,8 @@ export class IndexedDbService extends Dexie {
     consoleTextColorService = 'color: salmon;';
     baseVersion = 3;
 
+    hashtagsRegExp = /(^|\s)(#[a-z\d][\w-]*)/ig; // Find/Replace #hashtags in text
+
     constructor() {
         super('Database');
 
@@ -163,11 +165,28 @@ export class IndexedDbService extends Dexie {
         }));
     }
 
-    // TODO: Decide to use the method return type as ToDo or number (0 or 1) as far update() returns 1 if data updated and 0 if not
+    // TODO: Decide to use the method return type as ToDo or number (0 or 1) e.g. update() returns 1 if data updated and 0 if not
     public updateTodo(todo: ToDo): Observable<ToDo> {
         // For perfomance Dexie.transaction() used (http://dexie.org/docs/Dexie/Dexie.transaction())
         return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
-            const tag: Tag = new Tag('#tagName');
+
+            // Find #hashtags in text
+            if (todo.title.match(this.hashtagsRegExp)) {
+                const hashtags = todo.title.match(this.hashtagsRegExp);
+                console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
+
+                const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+                const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
+                    return hashtag.tagName;
+                });
+
+                hashtags.map(hashtag => {
+                    console.log(`%chashtag:`, this.consoleTextColorService, hashtag.toString().trim());
+                    // if (!hashtagTitlesInDb.includes(hashtag.trim())) {
+                    //     console.log(`%cnot found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
+                    // }
+                });
+            }
 
             await this.dbTable.update(todo.id, todo);
             return await this.dbTable.get(todo.id);
