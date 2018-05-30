@@ -18,6 +18,18 @@ export class IndexedDbService extends Dexie {
     baseVersion = 3;
 
     hashtagsRegExp = /(^|\s)(#[a-z\d][\w-]*)/ig; // Find/Replace #hashtags in text
+    colorsHashtags: string[] = [
+        '#00ced1',
+        '#217273',
+        '#bb3c3c',
+        '#b32279',
+        '#45c143',
+        '#135012',
+        '#c1692a',
+        '#966441',
+        '#797979',
+        '#b97aff',
+    ];
 
     constructor() {
         super('Database');
@@ -181,10 +193,39 @@ export class IndexedDbService extends Dexie {
                 });
 
                 hashtags.map(hashtag => {
-                    console.log(`%chashtag:`, this.consoleTextColorService, hashtag.toString().trim());
-                    // if (!hashtagTitlesInDb.includes(hashtag.trim())) {
-                    //     console.log(`%cnot found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
-                    // }
+                    console.log(`%ctypeof(hashtag):`, this.consoleTextColorService, typeof (hashtag));
+                    // const tmpHashtag = ' ' + hashtag + ' ';
+                    // console.log(`%ctmpHashtag:`, this.consoleTextColorService, tmpHashtag.trim());
+                    // console.log(`%chashtag:`, this.consoleTextColorService, hashtag.trim());
+
+                    // const text1 = hashtag.replace(this.hashtagsRegExp, `>$2<`);
+                    // console.log(`%ctext1:`, this.consoleTextColorService, text1);
+
+                    // let text = '';
+                    // hashtag = hashtag.replace(this.hashtagsRegExp, function replacer($1, $2, $3) {
+                    //     // const part1 = $1;
+                    //     // const part2 = $2;
+                    //     // console.log(`%cpart1:`, this.consoleTextColorService, part1);
+                    //     // console.log(`%cpart2:`, this.consoleTextColorService, part2);
+
+                    //     text = $3;
+
+                    //     return $3;
+                    // });
+
+                    // console.log(`text:` + text.slice(1, 3));
+                    // console.log(`%chashtag:`, this.consoleTextColorService, hashtag);
+
+                    if (!hashtagTitlesInDb.includes(hashtag.trim())) {
+                        console.log(`%cnot found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
+                        const newHashtag: Tag = new Tag(hashtag.trim());
+
+                        const rndColor = this.colorsHashtags[this.randomRangeInteger(0, 9)];
+                        newHashtag.color = rndColor;
+                        // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
+
+                        this.tagTable.add(newHashtag);
+                    }
                 });
             }
 
@@ -380,6 +421,11 @@ export class IndexedDbService extends Dexie {
     private handleError(source: string, error: Event | any) {
         console.error('IndexedDbService (%s) - handleError: ', source, error.stack || error);
         return Observable.throw(error);
+    }
+
+    private randomRangeInteger(min: number, max: number): number {
+        const rnd = min - 0.5 + Math.random() * (max - min + 1);
+        return Math.round(rnd);
     }
 
 }
