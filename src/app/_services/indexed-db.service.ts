@@ -93,6 +93,9 @@ export class IndexedDbService extends Dexie {
     public createTodo(todo: ToDo): Observable<ToDo> {
         return Observable.fromPromise(this.dbTable.add(todo).then(async (newId) => {
             const newTodo = await this.dbTable.get(newId);
+
+            this.parseTag(todo);
+
             console.log('%c createTodo - added new todo: ', this.consoleTextColorService, newTodo);
             return newTodo;
         }).catch(error => {
@@ -182,52 +185,7 @@ export class IndexedDbService extends Dexie {
         // For perfomance Dexie.transaction() used (http://dexie.org/docs/Dexie/Dexie.transaction())
         return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
 
-            // Find #hashtags in text
-            if (todo.title.match(this.hashtagsRegExp)) {
-                const hashtags = todo.title.match(this.hashtagsRegExp);
-                console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
-
-                const hashtagsInDb: Tag[] = await this.tagTable.toArray();
-                const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
-                    return hashtag.tagName;
-                });
-
-                hashtags.map(hashtag => {
-                    console.log(`%ctypeof(hashtag):`, this.consoleTextColorService, typeof (hashtag));
-                    // const tmpHashtag = ' ' + hashtag + ' ';
-                    // console.log(`%ctmpHashtag:`, this.consoleTextColorService, tmpHashtag.trim());
-                    // console.log(`%chashtag:`, this.consoleTextColorService, hashtag.trim());
-
-                    // const text1 = hashtag.replace(this.hashtagsRegExp, `>$2<`);
-                    // console.log(`%ctext1:`, this.consoleTextColorService, text1);
-
-                    // let text = '';
-                    // hashtag = hashtag.replace(this.hashtagsRegExp, function replacer($1, $2, $3) {
-                    //     // const part1 = $1;
-                    //     // const part2 = $2;
-                    //     // console.log(`%cpart1:`, this.consoleTextColorService, part1);
-                    //     // console.log(`%cpart2:`, this.consoleTextColorService, part2);
-
-                    //     text = $3;
-
-                    //     return $3;
-                    // });
-
-                    // console.log(`text:` + text.slice(1, 3));
-                    // console.log(`%chashtag:`, this.consoleTextColorService, hashtag);
-
-                    if (!hashtagTitlesInDb.includes(hashtag.trim())) {
-                        console.log(`%cnot found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
-                        const newHashtag: Tag = new Tag(hashtag.trim());
-
-                        const rndColor = this.colorsHashtags[this.randomRangeInteger(0, 9)];
-                        newHashtag.color = rndColor;
-                        // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
-
-                        this.tagTable.add(newHashtag);
-                    }
-                });
-            }
+            this.parseTag(todo);
 
             await this.dbTable.update(todo.id, todo);
             return await this.dbTable.get(todo.id);
@@ -426,6 +384,32 @@ export class IndexedDbService extends Dexie {
     private randomRangeInteger(min: number, max: number): number {
         const rnd = min - 0.5 + Math.random() * (max - min + 1);
         return Math.round(rnd);
+    }
+
+    private async parseTag(todo: ToDo) {
+        // Find #hashtags in text
+        if (todo.title.match(this.hashtagsRegExp)) {
+            const hashtags = todo.title.match(this.hashtagsRegExp);
+            // console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
+
+            const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+            const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
+                return hashtag.tagName;
+            });
+
+            hashtags.map(hashtag => {
+                if (!hashtagTitlesInDb.includes(hashtag.trim())) {
+                    console.log(`%cnot found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
+                    const newHashtag: Tag = new Tag(hashtag.trim());
+
+                    const rndColor = this.colorsHashtags[this.randomRangeInteger(0, 9)];
+                    newHashtag.color = rndColor;
+                    // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
+
+                    this.tagTable.add(newHashtag);
+                }
+            });
+        }
     }
 
 }

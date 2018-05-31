@@ -28,7 +28,8 @@ export class ParseTagPipe implements PipeTransform {
 
         // Find/Replace #hashtags in text
         if (text.match(this.hashtagsRegExp)) {
-            text = text.replace(this.hashtagsRegExp, `$1<span class='tag-class'>$2</span>`);
+            const color = `[style.background-color]='red'`;
+            text = text.replace(this.hashtagsRegExp, `$1<span class='tag-class' ` + color + `>$2</span>`);
         }
 
         return text;
