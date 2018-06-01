@@ -6,7 +6,7 @@
 // To push changes on githubpages
 // ng build --prod --base-href "https://Cl3r1k.github.io/angular-to-do-app/"
 // angular-cli-ghpages --repo=https://github.com/Cl3r1k/angular-to-do-app.git --name=Cl3r1k --email=cl3r1k2@gmail.com --no-silent
-// Colors for modules: tests - `Teal`, components - `Cadetblue`, services - `Salmon`, resolvers - `Royalblue`
+// Colors for modules: tests - `Teal`, components - `Cadetblue`, services - `Salmon`, resolvers - `Royalblue`, pipes - `Purple`
 
 Commit message:
 

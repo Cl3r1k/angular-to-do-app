@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+
+// Models
 import { ToDo } from '@app/_models/to-do';
 
 import { Observable } from 'rxjs/Observable';
@@ -17,7 +19,7 @@ export class TodoService {
     consoleTextColorService = 'color: salmon;';
 
     // TODO: Use only IndexedDbService, and sync data with backend
-    constructor(private _api: ApiService, public _indexedDbService: IndexedDbService, private _todoOrderService: TodoOrderService) {
+    constructor(private _api: ApiService, private _indexedDbService: IndexedDbService, private _todoOrderService: TodoOrderService) {
         console.log('%cconstructor in TodoService', this.consoleTextColorService);
     }
 

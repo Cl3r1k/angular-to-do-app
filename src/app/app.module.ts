@@ -33,6 +33,7 @@ import { DynamicContentDirective } from '@app/_directives/dynamic-content.direct
 
 // Pipes
 import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
+import { SafePipe } from '@app/_pipes/safe.pipe';
 
 // Modules
 import { DndModule } from 'ng2-dnd';
@@ -57,7 +58,8 @@ import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, M
         DialogDeleteComponent,
         DialogMoreComponent,
         ParseTagPipe,
-        DynamicContentDirective
+        DynamicContentDirective,
+        SafePipe
     ],
     imports: [
         AppRoutingModule,
