@@ -23,6 +23,7 @@ import { TodoService } from '@app/_services/todo.service';
 import { ApiService } from '@app/_services/api.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
 import { TodoOrderService } from '@app/_services/todo-order.service';
+import { TagService } from '@app/_services/tag.service';
 
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
@@ -77,7 +78,7 @@ import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, M
         MatNativeDateModule,
         MatTooltipModule
     ],
-    providers: [TodoService, ApiService, IndexedDbService, TodoOrderService],
+    providers: [TodoService, ApiService, IndexedDbService, TodoOrderService, TagService],
     bootstrap: [AppComponent],
     entryComponents: [DialogDeleteComponent, DialogMoreComponent]
 })

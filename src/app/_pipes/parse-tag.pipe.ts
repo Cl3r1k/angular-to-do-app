@@ -1,15 +1,20 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+// Services
+import { TagService } from '@app/_services/tag.service';
+
 @Pipe({
     name: 'parseTagPipe'
 })
 export class ParseTagPipe implements PipeTransform {
 
+    consoleTextColorPipe = 'color: purple;';
+
     // tslint:disable-next-line:max-line-length
     urlsRegExp = /(\b(https?|http|ftp|ftps|Https|rtsp|Rtsp):\/\/[A-Z0-9+&@#\/%?=~_|!:,.;-]*[-A-Z0-9+&@#\/%=~_|])/gim; // Find/Replace URL's in text
     hashtagsRegExp = /(^|\s)(#[a-z\d][\w-]*)/ig; // Find/Replace #hashtags in text
 
-    constructor() { }
+    constructor(private _tagService: TagService) { }
 
     transform(text: string): string {
         // this.parseTag(text);
@@ -32,8 +37,21 @@ export class ParseTagPipe implements PipeTransform {
         if (text.match(this.hashtagsRegExp)) {
             // text = text.replace(this.hashtagsRegExp, `$1<span class='tag-class'>$2</span>`);    // Old text without color
 
-            const color = '#efefef';
-            text = text.replace(this.hashtagsRegExp, `$1<span class='tag-class' style='background-color: ` + color + `;'>$2</span>`);
+            // const color = '#efefef';
+            // text = text.replace(this.hashtagsRegExp, `$1<span class='tag-class' style='background-color: ` + color + `;'>$2</span>`);
+            const scope = this;
+
+            text = text.replace(this.hashtagsRegExp, function replacer($1, $2, $3) {
+                const space = $2;
+                const tagName = $3;
+
+                scope._tagService.getTagColor(tagName).subscribe((result) => {
+                    console.log(`%cin ParseTagPipe for %s result is:`, scope.consoleTextColorPipe, tagName, result);
+                });
+
+                const color = '#efefef';
+                return space + `<span class='tag-class' style='background-color: ` + color + `;'>` + tagName + `</span>`;
+            });
         }
 
         return text;

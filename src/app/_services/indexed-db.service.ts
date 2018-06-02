@@ -412,4 +412,72 @@ export class IndexedDbService extends Dexie {
         }
     }
 
+    public getTagColor(tagName: string): Observable<string> {
+        // return Observable.fromPromise(this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray().then(async (tags) => {
+        //     console.log('%c getTagColor - tags result: ', this.consoleTextColorService, tags);
+        //     return todos;
+        // }).catch(error => {
+        //     return error;    // TODO: Handle error properly as Observable
+        // }));
+
+        return Observable.fromPromise(this.transaction('rw', this.tagTable, async () => {
+
+            let tags = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
+            let colorTag = 'red';
+
+            console.log('%c getTagColor - tags result: ', this.consoleTextColorService, tags);
+
+            if (!tags) {
+                const newHashtag: Tag = new Tag(tagName.trim());
+
+                const rndColor = this.colorsHashtags[this.randomRangeInteger(0, 9)];
+                newHashtag.color = rndColor;
+                // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
+
+                this.tagTable.add(newHashtag);
+
+                tags = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
+            }
+
+            if (tags) {
+                colorTag = tags[0].color;
+            }
+
+            return colorTag;
+
+            // let todos: ToDo[] = await this.dbTable.toArray();
+            // const todosIds: number[] = [];
+
+            // todos.forEach(todo => {
+            //     if (todo.complete) {
+            //         todo.completed_time = new Date().toISOString();
+            //         todo.updated_time = todo.completed_time;
+            //         todosIds.push(todo.id);
+            //     }
+            // });
+
+            // // console.log('%c todos Ids to delete:', this.consoleTextColorService, todosIds);
+
+            // // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
+
+            // const resDelete = await this.dbTable.bulkDelete(todosIds);
+
+            // todos = await this.dbTable.toArray();
+
+            // if (activeRouteState === 1 || activeRouteState === 2) {
+            //     todos = todos.filter(todo => {
+            //         return todo.complete === (activeRouteState === 2 ? true : false);
+            //     });
+            // }
+
+            // // console.log('%c returned todos:', this.consoleTextColorService, todos);
+            // return todos;
+        }).then(async (colorTag) => {
+            console.log('%c Transaction committed getTagColor: ', this.consoleTextColorService, colorTag);
+            return colorTag;
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
+    }
+
 }
