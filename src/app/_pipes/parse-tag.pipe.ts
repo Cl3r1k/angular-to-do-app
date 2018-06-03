@@ -45,9 +45,15 @@ export class ParseTagPipe implements PipeTransform {
                 const space = $2;
                 const tagName = $3;
 
-                scope._tagService.getTagColor(tagName).subscribe((result) => {
+                let colorInDb = '';
+                const subscription = scope._tagService.getTagColor(tagName).subscribe((result) => {
                     console.log(`%cin ParseTagPipe for %s result is:`, scope.consoleTextColorPipe, tagName, result);
+                    colorInDb = result;
                 });
+
+                console.log(`%cin ParseTagPipe for %s colorInDb is:`, scope.consoleTextColorPipe, tagName, colorInDb);
+
+                // TODO: Find the way to handle observable (replacer should return a string)
 
                 const color = '#efefef';
                 return space + `<span class='tag-class' style='background-color: ` + color + `;'>` + tagName + `</span>`;
