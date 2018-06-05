@@ -11,14 +11,20 @@
 Commit message:
 
 
+
 Todos:
     New:
         Current:
             
             ☐ Add tags support (for example #tagName)
                 ☐ In 'todo Title' show tags as blocks with colors
-                    ☐ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color) <========================================================= CURRENT TASK 
-                        ☐ Add posibility to change tag color
+                    ☐ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color)
+                        ☐ Add posibility to change tag color (right click on tag)
+                    ☐ Rewrite part with tag list
+                        ✔ Fill tags array in 'TagService' when list of todo is loaded @done(18-06-04 10:19)
+                        ☐ Use tags array from 'TagService' in 'ParseTagPipe' when todo showed <========================================================= CURRENT TASK
+                        ☐ Update tags array in 'TagService', when todo added/updated/deleted
+                    ☐ Use proper colors for tagBlock in header
                 ✔ Click on tag should add 'tag-block' to 'header' and filter list @done(18-05-23 10:05)
                 ✔ Add URL support in 'todo Title' @done(18-05-23 10:06)
                 ☐ Update tests for 'DynamicContentDirective' and 'ParseTagPipe'

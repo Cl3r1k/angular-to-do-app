@@ -4,6 +4,10 @@ import { Tag } from '@app/_models/tag';
 
 import { Observable } from 'rxjs/Observable';
 
+// Services
+import { TagService } from '@app/_services/tag.service';
+
+// Modules
 import Dexie from 'dexie';    // https://github.com/dfahlander/Dexie.js
 
 import 'rxjs/add/observable/fromPromise';
@@ -31,7 +35,7 @@ export class IndexedDbService extends Dexie {
         '#b97aff',
     ];
 
-    constructor() {
+    constructor(private _tagService: TagService) {
         super('Database');
 
         // How to upgrade DB version (http://dexie.org/docs/Tutorial/Design#database-versioning)
@@ -77,6 +81,10 @@ export class IndexedDbService extends Dexie {
             // tslint:disable-next-line:max-line-length
             this.dbTable.add(new ToDo({ id: 8, title: '9. Todo with large text example ---------------------------------------------------------------------------------------------------------->', complete: false }));
             this.dbTable.add(new ToDo({ id: 9, title: '10. Completed todo', complete: true }));
+
+            const tag: Tag = new Tag('#tagName');
+            tag.color = this.colorsHashtags[0];
+            this.tagTable.add(tag);
             console.log('%c DB populated successfully', this.consoleTextColorService);
         });
     }
@@ -162,6 +170,9 @@ export class IndexedDbService extends Dexie {
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
         return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
+            const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+            this._tagService.setTagsList(hashtagsInDb);
+
             if (activeRouteState === 1 || activeRouteState === 2) {
                 let todos: ToDo[] = [];
 
@@ -413,13 +424,6 @@ export class IndexedDbService extends Dexie {
     }
 
     public getTagColor(tagName: string): Observable<string> {
-        // return Observable.fromPromise(this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray().then(async (tags) => {
-        //     console.log('%c getTagColor - tags result: ', this.consoleTextColorService, tags);
-        //     return todos;
-        // }).catch(error => {
-        //     return error;    // TODO: Handle error properly as Observable
-        // }));
-
         return Observable.fromPromise(this.transaction('rw', this.tagTable, async () => {
 
             let tags = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
@@ -444,34 +448,6 @@ export class IndexedDbService extends Dexie {
             }
 
             return colorTag;
-
-            // let todos: ToDo[] = await this.dbTable.toArray();
-            // const todosIds: number[] = [];
-
-            // todos.forEach(todo => {
-            //     if (todo.complete) {
-            //         todo.completed_time = new Date().toISOString();
-            //         todo.updated_time = todo.completed_time;
-            //         todosIds.push(todo.id);
-            //     }
-            // });
-
-            // // console.log('%c todos Ids to delete:', this.consoleTextColorService, todosIds);
-
-            // // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
-
-            // const resDelete = await this.dbTable.bulkDelete(todosIds);
-
-            // todos = await this.dbTable.toArray();
-
-            // if (activeRouteState === 1 || activeRouteState === 2) {
-            //     todos = todos.filter(todo => {
-            //         return todo.complete === (activeRouteState === 2 ? true : false);
-            //     });
-            // }
-
-            // // console.log('%c returned todos:', this.consoleTextColorService, todos);
-            // return todos;
         }).then(async (colorTag) => {
             console.log('%c Transaction committed getTagColor: ', this.consoleTextColorService, colorTag);
             return colorTag;

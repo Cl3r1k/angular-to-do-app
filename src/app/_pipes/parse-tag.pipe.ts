@@ -45,13 +45,13 @@ export class ParseTagPipe implements PipeTransform {
                 const space = $2;
                 const tagName = $3;
 
-                let colorInDb = '';
-                const subscription = scope._tagService.getTagColor(tagName).subscribe((result) => {
-                    console.log(`%cin ParseTagPipe for %s result is:`, scope.consoleTextColorPipe, tagName, result);
-                    colorInDb = result;
-                });
+                // let colorInDb = '';
+                // const subscription = scope._tagService.getTagColor(tagName).subscribe((result) => {
+                //     console.log(`%cin ParseTagPipe for %s result is:`, scope.consoleTextColorPipe, tagName, result);
+                //     colorInDb = result;
+                // });
 
-                console.log(`%cin ParseTagPipe for %s colorInDb is:`, scope.consoleTextColorPipe, tagName, colorInDb);
+                // console.log(`%cin ParseTagPipe for %s colorInDb is:`, scope.consoleTextColorPipe, tagName, colorInDb);
 
                 // TODO: Find the way to handle observable (replacer should return a string)
                 // Still in search of the solution
