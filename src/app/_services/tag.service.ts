@@ -17,10 +17,6 @@ export class TagService {
 
     constructor(/* private _indexedDbService: IndexedDbService */) { }
 
-    // public getTagColor(tagName: string): Observable<string> {
-    //     return this._indexedDbService.getTagColor(tagName);
-    // }
-
     public setTagsList(tags: Tag[]) {
         console.log('%c setTagsList - incoming tags: ', this.consoleTextColorService, tags);
         this.tags = tags;

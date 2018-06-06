@@ -242,12 +242,14 @@ export class IndexedDbService extends Dexie {
     }
 
     public deleteTodoById(todoId: number): Observable<null> {
-        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+        return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
             const todo = await this.dbTable.get(todoId);
             todo.updated_time = new Date().toISOString();
             todo.deleted_time = todo.updated_time;
             await this.dbTable.update(todo.id, todo);
             await this.dbTable.delete(todoId);
+
+            this.parseTag(todo);
 
             // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
 
@@ -403,7 +405,7 @@ export class IndexedDbService extends Dexie {
             const hashtags = todo.title.match(this.hashtagsRegExp);
             // console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
 
-            const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+            let hashtagsInDb: Tag[] = await this.tagTable.toArray();
             const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
                 return hashtag.tagName;
             });
@@ -420,40 +422,11 @@ export class IndexedDbService extends Dexie {
                     this.tagTable.add(newHashtag);
                 }
             });
+
+            hashtagsInDb = [];
+            hashtagsInDb = await this.tagTable.toArray();
+            this._tagService.setTagsList(hashtagsInDb);
         }
-    }
-
-    public getTagColor(tagName: string): Observable<string> {
-        return Observable.fromPromise(this.transaction('rw', this.tagTable, async () => {
-
-            let tags = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
-            let colorTag = 'red';
-
-            console.log('%c getTagColor - tags result: ', this.consoleTextColorService, tags);
-
-            if (!tags) {
-                const newHashtag: Tag = new Tag(tagName.trim());
-
-                const rndColor = this.colorsHashtags[this.randomRangeInteger(0, 9)];
-                newHashtag.color = rndColor;
-                // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
-
-                this.tagTable.add(newHashtag);
-
-                tags = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
-            }
-
-            if (tags) {
-                colorTag = tags[0].color;
-            }
-
-            return colorTag;
-        }).then(async (colorTag) => {
-            console.log('%c Transaction committed getTagColor: ', this.consoleTextColorService, colorTag);
-            return colorTag;
-        }).catch(error => {
-            return error;    // TODO: Handle error properly as Observable
-        }));
     }
 
 }

@@ -22,10 +22,13 @@ Todos:
                         ☐ Add posibility to change tag color (right click on tag)
                     ☐ Rewrite part with tag list
                         ✔ Fill tags array in 'TagService' when list of todo is loaded @done(18-06-04 10:19)
-                        ☐ Use tags array from 'TagService' in 'ParseTagPipe' when todo showed <========================================================= CURRENT TASK
-                        ☐ Update tags array in 'TagService', when todo added/updated/deleted
+                        ✔ Use tags array from 'TagService' in 'ParseTagPipe' when todo showed @done(18-06-05 09:39)
+                        ✔ Update tags array in 'TagService', when todo added/updated/deleted @done(18-06-05 10:30)
+                            ☐ Add logic to check if tag is not in use anymore (not todos with the tag - check all todos in delete/update and process in 'parseTag()'), then delete it from base <========================================================= CURRENT TASK
+                            ☐ Update 'clearCompleted()' with new logic
                     ☐ Use proper colors for tagBlock in header
                 ✔ Click on tag should add 'tag-block' to 'header' and filter list @done(18-05-23 10:05)
+                    ☐ Fix filtering with similar tags (example #tagged1 and #tagged)
                 ✔ Add URL support in 'todo Title' @done(18-05-23 10:06)
                 ☐ Update tests for 'DynamicContentDirective' and 'ParseTagPipe'
                 ☐ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate)
