@@ -55,12 +55,20 @@ export class IndexedDbService extends Dexie {
                         costedPomo, estimatedPomos, remindMe, remindTime, note`
         });
 
-        // In version 4 added fields for 'more-dialog'
+        // In version 4 added new table 'tagTable'
         this.version(4).stores({
             dbTable: `++id, title, complete,
                         inner_id, created_time, completed_time, updated_time, deleted_time, pin,
                         costedPomo, estimatedPomos, remindMe, remindTime, note`,
             tagTable: `++id, tagName, created_time, updated_time, color`
+        });
+
+        // In version 5 added field 'readyToDelete' in 'tagTable'
+        this.version(5).stores({
+            dbTable: `++id, title, complete,
+                        inner_id, created_time, completed_time, updated_time, deleted_time, pin,
+                        costedPomo, estimatedPomos, remindMe, remindTime, note`,
+            tagTable: `++id, tagName, created_time, updated_time, color, readyToDelete`
         });
 
         // mapToClass (http://dexie.org/docs/Table/Table.mapToClass())
@@ -402,15 +410,16 @@ export class IndexedDbService extends Dexie {
     private async parseTag(todo: ToDo) {
         // Find #hashtags in text
         if (todo.title.match(this.hashtagsRegExp)) {
-            const hashtags = todo.title.match(this.hashtagsRegExp);
+            const hashtagsInTitle = todo.title.match(this.hashtagsRegExp);
             // console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
 
             let hashtagsInDb: Tag[] = await this.tagTable.toArray();
+            const todos: ToDo[] = await this.dbTable.toArray();
             const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
                 return hashtag.tagName;
             });
 
-            hashtags.map(hashtag => {
+            hashtagsInTitle.map(hashtag => {
                 if (!hashtagTitlesInDb.includes(hashtag.trim())) {
                     console.log(`%cnot found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
                     const newHashtag: Tag = new Tag(hashtag.trim());
@@ -420,6 +429,29 @@ export class IndexedDbService extends Dexie {
                     // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
 
                     this.tagTable.add(newHashtag);
+                } else {
+                    // TODO: This part is under construction
+                    let isPresent = false;
+                    todos.map(todoItem => {
+                        if (!isPresent && todoItem.title.match(this.hashtagsRegExp)) {
+                            const text: string = todoItem.title.replace(this.hashtagsRegExp, function replacer($1, $2, $3) {
+                                const space = $2;
+                                const tagName = $3;
+
+                                if (tagName === hashtag) {
+                                    isPresent = true;
+                                }
+
+                                return todoItem.title;
+                            });
+                        }
+                    });
+
+                    if (!isPresent) {
+                        const tagToUpdate = this.tagTable.get(6);
+                        console.log(`%ctagToUpdate: `, this.consoleTextColorService, tagToUpdate);
+                    }
+                    // ------------------------------------
                 }
             });
 
