@@ -419,6 +419,7 @@ export class IndexedDbService extends Dexie {
                 return hashtag.tagName;
             });
 
+            let updateTagsPending = false;
             hashtagsInTitle.map(hashtag => {
                 if (!hashtagTitlesInDb.includes(hashtag.trim())) {
                     console.log(`%cnot found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
@@ -432,13 +433,14 @@ export class IndexedDbService extends Dexie {
                 } else {
                     // TODO: This part is under construction
                     let isPresent = false;
+
                     todos.map(todoItem => {
                         if (!isPresent && todoItem.title.match(this.hashtagsRegExp)) {
                             const text: string = todoItem.title.replace(this.hashtagsRegExp, function replacer($1, $2, $3) {
                                 const space = $2;
                                 const tagName = $3;
 
-                                if (tagName === hashtag) {
+                                if (tagName === hashtag.trim()) {
                                     isPresent = true;
                                 }
 
@@ -447,13 +449,28 @@ export class IndexedDbService extends Dexie {
                         }
                     });
 
+                    console.log(`%chashtag: %s isPresent: `, this.consoleTextColorService, hashtag, isPresent);
+
                     if (!isPresent) {
-                        const tagToUpdate = this.tagTable.get(6);
-                        console.log(`%ctagToUpdate: `, this.consoleTextColorService, tagToUpdate);
+                        // const tagToUpdate = this.tagTable.get(6);
+                        // console.log(`%ctagToUpdate: `, this.consoleTextColorService, tagToUpdate);
+                        console.log(`%chashtagsInDb: `, this.consoleTextColorService, hashtagsInDb);
+                        hashtagsInDb.map(hashtagInDb => {
+                            if (hashtagInDb.tagName === hashtag.trim() && !hashtagInDb.readyToDelete) {
+                                hashtagInDb.updated_time = new Date().toISOString();
+                                hashtagInDb.readyToDelete = true;
+                                updateTagsPending = true;
+                            }
+                        });
                     }
                     // ------------------------------------
                 }
             });
+
+            if (updateTagsPending) {
+                console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
+                console.log(`%cnew hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+            }
 
             hashtagsInDb = [];
             hashtagsInDb = await this.tagTable.toArray();
