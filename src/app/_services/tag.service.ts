@@ -29,6 +29,7 @@ export class TagService {
             return tag.tagName === tagName;
         });
 
+        // To fix issue if tags array empty check 'tags.length'
         if (tags) {
             tagColor = tags[0].color;
         }

@@ -11,7 +11,6 @@
 Commit message:
 
 
-
 Todos:
     New:
         Current:
@@ -26,6 +25,8 @@ Todos:
                         ✔ Update tags array in 'TagService', when todo added/updated/deleted @done(18-06-05 10:30)
                             ☐ Add logic to check if tag is not in use anymore (not todos with the tag - check all todos in delete/update and process in 'parseTag()'), then delete it from base <========================================================= CURRENT TASK
                             ☐ Update 'clearCompleted()' with new logic
+                                ☐ Fix add new todo with tag
+                                ☐ Fix tags when they deleted in IndexedDb directly
                     ☐ Use proper colors for tagBlock in header
                 ✔ Click on tag should add 'tag-block' to 'header' and filter list @done(18-05-23 10:05)
                     ☐ Fix filtering with similar tags (example #tagged1 and #tagged)
@@ -39,6 +40,8 @@ Todos:
             ☐ Update styles for 'completed-todos' span (hover and active looks not proper)
 
             ☐ Update CLI to version 6 (look here `https://blog.codewithdan.com/2018/05/03/upgrading-an-application-to-angular-6-step-by-step/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more`)
+
+            ☐ Consider idea for links like in VS code (cntrl click on link, hint for link, and underline for link)
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)

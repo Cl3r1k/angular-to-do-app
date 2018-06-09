@@ -419,6 +419,8 @@ export class IndexedDbService extends Dexie {
                 return hashtag.tagName;
             });
 
+            console.log(`%cBEFORE hashtagsInDb: `, this.consoleTextColorService, hashtagsInDb);
+
             let updateTagsPending = false;
             hashtagsInTitle.map(hashtag => {
                 if (!hashtagTitlesInDb.includes(hashtag.trim())) {
@@ -454,7 +456,7 @@ export class IndexedDbService extends Dexie {
                     if (!isPresent) {
                         // const tagToUpdate = this.tagTable.get(6);
                         // console.log(`%ctagToUpdate: `, this.consoleTextColorService, tagToUpdate);
-                        console.log(`%chashtagsInDb: `, this.consoleTextColorService, hashtagsInDb);
+                        // console.log(`%cBEFORE hashtagsInDb: `, this.consoleTextColorService, hashtagsInDb);
                         hashtagsInDb.map(hashtagInDb => {
                             if (hashtagInDb.tagName === hashtag.trim() && !hashtagInDb.readyToDelete) {
                                 hashtagInDb.updated_time = new Date().toISOString();
@@ -467,13 +469,18 @@ export class IndexedDbService extends Dexie {
                 }
             });
 
+            // Stopped here, update the tag DB and check it
+            // And currently the problem with 'newTod' that pipe in view works faster, then tadList updates in service
+            // Consider to use async pipe and or something else to solve the issue
+
             if (updateTagsPending) {
                 console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
-                console.log(`%cnew hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+                console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
             }
 
             hashtagsInDb = [];
             hashtagsInDb = await this.tagTable.toArray();
+            console.log(`%cUPDATES hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
             this._tagService.setTagsList(hashtagsInDb);
         }
     }
