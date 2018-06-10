@@ -179,7 +179,7 @@ export class IndexedDbService extends Dexie {
         // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
         return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
-            this._tagService.setTagsList(hashtagsInDb);
+            this._tagService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
 
             if (activeRouteState === 1 || activeRouteState === 2) {
                 let todos: ToDo[] = [];
@@ -469,19 +469,20 @@ export class IndexedDbService extends Dexie {
                 }
             });
 
-            // Stopped here, update the tag DB and check it
-            // And currently the problem with 'newTod' that pipe in view works faster, then tadList updates in service
+            // Stopped here, fix tags when they deleted in IndexedDb directly
+            // And currently the problem with 'newTodo' that pipe in view works faster, then tadList updates in service
             // Consider to use async pipe and or something else to solve the issue
 
             if (updateTagsPending) {
-                console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
-                console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+                // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
+                // console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+                const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
             }
 
             hashtagsInDb = [];
             hashtagsInDb = await this.tagTable.toArray();
-            console.log(`%cUPDATES hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
-            this._tagService.setTagsList(hashtagsInDb);
+            console.log(`%cUPDATED hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+            this._tagService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
         }
     }
 
