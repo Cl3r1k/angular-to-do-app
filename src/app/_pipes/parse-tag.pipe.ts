@@ -1,7 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 // Services
 import { TagService } from '@app/_services/tag.service';
+
+import 'rxjs/add/observable/of';
 
 @Pipe({
     name: 'parseTagPipe'
@@ -16,13 +19,13 @@ export class ParseTagPipe implements PipeTransform {
 
     constructor(private _tagService: TagService) { }
 
-    transform(text: string): string {
+    transform(text: string): Observable<string> {
         // this.parseTag(text);
         // return text;
         return this.parseTag(text);
     }
 
-    parseTag(text: string): string {
+    parseTag(text: string): Observable<string> {
         // Find/Replace URL's in text
         if (text.match(this.urlsRegExp)) {
             text = text.replace(this.urlsRegExp, function replacer($1, $2, $3) {
@@ -54,6 +57,10 @@ export class ParseTagPipe implements PipeTransform {
             });
         }
 
-        return text;
+        // TODO: Stopped here, fix tags when they deleted in IndexedDb directly
+        // And currently the problem with 'newTodo' that pipe in view works faster, then tadList updates in service
+        // Consider to use async pipe and or something else to solve the issue
+
+        return Observable.of(text);
     }
 }

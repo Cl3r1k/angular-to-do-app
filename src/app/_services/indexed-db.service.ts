@@ -178,14 +178,17 @@ export class IndexedDbService extends Dexie {
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
         return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
+
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
 
-            // Stopped here, fix tags when they deleted in IndexedDb directly
-            // And currently the problem with 'newTodo' that pipe in view works faster, then tadList updates in service
-            // Consider to use async pipe and or something else to solve the issue
+            if (!hashtagsInDb.length) {
+                // Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
+                response.map(todo => {
+                    this.parseTag(todo);
+                });
+            }
 
-            this.restoreTagListInDb();
-            this._tagService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
+            this.getAllHashtags();
 
             if (activeRouteState === 1 || activeRouteState === 2) {
                 let todos: ToDo[] = [];
@@ -481,6 +484,7 @@ export class IndexedDbService extends Dexie {
                 const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
             }
 
+            // this.getAllHashtags();
             hashtagsInDb = [];
             hashtagsInDb = await this.tagTable.toArray();
             console.log(`%cUPDATED hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
@@ -488,8 +492,9 @@ export class IndexedDbService extends Dexie {
         }
     }
 
-    restoreTagListInDb() {
-        //
+    private async getAllHashtags() {
+        const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+        this._tagService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
     }
 
 }
