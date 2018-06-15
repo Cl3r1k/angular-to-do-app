@@ -41,6 +41,7 @@ import { DndModule } from 'ng2-dnd';
 import { Autosize } from 'ng-autosize/src/autosize.directive';
 // tslint:disable-next-line:max-line-length
 import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatTooltipModule, MatCardModule } from '@angular/material';
+import { Utils } from '@app/_common/utils';
 
 @NgModule({
     declarations: [
@@ -78,7 +79,7 @@ import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, M
         MatNativeDateModule,
         MatTooltipModule
     ],
-    providers: [TodoService, ApiService, IndexedDbService, TodoOrderService, TagService],
+    providers: [TodoService, ApiService, IndexedDbService, TodoOrderService, TagService, Utils],
     bootstrap: [AppComponent],
     entryComponents: [DialogDeleteComponent, DialogMoreComponent]
 })

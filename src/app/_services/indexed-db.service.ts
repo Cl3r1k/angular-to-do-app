@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
-import { Tag } from '@app/_models/tag';
 
 import { Observable } from 'rxjs/Observable';
+
+// Models
+import { Tag } from '@app/_models/tag';
 
 // Services
 import { TagService } from '@app/_services/tag.service';
 
 // Modules
 import Dexie from 'dexie';    // https://github.com/dfahlander/Dexie.js
+import { Utils } from '@app/_common/utils';
 
+// Imports
 import 'rxjs/add/observable/fromPromise';
 
 @Injectable()
@@ -35,7 +39,7 @@ export class IndexedDbService extends Dexie {
         '#b97aff',
     ];
 
-    constructor(private _tagService: TagService) {
+    constructor(private _tagService: TagService, private _utils: Utils) {
         super('Database');
 
         // How to upgrade DB version (http://dexie.org/docs/Tutorial/Design#database-versioning)
@@ -110,7 +114,8 @@ export class IndexedDbService extends Dexie {
         return Observable.fromPromise(this.dbTable.add(todo).then(async (newId) => {
             const newTodo = await this.dbTable.get(newId);
 
-            this.parseTag(todo);
+            // TODO: Do not forget to clean this line after
+            // this.parseTag(todo);
 
             console.log('%c createTodo - added new todo: ', this.consoleTextColorService, newTodo);
             return newTodo;
@@ -188,7 +193,8 @@ export class IndexedDbService extends Dexie {
                 });
             }
 
-            this.getAllHashtags();
+            // TODO: Here the problem, this part should be called once at start
+            // this.getAllHashtags();
 
             if (activeRouteState === 1 || activeRouteState === 2) {
                 let todos: ToDo[] = [];
@@ -213,7 +219,8 @@ export class IndexedDbService extends Dexie {
         // For perfomance Dexie.transaction() used (http://dexie.org/docs/Dexie/Dexie.transaction())
         return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
 
-            this.parseTag(todo);
+            // TODO: Do not forget to clean this line after
+            // this.parseTag(todo);
 
             await this.dbTable.update(todo.id, todo);
             return await this.dbTable.get(todo.id);
@@ -266,7 +273,8 @@ export class IndexedDbService extends Dexie {
             await this.dbTable.update(todo.id, todo);
             await this.dbTable.delete(todoId);
 
-            this.parseTag(todo);
+            // TODO: Do not forget to clean this line after
+            // this.parseTag(todo);
 
             // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
 
@@ -411,11 +419,6 @@ export class IndexedDbService extends Dexie {
         return Observable.throw(error);
     }
 
-    private randomRangeInteger(min: number, max: number): number {
-        const rnd = min - 0.5 + Math.random() * (max - min + 1);
-        return Math.round(rnd);
-    }
-
     private async parseTag(todo: ToDo) {
         // Find #hashtags in text
         if (todo.title.match(this.hashtagsRegExp)) {
@@ -436,7 +439,7 @@ export class IndexedDbService extends Dexie {
                     console.log(`%cnot found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
                     const newHashtag: Tag = new Tag(hashtag.trim());
 
-                    const rndColor = this.colorsHashtags[this.randomRangeInteger(0, 9)];
+                    const rndColor = this.colorsHashtags[this._utils.randomRangeInteger(0, 9)];
                     newHashtag.color = rndColor;
                     // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
 
@@ -507,7 +510,7 @@ export class IndexedDbService extends Dexie {
 
             if (!hashtagsInDb.length) {
                 const newHashtag: Tag = new Tag(tagName.trim());
-                const rndColor = this.colorsHashtags[this.randomRangeInteger(0, 9)];
+                const rndColor = this.colorsHashtags[this._utils.randomRangeInteger(0, 9)];
                 newHashtag.color = rndColor;
                 // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
                 this.tagTable.add(newHashtag);

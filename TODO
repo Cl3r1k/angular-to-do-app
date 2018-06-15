@@ -35,6 +35,11 @@ Todos:
                 ☐ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate)
                     ✔ Now 'getTodosWithHashtag()' is redundant @done(18-05-27 09:08)
 
+            ☐ Write tests for 'Utils' class
+            ☐ Write tests for 'Tag' models
+            ☐ Write tests for 'ParseTagPipe'
+            ☐ Write tests for 'SafePipe'
+
             ✔ Rewrite part with resolvers, and return from resolver Object/Class like {activeRouteState, params, todos} @done(18-05-26 11:00)
             ☐ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode')
             ☐ Update styles for 'completed-todos' span (hover and active looks not proper)
