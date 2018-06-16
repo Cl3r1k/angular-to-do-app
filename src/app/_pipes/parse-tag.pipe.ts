@@ -60,7 +60,7 @@ export class ParseTagPipe implements PipeTransform {
         // Mb we should update hashtags list in service, and after some time update in IndexedDb
         // Mb we should use `Service workers` which will update after 3 secs data in IndexedDb
         // Ok, here is and idea, how it should work:
-        // 1 - Load tags from IndexedDb to 'TagService' list
+        // 1 - Load tags from IndexedDb to 'TagService' list (probably load data in Resolver)
         // 2 - After any changes add/update/remove tags, it should update the list in 'TagService', and switch on Service worker
         // 3 - Service worker for update list in IndexedDb should work after some time (3sec) and should stop working till next call
 

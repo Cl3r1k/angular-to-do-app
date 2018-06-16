@@ -65,47 +65,47 @@ Todos:
             ✔ Implement grids in TodosComponent @done(18-02-25 10:29)
             ✔ Improve animations for move-Icon, edit-Icon, delete-Icon -> use opacity onHover todo @done(18-02-12 09:25)
             ☐ Improve animation when 'toggleAll' todos (look for single check and toggleAll -> when toggleAll clicked all data reloaded, so we should use Angular animation when in component)
-            ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos like here https://developers.google.com/web/updates/2017/10/animated-blur)
-            ☐ Fix 'toggleAll' checkbox style in Edge (use http://yoksel.github.io/url-encoder/)
+            ☐ While editing Todo use next animation - zoom in current Todo and shadowing backgroung (or blur other todos like here `https://developers.google.com/web/updates/2017/10/animated-blur`)
+            ☐ Fix 'toggleAll' checkbox style in Edge (use `http://yoksel.github.io/url-encoder/`)
             ☐ Fix styles for checkbox.toggle in FF and Edge
             ✔ Autoresize fields for new todo and editing todo with large text @done(18-02-15 09:07)
                 ✔ Disable width changes for textarea @done(18-02-15 09:41)
                 ✔ Improve processing 'Enter' in textarea (currently Enter adds linebreak and saves todo -> only saves todo should be) @done(18-02-15 09:20)
                 ✔ Improve initial size for textarea (when single line todo.title, and check multiple lines todo.title) @done(18-02-15 10:16)
-                ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here https://github.com/stevepapa/ng-autosize/issues/9)
-            ☐ Rewrite part for DnD (use https://github.com/atlassian/react-beautiful-dnd and adopt it to angular)
-                ☐ Use custom cursor for DnD icon (look here https://github.com/atlassian/react-beautiful-dnd/blob/master/src/view/style-marshal/get-styles.js#L110)
+                ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here `https://github.com/stevepapa/ng-autosize/issues/9`)
+            ☐ Rewrite part for DnD (use `https://github.com/atlassian/react-beautiful-dnd` and adopt it to angular)
+                ☐ Use custom cursor for DnD icon (look here `https://github.com/atlassian/react-beautiful-dnd/blob/master/src/view/style-marshal/get-styles.js#L110`)
 
         ☐ Add delay for popups (use another lib for popups, not material)
         ☐ Use some UI ideas for dialog like here `https://comining.io/account/wallets#`        
-        ☐ Handle error properly as Observable (look here http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/)
+        ☐ Handle error properly as Observable (look here `http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/`)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)
         ☐ Rewrite test for 'IndexedDbService' (currently not complete)
         ☐ Fix bug when todo edited with small text, size of textarea autosized (for example start edit todo with name 'Add more todos!')
         ☐ Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?) (look in IndexedDbService)
-            ☐ Use Material Snackbar for cancel deleted todo (look here https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18)
-        ☐ Consider to use time as ID in DB (look here example https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts)
-        ☐ Add protection (look here https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html)
+            ☐ Use Material Snackbar for cancel deleted todo (look here `https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18`)
+        ☐ Consider to use time as ID in DB (look here example `https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts`)
+        ☐ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`)
         ☐ Add filtering by todo name
-            ☐ Use switchMap for filters and search (look here https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html and here https://codecraft.tv/courses/angular/http/http-with-observables/)
+            ☐ Use switchMap for filters and search (look here `https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html` and here `https://codecraft.tv/courses/angular/http/http-with-observables/`)
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Use Reactive forms
-        ☐ Notify if user blocked notification (look here example https://codingthesmartway.com/angular-material-introduction/ - left bottom corner)
+        ☐ Notify if user blocked notification (look here example `https://codingthesmartway.com/angular-material-introduction/` - left bottom corner)
         ☐ Use UserGuide on first run like here `discordapp.com`
         
-        ☐ After finishing the tutor, improve the app using (https://github.com/tastejs/todomvc-app-template)
+        ☐ After finishing the tutor, improve the app using (`https://github.com/tastejs/todomvc-app-template`)
         
         ☐ Fix all TODO in all files
         ☐ Check the app in 'Internet mail.ru' browser
-            ☐ Add additional page 'upgrade' if browser not supported (for example https://pomotodo.com/upgrade)
+            ☐ Add additional page 'upgrade' if browser not supported (for example `https://pomotodo.com/upgrade`)
         ☐ Add new column in DB with name 'deletePending'
             ☐ Upgrade indexedDb with new base version
             ☐ Add watcher (or timer/something else) to delete todo with flag true in 'deletePending' after some time (and show button to cancel deletion)
             
         ☐ Improve DnD functionality -> Currently if todos moved to fast the movements not handled propely (posibly disable move posibility until server returns response)
-        ☐ Read about Service Workers and change architecture of the app (https://habrahabr.ru/company/2gis/blog/345552/)
+        ☐ Read about Service Workers and change architecture of the app (`https://habrahabr.ru/company/2gis/blog/345552/`)
         ☐ Limit amount of todo by 100 (more will be available in pro)
-        ☐ Possibility to sync DB (look here https://github.com/dfahlander/Dexie.js/issues/437)
+        ☐ Possibility to sync DB (look here `https://github.com/dfahlander/Dexie.js/issues/437`)
 
         ☐ CleanUp code (delete console.log, comments and other things)
 
@@ -113,7 +113,7 @@ Todos:
         `сгруппировать/смерджить несколько observable httpClient.post, чтобы каждый последующий отправлялся только после выполнения предыдущего
          flatMap -> 
          post(...).flatMap(result => post(result.data))
-         ....data)).subscribe(finalResult => ....) (https://t.me/angular_ru/78351)`
+         ....data)).subscribe(finalResult => ....) (`https://t.me/angular_ru/78351`)`
 
         ☐ Ideas to implement:
             ☐ Guest page - №1
@@ -127,16 +127,16 @@ Todos:
 
     Future:
         ☐ Options window:
-            ☐ Add in options value for Multiple/Single editing todo (use http://dexie.org/docs/Table/Table.bulkAdd())
+            ☐ Add in options value for Multiple/Single editing todo (use `http://dexie.org/docs/Table/Table.bulkAdd()`)
             ☐ Add in options value for support spec symbols (like ☐ and ✔) in new todo
         ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service) (server side probably)
             ☐ Update test for the feature in service and components
-        ☐ Add documentation (look here https://habrahabr.ru/company/docsvision/blog/341562/)
+        ☐ Add documentation (look here `https://habrahabr.ru/company/docsvision/blog/341562/`)
             ☐ Add docs to methods in services like in IndexedDbService createTodo
-        ☐ In IndexedDB parse next events `IDBOpenDBRequest.onblocked` and `IDBOpenDBRequest.onupgradeneeded` (look here https://developer.mozilla.org/en-US/docs/Web/API/IDBOpenDBRequest)
+        ☐ In IndexedDB parse next events `IDBOpenDBRequest.onblocked` and `IDBOpenDBRequest.onupgradeneeded` (look here `https://developer.mozilla.org/en-US/docs/Web/API/IDBOpenDBRequest`)
 
     Scheduled:
-        ☐ Rewrite dynamic components with NgComponentOutlet (look here https://angular.io/api/common/NgComponentOutlet and here https://github.com/angular/angular/pull/19713) (return to this point after 01.01.2018)
+        ☐ Rewrite dynamic components with NgComponentOutlet (look here `https://angular.io/api/common/NgComponentOutlet` and here `https://github.com/angular/angular/pull/19713`) (return to this point after 01.01.2018)
             look example here `https://github.com/thekiba/ngx-component-outlet` and here `https://gist.github.com/thekiba/9b7fc4e32c92353e26890320f255f712`
     
     Done:
@@ -144,11 +144,11 @@ Todos:
         ✔ Update e2e tests for part-3
         ✔ Update unit tests for part-3
         ✔ Update unit tests for part-4
-        ✔ Run npm run json-server and ng serve in the same terminal (look here https://github.com/kimmobrunfeldt/concurrently)
+        ✔ Run npm run json-server and ng serve in the same terminal (look here `https://github.com/kimmobrunfeldt/concurrently`)
         ✔ Rewrite HTTP request to HTTPClient
         ✔ Update tests for HttpClient
         ✔ Rewrite unit tests for app.component.ts (exlude NO_ERRORS_SCHEMA)
-        ✔ Write unit tests for events (emit) (look here - https://angular.io/guide/testing)
+        ✔ Write unit tests for events (emit) (look here - `https://angular.io/guide/testing`)
             ✔ Write tests for TodoListItemComponent
             ✔ Write tests for TodoListFooterComponent
             ✔ Write tests for TodoListComponent
@@ -158,8 +158,8 @@ Todos:
             ✔ On finish editing, if the title of the todo is empty -> delete todo
             ✔ If todo is edited, cursor not entered in the todo title field
             ✔ In TodoListItemEditComponent change div class from 'view' to 'editContainer' and style the container
-            ✔ If clicks outside of the editing Todo, cancel editing (look here http://todomvc.com/examples/angularjs/#/) (blur event in template used) (use this option, if in prefs value is 'single editing todo')
-            ✔ Add posibility to edit Todo (look here http://todomvc.com/examples/angularjs/#/ or here https://angularclass.github.io/NG6-todomvc-starter/)
+            ✔ If clicks outside of the editing Todo, cancel editing (look here `http://todomvc.com/examples/angularjs/#/`) (blur event in template used) (use this option, if in prefs value is 'single editing todo')
+            ✔ Add posibility to edit Todo (look here `http://todomvc.com/examples/angularjs/#/` or here `https://angularclass.github.io/NG6-todomvc-starter/`)
                 ✔ Update unit test for TodosComponent (according to editable Todo)
                 ✔ Update unit test for TodoListComponent (according to editable Todo)
                 ✔ Update unit test for TodoListItemComponent (according to editable Todo)
@@ -172,18 +172,18 @@ Todos:
         ✔ OnHover todo delete change bg color to a color with some red color (like a delete button, but more lighter) @done(17-11-07 10:42)
         ✔ Add automincremented build info in the header of the app @done(17-11-10 09:54)
         ✔ In footer - count only unchecked todos @done(17-11-12 08:59)
-        ✔ Set Up Absolute Paths (look here https://scotch.io/tutorials/reference-angular-imports-absolutely-for-easier-development?utm_source=newsletter&utm_medium=email&utm_campaign=reference_angular_imports_absolutely_for_easier_development&utm_term=2017-11-07) @done(17-11-12 10:15)
+        ✔ Set Up Absolute Paths (look here `https://scotch.io/tutorials/reference-angular-imports-absolutely-for-easier-development?utm_source=newsletter&utm_medium=email&utm_campaign=reference_angular_imports_absolutely_for_easier_development&utm_term=2017-11-07`) @done(17-11-12 10:15)
             ✔ Update all path in the app @done(17-11-12 10:15)
             ✔ Update unit tests @done(17-11-12 10:24)
-        ✔ Add icon 'edit' with SVG icon (from here https://icomoon.io) @done(17-11-16 09:42)
-        ✔ Replace 'destroy' icons with SVG (look here example https://jsfiddle.net/Cl3r1k/catLzzj9/) @done(17-11-17 09:13)
+        ✔ Add icon 'edit' with SVG icon (from here `https://icomoon.io`) @done(17-11-16 09:42)
+        ✔ Replace 'destroy' icons with SVG (look here example `https://jsfiddle.net/Cl3r1k/catLzzj9/`) @done(17-11-17 09:13)
 
         ✔ Modal window for request on deleting todo @done(17-11-28 09:58)
             ✔ Center vertically/horizontally modal @done(17-11-23 10:28)
-            ✔ Update UI of the deletion modal window (look here https://limonte.github.io/sweetalert2/) @done(17-11-23 09:31)
-                ✔ Icon warning took here (https://codepen.io/arnaud-ritti/pen/avKNBL?q=sweet+alert&limit=all&type=type-pens) @done(17-11-22 09:51)
+            ✔ Update UI of the deletion modal window (look here `https://limonte.github.io/sweetalert2/`) @done(17-11-23 09:31)
+                ✔ Icon warning took here (`https://codepen.io/arnaud-ritti/pen/avKNBL?q=sweet+alert&limit=all&type=type-pens`) @done(17-11-22 09:51)
             ✔ Change behavior of the 'overlay' (change to blur) @done(17-11-22 09:11)
-            ✔ Change modal with another approach (look here http://www.muller.tech/post/2017/04/03/angular4-create-modal/) @done(17-11-27 09:05)
+            ✔ Change modal with another approach (look here `http://www.muller.tech/post/2017/04/03/angular4-create-modal/`) @done(17-11-27 09:05)
                 ✔ Cancel modal when `Esc` pressed (look ModalComponent - HostListener) @done(17-11-27 09:25)
 
             ✔ Update tests for modal windows @done(17-11-28 08:47)
@@ -191,9 +191,9 @@ Todos:
         ✔ Update test for TodoListItemViewComponent (with new 'edit' button) @done(17-11-28 10:44)
         ✔ Bug: when calceled modal on deleting, selection does not resets (fixed when TodoListItemViewComponent updated to dumb deletion - modal now called in TodosComponent) @done(17-11-28 09:58)
         ✔ Update Cli to 1.6.1 @done(17-12-17 10:59)
-        ✔ Add filters in footer (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-02 09:09)
+        ✔ Add filters in footer (look here `http://todomvc.com/examples/angularjs/#/`) @done(17-12-02 09:09)
             ✔ Update TodoListFooterComponent tests for 'filter' @done(17-12-11 09:11)
-        ✔ Add 'Clear completed' in footer button (look here http://todomvc.com/examples/angularjs/#/) @done(17-12-28 09:52)
+        ✔ Add 'Clear completed' in footer button (look here `http://todomvc.com/examples/angularjs/#/`) @done(17-12-28 09:52)
             ✔ Update TodoListFooterComponent tests for 'clear completed' @done(17-12-11 09:11)
             ✔ Update TodosComponent tests @done(17-12-11 09:42)
         ✔ In footer, show footer if amount of todos is more than 1, even if all of them are completed @done(17-12-04 08:57)
@@ -202,25 +202,25 @@ Todos:
 
         ✔ Refactor observable variables, and add $ to thier names (the app don't have it yet) @done(17-12-29 09:35)
 
-        ✔ Add toggle all todo button in header (look here http://todomvc.com/examples/angularjs/#/) @done(18-01-03 09:14)
+        ✔ Add toggle all todo button in header (look here `http://todomvc.com/examples/angularjs/#/`) @done(18-01-03 09:14)
             ✔ Adopt this feature with filtering (routings) @done(18-01-03 09:14)
             ✔ Update unit test for 'toggleAll' changes @done(18-01-13 09:04)
         ✔ Improve this part: when editing canceled emit cancelEvent and don't propagate the event to parent, just load view component @done(18-01-13 09:19)
 
-        ✔ Rewrite stored method to IndexedDB (look here http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html) @done(18-01-15 09:13)
+        ✔ Rewrite stored method to IndexedDB (look here `http://prgssr.ru/development/obzor-sredstv-hraneniya-dannyh-na-klientskoj-storone.html`) @done(18-01-15 09:13)
             ✘ Reproduce base corruption (probably in debug mode, start adding 10k objects and break the debugging) -> Couldn't reproduce base curruption @cancelled(18-01-14 10:27)
-            ✘ Use DI to change service on-the-fly -> Use another approach (sync db) instead using two services (TypeScript interfaces aren't valid tokens (https://angular.io/guide/dependency-injection#typescript-interfaces-arent-valid-tokens)) @cancelled(18-01-14 09:33)
+            ✘ Use DI to change service on-the-fly -> Use another approach (sync db) instead using two services (TypeScript interfaces aren't valid tokens (`https://angular.io/guide/dependency-injection#typescript-interfaces-arent-valid-tokens`)) @cancelled(18-01-14 09:33)
             ✔ Update tests (IndexedDbService) @done(18-01-13 09:24)
             ✔ Update tests (ApiService) (AppComponent - with new routes) @done(18-01-12 11:19)
             ✔ 🔥🎉🎉 After implementation browser store -> update major version @done(18-01-15 09:13)
-        ✔ Consider to use another lib for IndexedDb (https://github.com/dfahlander/Dexie.js or https://www.npmjs.com/package/angular-async-local-storage) -> Chosen Dexie as more flexible @done(18-01-14 10:36)
+        ✔ Consider to use another lib for IndexedDb (`https://github.com/dfahlander/Dexie.js` or `https://www.npmjs.com/package/angular-async-local-storage`) -> Chosen Dexie as more flexible @done(18-01-14 10:36)
 
         ✔ Refactor method updateFooterAndToggleAllInfo(), and return from service response as object -> { all: 'number', active: 'number', complete: 'number' } @done(18-01-15 10:08)
         ✔ Update resolvers (TodosActiveResolver, TodosCompletedResolver) @done(18-01-15 10:50)
-            ✔ Find out, is there any way to use on resolver (transfer filterState variable in router?) (look in sources https://github.com/angular/angular/tree/master/packages/router/src) @done(18-01-16 09:02)
+            ✔ Find out, is there any way to use on resolver (transfer filterState variable in router?) (look in sources `https://github.com/angular/angular/tree/master/packages/router/src`) @done(18-01-16 09:02)
                 ✔ It's not a good practice to use one big Resolver @done(18-01-16 09:03)
 
-        ✔ Change styles to SCSS (look here https://scotch.io/tutorials/using-sass-with-the-angular-cli and here https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931) @done(18-01-18 10:11)
+        ✔ Change styles to SCSS (look here `https://scotch.io/tutorials/using-sass-with-the-angular-cli` and here `https://www.codementor.io/stevebelovarich/compiling-sass-postcss-with-angular-cli-du107x931`) @done(18-01-18 10:11)
             ✔ Add animation when hover on 'clearCompleted' highlight completed todos @done(18-01-17 10:05)
                 ✔ Fix animation when 'clearCompleted' clicked (after click the 'clearHoverState' is still true) @done(18-01-19 08:52)
                 ✔ Add animation when 'clearCompleted' hovered -> display trash icons @done(18-01-24 09:47)
@@ -233,13 +233,13 @@ Todos:
                 ✔ Update modal.component.scss @done(18-01-19 08:47)
         
         ✔ Fix 'toggleAll' for filtered list @done(18-01-22 09:40)
-        ✔ Fix 'toggleAll' checkbox style in FF (look here http://yoksel.github.io/url-encoder/ and here http://css.yoksel.ru/svg-angular-firefox/) @done(18-01-26 09:28)
+        ✔ Fix 'toggleAll' checkbox style in FF (look here `http://yoksel.github.io/url-encoder/` and here `http://css.yoksel.ru/svg-angular-firefox/`) @done(18-01-26 09:28)
 
         ✔ Update Angular CLI to version 1.6.6 @done(18-01-27 10:26)
         ✔ Update all modules to latests versions @done(18-01-28 09:47)
             ✔ Update tests for new karma @done(18-01-31 09:46)
         
-        ✔ Add drag'n'drop posibility (look here https://shekhargulati.com/2017/09/21/building-an-angular-4-drag-and-drop-application-in-15-minutes/ and https://github.com/akserg/ng2-dnd) @done(18-02-11 09:33)
+        ✔ Add drag'n'drop posibility (look here `https://shekhargulati.com/2017/09/21/building-an-angular-4-drag-and-drop-application-in-15-minutes/` and `https://github.com/akserg/ng2-dnd`) @done(18-02-11 09:33)
             ✔ Update styles for DnD support @done(18-02-08 09:11)
             ✔ Update unit tests for DnD support @done(18-02-07 09:08)
             ✔ Change app logic for DnD support @done(18-02-11 09:33)
@@ -254,7 +254,7 @@ Todos:
             `https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18`
             `https://alligator.io/angular/dialogs-angular-material/`
             ✔ Update tests with new dialog @done(18-03-02 09:35)
-                ☐ Improve tests for DialogComponent (test 'Cancel' click, and 'Esc' event) (look here https://medium.com/curiouscaloo/testing-angular-components-containing-mddialog-2430144b5894)
+                ☐ Improve tests for DialogComponent (test 'Cancel' click, and 'Esc' event) (look here `https://medium.com/curiouscaloo/testing-angular-components-containing-mddialog-2430144b5894`)
             
             ✔ In modal for deletion set focus on 'Cancel' button (cdkFocusRegionstart used) @done(18-03-03 09:10)
             ✔ Add modal for 'clearCompleted' (with amount of deleted todos) @done(18-03-03 09:41)
@@ -350,13 +350,13 @@ Todos:
         ✔ Refactor color of console.log to `Salmon` for all services, and use this color for services as recommened @done(18-05-09 09:37)
         ✔ Refactor color of console.log to `Royalblue` for all resolvers, and use this color for resolvers as recommened @done(18-05-09 09:41)
 
-        ✔ Fix warning ([Deprecation] Using unescaped '#' characters in a data URI body is deprecated and will be removed in M67, around May 2018. Please use '%23' instead. See https://www.chromestatus.com/features/5656049583390720 for more details.) (User `https://github.com/stylus/stylus/issues/2379` -> changed color for SVG elemnts in styles) @done(18-05-09 10:10)
+        ✔ Fix warning ([Deprecation] Using unescaped '#' characters in a data URI body is deprecated and will be removed in M67, around May 2018. Please use '%23' instead. See `https://www.chromestatus.com/features/5656049583390720` for more details.) (User `https://github.com/stylus/stylus/issues/2379` -> changed color for SVG elemnts in styles) @done(18-05-09 10:10)
 
     Canceled:
         ✘ Combine two storing data method (HTTP and InMemory) -> Not necessarily anymore (Consider this point later)
-        ✘ Find out how stored todos (probably browser store (LocalStorage)) in the example http://todomvc.com/examples/angularjs/#/ @cancelled(17-11-11 09:36) -> Not applicable, and to simple for a future
+        ✘ Find out how stored todos (probably browser store (LocalStorage)) in the example `http://todomvc.com/examples/angularjs/#/` @cancelled(17-11-11 09:36) -> Not applicable, and to simple for a future
         ✘ Fix saving in db.json data algoritm (previously saved with order Id->title->complete, now saves title->complete->Id) @cancelled(17-12-02 09:48)
-        ✘ Find the way to start json server on gh-pages (look here https://my-json-server.typicode.com/) -> No 'Access-Control-Allow-Origin' header is present on the requested resource -> no need in this part still @cancelled(18-01-16 09:06)
+        ✘ Find the way to start json server on gh-pages (look here `https://my-json-server.typicode.com/`) -> No 'Access-Control-Allow-Origin' header is present on the requested resource -> no need in this part still @cancelled(18-01-16 09:06)
 
 Info:
     ☐ If count of todos is over 10k, performance of the app is very degradate (for example use db.json in db.zip file)

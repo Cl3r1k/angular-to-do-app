@@ -500,35 +500,35 @@ export class IndexedDbService extends Dexie {
         this._tagService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
     }
 
-    public getTagColor(tagName: string): Observable<string> {
-        return Observable.fromPromise(this.transaction('rw', this.tagTable, async () => {
+    // public getTagColor(tagName: string): Observable<string> {
+    //     return Observable.fromPromise(this.transaction('rw', this.tagTable, async () => {
 
-            let hashtagsInDb = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
-            let colorTag = 'red';
+    //         let hashtagsInDb = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
+    //         let colorTag = 'red';
 
-            console.log('%c getTagColor - tags result: ', this.consoleTextColorService, hashtagsInDb);
+    //         console.log('%c getTagColor - tags result: ', this.consoleTextColorService, hashtagsInDb);
 
-            if (!hashtagsInDb.length) {
-                const newHashtag: Tag = new Tag(tagName.trim());
-                const rndColor = this.colorsHashtags[this._utils.randomRangeInteger(0, 9)];
-                newHashtag.color = rndColor;
-                // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
-                this.tagTable.add(newHashtag);
+    //         if (!hashtagsInDb.length) {
+    //             const newHashtag: Tag = new Tag(tagName.trim());
+    //             const rndColor = this.colorsHashtags[this._utils.randomRangeInteger(0, 9)];
+    //             newHashtag.color = rndColor;
+    //             // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
+    //             this.tagTable.add(newHashtag);
 
-                hashtagsInDb = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
-            }
+    //             hashtagsInDb = await this.tagTable.where('tagName').equalsIgnoreCase(tagName).toArray();
+    //         }
 
-            if (hashtagsInDb.length) {
-                colorTag = hashtagsInDb[0].color;
-            }
+    //         if (hashtagsInDb.length) {
+    //             colorTag = hashtagsInDb[0].color;
+    //         }
 
-            return colorTag;
-        }).then(async (colorTag) => {
-            console.log('%c Transaction committed getTagColor: ', this.consoleTextColorService, colorTag);
-            return colorTag;
-        }).catch(error => {
-            return error;    // TODO: Handle error properly as Observable
-        }));
-    }
+    //         return colorTag;
+    //     }).then(async (colorTag) => {
+    //         console.log('%c Transaction committed getTagColor: ', this.consoleTextColorService, colorTag);
+    //         return colorTag;
+    //     }).catch(error => {
+    //         return error;    // TODO: Handle error properly as Observable
+    //     }));
+    // }
 
 }
