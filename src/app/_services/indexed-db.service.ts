@@ -187,7 +187,7 @@ export class IndexedDbService extends Dexie {
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
 
             if (!hashtagsInDb.length) {
-                // Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
+                // TODO: Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
                 response.map(todo => {
                     this.parseTag(todo);
                 });
@@ -445,7 +445,6 @@ export class IndexedDbService extends Dexie {
 
                     this.tagTable.add(newHashtag);
                 } else {
-                    // TODO: This part is under construction
                     let isPresent = false;
 
                     todos.map(todoItem => {
@@ -477,7 +476,6 @@ export class IndexedDbService extends Dexie {
                             }
                         });
                     }
-                    // ------------------------------------
                 }
             });
 
@@ -495,9 +493,28 @@ export class IndexedDbService extends Dexie {
         }
     }
 
-    private async getAllHashtags() {
-        const hashtagsInDb: Tag[] = await this.tagTable.toArray();
-        this._tagService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
+    // private async getAllHashtags() {
+    //     const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+    //     this._tagService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
+    // }
+
+    public getAllHashtags(): Observable<Tag[]> {
+        // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
+        return Observable.fromPromise(this.tagTable.toArray().then(async (response) => {
+
+            // TODO: This part is under construction ------
+            // if (!response.length) {
+            //     // Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
+            //     response.map(todo => {
+            //         this.parseTag(todo);
+            //     });
+            // }
+            // --------------------------------------
+
+            return response.filter(hashtag => !hashtag.readyToDelete);
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
     }
 
     // public getTagColor(tagName: string): Observable<string> {
