@@ -503,12 +503,16 @@ export class IndexedDbService extends Dexie {
         return Observable.fromPromise(this.tagTable.toArray().then(async (response) => {
 
             // TODO: This part is under construction ------
-            // if (!response.length) {
-            //     // Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
-            //     response.map(todo => {
-            //         this.parseTag(todo);
-            //     });
-            // }
+            if (!response.length) {
+                // Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
+                // Some part code to process back <-------------------
+
+                // Here we just parse each todo to find hashtags
+                const todos: ToDo[] = await this.dbTable.toArray();
+                todos.map(todo => {
+                    this.parseTag(todo);
+                });
+            }
             // --------------------------------------
 
             return response.filter(hashtag => !hashtag.readyToDelete);
