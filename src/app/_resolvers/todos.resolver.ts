@@ -5,6 +5,11 @@ import { TodoService } from '@app/_services/todo.service';
 import { ToDo } from '@app/_models/to-do';
 import { ResolverData } from '@app/_models/resolver-data';
 
+// Services
+import { IndexedDbService } from '@app/_services/indexed-db.service';
+import { TagService } from '@app/_services/tag.service';
+
+// Imports
 import { map, switchMap } from 'rxjs/operators';
 
 @Injectable()
@@ -12,23 +17,30 @@ export class TodosResolver implements Resolve<Observable<ResolverData>> {
 
     consoleTextColorResolver = 'color: royalblue;';
 
-    constructor(private _todoService: TodoService) { }
+    constructor(private _todoService: TodoService, private _indexedDbService: IndexedDbService, private _tagService: TagService) { }
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ResolverData> {
         // console.log(`%cresolve() in TodosResolver`, this.consoleTextColorResolver);
 
         return this._todoService.initIndexedDbBase().pipe(
             switchMap(() => this._todoService.getAllTodos(0).pipe(
-                map(todos => {
-                    // console.log(`%cin 'TodosResolver' todos: `, this.consoleTextColorResolver, todos);
+                switchMap(todos => this._indexedDbService.getAllHashtags().pipe(
+                    map(hashtags => {
+                        console.log(`%cin 'TodosResolver' todos: `, this.consoleTextColorResolver, todos);
+                        console.log(`%cin 'TodosResolver' hashtags: `, this.consoleTextColorResolver, hashtags);
 
-                    const resolverData: ResolverData = new ResolverData(0, '');
-                    resolverData.todos = todos;
+                        if (hashtags.length) {
+                            this._tagService.setTagsList(hashtags);
+                        }
 
-                    // console.log(`%cin 'TodosResolver' resolverData: `, this.consoleTextColorResolver, resolverData);
+                        const resolverData: ResolverData = new ResolverData(0, '');
+                        resolverData.todos = todos;
 
-                    return resolverData;
-                })
+                        // console.log(`%cin 'TodosResolver' resolverData: `, this.consoleTextColorResolver, resolverData);
+
+                        return resolverData;
+                    })
+                ))
             ))
         );    // Open base anyway
     }
