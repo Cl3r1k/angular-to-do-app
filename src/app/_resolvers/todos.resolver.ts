@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { TodoService } from '@app/_services/todo.service';
-import { ToDo } from '@app/_models/to-do';
+
+// Models
 import { ResolverData } from '@app/_models/resolver-data';
 
 // Services
+import { TodoService } from '@app/_services/todo.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
 import { TagService } from '@app/_services/tag.service';
 
