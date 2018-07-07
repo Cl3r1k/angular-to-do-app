@@ -50,6 +50,8 @@ Todos:
 
             ☐ Consider idea for links like in VS code (cntrl click on link, hint for link, and underline for link)
 
+            ☐ Use Chrome Audit to test the app
+
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
@@ -103,9 +105,17 @@ Todos:
         ☐ Add new column in DB with name 'deletePending'
             ☐ Upgrade indexedDb with new base version
             ☐ Add watcher (or timer/something else) to delete todo with flag true in 'deletePending' after some time (and show button to cancel deletion)
+        
+        ☐ Read about Service Workers and change the App architecture (`https://habrahabr.ru/company/2gis/blog/345552/`)
+            ☐ Add 'pwa' module
+            ☐ Sync using SW according to some state (like example some idea: `https://github.com/johnpapa/pwa-angular#background-sync-1`)
+                ☐ 1. state = 'tagsOnClient' - update list tags from service to IndexedDb
+                ☐ 2. state = 'tagsOnBack' - update list tags from IndexedDb to BackEnd
+            |
+            |
+            ☐ Use Chrome LightHouse to test the app and get 100%
             
         ☐ Improve DnD functionality -> Currently if todos moved to fast the movements not handled propely (posibly disable move posibility until server returns response)
-        ☐ Read about Service Workers and change architecture of the app (`https://habrahabr.ru/company/2gis/blog/345552/`)
         ☐ Limit amount of todo by 100 (more will be available in pro)
         ☐ Possibility to sync DB (look here `https://github.com/dfahlander/Dexie.js/issues/437`)
 

@@ -54,15 +54,16 @@ export class ParseTagPipe implements PipeTransform {
         }
 
         // TODO: Stopped here
-        // Currently the problem with 'newTodo' that pipe in view works faster, then todoList updates in service
+        // Currently the problem with 'newTodo' that pipe in view works faster, than todoList updates in service
         // Consider to use async pipe and or something else to solve the issue
-        // Currently view depednds from IndexedDB very much, it's not good
+        // Currently view depends from IndexedDB very much, it's not good
         // Mb we should update hashtags list in service, and after some time update in IndexedDb
         // Mb we should use `Service workers` which will update after 3 secs data in IndexedDb
         // Ok, here is and idea, how it should work:
         // 1 - Load tags from IndexedDb to 'TagService' list (probably load data in Resolver) +++
-        // 2 - After any changes add/update/remove tags, it should update the list in 'TagService', and switch on Service worker
+        // 2 - After any changes add/update/remove tags, it should update the list in 'TagService', and switch-on Service worker
         // 3 - Service worker for update list in IndexedDb should work after some time (3sec) and should stop working till next call
+        // Point 2 and 3 are wrong, SW not working so, probably we should use something else (Web Worker?)
 
         return text;
     }
