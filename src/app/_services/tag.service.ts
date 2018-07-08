@@ -24,6 +24,8 @@ export class TagService {
         '#797979',
         '#b97aff',
     ];
+    interval;
+    updatePending = false;
 
     constructor(private _utils: Utils) { }
 
@@ -52,9 +54,22 @@ export class TagService {
             console.log('%cPending update in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
             // TODO: Now we should run Sevice Worker or another worker with interval 3 sec, and update tagList in IndexedDb
             // BTW check if SW is running and waiting for update already, than just reset timer to 3 sec
+            this.updateHashtags();
         }
 
-        return tagColor;    // If something went wrong, red tagColor as red
+        return tagColor;    // If something went wrong, return tagColor as red
+    }
+
+    public updateHashtags() {
+        if (this.updatePending) {
+            clearInterval(this.interval);
+        }
+
+        this.updatePending = true;
+        this.interval = setInterval(() => {
+            console.log('%c-->Pefrorm update in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
+            clearInterval(this.interval);
+        }, 1000);
     }
 
 }
