@@ -68,6 +68,10 @@ export class TagService {
         this.updatePending = true;
         this.interval = setInterval(() => {
             console.log('%c-->Pefrorm update in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
+
+            // this._indexedDbService.updateHashtags().subscribe(() => {
+            //     console.log('%c--->Hashtags updated in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
+            // });
             clearInterval(this.interval);
         }, 1000);
     }

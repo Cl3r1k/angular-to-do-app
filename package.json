@@ -14,7 +14,8 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "json-server": "json-server --watch db.json",
-        "app": "concurrently \"npm run json-server\" \"node ./replace.build.js\" \"npm run start\"",
+        "app": "concurrently \"node ./replace.build.js\" \"npm run start\"",
+        "app-server": "concurrently \"npm run json-server\" \"node ./replace.build.js\" \"npm run start\"",
         "update-patch": "npm --no-git-tag-version version patch",
         "deploy-gh": "ng build --prod --base-href 'https://Cl3r1k.github.io/angular-to-do-app/' && ngh",
         "sw": "ng build --prod && http-server -c-1 -p 4200 dist/"

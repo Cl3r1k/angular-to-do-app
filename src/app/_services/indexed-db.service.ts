@@ -505,7 +505,7 @@ export class IndexedDbService extends Dexie {
             // TODO: This part is under construction ------
             if (!response.length) {
                 // Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
-                // Some part code to process back <-------------------
+                // Some part of code to process back-end <-------------------
 
                 // Here we just parse each todo to find hashtags
                 const todos: ToDo[] = await this.dbTable.toArray();
@@ -516,6 +516,20 @@ export class IndexedDbService extends Dexie {
             // --------------------------------------
 
             return response.filter(hashtag => !hashtag.readyToDelete);
+        }).catch(error => {
+            return error;    // TODO: Handle error properly as Observable
+        }));
+    }
+
+    public updateHashtags(): Observable<null> {
+        return Observable.fromPromise(this.transaction('rw', this.tagTable, async () => {
+            // await this.dbTable.update(todo.id, todo);
+            // return await this.dbTable.get(todo.id);
+            return null;
+        }).then(async () => {
+            console.log('%c Transaction committed - updateHashtags.', this.consoleTextColorService);
+            // return updatedTodo;
+            return null;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
         }));
