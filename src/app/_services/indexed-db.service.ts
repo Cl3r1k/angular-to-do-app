@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { Tag } from '@app/_models/tag';
 
 // Services
-import { TagService } from '@app/_services/tag.service';
+import { TagLayerService } from '@app/_services/tag-layer.service';
 
 // Modules
 import Dexie from 'dexie';    // https://github.com/dfahlander/Dexie.js
@@ -39,7 +39,7 @@ export class IndexedDbService extends Dexie {
         '#b97aff',
     ];
 
-    constructor(private _tagService: TagService, private _utils: Utils) {
+    constructor(private _utils: Utils, private _tagLayerService: TagLayerService) {
         super('Database');
 
         // How to upgrade DB version (http://dexie.org/docs/Tutorial/Design#database-versioning)
@@ -439,7 +439,8 @@ export class IndexedDbService extends Dexie {
                     console.log(`%cnot found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
                     const newHashtag: Tag = new Tag(hashtag.trim());
 
-                    const rndColor = this.colorsHashtags[this._utils.randomRangeInteger(0, 9)];
+                    const maxColorIndex = this._tagLayerService.colorsHashtags.length - 1;
+                    const rndColor = this._tagLayerService.colorsHashtags[this._utils.randomRangeInteger(0, maxColorIndex)];
                     newHashtag.color = rndColor;
                     // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
 
@@ -489,13 +490,13 @@ export class IndexedDbService extends Dexie {
             hashtagsInDb = [];
             hashtagsInDb = await this.tagTable.toArray();
             console.log(`%cUPDATED hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
-            this._tagService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
+            this._tagLayerService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
         }
     }
 
     // private async getAllHashtags() {
     //     const hashtagsInDb: Tag[] = await this.tagTable.toArray();
-    //     this._tagService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
+    //     this._tagLayerService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
     // }
 
     public getAllHashtags(): Observable<Tag[]> {
@@ -521,9 +522,14 @@ export class IndexedDbService extends Dexie {
         }));
     }
 
-    public updateHashtags(): Observable<null> {
+    public updateHashtags(tags: Tag[]): Observable<null> {
         return Observable.fromPromise(this.transaction('rw', this.tagTable, async () => {
             // await this.dbTable.update(todo.id, todo);
+            console.log('%c Incoming hashtagsList: ', this.consoleTextColorService, tags);
+
+            // TODO: Stopped here, now we should update list in IndexedDb,
+            // and take a look at 'updateTodo()' method, what happens, when tag is not used anymore.
+
             // return await this.dbTable.get(todo.id);
             return null;
         }).then(async () => {
@@ -545,7 +551,8 @@ export class IndexedDbService extends Dexie {
 
     //         if (!hashtagsInDb.length) {
     //             const newHashtag: Tag = new Tag(tagName.trim());
-    //             const rndColor = this.colorsHashtags[this._utils.randomRangeInteger(0, 9)];
+                    // const maxColorIndex = this._tagLayerService.colorsHashtags.length - 1;
+                    // const rndColor = this._tagLayerService.colorsHashtags[this._utils.randomRangeInteger(0, maxColorIndex)];
     //             newHashtag.color = rndColor;
     //             // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
     //             this.tagTable.add(newHashtag);

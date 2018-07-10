@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { DialogDeleteComponent } from './dialog-delete.component';
+import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatDialogRefMock } from '@app/_testing/mat-dialog-mock';

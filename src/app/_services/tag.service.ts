@@ -3,6 +3,10 @@ import { Injectable } from '@angular/core';
 // Models
 import { Tag } from '@app/_models/tag';
 
+// Services
+import { IndexedDbService } from '@app/_services/indexed-db.service';
+import { TagLayerService } from '@app/_services/tag-layer.service';
+
 // Modules
 import { Utils } from '@app/_common/utils';
 
@@ -11,33 +15,15 @@ export class TagService {
 
     consoleTextColorService = 'color: salmon;';
 
-    tags: Tag[] = [];
-    colorsHashtags: string[] = [
-        '#00ced1',
-        '#217273',
-        '#bb3c3c',
-        '#b32279',
-        '#45c143',
-        '#135012',
-        '#c1692a',
-        '#966441',
-        '#797979',
-        '#b97aff',
-    ];
     interval;
     updatePending = false;
 
-    constructor(private _utils: Utils) { }
-
-    public setTagsList(tags: Tag[]) {
-        console.log('%c setTagsList - incoming tags: ', this.consoleTextColorService, tags);
-        this.tags = tags;
-    }
+    constructor(private _utils: Utils, private _tagLayerService: TagLayerService, private _indexedDbService: IndexedDbService) { }
 
     public getTagColorByName(tagName: string): string {
         console.log('%c getTagByName - incoming tagName: ', this.consoleTextColorService, tagName);
         let tagColor = 'red';
-        const tags = this.tags.filter(tag => {
+        const tags = this._tagLayerService.tags.filter(tag => {
             return tag.tagName === tagName;
         });
 
@@ -46,10 +32,11 @@ export class TagService {
         } else {
             // Add new hashtag to list and run ServiceWorker
             const newHashtag: Tag = new Tag(tagName.trim());
-            tagColor = this.colorsHashtags[this._utils.randomRangeInteger(0, 9)];
+            const maxColorIndex = this._tagLayerService.colorsHashtags.length - 1;
+            tagColor = this._tagLayerService.colorsHashtags[this._utils.randomRangeInteger(0, maxColorIndex)];
             newHashtag.color = tagColor;
             // console.log(`%cin 'getTagColorByName' tagColor: `, this.consoleTextColorService, tagColor);
-            this.tags.push(newHashtag);
+            this._tagLayerService.tags.push(newHashtag);
 
             console.log('%cPending update in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
             // TODO: Now we should run Sevice Worker or another worker with interval 3 sec, and update tagList in IndexedDb
@@ -57,7 +44,7 @@ export class TagService {
             this.updateHashtags();
         }
 
-        return tagColor;    // If something went wrong, return tagColor as red
+        return tagColor;    // If something went wrong, return 'tagColor' as red
     }
 
     public updateHashtags() {
@@ -69,9 +56,9 @@ export class TagService {
         this.interval = setInterval(() => {
             console.log('%c-->Pefrorm update in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
 
-            // this._indexedDbService.updateHashtags().subscribe(() => {
-            //     console.log('%c--->Hashtags updated in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
-            // });
+            this._indexedDbService.updateHashtags(this._tagLayerService.tags).subscribe(() => {
+                console.log('%c--->Hashtags updated in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
+            });
             clearInterval(this.interval);
         }, 1000);
     }

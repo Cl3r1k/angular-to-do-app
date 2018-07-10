@@ -8,7 +8,7 @@ import { ResolverData } from '@app/_models/resolver-data';
 // Services
 import { TodoService } from '@app/_services/todo.service';
 import { IndexedDbService } from '@app/_services/indexed-db.service';
-import { TagService } from '@app/_services/tag.service';
+import { TagLayerService } from '@app/_services/tag-layer.service';
 
 // Imports
 import { map, switchMap } from 'rxjs/operators';
@@ -18,7 +18,11 @@ export class TodosResolver implements Resolve<Observable<ResolverData>> {
 
     consoleTextColorResolver = 'color: royalblue;';
 
-    constructor(private _todoService: TodoService, private _indexedDbService: IndexedDbService, private _tagService: TagService) { }
+    constructor(
+        private _todoService: TodoService,
+        private _indexedDbService: IndexedDbService,
+        private _tagLayerService: TagLayerService
+    ) { }
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ResolverData> {
         // console.log(`%cresolve() in TodosResolver`, this.consoleTextColorResolver);
@@ -31,7 +35,7 @@ export class TodosResolver implements Resolve<Observable<ResolverData>> {
                         console.log(`%cin 'TodosResolver' hashtags: `, this.consoleTextColorResolver, hashtags);
 
                         if (hashtags.length) {
-                            this._tagService.setTagsList(hashtags);
+                            this._tagLayerService.setTagsList(hashtags);
                         }
 
                         const resolverData: ResolverData = new ResolverData(0, '');

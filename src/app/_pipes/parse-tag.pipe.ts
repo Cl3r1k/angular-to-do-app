@@ -47,7 +47,7 @@ export class ParseTagPipe implements PipeTransform {
                 let colorInTagService = '';
                 colorInTagService = scope._tagService.getTagColorByName(tagName);
                 console.log(`%cin ParseTagPipe for %s colorInTagService is:`, scope.consoleTextColorPipe, tagName, colorInTagService);
-                console.log(`%cin ParseTagPipe for %s tags is:`, scope.consoleTextColorPipe, tagName, scope._tagService.tags);
+                // console.log(`%cin ParseTagPipe for %s tags is:`, scope.consoleTextColorPipe, tagName, scope._tagService.tags);
 
                 return space + `<span class='tag-class' style='background-color: ` + colorInTagService + `;'>` + tagName + `</span>`;
             });
