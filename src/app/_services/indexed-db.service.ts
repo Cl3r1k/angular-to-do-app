@@ -184,17 +184,13 @@ export class IndexedDbService extends Dexie {
         // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
         return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
 
-            const hashtagsInDb: Tag[] = await this.tagTable.toArray();
-
-            if (!hashtagsInDb.length) {
-                // TODO: Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
-                response.map(todo => {
-                    this.parseTag(todo);
-                });
-            }
-
-            // TODO: Here the problem, this part should be called once at start
-            // this.getAllHashtags();
+            // const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+            // if (!hashtagsInDb.length) {
+            //     // TODO: Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
+            //     response.map(todo => {
+            //         this.parseTag(todo);
+            //     });
+            // }
 
             if (activeRouteState === 1 || activeRouteState === 2) {
                 let todos: ToDo[] = [];
@@ -505,7 +501,7 @@ export class IndexedDbService extends Dexie {
 
             // TODO: This part is under construction ------
             if (!response.length) {
-                // Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
+                // TODO: Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
                 // Some part of code to process back-end <-------------------
 
                 // Here we just parse each todo to find hashtags
@@ -524,17 +520,28 @@ export class IndexedDbService extends Dexie {
 
     public updateHashtags(tags: Tag[]): Observable<null> {
         return Observable.fromPromise(this.transaction('rw', this.tagTable, async () => {
-            // await this.dbTable.update(todo.id, todo);
-            console.log('%c Incoming hashtagsList: ', this.consoleTextColorService, tags);
+            // console.log('%c Incoming hashtagsList: ', this.consoleTextColorService, tags);
 
-            // TODO: Stopped here, now we should update list in IndexedDb,
-            // and take a look at 'updateTodo()' method, what happens, when tag is not used anymore.
+            const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+            const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
+                return hashtag.tagName;
+            });
+            let updateTagsPending = false;
 
-            // return await this.dbTable.get(todo.id);
+            tags.map(tag => {
+                if (hashtagTitlesInDb.indexOf(tag.tagName) === -1) {
+                    hashtagsInDb.push(tag);
+                    updateTagsPending = true;
+                }
+            });
+
+            if (updateTagsPending) {
+                const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
+            }
+
             return null;
         }).then(async () => {
-            console.log('%c Transaction committed - updateHashtags.', this.consoleTextColorService);
-            // return updatedTodo;
+            console.log('%c Transaction committed successfully - updateHashtags.', this.consoleTextColorService);
             return null;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
@@ -551,8 +558,8 @@ export class IndexedDbService extends Dexie {
 
     //         if (!hashtagsInDb.length) {
     //             const newHashtag: Tag = new Tag(tagName.trim());
-                    // const maxColorIndex = this._tagLayerService.colorsHashtags.length - 1;
-                    // const rndColor = this._tagLayerService.colorsHashtags[this._utils.randomRangeInteger(0, maxColorIndex)];
+    // const maxColorIndex = this._tagLayerService.colorsHashtags.length - 1;
+    // const rndColor = this._tagLayerService.colorsHashtags[this._utils.randomRangeInteger(0, maxColorIndex)];
     //             newHashtag.color = rndColor;
     //             // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
     //             this.tagTable.add(newHashtag);
