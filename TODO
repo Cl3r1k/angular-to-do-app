@@ -40,6 +40,8 @@ Todos:
             ☐ Write tests for 'ParseTagPipe'
             ☐ Write tests for 'SafePipe'
 
+            ☐ Check filter with tag #another
+
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
             ✔ Rewrite part with resolvers, and return from resolver Object/Class like {activeRouteState, params, todos} @done(18-05-26 11:00)

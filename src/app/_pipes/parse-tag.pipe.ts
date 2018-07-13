@@ -65,6 +65,11 @@ export class ParseTagPipe implements PipeTransform {
         // 3 - Service worker for update list in IndexedDb should work after some time (3sec) and should stop working till next call
         // Point 2 and 3 are wrong, SW not working so, probably we should use something else (Web Worker?)
 
+        // Some thoughts:
+        // 0 - Pipe works every time when todo showed (e.g. when page loaded or refreshed or by route)
+        // 1 - Pipe works only when todo.title contains #hashtag (so we don't need to parse title when added new todo)
+        // 2 - if todo updated/deleted and don't contains #hashtag it won't be processed by pipe (and we should process it in service)
+
         return text;
     }
 

@@ -216,7 +216,7 @@ export class IndexedDbService extends Dexie {
         return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
 
             // TODO: Do not forget to clean this line after
-            // this.parseTag(todo);
+            this.parseTag(todo);
 
             await this.dbTable.update(todo.id, todo);
             return await this.dbTable.get(todo.id);
@@ -270,7 +270,7 @@ export class IndexedDbService extends Dexie {
             await this.dbTable.delete(todoId);
 
             // TODO: Do not forget to clean this line after
-            // this.parseTag(todo);
+            this.parseTag(todo);
 
             // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
 
@@ -421,6 +421,9 @@ export class IndexedDbService extends Dexie {
             const hashtagsInTitle = todo.title.match(this.hashtagsRegExp);
             // console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
 
+            // Stopped here process the variant when todo contains tag marked as 'readyToDelete' (in parseTag or cleanHashtags???)
+            // And process update/delete todos with #hashtag
+
             let hashtagsInDb: Tag[] = await this.tagTable.toArray();
             const todos: ToDo[] = await this.dbTable.toArray();
             const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
@@ -507,7 +510,6 @@ export class IndexedDbService extends Dexie {
 
             // In any case we just parse each todo to find hashtags, for cleanup
 
-            // Stopped here process the variant when todo contains tag marked as 'readyToDelete' (in parseTag or cleanHashtags???)
             const todos: ToDo[] = await this.dbTable.toArray();
             todos.map(todo => {
                 this.parseTag(todo);
@@ -537,7 +539,7 @@ export class IndexedDbService extends Dexie {
                     hashtagsInDb.push(tag);
                     updateTagsPending = true;
                 } else {
-                    console.log('%cFound in IndexedDb tag: ', 'color: red;', tag);
+                    console.log('%cFound in IndexedDb tag: ', this.consoleTextColorService, tag);
                     // TODO: For case when color is changed, we just should check hashtag.color in db and income tag.color
                 }
             });
@@ -568,11 +570,20 @@ export class IndexedDbService extends Dexie {
             });
 
             // There is small conflict chance, when todo with tag deleted, page reloaded, and then the same tag added
-            if (!isPresent && !hashtagInDb.readyToDelete) {
-                hashtagInDb.updated_time = new Date().toISOString();
-                hashtagInDb.readyToDelete = true;
-                updateTagsPending = true;
-                console.log(`%cWill be marked as readyToDelete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
+            if (!isPresent) {
+                if (!hashtagInDb.readyToDelete) {
+                    hashtagInDb.updated_time = new Date().toISOString();
+                    hashtagInDb.readyToDelete = true;
+                    updateTagsPending = true;
+                    console.log(`%cWill be marked as readyToDelete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
+                }
+            } else {
+                if (hashtagInDb.readyToDelete) {
+                    console.log(`%cisPresent and readyToDelete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
+                    hashtagInDb.updated_time = new Date().toISOString();
+                    hashtagInDb.readyToDelete = false;
+                    updateTagsPending = true;
+                }
             }
         });
 
