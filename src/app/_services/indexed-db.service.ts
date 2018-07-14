@@ -215,10 +215,17 @@ export class IndexedDbService extends Dexie {
         // For perfomance Dexie.transaction() used (http://dexie.org/docs/Dexie/Dexie.transaction())
         return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
 
-            // TODO: Do not forget to clean this line after
-            this.parseTag(todo);
-
             await this.dbTable.update(todo.id, todo);
+
+            // TODO: Do not forget to clean this line after
+            // this.parseTag(todo);
+            const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+            const todos: ToDo[] = await this.dbTable.toArray();
+
+            this.cleanHashtags(todos, hashtagsInDb);
+
+            this._tagLayerService.tags = hashtagsInDb;
+
             return await this.dbTable.get(todo.id);
         }).then(async (updatedTodo) => {
             console.log('%c Transaction committed updatedTodo: ', this.consoleTextColorService, updatedTodo);
@@ -273,6 +280,13 @@ export class IndexedDbService extends Dexie {
             this.parseTag(todo);
 
             // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
+
+            const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+            const todos: ToDo[] = await this.dbTable.toArray();
+
+            this.cleanHashtags(todos, hashtagsInDb);
+
+            this._tagLayerService.tags = hashtagsInDb;
 
             return null;
         }).then(async () => {
@@ -421,9 +435,6 @@ export class IndexedDbService extends Dexie {
             const hashtagsInTitle = todo.title.match(this.hashtagsRegExp);
             // console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
 
-            // Stopped here process the variant when todo contains tag marked as 'readyToDelete' (in parseTag or cleanHashtags???)
-            // And process update/delete todos with #hashtag
-
             let hashtagsInDb: Tag[] = await this.tagTable.toArray();
             const todos: ToDo[] = await this.dbTable.toArray();
             const hashtagTitlesInDb: string[] = hashtagsInDb.map(hashtag => {
@@ -462,6 +473,7 @@ export class IndexedDbService extends Dexie {
                         }
                     });
 
+                    // console.log(`%ctodos: `, this.consoleTextColorService, todos);
                     console.log(`%chashtag: %s isPresent: `, this.consoleTextColorService, hashtag, isPresent);
 
                     if (!isPresent) {
@@ -490,7 +502,7 @@ export class IndexedDbService extends Dexie {
             hashtagsInDb = [];
             hashtagsInDb = await this.tagTable.toArray();
             console.log(`%cUPDATED hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
-            this._tagLayerService.setTagsList(hashtagsInDb.filter(hashtag => !hashtag.readyToDelete));
+            this._tagLayerService.setTagsList(hashtagsInDb);
         }
     }
 
@@ -518,7 +530,7 @@ export class IndexedDbService extends Dexie {
             this.cleanHashtags(todos, response);
             // --------------------------------------
 
-            return response.filter(hashtag => !hashtag.readyToDelete);
+            return response;
         }).catch(error => {
             return error;    // TODO: Handle error properly as Observable
         }));

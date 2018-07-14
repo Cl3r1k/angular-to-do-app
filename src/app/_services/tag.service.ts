@@ -29,6 +29,21 @@ export class TagService {
 
         if (tags.length) {
             tagColor = tags[0].color;
+
+            if (tags[0].readyToDelete) {
+                this._tagLayerService.tags.map(tag => {
+                    if (tag.tagName === tags[0].tagName) {
+                        tag.readyToDelete = false;
+                    }
+                });
+
+                // Stopped here process the variant when todo contains tag marked as 'readyToDelete' (in parseTag or cleanHashtags???)
+                // And process update/delete todos with #hashtag
+                // When todo added with hashtag that was marked as 'readyToDelete' previously, status not updates
+                // Test all variants add/update/delete (and the same with different 'readyToDelete' status)
+
+                this.updateHashtags();
+            }
         } else {
             // Add new hashtag to list and run ServiceWorker
             const newHashtag: Tag = new Tag(tagName.trim());
