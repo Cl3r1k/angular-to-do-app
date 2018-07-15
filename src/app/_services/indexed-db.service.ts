@@ -552,12 +552,18 @@ export class IndexedDbService extends Dexie {
                     updateTagsPending = true;
                 } else {
                     console.log('%cFound in IndexedDb tag: ', this.consoleTextColorService, tag);
+
+                    if (hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tagName)].readyToDelete !== tag.readyToDelete) {
+                        hashtagsInDb[hashtagTitlesInDb.indexOf(tag.tagName)].readyToDelete = tag.readyToDelete;
+                        updateTagsPending = true;
+                    }
                     // TODO: For case when color is changed, we just should check hashtag.color in db and income tag.color
                 }
             });
 
             if (updateTagsPending) {
                 const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
+                console.log(`%cin 'updateHashtags()' lastKey: `, this.consoleTextColorService, lastKey);
             }
 
             return null;
@@ -603,6 +609,7 @@ export class IndexedDbService extends Dexie {
             // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
             // console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
             const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
+            console.log(`%cin 'cleanHashtags()' lastKey: `, this.consoleTextColorService, lastKey);
         }
     }
 
