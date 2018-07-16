@@ -42,6 +42,8 @@ Todos:
 
             ☐ Check filter with tag #another
 
+            ☐ Add transparency to hashtags background-color
+
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
             ✔ Rewrite part with resolvers, and return from resolver Object/Class like {activeRouteState, params, todos} @done(18-05-26 11:00)

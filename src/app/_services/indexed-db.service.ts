@@ -224,7 +224,13 @@ export class IndexedDbService extends Dexie {
 
             this.cleanHashtags(todos, hashtagsInDb);
 
-            this._tagLayerService.tags = hashtagsInDb;
+            // Next condition is for check, if lenght of list not equal in length in service, then don't change it
+            // Example, if to edit todo, and add #hashtag, then 'updateHashtags()' will work after 'updateTodo()' ends
+            // And so, new #hashtag will not be added to DB.
+            // Rethink this part, when will be added sync with BackEnd
+            if (this._tagLayerService.tags.length === hashtagsInDb.length) {
+                this._tagLayerService.tags = hashtagsInDb;
+            }
 
             return await this.dbTable.get(todo.id);
         }).then(async (updatedTodo) => {
@@ -527,6 +533,8 @@ export class IndexedDbService extends Dexie {
                 this.parseTag(todo);
             });
 
+            const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+
             this.cleanHashtags(todos, response);
             // --------------------------------------
 
@@ -546,6 +554,8 @@ export class IndexedDbService extends Dexie {
             });
             let updateTagsPending = false;
 
+            console.log(`%cin 'updateHashtags()' incoming tags: `, 'color: purple;', tags);
+            console.log(`%cin 'updateHashtags()' hashtagsInDb: `, 'color: purple;', hashtagsInDb);
             tags.map(tag => {
                 if (hashtagTitlesInDb.indexOf(tag.tagName) === -1) {
                     hashtagsInDb.push(tag);
@@ -563,7 +573,7 @@ export class IndexedDbService extends Dexie {
 
             if (updateTagsPending) {
                 const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
-                console.log(`%cin 'updateHashtags()' lastKey: `, this.consoleTextColorService, lastKey);
+                console.log(`%cin 'updateHashtags()' lastKey: `, 'color: purple;', lastKey);
             }
 
             return null;

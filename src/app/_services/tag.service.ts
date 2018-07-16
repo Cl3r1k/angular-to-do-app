@@ -37,10 +37,10 @@ export class TagService {
                     }
                 });
 
-                // Stopped here process the variant when todo contains tag marked as 'readyToDelete' (in parseTag or cleanHashtags???)
+                // TODO: Stopped here (previous stop in parse-tag.pipe.ts (row 56))
                 // And process update/delete todos with #hashtag
                 // When todo added with hashtag that was marked as 'readyToDelete' previously, status not updates +++
-                // When todo added without hashtag, and after add hashtag it's not write in db
+                // When todo added without hashtag, and after add hashtag it's not write in db +++
                 // Another case, if tags deleted manually in IndexedDb, refresh page - color one, next refresh - color two
                 // Test all variants add/update/delete (and the same with different 'readyToDelete' status)
 
