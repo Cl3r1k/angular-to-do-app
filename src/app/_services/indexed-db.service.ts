@@ -222,7 +222,14 @@ export class IndexedDbService extends Dexie {
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
             const todos: ToDo[] = await this.dbTable.toArray();
 
-            this.cleanHashtags(todos, hashtagsInDb);
+            const updateTagsPending = this.cleanHashtags(todos, hashtagsInDb);
+
+            if (updateTagsPending) {
+                // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
+                // console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+                const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
+                console.log(`%cin 'updateTodo()' lastKey: `, this.consoleTextColorService, lastKey);
+            }
 
             // Next condition is for check, if lenght of list not equal in length in service, then don't change it
             // Example, if to edit todo, and add #hashtag, then 'updateHashtags()' will work after 'updateTodo()' ends
@@ -290,7 +297,14 @@ export class IndexedDbService extends Dexie {
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
             const todos: ToDo[] = await this.dbTable.toArray();
 
-            this.cleanHashtags(todos, hashtagsInDb);
+            const updateTagsPending = this.cleanHashtags(todos, hashtagsInDb);
+
+            if (updateTagsPending) {
+                // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
+                // console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
+                const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
+                console.log(`%cin 'updateTodo()' lastKey: `, this.consoleTextColorService, lastKey);
+            }
 
             this._tagLayerService.tags = hashtagsInDb;
 
@@ -535,7 +549,14 @@ export class IndexedDbService extends Dexie {
 
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
 
-            this.cleanHashtags(todos, response);
+            const updateTagsPending = this.cleanHashtags(todos, response);
+
+            if (updateTagsPending) {
+                // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
+                // console.log(`%cAFTER response: `, this.consoleTextColorService, response);
+                const lastKey = await this.tagTable.bulkPut(response);
+                console.log(`%cin 'updateTodo()' lastKey: `, this.consoleTextColorService, lastKey);
+            }
             // --------------------------------------
 
             return response;
@@ -585,7 +606,7 @@ export class IndexedDbService extends Dexie {
         }));
     }
 
-    private async cleanHashtags(todos: ToDo[], hashtagsInDb: Tag[]) {
+    private cleanHashtags(todos: ToDo[], hashtagsInDb: Tag[]): boolean {
         console.log('%cIn cleanHashtags todos and hashtagsInDb:', this.consoleTextColorService, todos, hashtagsInDb);
 
         let updateTagsPending = false;
@@ -615,12 +636,7 @@ export class IndexedDbService extends Dexie {
             }
         });
 
-        if (updateTagsPending) {
-            // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
-            // console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
-            const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
-            console.log(`%cin 'cleanHashtags()' lastKey: `, this.consoleTextColorService, lastKey);
-        }
+        return updateTagsPending;
     }
 
     // public getTagColor(tagName: string): Observable<string> {

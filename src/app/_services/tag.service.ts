@@ -42,6 +42,7 @@ export class TagService {
                 // When todo added with hashtag that was marked as 'readyToDelete' previously, status not updates +++
                 // When todo added without hashtag, and after add hashtag it's not write in db +++
                 // Another case, if tags deleted manually in IndexedDb, refresh page - color one, next refresh - color two
+                    // after each parse in 'getAllHashtags()' list should be updated, and then return 'response' as updated list
                 // Test all variants add/update/delete (and the same with different 'readyToDelete' status)
 
                 this.updateHashtags();
