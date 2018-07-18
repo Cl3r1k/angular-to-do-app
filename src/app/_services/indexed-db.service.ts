@@ -439,7 +439,7 @@ export class IndexedDbService extends Dexie {
     //     }));
     // }
 
-    // TODO: Add bulkAdd method using http://dexie.org/docs/Table/Table.bulkAdd() (look in todo file)
+    // TODO: Add bulkAdd method using http://dexie.org/docs/Table/Table.bulkAdd() (look in TODO file)
     public addBatch() {
         //
     }
