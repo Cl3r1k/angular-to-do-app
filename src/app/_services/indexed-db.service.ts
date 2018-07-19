@@ -540,9 +540,11 @@ export class IndexedDbService extends Dexie {
             // TODO: Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
             // Some part of code to process back-end <-------------------
 
-            // In any case we just parse each todo to find hashtags, for cleanup
+            // In any case we just parse each todo to find hashtags, for cleanup, or restore in IndexedDb
 
             const todos: ToDo[] = await this.dbTable.toArray();
+
+            // Here we should check each todo for #hashtags, and add if it's not in list (in case if db was corrupted)
             todos.map(todo => {
                 this.parseTag(todo);
             });
@@ -618,7 +620,7 @@ export class IndexedDbService extends Dexie {
                 }
             });
 
-            // There is small conflict chance, when todo with tag deleted, page reloaded, and then the same tag added
+            // There is small conflict chance, when todo with tag deleted, page immediately reloaded, and then the same tag added
             if (!isPresent) {
                 if (!hashtagInDb.readyToDelete) {
                     hashtagInDb.updated_time = new Date().toISOString();
@@ -636,7 +638,7 @@ export class IndexedDbService extends Dexie {
             }
         });
 
-        return updateTagsPending;
+        return updateTagsPending;    // hashtagsInDb returned updated by ref
     }
 
     // public getTagColor(tagName: string): Observable<string> {

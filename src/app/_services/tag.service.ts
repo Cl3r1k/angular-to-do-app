@@ -46,6 +46,7 @@ export class TagService {
                         // Method 'parseTag()' should be updated, or part of this method shoulde be used in 'getAllHashtags()'
                         // because 'parseTag()' works in async way, and runs with some delay
                         // Btw 'parseTag()' used in 'deleteTodoById()' and 'getAllHashtags()'
+                        // Look at 'updateTodo()' and how the list updated if #hastag deleted, and for 'deleteTodoById()' too
                 // Test all variants add/update/delete (and the same with different 'readyToDelete' status)
 
                 this.updateHashtags();

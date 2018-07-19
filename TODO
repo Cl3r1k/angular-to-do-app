@@ -99,7 +99,7 @@ Todos:
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
         ☐ Use Reactive forms
         ☐ Notify if user blocked notification (look here example `https://codingthesmartway.com/angular-material-introduction/` - left bottom corner)
-        ☐ Use UserGuide on first run like here `discordapp.com`
+        ☐ Use UserGuide on first run like here `discordapp.com` or like in `feedly.com`
         
         ☐ After finishing the tutor, improve the app using (`https://github.com/tastejs/todomvc-app-template`)
         
