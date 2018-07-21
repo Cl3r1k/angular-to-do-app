@@ -53,7 +53,7 @@ export class ParseTagPipe implements PipeTransform {
             });
         }
 
-        // TODO: Stopped here
+        // TODO: Stopped here (1)
         // Currently the problem with 'newTodo' that pipe in view works faster, than todoList updates in service
         // Consider to use async pipe and or something else to solve the issue
         // Currently view depends from IndexedDB very much, it's not good

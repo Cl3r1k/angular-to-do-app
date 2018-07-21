@@ -25,6 +25,7 @@ Todos:
                         ✔ Update tags array in 'TagService', when todo added/updated/deleted @done(18-06-05 10:30)
                             ✔ Add logic to check if tag is not in use anymore (not todos with the tag - check all todos in delete/update and process in 'parseTag()'), then marked as ready to delete @done(18-06-09 09:54)
                         ☐ Update 'clearCompleted()' with new logic (e.g. check if tag is not in use anymore, then marked as ready to delete)
+                            ☐ Use 'cleanHashtags()' method in 'clearCompleted()'
                         ✔ Fix tags when they deleted in IndexedDb directly @done(18-06-11 10:23)
                         ☐ Fix add new todo with tag <========================================================= CURRENT TASK
                     ☐ Use proper colors for tagBlock in header
@@ -40,7 +41,7 @@ Todos:
             ☐ Write tests for 'ParseTagPipe'
             ☐ Write tests for 'SafePipe'
 
-            ☐ Check filter with tag #another
+            ☐ Check filter with tag #another (if the tag placed in the beginning of title)
 
             ☐ Add transparency to hashtags background-color
 

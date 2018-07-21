@@ -37,18 +37,6 @@ export class TagService {
                     }
                 });
 
-                // TODO: Stopped here (previous stop in parse-tag.pipe.ts (row 56))
-                // And process update/delete todos with #hashtag
-                // When todo added with hashtag that was marked as 'readyToDelete' previously, status not updates +++
-                // When todo added without hashtag, and after add hashtag it's not write in db +++
-                // Another case, if tags deleted manually in IndexedDb, refresh page - color one, next refresh - color two
-                    // after each parse in 'getAllHashtags()' list should be updated, and then return 'response' as updated list
-                        // Method 'parseTag()' should be updated, or part of this method shoulde be used in 'getAllHashtags()'
-                        // because 'parseTag()' works in async way, and runs with some delay
-                        // Btw 'parseTag()' used in 'deleteTodoById()' and 'getAllHashtags()'
-                        // Look at 'updateTodo()' and how the list updated if #hastag deleted, and for 'deleteTodoById()' too
-                // Test all variants add/update/delete (and the same with different 'readyToDelete' status)
-
                 this.updateHashtags();
             }
         } else {

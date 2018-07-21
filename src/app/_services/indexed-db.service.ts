@@ -290,7 +290,7 @@ export class IndexedDbService extends Dexie {
             await this.dbTable.delete(todoId);
 
             // TODO: Do not forget to clean this line after
-            this.parseTag(todo);
+            // this.parseTag(todo);
 
             // TODO: Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?)
 
@@ -537,12 +537,12 @@ export class IndexedDbService extends Dexie {
 
             // TODO: This part is under construction ------
 
-            // TODO: Perform request to backend, and if the answer is the same, then process every todo, to find hashtags
+            // TODO: Perform request to backend, and if the answer is the same, then process every todo, to find #hashtags
             // Some part of code to process back-end <-------------------
 
-            // In any case we just parse each todo to find hashtags, for cleanup, or restore in IndexedDb
-
+            // In any case we just parse each todo to find #hashtags, for cleanup, or restore in IndexedDb
             const todos: ToDo[] = await this.dbTable.toArray();
+            let updateTagsPending = false;
 
             // Here we should check each todo for #hashtags, and add if it's not in list (in case if db was corrupted)
             todos.map(todo => {
@@ -550,15 +550,12 @@ export class IndexedDbService extends Dexie {
                     const hashtagsArrayInTodoTitle = todo.title.match(this.hashtagsRegExp);
                     // console.log(`%chashtags: `, this.consoleTextColorService, hashtags);
 
-                    // let hashtagsInDb: Tag[] = await this.tagTable.toArray();
-                    // const todos: ToDo[] = await this.dbTable.toArray();
                     const hashtagTitlesInDb: string[] = response.map(hashtag => {
                         return hashtag.tagName;
                     });
 
                     console.log(`%cBEFORE response: `, this.consoleTextColorService, response);
 
-                    let updateTagsPendingInner = false;
                     hashtagsArrayInTodoTitle.map(hashtag => {
                         if (!hashtagTitlesInDb.includes(hashtag.trim())) {
                             console.log(`%cNOT found in tagTable hashtag: `, this.consoleTextColorService, hashtag.trim());
@@ -569,77 +566,19 @@ export class IndexedDbService extends Dexie {
                             newHashtag.color = rndColor;
                             // console.log(`%crndColor: `, this.consoleTextColorService, rndColor);
 
-                            // this.tagTable.add(newHashtag);
                             response.push(newHashtag);
-                            updateTagsPendingInner = true;
+                            updateTagsPending = true;
                         } else {
                             // tslint:disable-next-line:max-line-length
-                            console.log(`%cFOUND in tagTable hashtag: %s, and response: `, this.consoleTextColorService, hashtag.trim(), response);
-
-                            // TODO: Stopped here (previous stop in 'tag.service.ts' (row 40))
-                            // Reproduce case, when in DB tag marked as ready to delete, than todo have the tag, and page updated
-                            // For example add tag -> delete # in tag, make sure that in DB readyToDelete is true
-                            // -> comment code that updates state of tag in DB
-                            // -> recover # in tag, make sure that in DB readyToDelete still true
-                            // -> update page, and breakpoint above shoud work.
-                            // (Or eve simpler, just comment code that updates state of tag in DB, add/delete # and update page)
-
-                            // let isPresent = false;
-
-                            // todos.map(todoItem => {
-                            //     if (!isPresent && todoItem.title.match(this.hashtagsRegExp)) {
-                            //         const text: string = todoItem.title.replace(this.hashtagsRegExp, function replacer($1, $2, $3) {
-                            //             const space = $2;
-                            //             const tagName = $3;
-
-                            //             if (tagName === hashtag.trim()) {
-                            //                 isPresent = true;
-                            //             }
-
-                            //             return todoItem.title;
-                            //         });
-                            //     }
-                            // });
-
-                            // // console.log(`%ctodos: `, this.consoleTextColorService, todos);
-                            // console.log(`%chashtag: %s isPresent: `, this.consoleTextColorService, hashtag, isPresent);
-
-                            // if (!isPresent) {
-                            //     // const tagToUpdate = this.tagTable.get(6);
-                            //     // console.log(`%ctagToUpdate: `, this.consoleTextColorService, tagToUpdate);
-                            //     // console.log(`%cBEFORE hashtagsInDb: `, this.consoleTextColorService, hashtagsInDb);
-                            //     hashtagsInDb.map(hashtagInDb => {
-                            //         if (hashtagInDb.tagName === hashtag.trim() && !hashtagInDb.readyToDelete) {
-                            //             hashtagInDb.updated_time = new Date().toISOString();
-                            //             hashtagInDb.readyToDelete = true;
-                            //             updateTagsPendingInner = true;
-                            //             console.log(`%marked as readyToDelete hashtagInDb: `, this.consoleTextColorService, hashtagInDb);
-                            //         }
-                            //     });
-                            // }
+                            // console.log(`%cFOUND in tagTable hashtag: %s, and response: `, this.consoleTextColorService, hashtag.trim(), response);
                         }
                     });
-
-                    // if (updateTagsPendingInner) {
-                    //     // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPendingInner);
-                    //     // console.log(`%cAFTER hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
-                    //     const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
-                    // }
-
-                    // // this.getAllHashtags();
-                    // hashtagsInDb = [];
-                    // hashtagsInDb = await this.tagTable.toArray();
-                    // console.log(`%cUPDATED hashtagsInDB: `, this.consoleTextColorService, hashtagsInDb);
-                    // this._tagLayerService.setTagsList(hashtagsInDb);
                 }
             });
-            // todos.map(todo => {
-            //     this.parseTag(todo);
-            // });
 
-            const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+            // const hashtagsInDb: Tag[] = await this.tagTable.toArray();
 
-            const updateTagsPending = this.cleanHashtags(todos, response);
+            updateTagsPending = updateTagsPending || this.cleanHashtags(todos, response);
 
             if (updateTagsPending) {
                 // console.log(`%cshould be Updated tags DB? `, this.consoleTextColorService, updateTagsPending);
