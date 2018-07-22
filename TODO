@@ -19,16 +19,17 @@ Todos:
                 ☐ In 'todo Title' show tags as blocks with colors
                     ☐ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color)
                         ☐ Add posibility to change tag color (right click on tag)
-                    ☐ Rewrite part with tag list
+                    ✔ Rewrite part with tag list @done(18-07-21 09:51)
                         ✔ Fill tags array in 'TagService' when list of todo is loaded @done(18-06-04 10:19)
                         ✔ Use tags array from 'TagService' in 'ParseTagPipe' when todo showed @done(18-06-05 09:39)
                         ✔ Update tags array in 'TagService', when todo added/updated/deleted @done(18-06-05 10:30)
                             ✔ Add logic to check if tag is not in use anymore (not todos with the tag - check all todos in delete/update and process in 'parseTag()'), then marked as ready to delete @done(18-06-09 09:54)
-                        ☐ Update 'clearCompleted()' with new logic (e.g. check if tag is not in use anymore, then marked as ready to delete)
-                            ☐ Use 'cleanHashtags()' method in 'clearCompleted()'
+                        ✔ Update 'clearCompleted()' with new logic with #hashtags (e.g. check if tag is not in use anymore, then marked as ready to delete) @done(18-07-21 09:49)
+                            ✔ Use 'cleanHashtags()' method in 'clearCompleted()' @done(18-07-21 09:49)
                         ✔ Fix tags when they deleted in IndexedDb directly @done(18-06-11 10:23)
-                        ☐ Fix add new todo with tag <========================================================= CURRENT TASK
-                    ☐ Use proper colors for tagBlock in header
+                        ✔ Fix add new todo with tag @done(18-07-21 09:51)
+                    ✔ Add transparency to hashtags background-color @done(18-07-21 10:22)
+                    ☐ Use proper colors for tagBlock in header <========================================================= CURRENT TASK
                 ✔ Click on tag should add 'tag-block' to 'header' and filter list @done(18-05-23 10:05)
                     ☐ Fix filtering with similar tags (example #tagged1 and #tagged)
                 ✔ Add URL support in 'todo Title' @done(18-05-23 10:06)
@@ -43,7 +44,7 @@ Todos:
 
             ☐ Check filter with tag #another (if the tag placed in the beginning of title)
 
-            ☐ Add transparency to hashtags background-color
+            ☐ Add possibility to change #hashtag color by right click on it
 
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
@@ -56,6 +57,8 @@ Todos:
             ☐ Consider idea for links like in VS code (cntrl click on link, hint for link, and underline for link)
 
             ☐ Use Chrome Audit to test the app
+
+            ☐ Bug -> When todo edited and click on trash icon -> just edit canceled
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
@@ -116,6 +119,7 @@ Todos:
             ☐ Sync using SW according to some state (like example some idea: `https://github.com/johnpapa/pwa-angular#background-sync-1`)
                 ☐ 1. state = 'tagsOnClient' - update list tags from service to IndexedDb
                 ☐ 2. state = 'tagsOnBack' - update list tags from IndexedDb to BackEnd
+            ☐ Call Sync event when tags updated (look in 'IndexedDbService')
             |
             |
             ☐ Use Chrome LightHouse to test the app and get 100%

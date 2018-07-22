@@ -217,8 +217,9 @@ export class IndexedDbService extends Dexie {
 
             await this.dbTable.update(todo.id, todo);
 
-            // TODO: Do not forget to clean this line after
+            // TODO: Do not forget to clean line bellow after
             // this.parseTag(todo);
+
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();
             const todos: ToDo[] = await this.dbTable.toArray();
 
@@ -319,7 +320,7 @@ export class IndexedDbService extends Dexie {
 
     // API: (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
-        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+        return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
             let todos: ToDo[] = await this.dbTable.toArray();
             const todosIds: number[] = [];
 
@@ -343,6 +344,13 @@ export class IndexedDbService extends Dexie {
                 todos = todos.filter(todo => {
                     return todo.complete === (activeRouteState === 2 ? true : false);
                 });
+            }
+
+            const hashtagsInDb: Tag[] = await this.tagTable.toArray();
+            const updateTagsPending = this.cleanHashtags(todos, hashtagsInDb);
+            if (updateTagsPending) {
+                const lastKey = await this.tagTable.bulkPut(hashtagsInDb);
+                this._tagLayerService.tags = hashtagsInDb;
             }
 
             // console.log('%c returned todos:', this.consoleTextColorService, todos);

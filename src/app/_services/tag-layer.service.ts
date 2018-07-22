@@ -10,16 +10,16 @@ export class TagLayerService {
 
     tags: Tag[] = [];
     colorsHashtags: string[] = [
-        '#00ced1',
-        '#217273',
-        '#bb3c3c',
-        '#b32279',
-        '#45c143',
-        '#135012',
-        '#c1692a',
-        '#966441',
-        '#797979',
-        '#b97aff',
+        '#1eafb1cc',
+        '#217273b0',
+        '#bb3c3ccc',
+        '#b32279b0',
+        '#45c143cc',
+        '#135012b0',
+        '#c1692acc',
+        '#966441cc',
+        '#797979cc',
+        '#b97affcc',
     ];
 
     constructor() { }
