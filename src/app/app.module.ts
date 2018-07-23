@@ -36,6 +36,7 @@ import { DynamicContentDirective } from '@app/_directives/dynamic-content.direct
 // Pipes
 import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
 import { SafePipe } from '@app/_pipes/safe.pipe';
+import { FilterTagPipe } from '@app/_pipes/filter-tag.pipe';
 
 // Modules
 import { DndModule } from 'ng2-dnd';
@@ -62,7 +63,8 @@ import { Utils } from '@app/_common/utils';
         DialogMoreComponent,
         ParseTagPipe,
         DynamicContentDirective,
-        SafePipe
+        SafePipe,
+        FilterTagPipe
     ],
     imports: [
         AppRoutingModule,

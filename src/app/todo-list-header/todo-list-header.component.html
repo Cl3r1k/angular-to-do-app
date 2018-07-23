@@ -12,7 +12,7 @@
     <div class='filter-container' *ngIf='hashTagToFilter'>
         <!-- <input type='text' class='hashtag' placeholder='Add new task' autofocus='' (keyup.enter)='addTodo()' [(ngModel)]='hashTagToFilter' (focus)='setNewTodoFocus(true)' (blur)='setNewTodoFocus(false)'> -->
         <span>
-            <div class='hashtag'>{{hashTagToFilter}}</div>
+            <div [innerHTML]='hashTagToFilter | filterTagPipe | safePipe: "html"'></div>
         </span>
         <svg class='icon icon-close' (click)='resetFilter()'>
             <use xlink:href='#icon-close'></use>

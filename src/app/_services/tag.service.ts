@@ -70,7 +70,7 @@ export class TagService {
                 console.log('%c--->Hashtags updated in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
             });
             clearInterval(this.interval);
-        }, 1000);
+        }, 100);
     }
 
 }

@@ -2,7 +2,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 // Services
 import { TagService } from '@app/_services/tag.service';
-import { IndexedDbService } from '@app/_services/indexed-db.service';
 
 @Pipe({
     name: 'parseTagPipe'

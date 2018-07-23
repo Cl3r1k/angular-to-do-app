@@ -16,9 +16,9 @@ Todos:
         Current:
             
             ☐ Add tags support (for example #tagName)
-                ☐ In 'todo Title' show tags as blocks with colors
-                    ☐ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color)
-                        ☐ Add posibility to change tag color (right click on tag)
+                ✔ In 'todo Title' show tags as blocks with colors @done(18-07-22 09:48)
+                    ✔ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color) @done(18-07-22 09:48)
+                        ☐ Add possibility to change #hashtag  color (by right click on tag)
                     ✔ Rewrite part with tag list @done(18-07-21 09:51)
                         ✔ Fill tags array in 'TagService' when list of todo is loaded @done(18-06-04 10:19)
                         ✔ Use tags array from 'TagService' in 'ParseTagPipe' when todo showed @done(18-06-05 09:39)
@@ -28,12 +28,13 @@ Todos:
                             ✔ Use 'cleanHashtags()' method in 'clearCompleted()' @done(18-07-21 09:49)
                         ✔ Fix tags when they deleted in IndexedDb directly @done(18-06-11 10:23)
                         ✔ Fix add new todo with tag @done(18-07-21 09:51)
+                            ✔ Fix add new todo with tag and after page refresh color is different (if page updated immediately) @done(18-07-22 09:12)
                     ✔ Add transparency to hashtags background-color @done(18-07-21 10:22)
-                    ☐ Use proper colors for tagBlock in header <========================================================= CURRENT TASK
+                    ✔ Use proper colors for tagBlock in header @done(18-07-22 09:44)
                 ✔ Click on tag should add 'tag-block' to 'header' and filter list @done(18-05-23 10:05)
-                    ☐ Fix filtering with similar tags (example #tagged1 and #tagged)
+                    ☐ Fix filtering with similar tags (example #tagged1 and #tagged) <========================================================= CURRENT TASK
+                    ☐ Check filter with tag #another (if the tag placed in the beginning of title)
                 ✔ Add URL support in 'todo Title' @done(18-05-23 10:06)
-                ☐ Update tests for 'DynamicContentDirective' and 'ParseTagPipe'
                 ☐ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate)
                     ✔ Now 'getTodosWithHashtag()' is redundant @done(18-05-27 09:08)
 
@@ -41,16 +42,13 @@ Todos:
             ☐ Write tests for 'Tag' models
             ☐ Write tests for 'ParseTagPipe'
             ☐ Write tests for 'SafePipe'
-
-            ☐ Check filter with tag #another (if the tag placed in the beginning of title)
-
-            ☐ Add possibility to change #hashtag color by right click on it
+            ☐ Write tests for 'FilterTagPipe'
 
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
             ✔ Rewrite part with resolvers, and return from resolver Object/Class like {activeRouteState, params, todos} @done(18-05-26 11:00)
             ☐ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode')
-            ☐ Update styles for 'completed-todos' span (hover and active looks not proper)
+            ☐ Update styles for 'completed-todos' span (hover and active looks not proper - inactive?)
 
             ☐ Update CLI to version 6 (look here `https://blog.codewithdan.com/2018/05/03/upgrading-an-application-to-angular-6-step-by-step/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more`)
 
