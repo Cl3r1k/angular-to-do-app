@@ -37,7 +37,7 @@ export class TagService {
                     }
                 });
 
-                this.updateHashtags();
+                this.updateHashtagsDelayed();
             }
         } else {
             // Add new hashtag to list and run ServiceWorker
@@ -51,13 +51,13 @@ export class TagService {
             console.log('%cPending update in %cIndexedDb!', this.consoleTextColorService, 'color: red;');
             // TODO: Now we should run Sevice Worker or another worker with interval 3 sec, and update tagList in IndexedDb
             // BTW check if SW is running and waiting for update already, than just reset timer to 3 sec
-            this.updateHashtags();
+            this.updateHashtagsDelayed();
         }
 
         return tagColor;    // If something went wrong, return 'tagColor' as red
     }
 
-    public updateHashtags() {
+    public updateHashtagsDelayed() {
         if (this.updatePending) {
             clearInterval(this.interval);
         }

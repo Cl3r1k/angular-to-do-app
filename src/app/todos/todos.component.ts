@@ -301,7 +301,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
         pinnedTodos = this.todos.filter(todo => {
             if (this.activeRouteState === 3) {
-                return !todo.complete && todo.pin && todo.title.toLowerCase().indexOf(this.hashTagToFilter.toLowerCase()) > 0;
+                return !todo.complete && todo.pin && this.hashtagIsPresent(todo.title, this.hashTagToFilter);
             } else {
                 return !todo.complete && todo.pin;
             }
@@ -309,7 +309,12 @@ export class TodosComponent implements OnInit, OnDestroy {
 
         unpinnedTodos = this.todos.filter(todo => {
             if (this.activeRouteState === 3) {
-                return !todo.complete && !todo.pin && todo.title.toLowerCase().indexOf(this.hashTagToFilter.toLowerCase()) > 0;
+                // console.log('%cin TodosComponent todo.complete: ', this.consoleTextColorComponent, todo.complete);
+                // console.log('%cin TodosComponent todo.pin: ', this.consoleTextColorComponent, todo.pin);
+                // console.log('%cin TodosComponent todo.title: ', this.consoleTextColorComponent, todo.title);
+                // tslint:disable-next-line:max-line-length
+                // console.log('%cin TodosComponent todo.title.indexOf: ', this.consoleTextColorComponent, todo.title.toLowerCase().indexOf(this.hashTagToFilter.toLowerCase()));
+                return !todo.complete && !todo.pin && this.hashtagIsPresent(todo.title, this.hashTagToFilter);
             } else {
                 return !todo.complete && !todo.pin;
             }
@@ -317,7 +322,7 @@ export class TodosComponent implements OnInit, OnDestroy {
 
         completedTodos = this.todos.filter(todo => {
             if (this.activeRouteState === 3) {
-                return todo.complete && todo.title.toLowerCase().indexOf(this.hashTagToFilter.toLowerCase()) > 0;
+                return todo.complete && this.hashtagIsPresent(todo.title, this.hashTagToFilter);
             } else {
                 return todo.complete;
             }
@@ -332,6 +337,23 @@ export class TodosComponent implements OnInit, OnDestroy {
         console.log('%cin TodosComponent pinnedTodos', this.consoleTextColorComponent, pinnedTodos);
         console.log('%cin TodosComponent unpinnedTodos', this.consoleTextColorComponent, unpinnedTodos);
         console.log('%cin TodosComponent completedTodos', this.consoleTextColorComponent, completedTodos);
+    }
+
+    private hashtagIsPresent(title: string, hashTagToFilter: string): boolean {
+        const hashtagsRegExp = /(^|\s)(#[a-z\d][\w-]*)/ig; // Find/Replace #hashtags in text
+
+        let isPresent = false;
+        if (title.match(hashtagsRegExp)) {
+            const hashtagsInTitle = title.match(hashtagsRegExp);
+
+            hashtagsInTitle.map(hashtag => {
+                if (hashtag.trim() === hashTagToFilter) {
+                    isPresent = true;
+                }
+            });
+        }
+
+        return isPresent;
     }
 
 }

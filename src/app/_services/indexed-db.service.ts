@@ -169,7 +169,7 @@ export class IndexedDbService extends Dexie {
 
             todos = response.filter(todo => {
                 console.log(`%c in getTodosWithHashtag todo: `, this.consoleTextColorService, todo);
-                return todo.title.toLowerCase().indexOf(hashtag.toLowerCase()) > 0;
+                return todo.title.toLowerCase().indexOf(hashtag.toLowerCase()) !== -1;
             });
 
             console.log('%c in getTodosWithHashtag todos: ', this.consoleTextColorService, todos);

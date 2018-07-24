@@ -32,13 +32,14 @@ Todos:
                     ✔ Add transparency to hashtags background-color @done(18-07-21 10:22)
                     ✔ Use proper colors for tagBlock in header @done(18-07-22 09:44)
                 ✔ Click on tag should add 'tag-block' to 'header' and filter list @done(18-05-23 10:05)
-                    ☐ Fix filtering with similar tags (example #tagged1 and #tagged) <========================================================= CURRENT TASK
-                    ☐ Check filter with tag #another (if the tag placed in the beginning of title)
+                    ✔ Fix filtering with similar tags (example #tagged1 and #tagged) @done(18-07-23 10:27)
+                    ✔ Fix filter, when app reload page with filtered route -> #hashtags are not from IndexedDb @done(18-07-23 09:44)
+                    ✔ Check filter with tag #another (if the tag placed in the beginning of title) @done(18-07-23 09:27)
                 ✔ Add URL support in 'todo Title' @done(18-05-23 10:06)
                 ☐ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate)
                     ✔ Now 'getTodosWithHashtag()' is redundant @done(18-05-27 09:08)
 
-            ☐ Write tests for 'Utils' class
+            ☐ Write tests for 'Utils' class <========================================================= CURRENT TASK
             ☐ Write tests for 'Tag' models
             ☐ Write tests for 'ParseTagPipe'
             ☐ Write tests for 'SafePipe'
