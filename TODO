@@ -39,11 +39,12 @@ Todos:
                 ☐ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate)
                     ✔ Now 'getTodosWithHashtag()' is redundant @done(18-05-27 09:08)
 
-            ☐ Write tests for 'Utils' class <========================================================= CURRENT TASK
-            ☐ Write tests for 'Tag' models
-            ☐ Write tests for 'ParseTagPipe'
+            ✔ Write tests for 'Utils' class @done(18-07-24 10:42)
+            ✔ Write tests for 'Tag' model @done(18-07-24 10:54)
+            ☐ Write tests for 'ParseTagPipe' <========================================================= CURRENT TASK
             ☐ Write tests for 'SafePipe'
             ☐ Write tests for 'FilterTagPipe'
+            ☐ Update all broken tests
 
             ☐ Change console color for services from `Salmon` to `Seagreen`
 

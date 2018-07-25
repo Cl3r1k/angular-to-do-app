@@ -13,72 +13,40 @@ describe(`Tag`, () => {
         expect(new Tag('testTagName')).toBeTruthy();
     }));
 
-    // it(`Should accept values in the constructor (async)`, async(() => {
-    //     // Arrange
-    //     let todo: ToDo;
+    it(`Should accept values in the constructor (async)`, async(() => {
+        // Arrange
+        let hashTag: Tag;
 
-    //     // Act
-    //     todo = new ToDo( {
-    //         title: 'Hello',
-    //         complete: true
-    //     });
+        // Act
+        hashTag = new Tag('testTagName1');
 
-    //     // Assert
-    //     expect(todo.title).toEqual('Hello');
-    //     expect(todo.complete).toEqual(true);
-    // }));
+        // Assert
+        expect(hashTag.tagName).toEqual('testTagName1');
+    }));
 
-    // it(`Should have initial vaules after init (async)`, async(() => {
-    //     // Arrange
-    //     let todo: ToDo;
+    it(`Should have initial vaules after init (async)`, async(() => {
+        // Arrange
+        let hashTag: Tag;
 
-    //     // Act
-    //     todo = new ToDo( {
-    //         title: 'Hello',
-    //         complete: true
-    //     });
+        // Act
+        hashTag = new Tag('testTagName2');
 
-    //     // Assert
-    //     expect(todo.id).toEqual(undefined);
-    //     expect(todo.title).toEqual('Hello');
-    //     expect(todo.complete).toEqual(true);
-    //     expect(todo.pin).toEqual(false);
-    //     expect(todo.costedPomo).toEqual(0);
-    //     expect(todo.estimatedPomos).toEqual(0);
-    //     expect(todo.remindMe).toEqual(false);
-    //     expect(todo.remindTime).toBeNull();
-    //     expect(todo.note).toBeNull();
-    // }));
+        // Assert
+        expect(hashTag.id).toEqual(undefined);
+        expect(hashTag.tagName).toEqual('testTagName2');
+        expect(hashTag.color).toEqual('red');
+        expect(hashTag.readyToDelete).toEqual(false);
+    }));
 
-    // it(`Should have not null 'created_time' and null other times after init (async)`, async(() => {
-    //     // Arrange
-    //     let todo: ToDo;
+    it(`Should have not null 'created_time' and null other times after init (async)`, async(() => {
+        // Arrange
+        let hashTag: Tag;
 
-    //     // Act
-    //     todo = new ToDo( {
-    //         title: 'Hello',
-    //         complete: true
-    //     });
+        // Act
+        hashTag = new Tag('testTagName3');
 
-    //     // Assert
-    //     expect(todo.created_time).toBeTruthy();
-    //     expect(todo.completed_time).toBeNull();
-    //     expect(todo.updated_time).toBeNull();
-    //     expect(todo.deleted_time).toBeNull();
-    // }));
-
-    // it(`Should have not null 'inner_id' with length=36 after init (async)`, async(() => {
-    //     // Arrange
-    //     let todo: ToDo;
-
-    //     // Act
-    //     todo = new ToDo( {
-    //         title: 'Hello',
-    //         complete: true
-    //     });
-
-    //     // Assert
-    //     expect(todo.inner_id).toBeTruthy();
-    //     expect(todo.inner_id.length).toEqual(36);
-    // }));
+        // Assert
+        expect(hashTag.created_time).toBeTruthy();
+        expect(hashTag.updated_time).toBeNull();
+    }));
 });
