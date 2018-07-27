@@ -1,13 +1,22 @@
+import { TestBed } from '@angular/core/testing';
+
 import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
+// Mocked ParseTagPipe, because in pipe used IndexedDb
+import { ParseTagMockPipe } from '@app/_pipes/parse-tag-mock.pipe';
 
 describe(`Pipe: ParseTagPipe`, () => {
-    let pipe: ParseTagPipe;
+    let pipe: ParseTagMockPipe;
 
     beforeEach(() => {
-        // TODO: replace param 'null' to proper param, and complete tests
-        // look here (https://codecraft.tv/courses/angular/unit-testing/angular-test-bed/)
-        // And use mocked parseTag() (look here https://codecraft.tv/courses/angular/unit-testing/mocks-and-spies/)
-        pipe = new ParseTagPipe(null);
+        TestBed.configureTestingModule({
+            providers: [
+                {
+                    provide: ParseTagPipe,
+                    useClass: ParseTagMockPipe
+                }]
+        });
+
+        pipe = new ParseTagMockPipe();
     });
 
     it(`create an instance`, () => {
@@ -16,5 +25,13 @@ describe(`Pipe: ParseTagPipe`, () => {
 
     it(`providing no value returns empty string`, () => {
         expect(pipe.transform('')).toBe('');
+    });
+
+    it(`providing value 'some http://url.com' should returns string with url.span`, () => {
+        expect(pipe.transform('some http://url.com')).toBe(`some <a href='http://url.com' target='_blank'>url.com</a>`);
+    });
+
+    it(`providing value 'some #tag' should returns string with parsed #hastag`, () => {
+        expect(pipe.transform('some #tag')).toBe(`some <span class='tag-class' style='background-color: red;'>#tag</span>`);
     });
 });

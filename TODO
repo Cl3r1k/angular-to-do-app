@@ -41,8 +41,8 @@ Todos:
 
             ✔ Write tests for 'Utils' class @done(18-07-24 10:42)
             ✔ Write tests for 'Tag' model @done(18-07-24 10:54)
-            ☐ Write tests for 'ParseTagPipe' <========================================================= CURRENT TASK
-            ☐ Write tests for 'SafePipe'
+            ✔ Write tests for 'ParseTagPipe' @done(18-07-26 10:11)
+            ☐ Write tests for 'SafePipe' <========================================================= CURRENT TASK
             ☐ Write tests for 'FilterTagPipe'
             ☐ Update all broken tests
 
