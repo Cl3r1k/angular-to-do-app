@@ -18,10 +18,11 @@ describe('Pipe: SafePipe', () => {
     });
 
     it('create an instance', () => {
+        // Arrange
+
+        // Act
+
+        // Assert
         expect(pipe).toBeTruthy();
     });
-
-    // it(`providing no value returns empty string`, () => {
-    //     expect(pipe.transform(`some <span class='tag-class' style='background-color: red;'>#tag</span>`, 'html')).toBe('');
-    // });
 });

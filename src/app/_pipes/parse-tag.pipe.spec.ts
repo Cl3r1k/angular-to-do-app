@@ -20,18 +20,38 @@ describe(`Pipe: ParseTagPipe`, () => {
     });
 
     it(`create an instance`, () => {
+        // Arrange
+
+        // Act
+
+        // Assert
         expect(pipe).toBeTruthy();
     });
 
     it(`providing no value returns empty string`, () => {
+        // Arrange
+
+        // Act
+
+        // Assert
         expect(pipe.transform('')).toBe('');
     });
 
     it(`providing value 'some http://url.com' should returns string with url.span`, () => {
+        // Arrange
+
+        // Act
+
+        // Assert
         expect(pipe.transform('some http://url.com')).toBe(`some <a href='http://url.com' target='_blank'>url.com</a>`);
     });
 
     it(`providing value 'some #tag' should returns string with parsed #hastag`, () => {
+        // Arrange
+
+        // Act
+
+        // Assert
         expect(pipe.transform('some #tag')).toBe(`some <span class='tag-class' style='background-color: red;'>#tag</span>`);
     });
 });

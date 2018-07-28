@@ -42,9 +42,9 @@ Todos:
             ✔ Write tests for 'Utils' class @done(18-07-24 10:42)
             ✔ Write tests for 'Tag' model @done(18-07-24 10:54)
             ✔ Write tests for 'ParseTagPipe' @done(18-07-26 10:11)
-            ☐ Write tests for 'SafePipe' <========================================================= CURRENT TASK
-            ☐ Write tests for 'FilterTagPipe'
-            ☐ Update all broken tests
+            ✔ Write tests for 'SafePipe' @done(18-07-27 09:29)
+            ✔ Write tests for 'FilterTagPipe' @done(18-07-27 09:42)
+            ☐ Update all broken tests <========================================================= CURRENT TASK
 
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
@@ -54,7 +54,7 @@ Todos:
 
             ☐ Update CLI to version 6 (look here `https://blog.codewithdan.com/2018/05/03/upgrading-an-application-to-angular-6-step-by-step/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more`)
 
-            ☐ Consider idea for links like in VS code (cntrl click on link, hint for link, and underline for link)
+            ☐ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link)
 
             ☐ Use Chrome Audit to test the app
 
