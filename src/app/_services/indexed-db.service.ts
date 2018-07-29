@@ -162,22 +162,22 @@ export class IndexedDbService extends Dexie {
         }));
     }
 
-    public getTodosWithHashtag(hashtag: string): Observable<ToDo[]> {
-        console.log('%c calling getTodosWithHashtag in IndexedDbService with hashtag:', this.consoleTextColorService, hashtag);
-        return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
-            let todos: ToDo[] = [];
+    // public getTodosWithHashtag(hashtag: string): Observable<ToDo[]> {
+    //     console.log('%c calling getTodosWithHashtag in IndexedDbService with hashtag:', this.consoleTextColorService, hashtag);
+    //     return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
+    //         let todos: ToDo[] = [];
 
-            todos = response.filter(todo => {
-                console.log(`%c in getTodosWithHashtag todo: `, this.consoleTextColorService, todo);
-                return todo.title.toLowerCase().indexOf(hashtag.toLowerCase()) !== -1;
-            });
+    //         todos = response.filter(todo => {
+    //             console.log(`%c in getTodosWithHashtag todo: `, this.consoleTextColorService, todo);
+    //             return todo.title.toLowerCase().indexOf(hashtag.toLowerCase()) !== -1;
+    //         });
 
-            console.log('%c in getTodosWithHashtag todos: ', this.consoleTextColorService, todos);
-            return todos;
-        }).catch(error => {
-            return error;    // TODO: Handle error properly as Observable
-        }));
-    }
+    //         console.log('%c in getTodosWithHashtag todos: ', this.consoleTextColorService, todos);
+    //         return todos;
+    //     }).catch(error => {
+    //         return error;    // TODO: Handle error properly as Observable
+    //     }));
+    // }
 
     // TODO: Improve this method when Dexie 3.0 will be released (when equals() will support boolean)
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {

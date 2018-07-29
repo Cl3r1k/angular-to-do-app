@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
+
+// Models
 import { ToDo } from '@app/_models/to-do';
+import { Tag } from '@app/_models/tag';
+
+// Imports
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
@@ -66,6 +71,20 @@ export class IndexedDbMockService {
 
     public clearStore(): Observable<null> {
         return Observable.of(null);
+    }
+
+    public getAllHashtags(): Observable<Tag[]> {
+        return Observable.of([
+            new Tag('tagName')
+        ]);
+    }
+
+    public updateHashtags(tags: Tag[]): Observable<null> {
+        return Observable.of(null);
+    }
+
+    public cleanHashtags(todos: ToDo[], hashtagsInDb: Tag[]): boolean {
+        return true;
     }
 
 }

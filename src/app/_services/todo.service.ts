@@ -98,34 +98,34 @@ export class TodoService {
         return this._indexedDbService.getTodosAmountObject();
     }
 
-    getTodosWithHashtag(hashtag: string): Observable<ToDo[]> {
-        return this._indexedDbService.getTodosWithHashtag(hashtag).pipe(
-            map(todos => {
-                let todoList: ToDo[] = [];
+    // getTodosWithHashtag(hashtag: string): Observable<ToDo[]> {
+    //     return this._indexedDbService.getTodosWithHashtag(hashtag).pipe(
+    //         map(todos => {
+    //             let todoList: ToDo[] = [];
 
-                let todoOrderList = this._todoOrderService.getOrder();
+    //             let todoOrderList = this._todoOrderService.getOrder();
 
-                if (!todoOrderList) {    // If order list is empty, return list as is
-                    todoList = todos;
-                } else {
-                    const innerIdList = todos.map(todo => {
-                        return todo.inner_id;
-                    });
+    //             if (!todoOrderList) {    // If order list is empty, return list as is
+    //                 todoList = todos;
+    //             } else {
+    //                 const innerIdList = todos.map(todo => {
+    //                     return todo.inner_id;
+    //                 });
 
-                    todoOrderList = todoOrderList.filter(todoOrderId => {
-                        const indexTodo = innerIdList.indexOf(todoOrderId, 0);
-                        return indexTodo >= 0;
-                    });
-                }
+    //                 todoOrderList = todoOrderList.filter(todoOrderId => {
+    //                     const indexTodo = innerIdList.indexOf(todoOrderId, 0);
+    //                     return indexTodo >= 0;
+    //                 });
+    //             }
 
-                todoList = this.sortListByOrder(todos, todoOrderList);
+    //             todoList = this.sortListByOrder(todos, todoOrderList);
 
-                // console.log('%cfound todoList: ', this.consoleTextColorService, todoList);
+    //             // console.log('%cfound todoList: ', this.consoleTextColorService, todoList);
 
-                return (todoList);
-            })
-        );
-    }
+    //             return (todoList);
+    //         })
+    //     );
+    // }
 
     // Simulate GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
     getAllTodos(activeRouteState: number): Observable<ToDo[]> {

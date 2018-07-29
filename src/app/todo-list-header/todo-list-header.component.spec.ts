@@ -1,10 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { ToDo } from '@app/_models/to-do';
 
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
+
+// Pipes
+import { SafePipe } from '@app/_pipes/safe.pipe';
+import { FilterTagPipe } from '@app/_pipes/filter-tag.pipe';
+import { TagService } from '@app/_services/tag.service';
 
 describe('TodoListHeaderComponent', () => {
     let component: TodoListHeaderComponent;
@@ -15,8 +21,8 @@ describe('TodoListHeaderComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TodoListHeaderComponent],
-            imports: [FormsModule]
+            declarations: [TodoListHeaderComponent, SafePipe, FilterTagPipe, TagService],
+            imports: [FormsModule, RouterTestingModule]
         })
             .compileComponents();
     }));
