@@ -22,7 +22,8 @@ describe('TodoListHeaderComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [TodoListHeaderComponent, SafePipe, FilterTagPipe, TagService],
-            imports: [FormsModule, RouterTestingModule]
+            imports: [FormsModule /*, RouterTestingModule */]
+            // TODO: Test Router (above)
         })
             .compileComponents();
     }));
