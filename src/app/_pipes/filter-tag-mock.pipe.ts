@@ -1,6 +1,8 @@
 
 export class FilterTagMockPipe {
 
+    constructor() { }
+
     public transform(text: string): string {
         return this.filterTag(text);
     }

@@ -1,15 +1,25 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
+// Models
 import { ToDo } from '@app/_models/to-do';
 
+// Components
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+
+// Pipes
+import { SafePipe } from '@app/_pipes/safe.pipe';
+import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
+
+// Services
+import { TagService } from '@app/_services/tag.service';
+import { TagMockService } from '@app/_services/tag-mock.service';
 
 describe('TodoListItemViewComponent', () => {
     let component: TodoListItemViewComponent;
     let fixture: ComponentFixture<TodoListItemViewComponent>;
     let toggleEl;
-    let labelEl;
+    let todoTitleEl;
     // let editEl;
     let moreEl;
     let pinEl;
@@ -17,7 +27,13 @@ describe('TodoListItemViewComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TodoListItemViewComponent]
+            declarations: [TodoListItemViewComponent, SafePipe, ParseTagPipe],
+            providers: [
+                {
+                    provide: TagService,
+                    useClass: TagMockService
+                }
+            ]
         })
             .compileComponents();
     }));
@@ -33,7 +49,7 @@ describe('TodoListItemViewComponent', () => {
         // console.log(`%c'beforeEach()' in 'TodoListItemViewComponent' component.todo:`, 'color: teal;', component.todo);
 
         toggleEl = fixture.debugElement.query(By.css('input[type=checkbox]'));        // Find toggle checkbox element
-        labelEl = fixture.debugElement.query(By.css('label'));                        // Find label element
+        todoTitleEl = fixture.debugElement.query(By.css('div.todoTitle'));            // Find todoTitle element
         // editEl = fixture.debugElement.query(By.css('svg.icon-pencil-edit'));       // Find edit icon element
         moreEl = fixture.debugElement.query(By.css('svg.icon-more_horiz'));           // Find more icon element
         pinEl = fixture.debugElement.query(By.css('svg.icon-pin'));                   // Find pin icon element
@@ -264,13 +280,13 @@ describe('TodoListItemViewComponent', () => {
         //     });
         // });
 
-        describe(`label:`, () => {
-            it(`'dblclick' on 'label' should call method 'editTodo()' (async)`, async () => {
+        describe(`div.todoTitle:`, () => {
+            it(`'dblclick' on 'div.todoTitle' should call method 'editTodo()' (async)`, async () => {
                 // Arrange
 
                 // Act
                 spyOn(component, 'editTodo');
-                labelEl.triggerEventHandler('dblclick', new MouseEvent('dblclick'));
+                todoTitleEl.triggerEventHandler('dblclick', new MouseEvent('dblclick'));
 
                 // Assert
                 fixture.whenStable().then(() => {

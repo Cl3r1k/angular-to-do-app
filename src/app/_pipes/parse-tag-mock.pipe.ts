@@ -4,6 +4,8 @@ export class ParseTagMockPipe {
     urlsRegExp = /(\b(https?|http|ftp|ftps|Https|rtsp|Rtsp):\/\/[A-Z0-9+&@#\/%?=~_|!:,.;-]*[-A-Z0-9+&@#\/%=~_|])/gim;
     hashtagsRegExp = /(^|\s)(#[a-z\d][\w-]*)/ig; // Find/Replace #hashtags in text
 
+    constructor() { }
+
     public transform(text: string): string {
         return this.parseTag(text);
     }

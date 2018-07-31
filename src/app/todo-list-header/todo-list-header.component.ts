@@ -26,7 +26,7 @@ export class TodoListHeaderComponent implements OnInit {
 
     newTodoFocusState = false;
 
-    constructor(/* private router: Router */) { }
+    constructor(public router: Router) { }
 
     ngOnInit() {
         console.log(`%cin 'TodoListHeaderComponent' hashTagToFilter: `, this.consoleTextColorComponent, this.hashTagToFilter);
@@ -54,8 +54,8 @@ export class TodoListHeaderComponent implements OnInit {
         this.newTodoFocusState = newTodoFocusState;
     }
 
-    // resetFilter() {
-    //     this.router.navigate(['/todos']);
-    // }
+    resetFilter() {
+        this.router.navigate(['/todos']);
+    }
 
 }

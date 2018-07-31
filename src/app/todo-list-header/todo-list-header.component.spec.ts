@@ -1,16 +1,21 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, getTestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 
+// Models
 import { ToDo } from '@app/_models/to-do';
 
+// Components
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
 
 // Pipes
 import { SafePipe } from '@app/_pipes/safe.pipe';
 import { FilterTagPipe } from '@app/_pipes/filter-tag.pipe';
+
+// Services
 import { TagService } from '@app/_services/tag.service';
+import { TagMockService } from '@app/_services/tag-mock.service';
 
 describe('TodoListHeaderComponent', () => {
     let component: TodoListHeaderComponent;
@@ -21,9 +26,14 @@ describe('TodoListHeaderComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TodoListHeaderComponent, SafePipe, FilterTagPipe, TagService],
-            imports: [FormsModule /*, RouterTestingModule */]
-            // TODO: Test Router (above)
+            declarations: [TodoListHeaderComponent, SafePipe, FilterTagPipe],
+            imports: [FormsModule, RouterTestingModule],
+            providers: [
+                {
+                    provide: TagService,
+                    useClass: TagMockService
+                }
+            ]
         })
             .compileComponents();
     }));
@@ -112,6 +122,20 @@ describe('TodoListHeaderComponent', () => {
 
             // Assert
             expect(component.newTodoFocusState).toEqual(true);
+        }));
+    });
+
+    describe(`#resetFilter`, () => {
+        it(`should be able to navigate to '/todos' (async)`, async(() => {
+            // Arrange
+
+            // Act
+            spyOn(component.router, 'navigate').and.returnValue(true);
+
+            component.resetFilter();
+
+            // Assert
+            expect(component.router.navigate).toHaveBeenCalledWith(['/todos']);
         }));
     });
 
