@@ -3,9 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { TodosComponent } from '@app/todos/todos.component';
-
+// Models
 import { ToDo } from '@app/_models/to-do';
+import { ResolverData } from '@app/_models/resolver-data';
+
+// Components
+import { TodosComponent } from '@app/todos/todos.component';
 import { TodoTitleComponent } from '@app/todo-title/todo-title.component';
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
 import { TodoListComponent } from '@app/todo-list/todo-list.component';
@@ -13,6 +16,11 @@ import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-i
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
 import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
+
+// Pipes
+import { SafePipe } from '@app/_pipes/safe.pipe';
+import { FilterTagPipe } from '@app/_pipes/filter-tag.pipe';
+import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -22,6 +30,8 @@ import { IndexedDbService } from '@app/_services/indexed-db.service';
 import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
 import { TodoOrderService } from '@app/_services/todo-order.service';
 import { TodoOrderMockService } from '@app/_services/todo-order-mock.service';
+import { TagService } from '@app/_services/tag.service';
+import { TagMockService } from '@app/_services/tag-mock.service';
 
 // Routers
 import { ActivatedRoute } from '@angular/router';
@@ -51,7 +61,10 @@ describe(`TodosComponent`, () => {
                 TodoListFooterComponent,
                 TodoListItemComponent,
                 TodoListItemViewComponent,
-                TodoListItemEditComponent
+                TodoListItemEditComponent,
+                SafePipe,
+                FilterTagPipe,
+                ParseTagPipe
             ],
             providers: [TodoService,
                 {
@@ -66,7 +79,7 @@ describe(`TodosComponent`, () => {
                     provide: ActivatedRoute,
                     useValue: {
                         data: Observable.of({
-                            todos: []
+                            resolverData: new ResolverData(0, '')
                         }),
                         routeConfig: {
                             path: 'active'
@@ -79,6 +92,10 @@ describe(`TodosComponent`, () => {
                 {
                     provide: TodoOrderService,
                     useClass: TodoOrderMockService
+                },
+                {
+                    provide: TagService,
+                    useClass: TagMockService
                 }
             ]
         })
@@ -103,13 +120,13 @@ describe(`TodosComponent`, () => {
         expect(component).toBeTruthy();
     }));
 
-    it(`Should create the app with 'activeRouteState' is 1 according to routeConfig: { path } (async)`, async(() => {
+    it(`Should create the app with 'activeRouteState' is 0 according to routeConfig: { path } (async)`, async(() => {
         // Arrange
 
         // Act
 
         // Assert
-        expect(component.activeRouteState).toBe(1, `incoming routeConfig: { path === 'active' }`);
+        expect(component.activeRouteState).toBe(0, `incoming '_route.routeConfig.path': { path === 'todos' }`);
     }));
 
     // TODO: Rewrite test for 'TodosComponent' (currently not complete)

@@ -1,10 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+
+// Models
 import { ToDo } from '@app/_models/to-do';
 
+// Components
 import { TodoListItemComponent } from '@app/todo-list/todo-list-item/todo-list-item.component';
 import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 import { TodoListItemViewComponent } from '@app/todo-list/todo-list-item/todo-list-item-view/todo-list-item-view.component';
+
+// Pipes
+import { SafePipe } from '@app/_pipes/safe.pipe';
+import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
+
+// Services
+import { TagService } from '@app/_services/tag.service';
+import { TagMockService } from '@app/_services/tag-mock.service';
 
 describe('TodoListItemComponent', () => {
     let component: TodoListItemComponent;
@@ -13,8 +24,20 @@ describe('TodoListItemComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TodoListItemComponent, TodoListItemViewComponent, TodoListItemEditComponent],
-            imports: [FormsModule]
+            declarations: [
+                TodoListItemComponent,
+                TodoListItemViewComponent,
+                TodoListItemEditComponent,
+                SafePipe,
+                ParseTagPipe
+            ],
+            imports: [FormsModule],
+            providers: [
+                {
+                    provide: TagService,
+                    useClass: TagMockService
+                }
+            ]
         })
             .compileComponents();
     }));

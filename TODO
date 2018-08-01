@@ -44,8 +44,8 @@ Todos:
             ✔ Write tests for 'ParseTagPipe' @done(18-07-26 10:11)
             ✔ Write tests for 'SafePipe' @done(18-07-27 09:29)
             ✔ Write tests for 'FilterTagPipe' @done(18-07-27 09:42)
-            ☐ Write tests for 'DynamicContentDirective'
-            ☐ Update all broken tests <========================================================= CURRENT TASK
+            ☐ Write tests for 'DynamicContentDirective' <========================================================= CURRENT TASK
+            ✔ Update all broken tests @done(18-07-31 10:29)
 
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
