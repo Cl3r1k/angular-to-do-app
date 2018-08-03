@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 })
 export class DynamicContentDirective {
 
-    constructor(private elementRef: ElementRef, private router: Router) { }
+    constructor(private elementRef: ElementRef, public router: Router) { }
 
     @Input('dynamicContent') dynamicContent: string;
 
@@ -17,10 +17,7 @@ export class DynamicContentDirective {
             event.preventDefault();
             event.stopPropagation();
 
-            // console.log('filter todos with hashtag: ', link.trim());
-            // this.router.navigateByUrl('/todos/filter/hashtag/' + link.trim(), { skipLocationChange: false });
-
-            this.router.navigate(['/todos/filter/hashtag/', link.trim()]);
+            this.router.navigate(['/todos/filter/hashtag/', link.trim()], { skipLocationChange: true });
         }
     }
 

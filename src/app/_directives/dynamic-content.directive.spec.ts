@@ -1,4 +1,4 @@
-import { TestBed, ComponentFixture } from '@angular/core/testing';
+import { TestBed, ComponentFixture, async } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -30,14 +30,9 @@ describe(`Directive: DynamicContentDirective`, () => {
         fixture = TestBed.createComponent(TestDynamicContentDirectiveComponent);
         component = fixture.componentInstance;
 
-        divEl = fixture.debugElement.query(By.css('div'));    // Find div.todoTitle element
+        divEl = fixture.debugElement.query(By.css('div'));    // Find div.tag-class element
 
-        // TODO: replace param 'null' to proper param, and complete tests
-        // Examples are here: https://codecraft.tv/courses/angular/unit-testing/directives/
-        // and here: https://stackoverflow.com/questions/36432407/how-to-unit-test-a-directive-in-angular-2
-        // Test ElementRef
-        // look here: https://stackoverflow.com/questions/38623065/angular2-inject-elementref-in-unit-test
-        directive = new DynamicContentDirective(null, null);
+        directive = new DynamicContentDirective(divEl.nativeElement, null);
     });
 
     it(`create an instance`, () => {

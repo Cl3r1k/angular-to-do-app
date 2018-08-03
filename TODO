@@ -10,6 +10,7 @@
 
 Commit message:
 
+Minor changes
 
 Todos:
     New:
@@ -36,7 +37,7 @@ Todos:
                     ✔ Fix filter, when app reload page with filtered route -> #hashtags are not from IndexedDb @done(18-07-23 09:44)
                     ✔ Check filter with tag #another (if the tag placed in the beginning of title) @done(18-07-23 09:27)
                 ✔ Add URL support in 'todo Title' @done(18-05-23 10:06)
-                ☐ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate)
+                ✔ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate) @done(18-08-02 10:15)
                     ✔ Now 'getTodosWithHashtag()' is redundant @done(18-05-27 09:08)
 
             ✔ Write tests for 'Utils' class @done(18-07-24 10:42)
@@ -44,13 +45,13 @@ Todos:
             ✔ Write tests for 'ParseTagPipe' @done(18-07-26 10:11)
             ✔ Write tests for 'SafePipe' @done(18-07-27 09:29)
             ✔ Write tests for 'FilterTagPipe' @done(18-07-27 09:42)
-            ☐ Write tests for 'DynamicContentDirective' <========================================================= CURRENT TASK
+            ✔ Write tests for 'DynamicContentDirective' @done(18-08-02 09:48)
             ✔ Update all broken tests @done(18-07-31 10:29)
 
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
             ✔ Rewrite part with resolvers, and return from resolver Object/Class like {activeRouteState, params, todos} @done(18-05-26 11:00)
-            ☐ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode')
+            ☐ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode') <========================================================= CURRENT TASK
             ☐ Update styles for 'completed-todos' span (hover and active looks not proper - inactive?)
 
             ☐ Update CLI to version 6 (look here `https://blog.codewithdan.com/2018/05/03/upgrading-an-application-to-angular-6-step-by-step/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more`)
