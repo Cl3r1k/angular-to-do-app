@@ -15,7 +15,7 @@ Todos:
     New:
         Current:
             
-            ☐ Add tags support (for example #tagName)
+            ✔ Add tags support (for example #tagName) @done(18-08-05 09:17)
                 ✔ In 'todo Title' show tags as blocks with colors @done(18-07-22 09:48)
                     ✔ Colors for tags should be random, but for the same tag is the same color (tags should be stored in DB with color) @done(18-07-22 09:48)
                         ☐ Add possibility to change #hashtag  color (by right click on tag)
@@ -50,10 +50,14 @@ Todos:
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
             ✔ Rewrite part with resolvers, and return from resolver Object/Class like {activeRouteState, params, todos} @done(18-05-26 11:00)
-            ☐ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode') <========================================================= CURRENT TASK
-            ☐ Update styles for 'completed-todos' span (hover and active looks not proper - inactive?)
+            ✔ Update styles for 'completed-todos' span (hover and active looks not proper - inactive?) @done(18-08-05 09:18)
 
-            ☐ Update CLI to version 6 (look here `https://blog.codewithdan.com/2018/05/03/upgrading-an-application-to-angular-6-step-by-step/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more`)
+            ☐ Update CLI to version 6 (look here `https://blog.codewithdan.com/2018/05/03/upgrading-an-application-to-angular-6-step-by-step/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more`) <========================================================= CURRENT TASK
+                And here `https://habr.com/company/ispsystem/blog/358696/`
+                    ☐ Use `https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md`
+                    ☐ Observable.throw replace by the throwError() function. (`https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md#dep-methods`)
+                    ☐ Use `https://github.com/reactivex/rxjs-tslint`
+                    ☐ Use `https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md#deprecations`
 
             ☐ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link)
 
@@ -379,6 +383,7 @@ Todos:
         ✘ Find out how stored todos (probably browser store (LocalStorage)) in the example `http://todomvc.com/examples/angularjs/#/` @cancelled(17-11-11 09:36) -> Not applicable, and to simple for a future
         ✘ Fix saving in db.json data algoritm (previously saved with order Id->title->complete, now saves title->complete->Id) @cancelled(17-12-02 09:48)
         ✘ Find the way to start json server on gh-pages (look here `https://my-json-server.typicode.com/`) -> No 'Access-Control-Allow-Origin' header is present on the requested resource -> no need in this part still @cancelled(18-01-16 09:06)
+        ✘ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode') -> After bg-colors will be restored, it won't needed  @cancelled(18-08-05 09:08)
 
 Info:
     ☐ If count of todos is over 10k, performance of the app is very degradate (for example use db.json in db.zip file)

@@ -17,7 +17,7 @@
         <div class='collapse-container'>
             <div class='completed-todos' (click)='collapseCompletedTodos(collapse.checked)' (mouseenter)='setCompletedTodosHoverState(true)' (mouseleave)='setCompletedTodosHoverState(false)' matTooltip='Collapse recent completed todos' matTooltipPosition='above'>
                 <input type='checkbox' class='collapse-button' #collapse [checked]='!collapseState' [class.completed-todos-hovered]='completedTodosHoverState'>
-                <span>Completed todos</span>
+                <span [class.completed-todos-hovered]='completedTodosHoverState || !collapseState'>Completed todos</span>
             </div>
             <svg class='icon icon-broom' (click)='clearCompleted(true)' (mouseenter)='setClearCompletedHoverState(true)' (mouseleave)='setClearCompletedHoverState(false)' matTooltip='Clear recent completed todos' matTooltipPosition='above'>
                 <use xlink:href='#icon-broom'></use>

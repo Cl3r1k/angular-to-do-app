@@ -74,6 +74,9 @@
                 }
                 span {
                     grid-column: span 13;
+                    &.completed-todos-hovered {
+                        color: #737373;
+                    }
                 }
             }
             .icon-broom {
