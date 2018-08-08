@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+
+// Models
 import { ToDo } from '@app/_models/to-do';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+
+// Imports
+import {of as observableOf,  Observable } from 'rxjs';
 
 @Injectable()
 export class ApiMockService {
@@ -9,25 +12,25 @@ export class ApiMockService {
     constructor() { }
 
     public createTodo(todo: ToDo): Observable<ToDo> {
-        return Observable.of(
+        return observableOf(
             new ToDo({ id: 1, title: 'Read article', complete: false })
         );
     }
 
     public getTodoById(todoId: number): Observable<ToDo> {
-        return Observable.of(
+        return observableOf(
             new ToDo({ id: 1, title: 'Read article', complete: false })
         );
     }
 
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
-        return Observable.of([
+        return observableOf([
             new ToDo({ id: 1, title: 'Read article', complete: false })
         ]);
     }
 
     public updateTodo(todo: ToDo): Observable<ToDo> {
-        return Observable.of(
+        return observableOf(
             new ToDo({ id: 1, title: 'Read article', complete: false })
         );
     }
@@ -37,7 +40,7 @@ export class ApiMockService {
     }
 
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
-        return Observable.of([
+        return observableOf([
             new ToDo({ id: 1, title: 'Read article (IndexedDb)', complete: false })
         ]);
     }

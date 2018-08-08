@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 // Models
 import { ToDo } from '@app/_models/to-do';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 // Services
 import { ApiService } from '@app/_services/api.service';

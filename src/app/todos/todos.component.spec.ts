@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import {of as observableOf,  Observable } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 
 // Models
@@ -78,7 +78,7 @@ describe(`TodosComponent`, () => {
                 {
                     provide: ActivatedRoute,
                     useValue: {
-                        data: Observable.of({
+                        data: observableOf({
                             resolverData: new ResolverData(0, '')
                         }),
                         routeConfig: {

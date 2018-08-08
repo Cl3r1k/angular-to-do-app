@@ -4,7 +4,7 @@ CRUD TODO app with Angular CLI
 
 Demo: https://Cl3r1k.github.io/angular-to-do-app/
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.2.
 
 ## Development server and json-server running concurrently
 

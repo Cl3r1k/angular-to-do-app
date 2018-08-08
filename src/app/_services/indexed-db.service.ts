@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToDo } from '@app/_models/to-do';
 
-import { Observable } from 'rxjs/Observable';
-
 // Models
 import { Tag } from '@app/_models/tag';
 
@@ -14,7 +12,7 @@ import Dexie from 'dexie';    // https://github.com/dfahlander/Dexie.js
 import { Utils } from '@app/_common/utils';
 
 // Imports
-import 'rxjs/add/observable/fromPromise';
+import {from as observableFrom, throwError as observableThrowError,  Observable } from 'rxjs';
 
 @Injectable()
 export class IndexedDbService extends Dexie {
@@ -102,7 +100,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public openIndexedDb(): Observable<null> {
-        return Observable.fromPromise(this.open().then(async () => {
+        return observableFrom(this.open().then(async () => {
             console.log('%c Opened %s successfully (v%d)', this.consoleTextColorService, this.name, 1);
             return null;
         }).catch(error => {
@@ -111,7 +109,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public createTodo(todo: ToDo): Observable<ToDo> {
-        return Observable.fromPromise(this.dbTable.add(todo).then(async (newId) => {
+        return observableFrom(this.dbTable.add(todo).then(async (newId) => {
             const newTodo = await this.dbTable.get(newId);
 
             // TODO: Do not forget to clean this line after
@@ -125,7 +123,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public getTodoById(todoId: number): Observable<ToDo> {
-        return Observable.fromPromise(this.dbTable.get(todoId).then(async (todo) => {
+        return observableFrom(this.dbTable.get(todoId).then(async (todo) => {
             console.log('%c getTodoById - todo result: ', this.consoleTextColorService, todo);
             return todo;
         }).catch(error => {
@@ -134,7 +132,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public getTodoByTitle(todoTitle: string): Observable<ToDo[]> {
-        return Observable.fromPromise(this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
+        return observableFrom(this.dbTable.where('title').equalsIgnoreCase(todoTitle).toArray().then(async (todos) => {
             console.log('%c getTodoByTitle - todos result: ', this.consoleTextColorService, todos);
             return todos;
         }).catch(error => {
@@ -143,7 +141,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public getTodosAmountObject(): Observable<Object> {
-        return Observable.fromPromise(this.transaction('r', this.dbTable, async () => {
+        return observableFrom(this.transaction('r', this.dbTable, async () => {
             const todos: ToDo[] = await this.dbTable.toArray();
 
             let activeTodos = 0;
@@ -182,7 +180,7 @@ export class IndexedDbService extends Dexie {
     // TODO: Improve this method when Dexie 3.0 will be released (when equals() will support boolean)
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
         // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
-        return Observable.fromPromise(this.dbTable.toArray().then(async (response) => {
+        return observableFrom(this.dbTable.toArray().then(async (response) => {
 
             // const hashtagsInDb: Tag[] = await this.tagTable.toArray();
             // if (!hashtagsInDb.length) {
@@ -213,7 +211,7 @@ export class IndexedDbService extends Dexie {
     // TODO: Decide to use the method return type as ToDo or number (0 or 1) e.g. update() returns 1 if data updated and 0 if not
     public updateTodo(todo: ToDo): Observable<ToDo> {
         // For perfomance Dexie.transaction() used (http://dexie.org/docs/Dexie/Dexie.transaction())
-        return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
+        return observableFrom(this.transaction('rw', this.dbTable, this.tagTable, async () => {
 
             await this.dbTable.update(todo.id, todo);
 
@@ -251,7 +249,7 @@ export class IndexedDbService extends Dexie {
 
     // API: (toggle all todos complete status)
     public toggleAll(toggleState: boolean, activeRouteState: number): Observable<ToDo[]> {
-        return Observable.fromPromise(this.transaction('rw', this.dbTable, async () => {
+        return observableFrom(this.transaction('rw', this.dbTable, async () => {
             let todos: ToDo[] = await this.dbTable.toArray();
 
             todos.forEach(todo => {
@@ -283,7 +281,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public deleteTodoById(todoId: number): Observable<null> {
-        return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
+        return observableFrom(this.transaction('rw', this.dbTable, this.tagTable, async () => {
             const todo = await this.dbTable.get(todoId);
             todo.updated_time = new Date().toISOString();
             todo.deleted_time = todo.updated_time;
@@ -320,7 +318,7 @@ export class IndexedDbService extends Dexie {
 
     // API: (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
-        return Observable.fromPromise(this.transaction('rw', this.dbTable, this.tagTable, async () => {
+        return observableFrom(this.transaction('rw', this.dbTable, this.tagTable, async () => {
             let todos: ToDo[] = await this.dbTable.toArray();
             const todosIds: number[] = [];
 
@@ -364,7 +362,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public clearStore(): Observable<null> {
-        return Observable.fromPromise(this.dbTable.clear().then(() => {
+        return observableFrom(this.dbTable.clear().then(() => {
             console.log('%c clearStore -> all items deleted', this.consoleTextColorService);
             return null;
         }).catch(error => {
@@ -454,7 +452,7 @@ export class IndexedDbService extends Dexie {
 
     private handleError(source: string, error: Event | any) {
         console.error('IndexedDbService (%s) - handleError: ', source, error.stack || error);
-        return Observable.throw(error);
+        return observableThrowError(error);
     }
 
     private async parseTag(todo: ToDo) {
@@ -541,7 +539,7 @@ export class IndexedDbService extends Dexie {
 
     public getAllHashtags(): Observable<Tag[]> {
         // console.log('%c calling getAllTodos in IndexedDbService', this.consoleTextColorService);
-        return Observable.fromPromise(this.tagTable.toArray().then(async (response) => {
+        return observableFrom(this.tagTable.toArray().then(async (response) => {
 
             // TODO: This part is under construction ------
 
@@ -603,7 +601,7 @@ export class IndexedDbService extends Dexie {
     }
 
     public updateHashtags(tags: Tag[]): Observable<null> {
-        return Observable.fromPromise(this.transaction('rw', this.tagTable, async () => {
+        return observableFrom(this.transaction('rw', this.tagTable, async () => {
             // console.log('%c Incoming hashtagsList: ', this.consoleTextColorService, tags);
 
             const hashtagsInDb: Tag[] = await this.tagTable.toArray();

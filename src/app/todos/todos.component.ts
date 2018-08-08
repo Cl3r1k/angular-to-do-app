@@ -12,6 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
 import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
 
+// Imports
+import { map } from 'rxjs/operators';
+
 // Modules
 import { MatDialog } from '@angular/material';
 import 'hammerjs';
@@ -48,23 +51,23 @@ export class TodosComponent implements OnInit, OnDestroy {
         private _todoOrderService: TodoOrderService) { }
 
     public ngOnInit() {
-        this._route.data
-            .map((data) => data['resolverData'])
-            .subscribe(
-                (resolverData) => {
-                    // console.log(`%c'TodosComponent' _route.params: `, this.consoleTextColorComponent, this._route.params);
-                    // console.log(`%c'TodosComponent' _route.queryParams: `, this.consoleTextColorComponent, this._route.queryParams);
-                    // console.log(`%c'TodosComponent' routeConfig.path: `, this.consoleTextColorComponent, this._route.routeConfig.path);
+        this._route.data.pipe(
+            map((data) => data['resolverData'])
+        ).subscribe(
+            (resolverData) => {
+                // console.log(`%c'TodosComponent' _route.params: `, this.consoleTextColorComponent, this._route.params);
+                // console.log(`%c'TodosComponent' _route.queryParams: `, this.consoleTextColorComponent, this._route.queryParams);
+                // console.log(`%c'TodosComponent' routeConfig.path: `, this.consoleTextColorComponent, this._route.routeConfig.path);
 
-                    // console.log(`%cincoming 'resolverData' from resolver: `, this.consoleTextColorComponent, resolverData);
-                    this.activeRouteState = resolverData.activeRouteState;
-                    this.hashTagToFilter = resolverData.params;
-                    this.todos = resolverData.todos;
+                // console.log(`%cincoming 'resolverData' from resolver: `, this.consoleTextColorComponent, resolverData);
+                this.activeRouteState = resolverData.activeRouteState;
+                this.hashTagToFilter = resolverData.params;
+                this.todos = resolverData.todos;
 
-                    this.transformView();
-                    this.updateFooterAndToggleAllInfo();
-                }
-            );
+                this.transformView();
+                this.updateFooterAndToggleAllInfo();
+            }
+        );
     }
 
     ngOnDestroy() {

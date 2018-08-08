@@ -1,5 +1,5 @@
 // C:\Windows\System32\cmd.exe /k "C:\Program Files\nodejs\nodevars.bat" // To start from VSC terminal node env
-// ng test -sm=false // To get the right error messages while testing the app.
+// `ng test --sourceMap=false` // To get the right error messages while testing the app.
 
 // Initial example: http://todomvc.com/examples/angularjs/#/
 
@@ -47,23 +47,23 @@ Todos:
             ✔ Write tests for 'DynamicContentDirective' @done(18-08-02 09:48)
             ✔ Update all broken tests @done(18-07-31 10:29)
 
-            ☐ Change console color for services from `Salmon` to `Seagreen`
-
             ✔ Rewrite part with resolvers, and return from resolver Object/Class like {activeRouteState, params, todos} @done(18-05-26 11:00)
             ✔ Update styles for 'completed-todos' span (hover and active looks not proper - inactive?) @done(18-08-05 09:18)
 
-            ☐ Update CLI to version 6 (look here `https://blog.codewithdan.com/2018/05/03/upgrading-an-application-to-angular-6-step-by-step/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more`) <========================================================= CURRENT TASK
-                And here `https://habr.com/company/ispsystem/blog/358696/`
-                    ☐ Use `https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md`
-                    ☐ Observable.throw replace by the throwError() function. (`https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md#dep-methods`)
-                    ☐ Use `https://github.com/reactivex/rxjs-tslint`
-                    ☐ Use `https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md#deprecations`
+            ✔ Update CLI to version 6 (look here `https://blog.codewithdan.com/2018/05/03/upgrading-an-application-to-angular-6-step-by-step/?utm_source=mybridge&utm_medium=blog&utm_campaign=read_more`) @done(18-08-07 10:16)
+                ✔ And here `https://habr.com/company/ispsystem/blog/358696/` @done(18-08-07 10:16)
+                    ✔ Use `https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md` @done(18-08-07 10:16)
+                    ✔ Observable.throw replace by the throwError() function. (`https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md#dep-methods`) @done(18-08-07 10:16)
+                    ✔ Use `https://github.com/reactivex/rxjs-tslint` @done(18-08-07 10:16)
+                    ✔ Use `https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md#deprecations` @done(18-08-07 10:16)
+
+            ☐ Bug -> When todo edited and click on trash icon -> just edit canceled <========================================================= CURRENT TASK
+
+            ☐ Change console color for services from `Salmon` to `Seagreen`
 
             ☐ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link)
 
             ☐ Use Chrome Audit to test the app
-
-            ☐ Bug -> When todo edited and click on trash icon -> just edit canceled
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)

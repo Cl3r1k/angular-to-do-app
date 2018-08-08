@@ -17,8 +17,13 @@
         ],
         "baseUrl": "src",
         "paths": {
-            "@app/*": ["app/*"],
-            "@env/*": ["environments/*"]
-        }
+            "@app/*": [
+                "app/*"
+            ],
+            "@env/*": [
+                "environments/*"
+            ]
+        },
+        "module": "es2015"
     }
 }

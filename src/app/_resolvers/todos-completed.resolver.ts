@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { TodoService } from '@app/_services/todo.service';
-import { ToDo } from '@app/_models/to-do';
 import { ResolverData } from '@app/_models/resolver-data';
 
 import { map, switchMap } from 'rxjs/operators';
