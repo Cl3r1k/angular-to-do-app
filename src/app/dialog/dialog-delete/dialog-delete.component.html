@@ -2,7 +2,7 @@
     <h2 mat-dialog-title>{{data.data.dialogTitle}}</h2>
     <hr>
     <div mat-dialog-content>
-        <h2 mat-dialog-title>{{data.data.contentTitle}} {{data.data.isClearCompleted ? data.data.contentData : '0'}} </h2>
+        <h2 mat-dialog-title>{{data.data.contentTitle}} {{data.data.isClearCompleted ? data.data.contentData : ''}} </h2>
         <p *ngIf='!data.data.isClearCompleted'>{{data.data.contentData}}</p>
     </div>
     <div mat-dialog-actions>

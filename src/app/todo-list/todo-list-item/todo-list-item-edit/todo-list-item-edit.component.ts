@@ -92,7 +92,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
     }
 
     updateTodo(todo: ToDo) {
-        this.editedTodoElementRef.nativeElement.blur();    // Imitate lost focus event
+        this.stopEditTodoOnBlur();
     }
 
     showMore(todo: ToDo) {
@@ -112,7 +112,7 @@ export class TodoListItemEditComponent implements OnInit, AfterViewInit, AfterVi
     cancelEditTodo() {
         this.todo.title = this.initialTodoTitle;
         this.isCanceled = true;
-        this.editedTodoElementRef.nativeElement.blur();    // Imitate lost focus event
+        this.stopEditTodoOnBlur();
     }
 
     stopEditTodoOnBlur() {

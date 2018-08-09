@@ -167,7 +167,7 @@
             display: grid;
             grid-template-columns: repeat(16, 1fr);
             align-items: center;
-            padding-left: 20px; // Padding to align edit container label with view container label
+            padding-left: 14px; // Padding to align edit container label with view container label
             &.delete-hovered {
                 background-color: #f7e8e8;
             }
@@ -193,6 +193,7 @@
                     display: grid;
                     align-items: center;
                     grid-column: 16/17;
+                    // background-color: #583a1c; // For debuging
                     .icon-destroy {
                         // display: none;
                         // position: absolute;
