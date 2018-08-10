@@ -12,7 +12,7 @@ import Dexie from 'dexie';    // https://github.com/dfahlander/Dexie.js
 import { Utils } from '@app/_common/utils';
 
 // Imports
-import {from as observableFrom, throwError as observableThrowError,  Observable } from 'rxjs';
+import { from as observableFrom, throwError as observableThrowError, Observable } from 'rxjs';
 
 @Injectable()
 export class IndexedDbService extends Dexie {
@@ -649,6 +649,14 @@ export class IndexedDbService extends Dexie {
             let isPresent = false;
             todos.map(todo => {
                 if (todo.title.includes(hashtagInDb.tagName.trim())) {
+
+                    // Use regexp to define that current hastag is present in todo.title
+                    // Look here https://regex101.com/r/Hzr50C/1
+                    // /(^|\s)(#[a-z\d][\w-]*)/ig
+                    if (todo.title.match(/ + this.hashtagsRegExp + \s/ig)) {
+                        console.log('%ctag: %s is Present in title: %s', this.consoleTextColorService, hashtagInDb.tagName, todo.title);
+                    }
+
                     isPresent = true;
                 }
             });
