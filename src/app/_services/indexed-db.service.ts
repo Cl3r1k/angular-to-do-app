@@ -652,7 +652,7 @@ export class IndexedDbService extends Dexie {
 
                     // Use regexp to define that current hastag is present in todo.title
                     // Look here https://regex101.com/r/Hzr50C/1
-                    // /(^|\s)(#[a-z\d][\w-]*)/ig
+                    // /(^|\s)(#[a-z\d][\w-]*)/ig - example
                     if (todo.title.match(/ + this.hashtagsRegExp + \s/ig)) {
                         console.log('%ctag: %s is Present in title: %s', this.consoleTextColorService, hashtagInDb.tagName, todo.title);
                     }
