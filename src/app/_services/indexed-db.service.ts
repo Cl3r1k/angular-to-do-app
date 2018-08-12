@@ -649,15 +649,13 @@ export class IndexedDbService extends Dexie {
             let isPresent = false;
             todos.map(todo => {
                 if (todo.title.includes(hashtagInDb.tagName.trim())) {
-
-                    // Use regexp to define that current hastag is present in todo.title
-                    // Look here https://regex101.com/r/Hzr50C/1
-                    // /(^|\s)(#[a-z\d][\w-]*)/ig - example
-                    if (todo.title.match(/ + this.hashtagsRegExp + \s/ig)) {
-                        console.log('%ctag: %s is Present in title: %s', this.consoleTextColorService, hashtagInDb.tagName, todo.title);
+                    // Used regexp to define that current hastag is present in todo.title
+                    // Look here https://regex101.com/r/A0H4wO/1/
+                    const hashtagRegExp = new RegExp(hashtagInDb.tagName.trim() + '($|\s)', 'i' );
+                    if (todo.title.match(hashtagRegExp)) {
+                        // console.log('%ctag: %s is Present in title: %s', this.consoleTextColorService, hashtagInDb.tagName, todo.title);
+                        isPresent = true;
                     }
-
-                    isPresent = true;
                 }
             });
 

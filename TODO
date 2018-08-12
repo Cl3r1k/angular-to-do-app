@@ -38,7 +38,7 @@ Todos:
                 ✔ Add URL support in 'todo Title' @done(18-05-23 10:06)
                 ✔ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate) @done(18-08-02 10:15)
                     ✔ Now 'getTodosWithHashtag()' is redundant @done(18-05-27 09:08)
-                ☐ Fix bug when #hashtag title changed, in db old tag not marked as 'readyToDelete' (add tag and change name multiple times adding some num at end) <========================================================= CURRENT TASK
+                ✔ Fix bug when #hashtag title changed, in db old tag not marked as 'readyToDelete' (add tag and change name multiple times adding some num at end) @done(18-08-11 10:01)
 
             ✔ Write tests for 'Utils' class @done(18-07-24 10:42)
             ✔ Write tests for 'Tag' model @done(18-07-24 10:54)
@@ -64,9 +64,11 @@ Todos:
 
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
-            ☐ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link)
+            ☐ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link) <========================================================= CURRENT TASK
 
             ☐ Use Chrome Audit to test the app
+
+            ☐ Use other type of tooltip (material not looks good)
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
