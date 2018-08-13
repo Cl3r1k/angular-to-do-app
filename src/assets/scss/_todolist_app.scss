@@ -299,6 +299,21 @@
             transition: color 0.4s;
             grid-column: span 14;
             background-color: #eb77eb; // For debuging
+            &.ctrl-hover {
+                background-color: #9c389c; // For debuging
+                .url-class {
+                    cursor: pointer;
+                }
+            }
+            .url-class {
+                cursor: default;
+                text-decoration: none;
+                font-weight: initial;
+                color: #0096cf;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
             .tag-class {
                 cursor: pointer;
                 color: #ffffff;

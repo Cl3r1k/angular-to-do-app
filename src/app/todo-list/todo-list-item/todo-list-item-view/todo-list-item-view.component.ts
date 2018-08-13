@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, HostListener } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { ToDo } from '@app/_models/to-do';
@@ -44,6 +44,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     priorityColors = ['transparent', 'red', 'orange', 'tomato', 'royalblue', 'steelblue', 'skyblue', 'forestgreen', 'limegreen', 'mediumspringgreen', 'paleturquoise'];
     priorityColor = this.priorityColors[0];
     titleToView = '';
+    withCtrlHoverState = false;
 
     constructor(private sanitizer: DomSanitizer) { }
 
@@ -51,6 +52,28 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
         this.titleToView = this.parseTitle(this.todo);
         // tslint:disable-next-line:max-line-length
         // console.log('%cparse in ngOnInit -> title: %s and priorityColor: ', this.consoleTextColorComponent, this.priorityColor);
+    }
+
+    // @HostListener('keydown', ['$event']) onclick(e) {
+    //     event.preventDefault();
+    //     event.stopPropagation();
+
+    //     alert('ctrl! in HostListener');
+    //     // if (e.target.classList.contains('tag-class')) {
+    //     //     const link: string = e.target.innerHTML;
+
+    //     //     event.preventDefault();
+    //     //     event.stopPropagation();
+
+    //     //     alert('ctrl! in HostListener');
+    //     // }
+    // }
+
+    @HostListener('keydown', ['$event']) onKeyDown(e) {
+        alert('ctrl! in HostListener');
+        // if (e.shiftKey) {
+        //     alert('ctrl! in HostListener');
+        // }
     }
 
     toggleTodoComplete(todo: ToDo) {
@@ -174,12 +197,12 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     //                     // tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
     //                     // const clickText = this.sanitizer.bypassSecurityTrustScript(`javascript:alert("Hi there")`);
     //                     // tpmTitle += `<span #tagName class='tag-class' (click)='` + clickText + `'>#` + currentTag + `</span>`;
-                        // tslint:disable-next-line:max-line-length
+    // tslint:disable-next-line:max-line-length
     //                     // tpmTitle += this.sanitizer.bypassSecurityTrustHtml(`<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`);
     //                     tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
     //                 } else {
     //                     // tpmTitle += `<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`;
-                        // tslint:disable-next-line:max-line-length
+    // tslint:disable-next-line:max-line-length
     //                     // tpmTitle += this.sanitizer.bypassSecurityTrustHtml(`<span #tagName class='tag-class' (click)='filterWithTag(tagName)'>#` + currentTag + `</span>`);
     //                     tpmTitle += `<span class='tag-class'>#` + currentTag + `</span>`;
     //                     tpmTitle += title[ind];
@@ -204,6 +227,10 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
 
     filterWithTag(tagName: string) {
         console.log('%cin filterWithTag() tagName: ', this.consoleTextColorComponent, tagName);
+    }
+
+    setHoverState(hoverState: boolean) {
+        this.withCtrlHoverState = hoverState;
     }
 
 }

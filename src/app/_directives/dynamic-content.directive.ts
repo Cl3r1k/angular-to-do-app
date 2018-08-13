@@ -8,7 +8,7 @@ export class DynamicContentDirective {
 
     constructor(private elementRef: ElementRef, public router: Router) { }
 
-    @Input('dynamicContent') dynamicContent: string;
+    @Input('appDynamicContentDirective') dynamicContent: string;
 
     @HostListener('click', ['$event']) onclick(e) {
         if (e.target.classList.contains('tag-class')) {

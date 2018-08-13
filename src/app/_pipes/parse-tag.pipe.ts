@@ -27,7 +27,7 @@ export class ParseTagPipe implements PipeTransform {
                 const url = $1;
                 const urlClean = url.replace('' + $3 + '://', '');
 
-                return `<a href='` + url + `' target='_blank'>` + urlClean + `</a>`;
+                return `<a class='url-class' href='` + url + `' target='_blank'>` + urlClean + `</a>`;
             });
         }
 
