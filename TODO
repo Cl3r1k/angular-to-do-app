@@ -9,11 +9,7 @@
 // Colors for modules: tests - `Teal`, components - `Cadetblue`, services - `Salmon`, resolvers - `Royalblue`, pipes - `Purple`
 
 Commit message:
-Added style.class 'url-class'
-Updates in 'TodoListItemViewComponent'
-Updates in 'TodoListItemViewComponent' template
-Updates in 'ParseTagPipe'
-Minor changes
+
 
 Todos:
     New:
@@ -68,8 +64,9 @@ Todos:
 
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
-            ☐ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link) <========================================================= CURRENT TASK
-                ☐ Styles for link (underline, color) (and pointer should be showed if Ctrl is pressed)
+            ☐ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link)
+                ☐ Styles for link (underline, color) (and pointer should be showed if Ctrl is pressed) <========================================================= CURRENT TASK
+                    ☐ Update tests for 'TodoListItemViewComponent'
                 ☐ Ctrl + click on link to go by link
                 ☐ Hint for link (hint message 'Ctrl + click to follow link')
 

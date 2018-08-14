@@ -44,6 +44,7 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     priorityColors = ['transparent', 'red', 'orange', 'tomato', 'royalblue', 'steelblue', 'skyblue', 'forestgreen', 'limegreen', 'mediumspringgreen', 'paleturquoise'];
     priorityColor = this.priorityColors[0];
     titleToView = '';
+    hoverState = false;
     withCtrlHoverState = false;
 
     constructor(private sanitizer: DomSanitizer) { }
@@ -54,26 +55,24 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
         // console.log('%cparse in ngOnInit -> title: %s and priorityColor: ', this.consoleTextColorComponent, this.priorityColor);
     }
 
-    // @HostListener('keydown', ['$event']) onclick(e) {
-    //     event.preventDefault();
-    //     event.stopPropagation();
+    @HostListener('document:keydown', ['$event']) onKeyDown(event: KeyboardEvent) {
+        // alert('ctrl! in HostListener');
+        if (event.ctrlKey) {
+            if (this.hoverState && !this.withCtrlHoverState) {
+                // console.log('%cCtrl pressed: ', this.consoleTextColorComponent);
+                this.withCtrlHoverState = true;
+            }
+        }
+    }
 
-    //     alert('ctrl! in HostListener');
-    //     // if (e.target.classList.contains('tag-class')) {
-    //     //     const link: string = e.target.innerHTML;
-
-    //     //     event.preventDefault();
-    //     //     event.stopPropagation();
-
-    //     //     alert('ctrl! in HostListener');
-    //     // }
-    // }
-
-    @HostListener('keydown', ['$event']) onKeyDown(e) {
-        alert('ctrl! in HostListener');
-        // if (e.shiftKey) {
-        //     alert('ctrl! in HostListener');
-        // }
+    @HostListener('document:keyup', ['$event']) onKeyUp(event: KeyboardEvent) {
+        // alert('ctrl! in HostListener');
+        if (event.keyCode === 17) {
+            if (this.withCtrlHoverState) {
+                // console.log('%cCtrl UNpressed: ', this.consoleTextColorComponent);
+                this.withCtrlHoverState = false;
+            }
+        }
     }
 
     toggleTodoComplete(todo: ToDo) {
@@ -230,7 +229,11 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     setHoverState(hoverState: boolean) {
-        this.withCtrlHoverState = hoverState;
+        this.hoverState = hoverState;
+
+        if (!hoverState) {
+            this.withCtrlHoverState = hoverState;
+        }
     }
 
 }
