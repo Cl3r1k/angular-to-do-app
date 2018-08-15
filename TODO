@@ -59,15 +59,16 @@ Todos:
                     ✔ Use `https://github.com/ReactiveX/rxjs/blob/master/docs_app/content/guide/v6/migration.md#deprecations` @done(18-08-07 10:16)
 
             ✔ Bug -> When todo edited and click on trash icon -> just edit canceled @done(18-08-08 10:17)
+                ✔ Update test with new blur behaviour for 'TodoListItemEditComponent' @done(18-08-14 09:59)
 
             ✔ Fix dialog message when todo deletes (Are you sure want to delete todo with name: 0???) @done(18-08-08 10:25)
 
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
             ☐ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link)
-                ☐ Styles for link (underline, color) (and pointer should be showed if Ctrl is pressed) <========================================================= CURRENT TASK
-                    ☐ Update tests for 'TodoListItemViewComponent'
-                ☐ Ctrl + click on link to go by link
+                ✔ Styles for link (underline, color) (and pointer should be showed if Ctrl is pressed) @done(18-08-14 09:09)
+                    ✔ Update tests for 'TodoListItemViewComponent' @done(18-08-14 09:55)
+                ☐ Ctrl + click on link to go by link <========================================================= CURRENT TASK
                 ☐ Hint for link (hint message 'Ctrl + click to follow link')
 
             ☐ Use Chrome Audit to test the app

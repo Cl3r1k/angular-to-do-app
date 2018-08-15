@@ -171,21 +171,22 @@ describe('TodoListItemEditComponent', () => {
                 });
             });
 
-            it(`losing focus 'input.edit' should call method 'stopEditTodoOnBlur()' (async)`, async(() => {
-                // Arrange
+            // TODO: Redundant, remove this test later
+            // it(`losing focus 'input.edit' should call method 'stopEditTodoOnBlur()' (async)`, async(() => {
+            //     // Arrange
 
-                // Act
-                spyOn(component, 'stopEditTodoOnBlur');
+            //     // Act
+            //     spyOn(component, 'stopEditTodoOnBlur');
 
-                // Set input value focus lost
-                textareaEl.dispatchEvent(new Event('blur'));
-                fixture.detectChanges();
+            //     // Set input value focus lost
+            //     textareaEl.dispatchEvent(new Event('blur'));
+            //     fixture.detectChanges();
 
-                // Assert
-                fixture.whenStable().then(() => {
-                    expect(component.stopEditTodoOnBlur).toHaveBeenCalled();
-                });
-            }));
+            //     // Assert
+            //     fixture.whenStable().then(() => {
+            //         expect(component.stopEditTodoOnBlur).toHaveBeenCalled();
+            //     });
+            // }));
         });
 
         describe(`svg.icon-destroy:`, () => {

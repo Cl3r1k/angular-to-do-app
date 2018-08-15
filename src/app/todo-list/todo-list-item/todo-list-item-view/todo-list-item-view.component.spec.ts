@@ -138,7 +138,7 @@ describe('TodoListItemViewComponent', () => {
     describe(`#parseTitle`, () => {
         it(`Should return initial string without changes and 'priorityColor' should be 'transparent' (async)`, async(() => {
             // Arrange
-            const todo: ToDo = new ToDo({title: 'Add more todos!'});
+            const todo: ToDo = new ToDo({ title: 'Add more todos!' });
 
             // Act
             const result = component.parseTitle(todo);
@@ -150,7 +150,7 @@ describe('TodoListItemViewComponent', () => {
 
         it(`Should return initial string(contains a!) without changes and 'priorityColor' should be 'transparent' (async)`, async(() => {
             // Arrange
-            const todo: ToDo = new ToDo({title: 'Add more todos a!'});
+            const todo: ToDo = new ToDo({ title: 'Add more todos a!' });
 
             // Act
             const result = component.parseTitle(todo);
@@ -162,7 +162,7 @@ describe('TodoListItemViewComponent', () => {
 
         it(`Should return parsed string with changes and 'priorityColor' should be 'red' (async)`, async(() => {
             // Arrange
-            const todo: ToDo = new ToDo({title: 'Add more todos !'});
+            const todo: ToDo = new ToDo({ title: 'Add more todos !' });
 
             // Act
             const result = component.parseTitle(todo);
@@ -174,7 +174,7 @@ describe('TodoListItemViewComponent', () => {
 
         it(`Should return parsed string with changes and 'priorityColor' should be 'orange' (async)`, async(() => {
             // Arrange
-            const todo: ToDo = new ToDo({title: 'Add more todos ! !!'});
+            const todo: ToDo = new ToDo({ title: 'Add more todos ! !!' });
 
             // Act
             const result = component.parseTitle(todo);
@@ -186,7 +186,7 @@ describe('TodoListItemViewComponent', () => {
 
         it(`Should return parsed string(contains ! in middle) with changes and 'priorityColor' should be 'tomato' (async)`, async(() => {
             // Arrange
-            const todo: ToDo = new ToDo({title: 'Add more ! todos ! !!!'});
+            const todo: ToDo = new ToDo({ title: 'Add more ! todos ! !!!' });
 
             // Act
             const result = component.parseTitle(todo);
@@ -198,7 +198,7 @@ describe('TodoListItemViewComponent', () => {
 
         it(`Should return parsed string(contains many !) with changes and 'priorityColor' should be 'paleturquoise' (async)`, async(() => {
             // Arrange
-            const todo: ToDo = new ToDo({title: 'Add more todos ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'});
+            const todo: ToDo = new ToDo({ title: 'Add more todos ! !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!' });
 
             // Act
             const result = component.parseTitle(todo);
@@ -218,7 +218,7 @@ describe('TodoListItemViewComponent', () => {
                 // Act
                 spyOn(component, 'setCompleteHover');
 
-                // Set svg 'mouseenter' hover state
+                // Set checkbox.toggle 'mouseenter' hover state
                 toggleEl.triggerEventHandler('mouseenter', null);
                 fixture.detectChanges();
 
@@ -234,7 +234,7 @@ describe('TodoListItemViewComponent', () => {
                 // Act
                 spyOn(component, 'setCompleteHover');
 
-                // Set svg 'mouseleave' hover state
+                // Set checkbox.toggle 'mouseleave' hover state
                 toggleEl.triggerEventHandler('mouseleave', null);
                 fixture.detectChanges();
 
@@ -281,6 +281,38 @@ describe('TodoListItemViewComponent', () => {
         // });
 
         describe(`div.todoTitle:`, () => {
+            it(`'mouseenter' on 'div.todoTitle' should call method 'setHoverState()' (async)`, async(() => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'setHoverState');
+
+                // Set div.todoTitle 'mouseenter' hover state
+                todoTitleEl.triggerEventHandler('mouseenter', null);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setHoverState).toHaveBeenCalled();
+                });
+            }));
+
+            it(`'mouseleave' on 'div.todoTitle' should call method 'setHoverState()' (async)`, async(() => {
+                // Arrange
+
+                // Act
+                spyOn(component, 'setHoverState');
+
+                // Set div.todoTitle 'mouseleave' hover state
+                todoTitleEl.triggerEventHandler('mouseleave', null);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setHoverState).toHaveBeenCalled();
+                });
+            }));
+
             it(`'dblclick' on 'div.todoTitle' should call method 'editTodo()' (async)`, async () => {
                 // Arrange
 
@@ -291,6 +323,34 @@ describe('TodoListItemViewComponent', () => {
                 // Assert
                 fixture.whenStable().then(() => {
                     expect(component.editTodo).toHaveBeenCalled();
+                });
+            });
+
+            it(`'mouseenter' on 'div.todoTitle' and pressing 'Ctrl' should set 'withCtrlHoverState' to 'true' (async)`, async () => {
+                // Arrange
+                const keyDownCtrlEvent = new KeyboardEvent('keydown', {
+                    'key': 'ctrlKey'
+                });
+                Object.defineProperty(keyDownCtrlEvent, 'keyCode', { 'value': 17 });
+                Object.defineProperty(keyDownCtrlEvent, 'ctrlKey', { 'value': true });
+
+                console.log('%c keyDownCtrlEvent: ', 'color: teal;', keyDownCtrlEvent);
+
+                // Act
+                spyOn(component, 'setHoverState');
+
+                // Set div.todoTitle 'mouseenter' hover state
+                todoTitleEl.triggerEventHandler('mouseenter', null);
+                // Set 'hoverState' to true explicitly
+                component.hoverState = true;
+                // Call Escape event on document
+                document.dispatchEvent(keyDownCtrlEvent);
+                fixture.detectChanges();
+
+                // Assert
+                fixture.whenStable().then(() => {
+                    expect(component.setHoverState).toHaveBeenCalled();
+                    expect(component.withCtrlHoverState).toEqual(true);
                 });
             });
         });

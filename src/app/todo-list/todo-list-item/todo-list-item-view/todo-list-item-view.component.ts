@@ -56,7 +56,6 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     @HostListener('document:keydown', ['$event']) onKeyDown(event: KeyboardEvent) {
-        // alert('ctrl! in HostListener');
         if (event.ctrlKey) {
             if (this.hoverState && !this.withCtrlHoverState) {
                 // console.log('%cCtrl pressed: ', this.consoleTextColorComponent);
@@ -66,7 +65,6 @@ export class TodoListItemViewComponent implements OnInit, CustomTodoComponentInt
     }
 
     @HostListener('document:keyup', ['$event']) onKeyUp(event: KeyboardEvent) {
-        // alert('ctrl! in HostListener');
         if (event.keyCode === 17) {
             if (this.withCtrlHoverState) {
                 // console.log('%cCtrl UNpressed: ', this.consoleTextColorComponent);
