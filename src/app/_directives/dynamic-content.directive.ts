@@ -19,6 +19,15 @@ export class DynamicContentDirective {
 
             this.router.navigate(['/todos/filter/hashtag/', link.trim()], { skipLocationChange: true });
         }
+
+        if (e.target.classList.contains('url-class')) {
+            const link: string = e.target.innerHTML;
+
+            if (!e.ctrlKey) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        }
     }
 
 }

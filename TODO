@@ -68,12 +68,12 @@ Todos:
             ☐ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link)
                 ✔ Styles for link (underline, color) (and pointer should be showed if Ctrl is pressed) @done(18-08-14 09:09)
                     ✔ Update tests for 'TodoListItemViewComponent' @done(18-08-14 09:55)
-                ☐ Ctrl + click on link to go by link <========================================================= CURRENT TASK
+                ✔ Ctrl + click on link to follow the link @done(18-08-15 12:00)
                 ☐ Hint for link (hint message 'Ctrl + click to follow link')
 
             ☐ Use Chrome Audit to test the app
 
-            ☐ Use other type of tooltip (material not looks good)
+            ☐ Use other type of tooltip (material not looks good) <========================================================= CURRENT TASK
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
