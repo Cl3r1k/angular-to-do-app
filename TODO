@@ -39,6 +39,7 @@ Todos:
                 ✔ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate) @done(18-08-02 10:15)
                     ✔ Now 'getTodosWithHashtag()' is redundant @done(18-05-27 09:08)
                 ✔ Fix bug when #hashtag title changed, in db old tag not marked as 'readyToDelete' (add tag and change name multiple times adding some num at end) @done(18-08-11 10:01)
+                    ☐ Add tooltip for #hashtag ('Click on tag to filter')
 
             ✔ Write tests for 'Utils' class @done(18-07-24 10:42)
             ✔ Write tests for 'Tag' model @done(18-07-24 10:54)
