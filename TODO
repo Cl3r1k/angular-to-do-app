@@ -75,6 +75,14 @@ Todos:
             ☐ Use Chrome Audit to test the app
 
             ☐ Use other type of tooltip (material not looks good) <========================================================= CURRENT TASK
+                ☐ Fix color for triangle (a little darker than other part of tooltip)
+                ☐ Fix - ERROR TypeError: Cannot read property 'parentNode' of null
+                ☐ Fix tooltip position
+                ☐ Fix tooltip when UI changed (for example pin/unpin todo when tooltip showed)
+                ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed)
+                ☐ Find the way to use 'appTooltipDirective' with 'innerHTML' (look at 'DynamicContentDirective')
+
+            ☐ Write test for 'TooltipDirective'
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
