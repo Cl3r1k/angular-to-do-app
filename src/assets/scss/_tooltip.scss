@@ -21,7 +21,7 @@
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
-    border-color: black transparent transparent transparent;
+    border-color: #282a36 transparent transparent transparent;
 }
 
 .tooltip-bottom:after {
@@ -29,7 +29,7 @@
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
-    border-color: transparent transparent black transparent;
+    border-color: transparent transparent #282a36 transparent;
 }
 
 .tooltip-left:after {
@@ -37,7 +37,7 @@
     left: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent transparent transparent black;
+    border-color: transparent transparent transparent #282a36;
 }
 
 .tooltip-right:after {
@@ -45,7 +45,7 @@
     right: 100%;
     margin-top: -5px;
     border-width: 5px;
-    border-color: transparent black transparent transparent;
+    border-color: transparent #282a36 transparent transparent;
 }
 
 .tooltip-show {
