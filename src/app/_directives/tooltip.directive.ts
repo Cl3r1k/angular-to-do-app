@@ -50,7 +50,7 @@ export class TooltipDirective {
         this.renderer.addClass(this.tooltip, 'tooltip');
         this.renderer.addClass(this.tooltip, `tooltip-${this.placement}`);
 
-        // Delay
+        // Setup delay
         this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this.delay}ms`);
         this.renderer.setStyle(this.tooltip, '-moz-transition', `opacity ${this.delay}ms`);
         this.renderer.setStyle(this.tooltip, '-o-transition', `opacity ${this.delay}ms`);
@@ -58,13 +58,20 @@ export class TooltipDirective {
     }
 
     setPosition() {
+        // Host size and destination info
         const hostPos = this.el.nativeElement.getBoundingClientRect();
 
+        // Tooltip size and destination info
         const tooltipPos = this.tooltip.getBoundingClientRect();
 
+        // scroll top of window
+        // The getBoundingClientRect method returns the relative position in the viewport.
+        // If scrolling occurs, the top of the tooltip element should reflect the vertical scrolling coordinate value.
         const scrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
 
         let top, left;
+
+        // FIXME: Position of tooltip a little shifted
 
         if (this.placement === 'top') {
             top = hostPos.top - tooltipPos.height - this.offset;
@@ -86,6 +93,7 @@ export class TooltipDirective {
             left = hostPos.right + this.offset;
         }
 
+        // If scrolling occurs, the top of the tooltip element should reflect the vertical scrolling coordinate value.
         this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);
         this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
     }
