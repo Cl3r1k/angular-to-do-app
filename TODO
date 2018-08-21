@@ -76,7 +76,7 @@ Todos:
 
             ☐ Use other type of tooltip (material not looks good)
                 ✔ Fix color for triangle (a little darker than other part of tooltip) @done(18-08-18 09:14)
-                ☐ Fix tooltip position (not centered) <========================================================= CURRENT TASK
+                ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) <========================================================= CURRENT TASK
                 ☐ Fix - ERROR TypeError: Cannot read property 'parentNode' of null
                 ☐ Fix tooltip when UI changed (for example pin/unpin todo when tooltip showed)
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed)

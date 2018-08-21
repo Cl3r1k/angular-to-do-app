@@ -72,6 +72,7 @@ export class TooltipDirective {
         let top, left;
 
         // FIXME: Position of tooltip a little shifted
+        // The problem is in sticky-grid-footer
 
         if (this.placement === 'top') {
             top = hostPos.top - tooltipPos.height - this.offset;
