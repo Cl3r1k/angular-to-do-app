@@ -15,7 +15,7 @@
         <!-- <svg class='icon icon-pencil-edit' (click)='editTodo(todo)' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)'>
             <use xlink:href='#icon-pencil-edit'></use>
         </svg> -->
-        <svg class='icon icon-pin' [class.pinned]='todo.pin' (click)='pinTodo(todo)' appTooltip2Directive tooltipTitle='Pin/unpin todo'>
+        <svg class='icon icon-pin' [class.pinned]='todo.pin' (click)='pinTodo(todo)' matTooltip='Pin/unpin todo' matTooltipPosition='above'>
             <use xlink:href='#icon-pin'></use>
         </svg>
     </div>

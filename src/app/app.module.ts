@@ -33,7 +33,6 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.directive';
 import { DynamicContentDirective } from '@app/_directives/dynamic-content.directive';
 import { TooltipDirective } from '@app/_directives/tooltip.directive';
-import { Tooltip2Directive } from '@app/_directives/tooltip2.directive';
 
 // Pipes
 import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
@@ -67,8 +66,7 @@ import { Utils } from '@app/_common/utils';
         DynamicContentDirective,
         SafePipe,
         FilterTagPipe,
-        TooltipDirective,
-        Tooltip2Directive
+        TooltipDirective
     ],
     imports: [
         AppRoutingModule,

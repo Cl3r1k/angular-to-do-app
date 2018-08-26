@@ -11,6 +11,7 @@ export class TooltipDirective {
     tooltip: HTMLElement;
     // Distance between parent element and tooltip
     offset = 10;
+    isHidePending = false;
 
     // TODO: Consider to use Renderer3
     constructor(private el: ElementRef, private renderer: Renderer2) { }
@@ -34,11 +35,15 @@ export class TooltipDirective {
     }
 
     hide() {
-        this.renderer.removeClass(this.tooltip, 'tooltip-show');
-        window.setTimeout(() => {
-            this.renderer.removeChild(document.body, this.tooltip);
-            this.tooltip = null;
-        }, this.delay);
+        if (!this.isHidePending) {
+            this.isHidePending = true;
+            this.renderer.removeClass(this.tooltip, 'tooltip-show');
+            window.setTimeout(() => {
+                this.renderer.removeChild(document.body, this.tooltip);
+                this.tooltip = null;
+                this.isHidePending = false;
+            }, this.delay);
+        }
     }
 
     create() {
@@ -74,6 +79,7 @@ export class TooltipDirective {
         // FIXME: Position of tooltip a little shifted
         // The problem is in sticky-grid-footer (for style height: 100%)
         // Parent top/left the same when its height is not 100%
+        // If there is the scrollbar - position of toolbar is OK.
 
         if (this.placement === 'top') {
             top = hostPos.top - tooltipPos.height - this.offset;
