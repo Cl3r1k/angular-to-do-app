@@ -80,6 +80,7 @@ export class TooltipDirective {
         // The problem is in sticky-grid-footer (for style height: 100%)
         // Parent top/left the same when its height is not 100%
         // If there is the scrollbar - position of toolbar is OK.
+        // Consider to use another toolip
 
         if (this.placement === 'top') {
             top = hostPos.top - tooltipPos.height - this.offset;
