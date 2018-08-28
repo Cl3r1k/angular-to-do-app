@@ -77,10 +77,10 @@ Todos:
             ☐ Use other type of tooltip (material not looks good)
                 ✔ Fix color for triangle (a little darker than other part of tooltip) @done(18-08-18 09:14)
                 ✔ Fix - ERROR TypeError: Cannot read property 'parentNode' of null @done(18-08-25 10:17)
-                ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) <========================================================= CURRENT TASK
+                ☐ Find the way to use 'appTooltipDirective' with 'innerHTML' (look at 'DynamicContentDirective') <========================================================= CURRENT TASK 
                 ☐ Fix tooltip when UI changed (for example pin/unpin todo when tooltip showed)
-                ☐ Find the way to use 'appTooltipDirective' with 'innerHTML' (look at 'DynamicContentDirective')
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
+                ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Use tooltip behaviour idea like in `http://crystalui.org/components/tooltip` (e.g. if quickly hover and out - tooltip should stay)
 
             ☐ Write test for 'TooltipDirective'

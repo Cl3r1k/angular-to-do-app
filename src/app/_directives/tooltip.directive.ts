@@ -12,6 +12,7 @@ export class TooltipDirective {
     // Distance between parent element and tooltip
     offset = 10;
     isHidePending = false;
+    hideTimeout: number;
 
     // TODO: Consider to use Renderer3
     constructor(private el: ElementRef, private renderer: Renderer2) { }
@@ -35,10 +36,13 @@ export class TooltipDirective {
     }
 
     hide() {
+
         if (!this.isHidePending) {
+            clearTimeout(this.hideTimeout);
+
             this.isHidePending = true;
             this.renderer.removeClass(this.tooltip, 'tooltip-show');
-            window.setTimeout(() => {
+            this.hideTimeout = window.setTimeout(() => {
                 this.renderer.removeChild(document.body, this.tooltip);
                 this.tooltip = null;
                 this.isHidePending = false;
