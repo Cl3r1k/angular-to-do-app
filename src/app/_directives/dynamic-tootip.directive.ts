@@ -14,7 +14,6 @@ export class DynamicTootipDirective {
     isHidePending = false;
     hideTimeout: number;
     eventPos: any;
-    // isShowedTooltip = false;
 
     constructor(private renderer: Renderer2) { }
 
@@ -30,6 +29,12 @@ export class DynamicTootipDirective {
             if (this.tooltip) {
                 this.hide();
             }
+        }
+    }
+
+    @HostListener('mouseleave', ['$event']) onMouseLeave(event) {
+        if (this.tooltip) {
+            this.hide();
         }
     }
 
@@ -72,10 +77,6 @@ export class DynamicTootipDirective {
     setPosition() {
         // Host size and destination info
         const hostPos = this.eventPos;
-
-        // console.log('this.el:', this.el);
-        console.log('eventPos: ', this.eventPos);
-        console.log('hostPos:', hostPos);
 
         // Tooltip size and destination info
         const tooltipPos = this.tooltip.getBoundingClientRect();

@@ -39,7 +39,8 @@ Todos:
                 ✔ Consider to not show filter route (e.g. use { skipLocationChange: false } in navigate) @done(18-08-02 10:15)
                     ✔ Now 'getTodosWithHashtag()' is redundant @done(18-05-27 09:08)
                 ✔ Fix bug when #hashtag title changed, in db old tag not marked as 'readyToDelete' (add tag and change name multiple times adding some num at end) @done(18-08-11 10:01)
-                    ☐ Add tooltip for #hashtag ('Click on tag to filter')
+                    ☐ Add tooltip for #hashtag ('Click on tag to filter') <========================================================= CURRENT TASK
+                        ☐ Fix click on #hashtag when tooltip showed (the issue -> if click on it, tooltip not hides)
 
             ✔ Write tests for 'Utils' class @done(18-07-24 10:42)
             ✔ Write tests for 'Tag' model @done(18-07-24 10:54)
@@ -77,7 +78,8 @@ Todos:
             ☐ Use other type of tooltip (material not looks good)
                 ✔ Fix color for triangle (a little darker than other part of tooltip) @done(18-08-18 09:14)
                 ✔ Fix - ERROR TypeError: Cannot read property 'parentNode' of null @done(18-08-25 10:17)
-                ☐ Find the way to use 'appTooltipDirective' with 'innerHTML' (look at 'DynamicContentDirective') <========================================================= CURRENT TASK 
+                ✔ Find the way to use 'appTooltipDirective' with 'innerHTML' (look at 'DynamicContentDirective') @done(18-08-29 09:33)
+                    ✔ Fix issue, when tooltip showed, and more on it and move to other line now hides @done(18-08-29 10:07)
                 ☐ Fix tooltip when UI changed (for example pin/unpin todo when tooltip showed)
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)

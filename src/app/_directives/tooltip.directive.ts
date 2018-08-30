@@ -36,7 +36,6 @@ export class TooltipDirective {
     }
 
     hide() {
-
         if (!this.isHidePending) {
             clearTimeout(this.hideTimeout);
 
