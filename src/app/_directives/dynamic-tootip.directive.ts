@@ -19,6 +19,7 @@ export class DynamicTootipDirective {
 
     @HostListener('mouseover', ['$event']) onMouseOver(event) {
 
+        // Here check for tag-class to show tooltip for #hashtag
         if (event.target.classList.contains('url-class')) {
             this.eventPos = event.target.getBoundingClientRect();
 
