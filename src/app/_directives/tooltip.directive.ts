@@ -17,6 +17,8 @@ export class TooltipDirective {
     // TODO: Consider to use Renderer3
     constructor(private el: ElementRef, private renderer: Renderer2) { }
 
+    // Handle issue when app changed and tooltip showed ???
+
     @HostListener('mouseenter') onMouseEnter() {
         if (!this.tooltip) {
             this.show();
