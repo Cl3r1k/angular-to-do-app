@@ -18,6 +18,7 @@ export class TooltipDirective {
     constructor(private el: ElementRef, private renderer: Renderer2) { }
 
     // Handle issue when app changed and tooltip showed ???
+    // Look at material tooltip
 
     @HostListener('mouseenter') onMouseEnter() {
         if (!this.tooltip) {
