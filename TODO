@@ -82,12 +82,16 @@ Todos:
                     ✔ Fix issue, when tooltip showed, and more on it and move to other line now hides @done(18-08-29 10:07)
                 ☐ Fix tooltip when UI changed (for example pin/unpin todo when tooltip showed) <========================================================= CURRENT TASK
                     ☐ And another example -> when tooltip showed, and add new item in list
+                ☐ Change all tooltips from 'matTooltip' to 'appTooltipDirective'
+                    ☐ Fix hiden tooltip for 'Add' todo button (probably add new 'disabled' state to 'DynamicContentDirective')
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Use tooltip behaviour idea like in `http://crystalui.org/components/tooltip` (e.g. if quickly hover and out - tooltip should stay)
                 ☐ Look at Discord tooltip
+                ☐ Add delay for popups (use another lib for popups, not material)
 
-            ☐ Write test for 'TooltipDirective'
+            ☐ Write tests for 'TooltipDirective'
+            ☐ Update tests for 'DynamicContentDirective'
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
@@ -117,7 +121,6 @@ Todos:
             ☐ Rewrite part for DnD (use `https://github.com/atlassian/react-beautiful-dnd` and adopt it to angular)
                 ☐ Use custom cursor for DnD icon (look here `https://github.com/atlassian/react-beautiful-dnd/blob/master/src/view/style-marshal/get-styles.js#L110`)
 
-        ☐ Add delay for popups (use another lib for popups, not material)
         ☐ Use some UI ideas for dialog like here `https://comining.io/account/wallets#`        
         ☐ Handle error properly as Observable (look here `http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/`)
         ☐ Rewrite test for 'TodosComponent' (currently not complete)

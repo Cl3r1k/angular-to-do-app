@@ -1,10 +1,10 @@
-import { Directive, ElementRef, Input, HostListener, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Input, HostListener, Renderer2, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Directive({
     selector: '[appDynamicContentDirective]'
 })
-export class DynamicContentDirective {
+export class DynamicContentDirective implements OnDestroy {
 
     toolTipTitle = 'Ctrl + click to follow link';
     placement = 'top';
@@ -146,6 +146,12 @@ export class DynamicContentDirective {
         // If scrolling occurs, the top of the tooltip element should reflect the vertical scrolling coordinate value.
         this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);
         this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
+    }
+
+    ngOnDestroy() {
+        if (this.tooltip) {
+            this.hide();
+        }
     }
 
 }

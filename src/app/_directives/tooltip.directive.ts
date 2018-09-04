@@ -1,9 +1,9 @@
-import { Directive, Input, ElementRef, Renderer2, HostListener } from '@angular/core';
+import { Directive, Input, ElementRef, Renderer2, HostListener, OnDestroy } from '@angular/core';
 
 @Directive({
     selector: '[appTooltipDirective]'
 })
-export class TooltipDirective {
+export class TooltipDirective implements OnDestroy {
 
     @Input('appTooltipDirective') toolTipTitle: string;
     @Input() placement: string;
@@ -86,7 +86,8 @@ export class TooltipDirective {
         // The problem is in sticky-grid-footer (for style height: 100%)
         // Parent top/left the same when its height is not 100%
         // If there is the scrollbar - position of toolbar is OK.
-        // Consider to use another toolip
+        // Consider to use another toolip?
+        // Dig deeper, in html when matTooltip showed for example
 
         if (this.placement === 'top') {
             top = hostPos.top - tooltipPos.height - this.offset;
@@ -111,6 +112,12 @@ export class TooltipDirective {
         // If scrolling occurs, the top of the tooltip element should reflect the vertical scrolling coordinate value.
         this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);
         this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
+    }
+
+    ngOnDestroy() {
+        if (this.tooltip) {
+            this.hide();
+        }
     }
 
 }
