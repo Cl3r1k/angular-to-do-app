@@ -41,6 +41,7 @@ Todos:
                 ✔ Fix bug when #hashtag title changed, in db old tag not marked as 'readyToDelete' (add tag and change name multiple times adding some num at end) @done(18-08-11 10:01)
                     ✔ Add tooltip for #hashtag ('Click on tag to filter') @done(18-08-31 10:12)
                         ✔ Fix click on #hashtag when tooltip showed (the issue -> if click on it, tooltip not hides) @done(18-08-31 10:12)
+                ☐ Fix color for tag when direct link for list of todo used (for example paste http://localhost:4200/todos/active and go -> color for #hashtag not from base)
 
             ✔ Write tests for 'Utils' class @done(18-07-24 10:42)
             ✔ Write tests for 'Tag' model @done(18-07-24 10:54)
@@ -67,7 +68,7 @@ Todos:
 
             ☐ Change console color for services from `Salmon` to `Seagreen`
 
-            ☐ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link)
+            ✔ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link) @done(18-09-04 09:24)
                 ✔ Styles for link (underline, color) (and pointer should be showed if Ctrl is pressed) @done(18-08-14 09:09)
                     ✔ Update tests for 'TodoListItemViewComponent' @done(18-08-14 09:55)
                 ✔ Ctrl + click on link to follow the link @done(18-08-15 12:00)
@@ -80,10 +81,10 @@ Todos:
                 ✔ Fix - ERROR TypeError: Cannot read property 'parentNode' of null @done(18-08-25 10:17)
                 ✔ Find the way to use 'appTooltipDirective' with 'innerHTML' (look at 'DynamicContentDirective') @done(18-08-29 09:33)
                     ✔ Fix issue, when tooltip showed, and more on it and move to other line now hides @done(18-08-29 10:07)
-                ☐ Fix tooltip when UI changed (for example pin/unpin todo when tooltip showed) <========================================================= CURRENT TASK
-                    ☐ And another example -> when tooltip showed, and add new item in list
-                ☐ Change all tooltips from 'matTooltip' to 'appTooltipDirective'
-                    ☐ Fix hiden tooltip for 'Add' todo button (probably add new 'disabled' state to 'DynamicContentDirective')
+                ✔ Fix tooltip when UI changed (for example pin/unpin todo when tooltip showed) @done(18-09-04 09:16)
+                    ✔ And another example -> when tooltip showed, and add new item in list @done(18-09-04 09:16)
+                ✔ Change all tooltips from 'matTooltip' to 'appTooltipDirective' @done(18-09-04 09:34)
+                    ☐ Fix hiden tooltip for 'Add' todo button (probably add new 'disabled' state to 'TooltipDirective') <========================================================= CURRENT TASK
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Use tooltip behaviour idea like in `http://crystalui.org/components/tooltip` (e.g. if quickly hover and out - tooltip should stay)
@@ -92,6 +93,8 @@ Todos:
 
             ☐ Write tests for 'TooltipDirective'
             ☐ Update tests for 'DynamicContentDirective'
+
+            ☐ Update 'concurrently' to latest version
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)

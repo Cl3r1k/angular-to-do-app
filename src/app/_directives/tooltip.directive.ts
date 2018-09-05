@@ -8,6 +8,7 @@ export class TooltipDirective implements OnDestroy {
     @Input('appTooltipDirective') toolTipTitle: string;
     @Input() placement: string;
     @Input() delay: string;
+    @Input() disabled = false;
     tooltip: HTMLElement;
     // Distance between parent element and tooltip
     offset = 10;
@@ -21,6 +22,18 @@ export class TooltipDirective implements OnDestroy {
     // Look at material tooltip
 
     @HostListener('mouseenter') onMouseEnter() {
+
+        // Look here (https://github.com/angular/material2/blob/master/src/lib/tooltip/tooltip.ts#L145) example how to make boolean property
+
+        console.log('TT disabled state: ', this.disabled);
+
+        if (this.disabled) {
+            console.log('TT disabled fired');
+            // return;
+        } else {
+            console.log('TT enabled fired');
+        }
+
         if (!this.tooltip) {
             this.show();
         }

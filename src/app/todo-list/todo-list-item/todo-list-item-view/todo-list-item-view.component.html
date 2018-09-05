@@ -4,7 +4,7 @@
             <use xlink:href='#icon-ellipsis-v'></use>
         </svg>
         <div class='priority-block' [style.background-color]='priorityColor'></div>
-        <input type='checkbox' class='toggle' (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)' matTooltip='Toggle complete' matTooltipPosition='above'>
+        <input type='checkbox' class='toggle' (click)='toggleTodoComplete(todo)' [checked]='todo.complete' (mouseenter)='setCompleteHover(true)' (mouseleave)='setCompleteHover(false)' appTooltipDirective='Toggle complete' placement='top' delay='500'>
     </div>
     <!-- <label (dblclick)='editTodo(todo)'>{{titleToView}}</label> -->
     <div class='todoTitle' [class.ctrl-hover]='withCtrlHoverState' (mouseenter)='setHoverState(true)' (mouseleave)='setHoverState(false)' (dblclick)='editTodo(todo)' [innerHTML]='titleToView | parseTagPipe | safePipe: "html"' appDynamicContentDirective appDynamicTootipDirective></div>
@@ -15,6 +15,7 @@
         <!-- <svg class='icon icon-pencil-edit' (click)='editTodo(todo)' (mouseenter)='setEditHover(true)' (mouseleave)='setEditHover(false)'>
             <use xlink:href='#icon-pencil-edit'></use>
         </svg> -->
+        <!-- one matTooltip left until be fixed position issue with tooltip -->
         <svg class='icon icon-pin' [class.pinned]='todo.pin' (click)='pinTodo(todo)' matTooltip='Pin/unpin todo' matTooltipPosition='above'>
             <use xlink:href='#icon-pin'></use>
         </svg>
