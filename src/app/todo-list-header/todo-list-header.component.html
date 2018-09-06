@@ -5,7 +5,7 @@
                 placement='top' delay='500'>
         </div>
         <input type='text' class='new-todo' placeholder='Add new task' autofocus='' (keyup.enter)='addTodo()' [(ngModel)]='newTodo.title' (focus)='setNewTodoFocus(true)' (blur)='setNewTodoFocus(false)'>
-        <svg class='icon icon-keyboard_return' [class.new-todo-focused]='newTodoFocusState' (click)='addTodo()' appTooltipDirective='Enter to save todo' placement='top' delay='500' disabled='!newTodoFocusState'>
+        <svg class='icon icon-keyboard_return' [class.new-todo-focused]='newTodoFocusState' (click)='addTodo()' appTooltipDirective='Enter to save todo' placement='top' delay='500' disabled={{!newTodoFocusState}}>
             <use xlink:href='#icon-keyboard_return'></use>
         </svg>
     </div>

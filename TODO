@@ -84,8 +84,8 @@ Todos:
                 ✔ Fix tooltip when UI changed (for example pin/unpin todo when tooltip showed) @done(18-09-04 09:16)
                     ✔ And another example -> when tooltip showed, and add new item in list @done(18-09-04 09:16)
                 ✔ Change all tooltips from 'matTooltip' to 'appTooltipDirective' @done(18-09-04 09:34)
-                    ☐ Fix hiden tooltip for 'Add' todo button (probably add new 'disabled' state to 'TooltipDirective') <========================================================= CURRENT TASK
-                ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
+                    ✔ Fix hiden tooltip for 'Add' todo button (probably add new 'disabled' state to 'TooltipDirective') @done(18-09-05 09:40)
+                ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time) <========================================================= CURRENT TASK
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Use tooltip behaviour idea like in `http://crystalui.org/components/tooltip` (e.g. if quickly hover and out - tooltip should stay)
                 ☐ Look at Discord tooltip
