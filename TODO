@@ -74,7 +74,7 @@ Todos:
                 ✔ Ctrl + click on link to follow the link @done(18-08-15 12:00)
                 ✔ Hint for link (hint message 'Ctrl + click to follow link') @done(18-08-31 10:15)
 
-            ☐ Use Chrome Audit to test the app
+            ☐ Use Chrome Audit to test the app (and check fu error when cancel running process)
 
             ☐ Use other type of tooltip (material not looks good)
                 ✔ Fix color for triangle (a little darker than other part of tooltip) @done(18-08-18 09:14)

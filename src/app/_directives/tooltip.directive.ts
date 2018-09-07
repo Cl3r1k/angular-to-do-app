@@ -20,9 +20,8 @@ export class TooltipDirective implements OnDestroy {
     constructor(private el: ElementRef, private renderer: Renderer2) { }
 
     @HostListener('mouseenter') onMouseEnter() {
-        if (this.disabled === 'true') {
+        if (this.disabled === 'true' || !this.toolTipTitle) {
             return;
-        } else {
         }
 
         if (!this.tooltip) {
@@ -92,6 +91,7 @@ export class TooltipDirective implements OnDestroy {
         // If there is the scrollbar - position of toolbar is OK.
         // Consider to use another toolip?
         // Dig deeper, in html when matTooltip showed for example
+        // In matTooltip 'left' attr the same in when not set 'height: 100%'
 
         if (this.placement === 'top') {
             top = hostPos.top - tooltipPos.height - this.offset;
