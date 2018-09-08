@@ -89,9 +89,9 @@ export class TooltipDirective implements OnDestroy {
         // The problem is in sticky-grid-footer (for style height: 100%)
         // Parent top/left the same when its height is not 100%
         // If there is the scrollbar - position of toolbar is OK.
-        // Consider to use another toolip?
         // Dig deeper, in html when matTooltip showed for example
         // In matTooltip 'left' attr the same in when not set 'height: 100%'
+        // Look at 'https://github.com/angular/material2/blob/master/src/lib/tooltip/tooltip.ts'
 
         if (this.placement === 'top') {
             top = hostPos.top - tooltipPos.height - this.offset;
