@@ -32,7 +32,7 @@ describe(`Directive: DynamicContentDirective`, () => {
 
         divEl = fixture.debugElement.query(By.css('div'));    // Find div.tag-class element
 
-        directive = new DynamicContentDirective(divEl.nativeElement, null);
+        directive = new DynamicContentDirective(divEl.nativeElement, null, null);
     });
 
     it(`create an instance`, () => {

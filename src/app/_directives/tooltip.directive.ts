@@ -1,14 +1,23 @@
 import { Directive, Input, ElementRef, Renderer2, HostListener, OnDestroy } from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Directive({
     selector: '[appTooltipDirective]'
 })
 export class TooltipDirective implements OnDestroy {
 
+    private _disabled = false;
+
     @Input('appTooltipDirective') toolTipTitle: string;
     @Input() placement: string;
     @Input() delay: string;
-    @Input() disabled: string;
+
+    /** Disables the display of the tooltip. */
+    @Input('tooltipDisabled')
+    get disabled(): boolean { return this._disabled; }
+    set disabled(value) {
+        this._disabled = coerceBooleanProperty(value);
+    }
 
     tooltip: HTMLElement;
     // Distance between parent element and tooltip
@@ -20,7 +29,7 @@ export class TooltipDirective implements OnDestroy {
     constructor(private el: ElementRef, private renderer: Renderer2) { }
 
     @HostListener('mouseenter') onMouseEnter() {
-        if (this.disabled === 'true' || !this.toolTipTitle) {
+        if (this._disabled || !this.toolTipTitle) {
             return;
         }
 
