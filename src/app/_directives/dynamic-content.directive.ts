@@ -10,8 +10,10 @@ export class DynamicContentDirective implements OnDestroy {
     placement = 'top';
     delay = '500';
     tooltip: HTMLElement;
+
     // Distance between parent element and tooltip
     offset = 10;
+
     isHidePending = false;
     hideTimeout: number;
     eventPos: any;
