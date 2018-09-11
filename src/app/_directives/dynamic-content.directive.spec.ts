@@ -43,4 +43,20 @@ describe(`Directive: DynamicContentDirective`, () => {
         // Assert
         expect(directive).toBeTruthy();
     });
+
+    it(`should have initial params`, () => {
+        // Arrange
+
+        // Act
+
+        // Assert
+        expect(directive.toolTipTitle).toEqual('Ctrl + click to follow link');
+        expect(directive.placement).toEqual('top');
+        expect(directive.delay).toEqual('500');
+        expect(directive.offset).toEqual(10);
+        expect(directive.isHidePending).toEqual(false);
+    });
+
+    // TODO: Test mouseevents for direcive
+
 });

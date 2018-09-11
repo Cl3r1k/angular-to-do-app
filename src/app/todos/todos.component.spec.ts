@@ -7,6 +7,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { ToDo } from '@app/_models/to-do';
 import { ResolverData } from '@app/_models/resolver-data';
 
+// Directives
+import { TooltipDirective } from '@app/_directives/tooltip.directive';
+
 // Components
 import { TodosComponent } from '@app/todos/todos.component';
 import { TodoTitleComponent } from '@app/todo-title/todo-title.component';
@@ -64,7 +67,8 @@ describe(`TodosComponent`, () => {
                 TodoListItemEditComponent,
                 SafePipe,
                 FilterTagPipe,
-                ParseTagPipe
+                ParseTagPipe,
+                TooltipDirective
             ],
             providers: [TodoService,
                 {

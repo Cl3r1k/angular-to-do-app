@@ -6,6 +6,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 // Models
 import { ToDo } from '@app/_models/to-do';
 
+// Directives
+import { TooltipDirective } from '@app/_directives/tooltip.directive';
+
 // Components
 import { TodoListHeaderComponent } from '@app/todo-list-header/todo-list-header.component';
 
@@ -26,7 +29,7 @@ describe('TodoListHeaderComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [TodoListHeaderComponent, SafePipe, FilterTagPipe],
+            declarations: [TodoListHeaderComponent, SafePipe, FilterTagPipe, TooltipDirective],
             imports: [FormsModule, RouterTestingModule],
             providers: [
                 {
