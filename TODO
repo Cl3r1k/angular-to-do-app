@@ -90,6 +90,7 @@ Todos:
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                 ✔ Look at Discord tooltip (Not applicable) @done(18-09-08 09:15)
+                ☐ Add delay for show/hide tooltip
                 
 
             ☐ Update tests for 'DynamicContentDirective' <========================================================= CURRENT TASK

@@ -53,5 +53,17 @@ describe(`Directive: TooltipDirective`, () => {
     });
 
     // TODO: Test mouseevents for direcive
+    it(`hovering on element`, () => {
+        // Arrange
+
+        // Act
+        divEl.triggerEventHandler('mouseenter', null);
+        fixture.detectChanges();
+
+        // Assert
+        fixture.whenStable().then(() => {
+            // expect(directive.hovered).toEqual(true);
+        });
+    });
 });
 
