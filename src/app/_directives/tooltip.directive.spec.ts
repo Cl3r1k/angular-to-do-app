@@ -53,17 +53,18 @@ describe(`Directive: TooltipDirective`, () => {
     });
 
     // TODO: Test mouseevents for direcive
-    it(`hovering on element`, () => {
-        // Arrange
-
-        // Act
+    it('hovering over input', () => {
         divEl.triggerEventHandler('mouseenter', null);
         fixture.detectChanges();
+        // expect(divEl.nativeElement.style.backgroundColor).toBe('blue');
+        // expect(directive.hoveredState).toBe(true, 'mouseenter test');
+        // HINT: Somehow directive.hoveredState couldn't be read as true, but in console it writes as 'true'
+        // And btw backgroundColor reads as 'blue' for 'div' and works correctly, come back here later
 
-        // Assert
-        fixture.whenStable().then(() => {
-            // expect(directive.hovered).toEqual(true);
-        });
+        divEl.triggerEventHandler('mouseleave', null);
+        fixture.detectChanges();
+        // expect(divEl.nativeElement.style.backgroundColor).toBe('inherit');
+        // expect(directive.hoveredState).toBe(false, 'mouseleave test');
     });
 });
 

@@ -1,4 +1,4 @@
-import { Directive, Input, ElementRef, Renderer2, HostListener, OnDestroy } from '@angular/core';
+import { Directive, Input, ElementRef, Renderer2, HostListener, OnDestroy, HostBinding } from '@angular/core';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 
 @Directive({
@@ -19,16 +19,25 @@ export class TooltipDirective implements OnDestroy {
         this._disabled = coerceBooleanProperty(value);
     }
 
+    @HostBinding('style.background-color') backgroundColor: string;
+
     tooltip: HTMLElement;
     // Distance between parent element and tooltip
     offset = 10;
     isHidePending = false;
     hideTimeout: number;
+    hoveredState = false;
 
     // TODO: Consider to use Renderer3
     constructor(private el: ElementRef, private renderer: Renderer2) { }
 
     @HostListener('mouseenter') onMouseEnter() {
+
+        console.log('%c mouseenter', 'color: red;');
+        this.backgroundColor = 'blue';
+        this.hoveredState = true;
+        console.log('%cmouseenter hoveredState: ', 'color: red;', this.hoveredState);
+
         if (this._disabled || !this.toolTipTitle) {
             return;
         }
@@ -39,6 +48,12 @@ export class TooltipDirective implements OnDestroy {
     }
 
     @HostListener('mouseleave') onMouseLeave() {
+
+        console.log('%c mouseleave', 'color: red;');
+        this.backgroundColor = 'inherit';
+        this.hoveredState = false;
+        console.log('%cmouseleave hoveredState: ', 'color: red;', this.hoveredState);
+
         if (this.tooltip) {
             this.hide();
         }

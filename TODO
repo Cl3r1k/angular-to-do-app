@@ -74,7 +74,7 @@ Todos:
                 ✔ Ctrl + click on link to follow the link @done(18-08-15 12:00)
                 ✔ Hint for link (hint message 'Ctrl + click to follow link') @done(18-08-31 10:15)
 
-            ☐ Use Chrome Audit to test the app (and check fu error when cancel running process)
+            ☐ Use Chrome Audit to test the app (and check for error when cancel running process)
 
             ☐ Use other type of tooltip (material not looks good)
                 ✔ Add delay for popups (use another lib for popups, not material) @done(18-09-07 09:44)
@@ -90,11 +90,11 @@ Todos:
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                 ✔ Look at Discord tooltip (Not applicable) @done(18-09-08 09:15)
-                ☐ Add delay for show/hide tooltip
+                ☐ Add delay for show/hide tooltip <========================================================= CURRENT TASK
                 
 
-            ☐ Update tests for 'DynamicContentDirective' <========================================================= CURRENT TASK
-            ☐ Write tests for 'TooltipDirective'
+            ✔ Update tests for 'DynamicContentDirective' @done(18-09-12 10:26)
+            ✔ Write tests for 'TooltipDirective' @done(18-09-12 10:26)
             
 
             ☐ Update 'concurrently' to latest version
