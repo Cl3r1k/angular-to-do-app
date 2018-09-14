@@ -7,37 +7,43 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 export class TooltipDirective implements OnDestroy {
 
     private _disabled = false;
+    private _showDelay = 300;    // The default value for show delay is 300
+    showTimeoutId: number;
 
     @Input('appTooltipDirective') toolTipTitle: string;
     @Input() placement: string;
     @Input() delay: string;
 
+    /** Show/hide delay of the tooltip */
+    @Input('showDelay')
+    get showDelay(): number {
+        return this._showDelay;
+    }
+    set showDelay(value: number) {
+        if (value) {
+            this._showDelay = value;
+        }
+    }
+
     /** Disables the display of the tooltip. */
     @Input('tooltipDisabled')
-    get disabled(): boolean { return this._disabled; }
+    get disabled(): boolean {
+        return this._disabled;
+    }
     set disabled(value) {
         this._disabled = coerceBooleanProperty(value);
     }
-
-    @HostBinding('style.background-color') backgroundColor: string;
 
     tooltip: HTMLElement;
     // Distance between parent element and tooltip
     offset = 10;
     isHidePending = false;
     hideTimeout: number;
-    hoveredState = false;
 
     // TODO: Consider to use Renderer3
     constructor(private el: ElementRef, private renderer: Renderer2) { }
 
     @HostListener('mouseenter') onMouseEnter() {
-
-        console.log('%c mouseenter', 'color: red;');
-        this.backgroundColor = 'blue';
-        this.hoveredState = true;
-        console.log('%cmouseenter hoveredState: ', 'color: red;', this.hoveredState);
-
         if (this._disabled || !this.toolTipTitle) {
             return;
         }
@@ -48,12 +54,6 @@ export class TooltipDirective implements OnDestroy {
     }
 
     @HostListener('mouseleave') onMouseLeave() {
-
-        console.log('%c mouseleave', 'color: red;');
-        this.backgroundColor = 'inherit';
-        this.hoveredState = false;
-        console.log('%cmouseleave hoveredState: ', 'color: red;', this.hoveredState);
-
         if (this.tooltip) {
             this.hide();
         }
@@ -62,7 +62,11 @@ export class TooltipDirective implements OnDestroy {
     show() {
         this.create();
         this.setPosition();
-        this.renderer.addClass(this.tooltip, 'tooltip-show');
+        // this.renderer.addClass(this.tooltip, 'tooltip-show');
+
+        this.showTimeoutId = window.setTimeout(() => {
+            this.renderer.addClass(this.tooltip, 'tooltip-show');
+        }, this._showDelay);
     }
 
     hide() {

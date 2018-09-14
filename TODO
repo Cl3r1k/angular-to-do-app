@@ -86,11 +86,15 @@ Todos:
                     ✔ And another example -> when tooltip showed, and add new item in list @done(18-09-04 09:16)
                 ✔ Change all tooltips from 'matTooltip' to 'appTooltipDirective' @done(18-09-04 09:34)
                     ✔ Fix hiden tooltip for 'Add' todo button (probably add new 'disabled' state to 'TooltipDirective') @done(18-09-05 09:40)
-                ☐ Use tooltip behaviour idea like in `http://crystalui.org/components/tooltip` (e.g. if quickly hover and out - tooltip should stay)
+                ☐ Use tooltip behaviour idea like in `http://crystalui.org/components/tooltip` (e.g. if quickly hover and out - tooltip should stay) (Delayed for some time)
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                 ✔ Look at Discord tooltip (Not applicable) @done(18-09-08 09:15)
-                ☐ Add delay for show/hide tooltip <========================================================= CURRENT TASK
+                ✔ Add delay for show tooltip in 'TooltipDirective' @done(18-09-13 10:37)
+                    ☐ Fix issue when tooltip still appears when unhovered already <========================================================= CURRENT TASK
+                ☐ Add delay for show tooltip in 'DynamicContentDirective'
+                ☐ Change 'delay' member in 'TooltipDirective' and 'DynamicContentDirective' to property 'delayAnimation' and set as default value - 500
+                    ☐ Delete 'delay' prop in html templates
                 
 
             ✔ Update tests for 'DynamicContentDirective' @done(18-09-12 10:26)
