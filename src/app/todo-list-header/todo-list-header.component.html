@@ -2,10 +2,10 @@
     <div class='new-container' *ngIf='!hashTagToFilter'>
         <div class='toggleAll-container'>
             <input type='checkbox' class='toggle-all' *ngIf='todosAllAmount' #toggleAll (click)='toggleAllTodos(toggleAll.checked)' [checked]='todosAllCompleted' (mouseenter)='setToggleAllHoverState(true)' (mouseleave)='setToggleAllHoverState(false)' appTooltipDirective='Toggle all todos'
-                placement='top' delay='500'>
+                placement='top'>
         </div>
         <input type='text' class='new-todo' placeholder='Add new task' autofocus='' (keyup.enter)='addTodo()' [(ngModel)]='newTodo.title' (focus)='setNewTodoFocus(true)' (blur)='setNewTodoFocus(false)'>
-        <svg class='icon icon-keyboard_return' [class.new-todo-focused]='newTodoFocusState' (click)='addTodo()' appTooltipDirective='Enter to save todo' placement='top' delay='500' tooltipDisabled={{!newTodoFocusState}}>
+        <svg class='icon icon-keyboard_return' [class.new-todo-focused]='newTodoFocusState' (click)='addTodo()' appTooltipDirective='Enter to save todo' placement='top' tooltipDisabled={{!newTodoFocusState}}>
             <use xlink:href='#icon-keyboard_return'></use>
         </svg>
     </div>

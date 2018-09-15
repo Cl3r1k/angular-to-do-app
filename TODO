@@ -91,10 +91,12 @@ Todos:
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                 ✔ Look at Discord tooltip (Not applicable) @done(18-09-08 09:15)
                 ✔ Add delay for show tooltip in 'TooltipDirective' @done(18-09-13 10:37)
-                    ☐ Fix issue when tooltip still appears when unhovered already <========================================================= CURRENT TASK
+                    ✔ Fix issue when tooltip still appears when unhovered already @done(18-09-14 10:46)
+                ✔ Change 'delay' member in 'TooltipDirective' and 'DynamicContentDirective' to property 'delayAnimation' and set as default value - 500 @done(18-09-14 11:01)
+                    ✔ Delete 'delay' prop in html templates @done(18-09-14 11:01)
+                    ☐ Replace all members to properties in 'TooltipDirective' <========================================================= CURRENT TASK
+                    ☐ Refactor variables in 'TooltipDirective'
                 ☐ Add delay for show tooltip in 'DynamicContentDirective'
-                ☐ Change 'delay' member in 'TooltipDirective' and 'DynamicContentDirective' to property 'delayAnimation' and set as default value - 500
-                    ☐ Delete 'delay' prop in html templates
                 
 
             ✔ Update tests for 'DynamicContentDirective' @done(18-09-12 10:26)

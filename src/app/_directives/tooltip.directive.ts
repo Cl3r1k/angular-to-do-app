@@ -8,13 +8,24 @@ export class TooltipDirective implements OnDestroy {
 
     private _disabled = false;
     private _showDelay = 300;    // The default value for show delay is 300
+    private _animationDelay = 500;    // The default value for show delay is 500
     showTimeoutId: number;
 
     @Input('appTooltipDirective') toolTipTitle: string;
     @Input() placement: string;
-    @Input() delay: string;
 
-    /** Show/hide delay of the tooltip */
+    /** Animation delay of the tooltip */
+    @Input('animationDelay')
+    get animationDelay(): number {
+        return this._animationDelay;
+    }
+    set animationDelay(value: number) {
+        if (value) {
+            this._animationDelay = value;
+        }
+    }
+
+    /** Show delay of the tooltip */
     @Input('showDelay')
     get showDelay(): number {
         return this._showDelay;
@@ -60,6 +71,8 @@ export class TooltipDirective implements OnDestroy {
     }
 
     show() {
+        this.clearTimeouts();
+
         this.create();
         this.setPosition();
         // this.renderer.addClass(this.tooltip, 'tooltip-show');
@@ -72,6 +85,7 @@ export class TooltipDirective implements OnDestroy {
     hide() {
         if (!this.isHidePending) {
             clearTimeout(this.hideTimeout);
+            this.clearTimeouts();
 
             this.isHidePending = true;
             this.renderer.removeClass(this.tooltip, 'tooltip-show');
@@ -79,7 +93,7 @@ export class TooltipDirective implements OnDestroy {
                 this.renderer.removeChild(document.body, this.tooltip);
                 this.tooltip = null;
                 this.isHidePending = false;
-            }, this.delay);
+            }, this._animationDelay);
         }
     }
 
@@ -93,10 +107,10 @@ export class TooltipDirective implements OnDestroy {
         this.renderer.addClass(this.tooltip, `tooltip-${this.placement}`);
 
         // Setup delay
-        this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this.delay}ms`);
-        this.renderer.setStyle(this.tooltip, '-moz-transition', `opacity ${this.delay}ms`);
-        this.renderer.setStyle(this.tooltip, '-o-transition', `opacity ${this.delay}ms`);
-        this.renderer.setStyle(this.tooltip, 'transition', `opacity ${this.delay}ms`);
+        this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this._animationDelay}ms`);
+        this.renderer.setStyle(this.tooltip, '-moz-transition', `opacity ${this._animationDelay}ms`);
+        this.renderer.setStyle(this.tooltip, '-o-transition', `opacity ${this._animationDelay}ms`);
+        this.renderer.setStyle(this.tooltip, 'transition', `opacity ${this._animationDelay}ms`);
     }
 
     setPosition() {
@@ -144,6 +158,12 @@ export class TooltipDirective implements OnDestroy {
         // If scrolling occurs, the top of the tooltip element should reflect the vertical scrolling coordinate value.
         this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);
         this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
+    }
+
+    clearTimeouts() {
+        if (this.showTimeoutId) {
+            clearTimeout(this.showTimeoutId);
+        }
     }
 
     ngOnDestroy() {

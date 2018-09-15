@@ -6,7 +6,7 @@ import { By } from '@angular/platform-browser';
 import { TooltipDirective } from '@app/_directives/tooltip.directive';
 
 @Component({
-    template: `<div appTooltipDirective='Edit advanced settings' placement='top' delay='500'>some info</div>`
+    template: `<div appTooltipDirective='Edit advanced settings' placement='top'>some info</div>`
 })
 class TestTooltipDirectiveComponent {
     //

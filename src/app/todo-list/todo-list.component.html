@@ -15,11 +15,11 @@
     </div>
     <div class='completed-container' *ngIf='todosToView[2].length'>
         <div class='collapse-container'>
-            <div class='completed-todos' (click)='collapseCompletedTodos(collapse.checked)' (mouseenter)='setCompletedTodosHoverState(true)' (mouseleave)='setCompletedTodosHoverState(false)' appTooltipDirective='Collapse recent completed todos' placement='top' delay='500'>
+            <div class='completed-todos' (click)='collapseCompletedTodos(collapse.checked)' (mouseenter)='setCompletedTodosHoverState(true)' (mouseleave)='setCompletedTodosHoverState(false)' appTooltipDirective='Collapse recent completed todos' placement='top'>
                 <input type='checkbox' class='collapse-button' #collapse [checked]='!collapseState' [class.completed-todos-hovered]='completedTodosHoverState'>
                 <span [class.completed-todos-hovered]='completedTodosHoverState || !collapseState'>Completed todos</span>
             </div>
-            <svg class='icon icon-broom' (click)='clearCompleted(true)' (mouseenter)='setClearCompletedHoverState(true)' (mouseleave)='setClearCompletedHoverState(false)' appTooltipDirective='Clear recent completed todos' placement='top' delay='500'>
+            <svg class='icon icon-broom' (click)='clearCompleted(true)' (mouseenter)='setClearCompletedHoverState(true)' (mouseleave)='setClearCompletedHoverState(false)' appTooltipDirective='Clear recent completed todos' placement='top'>
                 <use xlink:href='#icon-broom'></use>
             </svg>
         </div>
