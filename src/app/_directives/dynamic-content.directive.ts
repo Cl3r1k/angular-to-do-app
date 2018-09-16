@@ -6,21 +6,31 @@ import { Router } from '@angular/router';
 })
 export class DynamicContentDirective implements OnDestroy {
 
-    toolTipTitle = 'Ctrl + click to follow link';
-    placement = 'top';
-    delay = '500';
+    private _showDelay = 300;         // The default value for show delay is 300
+    private _toolTipTitle = 'Ctrl + click to follow link';
+    private _placement = 'top';
+    private _delay = '500';
     tooltip: HTMLElement;
-
-    // Distance between parent element and tooltip
-    offset = 10;
-
+    offset = 10;                      // Distance between parent element and tooltip
     isHidePending = false;
-    hideTimeout: number;
+    hideTimeoutId: number;
+    showTimeoutId: number;
     eventPos: any;
 
-    constructor(private elementRef: ElementRef, public router: Router, private renderer: Renderer2) { }
-
     @Input('appDynamicContentDirective') dynamicContent: string;
+
+    /** Show delay of the tooltip */
+    @Input('showDelay')
+    get showDelay(): number {
+        return this._showDelay;
+    }
+    set showDelay(value: number) {
+        if (value) {
+            this._showDelay = value;
+        }
+    }
+
+    constructor(private elementRef: ElementRef, public router: Router, private renderer: Renderer2) { }
 
     @HostListener('click', ['$event']) onclick(e) {
 
@@ -52,9 +62,9 @@ export class DynamicContentDirective implements OnDestroy {
         if (event.target.classList.contains('url-class') || event.target.classList.contains('tag-class')) {
 
             if (event.target.classList.contains('url-class')) {
-                this.toolTipTitle = 'Ctrl + click to follow link';
+                this._toolTipTitle = 'Ctrl + click to follow link';
             } else {
-                this.toolTipTitle = 'Click on tag to filter';
+                this._toolTipTitle = 'Click on tag to filter';
             }
 
             this.eventPos = event.target.getBoundingClientRect();
@@ -76,39 +86,45 @@ export class DynamicContentDirective implements OnDestroy {
     }
 
     show() {
+        this.clearTimeouts();
+
         this.create();
         this.setPosition();
-        this.renderer.addClass(this.tooltip, 'tooltip-show');
+
+        this.showTimeoutId = window.setTimeout(() => {
+            this.renderer.addClass(this.tooltip, 'tooltip-show');
+        }, this._showDelay);
     }
 
     hide() {
         if (!this.isHidePending) {
-            clearTimeout(this.hideTimeout);
+            this.clearTimeouts();
+            clearTimeout(this.hideTimeoutId);
 
             this.isHidePending = true;
             this.renderer.removeClass(this.tooltip, 'tooltip-show');
-            this.hideTimeout = window.setTimeout(() => {
+            this.hideTimeoutId = window.setTimeout(() => {
                 this.renderer.removeChild(document.body, this.tooltip);
                 this.tooltip = null;
                 this.isHidePending = false;
-            }, this.delay);
+            }, this._delay);
         }
     }
 
     create() {
         this.tooltip = this.renderer.createElement('span');
 
-        this.renderer.appendChild(this.tooltip, this.renderer.createText(this.toolTipTitle));
+        this.renderer.appendChild(this.tooltip, this.renderer.createText(this._toolTipTitle));
         this.renderer.appendChild(document.body, this.tooltip);
 
         this.renderer.addClass(this.tooltip, 'tooltip');
-        this.renderer.addClass(this.tooltip, `tooltip-${this.placement}`);
+        this.renderer.addClass(this.tooltip, `tooltip-${this._placement}`);
 
         // Setup delay
-        this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this.delay}ms`);
-        this.renderer.setStyle(this.tooltip, '-moz-transition', `opacity ${this.delay}ms`);
-        this.renderer.setStyle(this.tooltip, '-o-transition', `opacity ${this.delay}ms`);
-        this.renderer.setStyle(this.tooltip, 'transition', `opacity ${this.delay}ms`);
+        this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this._delay}ms`);
+        this.renderer.setStyle(this.tooltip, '-moz-transition', `opacity ${this._delay}ms`);
+        this.renderer.setStyle(this.tooltip, '-o-transition', `opacity ${this._delay}ms`);
+        this.renderer.setStyle(this.tooltip, 'transition', `opacity ${this._delay}ms`);
     }
 
     setPosition() {
@@ -125,22 +141,22 @@ export class DynamicContentDirective implements OnDestroy {
 
         let top, left;
 
-        if (this.placement === 'top') {
+        if (this._placement === 'top') {
             top = hostPos.top - tooltipPos.height - this.offset;
             left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
         }
 
-        if (this.placement === 'bottom') {
+        if (this._placement === 'bottom') {
             top = hostPos.bottom + this.offset;
             left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
         }
 
-        if (this.placement === 'left') {
+        if (this._placement === 'left') {
             top = hostPos.top + (hostPos.height - tooltipPos.height) / 2;
             left = hostPos.left - tooltipPos.width - this.offset;
         }
 
-        if (this.placement === 'right') {
+        if (this._placement === 'right') {
             top = hostPos.top + (hostPos.height - tooltipPos.height) / 2;
             left = hostPos.right + this.offset;
         }
@@ -148,6 +164,12 @@ export class DynamicContentDirective implements OnDestroy {
         // If scrolling occurs, the top of the tooltip element should reflect the vertical scrolling coordinate value.
         this.renderer.setStyle(this.tooltip, 'top', `${top + scrollPos}px`);
         this.renderer.setStyle(this.tooltip, 'left', `${left}px`);
+    }
+
+    clearTimeouts() {
+        if (this.showTimeoutId) {
+            clearTimeout(this.showTimeoutId);
+        }
     }
 
     ngOnDestroy() {

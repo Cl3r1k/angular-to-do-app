@@ -76,7 +76,7 @@ Todos:
 
             ☐ Use Chrome Audit to test the app (and check for error when cancel running process)
 
-            ☐ Use other type of tooltip (material not looks good)
+            ✔ Use other type of tooltip (material not looks good) @done(18-09-15 09:34)
                 ✔ Add delay for popups (use another lib for popups, not material) @done(18-09-07 09:44)
                 ✔ Fix color for triangle (a little darker than other part of tooltip) @done(18-08-18 09:14)
                 ✔ Fix - ERROR TypeError: Cannot read property 'parentNode' of null @done(18-08-25 10:17)
@@ -86,24 +86,25 @@ Todos:
                     ✔ And another example -> when tooltip showed, and add new item in list @done(18-09-04 09:16)
                 ✔ Change all tooltips from 'matTooltip' to 'appTooltipDirective' @done(18-09-04 09:34)
                     ✔ Fix hiden tooltip for 'Add' todo button (probably add new 'disabled' state to 'TooltipDirective') @done(18-09-05 09:40)
-                ☐ Use tooltip behaviour idea like in `http://crystalui.org/components/tooltip` (e.g. if quickly hover and out - tooltip should stay) (Delayed for some time)
-                ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
-                ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                 ✔ Look at Discord tooltip (Not applicable) @done(18-09-08 09:15)
                 ✔ Add delay for show tooltip in 'TooltipDirective' @done(18-09-13 10:37)
                     ✔ Fix issue when tooltip still appears when unhovered already @done(18-09-14 10:46)
                 ✔ Change 'delay' member in 'TooltipDirective' and 'DynamicContentDirective' to property 'delayAnimation' and set as default value - 500 @done(18-09-14 11:01)
                     ✔ Delete 'delay' prop in html templates @done(18-09-14 11:01)
-                    ☐ Replace all members to properties in 'TooltipDirective' <========================================================= CURRENT TASK
-                    ☐ Refactor variables in 'TooltipDirective'
-                ☐ Add delay for show tooltip in 'DynamicContentDirective'
+                    ✔ Replace all members to properties in 'TooltipDirective' @done(18-09-15 09:17)
+                    ✔ Refactor variables in 'TooltipDirective' @done(18-09-15 09:17)
+                ✔ Add delay for show tooltip in 'DynamicContentDirective' @done(18-09-15 09:33)
+                    ✔ Refactor 'DynamicContentDirective' like 'TooltipDirective' @done(18-09-15 09:33)
+                ☐ Use tooltip behaviour idea like in `http://crystalui.org/components/tooltip` (e.g. if quickly hover and out - tooltip should stay) (Delayed for some time)
+                ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
+                ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                 
 
             ✔ Update tests for 'DynamicContentDirective' @done(18-09-12 10:26)
             ✔ Write tests for 'TooltipDirective' @done(18-09-12 10:26)
             
 
-            ☐ Update 'concurrently' to latest version
+            ☐ Update 'concurrently' to latest version <========================================================= CURRENT TASK
 
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)

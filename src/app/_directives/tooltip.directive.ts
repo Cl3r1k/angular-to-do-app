@@ -7,12 +7,29 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 export class TooltipDirective implements OnDestroy {
 
     private _disabled = false;
-    private _showDelay = 300;    // The default value for show delay is 300
-    private _animationDelay = 500;    // The default value for show delay is 500
+    private _showDelay = 300;         // The default value for show delay is 300
+    private _animationDelay = 500;    // The default value for animation delay is 500
+    private _placement = 'top';       // The default value for placement is 'top'
+    private _toolTipTitle: string;
+    tooltip: HTMLElement;
+    offset = 10;                      // Distance between parent element and tooltip
+    isHidePending = false;
+    hideTimeoutId: number;
     showTimeoutId: number;
 
-    @Input('appTooltipDirective') toolTipTitle: string;
-    @Input() placement: string;
+    /** Title of the tooltip */
+    @Input('appTooltipDirective') set toolTipTitle(value: string) {
+        if (value) {
+            this._toolTipTitle = value;
+        }
+    }
+
+    /** Placement of the tooltip */
+    @Input('placement') set placement(value: string) {
+        if (value) {
+            this._placement = value;
+        }
+    }
 
     /** Animation delay of the tooltip */
     @Input('animationDelay')
@@ -45,17 +62,11 @@ export class TooltipDirective implements OnDestroy {
         this._disabled = coerceBooleanProperty(value);
     }
 
-    tooltip: HTMLElement;
-    // Distance between parent element and tooltip
-    offset = 10;
-    isHidePending = false;
-    hideTimeout: number;
-
     // TODO: Consider to use Renderer3
     constructor(private el: ElementRef, private renderer: Renderer2) { }
 
     @HostListener('mouseenter') onMouseEnter() {
-        if (this._disabled || !this.toolTipTitle) {
+        if (this._disabled || !this._toolTipTitle) {
             return;
         }
 
@@ -75,7 +86,6 @@ export class TooltipDirective implements OnDestroy {
 
         this.create();
         this.setPosition();
-        // this.renderer.addClass(this.tooltip, 'tooltip-show');
 
         this.showTimeoutId = window.setTimeout(() => {
             this.renderer.addClass(this.tooltip, 'tooltip-show');
@@ -84,12 +94,12 @@ export class TooltipDirective implements OnDestroy {
 
     hide() {
         if (!this.isHidePending) {
-            clearTimeout(this.hideTimeout);
+            clearTimeout(this.hideTimeoutId);
             this.clearTimeouts();
 
             this.isHidePending = true;
             this.renderer.removeClass(this.tooltip, 'tooltip-show');
-            this.hideTimeout = window.setTimeout(() => {
+            this.hideTimeoutId = window.setTimeout(() => {
                 this.renderer.removeChild(document.body, this.tooltip);
                 this.tooltip = null;
                 this.isHidePending = false;
@@ -100,11 +110,11 @@ export class TooltipDirective implements OnDestroy {
     create() {
         this.tooltip = this.renderer.createElement('span');
 
-        this.renderer.appendChild(this.tooltip, this.renderer.createText(this.toolTipTitle));
+        this.renderer.appendChild(this.tooltip, this.renderer.createText(this._toolTipTitle));
         this.renderer.appendChild(document.body, this.tooltip);
 
         this.renderer.addClass(this.tooltip, 'tooltip');
-        this.renderer.addClass(this.tooltip, `tooltip-${this.placement}`);
+        this.renderer.addClass(this.tooltip, `tooltip-${this._placement}`);
 
         // Setup delay
         this.renderer.setStyle(this.tooltip, '-webkit-transition', `opacity ${this._animationDelay}ms`);
@@ -135,22 +145,22 @@ export class TooltipDirective implements OnDestroy {
         // In matTooltip 'left' attr the same in when not set 'height: 100%'
         // Look at 'https://github.com/angular/material2/blob/master/src/lib/tooltip/tooltip.ts'
 
-        if (this.placement === 'top') {
+        if (this._placement === 'top') {
             top = hostPos.top - tooltipPos.height - this.offset;
             left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
         }
 
-        if (this.placement === 'bottom') {
+        if (this._placement === 'bottom') {
             top = hostPos.bottom + this.offset;
             left = hostPos.left + (hostPos.width - tooltipPos.width) / 2;
         }
 
-        if (this.placement === 'left') {
+        if (this._placement === 'left') {
             top = hostPos.top + (hostPos.height - tooltipPos.height) / 2;
             left = hostPos.left - tooltipPos.width - this.offset;
         }
 
-        if (this.placement === 'right') {
+        if (this._placement === 'right') {
             top = hostPos.top + (hostPos.height - tooltipPos.height) / 2;
             left = hostPos.right + this.offset;
         }
