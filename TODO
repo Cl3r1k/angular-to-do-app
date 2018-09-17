@@ -41,7 +41,7 @@ Todos:
                 ✔ Fix bug when #hashtag title changed, in db old tag not marked as 'readyToDelete' (add tag and change name multiple times adding some num at end) @done(18-08-11 10:01)
                     ✔ Add tooltip for #hashtag ('Click on tag to filter') @done(18-08-31 10:12)
                         ✔ Fix click on #hashtag when tooltip showed (the issue -> if click on it, tooltip not hides) @done(18-08-31 10:12)
-                ☐ Fix color for tag when direct link for list of todo used (for example paste http://localhost:4200/todos/active and go -> color for #hashtag not from base)
+                ☐ Fix color for tag when direct link for list of todo used (for example paste http://localhost:4200/todos/active and go -> color for #hashtag not from base) (Delayed for some time - possibly won't be necessarily, after changed some part with All/Active/Completed)
 
             ✔ Write tests for 'Utils' class @done(18-07-24 10:42)
             ✔ Write tests for 'Tag' model @done(18-07-24 10:54)
@@ -66,15 +66,13 @@ Todos:
 
             ✔ Fix dialog message when todo deletes (Are you sure want to delete todo with name: 0???) @done(18-08-08 10:25)
 
-            ☐ Change console color for services from `Salmon` to `Seagreen`
-
             ✔ Consider idea for links like in VS code (ctrl click on link, hint for link, and underline for link) @done(18-09-04 09:24)
                 ✔ Styles for link (underline, color) (and pointer should be showed if Ctrl is pressed) @done(18-08-14 09:09)
                     ✔ Update tests for 'TodoListItemViewComponent' @done(18-08-14 09:55)
                 ✔ Ctrl + click on link to follow the link @done(18-08-15 12:00)
                 ✔ Hint for link (hint message 'Ctrl + click to follow link') @done(18-08-31 10:15)
 
-            ☐ Use Chrome Audit to test the app (and check for error when cancel running process)
+            ☐ Use Chrome Audit to test the app (and check for error when cancel running process) <========================================================= CURRENT TASK
 
             ✔ Use other type of tooltip (material not looks good) @done(18-09-15 09:34)
                 ✔ Add delay for popups (use another lib for popups, not material) @done(18-09-07 09:44)
@@ -101,11 +99,11 @@ Todos:
                 
 
             ✔ Update tests for 'DynamicContentDirective' @done(18-09-12 10:26)
-            ✔ Write tests for 'TooltipDirective' @done(18-09-12 10:26)
-            
+            ✔ Write tests for 'TooltipDirective' @done(18-09-12 10:26)            
 
-            ☐ Update 'concurrently' to latest version <========================================================= CURRENT TASK
+            ✔ Update 'concurrently' to latest version (4.0.1) @done(18-09-16 09:35)
 
+            ☐ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`)
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
@@ -142,7 +140,6 @@ Todos:
         ☐ Use watcher, and perform deletion after 5 seconds, if user didn't cancel deletion (service worker?) (look in IndexedDbService)
             ☐ Use Material Snackbar for cancel deleted todo (look here `https://medium.com/codingthesmartway-com-blog/angular-material-part-2-popups-modals-1ed0c2405f18`)
         ☐ Consider to use time as ID in DB (look here example `https://github.com/chenyaowen123/suishouji/blob/master/src/app/accounting/accounting.component.ts`)
-        ☐ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`)
         ☐ Add filtering by todo name
             ☐ Use switchMap for filters and search (look here `https://blog.thoughtram.io/angular/2016/01/06/taking-advantage-of-observables-in-angular2.html` and here `https://codecraft.tv/courses/angular/http/http-with-observables/`)
         ☐ Add spinner when Angular component loading `(examples: www.muller.tech/post/2017/04/03/angular4-create-modal/ and here https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554)`
@@ -176,10 +173,10 @@ Todos:
         ☐ CleanUp code (delete console.log, comments and other things)
 
         ☐ Idea to implement multiple editing items
-        `сгруппировать/смерджить несколько observable httpClient.post, чтобы каждый последующий отправлялся только после выполнения предыдущего
-         flatMap -> 
-         post(...).flatMap(result => post(result.data))
-         ....data)).subscribe(finalResult => ....) (`https://t.me/angular_ru/78351`)`
+            `сгруппировать/смерджить несколько observable httpClient.post, чтобы каждый последующий отправлялся только после выполнения предыдущего
+            flatMap -> 
+            post(...).flatMap(result => post(result.data))
+            ....data)).subscribe(finalResult => ....) (`https://t.me/angular_ru/78351`)`
 
         ☐ Ideas to implement:
             ☐ Guest page - №1
@@ -424,6 +421,7 @@ Todos:
         ✘ Fix saving in db.json data algoritm (previously saved with order Id->title->complete, now saves title->complete->Id) @cancelled(17-12-02 09:48)
         ✘ Find the way to start json server on gh-pages (look here `https://my-json-server.typicode.com/`) -> No 'Access-Control-Allow-Origin' header is present on the requested resource -> no need in this part still @cancelled(18-01-16 09:06)
         ✘ Updates styles, for 'TodoListItemEditComponent' (when todo editing, and mouse leaved - bgcolor of the todo is not in 'edit mode') -> After bg-colors will be restored, it won't needed  @cancelled(18-08-05 09:08)
+        ✘ Change console color for services from `Salmon` to `Seagreen` (Canceled - similar color used for components) @cancelled(18-09-16 09:38)
 
 Info:
     ☐ If count of todos is over 10k, performance of the app is very degradate (for example use db.json in db.zip file)
