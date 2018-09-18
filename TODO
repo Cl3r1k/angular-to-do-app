@@ -9,7 +9,9 @@
 // Colors for modules: tests - `Teal`, components - `Cadetblue`, services - `Salmon`, resolvers - `Royalblue`, pipes - `Purple`
 
 Commit message:
-
+Added 'body-parser' module
+Added 'json-server.js'
+Minor changes
 
 Todos:
     New:
