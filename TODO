@@ -9,9 +9,7 @@
 // Colors for modules: tests - `Teal`, components - `Cadetblue`, services - `Salmon`, resolvers - `Royalblue`, pipes - `Purple`
 
 Commit message:
-Added 'body-parser' module
-Added 'json-server.js'
-Minor changes
+
 
 Todos:
     New:
@@ -98,6 +96,7 @@ Todos:
                 ☐ Use tooltip behaviour idea like in `http://crystalui.org/components/tooltip` (e.g. if quickly hover and out - tooltip should stay) (Delayed for some time)
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
+                    ☐ After fix position remove all 'matTooltip' (only on left in todo-list-item-view.component.html for fixing position purpose)
                 
 
             ✔ Update tests for 'DynamicContentDirective' @done(18-09-12 10:26)

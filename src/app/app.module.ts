@@ -25,6 +25,7 @@ import { IndexedDbService } from '@app/_services/indexed-db.service';
 import { TodoOrderService } from '@app/_services/todo-order.service';
 import { TagService } from '@app/_services/tag.service';
 import { TagLayerService } from '@app/_services/tag-layer.service';
+import { SessionStorageService } from '@app/_services/session-storage.service';
 
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
@@ -84,7 +85,7 @@ import { Utils } from '@app/_common/utils';
         MatNativeDateModule,
         MatTooltipModule
     ],
-    providers: [TodoService, ApiService, IndexedDbService, TodoOrderService, TagService, Utils, TagLayerService],
+    providers: [TodoService, ApiService, IndexedDbService, TodoOrderService, TagService, Utils, TagLayerService, SessionStorageService],
     bootstrap: [AppComponent],
     entryComponents: [DialogDeleteComponent, DialogMoreComponent]
 })

@@ -134,6 +134,13 @@ export class ApiService {
             catchError(this.handleError));
     }
 
+    public signIn(username: string, password: string) {
+        return this._httpClient.post(API_URL + '/sign-in', { username, password }).pipe(
+            map(response => response),
+            catchError(this.handleError)
+        );
+    }
+
     private handleError(error: Response | any) {
         if (error._body.type === 'error') {
             console.log(`%cRequest failed... Is json-server running?`, this.consoleTextColorService);
