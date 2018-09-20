@@ -44,7 +44,7 @@ server.use(router);
 
 // Start server
 server.listen(3000, () => {
-    console.log('JSON server is running');
+    console.log('===> JSON (Auth) server is running <===');
 });
 
 // Check whether request is allowed

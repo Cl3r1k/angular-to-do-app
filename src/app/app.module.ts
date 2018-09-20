@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -17,6 +17,7 @@ import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.
 import { PageNotFoundComponent } from '@app/page-not-found/page-not-found.component';
 import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
 import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 // Services
 import { TodoService } from '@app/_services/todo.service';
@@ -26,6 +27,7 @@ import { TodoOrderService } from '@app/_services/todo-order.service';
 import { TagService } from '@app/_services/tag.service';
 import { TagLayerService } from '@app/_services/tag-layer.service';
 import { SessionStorageService } from '@app/_services/session-storage.service';
+import { AuthService } from '@app/_services/auth.service';
 
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
@@ -67,7 +69,8 @@ import { Utils } from '@app/_common/utils';
         DynamicContentDirective,
         SafePipe,
         FilterTagPipe,
-        TooltipDirective
+        TooltipDirective,
+        SignInComponent
     ],
     imports: [
         AppRoutingModule,
@@ -83,9 +86,20 @@ import { Utils } from '@app/_common/utils';
         MatCheckboxModule,
         MatDatepickerModule,
         MatNativeDateModule,
-        MatTooltipModule
+        MatTooltipModule,
+        ReactiveFormsModule
     ],
-    providers: [TodoService, ApiService, IndexedDbService, TodoOrderService, TagService, Utils, TagLayerService, SessionStorageService],
+    providers: [
+        TodoService,
+        ApiService,
+        IndexedDbService,
+        TodoOrderService,
+        TagService,
+        Utils,
+        TagLayerService,
+        SessionStorageService,
+        AuthService
+    ],
     bootstrap: [AppComponent],
     entryComponents: [DialogDeleteComponent, DialogMoreComponent]
 })
