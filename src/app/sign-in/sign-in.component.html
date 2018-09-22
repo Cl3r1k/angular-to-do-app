@@ -3,7 +3,7 @@
         <h1>Todos</h1>
 
         <!-- Username input -->
-        <input type='text' fromControlName='username' placeholder='Your username'>
+        <input type='text' formControlName='username' placeholder='Your username'>
 
         <!-- Username validation message -->
         <div class='input-errors' *ngIf="(frm.get('username').invalid && frm.get('username').touched) || showInputErrors">
@@ -30,7 +30,7 @@
         <!-- Sign-in button -->
         <button (click)='doSignIn()' [disabled]='isBusy'>
             <ng-template [ngIf]='!isBusy'>Sign in</ng-template>
-            <ng-template [nfIf]='isBusy'>Singing in, please wait...</ng-template>
+            <ng-template [ngIf]='isBusy'>Singing in, please wait...</ng-template>
         </button>
 
         <!-- Tip -->

@@ -6,12 +6,17 @@ import { TodosResolver } from '@app/_resolvers/todos.resolver';
 import { TodosActiveResolver } from '@app/_resolvers/todos-active.resolver';
 import { TodosCompletedResolver } from '@app/_resolvers/todos-completed.resolver';
 import { TodosFilterHashtagResolver } from '@app/_resolvers/todos-filter-hashtag.resolver';
+import { SignInComponent } from '@app/sign-in/sign-in.component';
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'todos',
+        redirectTo: 'sign-in',
         pathMatch: 'full'
+    },
+    {
+        path: 'sign-in',
+        component: SignInComponent
     },
     {
         path: 'todos',
