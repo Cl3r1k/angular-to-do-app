@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '@env/environment';
 
+// Models
 import { ToDo } from '@app/_models/to-do';
 
-import { HttpClient } from '@angular/common/http';
+// Services
+import { SessionStorageService } from '@app/_services/session-storage.service';
 
+// Imports
 import { throwError as observableThrowError, Observable } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -15,11 +19,19 @@ export class ApiService {
 
     consoleTextColorService = 'color: salmon;';
 
-    constructor(private _httpClient: HttpClient) { }
+    constructor(private _httpClient: HttpClient, private _sessionStorage: SessionStorageService) { }
+
+    public signIn(username: string, password: string) {
+        return this._httpClient.post(API_URL + '/sign-in', { username, password }).pipe(
+            map(response => response),
+            catchError(this.handleError)
+        );
+    }
 
     // API: POST /todos
     public createTodo(todo: ToDo): Observable<ToDo> {
-        return this._httpClient.post(API_URL + '/todos', todo).pipe(
+        const options = this.getRequestOptions();
+        return this._httpClient.post(API_URL + '/todos', todo, options).pipe(
             map(response => {
                 return new ToDo(response);
             }),
@@ -28,7 +40,8 @@ export class ApiService {
 
     // API: GET /todos:id
     public getTodoById(todoId: number): Observable<ToDo> {
-        return this._httpClient.get(API_URL + '/todos/' + todoId).pipe(
+        const options = this.getRequestOptions();
+        return this._httpClient.get(API_URL + '/todos/' + todoId, options).pipe(
             map(response => {
                 return new ToDo(response);
             }),
@@ -38,7 +51,8 @@ export class ApiService {
     // TODO: Refactor this code, and combine to one getTodosAmount
     // API: GET /todos (only active amount)
     public getActiveTodosAmount(): Observable<number> {
-        return this._httpClient.get(API_URL + '/todos').pipe(
+        const options = this.getRequestOptions();
+        return this._httpClient.get(API_URL + '/todos', options).pipe(
             map(response => {
                 const todos: ToDo[] = [];
                 // console.log(response[0]);
@@ -56,7 +70,8 @@ export class ApiService {
 
     // API: GET /todos (all todos amount)
     public getAllTodosAmount(): Observable<number> {
-        return this._httpClient.get(API_URL + '/todos').pipe(
+        const options = this.getRequestOptions();
+        return this._httpClient.get(API_URL + '/todos', options).pipe(
             map(response => {
                 // console.log(Object.keys(response));
                 return Object.keys(response).length;
@@ -66,7 +81,8 @@ export class ApiService {
 
     // API: GET /todos (according to activeRouteState: 0 - All todos, 1 - only active, 2 - only completed)
     public getAllTodos(activeRouteState: number): Observable<ToDo[]> {
-        return this._httpClient.get(API_URL + '/todos').pipe(
+        const options = this.getRequestOptions();
+        return this._httpClient.get(API_URL + '/todos', options).pipe(
             map(response => {
                 const todos: ToDo[] = [];
 
@@ -95,7 +111,8 @@ export class ApiService {
 
     // API: PUT /todos
     public updateTodo(todo: ToDo): Observable<ToDo> {
-        return this._httpClient.put(API_URL + '/todos/' + todo.id, todo).pipe(
+        const options = this.getRequestOptions();
+        return this._httpClient.put(API_URL + '/todos/' + todo.id, todo, options).pipe(
             map(response => {
                 return new ToDo(response);
             }),
@@ -104,16 +121,18 @@ export class ApiService {
 
     // API: DELETE /todos:id
     public deleteTodoById(todoId: number): Observable<null> {
-        return this._httpClient.delete(API_URL + '/todos/' + todoId).pipe(
+        const options = this.getRequestOptions();
+        return this._httpClient.delete(API_URL + '/todos/' + todoId, options).pipe(
             map(response => null),
             catchError(this.handleError));
     }
 
     // API: PUT /todos (delete completed todos)
     public clearCompleted(activeRouteState: number): Observable<ToDo[]> {
+        const options = this.getRequestOptions();
         console.log(`%cThis part is under construction`, this.consoleTextColorService);
 
-        return this._httpClient.get(API_URL + '/todos').pipe(
+        return this._httpClient.get(API_URL + '/todos', options).pipe(
             map(response => {
                 const todos: ToDo[] = [];
 
@@ -134,11 +153,14 @@ export class ApiService {
             catchError(this.handleError));
     }
 
-    public signIn(username: string, password: string) {
-        return this._httpClient.post(API_URL + '/sign-in', { username, password }).pipe(
-            map(response => response),
-            catchError(this.handleError)
-        );
+    getRequestOptions() {
+        const httpOptions =  {
+            headers: new HttpHeaders({
+                'Authorization': 'Bearer ' + this._sessionStorage.accessToken
+            })
+        };
+
+        return httpOptions;
     }
 
     private handleError(error: Response | any) {

@@ -49,6 +49,9 @@ import { Autosize } from 'ng-autosize/src/autosize.directive';
 import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatTooltipModule, MatCardModule } from '@angular/material';
 import { Utils } from '@app/_common/utils';
 
+// Guards
+import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -98,7 +101,8 @@ import { Utils } from '@app/_common/utils';
         Utils,
         TagLayerService,
         SessionStorageService,
-        AuthService
+        AuthService,
+        CanActivateTodosGuard
     ],
     bootstrap: [AppComponent],
     entryComponents: [DialogDeleteComponent, DialogMoreComponent]

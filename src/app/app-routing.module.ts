@@ -8,6 +8,9 @@ import { TodosCompletedResolver } from '@app/_resolvers/todos-completed.resolver
 import { TodosFilterHashtagResolver } from '@app/_resolvers/todos-filter-hashtag.resolver';
 import { SignInComponent } from '@app/sign-in/sign-in.component';
 
+// Guards
+import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
+
 const routes: Routes = [
     {
         path: '',
@@ -21,6 +24,9 @@ const routes: Routes = [
     {
         path: 'todos',
         component: TodosComponent,
+        canActivate: [
+            CanActivateTodosGuard
+        ],
         resolve: {
             resolverData: TodosResolver
         }
