@@ -14,27 +14,30 @@ server.use(middlewares);
 server.use(bodyParser.json());
 
 // Handle sign-in request
-server.post('/sing-in', (req, res) => {
+server.post('/sign-in', (req, res) => {
+    console.log('in Post Method');
     const username = req.body.username;
     const password = req.body.password;
-
     if (username === 'demo' && password === 'demo') {
-        req.json({
+        res.json({
             name: 'Demo user',
             token: jwtToken
         });
-    }
 
-    res.send(422, 'Invalid username and password');
+        return;
+    }
+    // res.send(422, 'Invalid username and password');
+    res.status(422).send('Invalid username and password');
 });
 
 // Protect other routes
 server.use((req, res, next) => {
-    if (isAuthorised(req)) {
-        console.log('Access granged');
+    console.log('in Use Method');
+    if (isAuthorized(req)) {
+        console.log('(JSON-SERVER) Access granted');
         next();
     } else {
-        console.log('Access denied, invalid JWT');
+        console.log('(JSON-SERVER) Access denied, invalid JWT');
         res.sendStatus(401);
     }
 });
@@ -48,7 +51,8 @@ server.listen(3000, () => {
 });
 
 // Check whether request is allowed
-function isAuthorised(req) {
+function isAuthorized(req) {
+    console.log('isAuthorized?');
     let bearer = req.get('Authorization');
     if (bearer === 'Bearer ' + jwtToken) {
         return true;

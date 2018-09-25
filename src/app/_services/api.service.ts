@@ -23,7 +23,10 @@ export class ApiService {
 
     public signIn(username: string, password: string) {
         return this._httpClient.post(API_URL + '/sign-in', { username, password }).pipe(
-            map(response => response),
+            map(response => {
+                console.error(`%cApiService::response`, this.consoleTextColorService, response);
+                return response;
+            }),
             catchError(this.handleError)
         );
     }

@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent implements OnInit {
 
+    consoleTextColorComponent = 'color: cadetblue;';
+
     public frm: FormGroup;
 
     public isBusy = false;
