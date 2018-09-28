@@ -15,14 +15,22 @@ server.use(bodyParser.json());
 
 // Handle sign-in request
 server.post('/sign-in', (req, res) => {
-    console.log('in Post Method');
     const username = req.body.username;
     const password = req.body.password;
+
+    console.log('in Post Method');
+    console.log('  req.body', req.body);
+    console.log('   username: ', username);
+    console.log('   password: ', password);
+
     if (username === 'demo' && password === 'demo') {
         res.json({
             name: 'Demo user',
             token: jwtToken
         });
+
+        console.log('   token set!!!');
+        console.log('   res:', res);
 
         return;
     }

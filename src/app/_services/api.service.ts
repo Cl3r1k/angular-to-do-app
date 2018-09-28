@@ -32,6 +32,22 @@ export class ApiService {
         );
     }
 
+    // public signIn(username: string, password: string) {
+    //     return this.http
+    //       .post(API_URL + '/sign-in', {
+    //         username,
+    //         password
+    //       })
+    //       .pipe(
+    //         map(response => {
+    //             // console.error(`%cApiService::response `, this.consoleTextColorService, response);
+    //             console.log('ApiService response: ', response);
+    //             return response.json();
+    //         }),
+    //         catchError(this.handleError)
+    //     );
+    //   }
+
     // API: POST /todos
     public createTodo(todo: ToDo): Observable<ToDo> {
         const options = this.getRequestOptions();
