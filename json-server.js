@@ -18,19 +18,11 @@ server.post('/sign-in', (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    console.log('in Post Method');
-    console.log('  req.body', req.body);
-    console.log('   username: ', username);
-    console.log('   password: ', password);
-
     if (username === 'demo' && password === 'demo') {
         res.json({
             name: 'Demo user',
             token: jwtToken
         });
-
-        console.log('   token set!!!');
-        console.log('   res:', res);
 
         return;
     }
@@ -40,7 +32,6 @@ server.post('/sign-in', (req, res) => {
 
 // Protect other routes
 server.use((req, res, next) => {
-    console.log('in Use Method');
     if (isAuthorized(req)) {
         console.log('(JSON-SERVER) Access granted');
         next();
@@ -60,7 +51,6 @@ server.listen(3000, () => {
 
 // Check whether request is allowed
 function isAuthorized(req) {
-    console.log('isAuthorized?');
     let bearer = req.get('Authorization');
     if (bearer === 'Bearer ' + jwtToken) {
         return true;

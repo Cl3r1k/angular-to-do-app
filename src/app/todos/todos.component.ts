@@ -4,9 +4,10 @@ import { ToDo } from '@app/_models/to-do';
 // Services
 import { TodoService } from '@app/_services/todo.service';
 import { TodoOrderService } from '@app/_services/todo-order.service';
+import { AuthService } from '@app/_services/auth.service';
 
 // Routes
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // Components
 import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.component';
@@ -48,7 +49,9 @@ export class TodosComponent implements OnInit, OnDestroy {
     constructor(private _todoService: TodoService,
         private _route: ActivatedRoute,
         public dialog: MatDialog,
-        private _todoOrderService: TodoOrderService) { }
+        private _todoOrderService: TodoOrderService,
+        private _authService: AuthService,
+        private _router: Router) { }
 
     public ngOnInit() {
         this._route.data.pipe(
@@ -358,6 +361,11 @@ export class TodosComponent implements OnInit, OnDestroy {
         }
 
         return isPresent;
+    }
+
+    doSignOut() {
+        this._authService.doSignOut();
+        this._router.navigate(['/sign-in']);
     }
 
 }
