@@ -72,7 +72,10 @@ Todos:
                 ✔ Ctrl + click on link to follow the link @done(18-08-15 12:00)
                 ✔ Hint for link (hint message 'Ctrl + click to follow link') @done(18-08-31 10:15)
 
-            ☐ Use Chrome Audit to test the app (and check for error when cancel running process) <========================================================= CURRENT TASK
+            ☐ Complete 'Part 5 — Add authentication to protect private content' from `sitepoint.com` <========================================================= CURRENT TASK
+                ☐ Fix button.sign-out-button styles with grids
+                ☐ Fix msg '[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq)'
+            ☐ Use Chrome Audit to test the app (and check for error when cancel running process)
 
             ✔ Use other type of tooltip (material not looks good) @done(18-09-15 09:34)
                 ✔ Add delay for popups (use another lib for popups, not material) @done(18-09-07 09:44)
