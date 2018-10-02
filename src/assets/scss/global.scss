@@ -72,14 +72,20 @@ body {
         grid-column: span 12;
         background-color: $gridContentColor;
         // padding: 10px 0;
-        .sign-out-button {
-            display: block;
-            background-color: rgba(175, 47, 47, 0.15);
-            width: 100%;
-            padding: 16px;
-            font-size: 20px;
-            cursor: pointer;
-            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+        .sign-out-container {
+            display: grid;
+            grid-template-columns: repeat(16, 1fr);
+            margin-top: 50px;
+            .sign-out-button {
+                grid-column: 6/12;
+                // display: block;
+                background-color: rgba(175, 47, 47, 0.15);
+                width: 100%;
+                padding: 16px;
+                font-size: 20px;
+                cursor: pointer;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+            }
         }
     }
     .footer-container {

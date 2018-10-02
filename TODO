@@ -72,9 +72,6 @@ Todos:
                 ✔ Ctrl + click on link to follow the link @done(18-08-15 12:00)
                 ✔ Hint for link (hint message 'Ctrl + click to follow link') @done(18-08-31 10:15)
 
-            ☐ Complete 'Part 5 — Add authentication to protect private content' from `sitepoint.com` <========================================================= CURRENT TASK
-                ☐ Fix button.sign-out-button styles with grids
-                ☐ Fix msg '[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq)'
             ☐ Use Chrome Audit to test the app (and check for error when cancel running process)
 
             ✔ Use other type of tooltip (material not looks good) @done(18-09-15 09:34)
@@ -107,7 +104,16 @@ Todos:
 
             ✔ Update 'concurrently' to latest version (4.0.1) @done(18-09-16 09:35)
 
+            ✔ Complete 'Part 5 — Add authentication to protect private content' from `sitepoint.com` @done(18-10-01 09:08)
+                ✔ Fix button.sign-out-button styles with grids @done(18-10-01 09:34)
+                ✔ Fix msg '[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq)' @done(18-10-01 09:42)
+                ☐ Move styles form 'SignInComponent' to separate scss file <========================================================= CURRENT TASK
+                ☐ The session data is lost when the browser refreshes the page (use sessionStorage or localStorage or consider cookies as a solution)
             ☐ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`)
+
+            ☐ Complete 'Part 6 — How to Update Angular Projects to the latest version' from `sitepoint.com`
+
+            ☐ Consider to cancel editing, if user clicks on other area
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)

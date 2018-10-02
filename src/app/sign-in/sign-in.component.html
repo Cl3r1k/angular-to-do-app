@@ -3,7 +3,7 @@
         <h1>Todos</h1>
 
         <!-- Username input -->
-        <input type='text' formControlName='username' placeholder='Your username'>
+        <input type='text' formControlName='username' placeholder='Your username' autocomplete='username'>
 
         <!-- Username validation message -->
         <div class='input-errors' *ngIf="(frm.get('username').invalid && frm.get('username').touched) || showInputErrors">
@@ -13,7 +13,7 @@
         </div>
 
         <!-- Password input -->
-        <input type='password' formControlName='password' placeholder='Your password'>
+        <input type='password' formControlName='password' placeholder='Your password' autocomplete='password'>
 
         <!-- Passrword validation message -->
         <div class='input-errors' *ngIf="(frm.get('password').invalid && frm.get('password').touched) || showInputErrors">
@@ -28,7 +28,7 @@
         </div>
 
         <!-- Sign-in button -->
-        <button (click)='doSignIn()' [disabled]='isBusy'>
+        <button class='sign-in-button' (click)='doSignIn()' [disabled]='isBusy'>
             <ng-template [ngIf]='!isBusy'>Sign in</ng-template>
             <ng-template [ngIf]='isBusy'>Singing in, please wait...</ng-template>
         </button>
