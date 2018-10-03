@@ -107,9 +107,9 @@ Todos:
             ✔ Complete 'Part 5 — Add authentication to protect private content' from `sitepoint.com` @done(18-10-01 09:08)
                 ✔ Fix button.sign-out-button styles with grids @done(18-10-01 09:34)
                 ✔ Fix msg '[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq)' @done(18-10-01 09:42)
-                ☐ Move styles form 'SignInComponent' to separate scss file <========================================================= CURRENT TASK
+                ✔ Move styles from 'sign-in.component.scss' to '_sign-in.scss' @done(18-10-02 09:26)
                 ☐ The session data is lost when the browser refreshes the page (use sessionStorage or localStorage or consider cookies as a solution)
-            ☐ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`)
+            ☐ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) <========================================================= CURRENT TASK
 
             ☐ Complete 'Part 6 — How to Update Angular Projects to the latest version' from `sitepoint.com`
 
