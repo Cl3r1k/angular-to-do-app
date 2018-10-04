@@ -141,6 +141,7 @@ Todos:
                 ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here `https://github.com/stevepapa/ng-autosize/issues/9`)
             ☐ Rewrite part for DnD (use `https://github.com/atlassian/react-beautiful-dnd` and adopt it to angular)
                 ☐ Use custom cursor for DnD icon (look here `https://github.com/atlassian/react-beautiful-dnd/blob/master/src/view/style-marshal/get-styles.js#L110`)
+            ☐ Change styles in '_sign-in.scss' to grids
 
         ☐ Use some UI ideas for dialog like here `https://comining.io/account/wallets#`        
         ☐ Handle error properly as Observable (look here `http://pradeeploganathan.com/angular/creating-a-service-in-angular-5-with-rxjs-5-5/`)
