@@ -110,6 +110,7 @@ Todos:
                 ✔ Move styles from 'sign-in.component.scss' to '_sign-in.scss' @done(18-10-02 09:26)
                 ☐ The session data is lost when the browser refreshes the page (use sessionStorage or localStorage or consider cookies as a solution)
             ☐ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) <========================================================= CURRENT TASK
+            ☐ Look example in 'angular-realworld-example-app' on GH
 
             ☐ Complete 'Part 6 — How to Update Angular Projects to the latest version' from `sitepoint.com`
 
