@@ -58,6 +58,57 @@ const routes: Routes = [
     }
 ];
 
+// TODO: Update routes, and make 'active' and 'completed' as children of 'todos'
+// Looks like only 'TodosResolver' used for each child, add '' child for todos
+// const routes: Routes = [
+//     {
+//         path: '',
+//         redirectTo: 'sign-in',
+//         pathMatch: 'full'
+//     },
+//     {
+//         path: 'sign-in',
+//         component: SignInComponent
+//     },
+//     {
+//         path: 'todos',
+//         component: TodosComponent,
+//         canActivate: [
+//             CanActivateTodosGuard
+//         ],
+//         resolve: {
+//             resolverData: TodosResolver
+//         },
+//         children: [
+//             {
+//                 path: 'active',
+//                 component: TodosComponent,
+//                 resolve: {
+//                     resolverData: TodosActiveResolver
+//                 }
+//             },
+//             {
+//                 path: 'completed',
+//                 component: TodosComponent,
+//                 resolve: {
+//                     resolverData: TodosCompletedResolver
+//                 }
+//             }
+//         ]
+//     },
+//     {
+//         path: 'todos/filter/hashtag/:hashtag',
+//         component: TodosComponent,
+//         resolve: {
+//             resolverData: TodosFilterHashtagResolver
+//         }
+//     },
+//     {
+//         path: '**',
+//         component: PageNotFoundComponent
+//     }
+// ];
+
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule],
