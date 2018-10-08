@@ -34,6 +34,9 @@ const routes: Routes = [
     {
         path: 'todos/active',
         component: TodosComponent,
+        canActivate: [
+            CanActivateTodosGuard
+        ],
         resolve: {
             resolverData: TodosActiveResolver
         }
@@ -41,6 +44,9 @@ const routes: Routes = [
     {
         path: 'todos/completed',
         component: TodosComponent,
+        canActivate: [
+            CanActivateTodosGuard
+        ],
         resolve: {
             resolverData: TodosCompletedResolver
         }
@@ -48,6 +54,9 @@ const routes: Routes = [
     {
         path: 'todos/filter/hashtag/:hashtag',
         component: TodosComponent,
+        canActivate: [
+            CanActivateTodosGuard
+        ],
         resolve: {
             resolverData: TodosFilterHashtagResolver
         }
@@ -80,6 +89,13 @@ const routes: Routes = [
 //             resolverData: TodosResolver
 //         },
 //         children: [
+//             {
+//                 path: '',
+//                 component: TodosComponent,
+//                 resolve: {
+//                     resolverData: TodosResolver
+//                 },
+//             },
 //             {
 //                 path: 'active',
 //                 component: TodosComponent,

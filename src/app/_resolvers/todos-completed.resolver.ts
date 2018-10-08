@@ -14,7 +14,7 @@ export class TodosCompletedResolver implements Resolve<Observable<ResolverData>>
     constructor(private _todoService: TodoService) { }
 
     public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ResolverData> {
-        // console.log(`%cresolve() in TodosResolver`, this.consoleTextColorResolver);
+        console.log(`%cresolve() in TodosCompletedResolver`, this.consoleTextColorResolver);
 
         return this._todoService.initIndexedDbBase().pipe(
             switchMap(() => this._todoService.getAllTodos(2).pipe(
