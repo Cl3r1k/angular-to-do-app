@@ -97,6 +97,7 @@ Todos:
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                     ☐ After fix position remove all 'matTooltip' (only on left in todo-list-item-view.component.html for fixing position purpose)
+                ☐ User firebase as backend? (`https://www.sitepoint.com/authenticating-firebase-angular-auth0-1/`)
                 
 
             ✔ Update tests for 'DynamicContentDirective' @done(18-09-12 10:26)
@@ -112,7 +113,8 @@ Todos:
             ✔ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) @done(18-10-08 09:35)
             ☐ Look example in 'angular-realworld-example-app' on GH
 
-            ☐ Complete 'Part 6 — How to Update Angular Projects to the latest version' from `sitepoint.com` <========================================================= CURRENT TASK
+            ✔ Complete 'Part 6 — How to Update Angular Projects to the latest version' from `sitepoint.com` @done(18-10-09 10:41)
+                ☐ Update CLI <========================================================= CURRENT TASK
 
             ☐ Consider to cancel editing, if user clicks on other area
 
@@ -199,6 +201,10 @@ Todos:
             `компоненты, роутинг между ними, гард на блокировку к админке (простой return false ), а потом уже форма авторизации для сбора логинь/пароль, сервис для проверки логина`
             `1)верстаю компоненты (шаблон) интерфейса админки, авторизации, регистрации. 2) это организовываю регистрацию пользователей (добавления в БД) 3) Далее авторизацию (проверку данных из БД) 4) предотвращение открытия админки, если сразу хотят перейти в нею по url,если он не было до этого авторизован, как админ`
             `локалсторадж для хранения авторизации, форма авторизации: реактивная форма + валидаторы, включая кастомный для сверки паролей, если 2 поля`
+
+        ☐ Implement MEAN usefull links below:
+            `https://www.sitepoint.com/mean-stack-angular-2-angular-cli/`
+            `https://www.sitepoint.com/user-authentication-mean-stack/`
 
     Future:
         ☐ Options window:
