@@ -110,15 +110,16 @@ Todos:
                 ✔ Fix msg '[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq)' @done(18-10-01 09:42)
                 ✔ Move styles from 'sign-in.component.scss' to '_sign-in.scss' @done(18-10-02 09:26)
                 ☐ The session data is lost when the browser refreshes the page (use sessionStorage or localStorage or consider cookies as a solution)
-            ✔ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) @done(18-10-08 09:35)
-            ☐ Look example in 'angular-realworld-example-app' on GH
-                ☐ Update broken tests
+            ✔ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) @done(18-10-08 09:35)            
+                ✔ Update broken tests @done(18-10-12 09:52)
                     ✔ Update tests for 'CanActivateTodosGuard' @done(18-10-11 10:06)
-                    ☐ Update tests for 'AppComponent' (look here `https://angular.io/guide/testing`) <========================================================= CURRENT TASK
+                    ✔ Update tests for 'AppComponent' (look here `https://angular.io/guide/testing#components-with-routerlink`) @done(18-10-12 09:21)
+                    ✔ Update tests for 'SignInComponent' @done(18-10-12 09:53)
+            ☐ Look example in 'angular-realworld-example-app' on GH
 
             ✔ Complete 'Part 6 — How to Update Angular Projects to the latest version' from `sitepoint.com` @done(18-10-09 10:41)
                 ✔ Update CLI to lastest version (6.1.9) @done(18-10-10 10:15)
-                    ☐ Fix 'high severity security vulnerability detected in cryptiles'
+                    ☐ Fix 'high severity security vulnerability detected in cryptiles' <========================================================= CURRENT TASK
 
             ☐ Consider to cancel editing, if user clicks on other area
 

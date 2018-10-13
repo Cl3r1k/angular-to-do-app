@@ -9,7 +9,7 @@ export class DynamicContentDirective implements OnDestroy {
     private _showDelay = 300;         // The default value for show delay is 300
     private _toolTipTitle = 'Ctrl + click to follow link';
     private _placement = 'top';
-    private _delay = '500';
+    private _delay = 500;
     tooltip: HTMLElement;
     offset = 10;                      // Distance between parent element and tooltip
     isHidePending = false;
