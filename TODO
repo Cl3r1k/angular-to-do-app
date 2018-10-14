@@ -119,9 +119,9 @@ Todos:
 
             ✔ Complete 'Part 6 — How to Update Angular Projects to the latest version' from `sitepoint.com` @done(18-10-09 10:41)
                 ✔ Update CLI to lastest version (6.1.9) @done(18-10-10 10:15)
-                    ☐ Fix 'high severity security vulnerability detected in cryptiles' <========================================================= CURRENT TASK
+                    ✔ Fix 'high severity security vulnerability detected in cryptiles' @done(18-10-13 09:24)
 
-            ☐ Consider to cancel editing, if user clicks on other area
+            ☐ Consider to cancel editing, if user clicks on other area <========================================================= CURRENT TASK
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
@@ -207,7 +207,7 @@ Todos:
             `1)верстаю компоненты (шаблон) интерфейса админки, авторизации, регистрации. 2) это организовываю регистрацию пользователей (добавления в БД) 3) Далее авторизацию (проверку данных из БД) 4) предотвращение открытия админки, если сразу хотят перейти в нею по url,если он не было до этого авторизован, как админ`
             `локалсторадж для хранения авторизации, форма авторизации: реактивная форма + валидаторы, включая кастомный для сверки паролей, если 2 поля`
 
-        ☐ Implement MEAN usefull links below:
+        ☐ Implement MEAN - usefull links below:
             `https://www.sitepoint.com/mean-stack-angular-2-angular-cli/`
             `https://www.sitepoint.com/user-authentication-mean-stack/`
 
