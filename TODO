@@ -97,7 +97,6 @@ Todos:
                 ☐ Fix fast multiple mouseenter events (for example if you move cursor fast on element, then away and again on it tooltip now showed) (Delayed for some time)
                 ☐ Fix tooltip position (not centered) (grid styles (sticky footer) <-- The cause of wrong tooltip position) (Delayed for some time)
                     ☐ After fix position remove all 'matTooltip' (only on left in todo-list-item-view.component.html for fixing position purpose)
-                ☐ User firebase as backend? (`https://www.sitepoint.com/authenticating-firebase-angular-auth0-1/`)
                 
 
             ✔ Update tests for 'DynamicContentDirective' @done(18-09-12 10:26)
@@ -115,13 +114,14 @@ Todos:
                     ✔ Update tests for 'CanActivateTodosGuard' @done(18-10-11 10:06)
                     ✔ Update tests for 'AppComponent' (look here `https://angular.io/guide/testing#components-with-routerlink`) @done(18-10-12 09:21)
                     ✔ Update tests for 'SignInComponent' @done(18-10-12 09:53)
-            ☐ Look example in 'angular-realworld-example-app' on GH
+            ☐ Look example in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` ) <========================================================= CURRENT TASK
+            ☐ User firebase as backend? (`https://www.sitepoint.com/authenticating-firebase-angular-auth0-1/`)
 
             ✔ Complete 'Part 6 — How to Update Angular Projects to the latest version' from `sitepoint.com` @done(18-10-09 10:41)
                 ✔ Update CLI to lastest version (6.1.9) @done(18-10-10 10:15)
                     ✔ Fix 'high severity security vulnerability detected in cryptiles' @done(18-10-13 09:24)
 
-            ☐ Consider to cancel editing, if user clicks on other area <========================================================= CURRENT TASK
+            ☐ Consider to cancel editing, if user clicks on other area
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
