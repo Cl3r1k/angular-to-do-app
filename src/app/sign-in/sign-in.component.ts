@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '@app/_services/api.service';
 import { AuthService } from '@app/_services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-sign-in',
@@ -23,7 +23,8 @@ export class SignInComponent implements OnInit {
         private _apiService: ApiService,
         private _authService: AuthService,
         private _formBuilder: FormBuilder,
-        private _router: Router
+        private _router: Router,
+        private _route: ActivatedRoute
     ) {
         this.frm = _formBuilder.group({
             username: ['', Validators.required],
@@ -32,6 +33,7 @@ export class SignInComponent implements OnInit {
     }
 
     ngOnInit() {
+        //
     }
 
     public doSignIn() {

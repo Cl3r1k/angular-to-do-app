@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+// Resolvers
 import { TodosResolver } from '@app/_resolvers/todos.resolver';
 import { TodosActiveResolver } from '@app/_resolvers/todos-active.resolver';
 import { TodosCompletedResolver } from '@app/_resolvers/todos-completed.resolver';
