@@ -19,6 +19,8 @@ export class SignInComponent implements OnInit {
     public hasFailed = false;
     public showInputErrors = false;
 
+    authType = '';
+
     constructor(
         private _apiService: ApiService,
         private _authService: AuthService,
@@ -33,7 +35,10 @@ export class SignInComponent implements OnInit {
     }
 
     ngOnInit() {
-        //
+        this._route.url.subscribe(data => {
+            this.authType = data[data.length - 1].path;
+            console.log('%cauthType: ', this.consoleTextColorComponent, this.authType);
+        });
     }
 
     public doSignIn() {

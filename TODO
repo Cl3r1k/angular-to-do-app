@@ -114,8 +114,11 @@ Todos:
                     ✔ Update tests for 'CanActivateTodosGuard' @done(18-10-11 10:06)
                     ✔ Update tests for 'AppComponent' (look here `https://angular.io/guide/testing#components-with-routerlink`) @done(18-10-12 09:21)
                     ✔ Update tests for 'SignInComponent' @done(18-10-12 09:53)
-            ☐ Look example in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` ) <========================================================= CURRENT TASK
+            ☐ Look example in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` )
+                ☐ Test, can we use their api to get users data? (`https://conduit.productionready.io/api/users/login`) <========================================================= CURRENT TASK
+                ☐ Check `https://angular.realworld.io/profile/Cl3r1k` what kind of data fetched for 'My Posts'
             ☐ User firebase as backend? (`https://www.sitepoint.com/authenticating-firebase-angular-auth0-1/`)
+            ☐ For JWTTokens look example in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app/blob/master/src/app/core/services/jwt.service.ts` ) 
 
             ✔ Complete 'Part 6 — How to Update Angular Projects to the latest version' from `sitepoint.com` @done(18-10-09 10:41)
                 ✔ Update CLI to lastest version (6.1.9) @done(18-10-10 10:15)
