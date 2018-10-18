@@ -115,8 +115,8 @@ Todos:
                     ✔ Update tests for 'AppComponent' (look here `https://angular.io/guide/testing#components-with-routerlink`) @done(18-10-12 09:21)
                     ✔ Update tests for 'SignInComponent' @done(18-10-12 09:53)
             ☐ Look example in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` )
-                ☐ Test, can we use their api to get users data? (`https://conduit.productionready.io/api/users/login`) <========================================================= CURRENT TASK
-                ☐ Check `https://angular.realworld.io/profile/Cl3r1k` what kind of data fetched for 'My Posts'
+                ✔ Test, can we use their api to get users data? (`https://conduit.productionready.io/api/users/login`) - Nope @done(18-10-17 10:05)
+                ☐ Check `https://angular.realworld.io/profile/Cl3r1k` what kind of data fetched for 'My Posts' <========================================================= CURRENT TASK
             ☐ User firebase as backend? (`https://www.sitepoint.com/authenticating-firebase-angular-auth0-1/`)
             ☐ For JWTTokens look example in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app/blob/master/src/app/core/services/jwt.service.ts` ) 
 

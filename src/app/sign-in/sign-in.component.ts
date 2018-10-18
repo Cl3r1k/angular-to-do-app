@@ -35,6 +35,7 @@ export class SignInComponent implements OnInit {
     }
 
     ngOnInit() {
+        // This part will be used for register/login
         this._route.url.subscribe(data => {
             this.authType = data[data.length - 1].path;
             console.log('%cauthType: ', this.consoleTextColorComponent, this.authType);
