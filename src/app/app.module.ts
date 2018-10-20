@@ -28,6 +28,7 @@ import { TagService } from '@app/_services/tag.service';
 import { TagLayerService } from '@app/_services/tag-layer.service';
 import { SessionStorageService } from '@app/_services/session-storage.service';
 import { AuthService } from '@app/_services/auth.service';
+import { JwtService } from '@app/_services/jwt.service';
 
 // Routings
 import { AppRoutingModule } from '@app/app-routing.module';
@@ -102,7 +103,8 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         TagLayerService,
         SessionStorageService,
         AuthService,
-        CanActivateTodosGuard
+        CanActivateTodosGuard,
+        JwtService
     ],
     bootstrap: [AppComponent],
     entryComponents: [DialogDeleteComponent, DialogMoreComponent]

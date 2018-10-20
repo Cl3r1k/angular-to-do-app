@@ -109,14 +109,17 @@ Todos:
                 ✔ Fix msg '[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq)' @done(18-10-01 09:42)
                 ✔ Move styles from 'sign-in.component.scss' to '_sign-in.scss' @done(18-10-02 09:26)
                 ☐ The session data is lost when the browser refreshes the page (use sessionStorage or localStorage or consider cookies as a solution)
+                    ☐ Use localStorage (example `https://github.com/gothinkster/angular-realworld-example-app/blob/master/src/app/core/services/user.service.ts#L41`) <========================================================= CURRENT TASK
+                        ✔ Add 'JwtService' @done(18-10-19 10:02)
+                            ☐ Update test for 'JwtService'
             ✔ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) @done(18-10-08 09:35)            
                 ✔ Update broken tests @done(18-10-12 09:52)
                     ✔ Update tests for 'CanActivateTodosGuard' @done(18-10-11 10:06)
                     ✔ Update tests for 'AppComponent' (look here `https://angular.io/guide/testing#components-with-routerlink`) @done(18-10-12 09:21)
                     ✔ Update tests for 'SignInComponent' @done(18-10-12 09:53)
-            ☐ Look example in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` )
+            ✔ Look example in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` ) @done(18-10-19 09:20)
                 ✔ Test, can we use their api to get users data? (`https://conduit.productionready.io/api/users/login`) - Nope @done(18-10-17 10:05)
-                ☐ Check `https://angular.realworld.io/profile/Cl3r1k` what kind of data fetched for 'My Posts' <========================================================= CURRENT TASK
+                ✔ Check `https://angular.realworld.io/profile/Cl3r1k` what kind of data fetched for 'My Posts' @done(18-10-19 09:20)
             ☐ User firebase as backend? (`https://www.sitepoint.com/authenticating-firebase-angular-auth0-1/`)
                 ☐ And for GH pages (example here `https://medium.com/pan-labs/dynamic-web-apps-on-github-pages-for-free-ffac2b776d45`)
             ☐ For JWTTokens look example in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app/blob/master/src/app/core/services/jwt.service.ts` ) 

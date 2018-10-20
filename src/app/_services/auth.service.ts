@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { SessionStorageService } from '@app/_services/session-storage.service';
+import { JwtService } from '@app/_services/jwt.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    constructor(private _sessionStorage: SessionStorageService) { }
+    constructor(private _sessionStorage: SessionStorageService, private _jwtService: JwtService) { }
 
     public isSignedIn() {
         return !!this._sessionStorage.accessToken;
@@ -14,6 +15,7 @@ export class AuthService {
 
     public doSignOut() {
         this._sessionStorage.destroy();
+        this.purgeAuth();
     }
 
     public doSignIn(accessToken: string, name: string) {
@@ -23,5 +25,15 @@ export class AuthService {
 
         this._sessionStorage.accessToken = accessToken;
         this._sessionStorage.name = name;
+
+        this.setAuth(this._sessionStorage.accessToken);
+    }
+
+    setAuth(accessToken) {
+        this._jwtService.saveToken(accessToken);
+    }
+
+    purgeAuth() {
+        this._jwtService.destroyToken();
     }
 }
