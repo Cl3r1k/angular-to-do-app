@@ -35,6 +35,12 @@ export class AuthService {
         this._jwtService.saveToken(accessToken);
     }
 
+    populate() {
+        if (this._jwtService.getToken()) {
+            this.doSignIn('demo', this._jwtService.getToken());
+        }
+    }
+
     purgeAuth() {
         this._jwtService.destroyToken();
     }
