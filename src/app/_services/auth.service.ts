@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Services
 import { SessionStorageService } from '@app/_services/session-storage.service';
@@ -9,7 +10,7 @@ import { JwtService } from '@app/_services/jwt.service';
 })
 export class AuthService {
 
-    constructor(private _sessionStorage: SessionStorageService, private _jwtService: JwtService) { }
+    constructor(private _sessionStorage: SessionStorageService, private _jwtService: JwtService, private _router: Router) { }
 
     public isSignedIn() {
         return !!this._sessionStorage.accessToken;
@@ -38,6 +39,7 @@ export class AuthService {
     populate() {
         if (this._jwtService.getToken()) {
             this.doSignIn('demo', this._jwtService.getToken());
+            this._router.navigate(['todos']);
         }
     }
 

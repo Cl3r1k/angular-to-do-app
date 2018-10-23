@@ -16,7 +16,7 @@ import { map, switchMap } from 'rxjs/operators';
 @Injectable()
 export class TodoService {
 
-    serviceState = 1;
+    serviceState = 1;    // Switcher for service 0 - ApiService, 1 - _indexedDbService
     consoleTextColorService = 'color: salmon;';
 
     // TODO: Use only IndexedDbService, and sync data with backend
@@ -141,6 +141,14 @@ export class TodoService {
                         todoList = this.sortListByOrder(todos, todoOrderList);
 
                         // console.log('%cfound todoList: ', this.consoleTextColorService, todoList);
+                        if (todoList.length !== todos.length) {    // If order list is not equal by length with todos list, reset order
+                            const todoOrderListRestored = todos.map(todo => {
+                                return todo.inner_id;
+                            });
+
+                            this._todoOrderService.updateOrder(todoOrderListRestored);
+                            return (todos);
+                        }
 
                         return (todoList);
                     }

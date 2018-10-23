@@ -108,10 +108,10 @@ Todos:
                 ✔ Fix button.sign-out-button styles with grids @done(18-10-01 09:34)
                 ✔ Fix msg '[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq)' @done(18-10-01 09:42)
                 ✔ Move styles from 'sign-in.component.scss' to '_sign-in.scss' @done(18-10-02 09:26)
-                ☐ The session data is lost when the browser refreshes the page (use sessionStorage or localStorage or consider cookies as a solution)
-                    ☐ Use localStorage (example `https://github.com/gothinkster/angular-realworld-example-app/blob/master/src/app/core/services/user.service.ts#L41`) <========================================================= CURRENT TASK
+                ✔ The session data is lost when the browser refreshes the page (use sessionStorage or localStorage or consider cookies as a solution) @done(18-10-22 10:07)
+                    ✔ Use localStorage (example `https://github.com/gothinkster/angular-realworld-example-app/blob/master/src/app/core/services/user.service.ts#L41`) @done(18-10-22 10:07)
                         ✔ Add 'JwtService' @done(18-10-19 10:02)
-                            ☐ Update test for 'JwtService'
+                            ☐ Update test for 'JwtService' <========================================================= CURRENT TASK
             ✔ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) @done(18-10-08 09:35)            
                 ✔ Update broken tests @done(18-10-12 09:52)
                     ✔ Update tests for 'CanActivateTodosGuard' @done(18-10-11 10:06)
@@ -122,13 +122,16 @@ Todos:
                 ✔ Check `https://angular.realworld.io/profile/Cl3r1k` what kind of data fetched for 'My Posts' @done(18-10-19 09:20)
             ☐ User firebase as backend? (`https://www.sitepoint.com/authenticating-firebase-angular-auth0-1/`)
                 ☐ And for GH pages (example here `https://medium.com/pan-labs/dynamic-web-apps-on-github-pages-for-free-ffac2b776d45`)
-            ☐ For JWTTokens look example in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app/blob/master/src/app/core/services/jwt.service.ts` ) 
 
             ✔ Complete 'Part 6 — How to Update Angular Projects to the latest version' from `sitepoint.com` @done(18-10-09 10:41)
                 ✔ Update CLI to lastest version (6.1.9) @done(18-10-10 10:15)
                     ✔ Fix 'high severity security vulnerability detected in cryptiles' @done(18-10-13 09:24)
 
+            ✔ Fix issue: when DB in IndexedDb recreated, but in localStorage order is old @done(18-10-22 10:05)
+
             ☐ Consider to cancel editing, if user clicks on other area
+
+            ☐ Consider to implement app structure like in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` )
 
         ✔ Change styles to CSS-grids @done(18-02-26 09:08)
             ✔ Start grids from TodoListItemViewComponent @done(18-02-18 10:11)
