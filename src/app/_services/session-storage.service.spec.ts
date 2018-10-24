@@ -12,4 +12,6 @@ describe('SessionStorageService', () => {
     it('should be created', inject([SessionStorageService], (service: SessionStorageService) => {
         expect(service).toBeTruthy();
     }));
+
+    // TODO: Rewrite test for 'SessionStorageService' (currently not complete)
 });

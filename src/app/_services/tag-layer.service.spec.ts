@@ -12,4 +12,6 @@ describe('TagLayerService', () => {
     it('should be created', inject([TagLayerService], (service: TagLayerService) => {
         expect(service).toBeTruthy();
     }));
+
+    // TODO: Rewrite test for 'TagLayerService' (currently not complete)
 });

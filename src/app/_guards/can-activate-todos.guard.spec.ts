@@ -21,6 +21,11 @@ describe('Guard: CanActivateTodosGuard', () => {
     });
 
     it('should ...', inject([CanActivateTodosGuard], (guard: CanActivateTodosGuard) => {
+        // Arrange
+
+        // Act
+
+        // Assert
         expect(guard).toBeTruthy();
     }));
 
