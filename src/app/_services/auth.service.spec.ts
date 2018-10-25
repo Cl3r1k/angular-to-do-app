@@ -20,5 +20,5 @@ describe('AuthService', () => {
         expect(service).toBeTruthy();
     }));
 
-    // TODO: Rewrite test for 'AuthService' (currently not complete)
+    // TODO: Rewrite test for 'AuthService' (currently is not complete)
 });
