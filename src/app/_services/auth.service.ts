@@ -10,14 +10,14 @@ import { JwtService } from '@app/_services/jwt.service';
 })
 export class AuthService {
 
-    constructor(private _sessionStorage: SessionStorageService, private _jwtService: JwtService, private _router: Router) { }
+    constructor(private _sessionStorageService: SessionStorageService, private _jwtService: JwtService, private _router: Router) { }
 
     public isSignedIn() {
-        return !!this._sessionStorage.accessToken;
+        return !!this._sessionStorageService.accessToken;
     }
 
     public doSignOut() {
-        this._sessionStorage.destroy();
+        this._sessionStorageService.destroy();
         this.purgeAuth();
     }
 
@@ -26,10 +26,10 @@ export class AuthService {
             return;
         }
 
-        this._sessionStorage.accessToken = accessToken;
-        this._sessionStorage.name = name;
+        this._sessionStorageService.accessToken = accessToken;
+        this._sessionStorageService.name = name;
 
-        this.setAuth(this._sessionStorage.accessToken);
+        this.setAuth(this._sessionStorageService.accessToken);
     }
 
     setAuth(accessToken) {
