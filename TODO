@@ -113,8 +113,8 @@ Todos:
                         ✔ Add 'JwtService' @done(18-10-19 10:02)
                             ✔ Update test for 'JwtService' @done(18-10-24 09:47)
                             ✔ Update test for 'AuthService' @done(18-10-25 10:29)
-                            ☐ Update test for 'SessionStorageService' <========================================================= CURRENT TASK
-                            ☐ Update test for 'SignInComponent'
+                            ✔ Update test for 'SessionStorageService' @done(18-10-26 09:40)
+                            ☐ Update test for 'SignInComponent' <========================================================= CURRENT TASK
             ✔ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) @done(18-10-08 09:35)            
                 ✔ Update broken tests @done(18-10-12 09:52)
                     ✔ Update tests for 'CanActivateTodosGuard' @done(18-10-11 10:06)
@@ -133,6 +133,9 @@ Todos:
             ✔ Fix issue: when DB in IndexedDb recreated, but in localStorage order is old @done(18-10-22 10:05)
 
             ☐ Consider to cancel editing, if user clicks on other area
+
+            ☐ Update CLI to v7
+            ☐ Consider to use Material 'DragDropModule'
 
             ☐ Consider to implement app structure like in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` )
 
