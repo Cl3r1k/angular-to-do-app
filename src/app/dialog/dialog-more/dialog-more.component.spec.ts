@@ -9,7 +9,7 @@ import { DialogMoreComponent } from '@app/dialog/dialog-more/dialog-more.compone
 import { MatDialogRef, MAT_DIALOG_DATA, MatInputModule, MatCheckboxModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MatDialogRefMock } from '@app/_testing/mat-dialog-mock';
 
-describe('DialogMoreComponent', () => {
+describe('Component: DialogMoreComponent', () => {
     let component: DialogMoreComponent;
     let fixture: ComponentFixture<DialogMoreComponent>;
     let dialogCloseBtnEl;

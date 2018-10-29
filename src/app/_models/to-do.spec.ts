@@ -3,7 +3,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { ToDo } from '@app/_models/to-do';
 
 
-describe(`ToDo`, () => {
+describe(`Model: ToDo`, () => {
     it(`Should create an instance (async)`, async(() => {
         // Arrange
 

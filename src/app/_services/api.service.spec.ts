@@ -5,7 +5,7 @@ import { environment } from '@env/environment';
 
 import { ApiService } from '@app/_services/api.service';
 
-describe('ApiService', () => {
+describe('Service: ApiService', () => {
 
     let injector: TestBed;
     let service: ApiService;

@@ -5,7 +5,7 @@ import { ToDo } from '@app/_models/to-do';
 import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.directive';
 
-describe('TodoListFooterComponent', () => {
+describe('Component: TodoListFooterComponent', () => {
     let component: TodoListFooterComponent;
     let fixture: ComponentFixture<TodoListFooterComponent>;
     let expectedtodosAllAmount: number;

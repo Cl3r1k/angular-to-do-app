@@ -15,7 +15,7 @@ import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
 import { TagService } from '@app/_services/tag.service';
 import { TagMockService } from '@app/_services/tag-mock.service';
 
-describe('TodoListItemViewComponent', () => {
+describe('Component: TodoListItemViewComponent', () => {
     let component: TodoListItemViewComponent;
     let fixture: ComponentFixture<TodoListItemViewComponent>;
     let toggleEl;

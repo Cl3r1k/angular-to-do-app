@@ -17,7 +17,7 @@ import { ParseTagPipe } from '@app/_pipes/parse-tag.pipe';
 import { TagService } from '@app/_services/tag.service';
 import { TagMockService } from '@app/_services/tag-mock.service';
 
-describe('TodoListItemComponent', () => {
+describe('Component: TodoListItemComponent', () => {
     let component: TodoListItemComponent;
     let fixture: ComponentFixture<TodoListItemComponent>;
     let expectedTodo: ToDo;

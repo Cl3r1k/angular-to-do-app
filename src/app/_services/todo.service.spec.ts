@@ -10,7 +10,7 @@ import { IndexedDbMockService } from '@app/_services/indexed-db-mock.service';
 import { TodoOrderService } from '@app/_services/todo-order.service';
 import { TodoOrderMockService } from '@app/_services/todo-order-mock.service';
 
-describe('TodoService', () => {
+describe('Service: TodoService', () => {
     let todo1;
     let todo2;
     let todo3;

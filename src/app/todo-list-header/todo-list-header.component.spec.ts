@@ -20,7 +20,7 @@ import { FilterTagPipe } from '@app/_pipes/filter-tag.pipe';
 import { TagService } from '@app/_services/tag.service';
 import { TagMockService } from '@app/_services/tag-mock.service';
 
-describe('TodoListHeaderComponent', () => {
+describe('Component: TodoListHeaderComponent', () => {
     let component: TodoListHeaderComponent;
     let fixture: ComponentFixture<TodoListHeaderComponent>;
     let addTodoInputEl;

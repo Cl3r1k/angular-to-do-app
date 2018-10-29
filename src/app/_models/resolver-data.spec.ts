@@ -3,7 +3,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { ResolverData } from '@app/_models/resolver-data';
 
 
-describe(`ResolverData`, () => {
+describe(`Model: ResolverData`, () => {
     it(`Should create an instance (async)`, async(() => {
         // Arrange
 

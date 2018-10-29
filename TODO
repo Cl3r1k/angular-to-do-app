@@ -114,7 +114,8 @@ Todos:
                             ✔ Update test for 'JwtService' @done(18-10-24 09:47)
                             ✔ Update test for 'AuthService' @done(18-10-25 10:29)
                             ✔ Update test for 'SessionStorageService' @done(18-10-26 09:40)
-                            ☐ Update test for 'SignInComponent' <========================================================= CURRENT TASK
+                            ✔ Update test for 'SignInComponent' @done(18-10-28 09:54)
+                            ☐ Fix errors in tests for 'TodoListComponent' <========================================================= CURRENT TASK
             ✔ Add protection (look here `https://blog.thoughtram.io/angular/2016/07/18/guards-in-angular-2.html`) @done(18-10-08 09:35)            
                 ✔ Update broken tests @done(18-10-12 09:52)
                     ✔ Update tests for 'CanActivateTodosGuard' @done(18-10-11 10:06)

@@ -6,7 +6,7 @@ import { DialogDeleteComponent } from '@app/dialog/dialog-delete/dialog-delete.c
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { MatDialogRefMock } from '@app/_testing/mat-dialog-mock';
 
-describe('DialogDeleteComponent', () => {
+describe('Component: DialogDeleteComponent', () => {
     let component: DialogDeleteComponent;
     let fixture: ComponentFixture<DialogDeleteComponent>;
     let dialogConfirmBtnEl;

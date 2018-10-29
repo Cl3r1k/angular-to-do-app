@@ -6,7 +6,7 @@ import { TagLayerService } from '@app/_services/tag-layer.service';
 
 import { Utils } from '@app/_common/utils';
 
-describe('TagService', () => {
+describe('Service: TagService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [TagService, Utils, IndexedDbService, TagLayerService]

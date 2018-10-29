@@ -14,7 +14,7 @@ class MockRouter {
     navigate(path) { }
 }
 
-describe('AppComponent', () => {
+describe('Component: AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [

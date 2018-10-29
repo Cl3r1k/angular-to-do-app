@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TodoTitleComponent } from '@app/todo-title/todo-title.component';
 
-describe('TodoTitleComponent', () => {
+describe('Component: TodoTitleComponent', () => {
     let component: TodoTitleComponent;
     let fixture: ComponentFixture<TodoTitleComponent>;
 

@@ -43,7 +43,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DndModule, DragDropService, DragDropConfig, DragDropSortableService } from 'ng2-dnd';
 import { MatDialogModule } from '@angular/material';
 
-describe(`TodosComponent`, () => {
+describe(`Component: TodosComponent`, () => {
     let component: TodosComponent;
     let fixture: ComponentFixture<TodosComponent>;
     let expectedTodo;

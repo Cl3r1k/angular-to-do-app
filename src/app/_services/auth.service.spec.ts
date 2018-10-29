@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 import { SessionStorageService } from '@app/_services/session-storage.service';
 import { JwtService } from '@app/_services/jwt.service';
 
-describe('AuthService', () => {
+describe('Service: AuthService', () => {
 
     let service: AuthService;
     let sessionStorageService: SessionStorageService;

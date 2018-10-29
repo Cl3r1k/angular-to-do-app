@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { SessionStorageService } from '@app/_services/session-storage.service';
 
-describe('SessionStorageService', () => {
+describe('Service: SessionStorageService', () => {
 
     let sessionStorageService: SessionStorageService;
 

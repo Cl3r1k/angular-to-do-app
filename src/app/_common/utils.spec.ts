@@ -3,7 +3,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { Utils } from '@app/_common/utils';
 
 
-describe(`Utils`, () => {
+describe(`Class: Utils`, () => {
     it(`Should create an instance (async)`, async(() => {
         // Arrange
 

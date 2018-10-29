@@ -3,7 +3,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { Tag } from '@app/_models/tag';
 
 
-describe(`Tag`, () => {
+describe(`Model: Tag`, () => {
     it(`Should create an instance (async)`, async(() => {
         // Arrange
 

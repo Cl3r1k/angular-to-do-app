@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 // Services
 import { JwtService } from './jwt.service';
 
-describe('JwtService', () => {
+describe('Service: JwtService', () => {
 
     let service: JwtService;
     let store = {};

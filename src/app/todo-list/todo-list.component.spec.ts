@@ -22,7 +22,7 @@ import { TagMockService } from '@app/_services/tag-mock.service';
 // Modules
 import { DndModule } from 'ng2-dnd';
 
-describe('TodoListComponent', () => {
+describe('Component: TodoListComponent', () => {
     let component: TodoListComponent;
     let fixture: ComponentFixture<TodoListComponent>;
     const expectedTodos: [ToDo[]] = [[]];

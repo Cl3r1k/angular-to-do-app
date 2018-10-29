@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { TodoOrderService } from '@app/_services/todo-order.service';
 
-describe('TodoOrderService', () => {
+describe('Service: TodoOrderService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             providers: [TodoOrderService]

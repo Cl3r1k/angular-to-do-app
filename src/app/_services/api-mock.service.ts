@@ -11,6 +11,12 @@ export class ApiMockService {
 
     constructor() { }
 
+    public signIn(username: string, password: string): Observable<string> {
+        return observableOf(
+            'Mocked.Tocken'
+        );
+    }
+
     public createTodo(todo: ToDo): Observable<ToDo> {
         return observableOf(
             new ToDo({ id: 1, title: 'Read article', complete: false })

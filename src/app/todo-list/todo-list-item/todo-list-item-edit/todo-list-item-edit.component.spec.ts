@@ -5,7 +5,7 @@ import { ToDo } from '@app/_models/to-do';
 
 import { TodoListItemEditComponent } from '@app/todo-list/todo-list-item/todo-list-item-edit/todo-list-item-edit.component';
 
-describe('TodoListItemEditComponent', () => {
+describe('Component: TodoListItemEditComponent', () => {
     let component: TodoListItemEditComponent;
     let fixture: ComponentFixture<TodoListItemEditComponent>;
     let textareaEl;
