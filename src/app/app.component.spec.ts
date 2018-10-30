@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 import { AppModule } from '@app/app.module';
 
+// Components
 import { Component } from '@angular/core';
 import { AppComponent } from '@app/app.component';
 import { TodosComponent } from '@app/todos/todos.component';
