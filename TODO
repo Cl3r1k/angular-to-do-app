@@ -134,6 +134,7 @@ Todos:
 
             ☐ Consider to cancel editing, if user clicks on other area
 
+            ☐ Switch from 'akserg/ng2-dnd' to another dnd-module with ng6 support (for example `https://github.com/beyerleinf/ngx-dnd`)
             ☐ Update CLI to v7 <========================================================= CURRENT TASK
             ☐ Consider to use Material 'DragDropModule'
 
