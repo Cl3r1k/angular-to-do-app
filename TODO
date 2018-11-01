@@ -134,8 +134,8 @@ Todos:
 
             ☐ Consider to cancel editing, if user clicks on other area
 
-            ☐ Switch from 'akserg/ng2-dnd' to another dnd-module with ng6 support (for example `https://github.com/beyerleinf/ngx-dnd`)
-            ☐ Update CLI to v7 <========================================================= CURRENT TASK
+            ☐ Switch from 'akserg/ng2-dnd' to another dnd-module with ng6 support (for example `https://github.com/beyerleinf/ngx-dnd`) <========================================================= CURRENT TASK
+            ☐ Update CLI to v7
             ☐ Consider to use Material 'DragDropModule'
 
             ☐ Consider to implement app structure like in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` )
