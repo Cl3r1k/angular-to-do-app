@@ -44,7 +44,7 @@ import { SafePipe } from '@app/_pipes/safe.pipe';
 import { FilterTagPipe } from '@app/_pipes/filter-tag.pipe';
 
 // Modules
-import { DndModule } from 'ng2-dnd';
+import { DndModule } from '@beyerleinf/ngx-dnd';
 import { Autosize } from 'ng-autosize/src/autosize.directive';
 // tslint:disable-next-line:max-line-length
 import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatTooltipModule, MatCardModule } from '@angular/material';

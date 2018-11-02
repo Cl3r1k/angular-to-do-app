@@ -40,7 +40,7 @@ import { TagMockService } from '@app/_services/tag-mock.service';
 import { ActivatedRoute } from '@angular/router';
 
 // Modules
-import { DndModule, DragDropService, DragDropConfig, DragDropSortableService } from 'ng2-dnd';
+import { DndModule, DragDropService, DragDropConfig, DragDropSortableService } from '@beyerleinf/ngx-dnd';
 import { MatDialogModule } from '@angular/material';
 
 describe(`Component: TodosComponent`, () => {

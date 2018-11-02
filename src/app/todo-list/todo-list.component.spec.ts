@@ -20,7 +20,7 @@ import { TagService } from '@app/_services/tag.service';
 import { TagMockService } from '@app/_services/tag-mock.service';
 
 // Modules
-import { DndModule } from 'ng2-dnd';
+import { DndModule } from '@beyerleinf/ngx-dnd';
 
 describe('Component: TodoListComponent', () => {
     let component: TodoListComponent;
