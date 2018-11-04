@@ -11,7 +11,7 @@ export class TodoListComponent implements OnInit {
     consoleTextColorComponent = 'color: cadetblue;';
 
     @Input() todos: ToDo[];
-    @Input() todosToView: [ToDo[]];
+    @Input() todosToView = [[]];
 
     @Input() todosAllAmount: number;
 

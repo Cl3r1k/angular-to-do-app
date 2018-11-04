@@ -25,7 +25,7 @@ import { DndModule } from '@beyerleinf/ngx-dnd';
 describe('Component: TodoListComponent', () => {
     let component: TodoListComponent;
     let fixture: ComponentFixture<TodoListComponent>;
-    const expectedTodos: [ToDo[]] = [[]];
+    const expectedTodos = [[]];
     let todo1pinned: ToDo;
     let todo2pinned: ToDo;
     let todo3pinned: ToDo;

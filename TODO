@@ -136,7 +136,8 @@ Todos:
 
             ✔ Switch from 'akserg/ng2-dnd' to another dnd-module with ng6 support (for example `https://github.com/beyerleinf/ngx-dnd`) @done(18-11-01 09:46)
             ✔ Update CLI to v7 @done(18-11-02 10:24)
-                ☐ Fix errors after update
+                ✔ Fix errors after update @done(18-11-03 10:57)
+                ✔ Fix errors in tests for 'TodoListComponent' @done(18-11-03 11:07)
             ☐ Consider to use Material 'DragDropModule' (`https://material.angular.io/cdk/drag-drop/overview`) <========================================================= CURRENT TASK
 
             ☐ Consider to implement app structure like in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` )
@@ -183,7 +184,6 @@ Todos:
         ☐ Use Reactive forms
         ☐ Notify if user blocked notification (look here example `https://codingthesmartway.com/angular-material-introduction/` - left bottom corner)
         ☐ Use UserGuide on first run like here `discordapp.com` or like in `feedly.com`
-        ☐ Fix errors in tests for 'TodoListComponent'
         
         ☐ After finishing the tutor, improve the app using (`https://github.com/tastejs/todomvc-app-template`)
         
