@@ -1,9 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+
+// Models
 import { ToDo } from '@app/_models/to-do';
 
-import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
+// Directives
 import { RouterLinkActiveStubsDirective } from '@app/_testing/router-stubs.directive';
+
+// Components
+import { TodoListFooterComponent } from '@app/todo-list-footer/todo-list-footer.component';
 
 describe('Component: TodoListFooterComponent', () => {
     let component: TodoListFooterComponent;
