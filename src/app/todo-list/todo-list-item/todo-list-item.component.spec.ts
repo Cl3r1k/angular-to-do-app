@@ -116,4 +116,6 @@ describe('Component: TodoListItemComponent', () => {
         // Assert
         expect(todo).toEqual(expectedTodo);
     }));
+
+    // TODO: Update test with 'pinned-list', 'unpinned-list', 'completed-list'
 });

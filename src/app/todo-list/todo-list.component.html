@@ -13,6 +13,13 @@
             </li>
         </ul>
     </div>
+    <!-- <div class='unpinned-list' *ngIf='todosToView[1].length' cdkDropList (cdkDropListDropped)='drop($event)'>
+        <ul class='todo-list'>
+            <li *ngFor='let todo of todosToView[1]; let i = index' [class.completed]='todo.complete' cdkDrag>
+                <app-todo-list-item [todo]='todo' (toggleCompleteTodoListItemEmitter)='onToggleTodoComplete($event)' (updateTodoListItemEmitter)='onUpdateTodo($event)' (moreTodoListItemEmitter)='onMoreTodo($event)' (pinTodoListItemEmitter)='onPinTodo($event)' (removeTodoListItemEmitter)='onRemoveTodo($event)'></app-todo-list-item>
+            </li>
+        </ul>
+    </div> -->
     <div class='completed-container' *ngIf='todosToView[2].length'>
         <div class='collapse-container'>
             <div class='completed-todos' (click)='collapseCompletedTodos(collapse.checked)' (mouseenter)='setCompletedTodosHoverState(true)' (mouseleave)='setCompletedTodosHoverState(false)' appTooltipDirective='Collapse recent completed todos' placement='top'>

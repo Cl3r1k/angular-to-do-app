@@ -100,4 +100,8 @@ export class TodoListComponent implements OnInit {
         this.clearHoverStateTodoListEmitter.emit(clearCompletetHoverState);
     }
 
+    drop(event) {
+        console.log('%cDropped event: ', this.consoleTextColorComponent, event);
+    }
+
 }

@@ -47,7 +47,8 @@ import { FilterTagPipe } from '@app/_pipes/filter-tag.pipe';
 import { DndModule } from '@beyerleinf/ngx-dnd';
 import { Autosize } from 'ng-autosize/src/autosize.directive';
 // tslint:disable-next-line:max-line-length
-import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatTooltipModule, MatCardModule } from '@angular/material';
+import { MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatTooltipModule } from '@angular/material';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { Utils } from '@app/_common/utils';
 
 // Guards
@@ -91,7 +92,8 @@ import { CanActivateTodosGuard } from '@app/_guards/can-activate-todos.guard';
         MatDatepickerModule,
         MatNativeDateModule,
         MatTooltipModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        DragDropModule
     ],
     providers: [
         TodoService,
