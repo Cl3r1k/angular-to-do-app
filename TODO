@@ -132,13 +132,13 @@ Todos:
 
             ✔ Fix issue: when DB in IndexedDb recreated, but in localStorage order is old @done(18-10-22 10:05)
 
-            ☐ Consider to cancel editing, if user clicks on other area
+            ☐ Consider to cancel editing, if user clicks on other area <========================================================= CURRENT TASK
 
             ✔ Switch from 'akserg/ng2-dnd' to another dnd-module with ng6 support (for example `https://github.com/beyerleinf/ngx-dnd`) @done(18-11-01 09:46)
             ✔ Update CLI to v7 @done(18-11-02 10:24)
                 ✔ Fix errors after update @done(18-11-03 10:57)
                 ✔ Fix errors in tests for 'TodoListComponent' @done(18-11-03 11:07)
-            ☐ Consider to use Material 'DragDropModule' (`https://material.angular.io/cdk/drag-drop/overview`) <========================================================= CURRENT TASK
+            
 
             ☐ Consider to implement app structure like in 'angular-realworld-example-app' on GH ( `https://github.com/gothinkster/angular-realworld-example-app` )
 
@@ -149,7 +149,7 @@ Todos:
                 ✔ Improve styles for 'checkbox.toggle' (currently not centered in container) @done(18-02-24 09:26)
                 ✔ Fix header min resizing issue (when window width is small, header flows) @done(18-02-24 09:28)
                 ☐ Fix issue -> when todo hovered (and zoom is 90% or 110%) -> buttons shift ---> Delayed for some time (When will be adaption for responsive) (probably margin: 0 auto; will solve it)
-                ☐ Improve styles for action-buttons (hover should work on more area) -> Delayed for some time (Consider to implement this feature)
+                ☐ Improve styles for action-buttons (hover should work on more area) ---> Delayed for some time (Consider to implement this feature)
                     ☐ Improve styles if window width < 600 (make buttons-block responsive)
             ✔ Implement grids in TodoListItemEditComponent @done(18-02-18 12:14)
             ✔ Implement grids in TodoListHeaderComponent @done(18-02-24 09:25)
@@ -170,6 +170,8 @@ Todos:
                 ☐ Rewrite part for initial size for textarea (when single line todo.title, and check multiple lines todo.title) (Current method is a crutch) (look here `https://github.com/stevepapa/ng-autosize/issues/9`)
             ☐ Rewrite part for DnD (use `https://github.com/atlassian/react-beautiful-dnd` and adopt it to angular)
                 ☐ Use custom cursor for DnD icon (look here `https://github.com/atlassian/react-beautiful-dnd/blob/master/src/view/style-marshal/get-styles.js#L110`)
+            ☐ Consider to use Material 'DragDropModule' (`https://material.angular.io/cdk/drag-drop/overview`) ---> Delayed for some time (Consider to implement this feature, after will be supported DnD for subComponents)
+                ☐ Use behavior and styles from 'Material 'DragDropModule''
             ☐ Change styles in '_sign-in.scss' to grids
 
         ☐ Use some UI ideas for dialog like here `https://comining.io/account/wallets#`        

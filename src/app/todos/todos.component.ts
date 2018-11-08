@@ -368,4 +368,10 @@ export class TodosComponent implements OnInit, OnDestroy {
         this._router.navigate(['/sign-in']);
     }
 
+    containerClickHandler(event) {
+        if (event.target.className === 'content-container') {
+            console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
+        }
+    }
+
 }
