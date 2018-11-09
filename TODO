@@ -14,6 +14,15 @@ Commit message:
 Todos:
     New:
         Current:
+
+            ☐ Change UI to prototype view
+                ☐ Change 'Header' (Should be like [AppName---Updgrade---------------------------------SyncState---SyncIcon---ProfileMenu])
+                    ☐ 'Onhover' on 'AppName' should show current build
+                ☐ Add component 'CurrentTodoComponent'
+                ☐ Reorganize 'MainContent' part, where view should be like [PomoList-----TodoList]
+                ☐ Add component 'StatsComponent'
+                ☐ Change 'Footer' (Should be like [©AppName---LanguageBox---ThemeSwitcher---------------------------------Pro Applications Help Developer Press Terms])
+
             
             ✔ Add tags support (for example #tagName) @done(18-08-05 09:17)
                 ✔ In 'todo Title' show tags as blocks with colors @done(18-07-22 09:48)
@@ -132,7 +141,7 @@ Todos:
 
             ✔ Fix issue: when DB in IndexedDb recreated, but in localStorage order is old @done(18-10-22 10:05)
 
-            ☐ Consider to cancel editing, if user clicks on other area <========================================================= CURRENT TASK
+            <========================================================= CURRENT TASK
 
             ✔ Switch from 'akserg/ng2-dnd' to another dnd-module with ng6 support (for example `https://github.com/beyerleinf/ngx-dnd`) @done(18-11-01 09:46)
             ✔ Update CLI to v7 @done(18-11-02 10:24)
@@ -188,8 +197,12 @@ Todos:
         ☐ Use Reactive forms
         ☐ Notify if user blocked notification (look here example `https://codingthesmartway.com/angular-material-introduction/` - left bottom corner)
         ☐ Use UserGuide on first run like here `discordapp.com` or like in `feedly.com`
+
+        ☐ Consider to cancel editing, if user clicks on other area ---> Delayed for some time (Back to this later)
+            ☐ Probably should be used 'ViewChild'
         
         ☐ After finishing the tutor, improve the app using (`https://github.com/tastejs/todomvc-app-template`)
+
         
         ☐ Fix all TODO in all files
         ☐ Check the app in 'Internet mail.ru' browser
@@ -214,7 +227,7 @@ Todos:
 
         ☐ CleanUp code (delete console.log, comments and other things)
 
-        ☐ Idea to implement multiple editing items
+        ☐ Idea to implement multiple adding items
             `сгруппировать/смерджить несколько observable httpClient.post, чтобы каждый последующий отправлялся только после выполнения предыдущего
             flatMap -> 
             post(...).flatMap(result => post(result.data))
@@ -236,7 +249,7 @@ Todos:
 
     Future:
         ☐ Options window:
-            ☐ Add in options value for Multiple/Single editing todo (use `http://dexie.org/docs/Table/Table.bulkAdd()`)
+            ☐ Add in options value for Multiple/Single adding todo (use `http://dexie.org/docs/Table/Table.bulkAdd()`)
             ☐ Add in options value for support spec symbols (like ☐ and ✔) in new todo
         ☐ Add posibility to parse todo with special symbols (like ☐ and ✔) (parse input in service) (server side probably)
             ☐ Update test for the feature in service and components

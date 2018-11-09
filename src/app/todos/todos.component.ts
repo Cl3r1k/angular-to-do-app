@@ -369,6 +369,7 @@ export class TodosComponent implements OnInit, OnDestroy {
     }
 
     containerClickHandler(event) {
+        // FEATURE: Here we should check, if there is some edited item -> cancel edit
         if (event.target.className === 'content-container') {
             console.log('%ccontainerClick called with event: ', this.consoleTextColorComponent, event);
         }
