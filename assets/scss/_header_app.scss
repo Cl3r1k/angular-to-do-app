@@ -1,0 +1,119 @@
+@import 'variables';
+
+/* Header section */
+
+.header {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    align-items: center;
+    // position: relative;
+    // z-index: 0;
+    &.filter-state {
+        background-color: #eeeeee;
+    }
+    .new-container {
+        grid-column: span 16;
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+        align-items: center;
+        .toggleAll-container {
+            grid-column: span 1;
+            display: grid;
+            height: 100%;
+            align-items: center;
+            box-shadow: inset 0 -2px 0px rgba(0, 0, 0, 0.03);
+            .toggle-all {
+                // position: absolute;
+                // top: 11px;
+                // left: -12px;
+                // width: 60px;
+                // z-index: 2;
+                // background-color: firebrick;
+                height: 32px;
+                width: 32px;
+                margin: auto;
+                text-align: center;
+                border: none;
+                cursor: pointer;
+                /* Mobile Safari */
+                &:before {
+                    content: '❯';
+                    font-size: 22px;
+                    color: #e6e6e6;
+                    // padding: 10px 27px 10px 27px;
+                }
+                &:checked:before {
+                    color: #737373;
+                }
+            }
+            label[for='toggle-all'] {
+                display: none;
+            }
+        }
+        .new-todo {
+            grid-column: span 15;
+            @extend .input-field-style;
+            padding: 14px 40px 14px 14px;
+            border: none;
+            background: rgba(0, 0, 0, 0.003);
+            box-shadow: inset 0 -2px 0px rgba(0, 0, 0, 0.03);
+        }
+        .icon-keyboard_return {
+            // background-color: #62e9d2; // For Debug
+            position: absolute;
+            top: 19px;
+            right: 11px;
+            font-size: 18px;
+            color: #939dc9;
+            padding: 3px 3px 3px 3px;
+            margin: auto auto;
+            transition: 0.3s ease-out;
+            opacity: 0;
+            &:hover {
+                color: #687197;
+                cursor: pointer;
+            }
+            &.new-todo-focused {
+                opacity: 1;
+            }
+        }
+    }
+    .filter-container {
+        grid-column: span 15;
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+        overflow: hidden;
+        .hashtag {
+            grid-column: span 16;
+            @extend .input-field-style;
+            // height: 61.5px; // Set height implicitly, like height for 'input'
+            background-color: #f59772;
+            color: white;
+            padding: 8px;
+            padding-right: 0;
+            margin: 6px;
+            border-radius: 3px;
+            border: none;
+            // background: rgba(0, 0, 0, 0.003);
+            box-shadow: inset 0 -2px 0px rgba(0, 0, 0, 0.03);
+        }
+        .icon-close {
+            // background-color: #62e9d2; // For Debug
+            position: absolute;
+            top: 19px;
+            right: 11px;
+            font-size: 18px;
+            color: #939dc9;
+            padding: 3px 3px 3px 3px;
+            margin: auto auto;
+            transition: 0.3s ease-out;
+            &:hover {
+                color: #687197;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+/* End Header section */

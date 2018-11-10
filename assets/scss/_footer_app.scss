@@ -1,0 +1,70 @@
+/* Footer section */
+
+.footer {
+    color: #777;
+    padding: 10px 15px;
+    height: 20px;
+    text-align: center;
+    border-top: 1px solid #e6e6e6;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    align-items: center;
+    &:before {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 50px;
+        overflow: hidden;
+        z-index: -1;
+        -webkit-box-shadow: 0 0px 1px -1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+        -moz-box-shadow: 0 0px 1px -1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0px 1px -1px rgba(0, 0, 0, 0.2), 0 8px 0 -3px #f6f6f6, 0 9px 1px -3px rgba(0, 0, 0, 0.2), 0 16px 0 -6px #f6f6f6, 0 17px 2px -6px rgba(0, 0, 0, 0.2);
+    }
+    .todo-count {
+        // float: left;
+        text-align: left;
+        grid-column: span 3;
+        strong {
+            font-weight: 700;
+        }
+    }
+    .filter-container {
+        // position: absolute;
+        // right: 0;
+        // left: 0;
+        grid-column: span 10;
+        .link {
+            // position: relative;
+            color: inherit;
+            margin: 3px;
+            padding: 3px 7px;
+            text-decoration: none;
+            font-weight: 300;
+            border: 1px solid transparent;
+            border-radius: 3px;
+            &:hover:not(.active) {
+                cursor: pointer;
+                border-color: rgba(175, 47, 47, 0.2);
+            }
+            &.active {
+                border-color: rgba(175, 47, 47, 0.4);
+            }
+        }
+    }
+    // .btn-clear {
+    //     // position: relative;
+    //     // float: right;
+    //     grid-column: span 3;
+    //     cursor: pointer;
+    //     line-height: 20px;
+    //     text-align: right;
+    //     &:hover {
+    //         text-decoration: underline;
+    //     }
+    // }
+}
+
+
+/* End Footer section */

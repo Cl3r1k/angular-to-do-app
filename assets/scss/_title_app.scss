@@ -1,0 +1,22 @@
+.head {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    align-items: center;
+    h1 {
+        // position: absolute;
+        // top: -130px;
+        // width: 100%;
+        // background-color: #2276b2;
+        grid-column: span 16;
+        line-height: initial;
+        margin: 10px auto;
+        word-break: break-all;
+        font-size: 80px;
+        font-weight: 100;
+        text-align: center;
+        color: rgba(175, 47, 47, 0.3);
+        -webkit-text-rendering: optimizeLegibility;
+        -moz-text-rendering: optimizeLegibility;
+        text-rendering: optimizeLegibility;
+    }
+}

@@ -1,0 +1,80 @@
+/* Alert styles */
+
+.sweet-alert {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    .icon {
+        width: 80px;
+        height: 80px;
+        border: 4px solid gray;
+        -webkit-border-radius: 40px;
+        border-radius: 50%;
+        margin: 20px auto;
+        padding: 0;
+        position: relative;
+        box-sizing: content-box;
+        &.warning {
+            border-color: #F8BB86
+        }
+        .icon-warning {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #f8bb86;
+            border-color: #facea8;
+            font-size: 60px;
+            line-height: 80px;
+            text-align: center;
+        }
+    }
+    .alert-title {
+        color: #595959;
+        font-size: 30px;
+        text-align: center;
+        font-weight: 600;
+        text-transform: none;
+        position: relative;
+        margin: 0 0 .4em;
+        padding: 0;
+        display: block;
+        word-wrap: break-word;
+    }
+    .alert-content {
+        color: #797979;
+        font-size: 18px;
+        text-align: center;
+        font-weight: 300;
+        position: relative;
+        float: none;
+        margin: 0;
+        padding: 0;
+        line-height: normal;
+        word-wrap: break-word;
+    }
+    .buttons-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        .btn-styled {
+            border: 0;
+            border-radius: 3px;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 500;
+            margin: 15px 5px 0;
+            padding: 10px 32px;
+            &.button-delete {
+                background-color: #dd3333;
+            }
+            &.button-cancel {
+                background-color: rgb(48, 133, 214);
+                border-left-color: rgb(48, 133, 214);
+                border-right-color: rgb(48, 133, 214);
+            }
+        }
+    }
+}
+
+
+/* End Alert styles */

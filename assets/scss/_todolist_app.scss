@@ -1,0 +1,402 @@
+/* TodoList section */
+
+.main {
+    // position: relative;
+    // z-index: 2;
+    // border-top: 1px solid #e6e6e6;
+    .pinned-list {
+        // height: 100px;                           // For Debug
+        // background-color: #b76fee; // For Debug
+        border-top: 1px solid #e6e6e6;
+    }
+    .unpinned-list {
+        // height: 100px;                           // For Debug
+        // background-color: #6889ee; // For Debug
+        border-top: 1px solid #e6e6e6;
+    }
+    .completed-container {
+        // height: 32px;
+        display: grid;
+        grid-template-columns: repeat(16, 1fr);
+        // background-color: #42cf65; // For Debug
+        color: #a8a8a8;
+        .collapse-container {
+            border-top: 1px solid #e6e6e6;
+            // border-bottom: 1px solid #e6e6e6;
+            grid-column: span 16;
+            display: grid;
+            grid-template-columns: repeat(16, 1fr);
+            .completed-todos {
+                grid-column: 1/5;
+                // background-color: #08b2eb; // For Debug
+                margin: 5px;
+                margin-left: 15px;
+                // margin: 5px, 0px, 5px, 15px;
+                border: 1px solid #d9d9d9;
+                border-radius: 3px;
+                align-items: center;
+                cursor: pointer;
+                display: grid;
+                grid-template-columns: repeat(16, 1fr);
+                &:hover {
+                    border-color: #737373;
+                }
+                .collapse-button {
+                    grid-column: span 3;
+                    height: 32px;
+                    width: 32px;
+                    margin: auto;
+                    text-align: center;
+                    border: none;
+                    cursor: pointer;
+                    color: #e6e6e6;
+                    transition: color 0.3s ease-out;
+                    transition: transform 0.2s ease-out;
+                    &.completed-todos-hovered {
+                        color: #737373;
+                    }
+                    /* Mobile Safari */
+                    &:before {
+                        content: '❯';
+                        font-size: 22px;
+                        // padding: 10px 27px 10px 27px;
+                    }
+                    &:checked {
+                        -webkit-transform: rotate(90deg);
+                        -moz-transform: rotate(90deg);
+                        -ms-transform: rotate(90deg);
+                        -o-transform: rotate(90deg);
+                        transform: rotate(90deg);
+                        &:before {
+                            color: #737373;
+                        }
+                    }
+                }
+                span {
+                    grid-column: span 13;
+                    &.completed-todos-hovered {
+                        color: #737373;
+                    }
+                }
+            }
+            .icon-broom {
+                grid-column: 16/17;
+                font-size: 18px;
+                color: #a8a8a8;
+                // background-color: #50f550; // For debuging
+                margin: auto auto;
+                padding: 3px 3px 3px 3px;
+                transition: 0.3s ease-out;
+                &:hover {
+                    color: #737373;
+                    cursor: pointer;
+                }
+            }
+        }
+        .completed-list {
+            // height: 100px;                           // For Debug
+            // background-color: #62e9d2; // For Debug
+            border-top: 1px solid #e6e6e6;
+            grid-column: span 16;
+            overflow: hidden;
+            max-height: 500px;
+            transition: max-height 0.25s ease-in;
+            &.collapsed {
+                max-height: 0px;
+                transition: max-height 0.15s ease-out;
+            }
+        }
+    }
+}
+
+.todo-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+        // position: relative;
+        font-size: 24px;
+        border-bottom: 1px solid #ededed;
+        transition: background-color 0.3s ease-out;
+        cursor: default !important; // Styles to prevent ng2-dnd styles for element
+        &.completed .todoTitle,
+        .complete-hovered .todoTitle {
+            color: #d9d9d9;
+            text-decoration: line-through;
+        }
+        &:last-child {
+            border-bottom: none;
+        }
+        &:hover {
+            background-color: #f5f5f5;
+            .buttons-before-block {
+                // .icon-move-vertical,
+                .icon-ellipsis-v {
+                    opacity: 1;
+                }
+            }
+            .toggle:not(:checked) {
+                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/></svg>');
+            }
+            .buttons-block {
+                .icon-more_horiz, // .icon-pencil-edit,
+                // .icon-destroy,
+                .icon-pin {
+                    opacity: 1;
+                }
+            }
+        }
+        // &.editing {
+        //     border-bottom: none;
+        //     padding: 0;
+        //     &:last-child {
+        //         margin-bottom: -1px;
+        //     }
+        // }
+        .viewContainer {
+            background-color: transparent;
+            transition: background-color 0.3s ease-out;
+            display: grid;
+            grid-template-columns: repeat(16, 1fr);
+            align-items: center;
+            &.edit-hovered {
+                background-color: #dfebe0;
+            }
+        }
+        .editContainer {
+            display: grid;
+            grid-template-columns: repeat(16, 1fr);
+            align-items: center;
+            padding-left: 14px; // Padding to align edit container label with view container label
+            &.delete-hovered {
+                background-color: #f7e8e8;
+            }
+            .editContainerControls {
+                @extend .input-field-style;
+                padding: 0;
+                grid-column: 2/17;
+                display: grid;
+                grid-template-columns: repeat(16, 1fr);
+                align-items: center;
+                // background-color: cornflowerblue; // For debuging
+                .edit {
+                    @extend .input-field-style;
+                    border: none;
+                    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.03);
+                    background-color: transparent;
+                    grid-column: 1/16;
+                    padding: 11px 0px 12px 14px;
+                    resize: none; // Disable resizing for todo
+                    word-break: break-all;
+                }
+                .buttons-block-edit {
+                    display: grid;
+                    align-items: center;
+                    grid-column: 16/17;
+                    // background-color: #583a1c; // For debuging
+                    .icon-destroy {
+                        // display: none;
+                        // position: absolute;
+                        // top: 0;
+                        // right: 20px;
+                        // bottom: 0;
+                        font-size: 18px;
+                        color: #cc9a9a;
+                        // background-color: #321; // For debuging
+                        margin: auto auto;
+                        padding: 3px 3px 3px 3px;
+                        transition: 0.3s ease-out;
+                        opacity: 1;
+                        &:hover {
+                            color: #af5b5e;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+        .buttons-before-block {
+            grid-column: span 1;
+            // background-color: greenyellow; // For debuging
+            display: grid;
+            height: 100%;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            .icon-ellipsis-v {
+                // width: 0.2138671875em;
+                width: 10px;
+                font-size: 20px;
+                color: #939dc9;
+                // background-color: #555; // For debuging
+                margin: 0 auto;
+                padding: 3px 3px 3px 3px;
+                transition: 0.3s ease-out;
+                opacity: 0;
+                &:hover {
+                    color: #687197;
+                    cursor: pointer;
+                }
+                &.completed {
+                    opacity: 0;
+                    cursor: default;
+                }
+            }
+            .priority-block {
+                // background-color: red; // For debuging
+                width: 5px;
+                height: 70%;
+                border-radius: 10px;
+            }
+            // .icon-move-vertical {
+            //     // width: 0.375em;
+            //     // display: none;
+            //     // position: absolute;
+            //     // top: 0;
+            //     // right: 70px;
+            //     // bottom: 0;
+            //     font-size: 18px;
+            //     color: #939dc9;
+            //     background-color: #555; // For debuging
+            //     margin: 0 auto;
+            //     padding: 3px 3px 3px 3px;
+            //     transition: 0.3s ease-out;
+            //     opacity: 1;
+            //     &:hover {
+            //         color: #687197;
+            //         cursor: pointer;
+            //     }
+            // }
+            .toggle {
+                // position: absolute;
+                // top: 0;
+                // bottom: 0;
+                text-align: center;
+                width: 40px;
+                /* auto-height, since non-Webkit browsers doesn't support input styling */
+                // height: auto;    // Check this point in other browsers
+                margin: auto;
+                border: none;
+                /* Mobile Safari */
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                cursor: pointer;
+                &:after {
+                    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="rgb(237, 237, 237)" stroke-width="3"/></svg>');
+                }
+                &:checked:after {
+                    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+                }
+            }
+        }
+        .todoTitle {
+            // margin-left: 40px;
+            // margin-right: 94px;
+            // display: block;
+            word-break: break-all;
+            padding: 15px 15px 15px 15px;
+            line-height: 1.2;
+            transition: color 0.4s;
+            grid-column: span 14;
+            // background-color: #eb77eb; // For debuging
+            &.ctrl-hover {
+                // background-color: #9c389c; // For debuging
+                .url-class {
+                    cursor: pointer;
+                }
+            }
+            .url-class {
+                cursor: default;
+                text-decoration: none;
+                font-weight: initial;
+                color: #0096cf;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            .tag-class {
+                cursor: pointer;
+                color: #ffffff;
+                // background-color: #00ced1; // For debuging
+                padding: 1px 5px 1px 5px;
+                border-radius: 3px;
+            }
+        }
+        .buttons-block {
+            grid-column: span 1;
+            // background-color: greenyellow; // For debuging
+            display: grid;
+            height: 100%;
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+            padding-right: 5px;
+            .icon-more_horiz {
+                font-size: 20px;
+                color: #bddad5;
+                // background-color: #0066ff; // For debuging
+                margin: auto auto;
+                padding: 3px 3px 3px 3px;
+                transition: 0.3s ease-out;
+                opacity: 0;
+                &:hover {
+                    color: #5dc2af;
+                    cursor: pointer;
+                }
+            }
+            // .icon-pencil-edit {
+            //     // display: none;
+            //     // position: absolute;
+            //     // top: 0;
+            //     // right: 45px;
+            //     // bottom: 0;
+            //     // margin-bottom: 16px;
+            //     font-size: 18px;
+            //     color: #bddad5;
+            //     background-color: #888; // For debuging
+            //     margin: auto auto;
+            //     padding: 3px 3px 3px 3px;
+            //     transition: 0.3s ease-out;
+            //     opacity: 1;
+            //     &:hover {
+            //         color: #5dc2af;
+            //         cursor: pointer;
+            //     }
+            // }
+            .icon-pin {
+                font-size: 20px;
+                color: #858585;
+                // background-color: #50f550; // For debuging
+                margin: auto auto;
+                padding: 3px 3px 3px 3px;
+                transition: 0.3s ease-out;
+                opacity: 0;
+                &:hover {
+                    color: #c93b40;
+                    cursor: pointer;
+                }
+                &.pinned {
+                    color: red;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .todoapp.clearAll-hovered & li.completed {
+        background-color: #f7e8e8;
+        .icon-destroy {
+            opacity: 1;
+        }
+    }
+    .todoapp.toggleAll-hovered & li {
+        color: #d9d9d9;
+        text-decoration: line-through;
+        .toggle {
+            &:not(:checked) {
+                content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-1 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="rgb(189, 218, 213)" stroke-width="3"/><path fill="rgb(93, 194, 175)" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+            }
+        }
+    }
+}
+
+
+/* End TodoList section */
