@@ -113,6 +113,9 @@ Todos:
 
             ✔ Update 'concurrently' to latest version (4.0.1) @done(18-09-16 09:35)
 
+            ✔ After implementation authentication -> update patch version (to 1.4.5) @done(18-11-09 10:18)
+                ✔ Switch off debugging styles and update Demo on GH-Pages @done(18-11-09 10:17)
+                ☐ Fix errors 'Property 'data' does not exist on type 'string'' on --prod mode <========================================================= CURRENT TASK
             ✔ Complete 'Part 5 — Add authentication to protect private content' from `sitepoint.com` @done(18-10-01 09:08)
                 ✔ Fix button.sign-out-button styles with grids @done(18-10-01 09:34)
                 ✔ Fix msg '[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq)' @done(18-10-01 09:42)
@@ -140,8 +143,6 @@ Todos:
                     ✔ Fix 'high severity security vulnerability detected in cryptiles' @done(18-10-13 09:24)
 
             ✔ Fix issue: when DB in IndexedDb recreated, but in localStorage order is old @done(18-10-22 10:05)
-
-            <========================================================= CURRENT TASK
 
             ✔ Switch from 'akserg/ng2-dnd' to another dnd-module with ng6 support (for example `https://github.com/beyerleinf/ngx-dnd`) @done(18-11-01 09:46)
             ✔ Update CLI to v7 @done(18-11-02 10:24)
