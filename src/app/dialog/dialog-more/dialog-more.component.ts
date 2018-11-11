@@ -12,7 +12,7 @@ export class DialogMoreComponent implements OnInit {
     dataFromDialog: Object;
     consoleTextColorComponent = 'color: cadetblue;';
 
-    constructor(public dialogRef: MatDialogRef<DialogMoreComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
+    constructor(public dialogRef: MatDialogRef<DialogMoreComponent>, @Inject(MAT_DIALOG_DATA) public data) { }
 
     ngOnInit() {
     }

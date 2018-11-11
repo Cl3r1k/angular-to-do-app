@@ -115,7 +115,9 @@ Todos:
 
             ✔ After implementation authentication -> update patch version (to 1.4.5) @done(18-11-09 10:18)
                 ✔ Switch off debugging styles and update Demo on GH-Pages @done(18-11-09 10:17)
-                ☐ Fix errors 'Property 'data' does not exist on type 'string'' on --prod mode <========================================================= CURRENT TASK
+                ✔ Fix errors 'Property 'data' does not exist on type 'string'' on --prod mode @done(18-11-10 09:25)
+                ☐ Add additional condition for auth (tst|tst -> shouldn't use json-server to bypass it for GH-Pages) <========================================================= CURRENT TASK
+                ☐ Deploy updated build on GH-Pages
             ✔ Complete 'Part 5 — Add authentication to protect private content' from `sitepoint.com` @done(18-10-01 09:08)
                 ✔ Fix button.sign-out-button styles with grids @done(18-10-01 09:34)
                 ✔ Fix msg '[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq)' @done(18-10-01 09:42)
