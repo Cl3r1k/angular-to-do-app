@@ -1,5 +1,5 @@
 // C:\Windows\System32\cmd.exe /k "C:\Program Files\nodejs\nodevars.bat" // To start from VSC terminal node env
-// `ng test --sourceMap=false` // To get the right error messages while testing the app.
+// `ng test --sourceMap=false` // To get the right error messages while testing the app (in NG6+)
 
 // Initial example: http://todomvc.com/examples/angularjs/#/
 
@@ -15,7 +15,7 @@ Todos:
     New:
         Current:
 
-            ☐ Change UI to prototype view
+            ☐ Change UI to prototype view <========================================================= CURRENT TASK
                 ☐ Change 'Header' (Should be like [AppName---Updgrade---------------------------------SyncState---SyncIcon---ProfileMenu])
                     ☐ 'Onhover' on 'AppName' should show current build
                 ☐ Add component 'CurrentTodoComponent'
@@ -116,8 +116,8 @@ Todos:
             ✔ After implementation authentication -> update patch version (to 1.4.5) @done(18-11-09 10:18)
                 ✔ Switch off debugging styles and update Demo on GH-Pages @done(18-11-09 10:17)
                 ✔ Fix errors 'Property 'data' does not exist on type 'string'' on --prod mode @done(18-11-10 09:25)
-                ☐ Add additional condition for auth (tst|tst -> shouldn't use json-server to bypass it for GH-Pages) <========================================================= CURRENT TASK
-                ☐ Deploy updated build on GH-Pages
+                ✔ Add additional condition in 'SignInComponent' (tst|tst -> shouldn't use json-server and bypass it for GH-Pages) @done(18-11-11 09:43)
+                ✔ Deploy updated build on GH-Pages @done(18-11-11 10:19)
             ✔ Complete 'Part 5 — Add authentication to protect private content' from `sitepoint.com` @done(18-10-01 09:08)
                 ✔ Fix button.sign-out-button styles with grids @done(18-10-01 09:34)
                 ✔ Fix msg '[DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq)' @done(18-10-01 09:42)
